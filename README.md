@@ -25,6 +25,13 @@ Catenaccio、Control Possession、Direct Counter Attack、Fluid Counter Attack�
 
 具体样本与模板对应关系只以 `04_离线原生FMF生成器/style_template_registry.json` 为准。特别注意：`1.fmf` 是 Control Possession 原生样本，但由于其 AOM 标题 token 重复，安全模板使用 `123_Game_Export_Reference.fmf`；不能把这误判为缺少第一种风格。
 
+
+## 样本使用边界：A9.0.2 不是成功战术
+
+仓库中的 `FM27_A9.0.2_GEN1.txt`、`FM27_A9.0.2_Offline_Rebuild.fmf` 和对应 report 只作为历史技术工件保存。它们证明的是当时的 GEN1→FMF 离线转换与二进制回读，不是完整赛季战术表现证据。
+
+**不得把 A9.0.2 当作成功案例、推荐战术、默认生成模板、优化起点或其他战术的设计基准。** 它没有完成完整赛季成功验证；对应报告中的 `game_interactive_import=false`、`match_engine=false` 也明确表示没有游戏内导入与比赛引擎证据。除非用户明确要求检查这份历史文件，否则生成新战术时应从用户当前目标、完整比赛数据、原生权限资料和十种原生风格证据独立设计，不能因 A9.0.2 曾被生成就复制其阵型、角色或指令。
+
 ## 3. 默认交付合同（必须执行）
 
 用户提出“生成新战术”“做一套战术”“优化后给我战术”等请求时，默认交付：

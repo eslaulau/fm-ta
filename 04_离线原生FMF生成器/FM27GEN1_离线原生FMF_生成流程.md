@@ -22,8 +22,10 @@
 | `official_style_team_instruction_profiles.json` | 从网站 HAR 提取的十种风格默认心态/TI 配方 |
 | `123_Game_Export_Reference.fmf` | Control Possession 安全重写模板 |
 | `FM27_4231_Gegenpress_Template.fmf` | Gegenpress 原生参考模板 |
-| `FM27_A9.0.2_GEN1.txt` | 历史 GEN1 回归输入 |
-| `FM27_A9.0.2_Offline_Rebuild.fmf` 与对应 report | 历史离线重建样例，不作为新任务输出 |
+| `FM27_A9.0.2_GEN1.txt` | 历史技术配方工件；仅用于追溯当时的离线转换输入 |
+| `FM27_A9.0.2_Offline_Rebuild.fmf` 与对应 report | 历史离线转换/回读工件；不是成功战术样本 |
+
+**A9.0.2 使用限制：** 这份文件没有完整赛季成功验证。其 report 只证明离线 FMF 二进制生成和回读，且明确记录 `game_interactive_import=false`、`match_engine=false`。因此它不是战术成绩基准，不是推荐模板，不是默认起点；新战术不得复制它的阵型、角色或 TI/PI 设计。除非用户明确要求审计这份旧工件，否则不要主动把它用于战术设计或优化。
 
 十份上传原生样本 `1.fmf`–`10.fmf` 保存在上级战术生成规则根目录。具体风格与模板对应只以 `style_template_registry.json` 为准。
 
