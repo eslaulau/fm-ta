@@ -11,7 +11,7 @@
       "template": "../2.fmf",
       "evidence": {
         "source": "User-uploaded native FM27 .fmf sample; extracted TAC bytes and native four-byte style code.",
-        "sample_path": "FM27资料汇总/FM27战术/战术生成规则/2.fmf",
+        "sample_path": "2.fmf",
         "sample_sha256": "bc33abade762252cd10fe2d3aab1d691c762983ce1f3843ec0b7bd6f469b2d88",
         "source_major": 27,
         "offline_fmf_roundtrip": "passed",
@@ -58,7 +58,7 @@
         "generated_fmf_sha256": "fddf782595e2ad872cebdcf689ac6360ffed949f32fcd71bdeda77a168720c41",
         "offline_status": "offline_binary_roundtrip_verified_not_game_import_verified",
         "source": "User-uploaded native FM27 sample 1.fmf; TAC style identity is consistent with the previously verified Control Possession code.",
-        "sample_path": "FM27资料汇总/FM27战术/战术生成规则/1.fmf",
+        "sample_path": "1.fmf",
         "sample_template_note": "The uploaded sample's .aom contains a duplicated title token, so it is not used as a rewrite template; the already verified 123_Game_Export_Reference.fmf remains the safe native template."
       }
     },
@@ -70,7 +70,7 @@
       "template": "../8.fmf",
       "evidence": {
         "source": "User-uploaded native FM27 .fmf sample; extracted TAC bytes and native four-byte style code.",
-        "sample_path": "FM27资料汇总/FM27战术/战术生成规则/8.fmf",
+        "sample_path": "8.fmf",
         "sample_sha256": "23e7e8110fd64164b46c5e1b144838f20dd1826760a2d1d3af04e58469a73e00",
         "source_major": 27,
         "offline_fmf_roundtrip": "passed",
@@ -88,7 +88,7 @@
       "template": "../7.fmf",
       "evidence": {
         "source": "User-uploaded native FM27 .fmf sample; extracted TAC bytes and native four-byte style code.",
-        "sample_path": "FM27资料汇总/FM27战术/战术生成规则/7.fmf",
+        "sample_path": "7.fmf",
         "sample_sha256": "9b9e9f80e073042a499bb5bec621fbdaec6a65563392a45a01909c12f55363bc",
         "source_major": 27,
         "offline_fmf_roundtrip": "passed",
@@ -106,7 +106,7 @@
       "template": "../10.fmf",
       "evidence": {
         "source": "User-uploaded native FM27 .fmf sample; extracted TAC bytes and native four-byte style code.",
-        "sample_path": "FM27资料汇总/FM27战术/战术生成规则/10.fmf",
+        "sample_path": "10.fmf",
         "sample_sha256": "10452c7083f3a55ac43abb3b7e6b534d051f563ec0e3459bf091f2687a38f083",
         "source_major": 27,
         "offline_fmf_roundtrip": "passed",
@@ -127,7 +127,7 @@
       "template": "../6.fmf",
       "evidence": {
         "source": "User-uploaded native FM27 .fmf sample; extracted TAC bytes and native four-byte style code.",
-        "sample_path": "FM27资料汇总/FM27战术/战术生成规则/6.fmf",
+        "sample_path": "6.fmf",
         "sample_sha256": "5ecd84eeaefcfad3bb735b1a459263518cfd03cbdb0d196822987ede6972a136",
         "source_major": 27,
         "offline_fmf_roundtrip": "passed",
@@ -145,7 +145,7 @@
       "template": "../3.fmf",
       "evidence": {
         "source": "User-uploaded native FM27 .fmf sample; extracted TAC bytes and native four-byte style code.",
-        "sample_path": "FM27资料汇总/FM27战术/战术生成规则/3.fmf",
+        "sample_path": "3.fmf",
         "sample_sha256": "30c51ae398e10ef7ab7fa68d4bb387de6939075530faaa09affaa32dd39ef749",
         "source_major": 27,
         "offline_fmf_roundtrip": "passed",
@@ -165,7 +165,7 @@
       "template": "../4.fmf",
       "evidence": {
         "source": "User-uploaded native FM27 .fmf sample; extracted TAC bytes and native four-byte style code.",
-        "sample_path": "FM27资料汇总/FM27战术/战术生成规则/4.fmf",
+        "sample_path": "4.fmf",
         "sample_sha256": "ccf85e0cd1317652ca350f0d331f2540fbe3d3579b4e0fb82083cacf03d02c2b",
         "source_major": 27,
         "offline_fmf_roundtrip": "passed",
@@ -183,7 +183,7 @@
       "template": "../5.fmf",
       "evidence": {
         "source": "User-uploaded native FM27 .fmf sample; extracted TAC bytes and native four-byte style code.",
-        "sample_path": "FM27资料汇总/FM27战术/战术生成规则/5.fmf",
+        "sample_path": "5.fmf",
         "sample_sha256": "033e42be187acbcaf747779017ce9eeae99969a02b8decdbdf3620a1c273bd49",
         "source_major": 27,
         "offline_fmf_roundtrip": "passed",
@@ -201,7 +201,7 @@
       "template": "../9.fmf",
       "evidence": {
         "source": "User-uploaded native FM27 .fmf sample; extracted TAC bytes and native four-byte style code.",
-        "sample_path": "FM27资料汇总/FM27战术/战术生成规则/9.fmf",
+        "sample_path": "9.fmf",
         "sample_sha256": "3ed302651fd1006f1d8ae39b3fba13ea35cc4668d6941c6d0ef42e507c00280b",
         "source_major": 27,
         "offline_fmf_roundtrip": "passed",
@@ -239,5 +239,6 @@
       "url": "https://www.fmscout.com/tac",
       "use": "说明其比较 28 项球队指令与游戏预设风格；用于交叉核对分析结果，不作为 style code 来源。"
     }
-  ]
+  ],
+  "repository_layout": "fm-ta stores the rules directory at repository root; evidence.sample_path values are repository-relative. Original source paths are retained in evidence.repository_path/source metadata where present."
 }
