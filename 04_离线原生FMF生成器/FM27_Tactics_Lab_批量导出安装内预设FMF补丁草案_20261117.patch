@@ -1,0 +1,137 @@
+diff --git a/src/desktop_save_mode.py b/src/desktop_save_mode.py
+--- a/src/desktop_save_mode.py
++++ b/src/desktop_save_mode.py
+@@ -691,5 +691,90 @@
+         self.write(base/(stamp+'.json'),{'preset_index':preset_index,'preset_sha256':preset_sha256,
+             'report':{key:exported['report'].get(key)for key in ('sha256','native_roundtrip_verified')}})
+         return plan
++
++    def export_installed_preset_catalog(self,key,directory):
++        """Export every installed original preset through the verified native FMF path."""
++        folder=self.folder(key);self.check_binding(folder)
++        if isinstance(directory,Path):target=directory.expanduser()
++        elif isinstance(directory,str)and directory.strip():target=Path(directory).expanduser()
++        else:raise ValueError('请选择导出目录')
++        if not target.is_absolute()or not target.is_dir():raise ValueError('所选导出目录不存在，请重新选择')
++        catalog=desktop_coach_presets.assets(self,folder)
++        styles={}
++        for row in catalog['styles']:
++            code=int(row['style_code']);style_id=int(row['id'])
++            if code in styles:raise ValueError('原装风格目录存在重复 style code')
++            styles[code]=style_id
++        templates=list(catalog['templates'])
++        if not templates or len(templates)>512:raise ValueError('原装预设数量无效')
++        root=desktop_save_export._directory(target,'FM27原生预设')
++        used=set();files=[];failures=[]
++        for preset in templates:
++            index=int(preset['index']);code=int(preset['style_code']);style_id=styles.get(code)
++            try:
++                if style_id is None:raise ValueError('预设 style code 不在原装风格目录中')
++                if style_id not in desktop_coach_presets.STYLE_NAMES:raise ValueError('预设风格 ID 未映射')
++                phases=preset.get('phases')
++                if not isinstance(phases,list)or len(phases)!=2 or any(not isinstance(p,list)or len(p)!=11 for p in phases):
++                    raise ValueError('预设双阶段 22 个槽位不完整')
++                preset_sha=desktop_coach_presets.digest(preset)
++                team=desktop_coach_presets.preset_by_index_team(self,key,index,preset_sha)
++                scenario=copy.deepcopy(self.app.DEFAULT);scenario['teams'][1]=team
++                style_name=desktop_coach_presets.STYLE_NAMES[style_id]
++                title=desktop_save_export.safe_component(
++                    f"FM27_{style_id:02d}_{index:03d}_{preset.get('name')or style_name}",
++                    f"FM27_{style_id:02d}_{index:03d}",120)
++                exported=self.app.export_fmf({'side':1,'scenario':self.app.validate_scenario(scenario),'name':title})
++                report=exported.get('report')if isinstance(exported,dict)else None
++                if not isinstance(report,dict)or report.get('native_roundtrip_verified')is not True:
++                    raise ValueError('FMF 未通过原版解析器回读核验')
++                payload=base64.b64decode(exported['file_base64'],validate=True)
++                plan=fm27_fmf.tactics_plan(payload)
++                if not plan or len(plan)>desktop_save_export.MAX_PLAN_BYTES:
++                    raise ValueError('导出 FMF 的 TAC 计划为空或超过大小限制')
++                if report.get('sha256')and report['sha256']!=hashlib.sha256(payload).hexdigest():
++                    raise ValueError('FMF 导出 SHA256 与原版报告不一致')
++                filename=desktop_save_export._unique(title,f"preset_{index}",used,120)+'.fmf'
++                output=root/filename
++                if not desktop_save_export._inside(root,output):raise ValueError('导出路径越界')
++                desktop_save_export._atomic(output,payload)
++                files.append({'file':filename,'preset_index':index,'preset_name':preset.get('name',''),
++                    'style_id':style_id,'style_name':style_name,'style_code':code,
++                    'style_code_hex':code.to_bytes(4,'little').hex(),'preset_sha256':preset_sha,
++                    'fmf_sha256':hashlib.sha256(payload).hexdigest(),'fmf_size':len(payload),
++                    'tac_plan_sha256':hashlib.sha256(plan).hexdigest(),'tac_plan_size':len(plan),
++                    'phase_slot_counts':[len(p)for p in phases],'native_roundtrip_verified':True,
++                    'verified_sections':report.get('verified_sections',[])})
++            except Exception as error:
++                failures.append({'preset_index':index,'name':preset.get('name',''),'preset_name':preset.get('name',''),
++                    'style_id':style_id,'style_code':code,'error':str(error)})
++        if not files:
++            shutil.rmtree(root,ignore_errors=True)
++            raise ValueError('没有预设通过原版 FMF 导出与回读核验')
++        style_coverage=[]
++        for style_id in range(10):
++            style_name=desktop_coach_presets.STYLE_NAMES[style_id]
++            style_row=next((row for row in catalog['styles']if int(row['id'])==style_id),None)
++            code=int(style_row['style_code'])if style_row is not None else None
++            expected=sum(1 for preset in templates if code is not None and int(preset['style_code'])==code)
++            exported_count=sum(1 for item in files if item['style_id']==style_id)
++            failed_count=sum(1 for item in failures if item.get('style_id')==style_id)
++            status='style_entry_missing'if style_row is None else 'no_installed_template'if expected==0 else 'complete'if exported_count==expected else 'partial'if exported_count else 'export_failed'
++            style_coverage.append({'style_id':style_id,'style_name':style_name,'style_code':code,
++                'style_code_hex':code.to_bytes(4,'little').hex()if code is not None else None,
++                'template_count':expected,'exported_count':exported_count,'failed_count':failed_count,'status':status})
++        manifest={'schema':'fm27-installed-preset-export-v1','binding':catalog['binding'],
++            'source':'local shared/data/simatch.fmf','template_count':len(templates),
++            'style_coverage':style_coverage,'exported_count':len(files),'failed_count':len(failures),
++            'game_import_verified':False,'match_engine_verified':False,
++            'files':files,'failures':failures}
++        desktop_save_export._atomic(root/'manifest.json',json.dumps(manifest,ensure_ascii=False,indent=2).encode('utf8'))
++        desktop_save_export._atomic(root/'README.txt',
++            ('FM27 安装内原装预设批量导出\n'
++             '文件由 FM Tactics Lab 的原版 FMF 导出与回读流程生成。\n'
++             'native_roundtrip_verified=true 仅代表工具原版解析器回读通过，不代表已在 FM27 游戏界面导入或完成比赛验证。\n'
++             f'预设总数：{len(templates)}；成功：{len(files)}；失败：{len(failures)}。\n').encode('utf8'))
++        return {'directory':str(root),'files':files,'failures':failures,'source':'installed_presets','manifest':manifest}
++
+ 
+     def _league_variant_rows(self,key,league):
+diff --git a/src/fm27_tactics_server.py b/src/fm27_tactics_server.py
+--- a/src/fm27_tactics_server.py
++++ b/src/fm27_tactics_server.py
+@@ -1154,7 +1154,11 @@
+                 if path=='/api/save/league-export':
+                     with IMPORT_LOCK:
+                         require_league_idle('导出存档战术')
+                         return self.send(SAVE_LIBRARY.export_league_tactics(data['id'],data['league'],data['directory']))
++                if path=='/api/save/installed-presets-export':
++                    with IMPORT_LOCK:
++                        require_league_idle('导出安装内原装预设')
++                        return self.send(SAVE_LIBRARY.export_installed_preset_catalog(data['id'],data['directory']))
+                 if path=='/api/save/real-generation-status':
+                     with IMPORT_LOCK:
+                         return self.send(SAVE_LIBRARY.real_generation_status(data['id'],data['league']))
+diff --git a/src/tactics_ui/tactic-library.js b/src/tactics_ui/tactic-library.js
+--- a/src/tactics_ui/tactic-library.js
++++ b/src/tactics_ui/tactic-library.js
+@@ -88,3 +88,3 @@
+  const realButton=own?`<button id="library-real-all" class="button" ${reading?'disabled':''}>${report.real?.variant_count?'补齐缺失的真实战术':'生成全部真实战术'}</button>`:'';
+- const controls=`<div class="save-team-controls"><label>导出目录<input id="library-directory" value="${esc(libraryDirectory())}" placeholder="选择本机文件夹"></label><button id="library-folder" class="button">选择目录…</button><button id="library-export" class="button" ${reading?'disabled':''}>导出全部战术</button><button id="library-pool" class="button primary" ${reading?'disabled':''}>加入随机候选</button>${realButton}</div>`;
++ const controls=`<div class="save-team-controls"><label>导出目录<input id="library-directory" value="${esc(libraryDirectory())}" placeholder="选择本机文件夹"></label><button id="library-folder" class="button">选择目录…</button><button id="library-export" class="button" ${reading?'disabled':''}>导出全部战术</button><button id="library-presets-export" class="button" ${reading?'disabled':''}>导出全部安装内原装预设</button><button id="library-pool" class="button primary" ${reading?'disabled':''}>加入随机候选</button>${realButton}</div>`;
+  return `${summary}${realFailures}${bar}${table}${details}${hint}${controls}${libraryExportResult()}`;
+@@ -127,3 +127,4 @@
+  if($('#library-export'))$('#library-export').onclick=exportLibrary;
++ if($('#library-presets-export'))$('#library-presets-export').onclick=exportInstalledPresets;
+  if($('#library-pool'))$('#library-pool').onclick=importLibraryPool;
+  if($('#library-real-all'))$('#library-real-all').onclick=generateLibraryReal;
+@@ -216,2 +216,14 @@
+ }
++async function exportInstalledPresets(){
++ const directory=$('#library-directory')?.value.trim()||'',button=$('#library-presets-export');
++ if(!librarySave?.id)return;
++ if(!directory){toast('请填写或选择导出目录');return}
++ if(button){button.disabled=true;button.textContent='正在导出中…'}
++ try{
++  const result=await api('/api/save/installed-presets-export',{id:librarySave.id,directory});
++  localStorage.setItem('fm27-export-directory',directory);
++  libraryExport=result;libraryRefresh();
++  toast('已导出安装内原装预设 '+(result.files?.length||0)+' 套到 '+(result.directory||directory)+(result.failures?.length?'，失败 '+result.failures.length+' 项':''));
++ }catch(e){toast('导出原装预设失败：'+e.message);if($('#library-presets-export')){$('#library-presets-export').disabled=false;$('#library-presets-export').textContent='导出全部安装内原装预设'}}
++}
+ async function generateRealTeam(button){
