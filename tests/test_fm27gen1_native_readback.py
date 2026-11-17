@@ -4,9 +4,6 @@ from pathlib import Path
 
 GENERATOR = (
     Path(__file__).resolve().parents[1]
-    / "FM27资料汇总"
-    / "FM27战术"
-    / "战术生成规则"
     / "04_离线原生FMF生成器"
     / "FM27GEN1_Offline_FMF_Generator.py"
 )
