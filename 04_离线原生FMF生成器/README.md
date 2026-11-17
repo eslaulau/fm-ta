@@ -1,66 +1,74 @@
-# 04｜离线原生 FMF 生成器
+# FM27GEN1 离线原生 FMF 战术生成器
 
-**本目录是原生 FMF 的唯一正式输出工具。** GEN1 TXT 只是输入配方；正常的战术生成任务必须实际运行本目录的 Python 生成器，生成新 .fmf 和对应的 .report.json。
+> 统一资料入口：先阅读上级 [00_资料总索引与检索规范](../00_资料总索引与检索规范.md)。当前源码字段和映射的准确说明以同目录 [FM27GEN1_离线原生FMF_字段契约](FM27GEN1_离线原生FMF_字段契约.md) 为准。
 
-## 当前源码与运行文件
+**正式生成器：** `FM27GEN1_Offline_FMF_Generator.py`
 
-- `FM27GEN1_Offline_FMF_Generator.py`：唯一离线二进制生成器源码。
-- `requirements.txt`、`安装依赖.bat`、`运行离线生成器.bat`：运行环境与 Windows 入口。
-- `catalog.json`：目录数据。
-- `FM27_4231_Gegenpress_Template.fmf`：BAT 默认原生模板。
-- `123_Game_Export_Reference.fmf`：原生导出参考样本。
-- `FM27_A9.0.2_GEN1.txt`、`FM27_A9.0.2_Offline_Rebuild.fmf`、`FM27_A9.0.2_Offline_Rebuild.report.json`：回归样本和报告。
-- [详细生成流程](FM27GEN1_离线原生FMF_生成流程.md)
-- [字段契约](FM27GEN1_离线原生FMF_字段契约.md)
+本版本已接入用户上传的 `1.fmf`–`10.fmf` 十份 FM27 原生样本，完成十种官方风格的 TAC 身份识别、原生四字节 style code 登记、模板验证和按风格自动选模板。
 
-## 新战术标准命令（正式生产）
+## 十种官方风格
 
-在本目录运行，使用本次新生成的 GEN1 TXT 和独立输出文件名：
+| 官方风格 | 原生 style code | 模板 |
+|---|---|---|
+| Control Possession | `544e4f43` | `123_Game_Export_Reference.fmf` |
+| Gegenpress | `45474547` | `../2.fmf` |
+| Tiki-Taka | `494b4954` | `../3.fmf` |
+| Vertical Tiki-Taka | `54524556` | `../4.fmf` |
+| Wingplay | `474e4957` | `../5.fmf` |
+| Route One | `54554f52` | `../6.fmf` |
+| Fluid Counter Attack | `49554c46` | `../7.fmf` |
+| Direct Counter Attack | `45524944` | `../8.fmf` |
+| Catenaccio | `45544143` | `../9.fmf` |
+| Park The Bus | `4b524150` | `../10.fmf` |
+
+风格名称、TAC 原生字符串和 style code 均以样本实际解析结果为准，不按文件编号猜测。上传的 `1.fmf` TAC 已识别为 Control Possession，代码为 `544e4f43`；但它的 AOM 内部标题重复，不能安全地作为重写模板，因此 Control Possession 继续使用已验证的 `123_Game_Export_Reference.fmf`。
+
+## Windows 使用方法
+
+1. 先运行 `安装依赖.bat`。
+2. 将完整的 `FM27GEN1:...` 配方保存为 UTF-8 的 `.txt` 文件。
+3. 把配方 TXT 拖到 `运行离线生成器.bat`，或在本目录运行下面的命令。
 
 ```powershell
 py -3.12 -m pip install -r requirements.txt
-
-py -3.12 FM27GEN1_Offline_FMF_Generator.py "NEW_TACTIC_GEN1.txt" --template "FM27_4231_Gegenpress_Template.fmf" --catalog "catalog.json" --output "NEW_TACTIC.fmf" --report "NEW_TACTIC.report.json"
+py -3.12 FM27GEN1_Offline_FMF_Generator.py "NEW_TACTIC_GEN1.txt" --catalog "catalog.json" --output "NEW_TACTIC.fmf" --report "NEW_TACTIC.report.json"
 ```
 
-只有命令成功、FMF 文件存在且非空、对应报告存在且回读通过，才算完成 D3。输出路径已存在时生成器拒绝覆盖，必须使用新的输出名，不得跳过本次实际生成。
+**无需手动指定模板。** 生成器读取配方中的 `base.g`，自动从 `style_template_registry.json` 选择对应原生模板。也可显式提供 `--template`，但必须与该风格登记的模板完全一致；不允许把其他风格的模板改名冒用。
 
-## 回归样本命令（仅用于生成器测试）
+输出文件已存在时，生成器拒绝覆盖。每次新战术必须使用新的输出文件名。
 
-以下命令重建 A9.0.2 历史样本，只用于回归测试，不是新战术生产命令：
+## 原生验证与权限规则
+
+- 所有十种风格均有独立原生 TAC 字符串、四字节 style code 和已登记 FM27 模板。
+- 生成器检查 source-major 27、FMF 成员、11 个槽位、IP/OOP 位置、角色阶段、位置资格、职责标签及 PI 权限。
+- 全部十种官方风格的默认心态和 TI 配置已纳入 `official_style_team_instruction_profiles.json`；所有配置项必须在 `TI_MAP` 中有明确映射，未知项直接拒绝。
+- 真实样本含有尚未映射为可编辑选项的原生 TI 位 `34/74/75`，以及模板原有的 `33/76`。这些位作为模板所有的 opaque bits 原样保留，不允许配方伪造或自行切换。
+- PI 按 phase/position/role/duty 查询 `catalog.pi_policies`；不允许的 PI、跨目录版本冲突和缺失权限策略均拒绝生成。
+- 生成后独立回读 FMF/TAC，核对 style 字符串、style code、心态、TI 向量、22 个 IP/OOP 槽位、角色、职责和 PI mask。
+
+## 审计与回归
+
+检查十份上传的原生样本：
 
 ```powershell
-py -3.12 FM27GEN1_Offline_FMF_Generator.py "FM27_A9.0.2_GEN1.txt" --template "FM27_4231_Gegenpress_Template.fmf" --catalog "catalog.json" --output "FM27_A9.0.2_Offline_Rebuild_Test.fmf" --report "FM27_A9.0.2_Offline_Rebuild_Test.report.json"
+py -3.12 FM27GEN1_Audit_Uploaded_Style_Samples.py
 ```
 
-也可运行 `安装依赖.bat` 后，将本次 GEN1 TXT 拖入 `运行离线生成器.bat`。不拖入文件双击 BAT 时使用的是内置 A9.0.2 回归配方，不代表当前新战术已生成。
+检查全部 90 条网站预设索引：
 
-## D3 输出与交付
+```powershell
+py -3.12 FM27GEN1_Netlify90_OfficialPreset_Audit.py
+```
 
-每次成功的新战术生成至少应有两个本次新文件：
+运行回归测试：
 
-1. 战术名称.fmf：原生 FM27 战术文件。
-2. 战术名称.report.json：同一次生成产生的独立回读报告。
+```powershell
+py -3.12 -m unittest discover -s tests -p "test_fm27gen1_*.py" -v
+```
 
-GEN1 TXT 是可选的审计/复现源文件，可以一并交付，但绝不能代替上面两个输出。报告状态 offline_binary_roundtrip_verified_not_game_import_verified 只代表离线回读，不代表 D4 游戏内验收。
+GitHub Actions 会自动执行样本解析、模板回读、十种风格映射、TI/PI 权限和生成器回归检查。
 
-## 当前实现边界
+## 验证边界
 
-- GEN1 v1、11 槽位、IP/OOP 两阶段；当前只支持 Gegenpress。
-- 模板必须包含 `.tac/.aom/.img` 且 source-major 为 27。
-- 角色检查包括 catalog role、phase 和 role/position eligibility。
-- PI/TI 仅支持源码白名单；未知值失败。
-- duty 使用硬编码 `ROLE_DUTY`，不是 GEN1 的独立字段。
-- OOP STC 写入时规范化为 native ST。
-- 当前未调用完整 `pi_policies` 或第 02 层 PI 权限 CSV 逐项验证 PI 可编辑/固定状态。
-- TI 为单一共享的 12 字节向量，以模板为基线；GEN1 未提供的 key 保留模板值。不能当作独立 IP/OOP 两套团队指令。
-
-## A9.0.2 样本证据
-
-随附报告记录输出大小 3,588 bytes，SHA256：
-
-`c2ac1719f202d00b1a058e44da0c241e0f72b10bcdc3a04c89b295ed73029d10`
-
-报告记录 FMF/TAC 独立回读、11 对 IP/OOP、22 阶段位置/角色/PI mask 和 TI 向量通过。用户已确认该样本在 FM27 内成功载入阵型；这不代表全部 PI/TI、其他模板或比赛效果已验收。
-
-后续开发必须直接基于本目录这份源码，不另建重复生成器，不引入网站/API/游戏平台依赖。
+报告状态 `offline_binary_roundtrip_verified_not_game_import_verified` 表示离线 FMF 二进制重建和回读通过。它**不等于**已经在 FM27 游戏界面导入成功，也不等于完成比赛引擎实战验证。游戏内导入与比赛效果仍需单独验证。

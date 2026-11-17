@@ -14,7 +14,7 @@ if errorlevel 1 (
   pause
   exit /b 2
 )
-py -3.12 "%ROOT%FM27GEN1_Offline_FMF_Generator.py" "%RECIPE%" --template "%ROOT%FM27_4231_Gegenpress_Template.fmf" --catalog "%ROOT%catalog.json" --output "%OUT%"
+py -3.12 "%ROOT%FM27GEN1_Offline_FMF_Generator.py" "%RECIPE%" --catalog "%ROOT%catalog.json" --output "%OUT%"
 echo.
 if errorlevel 1 (
   echo 生成失败，请将上方错误内容发回。

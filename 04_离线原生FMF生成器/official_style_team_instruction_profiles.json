@@ -1,0 +1,208 @@
+{
+  "schema": "fm27-official-style-team-instruction-profiles-v1",
+  "source": {
+    "name": "fmtacticlab.netlify.app embedded page snapshot",
+    "snapshot_file": "01_网站生成规则/证据/fmtacticlab.netlify.app_2026-11-16.har",
+    "snapshot_date": "2026-11-16",
+    "boundary": "These are the website's ten style-level mentality/team-instruction recipes extracted from its embedded STYLE table. They are not native TAC style FourCCs or proof of raw Sports Interactive preset package bytes."
+  },
+  "styles": [
+    {
+      "name": "Catenaccio",
+      "mentality": "Defensive",
+      "ti": {
+        "PASSING_DIRECTNESS": "MORE_DIRECT",
+        "TEMPO": "LOWER",
+        "ATTACKING_WIDTH": "MUCH_NARROWER",
+        "CREATIVE_FREEDOM": "MORE_DISCIPLINED",
+        "TIME_WASTING": "MORE_OFTEN",
+        "PLAY_FOR_SET_PIECES": "PLAY_FOR_SET_PIECES",
+        "BUILD_UP_STRATEGY": "BYPASS_PRESS",
+        "ATTACKING_TRANSITION": "COUNTER_ATTACK",
+        "DEFENSIVE_TRANSITION": "REGROUP",
+        "GK_DISTRIBUTION_(SPEED)": "SLOW_PACE_DOWN",
+        "LINE_OF_ENGAGEMENT": "LOW_BLOCK",
+        "DEFENSIVE_LINE": "LOWER",
+        "DEFENSIVE_LINE_BEHAVIOR": "DROP_OFF_MORE",
+        "TRIGGER_PRESS": "LESS_OFTEN",
+        "TACKLING": "STAY_ON_FEET"
+      }
+    },
+    {
+      "name": "Control Possession",
+      "mentality": "Positive",
+      "ti": {
+        "PASSING_DIRECTNESS": "SHORTER",
+        "TEMPO": "LOWER",
+        "TIME_WASTING": "LESS_OFTEN",
+        "BUILD_UP_STRATEGY": "PLAY_THROUGH_PRESS",
+        "PATIENCE": "WORK_BALL_INTO_BOX",
+        "DEFENSIVE_TRANSITION": "COUNTER_PRESS",
+        "GOAL_KICKS": "SHORT",
+        "GOALKEEPER_DISTRIBUTION": "CENTRE_BACKS",
+        "LINE_OF_ENGAGEMENT": "HIGH_PRESS",
+        "DEFENSIVE_LINE": "HIGHER",
+        "TRIGGER_PRESS": "MORE_OFTEN",
+        "SHORT_GOALKEEPER_DISTRIBUTION": "YES"
+      }
+    },
+    {
+      "name": "Direct Counter Attack",
+      "mentality": "Cautious",
+      "ti": {
+        "PASSING_DIRECTNESS": "MORE_DIRECT",
+        "TEMPO": "HIGHER",
+        "BUILD_UP_STRATEGY": "BYPASS_PRESS",
+        "PASS_RECEPTION": "PASS_INTO_SPACE",
+        "ATTACKING_TRANSITION": "COUNTER_ATTACK",
+        "GK_DISTRIBUTION_(SPEED)": "DISTRIBUTE_QUICKLY",
+        "LINE_OF_ENGAGEMENT": "LOW_BLOCK",
+        "DEFENSIVE_LINE": "LOWER",
+        "DEFENSIVE_LINE_BEHAVIOR": "DROP_OFF_MORE",
+        "TRIGGER_PRESS": "MORE_OFTEN",
+        "TACKLING": "GET_STUCK_IN"
+      }
+    },
+    {
+      "name": "Fluid Counter Attack",
+      "mentality": "Cautious",
+      "ti": {
+        "PASSING_DIRECTNESS": "SHORTER",
+        "TEMPO": "HIGHER",
+        "PASS_RECEPTION": "PASS_INTO_SPACE",
+        "DRIBBLING": "ENCOURAGE",
+        "ATTACKING_TRANSITION": "COUNTER_ATTACK",
+        "DEFENSIVE_TRANSITION": "COUNTER_PRESS",
+        "GK_DISTRIBUTION_(SPEED)": "DISTRIBUTE_QUICKLY",
+        "LINE_OF_ENGAGEMENT": "MID_BLOCK",
+        "DEFENSIVE_LINE": "LOWER",
+        "DEFENSIVE_LINE_BEHAVIOR": "DROP_OFF_MORE",
+        "TRIGGER_PRESS": "MORE_OFTEN",
+        "TACKLING": "GET_STUCK_IN"
+      }
+    },
+    {
+      "name": "Gegenpress",
+      "mentality": "Balanced",
+      "ti": {
+        "TEMPO": "MUCH_HIGHER",
+        "ATTACKING_WIDTH": "NARROWER",
+        "TIME_WASTING": "LESS_OFTEN",
+        "BUILD_UP_STRATEGY": "PLAY_THROUGH_PRESS",
+        "ATTACKING_TRANSITION": "COUNTER_ATTACK",
+        "DEFENSIVE_TRANSITION": "COUNTER_PRESS",
+        "GOALKEEPER_DISTRIBUTION": "CENTRE_BACKS",
+        "LINE_OF_ENGAGEMENT": "HIGH_PRESS",
+        "DEFENSIVE_LINE": "HIGHER",
+        "DEFENSIVE_LINE_BEHAVIOR": "STEP_UP_MORE",
+        "TRIGGER_PRESS": "MUCH_MORE_OFTEN",
+        "SHORT_GOALKEEPER_DISTRIBUTION": "YES"
+      }
+    },
+    {
+      "name": "Park The Bus",
+      "mentality": "Defensive",
+      "ti": {
+        "PASSING_DIRECTNESS": "MORE_DIRECT",
+        "TEMPO": "LOWER",
+        "ATTACKING_WIDTH": "NARROWER",
+        "CREATIVE_FREEDOM": "MORE_DISCIPLINED",
+        "TIME_WASTING": "MORE_OFTEN",
+        "PLAY_FOR_SET_PIECES": "PLAY_FOR_SET_PIECES",
+        "BUILD_UP_STRATEGY": "BYPASS_PRESS",
+        "PASS_RECEPTION": "PASS_INTO_SPACE",
+        "PATIENCE": "HIT_EARLY_CROSSES",
+        "DEFENSIVE_TRANSITION": "REGROUP",
+        "GOAL_KICKS": "LONG",
+        "GK_DISTRIBUTION_(SPEED)": "SLOW_PACE_DOWN",
+        "LINE_OF_ENGAGEMENT": "LOW_BLOCK",
+        "DEFENSIVE_LINE": "LOWER",
+        "DEFENSIVE_LINE_BEHAVIOR": "DROP_OFF_MORE",
+        "TRIGGER_PRESS": "LESS_OFTEN",
+        "TACKLING": "GET_STUCK_IN",
+        "PRESSING_TRAP": "TRAP_OUTSIDE"
+      }
+    },
+    {
+      "name": "Route One",
+      "mentality": "Balanced",
+      "ti": {
+        "PASSING_DIRECTNESS": "MUCH_MORE_DIRECT",
+        "TEMPO": "HIGHER",
+        "CREATIVE_FREEDOM": "MORE_DISCIPLINED",
+        "PLAY_FOR_SET_PIECES": "PLAY_FOR_SET_PIECES",
+        "BUILD_UP_STRATEGY": "BYPASS_PRESS",
+        "PATIENCE": "HIT_EARLY_CROSSES",
+        "ATTACKING_TRANSITION": "COUNTER_ATTACK",
+        "DEFENSIVE_TRANSITION": "REGROUP",
+        "GOAL_KICKS": "LONG",
+        "LINE_OF_ENGAGEMENT": "MID_BLOCK",
+        "DEFENSIVE_LINE": "LOWER",
+        "TACKLING": "GET_STUCK_IN",
+        "PRESSING_TRAP": "TRAP_OUTSIDE"
+      }
+    },
+    {
+      "name": "Tiki-Taka",
+      "mentality": "Positive",
+      "ti": {
+        "PASSING_DIRECTNESS": "MUCH_SHORTER",
+        "TEMPO": "MUCH_LOWER",
+        "TIME_WASTING": "LESS_OFTEN",
+        "BUILD_UP_STRATEGY": "PLAY_THROUGH_PRESS",
+        "PASS_RECEPTION": "PASS_TO_FEET",
+        "PATIENCE": "WORK_BALL_INTO_BOX",
+        "DRIBBLING": "DISCOURAGE",
+        "SHOTS_FROM_DISTANCE": "DISCOURAGE",
+        "CROSSING_STYLE": "LOW_CROSSES",
+        "ATTACKING_TRANSITION": "HOLD_SHAPE",
+        "DEFENSIVE_TRANSITION": "COUNTER_PRESS",
+        "GOAL_KICKS": "SHORT",
+        "GOALKEEPER_DISTRIBUTION": "CENTRE_BACKS",
+        "GK_DISTRIBUTION_(SPEED)": "DISTRIBUTE_QUICKLY",
+        "LINE_OF_ENGAGEMENT": "HIGH_PRESS",
+        "DEFENSIVE_LINE": "HIGHER",
+        "TRIGGER_PRESS": "MORE_OFTEN",
+        "SHORT_GOALKEEPER_DISTRIBUTION": "YES"
+      }
+    },
+    {
+      "name": "Vertical Tiki-Taka",
+      "mentality": "Balanced",
+      "ti": {
+        "PASSING_DIRECTNESS": "SHORTER",
+        "TEMPO": "LOWER",
+        "ATTACKING_WIDTH": "MUCH_NARROWER",
+        "CREATIVE_FREEDOM": "MORE_EXPRESSIVE",
+        "TIME_WASTING": "LESS_OFTEN",
+        "BUILD_UP_STRATEGY": "PLAY_THROUGH_PRESS",
+        "PROGRESS_THROUGH": "MIDDLE",
+        "SUPPORTING_RUNS": "BOTH_FLANKS",
+        "PATIENCE": "WORK_BALL_INTO_BOX",
+        "CROSSING_STYLE": "LOW_CROSSES",
+        "ATTACKING_TRANSITION": "COUNTER_ATTACK",
+        "DEFENSIVE_TRANSITION": "COUNTER_PRESS",
+        "GOAL_KICKS": "SHORT",
+        "GOALKEEPER_DISTRIBUTION": "CENTRE_BACKS",
+        "LINE_OF_ENGAGEMENT": "HIGH_PRESS",
+        "DEFENSIVE_LINE": "HIGHER",
+        "TRIGGER_PRESS": "MORE_OFTEN",
+        "SHORT_GOALKEEPER_DISTRIBUTION": "YES"
+      }
+    },
+    {
+      "name": "Wingplay",
+      "mentality": "Balanced",
+      "ti": {
+        "PASSING_DIRECTNESS": "MORE_DIRECT",
+        "TEMPO": "HIGHER",
+        "ATTACKING_WIDTH": "MUCH_WIDER",
+        "PROGRESS_THROUGH": "BOTH_FLANKS",
+        "ATTACKING_TRANSITION": "COUNTER_ATTACK",
+        "GOALKEEPER_DISTRIBUTION": "FULL_BACKS",
+        "TRIGGER_PRESS": "MORE_OFTEN",
+        "PRESSING_TRAP": "TRAP_OUTSIDE"
+      }
+    }
+  ]
+}

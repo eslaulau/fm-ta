@@ -16,6 +16,8 @@ from pathlib import Path
 from dataclasses import dataclass
 from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
 
+HERE = Path(__file__).resolve().parent
+
 OUTER_MAGIC = bytes.fromhex('02016166652e080000')
 INNER_MAGIC = bytes.fromhex('0201666d662e080000')
 MEMBER_HEADER = bytes.fromhex('1000000010000000')
@@ -24,6 +26,9 @@ BLOCK_MARK = bytes.fromhex('440002')
 ITEM_MARK = bytes.fromhex('020202')
 ROLE_MASK = 0xfffffffbf91fffff
 DUTY_FLAGS = {0, 2097152, 4194304, 8388608, 33554432, 67108864, 17179869184}
+# Opaque, template-owned native TI bits observed in real FM27 samples.
+# They are preserved from the selected native style template and are not user-editable mappings.
+PRESERVED_OPAQUE_TI_BITS = {33, 34, 74, 75, 76}
 
 # For the user's current A9.0.2 GEN1 recipe and the common FM27 v1 recipe tokens.
 # Values are native PI option IDs from the FM27 tactic catalog.
@@ -48,16 +53,20 @@ PI_MAP = {
     ('ATTACK_BOX_SIDE','FAR_POST'): 40,
 }
 
-# Confirmed against 123.fmf, 4231.fmf, A9.0.2's downloaded file and the current
-# FM27 native catalog. Tags are the legacy duty bits stored beside role flags.
-# Box-to-Box Midfielder is the only A9 role in this map whose Support tag is
-# inferred from the standard fixed-duty role definition; the remaining target
-# roles are corroborated by one or more native FM27 sample exports.
+# Native duty bit values are confirmed by FM27 TAC samples. The additional
+# role-specific choices below are read directly from the 90-preset index
+# (D=Defend, S=Support, A=Attack) and are checked against catalog role/phase/
+# position eligibility and PI-policy rows by FM27GEN1_Netlify90_OfficialPreset_Audit.py.
+# This index-derived role coverage does NOT establish a native style FourCC.
 ROLE_DUTY = {
     'BallPlayingGoalkeeper': 4194304,
     'OPSweeperKeeper': 8388608,
     'BoxToBoxMidfielder': 4194304,
     'OPHoldingFullBack': 2097152,
+    # Explicitly selected Support duty for the standard IP Wing-Back role in X2.0.
+    'WingBack': 4194304,
+    # Explicitly selected Support duty for the standard IP Full-Back role in X2.0.
+    'FullBack': 4194304,
     'CentreBack': 2097152,
     'OPCoveringCentreBack': 2097152,
     'BallPlayingCentreBack': 2097152,
@@ -74,6 +83,60 @@ ROLE_DUTY = {
     'InsideForward': 8388608,
     'ChannelForward': 8388608,
     'OPTrackingCentreForward': 2097152,
+    # OOP tracking attacking-midfielder role uses the native defensive-phase duty tag.
+    'OPTrackingAttackingMidfielder': 2097152,
+    # Additional roles/duties extracted from the native Control Possession sample.
+    'InsideFullBack': 2097152,
+    'OPPressingFullBack': 4194304,
+    'InsideWingBack': 2097152,
+    'OPDefensiveMidfielder': 2097152,
+    'ChannelMidfielder': 8388608,
+    'OPPressingCentralMidfielder': 8388608,
+    'WideForward': 8388608,
+    'OPWinger': 4194304,
+    'Winger': 4194304,
+    'OPTrackingWinger': 2097152,
+    'OPCentreForward': 4194304,
+    # Additional official-index role/duty pairs (D=Defend, S=Support, A=Attack).
+    'Goalkeeper': 2097152,
+    'OPGoalkeeper': 4194304,
+    'FreeRole': 8388608,
+    'OPDroppingDefensiveMidfielder': 2097152,
+    'OPWideCoverCentralMidfielder': 4194304,
+    'Poacher': 8388608,
+    'OPWingBack': 2097152,
+    'OPCentralOutletCentreForward': 8388608,
+    'OPAttackingMidfielder': 4194304,
+    'OPScreeningCentralMidfielder': 2097152,
+    'OPHoldingWingBack': 2097152,
+    'DeepLyingForward': 8388608,
+    'PlaymakingWingBack': 4194304,
+    'OPPressingDefensiveMidfielder': 4194304,
+    'OPWideMidfielder': 4194304,
+    'AdvancedWingBack': 8388608,
+    'WideCentreBack': 2097152,
+    'OPPressingWingBack': 4194304,
+    'OPStoppingWideCentreBack': 2097152,
+    'OPWideCentreBack': 2097152,
+    'OPWideCoverDefensiveMidfielder': 2097152,
+    'OPCentralOutletAttackingMidfielder': 8388608,
+    'OPInsideOutletWinger': 8388608,
+    'NoNonsenseGoalkeeper': 2097152,
+    'NoNonsenseCentreBack': 2097152,
+    'AttackingMidfielder': 8388608,
+    'WideCentralMidfielder': 4194304,
+    'WideMidfielder': 4194304,
+    'OPSplittingOutletCentreForward': 8388608,
+    'OPSplittingOutletAttackingMidfielder': 8388608,
+    'CentralMidfielder': 4194304,
+    'SecondStriker': 8388608,
+    'OPStoppingCentreBack': 2097152,
+    'OPLineKeeper': 2097152,
+    'TargetForward': 8388608,
+    'BoxToBoxPlaymaker': 4194304,
+    'OPWideOutletWideMidfielder': 8388608,
+    'MidfieldPlaymaker': 4194304,
+    'OPWideOutletWinger': 8388608,
 }
 
 # Native team-option bits for the non-default A9.0.2 selections.
@@ -100,6 +163,7 @@ TI_GROUPS = {
     'CROSSING_STYLE': [26],
     'LINE_OF_ENGAGEMENT': [8],
     'DEFENSIVE_LINE': [9],
+    'DEFENSIVE_LINE_BEHAVIOR': [15],
     'TRIGGER_PRESS': [10],
     'DEFENSIVE_TRANSITION': [11],
     'TACKLING': [12],
@@ -108,14 +172,58 @@ TI_GROUPS = {
     'CROSS_ENGAGEMENT': [22],
 }
 TI_MAP = {
+    # FM27 Netlify 90-preset style profiles, mapped to native catalog bits.
+    ('PASSING_DIRECTNESS','MUCH_SHORTER'): 4,
+    ('PASSING_DIRECTNESS','SHORTER'): 3,
     ('PASSING_DIRECTNESS','MORE_DIRECT'): 2,
+    ('PASSING_DIRECTNESS','MUCH_MORE_DIRECT'): 1,
+    ('TEMPO','NORMAL'): 0,
+    ('TEMPO','MUCH_LOWER'): 49,
+    ('TEMPO','LOWER'): 48,
+    ('TEMPO','MUCH_HIGHER'): 46,
+    ('ATTACKING_WIDTH','MUCH_NARROWER'): 53,
+    ('ATTACKING_WIDTH','NARROWER'): 52,
+    ('ATTACKING_WIDTH','MUCH_WIDER'): 50,
+    ('ATTACKING_TRANSITION','HOLD_SHAPE'): 0,
+    ('CREATIVE_FREEDOM','MORE_DISCIPLINED'): 20,
+    ('CREATIVE_FREEDOM','MORE_EXPRESSIVE'): 19,
+    ('TIME_WASTING','MORE_OFTEN'): 78,
+    ('TIME_WASTING','LESS_OFTEN'): 79,
+    ('PLAY_FOR_SET_PIECES','PLAY_FOR_SET_PIECES'): 18,
+    ('BUILD_UP_STRATEGY','BYPASS_PRESS'): 8,
+    ('GK_DISTRIBUTION_(SPEED)','SLOW_PACE_DOWN'): 43,
+    ('GK_DISTRIBUTION_(SPEED)','DISTRIBUTE_QUICKLY'): 42,
+    ('PROGRESS_THROUGH','MIDDLE'): 23,
+    ('PROGRESS_THROUGH','BOTH_FLANKS'): 24,
+    ('PASS_RECEPTION','PASS_TO_FEET'): 6,
+    ('SUPPORTING_RUNS','BOTH_FLANKS'): 28,
+    ('PATIENCE','HIT_EARLY_CROSSES'): 9,
+    ('DRIBBLING','ENCOURAGE'): 13,
+    ('DRIBBLING','DISCOURAGE'): 14,
+    ('CROSSING_STYLE','LOW_CROSSES'): 12,
+    ('LINE_OF_ENGAGEMENT','STANDARD'): 0,
+    ('LINE_OF_ENGAGEMENT','LOW_BLOCK'): 63,
+    ('LINE_OF_ENGAGEMENT','MID_BLOCK'): 62,
+    ('DEFENSIVE_LINE','LOWER'): 58,
+    ('DEFENSIVE_LINE_BEHAVIOR','DROP_OFF_MORE'): 77,
+    ('DEFENSIVE_LINE_BEHAVIOR','STEP_UP_MORE'): 76,
+    ('TRIGGER_PRESS','LESS_OFTEN'): 67,
+    ('TRIGGER_PRESS','MUCH_MORE_OFTEN'): 65,
+    ('DEFENSIVE_TRANSITION','REGROUP'): 71,
+    ('TACKLING','STAY_ON_FEET'): 73,
+    ('TACKLING','GET_STUCK_IN'): 72,
+    ('PRESSING_TRAP','TRAP_OUTSIDE'): 81,
+    ('CROSS_ENGAGEMENT','INVITE_CROSSES'): 83,
+
     ('TEMPO','HIGHER'): 47,
     ('ATTACKING_WIDTH','WIDER'): 51,
     ('ATTACKING_TRANSITION','COUNTER_ATTACK'): 54,
     ('PLAY_FOR_SET_PIECES','KEEP_BALL_IN_PLAY'): 0,
     ('BUILD_UP_STRATEGY','PLAY_THROUGH_PRESS'): 7,
     ('GOAL_KICKS','SHORT'): 44,
+    ('GOAL_KICKS','LONG'): 45,
     ('GOALKEEPER_DISTRIBUTION','CENTRE_BACKS'): 35,
+    ('GOALKEEPER_DISTRIBUTION','FULL_BACKS'): 36,
     ('PASS_RECEPTION','PASS_INTO_SPACE'): 5,
     ('PATIENCE','WORK_BALL_INTO_BOX'): 17,
     ('SHOTS_FROM_DISTANCE','DISCOURAGE'): 16,
@@ -128,8 +236,56 @@ TI_MAP = {
 
 
 STYLE_CODE = {
-    'Gegenpress': b'EGEG',  # directly corroborated by A9.0.2 and native 4231 FMF samples
+    'Gegenpress': b'EGEG',  # fallback for legacy callers without a registry file
 }
+
+
+def resolve_style_definition(style_name: str, registry: dict | None) -> dict:
+    """Resolve a style only from a verified registry entry; never infer its native code."""
+    if registry is not None:
+        matches = [x for x in registry.get('styles', []) if x.get('name') == style_name]
+        if len(matches) != 1:
+            raise ValueError(f'风格登记表中不存在唯一条目：{style_name}')
+        item = matches[0]
+        if item.get('status') != 'implemented_sample_verified':
+            raise ValueError(f'该风格尚未完成原生样本验证，拒绝生成：{style_name}')
+        code_hex = item.get('style_code_hex')
+        tac_style = item.get('tac_style_string')
+        template = item.get('template')
+        if not code_hex or not tac_style or not template:
+            raise ValueError(f'风格登记条目缺少原生证据字段：{style_name}')
+        try:
+            code = bytes.fromhex(code_hex)
+        except ValueError as exc:
+            raise ValueError(f'风格代码不是有效十六进制：{style_name}') from exc
+        if len(code) != 4:
+            raise ValueError(f'原生风格代码必须为四字节：{style_name}')
+        return {'name': style_name, 'tac_style_string': tac_style,
+                'style_code': code, 'template': template}
+    code = STYLE_CODE.get(style_name)
+    if code is None:
+        raise ValueError(f'未知战术风格：{style_name}')
+    return {'name': style_name, 'tac_style_string': 'Custom ' + style_name,
+            'style_code': code, 'template': None}
+
+
+def resolve_template_path(style_name: str, registry: dict | None, supplied: Path | None = None) -> Path:
+    """Resolve the registered native template; reject cross-style template substitution."""
+    definition = resolve_style_definition(style_name, registry)
+    registered = definition.get('template')
+    if supplied is None:
+        if not registered:
+            raise ValueError('当前风格没有登记原生模板；请显式提供 --template')
+        target = (HERE / registered).resolve()
+    else:
+        target = supplied.expanduser().resolve()
+        if registered:
+            expected = (HERE / registered).resolve()
+            if target != expected:
+                raise ValueError(f'风格 {style_name} 必须使用登记模板 {expected}；拒绝跨风格模板')
+    if not target.is_file():
+        raise FileNotFoundError(f'找不到该风格登记的原生模板：{target}')
+    return target
 
 
 def u32(b: bytes, p: int) -> int: return struct.unpack_from('<I', b, p)[0]
@@ -375,9 +531,25 @@ def role_id_from_display(name:str,phase:int,roles_by_id:set[str])->str:
     token=re.sub(r'[^A-Za-z0-9]','',name)
     token_alias={'BoxtoBoxMidfielder':'BoxToBoxMidfielder','BoxtoBoxPlaymaker':'BoxToBoxPlaymaker'}.get(token,token)
     rid=('OP' if phase==1 else '')+token_alias
+    # Netlify display names are not always a byte-for-byte catalog identifier.
+    # These aliases were verified against catalog.role_eligibility across all 90 presets.
+    rid_alias={
+        'OPWideCoveringCentralMidfielder':'OPWideCoverCentralMidfielder',
+        'OPWideCoveringDefensiveMidfielder':'OPWideCoverDefensiveMidfielder',
+        'OPLineHoldingKeeper':'OPLineKeeper',
+    }
+    rid=rid_alias.get(rid,rid)
     if rid not in roles_by_id:
         raise ValueError(f'角色无法映射到原生目录：phase={phase}, {name} -> {rid}')
     return rid
+
+
+POSITION_ALIASES={'DM':'DMC','STC':'ST','STCR':'STR','STCL':'STL'}
+
+
+def native_position_id(position:str,phase:int)->str:
+    """Normalize website 90-index position labels to FM27 catalog IDs."""
+    return POSITION_ALIASES.get(str(position),str(position))
 
 def encode_ti(gen1:dict,catalog:dict,base:bytearray)->bytearray:
     # Start from the template so native baseline bits not expressed by GEN1
@@ -400,28 +572,59 @@ def encode_ti(gen1:dict,catalog:dict,base:bytearray)->bytearray:
         if bit: vec[bit//8]|=1<<(bit%8)
     allowed={int(o.get('native_bit') or 0) for g in catalog['team_instructions'] for o in g['options']}
     for bit in range(96):
-        if vec[bit//8]>>(bit%8)&1 and bit not in allowed and bit not in (33,76):
+        if vec[bit//8]>>(bit%8)&1 and bit not in allowed and bit not in PRESERVED_OPAQUE_TI_BITS:
             raise ValueError(f'球队指令位 {bit} 不在本机目录且不是已知模板隐藏位')
     return vec
 
-def encode_pi(pis:list)->int:
+def encode_pi(pis:list, catalog:dict, phase:int, position:str, roleid:str, duty:int)->int:
+    if not isinstance(pis,list):
+        raise ValueError('PI 必须是数组；没有个人指令时使用空数组 []')
+    policy_key=f'{phase}:{position}:{roleid}:{duty}'
+    policies=catalog.get('pi_policies',{}).get(policy_key)
+    if not isinstance(policies,dict) or not policies:
+        raise ValueError(f'缺少原生 PI 权限策略：{policy_key}')
+    policy_values=list(policies.values())
+    if any(not isinstance(value,str) or not value or set(value)-set('0123') for value in policy_values):
+        raise ValueError(f'PI 权限策略格式无效：{policy_key}')
+    # Different catalog revisions can disagree on unrelated PI options.
+    # Resolve conflicts per selected option, rather than rejecting a role whose
+    # recipe selects no PI or only options that are identical in every version.
     bits=0
+    seen=set()
     for pair in pis:
         if not isinstance(pair,list) or len(pair)!=2: raise ValueError('PI 项必须是 [group, option]')
         key=(str(pair[0]),str(pair[1]))
+        if key in seen: raise ValueError(f'PI 项重复：{key[0]}={key[1]}')
+        seen.add(key)
         if key not in PI_MAP: raise ValueError(f'个人指令尚未建立离线映射：{key[0]}={key[1]}')
-        bits|=1<<PI_MAP[key]
+        option_id=PI_MAP[key]
+        if any(option_id>=len(value) for value in policy_values):
+            raise ValueError(f'PI 选项 ID 超出角色权限表：{key[0]}={key[1]}')
+        option_states={value[option_id] for value in policy_values}
+        if len(option_states)!=1:
+            raise ValueError(f'该 PI 在目录版本间权限冲突，拒绝猜测：{policy_key} / option={option_id}')
+        # Catalog provenance: 0=editable, 1=unavailable, 2=fixed off, 3=fixed on.
+        state=next(iter(option_states))
+        if state=='1': raise ValueError(f'该角色/阶段/位置不提供此 PI：{policy_key} / {key[0]}={key[1]}')
+        if state=='2': raise ValueError(f'该 PI 被角色固定关闭，不能写入：{policy_key} / {key[0]}={key[1]}')
+        if state=='3':
+            # The role already forces this instruction on; do not serialize an override bit.
+            continue
+        if state!='0': raise ValueError(f'未知 PI 权限状态 {state!r}：{policy_key}')
+        bits|=1<<option_id
     return bits
 
 def update_role_entry(block:Block,role_flag:int,pi_flags:int):
     # Each PI cache entry is keyed by the active role flag (not its duty tag).
-    existing=next((z for z in block.items if z['key']==role_flag),None)
-    if existing is None:
+    matches=[z for z in block.items if z['key']==role_flag]
+    if len(matches)>1:
+        raise ValueError(f'同一角色存在重复 PI cache 项：{role_flag:#x}')
+    if not matches:
         block.items.append({'key':role_flag,'mask2':pi_flags,'value':0})
     else:
-        existing['mask2']=pi_flags
+        matches[0]['mask2']=pi_flags
 
-def apply_recipe(tac:Tac,recipe:dict,catalog:dict)->dict:
+def apply_recipe(tac:Tac,recipe:dict,catalog:dict,style_registry:dict|None=None)->dict:
     if recipe.get('v')!=1 or len(recipe.get('p',[]))!=11: raise ValueError('只支持 v1、11 个球员槽位的 FM27GEN1')
     title=re.sub(r'[\\/:*?"<>|\x00-\x1f]','-',str(recipe.get('name') or 'FM27 Tactic')).strip(' .')
     if not title: title='FM27 Tactic'
@@ -429,9 +632,9 @@ def apply_recipe(tac:Tac,recipe:dict,catalog:dict)->dict:
     if not 1<=int(recipe.get('ment',0))<=7: raise ValueError('心态必须是 1–7')
     tac.hdr[2]=int(recipe['ment'])
     base=recipe.get('base',{});style_name=str(base.get('g',''))
-    if style_name not in STYLE_CODE: raise ValueError(f'未知战术风格：{style_name}')
-    tac.style='Custom '+style_name
-    tac.quad[:]=STYLE_CODE[style_name]
+    style_def=resolve_style_definition(style_name,style_registry)
+    tac.style=style_def['tac_style_string']
+    tac.quad[:]=style_def['style_code']
     tac.packed[:]=encode_ti(recipe,catalog,tac.packed)
     positions={x['id']:int(x['mask']) for x in catalog['positions']}
     roles={x['id']:x for x in catalog['roles']}
@@ -443,9 +646,8 @@ def apply_recipe(tac:Tac,recipe:dict,catalog:dict)->dict:
         pair=by_slot[slot]
         for phase,phase_key,block in [(0,'in',pair.ip),(1,'out',pair.oop)]:
             item=spec[phase_key]
-            pos=str(item['pos'])
-            if phase==1 and pos=='STC': pos='ST'
-            if pos not in positions: raise ValueError(f'{slot} 槽位 {phase_key} 位置无原生 ID: {pos}')
+            pos=native_position_id(str(item['pos']),phase)
+            if pos not in positions: raise ValueError(f'{slot} 槽位 {phase_key} 位置无原生 ID: {item["pos"]} -> {pos}')
             roleid=role_id_from_display(str(item['role']),phase,set(roles))
             role=roles[roleid]
             if int(role['phase'])!=phase: raise ValueError('角色阶段不匹配')
@@ -456,14 +658,16 @@ def apply_recipe(tac:Tac,recipe:dict,catalog:dict)->dict:
             if role_flag<=0 or role_flag&(role_flag-1): raise ValueError(f'角色标识不是 one-hot：{roleid}')
             duty=ROLE_DUTY.get(roleid)
             if duty is None or duty not in DUTY_FLAGS: raise ValueError(f'未确认的角色 duty 标签：{roleid}')
-            pi_flags=encode_pi(item.get('pi',[]))
+            if 'pi' not in item:
+                raise ValueError(f'{slot} 槽位 {phase_key} 缺少必填 pi 字段；完整战术不得省略球员指令')
+            pi_flags=encode_pi(item['pi'],catalog,phase,pos,roleid,duty)
             # Only use current recipe's PI options for the active role key.
             update_role_entry(block,role_flag,pi_flags)
             block.selector=positions[pos]
             block.mask=role_flag|duty
-            pi_summary.append({'slot':slot,'phase':phase_key,'position':pos,'role':roleid,'pi_mask':hex(pi_flags),'duty':duty})
+            pi_summary.append({'slot':slot,'phase':phase_key,'position':pos,'role':roleid,'pi_count':len(item['pi']),'pi_mask':hex(pi_flags),'duty':duty})
     if len(seen[0])!=11 or len(seen[1])!=11: raise ValueError('双阶段必须各有 11 个唯一位置')
-    return {'name':title,'style':style_name,'mentality':recipe['ment'],'team_instruction_bits':[i for i in range(96) if tac.packed[i//8]>>(i%8)&1],'players':pi_summary}
+    return {'name':title,'style':style_name,'tac_style_string':style_def['tac_style_string'],'style_code_hex':style_def['style_code'].hex(),'template_name':style_def['template'],'mentality':recipe['ment'],'team_instruction_bits':[i for i in range(96) if tac.packed[i//8]>>(i%8)&1],'players':pi_summary}
 
 # ---- native archive layout and emission -------------------------------------------------
 def verify_recipe_roundtrip(tac:Tac,recipe:dict,catalog:dict)->dict:
@@ -475,18 +679,25 @@ def verify_recipe_roundtrip(tac:Tac,recipe:dict,catalog:dict)->dict:
     for slot,spec in enumerate(recipe['p']):
         pair=by_slot[slot]
         for phase,key,block in ((0,'in',pair.ip),(1,'out',pair.oop)):
-            wanted_pos=str(spec[key]['pos']);wanted_pos='ST' if phase==1 and wanted_pos=='STC' else wanted_pos
+            wanted_pos=native_position_id(str(spec[key]['pos']),phase)
             wanted_role=role_id_from_display(str(spec[key]['role']),phase,set(roles))
-            wanted_pi=encode_pi(spec[key].get('pi',[]))
+            wanted_duty=ROLE_DUTY.get(wanted_role)
+            if wanted_duty is None: raise ValueError(f'回读角色缺少 duty 映射：{wanted_role}')
+            wanted_pi=encode_pi(spec[key].get('pi',[]),catalog,phase,wanted_pos,wanted_role,wanted_duty)
             got_pos=positions.get(block.selector)
             got_role=role_by_flag_phase.get((block.mask & ROLE_MASK,phase))
             got_duty=block.mask & ~ROLE_MASK
             role_flag=int(roles[wanted_role]['flags'])
-            active=next((x for x in block.items if x['key']==role_flag),None)
-            got_pi=active['mask2'] if active else 0
+            active_entries=[x for x in block.items if x['key']==role_flag]
+            if len(active_entries)!=1:
+                raise ValueError(f'原生 TAC 活跃角色 PI cache 数量错误：slot {slot} {key}; count={len(active_entries)}')
+            got_pi=active_entries[0]['mask2']
             if got_pos!=wanted_pos or got_role!=wanted_role or got_pi!=wanted_pi:
                 raise ValueError(f'原生 TAC 回读不一致：slot {slot} {key}; pos={got_pos}/{wanted_pos}; role={got_role}/{wanted_role}; PI={got_pi:#x}/{wanted_pi:#x}')
-            if got_duty not in DUTY_FLAGS: raise ValueError(f'回读 duty 标记无效：slot {slot} {key}')
+            if got_duty not in DUTY_FLAGS:
+                raise ValueError(f'回读 duty 标记无效：slot {slot} {key}: {got_duty}')
+            if got_duty != wanted_duty:
+                raise ValueError(f'原生 TAC 职责回读不一致：slot {slot} {key}; duty={got_duty}/{wanted_duty}')
             if got_pos in seen[phase]: raise ValueError(f'回读阵型有重复位置：phase={phase}, pos={got_pos}')
             seen[phase].add(got_pos)
             checked.append({'slot':slot,'phase':key,'position':got_pos,'role':got_role,'pi_mask':hex(got_pi),'duty':got_duty})
@@ -501,22 +712,30 @@ def parse_gen1(path:Path)->dict:
 def main():
     ap=argparse.ArgumentParser(description='FM27GEN1 离线生成原生 FMF')
     ap.add_argument('recipe',type=Path,help='FM27GEN1 TXT')
-    ap.add_argument('--template',type=Path,required=True,help='FM27 游戏自己导出的原生 .fmf 模板')
+    ap.add_argument('--template',type=Path,help='可选：覆盖登记表中的原生 .fmf 模板；默认按战术风格自动选择')
     ap.add_argument('--catalog',type=Path,required=True,help='本机 FM27 catalog.json')
     ap.add_argument('--output',type=Path,required=True,help='新 FMF 输出路径')
     ap.add_argument('--report',type=Path,help='JSON 验证报告路径')
+    ap.add_argument('--style-registry',type=Path,default=Path(__file__).with_name('style_template_registry.json'),help='原生风格/模板登记表')
     args=ap.parse_args()
     try:
         if args.output.exists(): raise FileExistsError('拒绝覆盖已有输出文件：'+str(args.output))
         catalog=json.loads(args.catalog.read_text(encoding='utf-8'))
+        style_registry=json.loads(args.style_registry.read_text(encoding='utf-8')) if args.style_registry.is_file() else None
         recipe=parse_gen1(args.recipe)
-        source=args.template.read_bytes();fmf=parse_fmf(source)
+        style_name=str(recipe.get('base',{}).get('g',''))
+        template_path=resolve_template_path(style_name,style_registry,args.template)
+        source=template_path.read_bytes();fmf=parse_fmf(source)
         if '.tac' not in fmf.data_by_ext or '.aom' not in fmf.data_by_ext or '.img' not in fmf.data_by_ext: raise ValueError('原生 FMF 缺少 .tac/.aom/.img 成员')
         tac=parse_tac(fmf.data_by_ext['.tac'])
         if fmf.data_by_ext['.tac'][11]!=27: raise ValueError('模板不是 FM27 source-major 27 原生战术；请在 FM27 游戏中重新导出')
         # Snapshot parsed source before editing; writer must keep all opaque sections.
         before={'pairs':len(tac.pairs),'ids':len(tac.ids),'lists':len(tac.lists),'footer_records':len(tac.records),'tac_bytes':len(fmf.data_by_ext['.tac'])}
-        summary=apply_recipe(tac,recipe,catalog)
+        summary=apply_recipe(tac,recipe,catalog,style_registry)
+        if summary.get('template_name'):
+            expected=(HERE / summary['template_name']).resolve()
+            if template_path != expected:
+                raise ValueError(f'风格 {summary["style"]} 要求使用登记模板 {expected}，当前为 {template_path}')
         tac_bytes=write_tac(tac)
         reparsed=parse_tac(tac_bytes)
         output=write_fmf(fmf,tac_bytes,summary['name'])
@@ -524,19 +743,21 @@ def main():
         verify=parse_fmf(output);vt=parse_tac(verify.data_by_ext['.tac'])
         readback=verify_recipe_roundtrip(vt,recipe,catalog)
         if vt.title!=summary['name'] or verify.root_title!=summary['name']: raise ValueError('输出标题回读不一致')
+        if vt.style!=summary['tac_style_string'] or bytes(vt.quad).hex()!=summary['style_code_hex']:
+            raise ValueError('原生风格字符串/四字节 style code 回读不一致')
         if bytes(vt.packed)!=bytes(tac.packed): raise ValueError('球队指令回读不一致')
         if len(vt.pairs)!=11 or len(vt.records)!=12: raise ValueError('输出球员槽位或 footer 数量不一致')
         out=args.output.expanduser().resolve();out.parent.mkdir(parents=True,exist_ok=True);out.write_bytes(output)
         report={
             'status':'offline_binary_roundtrip_verified_not_game_import_verified',
             'output':str(out),'sha256':hashlib.sha256(output).hexdigest(),'bytes':len(output),
-            'template':str(args.template),'template_sha256':hashlib.sha256(source).hexdigest(),
-            'recipe':str(args.recipe),'name':summary['name'],'style':summary['style'],'mentality':summary['mentality'],
+            'template':str(template_path),'template_sha256':hashlib.sha256(source).hexdigest(),
+            'recipe':str(args.recipe),'name':summary['name'],'style':summary['style'],'tac_style_string':summary['tac_style_string'],'style_code_hex':summary['style_code_hex'],'style_registry':str(args.style_registry),'mentality':summary['mentality'],
             'team_instruction_bits':summary['team_instruction_bits'],'source_template_version':27,
             'opaque_sections_preserved':{'id_entries':before['ids'],'footer_lists':before['lists'],'footer_records':before['footer_records'],'image_member':'byte_identical'},
             'player_phase_map':summary['players'],'readback_player_phase_map':readback['verified_slots'],
-            'checks':{'fmf_outer_roundtrip':True,'all_member_decrypt_and_zstd_checksums':True,'tac_full_parse':True,'11_ip_oop_pairs':True,'22_positions_roles_pi_readback_exact':True,'team_instruction_vector_readback':True,'game_interactive_import':False,'match_engine':False},
-            'notes':['离线二进制重建，仅处理本地输入文件。','当前 duty 标签为基于 FM27 原生样本的角色默认值；Box-to-Box Midfielder 的 Support 标签为标准角色定义推断。','只有结构/自解包核验；必须由用户在 FM27 内手动导入后才能确认游戏接受。']
+            'checks':{'fmf_outer_roundtrip':True,'all_member_decrypt_and_zstd_checksums':True,'tac_full_parse':True,'11_ip_oop_pairs':True,'22_positions_roles_pi_readback_exact':True,'pi_permissions_checked_against_catalog':True,'team_instruction_vector_readback':True,'native_style_string_and_code_readback':True,'game_interactive_import':False,'match_engine':False},
+            'notes':['离线二进制重建，仅处理本地输入文件。','D/S/A 到 native duty bit 的编码由 FM27 TAC 样本确认；新增角色/职责组合来自 Netlify 90 条预设索引的交叉审计，不等于逐条原始 TAC 字节证据。','只有结构/自解包核验；必须由用户在 FM27 内手动导入后才能确认游戏接受。']
         }
         rpt=args.report or out.with_suffix('.report.json');rpt.write_text(json.dumps(report,ensure_ascii=False,indent=2),encoding='utf-8')
         print(json.dumps(report,ensure_ascii=False,indent=2))

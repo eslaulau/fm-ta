@@ -1,0 +1,243 @@
+{
+  "schema": "fm27-style-template-registry-v1",
+  "policy": "All ten official styles are backed by uploaded FM27 native TAC samples. Use the per-style template entry; opaque native TI bits remain template-owned until a catalog mapping is proven.",
+  "source_major_required": 27,
+  "styles": [
+    {
+      "name": "Gegenpress",
+      "status": "implemented_sample_verified",
+      "style_code_hex": "45474547",
+      "tac_style_string": "高​位压​迫",
+      "template": "../2.fmf",
+      "evidence": {
+        "source": "User-uploaded native FM27 .fmf sample; extracted TAC bytes and native four-byte style code.",
+        "sample_path": "2.fmf",
+        "sample_sha256": "bc33abade762252cd10fe2d3aab1d691c762983ce1f3843ec0b7bd6f469b2d88",
+        "source_major": 27,
+        "offline_fmf_roundtrip": "passed",
+        "opaque_template_owned_team_instruction_bits": [],
+        "pi_permission_validation": "All active serialized PI bits passed current catalog phase/position/role/duty permission checks.",
+        "role_position_pairs": "22 IP/OOP role-position pairs passed current catalog eligibility checks.",
+        "game_import": "not_verified"
+      }
+    },
+    {
+      "name": "Control Possession",
+      "status": "implemented_sample_verified",
+      "style_code_hex": "544e4f43",
+      "tac_style_string": "控​制球​权",
+      "template": "123_Game_Export_Reference.fmf",
+      "evidence": {
+        "repository_path": "04_离线原生FMF生成器/123_Game_Export_Reference.fmf",
+        "sha256": "d32c222b6f546707fc76a04144a73cdc4db6e881bb4e432ab155a12f8877bfd0",
+        "source_major": 27,
+        "note": "真实 FM27 TAC 样本已完成原生结构读取、22 组位置/角色/职责映射核对、PI 权限策略校验和离线生成回读；游戏内导入仍待用户验证。",
+        "git_blob_sha": "43b70bdffd0d9dfbba4600b4da44539309a2c622",
+        "position_role_eligibility": "22/22 IP/OOP position-role pairs matched the current catalog and role_eligibility table.",
+        "team_instruction_bits": [
+          3,
+          7,
+          17,
+          33,
+          35,
+          44,
+          48,
+          57,
+          61,
+          66,
+          69,
+          70,
+          79
+        ],
+        "pi_cache": "All sample PI cache mask2 values are zero; this sample does not prove active PI option mappings.",
+        "offline_recipe": "tests/fixtures/FM27_Control_Possession_SmokeTest_GEN1.txt",
+        "role_duty": "All 22 native sample role/duty pairs mapped to current catalog policy entries; missing duty mappings added from the sample.",
+        "pi_policy": "Generator now checks each selected PI against catalog.pi_policies: editable=0, unavailable=1, fixed_off=2, fixed_on=3; fixed-on options are not redundantly serialized.",
+        "game_import": "not_verified",
+        "ci_run_id": 44060034192,
+        "generated_fmf_sha256": "fddf782595e2ad872cebdcf689ac6360ffed949f32fcd71bdeda77a168720c41",
+        "offline_status": "offline_binary_roundtrip_verified_not_game_import_verified",
+        "source": "User-uploaded native FM27 sample 1.fmf; TAC style identity is consistent with the previously verified Control Possession code.",
+        "sample_path": "1.fmf",
+        "sample_template_note": "The uploaded sample's .aom contains a duplicated title token, so it is not used as a rewrite template; the already verified 123_Game_Export_Reference.fmf remains the safe native template."
+      }
+    },
+    {
+      "name": "Direct Counter Attack",
+      "status": "implemented_sample_verified",
+      "style_code_hex": "45524944",
+      "tac_style_string": "快​速防​反",
+      "template": "../8.fmf",
+      "evidence": {
+        "source": "User-uploaded native FM27 .fmf sample; extracted TAC bytes and native four-byte style code.",
+        "sample_path": "8.fmf",
+        "sample_sha256": "23e7e8110fd64164b46c5e1b144838f20dd1826760a2d1d3af04e58469a73e00",
+        "source_major": 27,
+        "offline_fmf_roundtrip": "passed",
+        "opaque_template_owned_team_instruction_bits": [],
+        "pi_permission_validation": "All active serialized PI bits passed current catalog phase/position/role/duty permission checks.",
+        "role_position_pairs": "22 IP/OOP role-position pairs passed current catalog eligibility checks.",
+        "game_import": "not_verified"
+      }
+    },
+    {
+      "name": "Fluid Counter Attack",
+      "status": "implemented_sample_verified",
+      "style_code_hex": "49554c46",
+      "tac_style_string": "灵​活防​反",
+      "template": "../7.fmf",
+      "evidence": {
+        "source": "User-uploaded native FM27 .fmf sample; extracted TAC bytes and native four-byte style code.",
+        "sample_path": "7.fmf",
+        "sample_sha256": "9b9e9f80e073042a499bb5bec621fbdaec6a65563392a45a01909c12f55363bc",
+        "source_major": 27,
+        "offline_fmf_roundtrip": "passed",
+        "opaque_template_owned_team_instruction_bits": [],
+        "pi_permission_validation": "All active serialized PI bits passed current catalog phase/position/role/duty permission checks.",
+        "role_position_pairs": "22 IP/OOP role-position pairs passed current catalog eligibility checks.",
+        "game_import": "not_verified"
+      }
+    },
+    {
+      "name": "Park The Bus",
+      "status": "implemented_sample_verified",
+      "style_code_hex": "4b524150",
+      "tac_style_string": "摆​大巴",
+      "template": "../10.fmf",
+      "evidence": {
+        "source": "User-uploaded native FM27 .fmf sample; extracted TAC bytes and native four-byte style code.",
+        "sample_path": "10.fmf",
+        "sample_sha256": "10452c7083f3a55ac43abb3b7e6b534d051f563ec0e3459bf091f2687a38f083",
+        "source_major": 27,
+        "offline_fmf_roundtrip": "passed",
+        "opaque_template_owned_team_instruction_bits": [
+          34,
+          74
+        ],
+        "pi_permission_validation": "All active serialized PI bits passed current catalog phase/position/role/duty permission checks.",
+        "role_position_pairs": "22 IP/OOP role-position pairs passed current catalog eligibility checks.",
+        "game_import": "not_verified"
+      }
+    },
+    {
+      "name": "Route One",
+      "status": "implemented_sample_verified",
+      "style_code_hex": "54554f52",
+      "tac_style_string": "长​传冲​吊",
+      "template": "../6.fmf",
+      "evidence": {
+        "source": "User-uploaded native FM27 .fmf sample; extracted TAC bytes and native four-byte style code.",
+        "sample_path": "6.fmf",
+        "sample_sha256": "5ecd84eeaefcfad3bb735b1a459263518cfd03cbdb0d196822987ede6972a136",
+        "source_major": 27,
+        "offline_fmf_roundtrip": "passed",
+        "opaque_template_owned_team_instruction_bits": [],
+        "pi_permission_validation": "All active serialized PI bits passed current catalog phase/position/role/duty permission checks.",
+        "role_position_pairs": "22 IP/OOP role-position pairs passed current catalog eligibility checks.",
+        "game_import": "not_verified"
+      }
+    },
+    {
+      "name": "Tiki-Taka",
+      "status": "implemented_sample_verified",
+      "style_code_hex": "494b4954",
+      "tac_style_string": "密​集短​传",
+      "template": "../3.fmf",
+      "evidence": {
+        "source": "User-uploaded native FM27 .fmf sample; extracted TAC bytes and native four-byte style code.",
+        "sample_path": "3.fmf",
+        "sample_sha256": "30c51ae398e10ef7ab7fa68d4bb387de6939075530faaa09affaa32dd39ef749",
+        "source_major": 27,
+        "offline_fmf_roundtrip": "passed",
+        "opaque_template_owned_team_instruction_bits": [
+          75
+        ],
+        "pi_permission_validation": "All active serialized PI bits passed current catalog phase/position/role/duty permission checks.",
+        "role_position_pairs": "22 IP/OOP role-position pairs passed current catalog eligibility checks.",
+        "game_import": "not_verified"
+      }
+    },
+    {
+      "name": "Vertical Tiki-Taka",
+      "status": "implemented_sample_verified",
+      "style_code_hex": "54524556",
+      "tac_style_string": "垂​直密​集短​传",
+      "template": "../4.fmf",
+      "evidence": {
+        "source": "User-uploaded native FM27 .fmf sample; extracted TAC bytes and native four-byte style code.",
+        "sample_path": "4.fmf",
+        "sample_sha256": "ccf85e0cd1317652ca350f0d331f2540fbe3d3579b4e0fb82083cacf03d02c2b",
+        "source_major": 27,
+        "offline_fmf_roundtrip": "passed",
+        "opaque_template_owned_team_instruction_bits": [],
+        "pi_permission_validation": "All active serialized PI bits passed current catalog phase/position/role/duty permission checks.",
+        "role_position_pairs": "22 IP/OOP role-position pairs passed current catalog eligibility checks.",
+        "game_import": "not_verified"
+      }
+    },
+    {
+      "name": "Wingplay",
+      "status": "implemented_sample_verified",
+      "style_code_hex": "474e4957",
+      "tac_style_string": "双​翼齐​飞",
+      "template": "../5.fmf",
+      "evidence": {
+        "source": "User-uploaded native FM27 .fmf sample; extracted TAC bytes and native four-byte style code.",
+        "sample_path": "5.fmf",
+        "sample_sha256": "033e42be187acbcaf747779017ce9eeae99969a02b8decdbdf3620a1c273bd49",
+        "source_major": 27,
+        "offline_fmf_roundtrip": "passed",
+        "opaque_template_owned_team_instruction_bits": [],
+        "pi_permission_validation": "All active serialized PI bits passed current catalog phase/position/role/duty permission checks.",
+        "role_position_pairs": "22 IP/OOP role-position pairs passed current catalog eligibility checks.",
+        "game_import": "not_verified"
+      }
+    },
+    {
+      "name": "Catenaccio",
+      "status": "implemented_sample_verified",
+      "style_code_hex": "45544143",
+      "tac_style_string": "链​式防​守",
+      "template": "../9.fmf",
+      "evidence": {
+        "source": "User-uploaded native FM27 .fmf sample; extracted TAC bytes and native four-byte style code.",
+        "sample_path": "9.fmf",
+        "sample_sha256": "3ed302651fd1006f1d8ae39b3fba13ea35cc4668d6941c6d0ef42e507c00280b",
+        "source_major": 27,
+        "offline_fmf_roundtrip": "passed",
+        "opaque_template_owned_team_instruction_bits": [
+          74
+        ],
+        "pi_permission_validation": "All active serialized PI bits passed current catalog phase/position/role/duty permission checks.",
+        "role_position_pairs": "22 IP/OOP role-position pairs passed current catalog eligibility checks.",
+        "game_import": "not_verified"
+      }
+    }
+  ],
+  "implementation_gate": [
+    "Native FM27 .fmf sample for the style and current source-major build",
+    "Extracted TAC style string and four-byte style code",
+    "Template structure and opaque-member roundtrip verified",
+    "All required TI mappings proven against catalog/native samples",
+    "PI permission checks validated by phase/position/role/duty",
+    "Role and duty coverage verified",
+    "Generated FMF roundtrip passes, then in-game import is tested"
+  ],
+  "sources": [
+    {
+      "name": "Sortitoutsi FM Tactic Reader",
+      "url": "https://tactics.sortitoutsi.net/",
+      "use": "列出 FM27 的 10 种预设风格；用于核对风格名称，不用于推断原生 style code。"
+    },
+    {
+      "name": "Sortitoutsi FM27 Advanced Tactics Search",
+      "url": "https://sortitoutsi.net/football-manager-2027-tactics/advanced-search",
+      "use": "展示从 .fmf 文件解析的 style、IP/OOP 阵型、角色与球队指令；公开页面可用于研究候选战术，不替代原生样本二进制证据。"
+    },
+    {
+      "name": "FM Scout Tactics Analyser",
+      "url": "https://www.fmscout.com/tac",
+      "use": "说明其比较 28 项球队指令与游戏预设风格；用于交叉核对分析结果，不作为 style code 来源。"
+    }
+  ]
+}

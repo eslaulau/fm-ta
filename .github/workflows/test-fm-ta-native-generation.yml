@@ -1,0 +1,50 @@
+name: FM-TA native generator tests
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "00_资料总索引与检索规范.md"
+      - "01_网站生成规则/**"
+      - "02_FM27原生权限规则/**"
+      - "03_GEN1编码与导入规则/**"
+      - "04_离线原生FMF生成器/**"
+      - "*.fmf"
+      - "tests/**"
+      - ".github/workflows/test-fm-ta-native-generation.yml"
+  pull_request:
+    paths:
+      - "00_资料总索引与检索规范.md"
+      - "01_网站生成规则/**"
+      - "02_FM27原生权限规则/**"
+      - "03_GEN1编码与导入规则/**"
+      - "04_离线原生FMF生成器/**"
+      - "*.fmf"
+      - "tests/**"
+      - ".github/workflows/test-fm-ta-native-generation.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  native-generator:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install generator dependencies
+        run: python -m pip install -r "04_离线原生FMF生成器/requirements.txt"
+      - name: Compile generator, audits and tests
+        run: |
+          python -m py_compile 04_离线原生FMF生成器/FM27GEN1_Offline_FMF_Generator.py
+          python -m py_compile 04_离线原生FMF生成器/FM27GEN1_Audit_Uploaded_Style_Samples.py
+          python -m py_compile 04_离线原生FMF生成器/FM27GEN1_Extract_Installed_Presets.py
+          python -m py_compile 04_离线原生FMF生成器/FM27GEN1_Netlify90_OfficialPreset_Audit.py
+          python -m py_compile 04_离线原生FMF生成器/FM27GEN1_StyleTemplate_Audit.py
+          python -m compileall -q tests
+      - name: Audit all ten uploaded native samples
+        run: python 04_离线原生FMF生成器/FM27GEN1_Audit_Uploaded_Style_Samples.py
+      - name: Run generator regression suite
+        run: python -m unittest discover -s tests -p "test_fm27gen1_*.py" -v
