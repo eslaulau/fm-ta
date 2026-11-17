@@ -1,0 +1,3 @@
+template_id,template_name,ip_formation,oop_formation,mentality,player_assignments_compact
+"1","Szablon 4-4-2","4-4-2","4-4-2","Balanced","GK,0,D,GK,0,S DR,2,S,DR,2,D DCR,3,D,DCR,4,D DCL,4,D,DCL,4,D DL,1,S,DL,2,D MR,25,S,MR,38,S MCR,20,A,MCR,10,S MCL,60,S,MCL,22,D ML,27,S,ML,38,S STCR,7,A,STCR,15,S STCL,15,A,STCL,8,D"
+"2","Szablon 4-4-2","4-4-2","4-2-2-2 DM","Balanced","GK,0,D,GK,0,S DR,1,S,DR,2,D DCR,3,D,DCR,4,D DCL,3,D,DCL,4,D DL,1,S,DL,2,D MR,25,S,MR,51,D MCR,20,A,DMR,12,D MCL,60,S,DML,12,D ML,25,S,ML,51,D STCR,7,A,STCR,15,S STCL,15,A,STCL,15,S"

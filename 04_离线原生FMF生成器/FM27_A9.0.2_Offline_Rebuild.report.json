@@ -1,0 +1,409 @@
+{
+  "status": "offline_binary_roundtrip_verified_not_game_import_verified",
+  "output": "/mnt/data/FM27GEN1_Offline_FMF_Prototype/FM27_A9.0.2_Offline_Rebuild.fmf",
+  "sha256": "c2ac1719f202d00b1a058e44da0c241e0f72b10bcdc3a04c89b295ed73029d10",
+  "bytes": 3588,
+  "template": "/mnt/data/files/4231.fmf",
+  "template_sha256": "506c7ee0690efd21f3f416ef642bd957cffd7e58a7ba114d49a53cf324148968",
+  "recipe": "/mnt/data/files/FM27_A9.0.2_True_2-3-5_Canonical_STL_STR_GEN1.txt",
+  "name": "FM27 A9.0.2 - TRUE 2-3-5 IP - 4-1-4-1 OOP (NATIVE STRIKER POSITION IDS)",
+  "style": "Gegenpress",
+  "mentality": 5,
+  "team_instruction_bits": [
+    2,
+    5,
+    7,
+    16,
+    17,
+    33,
+    35,
+    44,
+    47,
+    51,
+    54,
+    57,
+    61,
+    66,
+    69,
+    70,
+    76
+  ],
+  "source_template_version": 27,
+  "opaque_sections_preserved": {
+    "id_entries": 14,
+    "footer_lists": 3,
+    "footer_records": 12,
+    "image_member": "byte_identical"
+  },
+  "player_phase_map": [
+    {
+      "slot": 0,
+      "phase": "in",
+      "position": "GK",
+      "role": "BallPlayingGoalkeeper",
+      "pi_mask": "0x2",
+      "duty": 4194304
+    },
+    {
+      "slot": 0,
+      "phase": "out",
+      "position": "GK",
+      "role": "OPSweeperKeeper",
+      "pi_mask": "0x0",
+      "duty": 8388608
+    },
+    {
+      "slot": 1,
+      "phase": "in",
+      "position": "DMR",
+      "role": "BoxToBoxMidfielder",
+      "pi_mask": "0x0",
+      "duty": 4194304
+    },
+    {
+      "slot": 1,
+      "phase": "out",
+      "position": "DR",
+      "role": "OPHoldingFullBack",
+      "pi_mask": "0x200000000",
+      "duty": 2097152
+    },
+    {
+      "slot": 2,
+      "phase": "in",
+      "position": "DCR",
+      "role": "CentreBack",
+      "pi_mask": "0x4012",
+      "duty": 2097152
+    },
+    {
+      "slot": 2,
+      "phase": "out",
+      "position": "DCR",
+      "role": "OPCoveringCentreBack",
+      "pi_mask": "0x300000000",
+      "duty": 2097152
+    },
+    {
+      "slot": 3,
+      "phase": "in",
+      "position": "DCL",
+      "role": "BallPlayingCentreBack",
+      "pi_mask": "0x0",
+      "duty": 2097152
+    },
+    {
+      "slot": 3,
+      "phase": "out",
+      "position": "DCL",
+      "role": "OPCentreBack",
+      "pi_mask": "0x300000000",
+      "duty": 2097152
+    },
+    {
+      "slot": 4,
+      "phase": "in",
+      "position": "DML",
+      "role": "DeepLyingPlaymaker",
+      "pi_mask": "0x0",
+      "duty": 4194304
+    },
+    {
+      "slot": 4,
+      "phase": "out",
+      "position": "DL",
+      "role": "OPHoldingFullBack",
+      "pi_mask": "0x200000000",
+      "duty": 2097152
+    },
+    {
+      "slot": 5,
+      "phase": "in",
+      "position": "DMC",
+      "role": "DefensiveMidfielder",
+      "pi_mask": "0x0",
+      "duty": 2097152
+    },
+    {
+      "slot": 5,
+      "phase": "out",
+      "position": "DMC",
+      "role": "OPScreeningDefensiveMidfielder",
+      "pi_mask": "0x0",
+      "duty": 2097152
+    },
+    {
+      "slot": 6,
+      "phase": "in",
+      "position": "AMC",
+      "role": "AdvancedPlaymaker",
+      "pi_mask": "0x84002",
+      "duty": 8388608
+    },
+    {
+      "slot": 6,
+      "phase": "out",
+      "position": "MCL",
+      "role": "OPCentralMidfielder",
+      "pi_mask": "0x120000000",
+      "duty": 4194304
+    },
+    {
+      "slot": 7,
+      "phase": "in",
+      "position": "STL",
+      "role": "CentreForward",
+      "pi_mask": "0x10000040000",
+      "duty": 8388608
+    },
+    {
+      "slot": 7,
+      "phase": "out",
+      "position": "MCR",
+      "role": "OPCentralMidfielder",
+      "pi_mask": "0x0",
+      "duty": 4194304
+    },
+    {
+      "slot": 8,
+      "phase": "in",
+      "position": "AMR",
+      "role": "InsideWinger",
+      "pi_mask": "0x2002008",
+      "duty": 4194304
+    },
+    {
+      "slot": 8,
+      "phase": "out",
+      "position": "MR",
+      "role": "OPTrackingWideMidfielder",
+      "pi_mask": "0x120000000",
+      "duty": 2097152
+    },
+    {
+      "slot": 9,
+      "phase": "in",
+      "position": "AML",
+      "role": "InsideForward",
+      "pi_mask": "0x100405200c",
+      "duty": 8388608
+    },
+    {
+      "slot": 9,
+      "phase": "out",
+      "position": "ML",
+      "role": "OPTrackingWideMidfielder",
+      "pi_mask": "0x120000000",
+      "duty": 2097152
+    },
+    {
+      "slot": 10,
+      "phase": "in",
+      "position": "STR",
+      "role": "ChannelForward",
+      "pi_mask": "0x8000440000",
+      "duty": 8388608
+    },
+    {
+      "slot": 10,
+      "phase": "out",
+      "position": "ST",
+      "role": "OPTrackingCentreForward",
+      "pi_mask": "0x120000000",
+      "duty": 2097152
+    }
+  ],
+  "readback_player_phase_map": [
+    {
+      "slot": 0,
+      "phase": "in",
+      "position": "GK",
+      "role": "BallPlayingGoalkeeper",
+      "pi_mask": "0x2",
+      "duty": 4194304
+    },
+    {
+      "slot": 0,
+      "phase": "out",
+      "position": "GK",
+      "role": "OPSweeperKeeper",
+      "pi_mask": "0x0",
+      "duty": 8388608
+    },
+    {
+      "slot": 1,
+      "phase": "in",
+      "position": "DMR",
+      "role": "BoxToBoxMidfielder",
+      "pi_mask": "0x0",
+      "duty": 4194304
+    },
+    {
+      "slot": 1,
+      "phase": "out",
+      "position": "DR",
+      "role": "OPHoldingFullBack",
+      "pi_mask": "0x200000000",
+      "duty": 2097152
+    },
+    {
+      "slot": 2,
+      "phase": "in",
+      "position": "DCR",
+      "role": "CentreBack",
+      "pi_mask": "0x4012",
+      "duty": 2097152
+    },
+    {
+      "slot": 2,
+      "phase": "out",
+      "position": "DCR",
+      "role": "OPCoveringCentreBack",
+      "pi_mask": "0x300000000",
+      "duty": 2097152
+    },
+    {
+      "slot": 3,
+      "phase": "in",
+      "position": "DCL",
+      "role": "BallPlayingCentreBack",
+      "pi_mask": "0x0",
+      "duty": 2097152
+    },
+    {
+      "slot": 3,
+      "phase": "out",
+      "position": "DCL",
+      "role": "OPCentreBack",
+      "pi_mask": "0x300000000",
+      "duty": 2097152
+    },
+    {
+      "slot": 4,
+      "phase": "in",
+      "position": "DML",
+      "role": "DeepLyingPlaymaker",
+      "pi_mask": "0x0",
+      "duty": 4194304
+    },
+    {
+      "slot": 4,
+      "phase": "out",
+      "position": "DL",
+      "role": "OPHoldingFullBack",
+      "pi_mask": "0x200000000",
+      "duty": 2097152
+    },
+    {
+      "slot": 5,
+      "phase": "in",
+      "position": "DMC",
+      "role": "DefensiveMidfielder",
+      "pi_mask": "0x0",
+      "duty": 2097152
+    },
+    {
+      "slot": 5,
+      "phase": "out",
+      "position": "DMC",
+      "role": "OPScreeningDefensiveMidfielder",
+      "pi_mask": "0x0",
+      "duty": 2097152
+    },
+    {
+      "slot": 6,
+      "phase": "in",
+      "position": "AMC",
+      "role": "AdvancedPlaymaker",
+      "pi_mask": "0x84002",
+      "duty": 8388608
+    },
+    {
+      "slot": 6,
+      "phase": "out",
+      "position": "MCL",
+      "role": "OPCentralMidfielder",
+      "pi_mask": "0x120000000",
+      "duty": 4194304
+    },
+    {
+      "slot": 7,
+      "phase": "in",
+      "position": "STL",
+      "role": "CentreForward",
+      "pi_mask": "0x10000040000",
+      "duty": 8388608
+    },
+    {
+      "slot": 7,
+      "phase": "out",
+      "position": "MCR",
+      "role": "OPCentralMidfielder",
+      "pi_mask": "0x0",
+      "duty": 4194304
+    },
+    {
+      "slot": 8,
+      "phase": "in",
+      "position": "AMR",
+      "role": "InsideWinger",
+      "pi_mask": "0x2002008",
+      "duty": 4194304
+    },
+    {
+      "slot": 8,
+      "phase": "out",
+      "position": "MR",
+      "role": "OPTrackingWideMidfielder",
+      "pi_mask": "0x120000000",
+      "duty": 2097152
+    },
+    {
+      "slot": 9,
+      "phase": "in",
+      "position": "AML",
+      "role": "InsideForward",
+      "pi_mask": "0x100405200c",
+      "duty": 8388608
+    },
+    {
+      "slot": 9,
+      "phase": "out",
+      "position": "ML",
+      "role": "OPTrackingWideMidfielder",
+      "pi_mask": "0x120000000",
+      "duty": 2097152
+    },
+    {
+      "slot": 10,
+      "phase": "in",
+      "position": "STR",
+      "role": "ChannelForward",
+      "pi_mask": "0x8000440000",
+      "duty": 8388608
+    },
+    {
+      "slot": 10,
+      "phase": "out",
+      "position": "ST",
+      "role": "OPTrackingCentreForward",
+      "pi_mask": "0x120000000",
+      "duty": 2097152
+    }
+  ],
+  "checks": {
+    "fmf_outer_roundtrip": true,
+    "all_member_decrypt_and_zstd_checksums": true,
+    "tac_full_parse": true,
+    "11_ip_oop_pairs": true,
+    "22_positions_roles_pi_readback_exact": true,
+    "team_instruction_vector_readback": true,
+    "game_interactive_import": false,
+    "match_engine": false
+  },
+  "notes": [
+    "离线二进制重建，仅使用本地输入文件。",
+    "当前 duty 标签为基于 FM27 原生样本的角色默认值；Box-to-Box Midfielder 的 Support 标签为标准角色定义推断。",
+    "只有结构/自解包核验；必须由用户在 FM27 内手动导入后才能确认游戏接受。"
+  ]
+}

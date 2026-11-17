@@ -1,0 +1,220 @@
+{
+  "schema": "fm27-role-position-crosswalk-v2.1",
+  "native_role_context_count": 24,
+  "native_unique_role_ids": 79,
+  "native_ip_role_ids": 40,
+  "native_oop_role_ids": 39,
+  "aliases": {
+    "STC": {
+      "native_role_context": "ST",
+      "meaning": "central striker tactical slot",
+      "status": "derived from matching central-striker slot codes in GEN1 recipes and native role-context catalogue",
+      "generator_validation": "inconclusive_due_to_noncanonical_role_label_in_observed_import_2026-11-16",
+      "permission_lookup_only": true,
+      "canonical_site_oop_role_label": "Central Outlet Centre Forward",
+      "failed_test_role_label": "Central Outlet Centre-Forward",
+      "observed_import_result": "Requested OOP STC role did not apply; actual role remained STC Centre Forward",
+      "next_test": "Keep STC and retest exact role label Central Outlet Centre Forward (no hyphen) before diagnosing slot compatibility",
+      "safe_fallback_oop_role": "Tracking Centre Forward",
+      "status_note": "STC→ST supplies static permission lookup context only. It does not alter the serialized position or prove that the downstream role26 API accepts the role."
+    }
+  },
+  "familiarity_only_labels": {
+    "SW": "no independent native role-context row in the extracted role table",
+    "DM": "generic familiarity label; role contexts are DMC/DMR/DML"
+  },
+  "positions": [
+    {
+      "code": "GK",
+      "chinese": "门将",
+      "phase_role_counts": {
+        "IP": 3,
+        "OOP": 3
+      }
+    },
+    {
+      "code": "DR",
+      "chinese": "右后卫",
+      "phase_role_counts": {
+        "IP": 5,
+        "OOP": 3
+      }
+    },
+    {
+      "code": "DL",
+      "chinese": "左后卫",
+      "phase_role_counts": {
+        "IP": 5,
+        "OOP": 3
+      }
+    },
+    {
+      "code": "DC",
+      "chinese": "中后卫（中）",
+      "phase_role_counts": {
+        "IP": 6,
+        "OOP": 6
+      }
+    },
+    {
+      "code": "DCR",
+      "chinese": "右中卫",
+      "phase_role_counts": {
+        "IP": 6,
+        "OOP": 6
+      }
+    },
+    {
+      "code": "DCL",
+      "chinese": "左中卫",
+      "phase_role_counts": {
+        "IP": 6,
+        "OOP": 6
+      }
+    },
+    {
+      "code": "WBR",
+      "chinese": "右翼卫",
+      "phase_role_counts": {
+        "IP": 4,
+        "OOP": 3
+      }
+    },
+    {
+      "code": "WBL",
+      "chinese": "左翼卫",
+      "phase_role_counts": {
+        "IP": 4,
+        "OOP": 3
+      }
+    },
+    {
+      "code": "DMC",
+      "chinese": "防守中场（中）",
+      "phase_role_counts": {
+        "IP": 5,
+        "OOP": 5
+      }
+    },
+    {
+      "code": "DMR",
+      "chinese": "右后腰",
+      "phase_role_counts": {
+        "IP": 5,
+        "OOP": 5
+      }
+    },
+    {
+      "code": "DML",
+      "chinese": "左后腰",
+      "phase_role_counts": {
+        "IP": 5,
+        "OOP": 5
+      }
+    },
+    {
+      "code": "MR",
+      "chinese": "右边前卫",
+      "phase_role_counts": {
+        "IP": 4,
+        "OOP": 3
+      }
+    },
+    {
+      "code": "ML",
+      "chinese": "左边前卫",
+      "phase_role_counts": {
+        "IP": 4,
+        "OOP": 3
+      }
+    },
+    {
+      "code": "MC",
+      "chinese": "中前卫（中）",
+      "phase_role_counts": {
+        "IP": 6,
+        "OOP": 4
+      }
+    },
+    {
+      "code": "MCR",
+      "chinese": "右中前卫",
+      "phase_role_counts": {
+        "IP": 6,
+        "OOP": 4
+      }
+    },
+    {
+      "code": "MCL",
+      "chinese": "左中前卫",
+      "phase_role_counts": {
+        "IP": 6,
+        "OOP": 4
+      }
+    },
+    {
+      "code": "AMR",
+      "chinese": "右边锋",
+      "phase_role_counts": {
+        "IP": 5,
+        "OOP": 4
+      }
+    },
+    {
+      "code": "AML",
+      "chinese": "左边锋",
+      "phase_role_counts": {
+        "IP": 5,
+        "OOP": 4
+      }
+    },
+    {
+      "code": "AMC",
+      "chinese": "前腰（中）",
+      "phase_role_counts": {
+        "IP": 5,
+        "OOP": 4
+      }
+    },
+    {
+      "code": "AMCR",
+      "chinese": "右前腰",
+      "phase_role_counts": {
+        "IP": 5,
+        "OOP": 4
+      }
+    },
+    {
+      "code": "AMCL",
+      "chinese": "左前腰",
+      "phase_role_counts": {
+        "IP": 5,
+        "OOP": 4
+      }
+    },
+    {
+      "code": "ST",
+      "chinese": "中锋（中）",
+      "phase_role_counts": {
+        "IP": 6,
+        "OOP": 4
+      }
+    },
+    {
+      "code": "STR",
+      "chinese": "右侧前锋",
+      "phase_role_counts": {
+        "IP": 6,
+        "OOP": 4
+      }
+    },
+    {
+      "code": "STL",
+      "chinese": "左侧前锋",
+      "phase_role_counts": {
+        "IP": 6,
+        "OOP": 4
+      }
+    }
+  ]
+}
