@@ -32,20 +32,18 @@ def _existing_recipe_path(raw_path: str, repo_root: Path) -> Path:
     return recipe
 
 
-def _save_inline_recipe(
-    recipe_data: Any, label: str, runner_temp: Path, run_number: str
+def _inline_recipe(
+    recipe_data: Any, label: str, run_number: str
 ) -> dict[str, str | bool]:
+    """Keep the recipe as a compact JSON object string; never create a temp file."""
     if not isinstance(recipe_data, dict):
         raise ValueError("Direct recipe payload must be a JSON object.")
     stem = safe_stem(recipe_data.get("name"))
-    runner_temp.mkdir(parents=True, exist_ok=True)
-    target = runner_temp / f"{stem}_run{run_number}_input.json"
-    target.write_text(
-        json.dumps(recipe_data, ensure_ascii=False, separators=(",", ":")),
-        encoding="utf-8",
-    )
+    compact_json = json.dumps(recipe_data, ensure_ascii=False, separators=(",", ":"))
+    if "\\n" in compact_json or "\\r" in compact_json:
+        raise ValueError("Compact JSON unexpectedly contains a literal line break")
     return {
-        "recipe_path": str(target),
+        "recipe_json": compact_json,
         "output_stem": f"{stem}_run{run_number}",
         "recipe_label": label,
         "skip_build": False,
@@ -68,10 +66,9 @@ def resolve_recipe_input(
         client_payload = event_data.get("client_payload") or {}
         if not isinstance(client_payload, dict):
             raise ValueError("repository_dispatch client_payload must be an object")
-        return _save_inline_recipe(
+        return _inline_recipe(
             client_payload.get("recipe"),
             "repository_dispatch direct JSON payload",
-            runner_temp,
             run_number,
         )
 
@@ -85,10 +82,9 @@ def resolve_recipe_input(
                 recipe_data = json.loads(json_input)
             except json.JSONDecodeError as exc:
                 raise ValueError(f"recipe_json is invalid JSON: {exc}") from exc
-            return _save_inline_recipe(
+            return _inline_recipe(
                 recipe_data,
                 "workflow_dispatch inline JSON payload",
-                runner_temp,
                 run_number,
             )
         recipe = _existing_recipe_path(path_input, repo_root)
@@ -154,7 +150,7 @@ def main() -> int:
         run_number=os.environ.get("GITHUB_RUN_NUMBER", "0"),
     )
     with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as output:
-        for key in ("recipe_path", "output_stem", "recipe_label", "skip_build"):
+        for key in ("recipe_path", "recipe_json", "output_stem", "recipe_label", "skip_build"):
             if key in result:
                 output.write(f"{key}={str(result[key]).lower() if isinstance(result[key], bool) else result[key]}\n")
     if result.get("skip_build"):
