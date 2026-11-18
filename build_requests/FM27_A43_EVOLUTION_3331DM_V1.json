@@ -39,7 +39,7 @@
       "in": {
         "pos": "GK",
         "role": "BallPlayingGoalkeeper",
-        "duty": "4194304",
+        "duty": 4194304,
         "pi": [
           [
             "PASSING_STRATEGY",
@@ -50,7 +50,7 @@
       "out": {
         "pos": "GK",
         "role": "OPSweeperKeeper",
-        "duty": "2097152",
+        "duty": 2097152,
         "pi": [
           [
             "TACKLING",
@@ -63,7 +63,7 @@
       "in": {
         "pos": "DCR",
         "role": "WideCentreBack",
-        "duty": "4194304",
+        "duty": 4194304,
         "pi": [
           [
             "PASSING_STRATEGY",
@@ -74,7 +74,7 @@
       "out": {
         "pos": "DR",
         "role": "OPFullBack",
-        "duty": "2097152",
+        "duty": 2097152,
         "pi": [
           [
             "MARKING",
@@ -87,7 +87,7 @@
       "in": {
         "pos": "DC",
         "role": "BallPlayingCentreBack",
-        "duty": "2097152",
+        "duty": 2097152,
         "pi": [
           [
             "PASSING_STRATEGY",
@@ -98,7 +98,7 @@
       "out": {
         "pos": "DCR",
         "role": "OPCoveringCentreBack",
-        "duty": "2097152",
+        "duty": 2097152,
         "pi": [
           [
             "MARKING",
@@ -111,7 +111,7 @@
       "in": {
         "pos": "DCL",
         "role": "CentreBack",
-        "duty": "2097152",
+        "duty": 2097152,
         "pi": [
           [
             "PASSING_STRATEGY",
@@ -122,7 +122,7 @@
       "out": {
         "pos": "DC",
         "role": "OPCentreBack",
-        "duty": "2097152",
+        "duty": 2097152,
         "pi": [
           [
             "MARKING",
@@ -135,7 +135,7 @@
       "in": {
         "pos": "WBR",
         "role": "AdvancedWingBack",
-        "duty": "8388608",
+        "duty": 8388608,
         "pi": [
           [
             "PASSING_STRATEGY",
@@ -146,7 +146,7 @@
       "out": {
         "pos": "DCL",
         "role": "OPCentreBack",
-        "duty": "2097152",
+        "duty": 2097152,
         "pi": [
           [
             "MARKING",
@@ -159,7 +159,7 @@
       "in": {
         "pos": "DMC",
         "role": "DefensiveMidfielder",
-        "duty": "2097152",
+        "duty": 2097152,
         "pi": [
           [
             "PASSING_STRATEGY",
@@ -170,7 +170,7 @@
       "out": {
         "pos": "DL",
         "role": "OPFullBack",
-        "duty": "2097152",
+        "duty": 2097152,
         "pi": [
           [
             "MARKING",
@@ -183,7 +183,7 @@
       "in": {
         "pos": "WBL",
         "role": "AdvancedWingBack",
-        "duty": "4194304",
+        "duty": 4194304,
         "pi": [
           [
             "PASSING_STRATEGY",
@@ -194,7 +194,7 @@
       "out": {
         "pos": "DMR",
         "role": "OPScreeningDefensiveMidfielder",
-        "duty": "2097152",
+        "duty": 2097152,
         "pi": [
           [
             "MARKING",
@@ -207,7 +207,7 @@
       "in": {
         "pos": "AMR",
         "role": "Winger",
-        "duty": "8388608",
+        "duty": 8388608,
         "pi": [
           [
             "ATTACKING_WIDTH",
@@ -218,7 +218,7 @@
       "out": {
         "pos": "DML",
         "role": "OPDefensiveMidfielder",
-        "duty": "2097152",
+        "duty": 2097152,
         "pi": [
           [
             "MARKING",
@@ -231,7 +231,7 @@
       "in": {
         "pos": "AMC",
         "role": "AdvancedPlaymaker",
-        "duty": "4194304",
+        "duty": 4194304,
         "pi": [
           [
             "ATTACKING_WIDTH",
@@ -242,7 +242,7 @@
       "out": {
         "pos": "AMR",
         "role": "OPTrackingWinger",
-        "duty": "2097152",
+        "duty": 2097152,
         "pi": [
           [
             "MARKING",
@@ -255,7 +255,7 @@
       "in": {
         "pos": "AML",
         "role": "InsideWinger",
-        "duty": "8388608",
+        "duty": 8388608,
         "pi": [
           [
             "DRIBBLING_DIRECTION",
@@ -266,7 +266,7 @@
       "out": {
         "pos": "AML",
         "role": "OPTrackingWinger",
-        "duty": "2097152",
+        "duty": 2097152,
         "pi": [
           [
             "MARKING",
@@ -279,7 +279,7 @@
       "in": {
         "pos": "ST",
         "role": "CentreForward",
-        "duty": "8388608",
+        "duty": 8388608,
         "pi": [
           [
             "ATTACK_BOX_DEPTH",
@@ -290,7 +290,7 @@
       "out": {
         "pos": "ST",
         "role": "OPTrackingCentreForward",
-        "duty": "2097152",
+        "duty": 2097152,
         "pi": [
           [
             "MARKING",
