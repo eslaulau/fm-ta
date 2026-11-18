@@ -60,12 +60,17 @@ jobs:
         if: steps.recipe.outputs.skip_build != 'true'
         env:
           RECIPE_PATH: build_requests/Unmapped_Mapping_Import_Test_v1.txt
+          DELIVERY_RECIPE_PATH: ${{ steps.recipe.outputs.recipe_path }}
           RECIPE_JSON: ${{ steps.recipe.outputs.recipe_json }}
           RECIPE_LABEL: ${{ steps.recipe.outputs.recipe_label }}
         run: |
           python tests/test_fm27gen1_direct_json_input.py
           python tests/test_fm27gen1_experimental_unmapped_mapping.py
-          python scripts/validate_fm27_tactic_delivery.py
+          if [ -n "$RECIPE_JSON" ]; then
+            python scripts/validate_fm27_tactic_delivery.py
+          else
+            python scripts/validate_fm27_tactic_delivery.py "$DELIVERY_RECIPE_PATH"
+          fi
 
       - name: Generate native FMF and same-run report
         if: steps.recipe.outputs.skip_build != 'true'
