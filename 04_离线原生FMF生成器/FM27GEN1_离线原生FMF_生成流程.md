@@ -176,7 +176,7 @@ py -3.12 FM27GEN1_Offline_FMF_Generator.py "NEW_TACTIC.json" --catalog "catalog.
 
 新战术不需要 GEN1，也不必把配方写入仓库。工作流支持三种输入，共用同一原生生成器：
 
-1. **Actions 内联 JSON（推荐的人工入口）：** 在 Actions 页面手动运行 **FM27 Tactic Build**，只填写 `recipe_json`，粘贴完整 JSON 对象；不要填写 `recipe_path`。runner 会把输入写到自己的临时目录，不提交到仓库。
+1. **Actions 内联 JSON（推荐的人工入口）：** 在 Actions 页面手动运行 **FM27 Tactic Build**，只填写 `recipe_json`，粘贴完整 JSON 对象；不要填写 `recipe_path`。输入作为 workflow output/env 单行 JSON 传给 Python 构建进程，不创建临时配方文件，也不提交到仓库。
 2. **repository_dispatch（自动化对象入口）：** 事件类型为 `fm27_tactic_build`，完整对象放在 `client_payload.recipe`。不创建配方文件。
 3. **仓库 JSON 文件入口：** 将单份 UTF-8 JSON 放到 `build_requests/` 后 push 到 `main`。适合需要保留配方版本记录的任务。
 
@@ -198,7 +198,7 @@ py -3.12 FM27GEN1_Offline_FMF_Generator.py "NEW_TACTIC.json" --catalog "catalog.
 
 GitHub Actions 在 `ubuntu-latest` runner 中执行：
 
-1. checkout 生成器源码、`catalog.json`、风格注册表和所有原生模板；内联对象配方只在 runner 临时目录；
+1. checkout 生成器源码、`catalog.json`、风格注册表和所有原生模板；内联对象通过 workflow output/env 变量传递，不落地为临时配方文件；
 2. 安装 Python 3.12 与生成器依赖；
 3. 执行 `validate_fm27_tactic_delivery.py`，强制 22/22 阶段至少一条 PI；
 4. 将结构化对象解码为 Python 字典，调用 `build_fmf_from_recipe(dict, catalog)` 同一正式 API；
