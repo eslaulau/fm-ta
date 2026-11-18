@@ -835,6 +835,71 @@ def load_recipe_input(path:Path)->tuple[dict,str]:
         raise ValueError('战术配方根节点必须是 JSON 对象')
     return recipe,input_format
 
+def validate_recipe_structure(recipe: dict) -> None:
+    """Reject malformed or silently ignored fields before native encoding starts."""
+    allowed_root = {'v', 'name', 'ment', 'base', 'ti', 'p'}
+    required_root = {'v', 'ment', 'base', 'p'}
+    unknown_root = set(recipe) - allowed_root
+    missing_root = required_root - set(recipe)
+    if unknown_root:
+        raise ValueError(f'战术配方包含未知根字段：{sorted(unknown_root)}')
+    if missing_root:
+        raise ValueError(f'战术配方缺少必需根字段：{sorted(missing_root)}')
+    if isinstance(recipe['v'], bool) or not isinstance(recipe['v'], int) or recipe['v'] != 1:
+        raise ValueError('配方版本 v 必须是整数 1')
+    if 'name' in recipe and not isinstance(recipe['name'], str):
+        raise ValueError('name 必须是字符串')
+    if isinstance(recipe['ment'], bool) or not isinstance(recipe['ment'], int) or not 1 <= recipe['ment'] <= 7:
+        raise ValueError('心态 ment 必须是 1–7 的整数')
+
+    base = recipe['base']
+    if not isinstance(base, dict):
+        raise ValueError('base 必须是对象')
+    unknown_base = set(base) - {'g'}
+    if unknown_base:
+        raise ValueError(f'base 包含未知字段：{sorted(unknown_base)}')
+    if not isinstance(base.get('g'), str) or not base['g'].strip():
+        raise ValueError('base.g 必须是非空风格名称字符串')
+
+    ti = recipe.get('ti', {})
+    if not isinstance(ti, dict):
+        raise ValueError('ti 必须是对象')
+    for key, value in ti.items():
+        if not isinstance(key, str) or not isinstance(value, str):
+            raise ValueError('ti 的组名和值都必须是字符串')
+
+    players = recipe['p']
+    if not isinstance(players, list) or len(players) != 11:
+        raise ValueError('p 必须是恰好包含 11 个槽位的数组')
+    for slot, spec in enumerate(players):
+        if not isinstance(spec, dict):
+            raise ValueError(f'p[{slot}] 必须是对象')
+        if set(spec) != {'in', 'out'}:
+            raise ValueError(f'p[{slot}] 只能包含 in 和 out 两个阶段对象')
+        for phase_key in ('in', 'out'):
+            item = spec[phase_key]
+            if not isinstance(item, dict):
+                raise ValueError(f'p[{slot}].{phase_key} 必须是对象')
+            allowed_phase = {'pos', 'role', 'pi', 'duty'}
+            required_phase = {'pos', 'role', 'pi'}
+            unknown_phase = set(item) - allowed_phase
+            missing_phase = required_phase - set(item)
+            if unknown_phase:
+                raise ValueError(f'p[{slot}].{phase_key} 包含未知字段：{sorted(unknown_phase)}')
+            if missing_phase:
+                raise ValueError(f'p[{slot}].{phase_key} 缺少必需字段：{sorted(missing_phase)}')
+            for field in ('pos', 'role'):
+                if not isinstance(item[field], str) or not item[field].strip():
+                    raise ValueError(f'p[{slot}].{phase_key}.{field} 必须是非空字符串')
+            if not isinstance(item['pi'], list):
+                raise ValueError(f'p[{slot}].{phase_key}.pi 必须是数组')
+            for pi_index, pair in enumerate(item['pi']):
+                if (not isinstance(pair, list) or len(pair) != 2 or
+                        any(not isinstance(value, str) or not value.strip() for value in pair)):
+                    raise ValueError(f'p[{slot}].{phase_key}.pi[{pi_index}] 必须是 [group, option] 字符串数组')
+            if 'duty' in item and (isinstance(item['duty'], bool) or not isinstance(item['duty'], (str, int))):
+                raise ValueError(f'p[{slot}].{phase_key}.duty 必须是 D/S/A 名称或原生整数 bit')
+
 def build_fmf_from_recipe(
     recipe: dict,
     catalog: dict,
@@ -852,6 +917,7 @@ def build_fmf_from_recipe(
     """
     if not isinstance(recipe, dict):
         raise ValueError('战术配方必须是 Python dict / JSON object')
+    validate_recipe_structure(recipe)
     if not isinstance(catalog, dict):
         raise ValueError('catalog 必须是对象')
 
