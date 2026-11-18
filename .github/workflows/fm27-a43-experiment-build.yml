@@ -27,8 +27,8 @@ jobs:
 
       - name: Generate native FMF and same-run report
         env:
-          RECIPE_PATH: build_requests/a43_experiments/FM27_A4.3_Mechanism_01_LateRuns.json
-          OUTPUT_STEM: FM27_A4.3_Mechanism_01_LateRuns_run${{ github.run_number }}
+          RECIPE_PATH: build_requests/a43_experiments/FM27_A4.3_Vanco_Defensive_Block_01.json
+          OUTPUT_STEM: FM27_A4.3_Vanco_Defensive_Block_01_run${{ github.run_number }}
         run: |
           python scripts/build_fm27_tactic.py \
             --recipe-path "$RECIPE_PATH" \
@@ -39,7 +39,7 @@ jobs:
 
       - name: Enforce D3 readback and single-variable integrity
         env:
-          OUTPUT_STEM: FM27_A4.3_Mechanism_01_LateRuns_run${{ github.run_number }}
+          OUTPUT_STEM: FM27_A4.3_Vanco_Defensive_Block_01_run${{ github.run_number }}
         run: |
           python - "$RUNNER_TEMP/$OUTPUT_STEM.fmf" "$RUNNER_TEMP/$OUTPUT_STEM.report.json" <<'PY'
           import hashlib
@@ -77,14 +77,10 @@ jobs:
           if len(phases) != 22 or len(readback) != 22:
               raise SystemExit("Expected 22 designed and 22 read-back phases.")
 
-          # A4.3 original had five PIs. This experiment adds exactly one
-          # permission-checked IP instruction to slot 6 (MCL): Late Runs.
+          # A4.3's five original PIs are preserved unchanged; this experiment changes TI only.
           total_pi = sum(int(x.get("pi_count", 0)) for x in phases)
-          target = [x for x in phases if x.get("slot") == 6 and x.get("phase") == "in"]
-          if len(target) != 1 or int(target[0].get("pi_count", 0)) != 1:
-              raise SystemExit("Expected exactly one new PI on slot 6 IP (MCL).")
-          if total_pi != 6:
-              raise SystemExit(f"Expected six total PIs (five A4.3 + one experiment), got {total_pi}.")
+          if total_pi != 5:
+              raise SystemExit(f"Expected five original A4.3 PIs, got {total_pi}.")
 
           digest = hashlib.sha256(fmf_path.read_bytes()).hexdigest()
           if report.get("sha256") != digest:
@@ -104,9 +100,9 @@ jobs:
         if: success()
         uses: actions/upload-artifact@v4
         with:
-          name: FM27_A4.3_Mechanism_01_LateRuns
+          name: FM27_A4.3_Vanco_Defensive_Block_01
           path: |
-            ${{ runner.temp }}/FM27_A4.3_Mechanism_01_LateRuns_run${{ github.run_number }}.fmf
-            ${{ runner.temp }}/FM27_A4.3_Mechanism_01_LateRuns_run${{ github.run_number }}.report.json
+            ${{ runner.temp }}/FM27_A4.3_Vanco_Defensive_Block_01_run${{ github.run_number }}.fmf
+            ${{ runner.temp }}/FM27_A4.3_Vanco_Defensive_Block_01_run${{ github.run_number }}.report.json
           if-no-files-found: error
           retention-days: 14
