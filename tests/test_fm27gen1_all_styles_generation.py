@@ -104,6 +104,18 @@ class AllTenNativeStylesGenerationTests(unittest.TestCase):
                 recipe = self.recipe_from_native_sample(style)
                 template_path = (GEN_DIR / style["template"]).resolve()
                 self.assertTrue(template_path.is_file(), str(template_path))
+
+                # Exercise the public in-memory API across every registered style,
+                # independently of the lower-level apply/write smoke test below.
+                direct_fmf, direct_report = self.gen.build_fmf_from_recipe(
+                    recipe, self.catalog, self.registry
+                )
+                direct_parsed = self.gen.parse_fmf(direct_fmf)
+                direct_tac = self.gen.parse_tac(direct_parsed.data_by_ext[".tac"])
+                self.assertEqual(direct_report["style"], style["name"])
+                self.assertEqual(direct_report["style_code_hex"], style["style_code_hex"])
+                self.assertEqual(len(direct_report["readback_player_phase_map"]), 22)
+                self.assertEqual(direct_tac.style, style["tac_style_string"])
                 template_fmf = self.gen.parse_fmf(template_path.read_bytes())
                 template_tac = self.gen.parse_tac(template_fmf.data_by_ext[".tac"])
                 summary = self.gen.apply_recipe(
