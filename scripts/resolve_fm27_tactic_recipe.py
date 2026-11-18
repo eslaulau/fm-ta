@@ -1,0 +1,171 @@
+#!/usr/bin/env python3
+"""Resolve FM27 build inputs for push, workflow_dispatch, and repository_dispatch."""
+from __future__ import annotations
+
+import json
+import os
+import re
+import subprocess
+from pathlib import Path
+from typing import Any
+
+
+def safe_stem(value: Any) -> str:
+    stem = re.sub(r"[^A-Za-z0-9._-]+", "_", str(value or "FM27_Tactic")).strip("._-")
+    return stem or "FM27_Tactic"
+
+
+def _existing_recipe_path(raw_path: str, repo_root: Path) -> Path:
+    if not raw_path:
+        raise ValueError("recipe_path is empty")
+    raw = Path(raw_path)
+    if raw.is_absolute():
+        raise ValueError("recipe_path must be repository-relative")
+    recipe = (repo_root / raw).resolve()
+    build_dir = (repo_root / "build_requests").resolve()
+    if recipe.parent != build_dir:
+        raise ValueError("recipe_path must point directly inside build_requests/")
+    if recipe.suffix.lower() not in {".json", ".txt"}:
+        raise ValueError("recipe_path must end in .json or .txt")
+    if not recipe.is_file():
+        raise FileNotFoundError(f"Recipe path is missing: {raw_path}")
+    return recipe
+
+
+def _save_inline_recipe(
+    recipe_data: Any, label: str, runner_temp: Path, run_number: str
+) -> dict[str, str | bool]:
+    if not isinstance(recipe_data, dict):
+        raise ValueError("Direct recipe payload must be a JSON object.")
+    stem = safe_stem(recipe_data.get("name"))
+    runner_temp.mkdir(parents=True, exist_ok=True)
+    target = runner_temp / f"{stem}_run{run_number}_input.json"
+    target.write_text(
+        json.dumps(recipe_data, ensure_ascii=False, separators=(",", ":")),
+        encoding="utf-8",
+    )
+    return {
+        "recipe_path": str(target),
+        "output_stem": f"{stem}_run{run_number}",
+        "recipe_label": label,
+        "skip_build": False,
+    }
+
+
+def resolve_recipe_input(
+    *,
+    event_name: str,
+    event_data: dict[str, Any],
+    recipe_path_input: str = "",
+    recipe_json_input: str = "",
+    changed_files: list[str] | None = None,
+    repo_root: Path,
+    runner_temp: Path,
+    run_number: str = "0",
+) -> dict[str, str | bool]:
+    """Return the selected recipe path and artifact stem for one GitHub event."""
+    if event_name == "repository_dispatch":
+        client_payload = event_data.get("client_payload") or {}
+        if not isinstance(client_payload, dict):
+            raise ValueError("repository_dispatch client_payload must be an object")
+        return _save_inline_recipe(
+            client_payload.get("recipe"),
+            "repository_dispatch direct JSON payload",
+            runner_temp,
+            run_number,
+        )
+
+    if event_name == "workflow_dispatch":
+        path_input = recipe_path_input.strip()
+        json_input = recipe_json_input.strip()
+        if bool(path_input) == bool(json_input):
+            raise ValueError("Provide exactly one of recipe_path or recipe_json.")
+        if json_input:
+            try:
+                recipe_data = json.loads(json_input)
+            except json.JSONDecodeError as exc:
+                raise ValueError(f"recipe_json is invalid JSON: {exc}") from exc
+            return _save_inline_recipe(
+                recipe_data,
+                "workflow_dispatch inline JSON payload",
+                runner_temp,
+                run_number,
+            )
+        recipe = _existing_recipe_path(path_input, repo_root)
+        return {
+            "recipe_path": recipe.relative_to(repo_root.resolve()).as_posix(),
+            "output_stem": f"{safe_stem(recipe.stem)}_run{run_number}",
+            "recipe_label": recipe.relative_to(repo_root.resolve()).as_posix(),
+            "skip_build": False,
+        }
+
+    if event_name == "push":
+        recipes = sorted({
+            item.strip()
+            for item in (changed_files or [])
+            if item.strip().startswith("build_requests/")
+            and Path(item.strip()).suffix.lower() in {".json", ".txt"}
+        })
+        if not recipes:
+            return {"skip_build": True}
+        if len(recipes) != 1:
+            raise ValueError(
+                "Each push build must target exactly one JSON or legacy GEN1 TXT under build_requests/. "
+                f"Detected: {recipes}"
+            )
+        recipe = _existing_recipe_path(recipes[0], repo_root)
+        relative = recipe.relative_to(repo_root.resolve()).as_posix()
+        return {
+            "recipe_path": relative,
+            "output_stem": f"{safe_stem(recipe.stem)}_run{run_number}",
+            "recipe_label": relative,
+            "skip_build": False,
+        }
+
+    raise ValueError(f"Unsupported GitHub event: {event_name}")
+
+
+def _changed_files_from_push() -> list[str]:
+    result = subprocess.run(
+        [
+            "git", "diff-tree", "--no-commit-id", "--name-only",
+            "--diff-filter=AM", "-r", "HEAD",
+        ],
+        check=True,
+        capture_output=True,
+        text=True,
+    )
+    return [line.strip() for line in result.stdout.splitlines() if line.strip()]
+
+
+def main() -> int:
+    event_name = os.environ["EVENT_NAME"]
+    event_path = Path(os.environ["EVENT_PATH"])
+    event_data = json.loads(event_path.read_text(encoding="utf-8"))
+    changed_files = _changed_files_from_push() if event_name == "push" else None
+    result = resolve_recipe_input(
+        event_name=event_name,
+        event_data=event_data,
+        recipe_path_input=os.environ.get("RECIPE_PATH_INPUT", ""),
+        recipe_json_input=os.environ.get("RECIPE_JSON_INPUT", ""),
+        changed_files=changed_files,
+        repo_root=Path.cwd(),
+        runner_temp=Path(os.environ["RUNNER_TEMP"]),
+        run_number=os.environ.get("GITHUB_RUN_NUMBER", "0"),
+    )
+    with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as output:
+        for key in ("recipe_path", "output_stem", "recipe_label", "skip_build"):
+            if key in result:
+                output.write(f"{key}={str(result[key]).lower() if isinstance(result[key], bool) else result[key]}\n")
+    if result.get("skip_build"):
+        print("No added or modified build request in this push; skipping build.")
+    else:
+        print(f"Recipe selected: {result['recipe_label']}")
+    return 0
+
+
+if __name__ == "__main__":
+    try:
+        raise SystemExit(main())
+    except Exception as exc:
+        raise SystemExit(f"Recipe input resolution failed: {type(exc).__name__}: {exc}") from exc
