@@ -1,270 +1,270 @@
 {
-  "v": 1,
-  "name": "Experimental Unmapped Mapping Import Test v1",
-  "ment": 5,
-  "base": {
-    "g": "Gegenpress"
-  },
-  "ti": {
-    "PASSING_DIRECTNESS": "MORE_DIRECT",
-    "TEMPO": "MUCH_HIGHER",
-    "ATTACKING_WIDTH": "WIDER",
-    "ATTACKING_TRANSITION": "COUNTER_ATTACK",
-    "CREATIVE_FREEDOM": "MORE_EXPRESSIVE",
-    "BUILD_UP_STRATEGY": "BYPASS_PRESS",
-    "SUPPORTING_RUNS": "RIGHT_INSIDE",
-    "DEFENSIVE_LINE": "MUCH_HIGHER",
-    "LINE_OF_ENGAGEMENT": "HIGH_PRESS",
-    "TRIGGER_PRESS": "MUCH_MORE_OFTEN",
-    "DEFENSIVE_TRANSITION": "COUNTER_PRESS",
-    "TACKLING": "GET_STUCK_IN",
-    "PRESSING_TRAP": "TRAP_INSIDE",
-    "CROSSING_STYLE": "WHIPPED_CROSSES",
-    "PROGRESS_THROUGH": "RIGHT",
-    "GOALKEEPER_DISTRIBUTION": "PLAYMAKER"
-  },
-  "p": [
-    {
-      "in": {
-        "pos": "GK",
-        "role": "Goalkeeper",
-        "pi": [
-          [
-            "PASSING_STRATEGY",
-            "SHORTER"
-          ]
-        ]
-      },
-      "out": {
-        "pos": "GK",
-        "role": "Goalkeeper",
-        "pi": [
-          [
-            "TACKLING",
-            "EASE_OFF_TACKLES"
-          ]
-        ]
-      }
+    "v": 1,
+    "name": "Experimental Unmapped Mapping Import Test v1",
+    "ment": 5,
+    "base": {
+        "g": "Gegenpress"
     },
-    {
-      "in": {
-        "pos": "DR",
-        "role": "FullBack",
-        "pi": [
-          [
-            "CROSSING_FREQUENCY",
-            "BYLINE"
-          ]
-        ]
-      },
-      "out": {
-        "pos": "DR",
-        "role": "PressingFullBack",
-        "pi": [
-          [
-            "TACKLING",
-            "GET_STUCK_IN"
-          ]
-        ]
-      }
+    "ti": {
+        "PASSING_DIRECTNESS": "MORE_DIRECT",
+        "TEMPO": "MUCH_HIGHER",
+        "ATTACKING_WIDTH": "WIDER",
+        "ATTACKING_TRANSITION": "COUNTER_ATTACK",
+        "CREATIVE_FREEDOM": "MORE_EXPRESSIVE",
+        "BUILD_UP_STRATEGY": "BYPASS_PRESS",
+        "SUPPORTING_RUNS": "RIGHT_INSIDE",
+        "DEFENSIVE_LINE": "MUCH_HIGHER",
+        "LINE_OF_ENGAGEMENT": "HIGH_PRESS",
+        "TRIGGER_PRESS": "MUCH_MORE_OFTEN",
+        "DEFENSIVE_TRANSITION": "COUNTER_PRESS",
+        "TACKLING": "GET_STUCK_IN",
+        "PRESSING_TRAP": "TRAP_INSIDE",
+        "CROSSING_STYLE": "WHIPPED_CROSSES",
+        "PROGRESS_THROUGH": "RIGHT",
+        "GOALKEEPER_DISTRIBUTION": "PLAYMAKER"
     },
-    {
-      "in": {
-        "pos": "DCR",
-        "role": "BallPlayingCentreBack",
-        "pi": [
-          [
-            "PASSING_STRATEGY",
-            "SHORTER"
-          ]
-        ]
-      },
-      "out": {
-        "pos": "DCR",
-        "role": "CoveringCentreBack",
-        "pi": [
-          [
-            "MARKING",
-            "MARK_TIGHTER"
-          ]
-        ]
-      }
-    },
-    {
-      "in": {
-        "pos": "DCL",
-        "role": "CentreBack",
-        "pi": [
-          [
-            "PASSING_STRATEGY",
-            "MORE_DIRECT"
-          ]
-        ]
-      },
-      "out": {
-        "pos": "DCL",
-        "role": "StoppingCentreBack",
-        "pi": [
-          [
-            "TACKLING",
-            "GET_STUCK_IN"
-          ]
-        ]
-      }
-    },
-    {
-      "in": {
-        "pos": "DL",
-        "role": "WingBack",
-        "pi": [
-          [
-            "CROSSING_TARGET",
-            "BACK_POST"
-          ]
-        ]
-      },
-      "out": {
-        "pos": "DL",
-        "role": "FullBack",
-        "pi": [
-          [
-            "TRIGGER_PRESS",
-            "LESS_OFTEN"
-          ]
-        ]
-      }
-    },
-    {
-      "in": {
-        "pos": "DMC",
-        "role": "DefensiveMidfielder",
-        "pi": [
-          [
-            "PASSING_RISKS",
-            "TAKE_FEWER_RISKS"
-          ]
-        ]
-      },
-      "out": {
-        "pos": "MCR",
-        "role": "ScreeningCentralMidfielder",
-        "pi": [
-          [
-            "TACKLING",
-            "EASE_OFF_TACKLES"
-          ]
-        ]
-      }
-    },
-    {
-      "in": {
-        "pos": "MC",
-        "role": "CentralMidfielder",
-        "pi": [
-          [
-            "ROAMING",
-            "ROAM_FROM_POSITION"
-          ]
-        ]
-      },
-      "out": {
-        "pos": "MCL",
-        "role": "PressingCentralMidfielder",
-        "pi": [
-          [
-            "TACKLING",
-            "GET_STUCK_IN"
-          ]
-        ]
-      }
-    },
-    {
-      "in": {
-        "pos": "AMR",
-        "role": "InsideForward",
-        "pi": [
-          [
-            "CROSSING_TARGET",
-            "BACK_POST"
-          ]
-        ]
-      },
-      "out": {
-        "pos": "MR",
-        "role": "TrackingWideMidfielder",
-        "pi": [
-          [
-            "TRIGGER_PRESS",
-            "LESS_OFTEN"
-          ]
-        ]
-      }
-    },
-    {
-      "in": {
-        "pos": "AMC",
-        "role": "AdvancedPlaymaker",
-        "pi": [
-          [
-            "ROAMING",
-            "ROAM_FROM_POSITION"
-          ]
-        ]
-      },
-      "out": {
-        "pos": "STR",
-        "role": "CentreForward",
-        "pi": [
-          [
-            "TRIGGER_PRESS",
-            "MORE_OFTEN"
-          ]
-        ]
-      }
-    },
-    {
-      "in": {
-        "pos": "AML",
-        "role": "Winger",
-        "pi": [
-          [
-            "ATTACKING_WIDTH",
-            "STAY_WIDER"
-          ]
-        ]
-      },
-      "out": {
-        "pos": "ML",
-        "role": "WideMidfielder",
-        "pi": [
-          [
-            "MARKING",
-            "MARK_TIGHTER"
-          ]
-        ]
-      }
-    },
-    {
-      "in": {
-        "pos": "ST",
-        "role": "CentreForward",
-        "pi": [
-          [
-            "ATTACK_BOX_DEPTH",
-            "LATE_RUNS"
-          ]
-        ]
-      },
-      "out": {
-        "pos": "STL",
-        "role": "TrackingCentreForward",
-        "pi": [
-          [
-            "TACKLING",
-            "EASE_OFF_TACKLES"
-          ]
-        ]
-      }
-    }
-  ]
+    "p": [
+        {
+            "in": {
+                "pos": "GK",
+                "role": "Goalkeeper",
+                "pi": [
+                    [
+                        "PASSING_STRATEGY",
+                        "SHORTER"
+                    ]
+                ]
+            },
+            "out": {
+                "pos": "GK",
+                "role": "Goalkeeper",
+                "pi": [
+                    [
+                        "TACKLING",
+                        "EASE_OFF_TACKLES"
+                    ]
+                ]
+            }
+        },
+        {
+            "in": {
+                "pos": "DR",
+                "role": "FullBack",
+                "pi": [
+                    [
+                        "CROSSING_FREQUENCY",
+                        "BYLINE"
+                    ]
+                ]
+            },
+            "out": {
+                "pos": "DR",
+                "role": "PressingFullBack",
+                "pi": [
+                    [
+                        "TACKLING",
+                        "GET_STUCK_IN"
+                    ]
+                ]
+            }
+        },
+        {
+            "in": {
+                "pos": "DCR",
+                "role": "BallPlayingCentreBack",
+                "pi": [
+                    [
+                        "PASSING_STRATEGY",
+                        "SHORTER"
+                    ]
+                ]
+            },
+            "out": {
+                "pos": "DCR",
+                "role": "CoveringCentreBack",
+                "pi": [
+                    [
+                        "MARKING",
+                        "MARK_TIGHTER"
+                    ]
+                ]
+            }
+        },
+        {
+            "in": {
+                "pos": "DCL",
+                "role": "CentreBack",
+                "pi": [
+                    [
+                        "PASSING_STRATEGY",
+                        "MORE_DIRECT"
+                    ]
+                ]
+            },
+            "out": {
+                "pos": "DCL",
+                "role": "StoppingCentreBack",
+                "pi": [
+                    [
+                        "TACKLING",
+                        "GET_STUCK_IN"
+                    ]
+                ]
+            }
+        },
+        {
+            "in": {
+                "pos": "DL",
+                "role": "WingBack",
+                "pi": [
+                    [
+                        "CROSSING_TARGET",
+                        "BACK_POST"
+                    ]
+                ]
+            },
+            "out": {
+                "pos": "DL",
+                "role": "FullBack",
+                "pi": [
+                    [
+                        "TRIGGER_PRESS",
+                        "LESS_OFTEN"
+                    ]
+                ]
+            }
+        },
+        {
+            "in": {
+                "pos": "DMC",
+                "role": "DefensiveMidfielder",
+                "pi": [
+                    [
+                        "PASSING_RISKS",
+                        "TAKE_FEWER_RISKS"
+                    ]
+                ]
+            },
+            "out": {
+                "pos": "MCR",
+                "role": "ScreeningCentralMidfielder",
+                "pi": [
+                    [
+                        "TACKLING",
+                        "EASE_OFF_TACKLES"
+                    ]
+                ]
+            }
+        },
+        {
+            "in": {
+                "pos": "MC",
+                "role": "CentralMidfielder",
+                "pi": [
+                    [
+                        "ROAMING",
+                        "ROAM_FROM_POSITION"
+                    ]
+                ]
+            },
+            "out": {
+                "pos": "MCL",
+                "role": "PressingCentralMidfielder",
+                "pi": [
+                    [
+                        "TACKLING",
+                        "GET_STUCK_IN"
+                    ]
+                ]
+            }
+        },
+        {
+            "in": {
+                "pos": "AMR",
+                "role": "InsideForward",
+                "pi": [
+                    [
+                        "CROSSING_TARGET",
+                        "BACK_POST"
+                    ]
+                ]
+            },
+            "out": {
+                "pos": "MR",
+                "role": "TrackingWideMidfielder",
+                "pi": [
+                    [
+                        "TRIGGER_PRESS",
+                        "LESS_OFTEN"
+                    ]
+                ]
+            }
+        },
+        {
+            "in": {
+                "pos": "AMC",
+                "role": "AdvancedPlaymaker",
+                "pi": [
+                    [
+                        "ROAMING",
+                        "ROAM_FROM_POSITION"
+                    ]
+                ]
+            },
+            "out": {
+                "pos": "STR",
+                "role": "CentreForward",
+                "pi": [
+                    [
+                        "TRIGGER_PRESS",
+                        "MORE_OFTEN"
+                    ]
+                ]
+            }
+        },
+        {
+            "in": {
+                "pos": "AML",
+                "role": "Winger",
+                "pi": [
+                    [
+                        "ATTACKING_WIDTH",
+                        "STAY_WIDER"
+                    ]
+                ]
+            },
+            "out": {
+                "pos": "ML",
+                "role": "WideMidfielder",
+                "pi": [
+                    [
+                        "MARKING",
+                        "MARK_TIGHTER"
+                    ]
+                ]
+            }
+        },
+        {
+            "in": {
+                "pos": "ST",
+                "role": "CentreForward",
+                "pi": [
+                    [
+                        "ATTACK_BOX_DEPTH",
+                        "LATE_RUNS"
+                    ]
+                ]
+            },
+            "out": {
+                "pos": "STL",
+                "role": "TrackingCentreForward",
+                "pi": [
+                    [
+                        "TACKLING",
+                        "EASE_OFF_TACKLES"
+                    ]
+                ]
+            }
+        }
+    ]
 }
