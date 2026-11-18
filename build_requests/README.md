@@ -29,6 +29,8 @@ python "04_离线原生FMF生成器/FM27GEN1_Offline_FMF_Generator.py" "build_re
 
 原生生成器仍执行角色/位置/duty 验证、每一条 PI 的原生权限检查、TI 编码、模板风格核对，以及 FMF/TAC 独立回读。回读报告中的 `recipe_input_format` 应为 `json`。
 
+正式交付额外要求 **22/22 个阶段均至少填写一条 PI**。云端在原生 FMF 写入之前运行 `scripts/validate_fm27_tactic_delivery.py`，任何空 PI 阶段都会明确报出槽位/阶段并中止构建；这与生成器为通用烟雾测试保留空数组兼容不同。
+
 ## 自动验收
 
 工作流先运行 direct-JSON 到原生 FMF 的端到端回归测试，再对本次请求检查 PI/TI 映射和 22 个阶段权限，随后实际生成本次 `.fmf` 与 `.report.json`。要求 22 个阶段设计表与回读表均完整，容器、TAC、位置/角色/职责/PI、TI、原生风格字段的独立回读检查全部通过。
