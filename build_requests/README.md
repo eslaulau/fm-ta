@@ -8,7 +8,7 @@
 2. 文件名示例：`My_Original_Tactic_GEN1.txt`。
 3. 文件内容必须是完整的单行 `FM27GEN1:` + Base64 编码 JSON。
 4. 将文件新增或更新到本目录的直接子路径，例如 `build_requests/My_Original_Tactic_GEN1.txt`。
-5. 每个 commit 只修改/新增一份要构建的 GEN1 TXT。提交到 `main` 后会自动触发构建。
+5. 每次 push 事件只修改/新增一份要构建的 GEN1 TXT；多份配方应分开 push。提交到 `main` 后会自动触发构建。
 
 ## 云端工作流
 
