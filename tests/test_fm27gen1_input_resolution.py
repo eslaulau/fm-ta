@@ -103,10 +103,12 @@ class TacticRecipeInputResolverTests(unittest.TestCase):
             **common
         )
         self.assertEqual(selected["recipe_path"], "build_requests/one.json")
+        # The CLI obtains changed_files through git diff-tree --diff-filter=AM,
+        # so a deletion-only push reaches this resolver as an empty list.
         skipped = resolver.resolve_recipe_input(
             event_name="push",
             event_data={},
-            changed_files=["build_requests/deleted.json"],
+            changed_files=[],
             **common
         )
         self.assertTrue(skipped["skip_build"])
