@@ -52,6 +52,31 @@
 
 2026-11-18 新增一批实验性 PI/TI 映射，并构建 `build_requests/Unmapped_Mapping_Import_Test_v1.txt` 进行 FMF 实验。原生目录对照、22 个阶段 PI 权限及离线 FMF 回读均通过。2026-11-18 用户反馈导入 FM27 后新增球队指令和球员指令全部显示，故本批映射已通过游戏内导入显示验证；比赛效果仍未验证。对应测试为 `tests/test_fm27gen1_experimental_unmapped_mapping.py`，明细见 [字段契约](FM27GEN1_离线原生FMF_字段契约.md)。
 
+## 内存对象直连 API（不经过文件中间层）
+
+生成器现在公开 `build_fmf_from_recipe(recipe, catalog, style_registry=None, template_path=None)`。
+
+调用方若已在内存中得到完整 Python `dict`，可直接得到原生 FMF 字节和同次回读报告；不需要先保存 `.json`，更不需要 GEN1/Base64。命令行 JSON 和旧 GEN1 输入也共用该函数，因此不会分叉出第二套 FMF 编码路径。
+
+```python
+import json
+from pathlib import Path
+import sys
+
+generator_dir = Path(r"04_离线原生FMF生成器")
+sys.path.insert(0, str(generator_dir.resolve()))
+import FM27GEN1_Offline_FMF_Generator as gen
+
+recipe = json.loads(Path("NEW_TACTIC.json").read_text(encoding="utf-8"))
+catalog = json.loads((generator_dir / "catalog.json").read_text(encoding="utf-8"))
+fmf_bytes, report = gen.build_fmf_from_recipe(recipe, catalog)
+Path("NEW_TACTIC.fmf").write_bytes(fmf_bytes)
+Path("NEW_TACTIC.report.json").write_text(
+    json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8"
+)
+```
+
+返回报告默认标记 `recipe_input_format=python_dict`，并已完成 FMF 外层、成员解密、TAC、22 个阶段与 PI/TI/风格字段的 D3 独立回读。D4 游戏内导入和 D5 比赛效果仍需分别验收。
 ## Windows 使用方法
 
 1. 先运行 `安装依赖.bat`。
