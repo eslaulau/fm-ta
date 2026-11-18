@@ -110,20 +110,27 @@ jobs:
       - name: Enforce D3 independent-readback result
         env:
           OUTPUT_STEM: ${{ steps.recipe.outputs.output_stem }}
+          RECIPE_PATH: ${{ steps.recipe.outputs.recipe_path }}
         run: |
-          python - "$RUNNER_TEMP/$OUTPUT_STEM.fmf" "$RUNNER_TEMP/$OUTPUT_STEM.report.json" <<'PY'
+          python - "$RUNNER_TEMP/$OUTPUT_STEM.fmf" "$RUNNER_TEMP/$OUTPUT_STEM.report.json" "$RECIPE_PATH" <<'PY'
           import hashlib
           import json
           import sys
           from pathlib import Path
 
-          fmf_path, report_path = map(Path, sys.argv[1:])
+          fmf_path, report_path, recipe_path = map(Path, sys.argv[1:])
           if not fmf_path.is_file() or fmf_path.stat().st_size == 0:
               raise SystemExit(f"FMF output missing or empty: {fmf_path}")
           if not report_path.is_file():
               raise SystemExit(f"Same-run report missing: {report_path}")
 
           report = json.loads(report_path.read_text(encoding="utf-8"))
+          expected_input_format = "json" if recipe_path.suffix.lower() == ".json" else "legacy_gen1_base64"
+          if report.get("recipe_input_format") != expected_input_format:
+              raise SystemExit(
+                  f"Recipe input format mismatch: expected {expected_input_format!r}, "
+                  f"got {report.get('recipe_input_format')!r}"
+              )
           if report.get("status") != "offline_binary_roundtrip_verified_not_game_import_verified":
               raise SystemExit(f"Unexpected report status: {report.get('status')!r}")
 
