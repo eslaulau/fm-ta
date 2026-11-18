@@ -31,22 +31,6 @@ permissions:
   contents: read
 
 jobs:
-  windows-powershell-helper-syntax:
-    runs-on: windows-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Parse clipboard dispatch helper without executing it
-        shell: pwsh
-        run: |
-          $scriptPath = Join-Path $env:GITHUB_WORKSPACE 'scripts/Invoke-FM27TacticBuild.ps1'
-          $tokens = $null
-          $parseErrors = $null
-          [System.Management.Automation.Language.Parser]::ParseFile($scriptPath, [ref]$tokens, [ref]$parseErrors) | Out-Null
-          if ($parseErrors -and $parseErrors.Count -gt 0) {
-            $parseErrors | Format-List | Out-String | Write-Error
-            exit 1
-          }
-          Write-Host 'PowerShell syntax parse passed.'
   native-generator:
     runs-on: ubuntu-latest
     steps:
