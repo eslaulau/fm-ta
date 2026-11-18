@@ -63,6 +63,7 @@ jobs:
         run: |
           python tests/test_fm27gen1_direct_json_input.py
           python tests/test_fm27gen1_experimental_unmapped_mapping.py
+          python scripts/validate_fm27_tactic_delivery.py "$RECIPE_PATH"
 
       - name: Generate native FMF and same-run report
         if: steps.recipe.outputs.skip_build != 'true'
