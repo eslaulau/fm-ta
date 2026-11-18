@@ -11,6 +11,8 @@ on:
       - "04_离线原生FMF生成器/**"
       - "*.fmf"
       - "tests/**"
+      - "scripts/**"
+      - ".github/workflows/fm27-tactic-build.yml"
       - ".github/workflows/test-fm-ta-native-generation.yml"
   pull_request:
     paths:
