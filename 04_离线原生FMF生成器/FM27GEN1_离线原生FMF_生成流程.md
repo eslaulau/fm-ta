@@ -174,34 +174,36 @@ py -3.12 FM27GEN1_Offline_FMF_Generator.py "NEW_TACTIC.json" --catalog "catalog.
 
 ## 8.1 正式云端战术构建流程（默认正式交付通道）
 
-新战术通过**直接 JSON**进入云端构建。设计阶段输出完整 UTF-8 JSON 对象，仓库和工作流不再要求创建 GEN1 中间文本。
+新战术不需要 GEN1，也不必把配方写入仓库。工作流支持三种输入，共用同一原生生成器：
 
-### A. 提交本次唯一 JSON 配方
+1. **Actions 内联 JSON（推荐的人工入口）：** 在 Actions 页面手动运行 **FM27 Tactic Build**，只填写 `recipe_json`，粘贴完整 JSON 对象；不要填写 `recipe_path`。runner 会把输入写到自己的临时目录，不提交到仓库。
+2. **repository_dispatch（自动化对象入口）：** 事件类型为 `fm27_tactic_build`，完整对象放在 `client_payload.recipe`。不创建配方文件。
+3. **仓库 JSON 文件入口：** 将单份 UTF-8 JSON 放到 `build_requests/` 后 push 到 `main`。适合需要保留配方版本记录的任务。
 
-1. 完成原创战术设计、22 个阶段角色/职责配置、TI/PI 配置和原生权限预检。
-2. 将完整 JSON 对象保存到仓库根目录 `build_requests/`，例如：
+旧版 `.txt` 的 `FM27GEN1:Base64` 只保留读取兼容。三种正式入口都不需要 GEN1 中间格式。
 
-```text
-build_requests/Vertical_Overload_v1.json
-```
+### A. 输入与项目级配方检查
 
-3. 每次 push 到 `main` 只新增或修改一份待构建 JSON；一次 push 不要提交多份待构建配方。源 JSON 留在仓库便于追溯，不把输出 FMF 提交到源码目录。
+1. 完成原创战术设计、11 个槽位、22 个 IP/OOP 阶段、角色/职责、TI 和 PI 配置。
+2. 每个阶段必须至少有一条有效 PI。`scripts/validate_fm27_tactic_delivery.py` 对正式云端构建强制执行 **22/22 非空 PI**；通用 API 仍允许空数组用于结构烟雾测试。
+3. 输入解析由 `scripts/resolve_fm27_tactic_recipe.py` 完成：校验事件类型、JSON 对象、唯一输入和仓库路径边界。内联 JSON 只落在 `$RUNNER_TEMP`，不会写入仓库。
 
 ### B. 触发独立构建工作流
 
-正式构建工作流为 `.github/workflows/fm27-tactic-build.yml`。向 `main` push 一份 `build_requests/*.json` 即自动触发；也可在 Actions 页面手动运行 **FM27 Tactic Build**，将 `recipe_path` 指向已有 JSON 文件。
+正式构建工作流为 `.github/workflows/fm27-tactic-build.yml`。人工可在 Actions 页面使用 `recipe_json`；程序化入口可使用 `repository_dispatch`；需要留档时再 push `build_requests/*.json`。`workflow_dispatch` 必须且只能选择 `recipe_path` 或 `recipe_json` 其中一种输入。
 
-工作流只接受位于 `build_requests/` 直接子目录中的一份 JSON 配方。旧版 `build_requests/*.txt` 中的 GEN1 文件仍可读取，但仅用于兼容已有工件。
+仓库路径模式只接受位于 `build_requests/` 直接子目录中的一份 `.json` 或历史 `.txt` 配方。路径穿越、多个请求、空请求、非对象 JSON 均会被拒绝。
 
 ### C. 云端环境与原生生成
 
 GitHub Actions 在 `ubuntu-latest` runner 中执行：
 
-1. checkout 仓库，取得原生 JSON、生成器源码、`catalog.json`、风格注册表和所有原生模板；
+1. checkout 生成器源码、`catalog.json`、风格注册表和所有原生模板；内联对象配方只在 runner 临时目录；
 2. 安装 Python 3.12 与生成器依赖；
-3. 将 JSON 对象直接传入 `FM27GEN1_Offline_FMF_Generator.py`；
-4. 使用 `apply_recipe()` 现有逻辑执行战术字段校验、位置/角色/duty 验证、PI 权限核对、TI 编码、风格模板选择及 FMF 写入；
-5. 生成同次运行的原生 `.fmf` 与 `.report.json`。
+3. 执行 `validate_fm27_tactic_delivery.py`，强制 22/22 阶段至少一条 PI；
+4. 将结构化对象解码为 Python 字典，调用 `build_fmf_from_recipe(dict, catalog)` 同一正式 API；
+5. 使用 `apply_recipe()` 现有逻辑执行位置/角色/duty、PI 权限、TI 编码、风格模板选择及 FMF 写入；
+6. 生成同次运行的原生 `.fmf` 与 `.report.json`，再执行完整 D3 回读和 SHA256/长度检查。
 
 CLI 等价命令：
 
@@ -217,7 +219,7 @@ python "04_离线原生FMF生成器/FM27GEN1_Offline_FMF_Generator.py" \
 
 ### D. 自动回归与 D3 独立回读
 
-云端工作流先执行 `tests/test_fm27gen1_direct_json_input.py`：把一份真实、完整的战术对象写成普通 JSON，通过正式 CLI 端到端生成原生 FMF，并检查 FMF 与同次 report 的 D3 回读项。随后检查本次请求的 PI/TI 映射与 22 个阶段权限，再实际生成用户本次的 JSON 配方。
+云端工作流执行 `tests/test_fm27gen1_direct_json_input.py` 和实验映射测试，并调用 `validate_fm27_tactic_delivery.py` 对本次输入强制检查 22/22 非空 PI；原生生成器再逐项检查映射和具体角色/位置/duty 权限，最后构建本次 FMF。CI 另有 `tests/test_fm27gen1_input_resolution.py` 覆盖内联输入、dispatch 对象、仓库文件、删除事件跳过与路径安全。
 
 必须确认 FMF 文件存在且非空、report 状态为 `offline_binary_roundtrip_verified_not_game_import_verified`，并通过容器/成员校验、TAC 完整解析、11 组 IP/OOP、22 阶段位置/角色/duty/PI、TI 向量和原生风格回读检查。任何检查失败都不上传 artifact。
 
@@ -253,6 +255,9 @@ Artifact 保留 14 天。助手定位本次 Actions run、下载并检查两个�
 - `tests/test_fm27gen1_native_style_samples.py`：十份原生样本与样本内 PI/角色配置审计。
 - `tests/test_fm27gen1_native_readback.py`：原生回读回归。
 - `tests/test_fm27gen1_official_preset_index.py`：90 条网站预设索引专项审计。
+- `tests/test_fm27gen1_direct_json_input.py`：JSON CLI 与 Python dict API 输出字节一致、完整 D3 回读和严格 schema 测试。
+- `tests/test_fm27gen1_input_resolution.py`：三类云端输入、路径边界和 Unicode artifact 命名测试。
+- `tests/test_fm27gen1_delivery_contract.py`：22/22 阶段非空 PI 交付门槛。
 - GitHub Actions 对样本审计、风格模板和回读测试执行 CI。
 
 样本里已存在的 PI 位通过审计，不等于所有可选 PI 都已映射；十个模板 smoke test 通过，不等于所有角色/位置/duty 组合和所有 TI/PI 组合已经穷举。
