@@ -48,6 +48,10 @@
 
 **不得把 A9.0.2 当作成功案例、推荐战术、默认生成模板、优化起点或其他战术的设计基准。** 它没有完成完整赛季成功验证；对应报告中的 `game_interactive_import=false`、`match_engine=false` 也明确表示没有游戏内导入与比赛引擎证据。除非用户明确要求检查这份历史文件，否则生成新战术时应从用户当前目标和明确限制独立设计；只有用户明确要求时才分析球队/比赛数据。不能因 A9.0.2 曾被生成就复制其阵型、角色或指令。
 
+## 实验性未映射指令导入测试
+
+2026-11-18 新增一批实验性 PI/TI 映射，并构建 `build_requests/Unmapped_Mapping_Import_Test_v1.txt` 进行 FMF 实验。原生目录对照、22 个阶段 PI 权限及离线 FMF 回读均通过；新增映射仍标记为 `unverified_in_game`，需要用户在 FM27 中导入并检查后才能正式验收。对应测试为 `tests/test_fm27gen1_experimental_unmapped_mapping.py`，明细见 [字段契约](FM27GEN1_离线原生FMF_字段契约.md)。
+
 ## Windows 使用方法
 
 1. 先运行 `安装依赖.bat`。
