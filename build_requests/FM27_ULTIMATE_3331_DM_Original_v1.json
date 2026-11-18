@@ -36,7 +36,6 @@
   },
   "p": [
     {
-      "pos": "GK",
       "in": {
         "pos": "GK",
         "role": "BallPlayingGoalkeeper",
@@ -63,7 +62,6 @@
       }
     },
     {
-      "pos": "DCR",
       "in": {
         "pos": "DCR",
         "role": "WideCentreBack",
@@ -90,7 +88,6 @@
       }
     },
     {
-      "pos": "DC",
       "in": {
         "pos": "DC",
         "role": "BallPlayingCentreBack",
@@ -117,7 +114,6 @@
       }
     },
     {
-      "pos": "DCL",
       "in": {
         "pos": "DCL",
         "role": "WideCentreBack",
@@ -144,7 +140,6 @@
       }
     },
     {
-      "pos": "WBR",
       "in": {
         "pos": "WBR",
         "role": "AdvancedWingBack",
@@ -175,7 +170,6 @@
       }
     },
     {
-      "pos": "DMC",
       "in": {
         "pos": "DMC",
         "role": "DefensiveMidfielder",
@@ -202,7 +196,6 @@
       }
     },
     {
-      "pos": "WBL",
       "in": {
         "pos": "WBL",
         "role": "AdvancedWingBack",
@@ -233,7 +226,6 @@
       }
     },
     {
-      "pos": "MCR",
       "in": {
         "pos": "MCR",
         "role": "ChannelMidfielder",
@@ -261,7 +253,6 @@
       }
     },
     {
-      "pos": "MCL",
       "in": {
         "pos": "MCL",
         "role": "ChannelMidfielder",
@@ -288,7 +279,6 @@
       }
     },
     {
-      "pos": "AMC",
       "in": {
         "pos": "AMC",
         "role": "SecondStriker",
@@ -319,7 +309,6 @@
       }
     },
     {
-      "pos": "STC",
       "in": {
         "pos": "STC",
         "role": "CentreForward",
