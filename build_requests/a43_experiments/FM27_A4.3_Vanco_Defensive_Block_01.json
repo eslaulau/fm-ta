@@ -1,0 +1,219 @@
+{
+  "v": 1,
+  "name": "A4.3 Vanco Defensive Block 01",
+  "ment": 5,
+  "base": {
+    "g": "Gegenpress",
+    "ip": "4-2-3-1 DM AM Wide",
+    "oop": "4-3-3 DM Wide"
+  },
+  "ti": {
+    "PASSING_DIRECTNESS": "MORE_DIRECT",
+    "TEMPO": "HIGHER",
+    "ATTACKING_WIDTH": "WIDER",
+    "ATTACKING_TRANSITION": "COUNTER_ATTACK",
+    "CREATIVE_FREEDOM": "DEFAULT",
+    "TIME_WASTING": "DEFAULT",
+    "PLAY_FOR_SET_PIECES": "KEEP_BALL_IN_PLAY",
+    "BUILD_UP_STRATEGY": "PLAY_THROUGH_PRESS",
+    "GOAL_KICKS": "SHORT",
+    "GOALKEEPER_DISTRIBUTION": "CENTRE_BACKS",
+    "GK_DISTRIBUTION_(SPEED)": "DEFAULT",
+    "PROGRESS_THROUGH": "DEFAULT",
+    "PASS_RECEPTION": "PASS_INTO_SPACE",
+    "SUPPORTING_RUNS": "DEFAULT",
+    "PATIENCE": "DEFAULT",
+    "DRIBBLING": "DEFAULT",
+    "SHOTS_FROM_DISTANCE": "DISCOURAGE",
+    "CROSSING_STYLE": "DEFAULT",
+    "LINE_OF_ENGAGEMENT": "MID_BLOCK",
+    "DEFENSIVE_LINE": "MUCH_LOWER",
+    "DEFENSIVE_LINE_BEHAVIOR": "DEFAULT",
+    "TRIGGER_PRESS": "MUCH_MORE_OFTEN",
+    "DEFENSIVE_TRANSITION": "REGROUP",
+    "TACKLING": "GET_STUCK_IN",
+    "PRESSING_TRAP": "DEFAULT",
+    "SHORT_GOALKEEPER_DISTRIBUTION": "YES",
+    "CROSS_ENGAGEMENT": "DEFAULT"
+  },
+  "p": [
+    {
+      "in": {
+        "pos": "GK",
+        "role": "BallPlayingGoalkeeper",
+        "pi": [
+          [
+            "PASSING_STRATEGY",
+            "SHORTER"
+          ]
+        ],
+        "duty": 4194304
+      },
+      "out": {
+        "pos": "GK",
+        "role": "Sweeper Keeper",
+        "pi": [],
+        "duty": 8388608
+      }
+    },
+    {
+      "in": {
+        "pos": "DR",
+        "role": "WingBack",
+        "pi": [],
+        "duty": 4194304
+      },
+      "out": {
+        "pos": "DR",
+        "role": "Holding Full-Back",
+        "pi": [],
+        "duty": 2097152
+      }
+    },
+    {
+      "in": {
+        "pos": "DCR",
+        "role": "CentreBack",
+        "pi": [],
+        "duty": 2097152
+      },
+      "out": {
+        "pos": "DCR",
+        "role": "Covering Centre-Back",
+        "pi": [],
+        "duty": 2097152
+      }
+    },
+    {
+      "in": {
+        "pos": "DCL",
+        "role": "CentreBack",
+        "pi": [],
+        "duty": 2097152
+      },
+      "out": {
+        "pos": "DCL",
+        "role": "Centre-Back",
+        "pi": [],
+        "duty": 2097152
+      }
+    },
+    {
+      "in": {
+        "pos": "DL",
+        "role": "FullBack",
+        "pi": [],
+        "duty": 4194304
+      },
+      "out": {
+        "pos": "DL",
+        "role": "Holding Full-Back",
+        "pi": [],
+        "duty": 2097152
+      }
+    },
+    {
+      "in": {
+        "pos": "MCR",
+        "role": "MidfieldPlaymaker",
+        "pi": [],
+        "duty": 4194304
+      },
+      "out": {
+        "pos": "DMR",
+        "role": "Screening Defensive Midfielder",
+        "pi": [],
+        "duty": 2097152
+      }
+    },
+    {
+      "in": {
+        "pos": "MCL",
+        "role": "ChannelMidfielder",
+        "pi": [],
+        "duty": 8388608
+      },
+      "out": {
+        "pos": "DML",
+        "role": "Defensive Midfielder",
+        "pi": [],
+        "duty": 2097152
+      }
+    },
+    {
+      "in": {
+        "pos": "AMR",
+        "role": "PlaymakingWinger",
+        "pi": [],
+        "duty": 4194304
+      },
+      "out": {
+        "pos": "MR",
+        "role": "Tracking Wide Midfielder",
+        "pi": [],
+        "duty": 2097152
+      }
+    },
+    {
+      "in": {
+        "pos": "AML",
+        "role": "InsideForward",
+        "pi": [
+          [
+            "DRIBBLING_DIRECTION",
+            "CUT_INSIDE_WITH_BALL"
+          ],
+          [
+            "ATTACK_BOX_SIDE",
+            "CENTRE"
+          ]
+        ],
+        "duty": 8388608
+      },
+      "out": {
+        "pos": "ML",
+        "role": "Tracking Wide Midfielder",
+        "pi": [],
+        "duty": 2097152
+      }
+    },
+    {
+      "in": {
+        "pos": "AMC",
+        "role": "AdvancedPlaymaker",
+        "pi": [
+          [
+            "ATTACK_BOX_SIDE",
+            "FAR_POST"
+          ]
+        ],
+        "duty": 8388608
+      },
+      "out": {
+        "pos": "MCL",
+        "role": "Central Midfielder",
+        "pi": [],
+        "duty": 4194304
+      }
+    },
+    {
+      "in": {
+        "pos": "ST",
+        "role": "ChannelForward",
+        "pi": [
+          [
+            "ATTACK_BOX_SIDE",
+            "NEAR_POST"
+          ]
+        ],
+        "duty": 8388608
+      },
+      "out": {
+        "pos": "ST",
+        "role": "Tracking Centre Forward",
+        "pi": [],
+        "duty": 2097152
+      }
+    }
+  ]
+}
