@@ -29,7 +29,7 @@ class TacticRecipeInputResolverTests(unittest.TestCase):
         self.assertEqual(resolver.safe_stem("战术 A"), "战术_A")
         self.assertEqual(resolver.safe_stem("../../unsafe/name"), "unsafe_name")
 
-    def test_workflow_dispatch_inline_json_creates_temp_json_not_repo_file(self):
+    def test_workflow_dispatch_inline_json_stays_in_memory_without_creating_temp_file(self):
         result = resolver.resolve_recipe_input(
             event_name="workflow_dispatch",
             event_data={},
@@ -38,10 +38,9 @@ class TacticRecipeInputResolverTests(unittest.TestCase):
             runner_temp=self.runner_temp,
             run_number="12",
         )
-        path = Path(result["recipe_path"])
-        self.assertTrue(path.is_file())
-        self.assertEqual(json.loads(path.read_text(encoding="utf-8")), self.recipe)
-        self.assertEqual(path.parent, self.runner_temp)
+        self.assertNotIn("recipe_path", result)
+        self.assertEqual(json.loads(result["recipe_json"]), self.recipe)
+        self.assertFalse(self.runner_temp.exists())
         self.assertEqual(result["output_stem"], "原创战术_A_run12")
 
     def test_repository_dispatch_accepts_recipe_object(self):
@@ -52,8 +51,9 @@ class TacticRecipeInputResolverTests(unittest.TestCase):
             runner_temp=self.runner_temp,
             run_number="13",
         )
-        self.assertTrue(Path(result["recipe_path"]).is_file())
-        self.assertEqual(json.loads(Path(result["recipe_path"]).read_text(encoding="utf-8")), self.recipe)
+        self.assertNotIn("recipe_path", result)
+        self.assertEqual(json.loads(result["recipe_json"]), self.recipe)
+        self.assertFalse(self.runner_temp.exists())
         self.assertIn("repository_dispatch", result["recipe_label"])
 
     def test_dispatch_requires_exactly_one_input_and_object_payload(self):
