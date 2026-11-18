@@ -1,11 +1,9 @@
 name: FM27 A4.3 Single-Mechanism Experiment Build
-run-name: A4.3 experiment build · ${{ inputs.recipe_path || 'push-triggered recipe' }}
+run-name: A4.3 experiment build · ${{ inputs.recipe_path || github.event_name }}
 
 on:
   push:
     branches: [main]
-    paths:
-      - "build_requests/a43_experiments/**"
   workflow_dispatch:
     inputs:
       recipe_path:
@@ -24,36 +22,80 @@ jobs:
     steps:
       - name: Check out generator, catalog, and native templates
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Determine whether this push requires a build
+        id: meta
+        env:
+          RECIPE_INPUT: ${{ inputs.recipe_path || 'build_requests/a43_experiments/FM27_A4.3_Vanco_Defensive_Block_01.json' }}
+          PUSH_BEFORE: ${{ github.event.before }}
+        run: |
+          set -euo pipefail
+          should_build=false
+          recipe_path=""
+
+          if [[ "$GITHUB_EVENT_NAME" == "workflow_dispatch" ]]; then
+            recipe_path="$RECIPE_INPUT"
+            should_build=true
+          else
+            if [[ "$PUSH_BEFORE" =~ ^0+$ ]]; then
+              changed_files="$(git diff-tree --no-commit-id --name-only -r "$GITHUB_SHA")"
+            else
+              changed_files="$(git diff --name-only "$PUSH_BEFORE" "$GITHUB_SHA")"
+            fi
+
+            mapfile -t changed_recipes < <(printf '%s\n' "$changed_files" | grep -E '^build_requests/a43_experiments/.+\.json$' || true)
+            if (( ${#changed_recipes[@]} == 1 )); then
+              recipe_path="${changed_recipes[0]}"
+              should_build=true
+            elif (( ${#changed_recipes[@]} > 1 )); then
+              echo "::error::This workflow builds one recipe per run; split the recipe changes into separate commits or use workflow_dispatch."
+              printf 'Changed recipes:\n%s\n' "${changed_recipes[@]}"
+              exit 1
+            fi
+          fi
+
+          if [[ "$should_build" == true ]]; then
+            case "$recipe_path" in
+              build_requests/a43_experiments/*.json) ;;
+              *) echo "::error::Recipe must be a JSON file under build_requests/a43_experiments/"; exit 1 ;;
+            esac
+            test -f "$recipe_path" || { echo "::error::Recipe not found: $recipe_path"; exit 1; }
+            recipe_file="${recipe_path##*/}"
+            recipe_stem="${recipe_file%.json}"
+            output_stem="${recipe_stem}_run${GITHUB_RUN_NUMBER}_attempt${GITHUB_RUN_ATTEMPT}"
+            echo "output_stem=$output_stem" >> "$GITHUB_OUTPUT"
+            echo "recipe_path=$recipe_path" >> "$GITHUB_OUTPUT"
+            echo "should_build=true" >> "$GITHUB_OUTPUT"
+            echo "Recipe: $recipe_path"
+            echo "Run: $GITHUB_RUN_ID / attempt $GITHUB_RUN_ATTEMPT"
+            echo "Commit: $GITHUB_SHA"
+          else
+            echo "should_build=false" >> "$GITHUB_OUTPUT"
+            {
+              echo "# FM27 A4.3 build trace"
+              echo
+              echo "- **Result:** skipped; this push did not change an experiment recipe."
+              echo "- **Commit:** `$GITHUB_SHA`"
+              echo "- **Event:** $GITHUB_EVENT_NAME"
+              echo "- **Trace:** a workflow run was recorded; no FMF build was needed."
+            } >> "$GITHUB_STEP_SUMMARY"
+            echo "No experiment recipe changed; build skipped with a recorded run."
+          fi
 
       - name: Set up Python 3.12
+        if: steps.meta.outputs.should_build == 'true'
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
-      - name: Validate recipe path and create unique run identity
-        id: meta
-        env:
-          RECIPE_PATH: ${{ inputs.recipe_path || 'build_requests/a43_experiments/FM27_A4.3_Vanco_Defensive_Block_01.json' }}
-        run: |
-          set -euo pipefail
-          case "$RECIPE_PATH" in
-            build_requests/a43_experiments/*.json) ;;
-            *) echo "::error::Recipe must be a JSON file under build_requests/a43_experiments/"; exit 1 ;;
-          esac
-          test -f "$RECIPE_PATH" || { echo "::error::Recipe not found: $RECIPE_PATH"; exit 1; }
-          recipe_file="${RECIPE_PATH##*/}"
-          recipe_stem="${recipe_file%.json}"
-          output_stem="${recipe_stem}_run${GITHUB_RUN_NUMBER}_attempt${GITHUB_RUN_ATTEMPT}"
-          echo "output_stem=$output_stem" >> "$GITHUB_OUTPUT"
-          echo "recipe_path=$RECIPE_PATH" >> "$GITHUB_OUTPUT"
-          echo "Recipe: $RECIPE_PATH"
-          echo "Run: $GITHUB_RUN_ID / attempt $GITHUB_RUN_ATTEMPT"
-          echo "Commit: $GITHUB_SHA"
-
       - name: Install native generator dependencies
+        if: steps.meta.outputs.should_build == 'true'
         run: python -m pip install -r "04_离线原生FMF生成器/requirements.txt"
 
       - name: Generate native FMF and same-run report
+        if: steps.meta.outputs.should_build == 'true'
         env:
           RECIPE_PATH: ${{ steps.meta.outputs.recipe_path }}
           OUTPUT_STEM: ${{ steps.meta.outputs.output_stem }}
@@ -67,6 +109,7 @@ jobs:
             --report "$RUNNER_TEMP/$OUTPUT_STEM.report.json"
 
       - name: Enforce D3 native readback and recipe structural checks
+        if: steps.meta.outputs.should_build == 'true'
         env:
           OUTPUT_STEM: ${{ steps.meta.outputs.output_stem }}
         run: |
@@ -127,6 +170,7 @@ jobs:
           PY
 
       - name: Write trace manifest and job summary
+        if: steps.meta.outputs.should_build == 'true'
         env:
           RECIPE_PATH: ${{ steps.meta.outputs.recipe_path }}
           OUTPUT_STEM: ${{ steps.meta.outputs.output_stem }}
@@ -187,7 +231,7 @@ jobs:
           PY
 
       - name: Upload native FMF, report, and trace manifest
-        if: success()
+        if: success() && steps.meta.outputs.should_build == 'true'
         uses: actions/upload-artifact@v4
         with:
           name: ${{ steps.meta.outputs.output_stem }}
