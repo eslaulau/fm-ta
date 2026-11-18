@@ -1,0 +1,137 @@
+name: FM27 Legacy Tactic Migration Build
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "build_requests/legacy_migrations/*.json"
+
+permissions:
+  contents: read
+
+jobs:
+  build-legacy-native-fmf:
+    name: Build legacy tactic as native FMF
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out generator, catalog, and native templates
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install native generator dependencies
+        run: python -m pip install -r "04_离线原生FMF生成器/requirements.txt"
+
+      - name: Generate native FMF and same-run report
+        env:
+          RECIPE_PATH: build_requests/legacy_migrations/FM27_A4.3_Legacy_Reproduction.json
+          OUTPUT_STEM: FM27_A4.3_Legacy_Reproduction_run${{ github.run_number }}
+        run: |
+          python scripts/build_fm27_tactic.py \
+            --recipe-path "$RECIPE_PATH" \
+            --catalog "04_离线原生FMF生成器/catalog.json" \
+            --style-registry "04_离线原生FMF生成器/style_template_registry.json" \
+            --output "$RUNNER_TEMP/$OUTPUT_STEM.fmf" \
+            --report "$RUNNER_TEMP/$OUTPUT_STEM.report.json"
+
+      - name: Enforce D3 independent-readback result
+        env:
+          OUTPUT_STEM: FM27_A4.3_Legacy_Reproduction_run${{ github.run_number }}
+        run: |
+          python - "$RUNNER_TEMP/$OUTPUT_STEM.fmf" "$RUNNER_TEMP/$OUTPUT_STEM.report.json" <<'PY'
+          import hashlib
+          import json
+          import sys
+          from pathlib import Path
+
+          fmf_path, report_path = map(Path, sys.argv[1:])
+          if not fmf_path.is_file() or fmf_path.stat().st_size == 0:
+              raise SystemExit(f"FMF output missing or empty: {fmf_path}")
+          if not report_path.is_file():
+              raise SystemExit(f"Same-run report missing: {report_path}")
+
+          report = json.loads(report_path.read_text(encoding="utf-8"))
+          if report.get("status") != "offline_binary_roundtrip_verified_not_game_import_verified":
+              raise SystemExit(f"Unexpected report status: {report.get('status')!r}")
+
+          required_checks = [
+              "fmf_outer_roundtrip",
+              "all_member_decrypt_and_zstd_checksums",
+              "tac_full_parse",
+              "11_ip_oop_pairs",
+              "22_positions_roles_pi_readback_exact",
+              "pi_permissions_checked_against_catalog",
+              "team_instruction_vector_readback",
+              "native_style_string_and_code_readback",
+          ]
+          checks = report.get("checks", {})
+          failed = [key for key in required_checks if checks.get(key) is not True]
+          if failed:
+              raise SystemExit(f"D3 readback checks failed: {failed}")
+
+          if len(report.get("player_phase_map", [])) != 22 or len(report.get("readback_player_phase_map", [])) != 22:
+              raise SystemExit("Expected 22 designed and 22 read-back phases.")
+
+          digest = hashlib.sha256(fmf_path.read_bytes()).hexdigest()
+          if report.get("sha256") != digest:
+              raise SystemExit("FMF SHA256 differs from the same-run report.")
+          if report.get("bytes") != fmf_path.stat().st_size:
+              raise SystemExit("FMF byte count differs from the same-run report.")
+
+          empty = [
+              {"slot": item.get("slot"), "phase": item.get("phase")}
+              for item in report.get("player_phase_map", [])
+              if item.get("pi_mask") in ("0x0", "0")
+          ]
+          print("PASS: D3 native FMF readback")
+          print(f"FMF: {fmf_path.name} ({fmf_path.stat().st_size} bytes)")
+          print(f"SHA256: {digest}")
+          print(f"Empty-PI phases preserved from legacy source: {len(empty)}")
+          print("Game import and match performance: not tested.")
+          PY
+
+      - name: Publish build summary
+        if: success()
+        env:
+          OUTPUT_STEM: FM27_A4.3_Legacy_Reproduction_run${{ github.run_number }}
+        run: |
+          python - "$RUNNER_TEMP/$OUTPUT_STEM.report.json" "$RUNNER_TEMP/$OUTPUT_STEM.fmf" <<'PY'
+          import hashlib
+          import json
+          import sys
+          from pathlib import Path
+
+          report = json.loads(Path(sys.argv[1]).read_text(encoding="utf-8"))
+          fmf = Path(sys.argv[2])
+          digest = hashlib.sha256(fmf.read_bytes()).hexdigest()
+          lines = [
+              "## FM27 legacy tactic migration build",
+              "",
+              "- Source: A4.3 original legacy GEN1 recipe, converted to native JSON.",
+              "- Empty PI phases: preserved exactly; the standard 22/22 non-empty PI project gate is intentionally not applied to this compatibility build.",
+              "- Role, duty, position and PI permissions: checked by the native generator.",
+              f"- FMF: `{fmf.name}`",
+              f"- Bytes: {fmf.stat().st_size}",
+              f"- SHA256: `{digest}`",
+              f"- Style: {report.get('style')} / `{report.get('style_code_hex')}`",
+              "- D3: all required independent readback checks passed.",
+              "- Game import and match performance: not tested by this workflow.",
+          ]
+          with open(Path.cwd() / "build-summary.md", "w", encoding="utf-8") as f:
+              f.write("\\n".join(lines) + "\\n")
+          print("\\n".join(lines))
+          PY
+
+      - name: Upload native FMF and report
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: FM27_A4.3_Legacy_Reproduction
+          path: |
+            ${{ runner.temp }}/FM27_A4.3_Legacy_Reproduction_run${{ github.run_number }}.fmf
+            ${{ runner.temp }}/FM27_A4.3_Legacy_Reproduction_run${{ github.run_number }}.report.json
+          if-no-files-found: error
+          retention-days: 14
