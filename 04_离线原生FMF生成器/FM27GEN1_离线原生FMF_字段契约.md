@@ -4,30 +4,40 @@
 
 ## 1. 输入、输出与验收层次
 
-GEN1 是中间配方，不是原生战术文件。正常交付必须实际调用离线生成器，获得新的 FM27 原生 `.fmf` 和同次运行的 `.report.json`。
+正式输入是普通 UTF-8 JSON 战术对象，直接进入原生生成器；旧 GEN1 是为历史文件保留的兼容输入，不是正式流程必需步骤。正常交付必须实际调用离线生成器，获得新的 FM27 原生 `.fmf` 和同次运行的 `.report.json`。
 
 | 层次 | 输入 | 输出/检查 |
 |---|---|---|
 | A 战术设计 | 用户目标、比赛/球员数据、预设和样本 | IP/OOP 阵型、22 阶段角色、duty、PI、TI |
 | B 原生兼容 | 02 层位置/角色/职责/PI 权限资料 | 兼容配置和未解决项 |
-| C GEN1 | 设计结果 | FM27GEN1 v1 TXT，11 个槽位、每槽 in/out |
-| D 离线生成 | GEN1、catalog、风格模板注册表、原生 FMF 模板 | 新 FMF、JSON 回读报告 |
+| C 原生 JSON | 设计结果 | 普通 UTF-8 JSON 对象，11 个槽位、每槽 in/out |
+| D 离线生成 | JSON、catalog、风格模板注册表、原生 FMF 模板 | 新 FMF、JSON 回读报告 |
 | E 游戏内验收 | 新生成的 FMF | 导入、检查、保存、关闭并重开 |
 
 D3 离线回读、D4 游戏内验证和 D5 比赛效果是不同证据等级，不得混称。
 
-## 2. GEN1 v1 结构
+## 2. 原生 JSON 配方结构与旧 GEN1 兼容格式
 
-- TXT 前缀：`FM27GEN1:`，后接 Base64 编码的 UTF-8 JSON。
+### 2.1 正式原生 JSON 输入
+
+- 文件扩展名：`.json`；内容为普通 UTF-8 JSON，根节点必须是对象。
+- 不需要 `FM27GEN1:` 前缀、不需要 Base64 编码，不需要 GEN1 TXT 中间文件。
 - 根字段：`v`、`name`、`ment`、`base`、`ti`、`p`。
 - `v=1`；`ment` 必须为 1–7。
-- 每个阶段对象可选 `duty`，例如 `"duty":"S"`；支持 D/DEFEND、S/SUPPORT、A/ATTACK 或准确原生 duty 整数。
 - `base.g` 是风格名，必须在 `style_template_registry.json` 中有登记；**当前已登记十种官方风格，不再局限于 Gegenpress**。
 - `ti` 是单一共享球队指令对象，不区分 IP/OOP 两套 TI。
 - `p` 正好 11 个槽位；每个槽位包含 `in` 和 `out`。
 - 每个阶段必须包含 `pos`、`role`、`pi`；可选 `duty` 用于显式指定原生职责位。
 - PI 项格式为 `[group, option]`。重复项、未知映射和权限冲突均拒绝。
+- 生成器直接将 JSON 对象加载成 Python 字典，传入现有 `apply_recipe()`，然后执行原生 FMF 序列化和独立回读。报告字段 `recipe_input_format` 应为 `json`。
 - 结构允许 `pi: []`，但本项目正式战术交付规则要求 22 个阶段均完成非空 PI；不能把结构接受等同于满足交付标准。
+
+### 2.2 旧 GEN1 TXT 兼容输入
+
+- 仅为读取历史文件保留：TXT 前缀 `FM27GEN1:`，后接 Base64 编码的 UTF-8 JSON。
+- 生成器通过 `parse_gen1()` 读取该旧格式，报告 `recipe_input_format=legacy_gen1_base64`。
+- 旧文件解码后仍进入相同的 `apply_recipe()`，不会形成第二套 FMF 编码分支。
+- 新战术和正式云端构建不再要求 GEN1。
 
 ## 3. 风格与模板解析
 
@@ -54,11 +64,11 @@ D3 离线回读、D4 游戏内验证和 D5 比赛效果是不同证据等级，�
 
 ## 5. Duty
 
-GEN1 v1 的阶段对象允许可选 `duty` 字段。优先采用此字段的显式原生 duty；未提供时再查源码 `ROLE_DUTY` 固定默认映射。
+原生 JSON 的阶段对象允许可选 `duty` 字段；旧 GEN1 TXT 解码后的对象也遵循同一字段结构。优先采用此字段的显式原生 duty；未提供时再查源码 `ROLE_DUTY` 固定默认映射。
 
 - 原生角色 duty 是独立于 role flag 的字段。当前 `ROLE_DUTY` 为 73/79 个角色提供历史样本/预设支持的默认 duty；其余 6 个没有可证明的固定默认值，不能按名称或相似角色猜测。
 - 6 个需要显式选择的角色是 `PlaymakingWinger`、`OPCoveringWideCentreBack`、`OverlappingCentreBack`、`FalseNine`、`HalfBack`、`AdvancedCentreBack`。它们均存在于原生角色目录和位置资格数据中。
-- GEN1 每个阶段对象可选填写 `duty`：`"D"`/`"DEFEND"`、`"S"`/`"SUPPORT"`、`"A"`/`"ATTACK"`，或 `catalog.json.duties` 中的准确原生整数 bit。显式字段优先于角色默认值；未填写时才读取 `ROLE_DUTY`。如果该角色既无默认值又未显式指定，生成器报错。
+- JSON 每个阶段对象可选填写 `duty`：`"D"`/`"DEFEND"`、`"S"`/`"SUPPORT"`、`"A"`/`"ATTACK"`，或 `catalog.json.duties` 中的准确原生整数 bit。显式字段优先于角色默认值；未填写时才读取 `ROLE_DUTY`。如果该角色既无默认值又未显式指定，生成器报错。
 - 显式 duty 仍必须属于 `DUTY_FLAGS`；随后 `encode_pi()` 使用选定的 phase/position/role/duty 查询权限策略。6 个角色的测试位置均具备 7 种目录 duty policy key，回归测试逐一确认可解析。
 - 这使全部 79 个原生角色都能进入生成流程；其中 6 个需要战术配方作者明确选职责，而不是伪造一个默认映射。
 - 回读检查写入 duty 与配方指定/解析出的期望值一致；这证明当前映射被正确写入，不等于每个可能 duty 组合都已游戏内验证。
@@ -110,7 +120,7 @@ GEN1 v1 的阶段对象允许可选 `duty` 字段。优先采用此字段的显�
 
 每项 ID 均直接取自 `catalog.json.player_instructions` 对应原生组。对 13 项本轮补齐的 PI ID，1,547 个 policy key 中均未发现跨目录版本状态冲突；`encode_pi()` 仍逐条按当前 phase/position/role/duty 检查，仅在状态为 `0=editable` 时写入。不可用、固定关闭和固定开启的选项不会被强制覆盖。
 
-**指定盯防的边界：** `MARKING_TARGET=SPECIFIC_PLAYER/SPECIFIC_POSITION` 映射的是原生 PI option ID（34/35）及对应 mask。GEN1 v1 当前没有额外的被盯防球员 ID 或目标位置字段；因此这次补齐的是指令菜单标志写入，不宣称已实现具体盯防对象的选择/序列化。
+**指定盯防的边界：** `MARKING_TARGET=SPECIFIC_PLAYER/SPECIFIC_POSITION` 映射的是原生 PI option ID（34/35）及对应 mask。当前原生配方结构没有额外的被盯防球员 ID 或目标位置字段；因此这次补齐的是指令菜单标志写入，不宣称已实现具体盯防对象的选择/序列化。
 
 生成器要求 `pi` 字段存在；空数组在代码层可接受。项目正式交付规范另要求 22/22 阶段各有至少一条经过权限核验的 PI。自动测试若用空数组做结构 smoke test，不代表正式战术达到该标准。
 
@@ -134,7 +144,7 @@ GEN1 v1 的阶段对象允许可选 `duty` 字段。优先采用此字段的显�
 - 网站规则层记录 27 项 TI；原生 `catalog.json` 有 29 组 `team_instructions`，数量口径不同。
 - `official_style_team_instruction_profiles.json` 保存十种网站风格的心态与默认 TI；它来自 2026-11-16 HAR 中嵌入的 STYLE 表，不是 SI 原始 FMF 二进制风格证据。
 - `TI_GROUPS` 声明可清理/设置的原生指令组；`TI_MAP` 声明 option→native bit 映射。当前 29/29 个原生组均已接入；75/75 个非零原生选项 bit 均有映射。未知组/选项直接拒绝。
-- 每次从所选风格模板当前 12 字节向量开始；配方明确写出的 TI key 才清理对应 option group 并覆盖。GEN1 未出现的 key 保留模板原有状态；值 `DEFAULT` 清空该 key 对应组。
+- 每次从所选风格模板当前 12 字节向量开始；配方明确写出的 TI key 才清理对应 option group 并覆盖。JSON 配方未出现的 key 保留模板原有状态；值 `DEFAULT` 清空该 key 对应组。
 - `SUPPORTING_RUNS`（原生组 28，肋部内套）与 `SUPPORTING_RUNS_SECONDARY`（原生组 31，外侧套上）现在分别清理各自组，避免设置一个维度时误清另一个维度。
 - `GOALKEEPER_ATTACKING_SET_PIECES` 已接入原生组 32、bit 60。
 - `ATTACKING_TRANSITION=HOLD_SHAPE` 已修正为原生 bit 55；旧映射 0 错误地把该选项当成默认值。
@@ -198,16 +208,18 @@ GEN1 v1 的阶段对象允许可选 `duty` 字段。优先采用此字段的显�
 - `tests/test_fm27gen1_official_preset_index.py`：90 条网站预设索引审计。
 - CI workflow 的具体断言范围以各 workflow 和测试源码为准。
 
-当前新增回归测试对 37/37 PI 原生 option ID、75/75 TI native bit、29/29 TI 组和全部 TI 编码值逐项对账。角色职责仍有 6 个明确缺口；下一步应继续从可核验的原生 TAC/导出数据中补证，不得按角色描述猜职责。
+当前新增回归测试对 37/37 PI 原生 option ID、75/75 TI native bit、29/29 TI 组和全部 TI 编码值逐项对账。角色职责层有 73 个有证据的默认 duty；其余 6 个可通过显式 duty 字段进入生成流程，不需要猜固定默认值。
 
 ## 10. Windows 命令行入口
 
 ```powershell
 py -3.12 -m pip install -r requirements.txt
-py -3.12 FM27GEN1_Offline_FMF_Generator.py "TACTIC_GEN1.txt" --catalog "catalog.json" --output "TACTIC.fmf" --report "TACTIC.report.json"
+py -3.12 FM27GEN1_Offline_FMF_Generator.py "TACTIC.json" --catalog "catalog.json" --output "TACTIC.fmf" --report "TACTIC.report.json"
 ```
 
-默认按配方中的风格从 `style_template_registry.json` 自动选模板。若显式传入 `--template`，必须与注册表中该风格指定的模板一致。输出文件存在时拒绝覆盖。
+正式入口直接使用普通 JSON 文件。旧版 `TACTIC_GEN1.txt` 仍可作为兼容输入传入同一 CLI。默认按 JSON 对象中的 `base.g` 从 `style_template_registry.json` 自动选模板。若显式传入 `--template`，必须与注册表中该风格指定的模板一致。输出文件存在时拒绝覆盖。
+
+直接 JSON→FMF 的真实端到端构建由 `tests/test_fm27gen1_direct_json_input.py` 回归验证；该测试会调用正式生成器 CLI，验证生成文件和 D3 独立回读。
 
 ## 11. 规则更新要求
 
