@@ -125,7 +125,7 @@
     {
       "in": {
         "pos": "DL",
-        "role": "AdvancedWingBack",
+        "role": "WingBack",
         "duty": "A",
         "pi": [
           [
