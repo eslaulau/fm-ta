@@ -135,6 +135,10 @@ jobs:
               )
 
           digest = hashlib.sha256(fmf_path.read_bytes()).hexdigest()
+          if report.get("sha256") != digest:
+              raise SystemExit("FMF SHA256 differs from the same-run report.")
+          if report.get("bytes") != fmf_path.stat().st_size:
+              raise SystemExit("FMF byte count differs from the same-run report.")
           print(f"PASS: D3 native FMF readback")
           print(f"FMF: {fmf_path.name} ({fmf_path.stat().st_size} bytes)")
           print(f"SHA256: {digest}")
