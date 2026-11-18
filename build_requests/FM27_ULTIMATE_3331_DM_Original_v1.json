@@ -228,10 +228,6 @@
           [
             "FORWARD_RUNS",
             "MAKE_MORE_RUNS"
-          ],
-          [
-            "ATTACKING_WIDTH",
-            "SIT_NARROWER"
           ]
         ]
       },
@@ -254,10 +250,6 @@
           [
             "FORWARD_RUNS",
             "MAKE_MORE_RUNS"
-          ],
-          [
-            "ATTACKING_WIDTH",
-            "SIT_NARROWER"
           ]
         ]
       },
