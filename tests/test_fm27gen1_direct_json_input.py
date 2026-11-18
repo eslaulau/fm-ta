@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import hashlib
 import json
 import subprocess
 import sys
@@ -37,6 +38,47 @@ class DirectJSONInputTest(unittest.TestCase):
             self.assertEqual(loaded, self.recipe)
             self.assertTrue(path.read_text(encoding="utf-8").lstrip().startswith("{"))
             self.assertFalse(path.read_text(encoding="utf-8").lstrip().startswith("FM27GEN1:"))
+
+    def test_python_dict_api_builds_without_any_recipe_transport_file(self):
+        catalog = json.loads(CATALOG.read_text(encoding="utf-8"))
+        registry_path = GEN_DIR / "style_template_registry.json"
+        registry = json.loads(registry_path.read_text(encoding="utf-8"))
+
+        # Pass the already parsed Python object directly: no JSON recipe file,
+        # no Base64 wrapper, and no CLI parser are involved in this path.
+        fmf_bytes, report = gen.build_fmf_from_recipe(
+            self.recipe,
+            catalog,
+            style_registry=registry,
+        )
+
+        self.assertIsInstance(fmf_bytes, bytes)
+        self.assertGreater(len(fmf_bytes), 0)
+        self.assertEqual(report.get("recipe_input_format"), "python_dict")
+        self.assertEqual(
+            report.get("status"),
+            "offline_binary_roundtrip_verified_not_game_import_verified",
+        )
+        self.assertEqual(report.get("bytes"), len(fmf_bytes))
+        self.assertEqual(report.get("sha256"), hashlib.sha256(fmf_bytes).hexdigest())
+
+        parsed = gen.parse_fmf(fmf_bytes)
+        tac = gen.parse_tac(parsed.data_by_ext[".tac"])
+        self.assertEqual(tac.title, report.get("name"))
+        self.assertEqual(len(tac.pairs), 11)
+        self.assertEqual(len(report.get("player_phase_map", [])), 22)
+        self.assertEqual(len(report.get("readback_player_phase_map", [])), 22)
+        for check in (
+            "fmf_outer_roundtrip",
+            "all_member_decrypt_and_zstd_checksums",
+            "tac_full_parse",
+            "11_ip_oop_pairs",
+            "22_positions_roles_pi_readback_exact",
+            "pi_permissions_checked_against_catalog",
+            "team_instruction_vector_readback",
+            "native_style_string_and_code_readback",
+        ):
+            self.assertIs(report.get("checks", {}).get(check), True, check)
 
     def test_cli_generates_and_reads_back_native_fmf_from_direct_json(self):
         with tempfile.TemporaryDirectory() as temp:
