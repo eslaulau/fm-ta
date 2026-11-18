@@ -238,7 +238,8 @@ class ExperimentalMappingTest(unittest.TestCase):
             recipe_path = ROOT / recipe_path
         if not recipe_path.is_file():
             self.skipTest(f"Import-test GEN1 recipe is not present in this commit: {recipe_path}")
-        recipe = gen.parse_gen1(recipe_path)
+        recipe, input_format = gen.load_recipe_input(recipe_path)
+        self.assertIn(input_format, {"json", "legacy_gen1_base64"})
         self.assertEqual(len(recipe["p"]), 11)
         phase_count = 0
         experimental_pi_count = 0
@@ -247,7 +248,7 @@ class ExperimentalMappingTest(unittest.TestCase):
                 item = spec[key]
                 position = gen.native_position_id(item["pos"], phase)
                 role_id = gen.role_id_from_display(item["role"], phase, {x["id"] for x in self.catalog["roles"]})
-                duty = gen.ROLE_DUTY[role_id]
+                duty = gen.resolve_role_duty(role_id, item)
                 self.assertIn(role_id, self.catalog["role_eligibility"][position][phase])
                 bits = gen.encode_pi(item["pi"], self.catalog, phase, position, role_id, duty)
                 self.assertGreater(bits, 0, f"slot={slot}, phase={key}: PI mask is empty")
