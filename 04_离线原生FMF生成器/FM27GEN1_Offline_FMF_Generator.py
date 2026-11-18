@@ -53,6 +53,18 @@ PI_MAP = {
     ('ATTACK_BOX_SIDE','FAR_POST'): 40,
 }
 
+# Experimental first-pass mappings sourced from catalog.json native option IDs.
+# These are intentionally reported as unverified-in-game until the user imports the test FMF.
+EXPERIMENTAL_PI_MAP = {
+    ('CROSSING_TARGET','BACK_POST'): 10,          # catalog player_instructions group 9
+    ('ROAMING','ROAM_FROM_POSITION'): 24,         # catalog group 4
+    ('CROSSING_FREQUENCY','BYLINE'): 8,            # catalog group 10
+    ('ATTACK_BOX_DEPTH','LATE_RUNS'): 42,          # catalog group 16
+    ('TRIGGER_PRESS','LESS_OFTEN'): 30,            # catalog group 11, OOP
+    ('TACKLING','GET_STUCK_IN'): 31,               # catalog group 13, OOP
+}
+PI_MAP.update(EXPERIMENTAL_PI_MAP)
+
 # Native duty bit values are confirmed by FM27 TAC samples. The additional
 # role-specific choices below are read directly from the 90-preset index
 # (D=Defend, S=Support, A=Attack) and are checked against catalog role/phase/
@@ -233,6 +245,18 @@ TI_MAP = {
     ('DEFENSIVE_TRANSITION','COUNTER_PRESS'): 70,
     ('SHORT_GOALKEEPER_DISTRIBUTION','YES'): 69,
 }
+
+# Experimental first-pass mappings sourced from catalog.json native_bit values.
+# No raw bit positions are guessed; game import remains the final acceptance test.
+EXPERIMENTAL_TI_MAP = {
+    ('DEFENSIVE_LINE','MUCH_HIGHER'): 56,
+    ('PRESSING_TRAP','TRAP_INSIDE'): 80,
+    ('CROSSING_STYLE','WHIPPED_CROSSES'): 11,
+    ('PROGRESS_THROUGH','RIGHT'): 22,
+    ('GOALKEEPER_DISTRIBUTION','PLAYMAKER'): 39,
+    ('SUPPORTING_RUNS','RIGHT_INSIDE'): 30,
+}
+TI_MAP.update(EXPERIMENTAL_TI_MAP)
 
 
 STYLE_CODE = {
@@ -667,7 +691,15 @@ def apply_recipe(tac:Tac,recipe:dict,catalog:dict,style_registry:dict|None=None)
             block.mask=role_flag|duty
             pi_summary.append({'slot':slot,'phase':phase_key,'position':pos,'role':roleid,'pi_count':len(item['pi']),'pi_mask':hex(pi_flags),'duty':duty})
     if len(seen[0])!=11 or len(seen[1])!=11: raise ValueError('双阶段必须各有 11 个唯一位置')
-    return {'name':title,'style':style_name,'tac_style_string':style_def['tac_style_string'],'style_code_hex':style_def['style_code'].hex(),'template_name':style_def['template'],'mentality':recipe['ment'],'team_instruction_bits':[i for i in range(96) if tac.packed[i//8]>>(i%8)&1],'players':pi_summary}
+    experimental_pi=[]
+    for slot,spec in enumerate(recipe['p']):
+        for phase_key in ('in','out'):
+            for pair in spec[phase_key]['pi']:
+                key=(str(pair[0]),str(pair[1]))
+                if key in EXPERIMENTAL_PI_MAP:
+                    experimental_pi.append({'slot':slot,'phase':phase_key,'group':key[0],'option':key[1],'native_option_id':EXPERIMENTAL_PI_MAP[key]})
+    experimental_ti=[{'group':key[0],'option':key[1],'native_bit':bit} for key,bit in EXPERIMENTAL_TI_MAP.items() if recipe.get('ti',{}).get(key[0])==key[1]]
+    return {'name':title,'style':style_name,'tac_style_string':style_def['tac_style_string'],'style_code_hex':style_def['style_code'].hex(),'template_name':style_def['template'],'mentality':recipe['ment'],'team_instruction_bits':[i for i in range(96) if tac.packed[i//8]>>(i%8)&1],'players':pi_summary,'experimental_mappings':{'status':'unverified_in_game','player_instructions':experimental_pi,'team_instructions':experimental_ti}}
 
 # ---- native archive layout and emission -------------------------------------------------
 def verify_recipe_roundtrip(tac:Tac,recipe:dict,catalog:dict)->dict:
@@ -753,7 +785,7 @@ def main():
             'output':str(out),'sha256':hashlib.sha256(output).hexdigest(),'bytes':len(output),
             'template':str(template_path),'template_sha256':hashlib.sha256(source).hexdigest(),
             'recipe':str(args.recipe),'name':summary['name'],'style':summary['style'],'tac_style_string':summary['tac_style_string'],'style_code_hex':summary['style_code_hex'],'style_registry':str(args.style_registry),'mentality':summary['mentality'],
-            'team_instruction_bits':summary['team_instruction_bits'],'source_template_version':27,
+            'team_instruction_bits':summary['team_instruction_bits'],'experimental_mappings':summary['experimental_mappings'],'source_template_version':27,
             'opaque_sections_preserved':{'id_entries':before['ids'],'footer_lists':before['lists'],'footer_records':before['footer_records'],'image_member':'byte_identical'},
             'player_phase_map':summary['players'],'readback_player_phase_map':readback['verified_slots'],
             'checks':{'fmf_outer_roundtrip':True,'all_member_decrypt_and_zstd_checksums':True,'tac_full_parse':True,'11_ip_oop_pairs':True,'22_positions_roles_pi_readback_exact':True,'pi_permissions_checked_against_catalog':True,'team_instruction_vector_readback':True,'native_style_string_and_code_readback':True,'game_interactive_import':False,'match_engine':False},
