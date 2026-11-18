@@ -85,7 +85,7 @@ py -3.12 FM27GEN1_Offline_FMF_Generator.py "NEW_TACTIC_GEN1.txt" --catalog "cata
 
 ## 角色、职责与指令证据登记
 
-角色、职责与指令的原生数据状态见 [FM27_Role_Duty_PI_验证登记](./FM27_Role_Duty_PI_验证登记.md)：79/79 个角色定义、7/7 个职责标志值、17/17 组 PI 菜单及 54/54 个 PI 选项、29/29 组 TI 菜单及 103/103 个 TI 选项均有原生数据证据。2026-11-18 全量映射对账后，当前生成器写入覆盖为：**PI 37/37 个非默认 Option ID、TI 75/75 个非零 native bit、TI 菜单组 29/29**；角色职责映射为 **73/79**，尚有 6 个角色的精确 duty 仍待原生分配证据，不能按名称猜测。12 项首轮新增映射（6 PI + 6 TI）已由用户确认 FM27 导入显示；本轮其余映射来自原生 catalog 编号/bit 并通过自动映射和编码测试，不能一概描述为逐项游戏导入测试通过。
+角色、职责与指令的原生数据状态见 [FM27_Role_Duty_PI_验证登记](./FM27_Role_Duty_PI_验证登记.md)：79/79 个角色定义、7/7 个职责标志值、17/17 组 PI 菜单及 54/54 个 PI 选项、29/29 组 TI 菜单及 103/103 个 TI 选项均有原生数据证据。2026-11-18 全量映射对账后，当前生成器写入覆盖为：**PI 37/37 个非默认 Option ID、TI 75/75 个非零 native bit、TI 菜单组 29/29**。角色层保留 **73/79 个有证据的默认 duty**；另外 6 个角色现在可通过阶段对象的可选 `duty` 字段显式指定 D/S/A 或原生整数 bit，因此 **79/79 个角色均可进入生成流程**，不再需要猜测默认职责。12 项首轮新增映射（6 PI + 6 TI）已由用户确认 FM27 导入显示；本轮其余映射来自原生 catalog 编号/bit 并通过自动映射和编码测试，不能一概描述为逐项游戏导入测试通过。
 
 ## 2026-11-18 PI/TI 全量目录映射
 
@@ -99,6 +99,17 @@ py -3.12 FM27GEN1_Offline_FMF_Generator.py "NEW_TACTIC_GEN1.txt" --catalog "cata
 - 仍待原生 duty 证据的角色为 `PlaymakingWinger`、`OPCoveringWideCentreBack`、`OverlappingCentreBack`、`FalseNine`、`HalfBack`、`AdvancedCentreBack`；这 6 项不阻止其他已映射角色与指令正常使用。
 
 详细 PI/TI 清单、原生编号及编码边界见 [字段契约](FM27GEN1_离线原生FMF_字段契约.md)。
+
+## 角色 duty 的显式指定
+
+每个 IP/OOP 阶段对象可以可选包含 `duty`：
+
+- `"duty":"D"` / `"DEFEND"`：防守；
+- `"duty":"S"` / `"SUPPORT"`：策应；
+- `"duty":"A"` / `"ATTACK"`：进攻；
+- 或直接填写 `catalog.json.duties` 中的原生整数 bit。
+
+不填写时，生成器继续使用原有 73 个角色的默认 duty。其余 6 个原生角色必须显式填写 duty；写入前检查 duty 是否属于原生集合，并依据该阶段选定的角色/位置/duty 权限 policy 校验 PI。旧配方无需修改。
 
 ## 原生验证与权限规则
 
