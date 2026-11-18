@@ -17,12 +17,33 @@ class ProjectAiInstructionTests(unittest.TestCase):
             "Do not use any tactic, preset, recipe, FMF, old report",
             "22/22 phases",
             "Download the artifact",
-            "D3",
-            "D4",
-            "D5",
+            "D3 is the final acceptance point",
         ):
             with self.subTest(phrase=phrase):
                 self.assertIn(phrase, text)
+
+    def test_no_later_game_or_match_acceptance_stages_in_core_guides(self):
+        phase_labels = {"D" + str(number) for number in (4, 5)}
+        paths = (
+            ROOT / "AGENTS.md",
+            ROOT / "README.md",
+            ROOT / "00_资料总索引与检索规范.md",
+            ROOT / "build_requests" / "README.md",
+            ROOT / "04_离线原生FMF生成器" / "README.md",
+            ROOT / "04_离线原生FMF生成器" / "FM27GEN1_离线原生FMF_生成流程.md",
+            ROOT / "04_离线原生FMF生成器" / "FM27GEN1_离线原生FMF_字段契约.md",
+            ROOT / "03_GEN1编码与导入规则" / "README.md",
+            ROOT / "03_GEN1编码与导入规则" / "GEN1_导入验收清单.md",
+        )
+        for path in paths:
+            text = path.read_text(encoding="utf-8")
+            for label in phase_labels:
+                with self.subTest(path=path.name, label=label):
+                    self.assertNotIn(label, text)
+        guide = (ROOT / "AGENTS.md").read_text(encoding="utf-8")
+        self.assertIn("D3 is the final acceptance point", guide)
+        self.assertIn("does not include game-client import", guide)
+        self.assertIn("match-performance testing", guide)
 
     def test_copilot_and_readmes_point_to_the_same_mandatory_guide(self):
         copilot = (ROOT / ".github" / "copilot-instructions.md").read_text(encoding="utf-8")
