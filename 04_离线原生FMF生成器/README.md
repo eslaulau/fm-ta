@@ -79,7 +79,7 @@ Path("NEW_TACTIC.report.json").write_text(
 返回报告默认标记 `recipe_input_format=python_dict`，并已完成 FMF 外层、成员解密、TAC、22 个阶段与 PI/TI/风格字段的 D3 独立回读。D4 游戏内导入和 D5 比赛效果仍需分别验收。
 
 正式云端工作流通过 `scripts/resolve_fm27_tactic_recipe.py` 将内联对象作为 workflow output/env 单行 JSON 传递，再由 `scripts/build_fm27_tactic.py` 在 Python 内存中解析为 `dict` 并调用上述 API；不会创建临时配方 JSON 文件。`scripts/validate_fm27_tactic_delivery.py` 在写入前强制 22/22 阶段非空 PI。
-正式云端构建还会单独执行 `scripts/validate_fm27_tactic_delivery.py`：与通用 API 的结构兼容性不同，交付配方必须满足 **22/22 个 IP/OOP 阶段都至少有一条 PI**；空 PI 仍可用于底层格式烟雾测试，但不能作为正式战术 artifact 上传。
+正式云端构建由 `scripts/validate_fm27_tactic_delivery.py` 强制要求 **22/22 个 IP/OOP 阶段都至少有一条 PI**；空 PI 仍可用于底层格式烟雾测试，但不能作为正式战术 artifact 上传。
 
 ## Windows 使用方法
 
