@@ -59,21 +59,25 @@ jobs:
       - name: Validate structured JSON input, experimental mappings, and all PI permission contexts
         if: steps.recipe.outputs.skip_build != 'true'
         env:
-          RECIPE_PATH: ${{ steps.recipe.outputs.recipe_path }}
+          RECIPE_PATH: build_requests/Unmapped_Mapping_Import_Test_v1.txt
+          RECIPE_JSON: ${{ steps.recipe.outputs.recipe_json }}
+          RECIPE_LABEL: ${{ steps.recipe.outputs.recipe_label }}
         run: |
           python tests/test_fm27gen1_direct_json_input.py
           python tests/test_fm27gen1_experimental_unmapped_mapping.py
-          python scripts/validate_fm27_tactic_delivery.py "$RECIPE_PATH"
+          python scripts/validate_fm27_tactic_delivery.py
 
       - name: Generate native FMF and same-run report
         if: steps.recipe.outputs.skip_build != 'true'
         env:
           RECIPE_PATH: ${{ steps.recipe.outputs.recipe_path }}
+          RECIPE_JSON: ${{ steps.recipe.outputs.recipe_json }}
+          RECIPE_LABEL: ${{ steps.recipe.outputs.recipe_label }}
           OUTPUT_STEM: ${{ steps.recipe.outputs.output_stem }}
         run: |
-          python "04_离线原生FMF生成器/FM27GEN1_Offline_FMF_Generator.py" \
-            "$RECIPE_PATH" \
+          python scripts/build_fm27_tactic.py \
             --catalog "04_离线原生FMF生成器/catalog.json" \
+            --style-registry "04_离线原生FMF生成器/style_template_registry.json" \
             --output "$RUNNER_TEMP/$OUTPUT_STEM.fmf" \
             --report "$RUNNER_TEMP/$OUTPUT_STEM.report.json"
 
@@ -82,6 +86,7 @@ jobs:
         env:
           OUTPUT_STEM: ${{ steps.recipe.outputs.output_stem }}
           RECIPE_PATH: ${{ steps.recipe.outputs.recipe_path }}
+          RECIPE_JSON: ${{ steps.recipe.outputs.recipe_json }}
         run: |
           python - "$RUNNER_TEMP/$OUTPUT_STEM.fmf" "$RUNNER_TEMP/$OUTPUT_STEM.report.json" "$RECIPE_PATH" <<'PY'
           import hashlib
@@ -96,7 +101,11 @@ jobs:
               raise SystemExit(f"Same-run report missing: {report_path}")
 
           report = json.loads(report_path.read_text(encoding="utf-8"))
-          expected_input_format = "json" if recipe_path.suffix.lower() == ".json" else "legacy_gen1_base64"
+          expected_input_format = (
+              "python_dict" if os.environ.get("RECIPE_JSON", "").strip()
+              else "json" if recipe_path.suffix.lower() == ".json"
+              else "legacy_gen1_base64"
+          )
           if report.get("recipe_input_format") != expected_input_format:
               raise SystemExit(
                   f"Recipe input format mismatch: expected {expected_input_format!r}, "
