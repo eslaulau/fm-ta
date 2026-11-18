@@ -25,6 +25,9 @@ class TacticRecipeInputResolverTests(unittest.TestCase):
         self.runner_temp = self.root / "runner_temp"
         self.recipe = {"v": 1, "name": "原创战术 A", "ment": 5, "base": {"g": "Gegenpress"}, "ti": {}, "p": []}
 
+    def test_safe_stem_preserves_unicode_but_blocks_path_separators(self):
+        self.assertEqual(resolver.safe_stem("战术 A"), "战术_A")
+        self.assertEqual(resolver.safe_stem("../../unsafe\\nname"), "unsafe_name")
     def test_workflow_dispatch_inline_json_creates_temp_json_not_repo_file(self):
         result = resolver.resolve_recipe_input(
             event_name="workflow_dispatch",
@@ -38,7 +41,7 @@ class TacticRecipeInputResolverTests(unittest.TestCase):
         self.assertTrue(path.is_file())
         self.assertEqual(json.loads(path.read_text(encoding="utf-8")), self.recipe)
         self.assertEqual(path.parent, self.runner_temp)
-        self.assertEqual(result["output_stem"], "A_run12")
+        self.assertEqual(result["output_stem"], "原创战术_A_run12")
 
     def test_repository_dispatch_accepts_recipe_object(self):
         result = resolver.resolve_recipe_input(
