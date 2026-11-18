@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import sys
 from pathlib import Path
 
@@ -38,12 +39,25 @@ def validate_deliverable_recipe(recipe: dict) -> dict:
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("recipe", type=Path)
+    parser.add_argument("recipe", type=Path, nargs="?")
     args = parser.parse_args()
-    recipe, input_format = gen.load_recipe_input(args.recipe)
+    inline_json = os.environ.get("RECIPE_JSON", "").strip()
+    if inline_json and args.recipe:
+        raise ValueError("Provide RECIPE_JSON or recipe path, not both")
+    if inline_json:
+        recipe = json.loads(inline_json)
+        if not isinstance(recipe, dict):
+            raise ValueError("RECIPE_JSON root value must be a JSON object")
+        input_format = "python_dict"
+        recipe_label = os.environ.get("RECIPE_LABEL", "<inline-json>")
+    elif args.recipe:
+        recipe, input_format = gen.load_recipe_input(args.recipe)
+        recipe_label = str(args.recipe)
+    else:
+        raise ValueError("Provide RECIPE_JSON or a recipe path")
     report = validate_deliverable_recipe(recipe)
     report["recipe_input_format"] = input_format
-    report["recipe"] = str(args.recipe)
+    report["recipe"] = recipe_label
     print(json.dumps(report, ensure_ascii=False, indent=2))
     return 0
 
