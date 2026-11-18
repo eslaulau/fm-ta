@@ -4,7 +4,7 @@ param(
     [string]$RecipeJson,
     [string]$OutputDirectory = (Join-Path $env:USERPROFILE 'Desktop\FM27_Builds'),
     [ValidateRange(1, 60)][int]$TimeoutMinutes = 15,
-    [switch]$DeleteCloudArtifact
+    [switch]$KeepCloudArtifact
 )
 
 $ErrorActionPreference = 'Stop'
@@ -171,9 +171,9 @@ foreach ($check in $requiredChecks) {
     if ($report.checks.$check -ne $true) { throw "D3 check failed in downloaded report: $check" }
 }
 
-if ($DeleteCloudArtifact) {
+if (-not $KeepCloudArtifact) {
     Invoke-Fm27GitHubApi -Method DELETE -Path "actions/artifacts/$($artifact[0].id)" | Out-Null
-    Write-Host 'Cloud artifact deleted after verified local download.' -ForegroundColor Yellow
+    Write-Host 'Cloud artifact deleted after verified local download. Use -KeepCloudArtifact to retain it online.' -ForegroundColor Yellow
 }
 
 Write-Host ''
