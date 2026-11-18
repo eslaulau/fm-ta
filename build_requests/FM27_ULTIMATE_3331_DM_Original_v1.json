@@ -304,10 +304,6 @@
             "SHOOT_MORE_OFTEN"
           ],
           [
-            "FORWARD_RUNS",
-            "MAKE_MORE_RUNS"
-          ],
-          [
             "ATTACK_BOX_DEPTH",
             "ATTACK_DEFENSIVE_LINE"
           ]
