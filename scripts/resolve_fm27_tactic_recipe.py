@@ -11,7 +11,7 @@ from typing import Any
 
 
 def safe_stem(value: Any) -> str:
-    stem = re.sub(r"[^A-Za-z0-9._-]+", "_", str(value or "FM27_Tactic")).strip("._-")
+    stem = re.sub(r"[^\w.-]+", "_", str(value or "FM27_Tactic"), flags=re.UNICODE).strip("._-")
     return stem or "FM27_Tactic"
 
 
