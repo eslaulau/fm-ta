@@ -42,7 +42,7 @@
       },
       "out": {
         "pos": "GK",
-        "role": "OPGoalkeeper",
+        "role": "Goalkeeper",
         "duty": "S",
         "pi": [
           [
@@ -66,7 +66,7 @@
       },
       "out": {
         "pos": "DL",
-        "role": "OPHoldingFullBack",
+        "role": "HoldingFullBack",
         "duty": "D",
         "pi": [
           [
@@ -90,7 +90,7 @@
       },
       "out": {
         "pos": "DCL",
-        "role": "OPCoveringCentreBack",
+        "role": "CoveringCentreBack",
         "duty": "D",
         "pi": [
           [
@@ -114,7 +114,7 @@
       },
       "out": {
         "pos": "DCR",
-        "role": "OPStoppingCentreBack",
+        "role": "StoppingCentreBack",
         "duty": "D",
         "pi": [
           [
@@ -138,7 +138,7 @@
       },
       "out": {
         "pos": "DR",
-        "role": "OPPressingFullBack",
+        "role": "PressingFullBack",
         "duty": "S",
         "pi": [
           [
@@ -162,7 +162,7 @@
       },
       "out": {
         "pos": "DML",
-        "role": "OPScreeningDefensiveMidfielder",
+        "role": "ScreeningDefensiveMidfielder",
         "duty": "D",
         "pi": [
           [
@@ -186,7 +186,7 @@
       },
       "out": {
         "pos": "DMR",
-        "role": "OPPressingDefensiveMidfielder",
+        "role": "PressingDefensiveMidfielder",
         "duty": "S",
         "pi": [
           [
@@ -210,7 +210,7 @@
       },
       "out": {
         "pos": "ML",
-        "role": "OPWideOutletWideMidfielder",
+        "role": "WideOutletWideMidfielder",
         "duty": "A",
         "pi": [
           [
@@ -234,7 +234,7 @@
       },
       "out": {
         "pos": "AMC",
-        "role": "OPTrackingAttackingMidfielder",
+        "role": "TrackingAttackingMidfielder",
         "duty": "D",
         "pi": [
           [
@@ -258,7 +258,7 @@
       },
       "out": {
         "pos": "MR",
-        "role": "OPTrackingWideMidfielder",
+        "role": "TrackingWideMidfielder",
         "duty": "D",
         "pi": [
           [
@@ -282,7 +282,7 @@
       },
       "out": {
         "pos": "ST",
-        "role": "OPTrackingCentreForward",
+        "role": "TrackingCentreForward",
         "duty": "D",
         "pi": [
           [
