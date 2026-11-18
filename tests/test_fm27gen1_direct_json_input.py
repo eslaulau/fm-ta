@@ -80,6 +80,24 @@ class DirectJSONInputTest(unittest.TestCase):
         ):
             self.assertIs(report.get("checks", {}).get(check), True, check)
 
+    def test_direct_api_rejects_unknown_and_incomplete_recipe_fields(self):
+        with self.subTest(case="unknown root field"):
+            malformed = dict(self.recipe)
+            malformed["unmapped_override"] = True
+            with self.assertRaisesRegex(ValueError, "未知根字段"):
+                gen.validate_recipe_structure(malformed)
+
+        with self.subTest(case="missing phase PI array"):
+            malformed = json.loads(json.dumps(self.recipe))
+            del malformed["p"][0]["in"]["pi"]
+            with self.assertRaisesRegex(ValueError, "缺少必需字段"):
+                gen.validate_recipe_structure(malformed)
+
+        with self.subTest(case="boolean is not a valid mentality integer"):
+            malformed = dict(self.recipe)
+            malformed["ment"] = True
+            with self.assertRaisesRegex(ValueError, "ment 必须是 1–7 的整数"):
+                gen.validate_recipe_structure(malformed)
     def test_cli_generates_and_reads_back_native_fmf_from_direct_json(self):
         with tempfile.TemporaryDirectory() as temp:
             temp_dir = Path(temp)
