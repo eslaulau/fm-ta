@@ -10,6 +10,33 @@
 4. 将 JSON 文件放在本目录的直接子路径，例如 `build_requests/My_Original_Tactic.json`。
 5. 每次 push 事件只新增/修改一份待构建 JSON；多份配方应分开 push。提交到 `main` 后会自动触发构建。
 
+## Windows 剪贴板一键构建（无需保存配方文件）
+
+仓库提供 `scripts/Invoke-FM27TacticBuild.ps1`。它用 GitHub `workflow_dispatch` API 将剪贴板中的完整 JSON 作为内联 `recipe_json` 提交；在 Python 构建进程里直接解析为 dict，生成后自动下载 FMF 和 report，并在本机核验 SHA-256、22 阶段回读及全部 D3 检查。配方不会写入本地 JSON 文件，也不会作为 Git commit 提交。
+
+### 一次性配置
+
+1. 在 GitHub 为 `eslaulau/fm-ta` 创建 fine-grained personal access token，只选此仓库，并授予 **Actions: Read and write**。GitHub 的 workflow dispatch API 对 fine-grained token 要求 Actions 写权限。
+2. 在 Windows PowerShell 中运行：
+
+```powershell
+.\scripts\Invoke-FM27TacticBuild.ps1 -SetupToken
+```
+
+按提示粘贴 token。脚本通过 Windows DPAPI 将凭据加密保存到当前 Windows 用户的 `%APPDATA%`，不会写入仓库。
+
+### 每次生成
+
+1. 将 ChatGPT 给出的完整战术 JSON 复制到剪贴板。
+2. 在仓库目录运行：
+
+```powershell
+.\scripts\Invoke-FM27TacticBuild.ps1
+```
+
+脚本会直接触发 Actions、等待本次构建、下载 artifact、核验 FMF/report，并将两个文件放入桌面的 `FM27_Builds` 文件夹。默认在本机验证完成后删除 GitHub 云端 artifact；如需保留在线 artifact，运行时加 `-KeepCloudArtifact`。
+
+**公开仓库隐私提示：** `eslaulau/fm-ta` 当前为 public。内联配方不会进入 Git 历史或本地 JSON 文件，但会发送给 GitHub Actions；构建结果在下载前会短暂成为该仓库的 Actions artifact。脚本默认下载并删除 artifact，以缩短公开可见时间。不要通过此公开仓库发送你不愿交给 GitHub 处理的战术资料。
 ## 云端工作流
 
 工作流：`.github/workflows/fm27-tactic-build.yml`
