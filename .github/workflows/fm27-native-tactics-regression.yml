@@ -67,11 +67,11 @@ jobs:
       - name: Generate and independently read back Control Possession smoke test
         run: |
           python "04_离线原生FMF生成器/FM27GEN1_Offline_FMF_Generator.py" \
-            "tests/fixtures/FM27_Control_Possession_SmokeTest_GEN1.txt" \
+            "tests/fixtures/FM27_Vertical_Overload_4231_GEN1.txt" \
             --catalog "04_离线原生FMF生成器/catalog.json" \
-            --output "$RUNNER_TEMP/Control_Possession_SmokeTest.fmf" \
-            --report "$RUNNER_TEMP/Control_Possession_SmokeTest.report.json"
-          python - "$RUNNER_TEMP/Control_Possession_SmokeTest.report.json" <<'PY'
+            --output "$RUNNER_TEMP/Vertical_Overload_4231.fmf" \
+            --report "$RUNNER_TEMP/Vertical_Overload_4231.report.json"
+          python - "$RUNNER_TEMP/Vertical_Overload_4231.report.json" <<'PY'
           import json, sys
           from pathlib import Path
           report = json.loads(Path(sys.argv[1]).read_text(encoding="utf-8"))
@@ -83,9 +83,9 @@ jobs:
       - name: Upload generated native FMF and readback report
         uses: actions/upload-artifact@v4
         with:
-          name: FM27_Random_Trial_20261118
+          name: FM27_Original_Vertical_Overload_4231
           path: |
-            ${{ runner.temp }}/Control_Possession_SmokeTest.fmf
-            ${{ runner.temp }}/Control_Possession_SmokeTest.report.json
+            ${{ runner.temp }}/Vertical_Overload_4231.fmf
+            ${{ runner.temp }}/Vertical_Overload_4231.report.json
           if-no-files-found: error
           retention-days: 14
