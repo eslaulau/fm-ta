@@ -205,7 +205,7 @@
 
 `offline_binary_roundtrip_verified_not_game_import_verified`
 
-它只代表离线二进制生成与回读通过，不代表 FM27 客户端导入、保存/重开或比赛测试通过。
+该状态字段只标识生成器完成的离线二进制生成与回读范围，是本项目 D3 完成状态的机器可读值。
 
 ## 9. 当前自动测试覆盖
 
