@@ -1,19 +1,26 @@
 name: FM27 Tactic Build
 
 on:
-  # A single structured JSON recipe (or legacy GEN1 TXT) under build_requests/ starts a cloud build.
+  # Existing repository-file trigger remains available for local/legacy workflows.
   push:
     branches: [main]
     paths:
       - "build_requests/*.json"
       - "build_requests/*.txt"
-  # Allows retrying an existing recipe from the Actions UI.
+  # A manual run can use a repository path OR paste raw tactic JSON directly.
   workflow_dispatch:
     inputs:
       recipe_path:
-        description: "Repository path to one direct tactic JSON under build_requests/ (legacy GEN1 TXT also accepted)"
-        required: true
+        description: "Existing recipe path under build_requests/ (JSON or legacy GEN1 TXT)"
+        required: false
         type: string
+      recipe_json:
+        description: "Paste the raw structured tactic JSON object (use instead of recipe_path)"
+        required: false
+        type: string
+  # External agents can submit client_payload.recipe as a JSON object without committing it.
+  repository_dispatch:
+    types: [fm27_tactic_build]
 
 permissions:
   contents: read
@@ -23,7 +30,7 @@ jobs:
     name: Build native FM27 FMF
     runs-on: ubuntu-latest
     steps:
-      - name: Check out recipe, generator, catalog, and native templates
+      - name: Check out generator, catalog, and native templates
         uses: actions/checkout@v4
         with:
           fetch-depth: 2
@@ -39,6 +46,9 @@ jobs:
           EVENT_NAME: ${{ github.event_name }}
           EVENT_PATH: ${{ github.event_path }}
           RECIPE_PATH_INPUT: ${{ inputs.recipe_path }}
+          RECIPE_JSON_INPUT: ${{ inputs.recipe_json }}
+          RUNNER_TEMP: ${{ runner.temp }}
+          GITHUB_RUN_NUMBER: ${{ github.run_number }}
         run: |
           python - <<'PY'
           import json
@@ -48,48 +58,106 @@ jobs:
           from pathlib import Path
 
           event_name = os.environ["EVENT_NAME"]
-          if event_name == "workflow_dispatch":
-              raw_paths = [os.environ.get("RECIPE_PATH_INPUT", "").strip()]
+          run_number = os.environ.get("GITHUB_RUN_NUMBER", "0")
+
+          def safe_stem(value):
+              stem = re.sub(r"[^A-Za-z0-9._-]+", "_", str(value or "FM27_Tactic")).strip("._-")
+              return stem or "FM27_Tactic"
+
+          def save_inline_recipe(recipe_data, label):
+              if not isinstance(recipe_data, dict):
+                  raise SystemExit("Direct recipe payload must be a JSON object.")
+              stem = safe_stem(recipe_data.get("name"))
+              target = Path(os.environ["RUNNER_TEMP"]) / f"{stem}_run{run_number}_input.json"
+              target.write_text(
+                  json.dumps(recipe_data, ensure_ascii=False, separators=(",", ":")),
+                  encoding="utf-8",
+              )
+              return target.as_posix(), f"{stem}_run{run_number}", label
+
+          if event_name == "repository_dispatch":
+              event = json.loads(Path(os.environ["EVENT_PATH"]).read_text(encoding="utf-8"))
+              client_payload = event.get("client_payload") or {}
+              recipe_data = client_payload.get("recipe")
+              recipe_path, output_stem, recipe_label = save_inline_recipe(
+                  recipe_data, "repository_dispatch direct JSON payload"
+              )
+          elif event_name == "workflow_dispatch":
+              path_input = os.environ.get("RECIPE_PATH_INPUT", "").strip()
+              json_input = os.environ.get("RECIPE_JSON_INPUT", "").strip()
+              if bool(path_input) == bool(json_input):
+                  raise SystemExit("Provide exactly one of recipe_path or recipe_json.")
+              if json_input:
+                  try:
+                      recipe_data = json.loads(json_input)
+                  except json.JSONDecodeError as exc:
+                      raise SystemExit(f"recipe_json is invalid JSON: {exc}") from exc
+                  recipe_path, output_stem, recipe_label = save_inline_recipe(
+                      recipe_data, "workflow_dispatch inline JSON payload"
+                  )
+              else:
+                  raw_paths = [path_input]
+                  recipes = sorted({
+                      p for p in raw_paths
+                      if p.startswith("build_requests/") and p.endswith((".json", ".txt"))
+                  })
+                  if len(recipes) != 1:
+                      raise SystemExit(
+                          "recipe_path must select exactly one .json or .txt under build_requests/."
+                      )
+                  recipe = Path(recipes[0])
+                  build_dir = Path("build_requests").resolve()
+                  resolved = recipe.resolve()
+                  if resolved.parent != build_dir or not resolved.is_file():
+                      raise SystemExit(f"Recipe path is missing or outside build_requests/: {recipe}")
+                  recipe_path = recipe.as_posix()
+                  output_stem = f"{safe_stem(recipe.stem)}_run{run_number}"
+                  recipe_label = recipe.as_posix()
           else:
-              # Contents-API pushes may be coalesced into one webhook containing
-              # several rapid commits. Resolve this build against the triggering
-              # tip commit only, so older recipe paths in the same webhook do not
-              # get mistaken for multiple simultaneous requests.
+              # Push event: only added/modified recipe files start builds. Deleting
+              # a completed request file is deliberately a no-op, not a failed build.
               changed = subprocess.run(
-                  ["git", "diff-tree", "--no-commit-id", "--name-only", "-r", "HEAD"],
+                  ["git", "diff-tree", "--no-commit-id", "--name-only", "--diff-filter=AM", "-r", "HEAD"],
                   check=True, capture_output=True, text=True
               )
               raw_paths = [line.strip() for line in changed.stdout.splitlines() if line.strip()]
-
-          recipes = sorted({
-              p for p in raw_paths
-              if p.startswith("build_requests/") and p.endswith((".json", ".txt"))
-          })
-          if len(recipes) != 1:
-              raise SystemExit(
-                  "Each cloud build must target exactly one JSON or legacy GEN1 TXT under build_requests/. "
-                  f"Detected: {recipes}"
-              )
-
-          recipe = Path(recipes[0])
-          build_dir = Path("build_requests").resolve()
-          resolved = recipe.resolve()
-          if resolved.parent != build_dir or not resolved.is_file():
-              raise SystemExit(f"Recipe path is missing or outside build_requests/: {recipe}")
-          stem = re.sub(r"[^A-Za-z0-9._-]+", "_", recipe.stem).strip("._-")
-          if not stem:
-              raise SystemExit("Recipe filename must contain at least one safe character.")
+              recipes = sorted({
+                  p for p in raw_paths
+                  if p.startswith("build_requests/") and p.endswith((".json", ".txt"))
+              })
+              if not recipes:
+                  with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as output:
+                      output.write("skip_build=true\n")
+                  print("No added or modified build request in this push; skipping build.")
+                  raise SystemExit(0)
+              if len(recipes) != 1:
+                  raise SystemExit(
+                      "Each push build must target exactly one JSON or legacy GEN1 TXT under build_requests/. "
+                      f"Detected: {recipes}"
+                  )
+              recipe = Path(recipes[0])
+              build_dir = Path("build_requests").resolve()
+              resolved = recipe.resolve()
+              if resolved.parent != build_dir or not resolved.is_file():
+                  raise SystemExit(f"Recipe path is missing or outside build_requests/: {recipe}")
+              recipe_path = recipe.as_posix()
+              output_stem = f"{safe_stem(recipe.stem)}_run{run_number}"
+              recipe_label = recipe.as_posix()
 
           with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as output:
-              output.write(f"recipe_path={recipe.as_posix()}\n")
-              output.write(f"output_stem={stem}_run{os.environ.get('GITHUB_RUN_NUMBER', '0')}\n")
-          print(f"Recipe selected: {recipe}")
+              output.write(f"recipe_path={recipe_path}\n")
+              output.write(f"output_stem={output_stem}\n")
+              output.write(f"recipe_label={recipe_label}\n")
+              output.write("skip_build=false\n")
+          print(f"Recipe selected: {recipe_label}")
           PY
 
       - name: Install native generator dependencies
+        if: steps.recipe.outputs.skip_build != 'true'
         run: python -m pip install -r "04_离线原生FMF生成器/requirements.txt"
 
-      - name: Validate direct JSON input, experimental mappings, and all 22 PI permission contexts
+      - name: Validate structured JSON input, experimental mappings, and all PI permission contexts
+        if: steps.recipe.outputs.skip_build != 'true'
         env:
           RECIPE_PATH: ${{ steps.recipe.outputs.recipe_path }}
         run: |
@@ -97,6 +165,7 @@ jobs:
           python tests/test_fm27gen1_experimental_unmapped_mapping.py
 
       - name: Generate native FMF and same-run report
+        if: steps.recipe.outputs.skip_build != 'true'
         env:
           RECIPE_PATH: ${{ steps.recipe.outputs.recipe_path }}
           OUTPUT_STEM: ${{ steps.recipe.outputs.output_stem }}
@@ -108,6 +177,7 @@ jobs:
             --report "$RUNNER_TEMP/$OUTPUT_STEM.report.json"
 
       - name: Enforce D3 independent-readback result
+        if: steps.recipe.outputs.skip_build != 'true'
         env:
           OUTPUT_STEM: ${{ steps.recipe.outputs.output_stem }}
           RECIPE_PATH: ${{ steps.recipe.outputs.recipe_path }}
@@ -161,7 +231,7 @@ jobs:
               raise SystemExit("FMF SHA256 differs from the same-run report.")
           if report.get("bytes") != fmf_path.stat().st_size:
               raise SystemExit("FMF byte count differs from the same-run report.")
-          print(f"PASS: D3 native FMF readback")
+          print("PASS: D3 native FMF readback")
           print(f"FMF: {fmf_path.name} ({fmf_path.stat().st_size} bytes)")
           print(f"SHA256: {digest}")
           print(f"Style: {report.get('style')} / {report.get('style_code_hex')}")
@@ -169,14 +239,15 @@ jobs:
           PY
 
       - name: Publish build summary
-        if: success()
+        if: success() && steps.recipe.outputs.skip_build != 'true'
         env:
           OUTPUT_STEM: ${{ steps.recipe.outputs.output_stem }}
-          RECIPE_PATH: ${{ steps.recipe.outputs.recipe_path }}
+          RECIPE_LABEL: ${{ steps.recipe.outputs.recipe_label }}
         run: |
           python - "$RUNNER_TEMP/$OUTPUT_STEM.report.json" "$RUNNER_TEMP/$OUTPUT_STEM.fmf" <<'PY'
           import hashlib
           import json
+          import os
           import sys
           from pathlib import Path
 
@@ -186,7 +257,7 @@ jobs:
           lines = [
               "## FM27 native tactic build",
               "",
-              f"- Recipe: `{__import__('os').environ['RECIPE_PATH']}`",
+              f"- Recipe source: `{os.environ['RECIPE_LABEL']}`",
               f"- FMF: `{fmf.name}`",
               f"- Bytes: {fmf.stat().st_size}",
               f"- SHA256: `{digest}`",
@@ -195,11 +266,12 @@ jobs:
               "- D3: all required independent readback checks passed",
               "- Game import and match performance: not tested by this workflow",
           ]
-          with open(__import__('os').environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as f:
+          with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as f:
               f.write("\n".join(lines) + "\n")
           PY
 
       - name: Upload FMF and report artifact
+        if: success() && steps.recipe.outputs.skip_build != 'true'
         uses: actions/upload-artifact@v4
         with:
           name: FM27_${{ steps.recipe.outputs.output_stem }}
