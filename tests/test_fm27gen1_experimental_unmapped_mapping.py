@@ -51,6 +51,102 @@ class ExperimentalMappingTest(unittest.TestCase):
                 f"{key}={option} -> native bit {native_bit}",
             )
 
+    def test_all_non_default_native_pi_options_have_exact_generator_mappings(self):
+        native_groups = {
+            0: "ATTACKING_WIDTH",
+            1: "DRIBBLING_DIRECTION",
+            2: "DRIBBLING_FREQUENCY",
+            3: "FORWARD_RUNS",
+            4: "ROAMING",
+            5: "HOLD_UP_BALL",
+            6: "SHOOTING",
+            7: "PASSING_STRATEGY",
+            8: "PASSING_RISKS",
+            9: "CROSSING_TARGET",
+            10: "CROSSING_FREQUENCY",
+            11: "TRIGGER_PRESS",
+            12: "MARKING",
+            13: "TACKLING",
+            14: "MARKING_TARGET",
+            15: "ATTACK_BOX_SIDE",
+            16: "ATTACK_BOX_DEPTH",
+        }
+        expected = {}
+        for group in self.catalog["player_instructions"]:
+            token = native_groups[int(group["id"])]
+            for option in group["options"]:
+                native_id = int(option["id"])
+                if native_id:
+                    self.assertNotIn(native_id, expected)
+                    expected[native_id] = token
+        self.assertEqual(len(expected), 37)
+        actual = {native_id: key[0] for key, native_id in gen.PI_MAP.items()}
+        self.assertEqual(len(actual), len(gen.PI_MAP), "PI native IDs must be unique")
+        self.assertEqual(set(actual), set(expected))
+        for native_id, expected_group in expected.items():
+            self.assertEqual(actual[native_id], expected_group, f"native PI option {native_id}")
+
+    def test_every_native_ti_group_and_active_bit_has_a_mapping(self):
+        native_groups = {
+            int(group["id"]): group for group in self.catalog["team_instructions"]
+        }
+        mapped_group_ids = {
+            group_id for group_ids in gen.TI_GROUPS.values() for group_id in group_ids
+        }
+        self.assertEqual(mapped_group_ids, set(native_groups))
+        self.assertEqual(len(mapped_group_ids), len(native_groups))
+
+        native_bits = {
+            int(option.get("native_bit") or 0)
+            for group in native_groups.values()
+            for option in group["options"]
+            if int(option.get("native_bit") or 0) > 0
+        }
+        mapped_bits = {
+            int(bit) for bit in gen.TI_MAP.values() if int(bit) > 0
+        }
+        self.assertEqual(len(native_bits), 75)
+        self.assertEqual(len(mapped_bits), len(gen.TI_MAP) - sum(
+            1 for bit in gen.TI_MAP.values() if int(bit) == 0
+        ))
+        self.assertEqual(mapped_bits, native_bits)
+
+        for (key, option), native_bit in gen.TI_MAP.items():
+            if int(native_bit) == 0:
+                continue
+            target_groups = set(gen.TI_GROUPS[key])
+            owners = {
+                int(group["id"])
+                for group in self.catalog["team_instructions"]
+                if any(
+                    int(item.get("native_bit") or 0) == int(native_bit)
+                    for item in group["options"]
+                )
+            }
+            self.assertTrue(
+                target_groups & owners,
+                f"{key}={option} -> bit {native_bit} is not in mapped native group",
+            )
+
+    def test_native_ti_options_encode_exact_bits(self):
+        for (key, option), native_bit in gen.TI_MAP.items():
+            with self.subTest(key=key, option=option, native_bit=native_bit):
+                vector = gen.encode_ti({"ti": {key: option}}, self.catalog, bytearray(12))
+                self.assertEqual(len(vector), 12)
+                if int(native_bit):
+                    self.assertTrue(
+                        vector[int(native_bit) // 8] & (1 << (int(native_bit) % 8)),
+                        f"{key}={option} did not set native bit {native_bit}",
+                    )
+                else:
+                    self.assertFalse(any(vector), f"{key}={option} default should be clear")
+
+    def test_hold_shape_uses_real_native_bit_and_supporting_run_groups_are_separate(self):
+        self.assertEqual(gen.TI_MAP[("ATTACKING_TRANSITION", "HOLD_SHAPE")], 55)
+        self.assertEqual(gen.TI_GROUPS["SUPPORTING_RUNS"], [28])
+        self.assertEqual(gen.TI_GROUPS["SUPPORTING_RUNS_SECONDARY"], [31])
+        self.assertEqual(gen.TI_GROUPS["GOALKEEPER_ATTACKING_SET_PIECES"], [32])
+
     def test_experimental_test_recipe_has_22_permission_checked_pi_phases(self):
         raw_recipe_path = os.environ.get("RECIPE_PATH", "build_requests/Unmapped_Mapping_Import_Test_v1.txt")
         recipe_path = Path(raw_recipe_path)
