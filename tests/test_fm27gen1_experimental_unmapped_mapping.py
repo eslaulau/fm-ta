@@ -83,7 +83,7 @@ class ExperimentalMappingTest(unittest.TestCase):
         self.assertEqual(len(ti_vector), 12)
         self.assertGreaterEqual(len(recipe.get("ti", {})), 6)
         self.assertTrue(
-            any((key, value) in gen.EXPERIMENTAL_TI_MAP.items()
+            any((key, value) in gen.EXPERIMENTAL_TI_MAP
                 for key, value in recipe["ti"].items())
         )
 
