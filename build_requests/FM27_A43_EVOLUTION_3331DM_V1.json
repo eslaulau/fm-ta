@@ -1,0 +1,303 @@
+{
+  "v": 1,
+  "name": "A43_EVOLUTION_3331DM_V1",
+  "ment": 5,
+  "base": {
+    "g": "Gegenpress"
+  },
+  "ti": {
+    "PASSING_DIRECTNESS": "MORE_DIRECT",
+    "TEMPO": "HIGHER",
+    "ATTACKING_WIDTH": "WIDER",
+    "ATTACKING_TRANSITION": "COUNTER_ATTACK",
+    "CREATIVE_FREEDOM": "DEFAULT",
+    "TIME_WASTING": "DEFAULT",
+    "PLAY_FOR_SET_PIECES": "KEEP_BALL_IN_PLAY",
+    "BUILD_UP_STRATEGY": "PLAY_THROUGH_PRESS",
+    "GOAL_KICKS": "SHORT",
+    "GOALKEEPER_DISTRIBUTION": "CENTRE_BACKS",
+    "GK_DISTRIBUTION_(SPEED)": "DEFAULT",
+    "PROGRESS_THROUGH": "DEFAULT",
+    "PASS_RECEPTION": "PASS_INTO_SPACE",
+    "SUPPORTING_RUNS": "DEFAULT",
+    "PATIENCE": "DEFAULT",
+    "DRIBBLING": "DEFAULT",
+    "SHOTS_FROM_DISTANCE": "DISCOURAGE",
+    "CROSSING_STYLE": "DEFAULT",
+    "LINE_OF_ENGAGEMENT": "HIGH_PRESS",
+    "DEFENSIVE_LINE": "HIGHER",
+    "DEFENSIVE_LINE_BEHAVIOR": "DEFAULT",
+    "TRIGGER_PRESS": "MORE_OFTEN",
+    "DEFENSIVE_TRANSITION": "COUNTER_PRESS",
+    "TACKLING": "DEFAULT",
+    "PRESSING_TRAP": "DEFAULT",
+    "SHORT_GOALKEEPER_DISTRIBUTION": "YES",
+    "CROSS_ENGAGEMENT": "DEFAULT"
+  },
+  "p": [
+    {
+      "in": {
+        "pos": "GK",
+        "role": "BallPlayingGoalkeeper",
+        "duty": "4194304",
+        "pi": [
+          [
+            "PASSING_STRATEGY",
+            "SHORTER"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "GK",
+        "role": "OPSweeperKeeper",
+        "duty": "2097152",
+        "pi": [
+          [
+            "TACKLING",
+            "EASE_OFF_TACKLES"
+          ]
+        ]
+      }
+    },
+    {
+      "in": {
+        "pos": "DCR",
+        "role": "WideCentreBack",
+        "duty": "4194304",
+        "pi": [
+          [
+            "PASSING_STRATEGY",
+            "SHORTER"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "DR",
+        "role": "OPFullBack",
+        "duty": "2097152",
+        "pi": [
+          [
+            "MARKING",
+            "MARK_TIGHTER"
+          ]
+        ]
+      }
+    },
+    {
+      "in": {
+        "pos": "DC",
+        "role": "BallPlayingCentreBack",
+        "duty": "2097152",
+        "pi": [
+          [
+            "PASSING_STRATEGY",
+            "SHORTER"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "DCR",
+        "role": "OPCoveringCentreBack",
+        "duty": "2097152",
+        "pi": [
+          [
+            "MARKING",
+            "MARK_TIGHTER"
+          ]
+        ]
+      }
+    },
+    {
+      "in": {
+        "pos": "DCL",
+        "role": "CentreBack",
+        "duty": "2097152",
+        "pi": [
+          [
+            "PASSING_STRATEGY",
+            "SHORTER"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "DC",
+        "role": "OPCentreBack",
+        "duty": "2097152",
+        "pi": [
+          [
+            "MARKING",
+            "MARK_TIGHTER"
+          ]
+        ]
+      }
+    },
+    {
+      "in": {
+        "pos": "WBR",
+        "role": "AdvancedWingBack",
+        "duty": "8388608",
+        "pi": [
+          [
+            "PASSING_STRATEGY",
+            "SHORTER"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "DCL",
+        "role": "OPCentreBack",
+        "duty": "2097152",
+        "pi": [
+          [
+            "MARKING",
+            "MARK_TIGHTER"
+          ]
+        ]
+      }
+    },
+    {
+      "in": {
+        "pos": "DMC",
+        "role": "DefensiveMidfielder",
+        "duty": "2097152",
+        "pi": [
+          [
+            "PASSING_STRATEGY",
+            "SHORTER"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "DL",
+        "role": "OPFullBack",
+        "duty": "2097152",
+        "pi": [
+          [
+            "MARKING",
+            "MARK_TIGHTER"
+          ]
+        ]
+      }
+    },
+    {
+      "in": {
+        "pos": "WBL",
+        "role": "AdvancedWingBack",
+        "duty": "4194304",
+        "pi": [
+          [
+            "PASSING_STRATEGY",
+            "SHORTER"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "DMR",
+        "role": "OPScreeningDefensiveMidfielder",
+        "duty": "2097152",
+        "pi": [
+          [
+            "MARKING",
+            "MARK_TIGHTER"
+          ]
+        ]
+      }
+    },
+    {
+      "in": {
+        "pos": "AMR",
+        "role": "Winger",
+        "duty": "8388608",
+        "pi": [
+          [
+            "ATTACKING_WIDTH",
+            "STAY_WIDER"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "DML",
+        "role": "OPDefensiveMidfielder",
+        "duty": "2097152",
+        "pi": [
+          [
+            "MARKING",
+            "MARK_TIGHTER"
+          ]
+        ]
+      }
+    },
+    {
+      "in": {
+        "pos": "AMC",
+        "role": "AdvancedPlaymaker",
+        "duty": "4194304",
+        "pi": [
+          [
+            "ATTACKING_WIDTH",
+            "MOVE_INTO_CHANNELS"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "AMR",
+        "role": "OPTrackingWinger",
+        "duty": "2097152",
+        "pi": [
+          [
+            "MARKING",
+            "MARK_TIGHTER"
+          ]
+        ]
+      }
+    },
+    {
+      "in": {
+        "pos": "AML",
+        "role": "InsideWinger",
+        "duty": "8388608",
+        "pi": [
+          [
+            "DRIBBLING_DIRECTION",
+            "CUT_INSIDE_WITH_BALL"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "AML",
+        "role": "OPTrackingWinger",
+        "duty": "2097152",
+        "pi": [
+          [
+            "MARKING",
+            "MARK_TIGHTER"
+          ]
+        ]
+      }
+    },
+    {
+      "in": {
+        "pos": "ST",
+        "role": "CentreForward",
+        "duty": "8388608",
+        "pi": [
+          [
+            "ATTACK_BOX_DEPTH",
+            "ATTACK_DEFENSIVE_LINE"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "ST",
+        "role": "OPTrackingCentreForward",
+        "duty": "2097152",
+        "pi": [
+          [
+            "MARKING",
+            "MARK_TIGHTER"
+          ]
+        ]
+      }
+    }
+  ]
+}
