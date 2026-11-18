@@ -1,13 +1,15 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""Offline FM27GEN1 -> native FMF prototype.
+"""Build native FM27 FMF files from structured JSON tactic recipes.
 
+The primary input is a plain UTF-8 JSON object. Legacy FM27GEN1:Base64 TXT
+files remain readable for backward compatibility, but are not required.
 This tool operates on local FM27 files and never launches or modifies a
-running Football Manager process. It edits a user-supplied native .fmf
-template using the inspected FMF/.tac structure.
+running Football Manager process. It edits a registered native .fmf
+container using the inspected FMF/.tac structure.
 
-Prototype scope is deliberately strict: FM27 source-major 27 templates,
-11 slots, current FM27 catalog, known TI/PI mappings and known role-duty tags.
+Scope is deliberately strict: FM27 source-major 27 templates, 11 slots,
+the current FM27 catalog, known TI/PI mappings and known role-duty tags.
 Unknown recipe fields are rejected instead of silently discarded.
 """
 from __future__ import annotations
@@ -725,7 +727,7 @@ def update_role_entry(block:Block,role_flag:int,pi_flags:int):
         matches[0]['mask2']=pi_flags
 
 def apply_recipe(tac:Tac,recipe:dict,catalog:dict,style_registry:dict|None=None)->dict:
-    if recipe.get('v')!=1 or len(recipe.get('p',[]))!=11: raise ValueError('只支持 v1、11 个球员槽位的 FM27GEN1')
+    if recipe.get('v')!=1 or len(recipe.get('p',[]))!=11: raise ValueError('只支持 v=1、11 个球员槽位的 FM27 结构化战术配方')
     title=re.sub(r'[\\/:*?"<>|\x00-\x1f]','-',str(recipe.get('name') or 'FM27 Tactic')).strip(' .')
     if not title: title='FM27 Tactic'
     tac.title=title
