@@ -198,6 +198,33 @@ class ExperimentalMappingTest(unittest.TestCase):
                 expected_bits = {int(native_bit)} if int(native_bit) else set()
                 self.assertEqual(actual_bits, expected_bits, f"{key}={option}")
 
+    def test_six_roles_accept_explicit_native_duty_for_all_catalog_duty_states(self):
+        cases = [
+            (0, "MR", "PlaymakingWinger"),
+            (1, "DCR", "OPCoveringWideCentreBack"),
+            (0, "DC", "OverlappingCentreBack"),
+            (0, "ST", "FalseNine"),
+            (0, "DMC", "HalfBack"),
+            (0, "DC", "AdvancedCentreBack"),
+        ]
+        native_duties = {int(value) for value in self.catalog["duties"]}
+        for phase, position, role_id in cases:
+            with self.subTest(role=role_id):
+                self.assertIn(role_id, self.catalog["role_eligibility"][position][phase])
+                self.assertNotIn(role_id, gen.ROLE_DUTY)
+                for duty in native_duties:
+                    self.assertIn(f"{phase}:{position}:{role_id}:{duty}", self.catalog["pi_policies"])
+                    self.assertEqual(gen.resolve_role_duty(role_id, {"duty": duty}), duty)
+                    self.assertEqual(gen.encode_pi([], self.catalog, phase, position, role_id, duty), 0)
+                with self.assertRaisesRegex(ValueError, "显式填写 duty"):
+                    gen.resolve_role_duty(role_id, {})
+        self.assertEqual(gen.resolve_role_duty("CentreBack", {}), 2097152)
+        self.assertEqual(gen.resolve_role_duty("CentreBack", {"duty": "SUPPORT"}), 4194304)
+        self.assertEqual(gen.resolve_role_duty("CentreBack", {"duty": "A"}), 8388608)
+        self.assertEqual(gen.resolve_role_duty("FalseNine", {"duty": "NONE"}), 0)
+        with self.assertRaises(ValueError):
+            gen.resolve_role_duty("FalseNine", {"duty": True})
+
     def test_hold_shape_uses_real_native_bit_and_supporting_run_groups_are_separate(self):
         self.assertEqual(gen.TI_MAP[("ATTACKING_TRANSITION", "HOLD_SHAPE")], 55)
         self.assertEqual(gen.TI_GROUPS["SUPPORTING_RUNS"], [28])
