@@ -86,27 +86,40 @@ class ExperimentalMappingTest(unittest.TestCase):
         for native_id, expected_group in expected.items():
             self.assertEqual(actual[native_id], expected_group, f"native PI option {native_id}")
 
-    def test_every_pi_option_id_is_policy_indexed_and_has_an_editable_context(self):
+    def test_every_pi_option_id_has_a_valid_editable_context_and_encodes(self):
         native_ids = {int(value) for value in gen.PI_MAP.values()}
         self.assertEqual(len(native_ids), 37)
-        editable_counts = {native_id: 0 for native_id in native_ids}
         self.assertEqual(len(self.catalog["pi_policies"]), 1547)
-        for policy_key, revisions in self.catalog["pi_policies"].items():
-            values = list(revisions.values())
-            self.assertTrue(values, f"empty PI policy: {policy_key}")
-            for native_id in native_ids:
+        for (group, option), native_id in gen.PI_MAP.items():
+            found_editable_context = False
+            for policy_key, revisions in self.catalog["pi_policies"].items():
+                values = list(revisions.values())
+                self.assertTrue(values, f"empty PI policy: {policy_key}")
                 states = set()
                 for value in values:
                     self.assertIsInstance(value, str)
                     self.assertLess(native_id, len(value), f"{policy_key}: option {native_id}")
                     states.add(value[native_id])
                 # A few historical policy keys differ across catalog versions.
-                # encode_pi() rejects those specific contexts; they do not
-                # invalidate an Option ID that is editable in other contexts.
+                # encode_pi() rejects those specific contexts; only a fully
+                # consistent editable context can be used for this encode test.
                 if states == {"0"}:
-                    editable_counts[native_id] += 1
-        for native_id, count in editable_counts.items():
-            self.assertGreater(count, 0, f"PI option {native_id} has no editable role context")
+                    phase, position, role_id, duty = policy_key.split(":", 3)
+                    bits = gen.encode_pi(
+                        [[group, option]], self.catalog, int(phase), position,
+                        role_id, int(duty),
+                    )
+                    self.assertEqual(bits, 1 << native_id, f"{group}={option}")
+                    found_editable_context = True
+                    break
+            self.assertTrue(found_editable_context, f"PI option {native_id} has no editable role context")
+
+    def test_conflicting_pi_catalog_revisions_are_rejected_for_that_context(self):
+        with self.assertRaisesRegex(ValueError, "权限冲突"):
+            gen.encode_pi(
+                [["ROAMING", "ROAM_FROM_POSITION"]], self.catalog,
+                0, "AMC", "FreeRole", 0,
+            )
 
     def test_unmapped_native_role_duties_are_explicit_and_complete(self):
         native_roles = {item["id"] for item in self.catalog["roles"]}
