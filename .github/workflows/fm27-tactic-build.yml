@@ -49,19 +49,15 @@ jobs:
           if event_name == "workflow_dispatch":
               raw_paths = [os.environ.get("RECIPE_PATH_INPUT", "").strip()]
           else:
-              event = json.loads(Path(os.environ["EVENT_PATH"]).read_text(encoding="utf-8"))
-              raw_paths = []
-              for commit in event.get("commits", []):
-                  raw_paths.extend(commit.get("added", []))
-                  raw_paths.extend(commit.get("modified", []))
-              # Contents-API pushes can arrive with an empty commits array.
-              # In that case, inspect the checked-out tip commit directly.
-              if not raw_paths:
-                  changed = subprocess.run(
-                      ["git", "show", "--pretty=format:", "--name-only", "HEAD"],
-                      check=True, capture_output=True, text=True
-                  )
-                  raw_paths = [line.strip() for line in changed.stdout.splitlines() if line.strip()]
+              # Contents-API pushes may be coalesced into one webhook containing
+              # several rapid commits. Resolve this build against the triggering
+              # tip commit only, so older recipe paths in the same webhook do not
+              # get mistaken for multiple simultaneous requests.
+              changed = subprocess.run(
+                  ["git", "show", "--pretty=format:", "--name-only", "HEAD"],
+                  check=True, capture_output=True, text=True
+              )
+              raw_paths = [line.strip() for line in changed.stdout.splitlines() if line.strip()]
 
           recipes = sorted({
               p for p in raw_paths
