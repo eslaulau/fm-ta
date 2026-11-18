@@ -15,7 +15,7 @@
 工作流：`.github/workflows/fm27-tactic-build.yml`
 
 触发方式：
-- **推荐：直接手动输入 JSON。** 在 GitHub Actions 页面手动运行 **FM27 Tactic Build**，只填写 `recipe_json`，粘贴完整 JSON 对象；不要填写 `recipe_path`。请求只写入 runner 临时目录，不会提交到仓库。
+- **推荐：直接手动输入 JSON。** 在 GitHub Actions 页面手动运行 **FM27 Tactic Build**，只填写 `recipe_json`，粘贴完整 JSON 对象；不要填写 `recipe_path`。请求只作为 workflow output/env 单行 JSON 传递；不会写入仓库，也不会创建 runner 临时配方文件。
 - **自动文件触发：** 向 `main` push 一份 `build_requests/*.json`；适合需要在仓库留档的配方。
 - **API 直接对象：** 对仓库发送 `repository_dispatch`，`event_type` 使用 `fm27_tactic_build`，并在 `client_payload.recipe` 传完整 JSON 对象；不创建配方文件。
 - **历史兼容：** 手动选择或 push `build_requests/*.txt` 中的 `FM27GEN1:Base64` 文件仍可用，但新战术不应再使用此格式。
