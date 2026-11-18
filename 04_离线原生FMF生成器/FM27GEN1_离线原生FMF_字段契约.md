@@ -101,6 +101,21 @@ GEN1 v1 没有独立 duty 字段。生成器按内部角色 ID 查源码 `ROLE_D
 
 生成器要求 `pi` 字段存在；空数组在代码层可接受。项目正式交付规范另要求 22/22 阶段各有至少一条经过权限核验的 PI。自动测试若用空数组做结构 smoke test，不代表正式战术达到该标准。
 
+### 6.4 2026-11-18 首轮实验性 PI 映射（待游戏导入验证）
+
+本次新增 6 项实验性 PI 映射。数字来自 `catalog.json.player_instructions` 中对应组的原生 Option ID，所选角色/位置/阶段权限已由 `pi_policies` 检查。离线写入及 TAC 回读通过，但**尚未完成 FM27 游戏内导入验证**。
+
+| 输入组 | 输入选项 | 原生 Option ID |
+|---|---|---:|
+| CROSSING_TARGET | BACK_POST | 10 |
+| ROAMING | ROAM_FROM_POSITION | 24 |
+| CROSSING_FREQUENCY | BYLINE | 8 |
+| ATTACK_BOX_DEPTH | LATE_RUNS | 42 |
+| TRIGGER_PRESS | LESS_OFTEN | 30 |
+| TACKLING | GET_STUCK_IN | 31 |
+
+本批映射由 `EXPERIMENTAL_PI_MAP` 单独登记，再并入生成路径；生成报告在 `experimental_mappings.status=unverified_in_game` 下列出本次实际使用项。不得将其实验状态误标为游戏已验证。
+
 ## 7. TI 映射、继承与风格 profile
 
 - 网站规则层记录 27 项 TI；原生 `catalog.json` 有 29 组 `team_instructions`，数量口径不同。
@@ -110,6 +125,21 @@ GEN1 v1 没有独立 duty 字段。生成器按内部角色 ID 查源码 `ROLE_D
 - 已知 template-owned opaque TI bits 为 33、34、74、75、76，按模板保留，不作为通用可编辑选项。
 - 当前没有独立 IP/OOP TI 向量。配方中 TI 不可表达成两套阶段指令。
 - 十种 profile 数据存在，不等于每一种 TI 选项均已开放写入；应同时检查 `TI_MAP` 和原生目录。
+
+### 7.1 2026-11-18 首轮实验性 TI 映射（待游戏导入验证）
+
+本次新增 6 项 TI 映射。每一 bit 均与 `catalog.json.team_instructions` 对应原生组中的 `native_bit` 一致；通过离线向量回读后仍标记为待游戏导入验证。
+
+| 输入组 | 输入选项 | 原生 bit |
+|---|---|---:|
+| DEFENSIVE_LINE | MUCH_HIGHER | 56 |
+| PRESSING_TRAP | TRAP_INSIDE | 80 |
+| CROSSING_STYLE | WHIPPED_CROSSES | 11 |
+| PROGRESS_THROUGH | RIGHT | 22 |
+| GOALKEEPER_DISTRIBUTION | PLAYMAKER | 39 |
+| SUPPORTING_RUNS | RIGHT_INSIDE | 30 |
+
+这些映射单独登记于 `EXPERIMENTAL_TI_MAP`。正式使用前仍需在 FM27 客户端导入，逐项确认菜单显示及保存后的状态。
 
 ## 8. FMF 写入与独立回读
 
