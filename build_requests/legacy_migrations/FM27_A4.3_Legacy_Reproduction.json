@@ -51,7 +51,7 @@
       },
       "out": {
         "pos": "GK",
-        "role": "OPSweeperKeeper",
+        "role": "Sweeper Keeper",
         "pi": [],
         "duty": 8388608
       }
@@ -65,7 +65,7 @@
       },
       "out": {
         "pos": "DR",
-        "role": "OPHoldingFullBack",
+        "role": "Holding Full-Back",
         "pi": [],
         "duty": 2097152
       }
@@ -79,7 +79,7 @@
       },
       "out": {
         "pos": "DCR",
-        "role": "OPCoveringCentreBack",
+        "role": "Covering Centre-Back",
         "pi": [],
         "duty": 2097152
       }
@@ -93,7 +93,7 @@
       },
       "out": {
         "pos": "DCL",
-        "role": "OPCentreBack",
+        "role": "Centre-Back",
         "pi": [],
         "duty": 2097152
       }
@@ -107,7 +107,7 @@
       },
       "out": {
         "pos": "DL",
-        "role": "OPHoldingFullBack",
+        "role": "Holding Full-Back",
         "pi": [],
         "duty": 2097152
       }
@@ -121,7 +121,7 @@
       },
       "out": {
         "pos": "DMR",
-        "role": "OPScreeningDefensiveMidfielder",
+        "role": "Screening Defensive Midfielder",
         "pi": [],
         "duty": 2097152
       }
@@ -135,7 +135,7 @@
       },
       "out": {
         "pos": "DML",
-        "role": "OPDefensiveMidfielder",
+        "role": "Defensive Midfielder",
         "pi": [],
         "duty": 2097152
       }
@@ -149,7 +149,7 @@
       },
       "out": {
         "pos": "MR",
-        "role": "OPTrackingWideMidfielder",
+        "role": "Tracking Wide Midfielder",
         "pi": [],
         "duty": 2097152
       }
@@ -172,7 +172,7 @@
       },
       "out": {
         "pos": "ML",
-        "role": "OPTrackingWideMidfielder",
+        "role": "Tracking Wide Midfielder",
         "pi": [],
         "duty": 2097152
       }
@@ -191,7 +191,7 @@
       },
       "out": {
         "pos": "MCL",
-        "role": "OPCentralMidfielder",
+        "role": "Central Midfielder",
         "pi": [],
         "duty": 4194304
       }
@@ -210,11 +210,10 @@
       },
       "out": {
         "pos": "ST",
-        "role": "OPTrackingCentreForward",
+        "role": "Tracking Centre Forward",
         "pi": [],
         "duty": 2097152
       }
     }
   ]
 }
-
