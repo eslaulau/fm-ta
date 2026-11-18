@@ -855,11 +855,16 @@ def validate_recipe_structure(recipe: dict) -> None:
     base = recipe['base']
     if not isinstance(base, dict):
         raise ValueError('base 必须是对象')
-    unknown_base = set(base) - {'g'}
+    unknown_base = set(base) - {'g', 'ip', 'oop'}
     if unknown_base:
         raise ValueError(f'base 包含未知字段：{sorted(unknown_base)}')
     if not isinstance(base.get('g'), str) or not base['g'].strip():
         raise ValueError('base.g 必须是非空风格名称字符串')
+    # ip/oop are accepted legacy/profile metadata fields used by official-style
+    # recipes. The native writer derives actual phase data from p[*].in/out.
+    for phase_key in ('ip', 'oop'):
+        if phase_key in base and not isinstance(base[phase_key], str):
+            raise ValueError(f'base.{phase_key} 必须是字符串元数据')
 
     ti = recipe.get('ti', {})
     if not isinstance(ti, dict):
