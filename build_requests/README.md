@@ -15,9 +15,11 @@
 工作流：`.github/workflows/fm27-tactic-build.yml`
 
 触发方式：
-- 默认：向 `main` push 一份 `build_requests/*.json`。
-- 重试：在 GitHub Actions 页面手动运行 **FM27 Tactic Build**，并把 `recipe_path` 指向仓库内已有的 JSON 文件。
-- 旧版兼容：仍接受 `build_requests/*.txt` 中的 `FM27GEN1:Base64` 文件，但新战术不应再使用此格式。
+- **推荐：直接手动输入 JSON。** 在 GitHub Actions 页面手动运行 **FM27 Tactic Build**，只填写 `recipe_json`，粘贴完整 JSON 对象；不要填写 `recipe_path`。请求只写入 runner 临时目录，不会提交到仓库。
+- **自动文件触发：** 向 `main` push 一份 `build_requests/*.json`；适合需要在仓库留档的配方。
+- **API 直接对象：** 对仓库发送 `repository_dispatch`，`event_type` 使用 `fm27_tactic_build`，并在 `client_payload.recipe` 传完整 JSON 对象；不创建配方文件。
+- **历史兼容：** 手动选择或 push `build_requests/*.txt` 中的 `FM27GEN1:Base64` 文件仍可用，但新战术不应再使用此格式。
+- 三种输入路径共用同一个配方解析器和原生 FMF 生成器；输入解析由 `scripts/resolve_fm27_tactic_recipe.py` 负责，并有独立单元测试。
 
 云端生成器直接读取 JSON 对象并调用原有原生写入逻辑：
 
@@ -31,6 +33,25 @@ python "04_离线原生FMF生成器/FM27GEN1_Offline_FMF_Generator.py" "build_re
 
 工作流先运行 direct-JSON 到原生 FMF 的端到端回归测试，再对本次请求检查 PI/TI 映射和 22 个阶段权限，随后实际生成本次 `.fmf` 与 `.report.json`。要求 22 个阶段设计表与回读表均完整，容器、TAC、位置/角色/职责/PI、TI、原生风格字段的独立回读检查全部通过。
 
+### 直接 API 载荷示例
+
+```json
+{
+  "event_type": "fm27_tactic_build",
+  "client_payload": {
+    "recipe": {
+      "v": 1,
+      "name": "My Original Tactic",
+      "ment": 5,
+      "base": { "g": "Gegenpress" },
+      "ti": {},
+      "p": []
+    }
+  }
+}
+```
+
+示例中的 `p` 仅展示外层载荷形状；实际战术必须完整包含 11 个槽位与各自 `in`、`out` 阶段，不能直接用空数组生成。
 ## 输出与交付
 
 成功后上传唯一构建 artifact：`FM27_<配方名>_run<运行号>`，包含：
