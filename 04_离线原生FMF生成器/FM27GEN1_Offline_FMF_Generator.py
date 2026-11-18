@@ -166,6 +166,18 @@ ROLE_DUTY = {
     'OPWideOutletWinger': 8388608,
 }
 
+# These native role IDs are present in catalog.json but do not yet have a
+# source-backed role->duty assignment in the current sample/preset evidence.
+# Keep them explicit so future catalog expansion cannot silently overlook them.
+ROLE_DUTY_UNMAPPED = frozenset({
+    'PlaymakingWinger',
+    'OPCoveringWideCentreBack',
+    'OverlappingCentreBack',
+    'FalseNine',
+    'HalfBack',
+    'AdvancedCentreBack',
+})
+
 # Native team-option bits for the non-default A9.0.2 selections.
 # Every bit below was cross-checked against the packed 12-byte vector in the
 # downloaded A9.0.2 .fmf and the current local catalog.
