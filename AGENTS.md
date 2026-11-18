@@ -93,3 +93,12 @@ Keep responses in Chinese unless the user changes language. Be direct and outcom
 Do not burden the user with intermediate JSON, shell commands, GitHub UI steps, or internal debugging tasks.
 Report only material blockers and what was actually verified. When successful, provide the two actual files first and a brief explanation of the tactic. Do not say "completed" before the native artifact has been downloaded and checked.
 
+
+
+## 7. External player-attribute source (on demand only)
+
+- Registered source: FM Blog FM27 Players Database — https://www.footballmanagerblog.org/database/fm27/players
+- Do **not** use or cite this source by default. It is activated only when the user explicitly requests player attributes, player analysis, attribute-based tactic design, player comparison, or use of this database.
+- It is an external player-data source, not an authority for native FM27 position/role/duty/PI/TI permissions. Native compatibility must still be checked against the repository's original permission data, catalog, generator code, and tests.
+- Never require squad/player data as a prerequisite for an original tactic unless the user explicitly requests that analysis.
+- When this source is not explicitly requested, do not mention it as a recommendation, evidence source, or design input.
