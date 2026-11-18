@@ -2,6 +2,13 @@
 
 本目录接收**普通 UTF-8 JSON 战术配方**，并自动触发原生 FMF 构建。新战术不需要 GEN1 前缀、Base64 包装或中间 TXT。
 
+## 对话内直接交付（正式默认流程）
+
+用户只需在 ChatGPT 对话中提出战术目标与限制。战术确定后，助手直接通过 GitHub 仓库写入权限，在本目录创建唯一一份完整 JSON 请求文件；该次 `main` 分支 push 自动触发 `FM27 Tactic Build`。助手随后读取本次 Actions 运行结果、下载 artifact、核验 `.fmf` 与同次 `.report.json`，并在对话中直接交付文件。
+
+**用户不需要**打开 GitHub Actions 页面、复制粘贴 JSON、操作桌面、运行 PowerShell、创建本地文件或手动下载 artifact。输入文件由助手直接写进仓库；生成、回读和 artifact 都在 GitHub Actions 中完成。
+
+**仓库可见性：** 当前 `eslaulau/fm-ta` 是公开仓库，因此 `build_requests/*.json` 和 Git 提交历史对公众可见。战术配方不应包含密码、token 或其他秘密内容；如战术本身需要保密，须先将项目改为私有仓库，不能把公开仓库说成私密通道。
 ## 提交规则
 
 1. 每次构建只提交一个完整 JSON 配方。
@@ -15,9 +22,9 @@
 工作流：`.github/workflows/fm27-tactic-build.yml`
 
 触发方式：
-- **推荐：直接手动输入 JSON。** 在 GitHub Actions 页面手动运行 **FM27 Tactic Build**，只填写 `recipe_json`，粘贴完整 JSON 对象；不要填写 `recipe_path`。请求只作为 workflow output/env 单行 JSON 传递；不会写入仓库，也不会创建 runner 临时配方文件。
-- **自动文件触发：** 向 `main` push 一份 `build_requests/*.json`；适合需要在仓库留档的配方。
-- **API 直接对象：** 对仓库发送 `repository_dispatch`，`event_type` 使用 `fm27_tactic_build`，并在 `client_payload.recipe` 传完整 JSON 对象；不创建配方文件。
+- **正式对话交付：** 助手直接创建/提交 `build_requests/*.json`；push 到 `main` 后自动运行，并由助手下载、核验和交付 FMF/report。无需用户操作 GitHub 页面或本地电脑。
+- **手动调试：** 在 GitHub Actions 页面手动运行 **FM27 Tactic Build**，只填写 `recipe_json`，不填写 `recipe_path`；用于仓库维护者独立测试，不是用户的日常交付步骤。
+- **外部自动化：** `repository_dispatch` 的 `event_type` 为 `fm27_tactic_build`，完整对象放入 `client_payload.recipe`；适合具备 dispatch 写权限的外部调用方。
 - **历史兼容：** 手动选择或 push `build_requests/*.txt` 中的 `FM27GEN1:Base64` 文件仍可用，但新战术不应再使用此格式。
 - 三种输入路径共用同一个配方解析器和原生 FMF 生成器；内联对象经 `scripts/resolve_fm27_tactic_recipe.py` 作为单行 JSON workflow output 传递，再由 `scripts/build_fm27_tactic.py` 直接解析成 dict 并调用 `build_fmf_from_recipe()`，不创建输入文件。相关路径有独立单元测试。
 
