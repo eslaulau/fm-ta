@@ -43,7 +43,7 @@
       },
       "out": {
         "pos": "GK",
-        "role": "OPLineKeeper",
+        "role": "LineHoldingKeeper",
         "duty": "D",
         "pi": [
           [
@@ -67,7 +67,7 @@
       },
       "out": {
         "pos": "DR",
-        "role": "OPPressingFullBack",
+        "role": "PressingFullBack",
         "duty": "S",
         "pi": [
           [
@@ -91,7 +91,7 @@
       },
       "out": {
         "pos": "DCR",
-        "role": "OPCoveringCentreBack",
+        "role": "CoveringCentreBack",
         "duty": "D",
         "pi": [
           [
@@ -115,7 +115,7 @@
       },
       "out": {
         "pos": "DCL",
-        "role": "OPStoppingCentreBack",
+        "role": "StoppingCentreBack",
         "duty": "D",
         "pi": [
           [
@@ -139,7 +139,7 @@
       },
       "out": {
         "pos": "DL",
-        "role": "OPHoldingFullBack",
+        "role": "HoldingFullBack",
         "duty": "D",
         "pi": [
           [
@@ -163,7 +163,7 @@
       },
       "out": {
         "pos": "DMC",
-        "role": "OPScreeningDefensiveMidfielder",
+        "role": "ScreeningDefensiveMidfielder",
         "duty": "D",
         "pi": [
           [
@@ -187,7 +187,7 @@
       },
       "out": {
         "pos": "MCR",
-        "role": "OPWideCoverCentralMidfielder",
+        "role": "WideCoverCentralMidfielder",
         "duty": "A",
         "pi": [
           [
@@ -211,7 +211,7 @@
       },
       "out": {
         "pos": "MCL",
-        "role": "OPScreeningCentralMidfielder",
+        "role": "ScreeningCentralMidfielder",
         "duty": "D",
         "pi": [
           [
@@ -235,7 +235,7 @@
       },
       "out": {
         "pos": "AMR",
-        "role": "OPTrackingWinger",
+        "role": "TrackingWinger",
         "duty": "D",
         "pi": [
           [
@@ -259,7 +259,7 @@
       },
       "out": {
         "pos": "AML",
-        "role": "OPTrackingWinger",
+        "role": "TrackingWinger",
         "duty": "D",
         "pi": [
           [
@@ -283,7 +283,7 @@
       },
       "out": {
         "pos": "ST",
-        "role": "OPSplittingOutletCentreForward",
+        "role": "SplittingOutletCentreForward",
         "duty": "A",
         "pi": [
           [
