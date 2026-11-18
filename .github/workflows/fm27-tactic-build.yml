@@ -1,0 +1,184 @@
+name: FM27 Tactic Build
+
+on:
+  # A single GEN1 recipe file committed under build_requests/ starts a cloud build.
+  push:
+    branches: [main]
+    paths:
+      - "build_requests/*.txt"
+  # Allows retrying an existing recipe from the Actions UI.
+  workflow_dispatch:
+    inputs:
+      recipe_path:
+        description: "Repository path to one GEN1 TXT under build_requests/"
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  build-native-fmf:
+    name: Build native FM27 FMF
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out recipe, generator, catalog, and native templates
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Resolve exactly one recipe
+        id: recipe
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          EVENT_PATH: ${{ github.event_path }}
+          RECIPE_PATH_INPUT: ${{ inputs.recipe_path }}
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          import re
+          from pathlib import Path
+
+          event_name = os.environ["EVENT_NAME"]
+          if event_name == "workflow_dispatch":
+              raw_paths = [os.environ.get("RECIPE_PATH_INPUT", "").strip()]
+          else:
+              event = json.loads(Path(os.environ["EVENT_PATH"]).read_text(encoding="utf-8"))
+              raw_paths = []
+              for commit in event.get("commits", []):
+                  raw_paths.extend(commit.get("added", []))
+                  raw_paths.extend(commit.get("modified", []))
+
+          recipes = sorted({
+              p for p in raw_paths
+              if p.startswith("build_requests/") and p.endswith(".txt")
+          })
+          if len(recipes) != 1:
+              raise SystemExit(
+                  "Each cloud build must target exactly one GEN1 TXT under build_requests/. "
+                  f"Detected: {recipes}"
+              )
+
+          recipe = Path(recipes[0])
+          build_dir = Path("build_requests").resolve()
+          resolved = recipe.resolve()
+          if resolved.parent != build_dir or not resolved.is_file():
+              raise SystemExit(f"Recipe path is missing or outside build_requests/: {recipe}")
+          stem = re.sub(r"[^A-Za-z0-9._-]+", "_", recipe.stem).strip("._-")
+          if not stem:
+              raise SystemExit("Recipe filename must contain at least one safe character.")
+
+          with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as output:
+              output.write(f"recipe_path={recipe.as_posix()}\n")
+              output.write(f"output_stem={stem}_run{os.environ.get('GITHUB_RUN_NUMBER', '0')}\n")
+          print(f"Recipe selected: {recipe}")
+          PY
+
+      - name: Install native generator dependencies
+        run: python -m pip install -r "04_离线原生FMF生成器/requirements.txt"
+
+      - name: Generate native FMF and same-run report
+        env:
+          RECIPE_PATH: ${{ steps.recipe.outputs.recipe_path }}
+          OUTPUT_STEM: ${{ steps.recipe.outputs.output_stem }}
+        run: |
+          python "04_离线原生FMF生成器/FM27GEN1_Offline_FMF_Generator.py" \
+            "$RECIPE_PATH" \
+            --catalog "04_离线原生FMF生成器/catalog.json" \
+            --output "$RUNNER_TEMP/$OUTPUT_STEM.fmf" \
+            --report "$RUNNER_TEMP/$OUTPUT_STEM.report.json"
+
+      - name: Enforce D3 independent-readback result
+        env:
+          OUTPUT_STEM: ${{ steps.recipe.outputs.output_stem }}
+        run: |
+          python - "$RUNNER_TEMP/$OUTPUT_STEM.fmf" "$RUNNER_TEMP/$OUTPUT_STEM.report.json" <<'PY'
+          import hashlib
+          import json
+          import sys
+          from pathlib import Path
+
+          fmf_path, report_path = map(Path, sys.argv[1:])
+          if not fmf_path.is_file() or fmf_path.stat().st_size == 0:
+              raise SystemExit(f"FMF output missing or empty: {fmf_path}")
+          if not report_path.is_file():
+              raise SystemExit(f"Same-run report missing: {report_path}")
+
+          report = json.loads(report_path.read_text(encoding="utf-8"))
+          if report.get("status") != "offline_binary_roundtrip_verified_not_game_import_verified":
+              raise SystemExit(f"Unexpected report status: {report.get('status')!r}")
+
+          required_checks = [
+              "fmf_outer_roundtrip",
+              "all_member_decrypt_and_zstd_checksums",
+              "tac_full_parse",
+              "11_ip_oop_pairs",
+              "22_positions_roles_pi_readback_exact",
+              "pi_permissions_checked_against_catalog",
+              "team_instruction_vector_readback",
+              "native_style_string_and_code_readback",
+          ]
+          checks = report.get("checks", {})
+          failed = [key for key in required_checks if checks.get(key) is not True]
+          if failed:
+              raise SystemExit(f"D3 readback checks failed: {failed}")
+
+          phase_map = report.get("player_phase_map", [])
+          readback_map = report.get("readback_player_phase_map", [])
+          if len(phase_map) != 22 or len(readback_map) != 22:
+              raise SystemExit(
+                  f"Expected 22 designed and 22 read-back phases; got {len(phase_map)} / {len(readback_map)}"
+              )
+
+          digest = hashlib.sha256(fmf_path.read_bytes()).hexdigest()
+          print(f"PASS: D3 native FMF readback")
+          print(f"FMF: {fmf_path.name} ({fmf_path.stat().st_size} bytes)")
+          print(f"SHA256: {digest}")
+          print(f"Style: {report.get('style')} / {report.get('style_code_hex')}")
+          print(f"Report status: {report['status']}")
+          PY
+
+      - name: Publish build summary
+        if: success()
+        env:
+          OUTPUT_STEM: ${{ steps.recipe.outputs.output_stem }}
+          RECIPE_PATH: ${{ steps.recipe.outputs.recipe_path }}
+        run: |
+          python - "$RUNNER_TEMP/$OUTPUT_STEM.report.json" "$RUNNER_TEMP/$OUTPUT_STEM.fmf" <<'PY'
+          import hashlib
+          import json
+          import sys
+          from pathlib import Path
+
+          report = json.loads(Path(sys.argv[1]).read_text(encoding="utf-8"))
+          fmf = Path(sys.argv[2])
+          digest = hashlib.sha256(fmf.read_bytes()).hexdigest()
+          lines = [
+              "## FM27 native tactic build",
+              "",
+              f"- Recipe: `{__import__('os').environ['RECIPE_PATH']}`",
+              f"- FMF: `{fmf.name}`",
+              f"- Bytes: {fmf.stat().st_size}",
+              f"- SHA256: `{digest}`",
+              f"- Style: {report.get('style')} / `{report.get('style_code_hex')}`",
+              f"- Result: `{report.get('status')}`",
+              "- D3: all required independent readback checks passed",
+              "- Game import and match performance: not tested by this workflow",
+          ]
+          with open(__import__('os').environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as f:
+              f.write("\n".join(lines) + "\n")
+          PY
+
+      - name: Upload FMF and report artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: FM27_${{ steps.recipe.outputs.output_stem }}
+          path: |
+            ${{ runner.temp }}/${{ steps.recipe.outputs.output_stem }}.fmf
+            ${{ runner.temp }}/${{ steps.recipe.outputs.output_stem }}.report.json
+          if-no-files-found: error
+          retention-days: 14
