@@ -1,8 +1,8 @@
 from __future__ import annotations
 
 import hashlib
-import os
 import json
+import os
 import subprocess
 import sys
 import tempfile
@@ -42,24 +42,13 @@ class DirectJSONInputTest(unittest.TestCase):
 
     def test_python_dict_api_builds_without_any_recipe_transport_file(self):
         catalog = json.loads(CATALOG.read_text(encoding="utf-8"))
-        registry_path = GEN_DIR / "style_template_registry.json"
-        registry = json.loads(registry_path.read_text(encoding="utf-8"))
-
-        # Pass the already parsed Python object directly: no JSON recipe file,
-        # no Base64 wrapper, and no CLI parser are involved in this path.
-        fmf_bytes, report = gen.build_fmf_from_recipe(
-            self.recipe,
-            catalog,
-            style_registry=registry,
-        )
+        registry = json.loads((GEN_DIR / "style_template_registry.json").read_text(encoding="utf-8"))
+        fmf_bytes, report = gen.build_fmf_from_recipe(self.recipe, catalog, style_registry=registry)
 
         self.assertIsInstance(fmf_bytes, bytes)
         self.assertGreater(len(fmf_bytes), 0)
         self.assertEqual(report.get("recipe_input_format"), "python_dict")
-        self.assertEqual(
-            report.get("status"),
-            "offline_binary_roundtrip_verified_not_game_import_verified",
-        )
+        self.assertEqual(report.get("status"), "offline_binary_roundtrip_verified_not_game_import_verified")
         self.assertEqual(report.get("bytes"), len(fmf_bytes))
         self.assertEqual(report.get("sha256"), hashlib.sha256(fmf_bytes).hexdigest())
 
@@ -114,7 +103,6 @@ class DirectJSONInputTest(unittest.TestCase):
             self.assertEqual(len(report.get("readback_player_phase_map", [])), 22)
 
     def test_direct_api_rejects_unknown_and_incomplete_recipe_fields(self):
-
         with self.subTest(case="unknown root field"):
             malformed = dict(self.recipe)
             malformed["unmapped_override"] = True
@@ -145,135 +133,32 @@ class DirectJSONInputTest(unittest.TestCase):
             recipe_path = temp_dir / "direct_recipe.json"
             output_path = temp_dir / "direct_recipe.fmf"
             report_path = temp_dir / "direct_recipe.report.json"
-            recipe_path.write_text(
-                json.dumps(self.recipe, ensure_ascii=False, indent=2),
-                encoding="utf-8",
-            )
+            recipe_path.write_text(json.dumps(self.recipe, ensure_ascii=False, indent=2), encoding="utf-8")
 
             completed = subprocess.run(
                 [
-                    sys.executable,
-                    str(GENERATOR),
-                    str(recipe_path),
-                    "--catalog",
-                    str(CATALOG),
-                    "--output",
-                    str(output_path),
-                    "--report",
-                    str(report_path),
+                    sys.executable, str(GENERATOR), str(recipe_path),
+                    "--catalog", str(CATALOG),
+                    "--output", str(output_path),
+                    "--report", str(report_path),
                 ],
-                cwd=ROOT,
-                capture_output=True,
-                text=True,
-                check=False,
+                cwd=ROOT, capture_output=True, text=True, check=False,
             )
             self.assertEqual(
-                completed.returncode,
-                0,
+                completed.returncode, 0,
                 msg=f"Direct JSON generation failed.\nSTDOUT:\n{completed.stdout}\nSTDERR:\n{completed.stderr}",
             )
             self.assertTrue(output_path.is_file())
             self.assertGreater(output_path.stat().st_size, 0)
             direct_bytes, direct_report = gen.build_fmf_from_recipe(
-                self.recipe,
-                json.loads(CATALOG.read_text(encoding="utf-8")),
+                self.recipe, json.loads(CATALOG.read_text(encoding="utf-8"))
             )
             self.assertEqual(output_path.read_bytes(), direct_bytes)
             self.assertEqual(direct_report.get("recipe_input_format"), "python_dict")
+
             report = json.loads(report_path.read_text(encoding="utf-8"))
             self.assertEqual(report.get("recipe_input_format"), "json")
-            self.assertEqual(
-                report.get("status"),
-                "offline_binary_roundtrip_verified_not_game_import_verified",
-            )
-            required = [
-                "fmf_outer_roundtrip",
-                "all_member_decrypt_and_zstd_checksums",
-                "tac_full_parse",
-                "11_ip_oop_pairs",
-                "22_positions_roles_pi_readback_exact",
-                "pi_permissions_checked_against_catalog",
-                "team_instruction_vector_readback",
-                "native_style_string_and_code_readback",
-            ]
-            for key in required:
-                self.assertIs(report.get("checks", {}).get(key), True, key)
-            self.assertEqual(len(report.get("player_phase_map", [])), 22)
-            self.assertEqual(len(report.get("readback_player_phase_map", [])), 22)
-
-
-if __name__ == "__main__":
-    unittest.main(verbosity=2)
-
-        with self.subTest(case="unknown root field"):
-            malformed = dict(self.recipe)
-            malformed["unmapped_override"] = True
-            with self.assertRaisesRegex(ValueError, "未知根字段"):
-                gen.validate_recipe_structure(malformed)
-
-        with self.subTest(case="missing phase PI array"):
-            malformed = json.loads(json.dumps(self.recipe))
-            del malformed["p"][0]["in"]["pi"]
-            with self.assertRaisesRegex(ValueError, "缺少必需字段"):
-                gen.validate_recipe_structure(malformed)
-
-        with self.subTest(case="boolean is not a valid mentality integer"):
-            malformed = dict(self.recipe)
-            malformed["ment"] = True
-            with self.assertRaisesRegex(ValueError, "ment 必须是 1–7 的整数"):
-                gen.validate_recipe_structure(malformed)
-    def test_schema_accepts_ip_oop_base_metadata_without_using_it_as_phase_data(self):
-        recipe = json.loads(json.dumps(self.recipe))
-        recipe["base"]["ip"] = "native"
-        recipe["base"]["oop"] = "native"
-        self.assertIsNone(gen.validate_recipe_structure(recipe))
-    def test_cli_generates_and_reads_back_native_fmf_from_direct_json(self):
-        with tempfile.TemporaryDirectory() as temp:
-            temp_dir = Path(temp)
-            recipe_path = temp_dir / "direct_recipe.json"
-            output_path = temp_dir / "direct_recipe.fmf"
-            report_path = temp_dir / "direct_recipe.report.json"
-            recipe_path.write_text(
-                json.dumps(self.recipe, ensure_ascii=False, indent=2),
-                encoding="utf-8",
-            )
-
-            completed = subprocess.run(
-                [
-                    sys.executable,
-                    str(GENERATOR),
-                    str(recipe_path),
-                    "--catalog",
-                    str(CATALOG),
-                    "--output",
-                    str(output_path),
-                    "--report",
-                    str(report_path),
-                ],
-                cwd=ROOT,
-                capture_output=True,
-                text=True,
-                check=False,
-            )
-            self.assertEqual(
-                completed.returncode,
-                0,
-                msg=f"Direct JSON generation failed.\nSTDOUT:\n{completed.stdout}\nSTDERR:\n{completed.stderr}",
-            )
-            self.assertTrue(output_path.is_file())
-            self.assertGreater(output_path.stat().st_size, 0)
-            direct_bytes, direct_report = gen.build_fmf_from_recipe(
-                self.recipe,
-                json.loads(CATALOG.read_text(encoding="utf-8")),
-            )
-            self.assertEqual(output_path.read_bytes(), direct_bytes)
-            self.assertEqual(direct_report.get("recipe_input_format"), "python_dict")
-            report = json.loads(report_path.read_text(encoding="utf-8"))
-            self.assertEqual(report.get("recipe_input_format"), "json")
-            self.assertEqual(
-                report.get("status"),
-                "offline_binary_roundtrip_verified_not_game_import_verified",
-            )
+            self.assertEqual(report.get("status"), "offline_binary_roundtrip_verified_not_game_import_verified")
             required = [
                 "fmf_outer_roundtrip",
                 "all_member_decrypt_and_zstd_checksums",
