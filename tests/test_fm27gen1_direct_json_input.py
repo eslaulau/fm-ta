@@ -98,6 +98,11 @@ class DirectJSONInputTest(unittest.TestCase):
             malformed["ment"] = True
             with self.assertRaisesRegex(ValueError, "ment 必须是 1–7 的整数"):
                 gen.validate_recipe_structure(malformed)
+    def test_schema_accepts_ip_oop_base_metadata_without_using_it_as_phase_data(self):
+        recipe = json.loads(json.dumps(self.recipe))
+        recipe["base"]["ip"] = "native"
+        recipe["base"]["oop"] = "native"
+        self.assertIsNone(gen.validate_recipe_structure(recipe))
     def test_cli_generates_and_reads_back_native_fmf_from_direct_json(self):
         with tempfile.TemporaryDirectory() as temp:
             temp_dir = Path(temp)
