@@ -7,7 +7,7 @@
 **目标格式：** FM27 source-major 27 原生 FMF  
 **运行平台：** Windows / Python 3.12 x64
 
-本流程以当前 Python 源码实际实现为准。正式产物是新生成的原生 `.fmf` 与同次生成的 `.report.json`；GEN1 TXT 只是输入配方。离线回读、FM27 游戏内导入和比赛效果是三个不同验收阶段。
+本流程以当前 Python 源码实际实现为准。正式产物是新生成的原生 `.fmf` 与同次生成的 `.report.json`；GEN1 TXT 只是输入配方。正式生成默认通过独立 GitHub Actions 云端构建工作流执行；本地命令作为备用。离线回读、FM27 游戏内导入和比赛效果是三个不同验收阶段。
 
 ## 全仓库战术使用政策（最高优先级）
 
@@ -163,6 +163,117 @@ py -3.12 FM27GEN1_Offline_FMF_Generator.py "NEW_TACTIC_GEN1.txt" --catalog "cata
 | `--style-registry` | 可选；默认使用本目录 `style_template_registry.json` |
 
 输出路径已存在时拒绝覆盖。成功返回 0，失败返回 2。必须确认本次 FMF 实际存在且非空，报告存在并且回读通过。
+
+## 8.1 正式云端战术构建流程（默认正式交付通道）
+
+正式开发新战术时，默认由 GitHub Actions 云端运行本目录的 Python 生成器。这样，战术研发与 FMF 序列化分工明确：设计阶段产出 GEN1，云端构建阶段负责调用现有生成器、生成原生文件、执行独立回读和打包交付。
+
+### A. 输入：准备本次唯一 GEN1 配方
+
+1. 完成原创战术设计、22 个阶段角色/职责配置、TI/PI 配置和 GEN1 预检。
+2. 将本次完整 GEN1 配方保存为 UTF-8 TXT，文件内容为单行 `FM27GEN1:` + 标准 Base64 JSON。
+3. 将文件放入仓库根目录的 `build_requests/`，例如：
+
+```text
+build_requests/Vertical_Overload_v1_GEN1.txt
+```
+
+4. 每个构建 commit 只新增或修改一份要构建的 `build_requests/*.txt`。配方文件本身作为本次构建输入留在仓库，便于追溯；不把输出 FMF 提交到源码目录。
+
+### B. 触发：独立构建工作流
+
+正式构建工作流：
+
+```text
+.github/workflows/fm27-tactic-build.yml
+```
+
+默认触发方式：将一份 GEN1 TXT 提交并 push 到 `main` 分支的 `build_requests/` 目录。该路径变化只触发独立的 **FM27 Tactic Build** 工作流，不需要修改或借用 `fm27-native-tactics-regression.yml` 回归测试工作流。
+
+也可以在 GitHub Actions 页面手动运行 **FM27 Tactic Build**，将 `recipe_path` 输入为仓库中已有的配方路径，用于重新构建同一配方。
+
+工作流会检查：
+- 输入路径必须位于 `build_requests/`；
+- 文件必须存在且为 TXT；
+- 本次触发必须只对应一份 GEN1 配方；
+- 不允许路径穿越、空文件名或不明确的多配方构建。
+
+### C. 云端环境：准备原生生成器
+
+GitHub Actions 在 `ubuntu-latest` runner 中执行：
+
+1. checkout 当前仓库，取得 GEN1、生成器源码、`catalog.json`、风格注册表和所有原生模板；
+2. 安装 Python 3.12；
+3. 执行 `pip install -r 04_离线原生FMF生成器/requirements.txt`；
+4. 根据配方名称生成唯一输出名，输出路径放在 runner 临时目录，不覆盖仓库文件或历史构建产物。
+
+云端构建不需要启动用户本机 FM27，也不需要连接 Steam 或游戏平台。
+
+### D. 实际生成：调用正式 Python 生成器
+
+工作流调用的实际命令等价于：
+
+```bash
+python "04_离线原生FMF生成器/FM27GEN1_Offline_FMF_Generator.py" \
+  "build_requests/Vertical_Overload_v1_GEN1.txt" \
+  --catalog "04_离线原生FMF生成器/catalog.json" \
+  --output "$RUNNER_TEMP/Vertical_Overload_v1_runNN.fmf" \
+  --report "$RUNNER_TEMP/Vertical_Overload_v1_runNN.report.json"
+```
+
+生成器实际负责：
+- 解码 GEN1 并解析战术结构；
+- 按 `base.g` 查询 `style_template_registry.json`，自动选取匹配的原生风格模板；
+- 读取 FMF 容器并解析原生 TAC；
+- 将 IP/OOP 位置、角色、职责、PI mask、TI 向量、心态、标题和 style code 写入对应原生字段；
+- 按原生封装规则重建 FMF，保留需要保持不变的成员和 opaque 数据；
+- 在同一次运行中生成 JSON 报告。
+
+未知角色、职责映射缺口、PI/TI 未映射选项、权限冲突、模板风格不匹配或原生容器异常，均必须使构建失败。工作流不得自动删掉指令、静默降级、擅自替换角色或用旧 FMF 冒充本次输出。
+
+### E. 自动验收：D3 独立回读
+
+生成器执行后，工作流继续检查本次 `.fmf` 和同次 `.report.json`：
+
+1. FMF 文件存在且非空；
+2. report 存在、可解析，状态必须为 `offline_binary_roundtrip_verified_not_game_import_verified`；
+3. FMF 外层容器往返、成员解密/解压及校验、TAC 完整解析全部通过；
+4. 11 组 IP/OOP 槽位通过；
+5. 22 个阶段的设计表与独立回读表均完整；
+6. 22 个阶段的位置、角色、职责、PI 回读与本次配方一致；
+7. PI 权限查询、TI 向量、原生风格字符串和四字节 style code 回读检查通过。
+
+只要生成器退出码非 0、FMF/report 缺失、报告状态不符或任一 D3 检查失败，工作流即失败，并且不上传成功构建 artifact。失败时读取日志中的精确错误，补齐对应映射/权限或修正配方，再重新触发；不能通过静默删减配置来换取构建成功。
+
+### F. 打包：上传本次构建 Artifact
+
+全部 D3 检查通过后，工作流使用 `actions/upload-artifact@v4` 上传一个同名构建包：
+
+```text
+FM27_<配方名>_run<运行号>
+├── <战术名>.fmf
+└── <战术名>.report.json
+```
+
+Artifact 保留 14 天。GEN1 源文件则保留在仓库的 `build_requests/` 中。工作流摘要会列出配方路径、FMF 文件名、文件大小、SHA256、风格和 D3 状态，便于核对是哪一次构建。
+
+### G. 取回并交付给用户
+
+构建完成后，助手通过 GitHub Actions 运行记录定位本次 run 和 artifact，下载 ZIP，在当前工作环境解压并检查其中的两个文件，然后直接向用户提供：
+- 实际生成的 `.fmf` 附件；
+- 同次生成的 `.report.json` 附件；
+- 本次 GEN1 配方源文件和简短战术说明。
+
+不能只把 GitHub 仓库路径或 Actions 页面地址交给用户自行寻找，也不能在未成功取回 artifact 时声称文件已经交付。
+
+### H. 与回归测试工作流的分工
+
+- `fm27-tactic-build.yml`：处理某一份指定原创战术，输出该次 FMF、报告和可下载 artifact。
+- `fm27-native-tactics-regression.yml`：继续执行原生样本、映射、自动测试和固定 smoke test；它不是每次原创战术的正式构建入口。
+
+### I. 本机备用构建
+
+如果 GitHub Actions 暂时不可用，可在 Windows/Python 3.12 环境使用本节前面的本地命令完成同样的生成和回读；但正式云端交付默认以独立构建工作流为准。
 
 ## 9. FMF 写入和独立回读
 
