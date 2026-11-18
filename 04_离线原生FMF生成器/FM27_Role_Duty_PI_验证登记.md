@@ -160,12 +160,12 @@
 
 | 阶段 | 原生角色 ID | 目录显示名 | 状态 |
 |---|---|---|---|
-| IP | `AdvancedCentreBack` | 前压中卫 | 待验证职责 |
-| IP | `FalseNine` | 伪九号 | 待验证职责 |
-| IP | `HalfBack` | 半后卫 | 待验证职责 |
-| IP | `OverlappingCentreBack` | 套上中卫 | 待验证职责 |
-| IP | `PlaymakingWinger` | 组织型边锋 | 待验证职责 |
-| OOP | `OPCoveringWideCentreBack` | 补位边中卫 | 待验证职责 |
+| IP | `AdvancedCentreBack` | 前压中卫 | 角色原生数据已验证；`ROLE_DUTY` 映射未登记 |
+| IP | `FalseNine` | 伪九号 | 角色原生数据已验证；`ROLE_DUTY` 映射未登记 |
+| IP | `HalfBack` | 半后卫 | 角色原生数据已验证；`ROLE_DUTY` 映射未登记 |
+| IP | `OverlappingCentreBack` | 套上中卫 | 角色原生数据已验证；`ROLE_DUTY` 映射未登记 |
+| IP | `PlaymakingWinger` | 组织型边锋 | 角色原生数据已验证；`ROLE_DUTY` 映射未登记 |
+| OOP | `OPCoveringWideCentreBack` | 补位边中卫 | 角色原生数据已验证；`ROLE_DUTY` 映射未登记 |
 
 这 6 个角色的原生角色定义、内部 ID、阶段归属和目录资格均属于已验证数据；当前缺口仅是生成器 `ROLE_DUTY` 没有对应的角色→职责写入映射。不能仅凭角色名称擅自补成 D、S 或 A，因此当前生成器仍会拒绝把它们写入战术。这里的“映射缺口”不撤销其原生角色数据的已验证状态。
 
