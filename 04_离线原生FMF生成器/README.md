@@ -63,6 +63,22 @@ py -3.12 FM27GEN1_Offline_FMF_Generator.py "NEW_TACTIC_GEN1.txt" --catalog "cata
 
 输出文件已存在时，生成器拒绝覆盖。每次新战术必须使用新的输出文件名。
 
+## 正式战术云端构建
+
+原创战术的正式 FMF 构建使用独立工作流：`.github/workflows/fm27-tactic-build.yml`。
+
+1. 将本次完整单行 GEN1 TXT 放入仓库根目录 `build_requests/`，例如 `build_requests/My_Tactic_GEN1.txt`。
+2. 每个 commit 只提交一份待构建配方，并 push 到 `main`。
+3. GitHub Actions 自动触发 **FM27 Tactic Build**，在 Ubuntu runner 安装 Python 3.12 和生成器依赖。
+4. 云端调用本目录正式生成器，按风格注册表选择 FMF 模板，生成全新的 `.fmf` 和同次 `.report.json`。
+5. 工作流检查 D3 独立回读：FMF 容器/TAC、11 组 IP/OOP、22 个阶段、角色/职责/PI、TI 和原生风格字段。
+6. 只有全部检查通过才上传 artifact：`FM27_<配方名>_run<运行号>`，包含 FMF 与 report，保留 14 天。
+7. 助手取回 artifact、检查文件，再直接向用户交付附件。GEN1 源配方留在 `build_requests/`。
+
+也可在 GitHub Actions 页面手动运行 **FM27 Tactic Build**，通过 `recipe_path` 选择仓库中已有的配方用于重试。完整触发、验收、失败处理和交付说明见 [FM27GEN1_离线原生FMF_生成流程](./FM27GEN1_离线原生FMF_生成流程.md) 与 [build_requests/README](../../build_requests/README.md)。
+
+该工作流只负责 D3 云端原生生成与独立回读，不会启动用户本机 FM27，也不声称游戏内导入或实战效果已验证。原有 `fm27-native-tactics-regression.yml` 继续只负责回归测试，不作为指定新战术的构建入口。
+
 ## 角色、职责与指令证据登记
 
 角色、职责与指令的原生数据状态见 [FM27_Role_Duty_PI_验证登记](./FM27_Role_Duty_PI_验证登记.md)：79/79 个角色定义、7/7 个职责标志值、17/17 组 PI 菜单及 54/54 个 PI 选项、29/29 组 TI 菜单及 103/103 个 TI 选项全部标记为**已验证**，不以 FM27 客户端是否导入为前提。当前 GEN1 生成器的写入映射覆盖单独统计：73 个角色职责映射、18 个 PI 选项、56 个 TI 选项；数据已验证不代表每项都已开放写入。
