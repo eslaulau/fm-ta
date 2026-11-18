@@ -178,7 +178,7 @@ py -3.12 FM27GEN1_Offline_FMF_Generator.py "NEW_TACTIC_GEN1.txt" --catalog "cata
 build_requests/Vertical_Overload_v1_GEN1.txt
 ```
 
-4. 每个构建 commit 只新增或修改一份要构建的 `build_requests/*.txt`。配方文件本身作为本次构建输入留在仓库，便于追溯；不把输出 FMF 提交到源码目录。
+4. 每次构建 push 事件只新增或修改一份 `build_requests/*.txt`；一次 push 不要同时提交多份待构建配方。配方文件本身作为本次构建输入留在仓库，便于追溯；不把输出 FMF 提交到源码目录。
 
 ### B. 触发：独立构建工作流
 
