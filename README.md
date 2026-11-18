@@ -78,7 +78,7 @@ Catenaccio、Control Possession、Direct Counter Attack、Fluid Counter Attack�
 2. **战术设计。** 确定 IP/OOP 阵型、11 个槽位、22 个阶段角色、duty、PI 和球队 TI。
 3. **原生兼容核对。** 用第 02 层目录按 phase、position、role ID、duty 核对每条 PI；位置别名只用于规定的查询/规范化路径。
 4. **生成并预检 JSON。** 输出完整 UTF-8 战术对象，检查根字段、11 槽位、双阶段位置、角色/duty 映射及 PI/TI 映射；不进行 GEN1 Base64 包装。
-5. **实际生成 FMF。** 调用第 04 层离线生成器，传入本次配方、catalog 和风格注册表，按风格自动选择已登记模板。
+5. **实际生成 FMF。** 调用第 04 层 `build_fmf_from_recipe(dict, catalog)` 内存 API，或等价 CLI JSON 入口；不要求 GEN1，也不要求把内存对象重新包装成中间文件。生成器按风格自动选择已登记模板。
 6. **独立回读。** 检查 FMF/TAC 容器、11 组 IP/OOP、22 阶段位置/角色/duty/PI mask、TI 向量及成员长度。
 7. **交付。** 提供本次实际生成的 `.fmf` 和对应 `.report.json`。
 8. **游戏内验收。** 在 FM27 导入、逐项检查、保存、关闭并重新打开。只有通过才是 D4。
