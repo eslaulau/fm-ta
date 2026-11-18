@@ -94,18 +94,3 @@ The project does not include game-client import, in-game inspection, match simul
 Keep responses in Chinese unless the user changes language. Be direct and outcome-focused.
 Do not burden the user with intermediate JSON, shell commands, GitHub UI steps, or internal debugging tasks.
 Report only material blockers and what was actually verified. When successful, provide the two actual files first and a brief explanation of the tactic. Do not say "completed" before the native artifact has been downloaded and checked.
-
-
-
-## 7. External player-attribute source (on demand only)
-
-- Registered source: FM Blog FM27 Players Database — https://www.footballmanagerblog.org/database/fm27/players
-- Do **not** use or cite this source by default. It is activated only when the user explicitly requests player attributes, player analysis, attribute-based tactic design, player comparison, or use of this database.
-- It is an external player-data source, not an authority for native FM27 position/role/duty/PI/TI permissions. Native compatibility must still be checked against the repository's original permission data, catalog, generator code, and tests.
-- Never require squad/player data as a prerequisite for an original tactic unless the user explicitly requests that analysis.
-- When this source is not explicitly requested, do not mention it as a recommendation, evidence source, or design input.
-
-- When the user explicitly requests player-attribute analysis, whole-squad assessment, player comparison, or attribute-based tactic design, the full comparison workflow in `00_资料总索引与检索规范.md` §9 is mandatory: assess the complete relevant squad, collect each player's available FM27 attributes, build role-specific attribute tiers, compare every viable candidate and complementary unit, and only then derive the formation, positions, starting XI, rotation and IP/OOP roles/duties.
-- Do not select a formation first and retrofit players to it. Do not compare only the named players or a hand-picked subset when the request concerns the whole squad. Do not change a selection merely because the user questions one player; re-evaluate all candidates against the same criteria and change it only when new evidence or a changed objective justifies the change.
-- The attribute research must identify its scope, source/database version and query date, missing fields, and distinguish database reference data from the user's actual save. Never claim complete squad coverage unless every in-scope player has been checked.
-- Database role-fit scores are scouting evidence only, never native role/position/PI/TI permission evidence. After designing from the player analysis, run the normal native compatibility validation against the repository catalog, source, and tests.
