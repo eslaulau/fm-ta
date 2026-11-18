@@ -215,7 +215,7 @@ python "04_离线原生FMF生成器/FM27GEN1_Offline_FMF_Generator.py" \
   --report "$RUNNER_TEMP/Vertical_Overload_v1_runNN.report.json"
 ```
 
-报告中的 `recipe_input_format` 必须为 `json`。未知角色、职责映射缺口、PI/TI 未映射选项、权限冲突、模板风格不匹配或原生容器异常均必须使构建失败；不得自动删指令、静默降级或擅自替换角色。
+内联对象报告中的 `recipe_input_format` 为 `python_dict`；仓库 `.json` 文件为 `json`；历史 GEN1 为 `legacy_gen1_base64`。未知角色、职责映射缺口、PI/TI 未映射选项、权限冲突、模板风格不匹配或原生容器异常均必须使构建失败；不得自动删指令、静默降级或擅自替换角色。
 
 ### D. 自动回归与 D3 独立回读
 
