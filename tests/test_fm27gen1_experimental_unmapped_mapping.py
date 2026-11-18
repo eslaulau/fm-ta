@@ -86,6 +86,48 @@ class ExperimentalMappingTest(unittest.TestCase):
         for native_id, expected_group in expected.items():
             self.assertEqual(actual[native_id], expected_group, f"native PI option {native_id}")
 
+    def test_every_pi_option_id_has_version_consistent_permission_states(self):
+        native_ids = {int(value) for value in gen.PI_MAP.values()}
+        self.assertEqual(len(native_ids), 37)
+        editable_counts = {native_id: 0 for native_id in native_ids}
+        self.assertEqual(len(self.catalog["pi_policies"]), 1547)
+        for policy_key, revisions in self.catalog["pi_policies"].items():
+            values = list(revisions.values())
+            self.assertTrue(values, f"empty PI policy: {policy_key}")
+            for native_id in native_ids:
+                states = set()
+                for value in values:
+                    self.assertIsInstance(value, str)
+                    self.assertLess(native_id, len(value), f"{policy_key}: option {native_id}")
+                    states.add(value[native_id])
+                self.assertLessEqual(
+                    len(states), 1,
+                    f"native PI option {native_id} has revision conflict in {policy_key}",
+                )
+                if states == {"0"}:
+                    editable_counts[native_id] += 1
+        for native_id, count in editable_counts.items():
+            self.assertGreater(count, 0, f"PI option {native_id} has no editable role context")
+
+    def test_unmapped_native_role_duties_are_explicit_and_complete(self):
+        native_roles = {item["id"] for item in self.catalog["roles"]}
+        unmapped = native_roles - set(gen.ROLE_DUTY)
+        self.assertEqual(len(native_roles), 79)
+        self.assertEqual(len(gen.ROLE_DUTY), 73)
+        self.assertEqual(unmapped, set(gen.ROLE_DUTY_UNMAPPED))
+        self.assertEqual(
+            unmapped,
+            {
+                "PlaymakingWinger",
+                "OPCoveringWideCentreBack",
+                "OverlappingCentreBack",
+                "FalseNine",
+                "HalfBack",
+                "AdvancedCentreBack",
+            },
+        )
+        self.assertTrue(set(gen.ROLE_DUTY.values()).issubset(gen.DUTY_FLAGS))
+
     def test_every_native_ti_group_and_active_bit_has_a_mapping(self):
         native_groups = {
             int(group["id"]): group for group in self.catalog["team_instructions"]
@@ -94,6 +136,10 @@ class ExperimentalMappingTest(unittest.TestCase):
             group_id for group_ids in gen.TI_GROUPS.values() for group_id in group_ids
         }
         self.assertEqual(mapped_group_ids, set(native_groups))
+        flattened_groups = [
+            group_id for group_ids in gen.TI_GROUPS.values() for group_id in group_ids
+        ]
+        self.assertEqual(len(flattened_groups), len(native_groups))
         self.assertEqual(len(mapped_group_ids), len(native_groups))
 
         native_bits = {
@@ -133,13 +179,12 @@ class ExperimentalMappingTest(unittest.TestCase):
             with self.subTest(key=key, option=option, native_bit=native_bit):
                 vector = gen.encode_ti({"ti": {key: option}}, self.catalog, bytearray(12))
                 self.assertEqual(len(vector), 12)
-                if int(native_bit):
-                    self.assertTrue(
-                        vector[int(native_bit) // 8] & (1 << (int(native_bit) % 8)),
-                        f"{key}={option} did not set native bit {native_bit}",
-                    )
-                else:
-                    self.assertFalse(any(vector), f"{key}={option} default should be clear")
+                actual_bits = {
+                    bit for bit in range(96)
+                    if vector[bit // 8] & (1 << (bit % 8))
+                }
+                expected_bits = {int(native_bit)} if int(native_bit) else set()
+                self.assertEqual(actual_bits, expected_bits, f"{key}={option}")
 
     def test_hold_shape_uses_real_native_bit_and_supporting_run_groups_are_separate(self):
         self.assertEqual(gen.TI_MAP[("ATTACKING_TRANSITION", "HOLD_SHAPE")], 55)
