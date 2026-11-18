@@ -56,7 +56,7 @@
 
 生成器现在公开 `build_fmf_from_recipe(recipe, catalog, style_registry=None, template_path=None)`。
 
-调用方若已在内存中得到完整 Python `dict`，可直接得到原生 FMF 字节和同次回读报告；不需要先保存 `.json`，更不需要 GEN1/Base64。命令行 JSON 和旧 GEN1 输入也共用该函数，因此不会分叉出第二套 FMF 编码路径。
+调用方若已在内存中得到完整 Python `dict`，可直接得到原生 FMF 字节和同次回读报告；不需要先保存 `.json`，更不需要 GEN1/Base64。命令行 JSON 和旧 GEN1 输入也共用该函数，因此不会分叉出第二套 FMF 编码路径。 `validate_recipe_structure()` 会先拒绝未知根字段/阶段字段、缺失的 `pi`、错误心态类型、非 11 槽阵型等结构错误。
 
 ```python
 import json
