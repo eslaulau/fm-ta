@@ -138,6 +138,12 @@ class DirectJSONInputTest(unittest.TestCase):
             )
             self.assertTrue(output_path.is_file())
             self.assertGreater(output_path.stat().st_size, 0)
+            direct_bytes, direct_report = gen.build_fmf_from_recipe(
+                self.recipe,
+                json.loads(CATALOG.read_text(encoding="utf-8")),
+            )
+            self.assertEqual(output_path.read_bytes(), direct_bytes)
+            self.assertEqual(direct_report.get("recipe_input_format"), "python_dict")
             report = json.loads(report_path.read_text(encoding="utf-8"))
             self.assertEqual(report.get("recipe_input_format"), "json")
             self.assertEqual(
