@@ -61,7 +61,7 @@ def resolve_recipe_input(
     runner_temp: Path,
     run_number: str = "0",
 ) -> dict[str, str | bool]:
-    """Return the selected recipe path and artifact stem for one GitHub event."""
+    """Return either an existing recipe path or an inline JSON object string."""
     if event_name == "repository_dispatch":
         client_payload = event_data.get("client_payload") or {}
         if not isinstance(client_payload, dict):
