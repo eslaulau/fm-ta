@@ -835,59 +835,162 @@ def load_recipe_input(path:Path)->tuple[dict,str]:
         raise ValueError('战术配方根节点必须是 JSON 对象')
     return recipe,input_format
 
+def build_fmf_from_recipe(
+    recipe: dict,
+    catalog: dict,
+    style_registry: dict | None = None,
+    template_path: Path | None = None,
+    *,
+    recipe_input_format: str = 'python_dict',
+    recipe_source: str = '<python_dict>',
+) -> tuple[bytes, dict]:
+    """Build and independently read back a native FM27 FMF directly from a Python dict.
+
+    This is the primary in-process API. Callers that already have a structured
+    tactic object do not need to serialize it to JSON or wrap it in GEN1 first.
+    The CLI and cloud workflow use this same function after loading their input.
+    """
+    if not isinstance(recipe, dict):
+        raise ValueError('战术配方必须是 Python dict / JSON object')
+    if not isinstance(catalog, dict):
+        raise ValueError('catalog 必须是对象')
+
+    if style_registry is None:
+        registry_file = HERE / 'style_template_registry.json'
+        if registry_file.is_file():
+            style_registry = json.loads(registry_file.read_text(encoding='utf-8'))
+
+    base = recipe.get('base', {})
+    if not isinstance(base, dict):
+        raise ValueError('base 必须是对象，且包含原生风格字段 g')
+    style_name = str(base.get('g', ''))
+    resolved_template = resolve_template_path(style_name, style_registry, template_path)
+    source = resolved_template.read_bytes()
+    fmf = parse_fmf(source)
+    if '.tac' not in fmf.data_by_ext or '.aom' not in fmf.data_by_ext or '.img' not in fmf.data_by_ext:
+        raise ValueError('原生 FMF 缺少 .tac/.aom/.img 成员')
+
+    tac = parse_tac(fmf.data_by_ext['.tac'])
+    if fmf.data_by_ext['.tac'][11] != 27:
+        raise ValueError('模板不是 FM27 source-major 27 原生战术；请在 FM27 游戏中重新导出')
+
+    before = {
+        'pairs': len(tac.pairs),
+        'ids': len(tac.ids),
+        'lists': len(tac.lists),
+        'footer_records': len(tac.records),
+        'tac_bytes': len(fmf.data_by_ext['.tac']),
+    }
+    summary = apply_recipe(tac, recipe, catalog, style_registry)
+    if summary.get('template_name'):
+        expected = (HERE / summary['template_name']).resolve()
+        if resolved_template != expected:
+            raise ValueError(
+                f'风格 {summary["style"]} 要求使用登记模板 {expected}，当前为 {resolved_template}'
+            )
+
+    tac_bytes = write_tac(tac)
+    reparsed = parse_tac(tac_bytes)
+    if reparsed.title != summary['name'] or len(reparsed.pairs) != 11:
+        raise ValueError('写入后的 TAC 自检失败')
+    output = write_fmf(fmf, tac_bytes, summary['name'])
+
+    # Full independent read-after-write: outer archive -> member decrypt -> TAC parse.
+    verify = parse_fmf(output)
+    verified_tac = parse_tac(verify.data_by_ext['.tac'])
+    readback = verify_recipe_roundtrip(verified_tac, recipe, catalog)
+    if verified_tac.title != summary['name'] or verify.root_title != summary['name']:
+        raise ValueError('输出标题回读不一致')
+    if verified_tac.style != summary['tac_style_string'] or bytes(verified_tac.quad).hex() != summary['style_code_hex']:
+        raise ValueError('原生风格字符串/四字节 style code 回读不一致')
+    if bytes(verified_tac.packed) != bytes(tac.packed):
+        raise ValueError('球队指令回读不一致')
+    if len(verified_tac.pairs) != 11 or len(verified_tac.records) != 12:
+        raise ValueError('输出球员槽位或 footer 数量不一致')
+
+    digest = hashlib.sha256(output).hexdigest()
+    report = {
+        'status': 'offline_binary_roundtrip_verified_not_game_import_verified',
+        'output': None,
+        'sha256': digest,
+        'bytes': len(output),
+        'template': str(resolved_template),
+        'template_sha256': hashlib.sha256(source).hexdigest(),
+        'recipe': recipe_source,
+        'recipe_input_format': recipe_input_format,
+        'name': summary['name'],
+        'style': summary['style'],
+        'tac_style_string': summary['tac_style_string'],
+        'style_code_hex': summary['style_code_hex'],
+        'mentality': summary['mentality'],
+        'team_instruction_bits': summary['team_instruction_bits'],
+        'experimental_mappings': summary['experimental_mappings'],
+        'source_template_version': 27,
+        'opaque_sections_preserved': {
+            'id_entries': before['ids'],
+            'footer_lists': before['lists'],
+            'footer_records': before['footer_records'],
+            'image_member': 'byte_identical',
+        },
+        'player_phase_map': summary['players'],
+        'readback_player_phase_map': readback['verified_slots'],
+        'checks': {
+            'fmf_outer_roundtrip': True,
+            'all_member_decrypt_and_zstd_checksums': True,
+            'tac_full_parse': True,
+            '11_ip_oop_pairs': True,
+            '22_positions_roles_pi_readback_exact': True,
+            'pi_permissions_checked_against_catalog': True,
+            'team_instruction_vector_readback': True,
+            'native_style_string_and_code_readback': True,
+            'game_interactive_import': False,
+            'match_engine': False,
+        },
+        'notes': [
+            '通过结构化 Python dict 生成原生 FMF，并执行独立二进制回读。',
+            'D/S/A 到 native duty bit 的编码由 FM27 TAC 样本确认；配方可在阶段对象中显式指定 duty，映射表未提供默认值的角色必须明确指定。',
+            'PI 权限按指定的 phase/position/role/duty 目录策略检查。',
+            '只有结构/自解包核验；必须由用户在 FM27 内手动导入后才能确认游戏接受。',
+        ],
+    }
+    return output, report
+
+
 def main():
-    ap=argparse.ArgumentParser(description='FM27 结构化战术配方离线生成原生 FMF')
-    ap.add_argument('recipe',type=Path,help='原生 JSON 配方；旧版 GEN1 TXT 仅作兼容输入')
-    ap.add_argument('--template',type=Path,help='可选：覆盖登记表中的原生 .fmf 模板；默认按战术风格自动选择')
-    ap.add_argument('--catalog',type=Path,required=True,help='本机 FM27 catalog.json')
-    ap.add_argument('--output',type=Path,required=True,help='新 FMF 输出路径')
-    ap.add_argument('--report',type=Path,help='JSON 验证报告路径')
-    ap.add_argument('--style-registry',type=Path,default=Path(__file__).with_name('style_template_registry.json'),help='原生风格/模板登记表')
-    args=ap.parse_args()
+    ap = argparse.ArgumentParser(description='FM27 结构化战术配方离线生成原生 FMF')
+    ap.add_argument('recipe', type=Path, help='原生 JSON 配方；旧版 GEN1 TXT 仅作兼容输入')
+    ap.add_argument('--template', type=Path, help='可选：覆盖登记表中的原生 .fmf 模板；默认按战术风格自动选择')
+    ap.add_argument('--catalog', type=Path, required=True, help='本机 FM27 catalog.json')
+    ap.add_argument('--output', type=Path, required=True, help='新 FMF 输出路径')
+    ap.add_argument('--report', type=Path, help='JSON 验证报告路径')
+    ap.add_argument('--style-registry', type=Path, default=Path(__file__).with_name('style_template_registry.json'), help='原生风格/模板登记表')
+    args = ap.parse_args()
     try:
-        if args.output.exists(): raise FileExistsError('拒绝覆盖已有输出文件：'+str(args.output))
-        catalog=json.loads(args.catalog.read_text(encoding='utf-8'))
-        style_registry=json.loads(args.style_registry.read_text(encoding='utf-8')) if args.style_registry.is_file() else None
-        recipe,input_format=load_recipe_input(args.recipe)
-        style_name=str(recipe.get('base',{}).get('g',''))
-        template_path=resolve_template_path(style_name,style_registry,args.template)
-        source=template_path.read_bytes();fmf=parse_fmf(source)
-        if '.tac' not in fmf.data_by_ext or '.aom' not in fmf.data_by_ext or '.img' not in fmf.data_by_ext: raise ValueError('原生 FMF 缺少 .tac/.aom/.img 成员')
-        tac=parse_tac(fmf.data_by_ext['.tac'])
-        if fmf.data_by_ext['.tac'][11]!=27: raise ValueError('模板不是 FM27 source-major 27 原生战术；请在 FM27 游戏中重新导出')
-        # Snapshot parsed source before editing; writer must keep all opaque sections.
-        before={'pairs':len(tac.pairs),'ids':len(tac.ids),'lists':len(tac.lists),'footer_records':len(tac.records),'tac_bytes':len(fmf.data_by_ext['.tac'])}
-        summary=apply_recipe(tac,recipe,catalog,style_registry)
-        if summary.get('template_name'):
-            expected=(HERE / summary['template_name']).resolve()
-            if template_path != expected:
-                raise ValueError(f'风格 {summary["style"]} 要求使用登记模板 {expected}，当前为 {template_path}')
-        tac_bytes=write_tac(tac)
-        reparsed=parse_tac(tac_bytes)
-        output=write_fmf(fmf,tac_bytes,summary['name'])
-        # Full independent read-after-write: outer archive -> member decrypt -> TAC parse.
-        verify=parse_fmf(output);vt=parse_tac(verify.data_by_ext['.tac'])
-        readback=verify_recipe_roundtrip(vt,recipe,catalog)
-        if vt.title!=summary['name'] or verify.root_title!=summary['name']: raise ValueError('输出标题回读不一致')
-        if vt.style!=summary['tac_style_string'] or bytes(vt.quad).hex()!=summary['style_code_hex']:
-            raise ValueError('原生风格字符串/四字节 style code 回读不一致')
-        if bytes(vt.packed)!=bytes(tac.packed): raise ValueError('球队指令回读不一致')
-        if len(vt.pairs)!=11 or len(vt.records)!=12: raise ValueError('输出球员槽位或 footer 数量不一致')
-        out=args.output.expanduser().resolve();out.parent.mkdir(parents=True,exist_ok=True);out.write_bytes(output)
-        report={
-            'status':'offline_binary_roundtrip_verified_not_game_import_verified',
-            'output':str(out),'sha256':hashlib.sha256(output).hexdigest(),'bytes':len(output),
-            'template':str(template_path),'template_sha256':hashlib.sha256(source).hexdigest(),
-            'recipe':str(args.recipe),'recipe_input_format':input_format,'name':summary['name'],'style':summary['style'],'tac_style_string':summary['tac_style_string'],'style_code_hex':summary['style_code_hex'],'style_registry':str(args.style_registry),'mentality':summary['mentality'],
-            'team_instruction_bits':summary['team_instruction_bits'],'experimental_mappings':summary['experimental_mappings'],'source_template_version':27,
-            'opaque_sections_preserved':{'id_entries':before['ids'],'footer_lists':before['lists'],'footer_records':before['footer_records'],'image_member':'byte_identical'},
-            'player_phase_map':summary['players'],'readback_player_phase_map':readback['verified_slots'],
-            'checks':{'fmf_outer_roundtrip':True,'all_member_decrypt_and_zstd_checksums':True,'tac_full_parse':True,'11_ip_oop_pairs':True,'22_positions_roles_pi_readback_exact':True,'pi_permissions_checked_against_catalog':True,'team_instruction_vector_readback':True,'native_style_string_and_code_readback':True,'game_interactive_import':False,'match_engine':False},
-            'notes':['离线二进制重建，仅处理本地输入文件。','D/S/A 到 native duty bit 的编码由 FM27 TAC 样本确认；配方可在阶段对象中显式指定 duty，映射表未提供默认值的角色必须明确指定。','PI 权限按指定的 phase/position/role/duty 目录策略检查。','只有结构/自解包核验；必须由用户在 FM27 内手动导入后才能确认游戏接受。']
-        }
-        rpt=args.report or out.with_suffix('.report.json');rpt.write_text(json.dumps(report,ensure_ascii=False,indent=2),encoding='utf-8')
-        print(json.dumps(report,ensure_ascii=False,indent=2))
+        if args.output.exists():
+            raise FileExistsError('拒绝覆盖已有输出文件：' + str(args.output))
+        catalog = json.loads(args.catalog.read_text(encoding='utf-8'))
+        style_registry = json.loads(args.style_registry.read_text(encoding='utf-8')) if args.style_registry.is_file() else None
+        recipe, input_format = load_recipe_input(args.recipe)
+        output, report = build_fmf_from_recipe(
+            recipe,
+            catalog,
+            style_registry,
+            args.template,
+            recipe_input_format=input_format,
+            recipe_source=str(args.recipe),
+        )
+        out = args.output.expanduser().resolve()
+        out.parent.mkdir(parents=True, exist_ok=True)
+        out.write_bytes(output)
+        report['output'] = str(out)
+        report['style_registry'] = str(args.style_registry)
+        report_path = args.report or out.with_suffix('.report.json')
+        report_path.parent.mkdir(parents=True, exist_ok=True)
+        report_path.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding='utf-8')
+        print(json.dumps(report, ensure_ascii=False, indent=2))
         return 0
     except Exception as e:
-        print(f'失败：{type(e).__name__}: {e}',file=sys.stderr);return 2
+        print(f'失败：{type(e).__name__}: {e}', file=sys.stderr)
+        return 2
+
 if __name__=='__main__': raise SystemExit(main())
