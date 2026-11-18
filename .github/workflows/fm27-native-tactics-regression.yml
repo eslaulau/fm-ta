@@ -79,6 +79,7 @@ jobs:
           assert report["checks"]["22_positions_roles_pi_readback_exact"] is True, report
           assert report["checks"]["pi_permissions_checked_against_catalog"] is True, report
           print("PASS: native FMF generation and independent binary readback")
+          PY
       - name: Upload generated native FMF and readback report
         uses: actions/upload-artifact@v4
         with:
@@ -88,4 +89,3 @@ jobs:
             ${{ runner.temp }}/Control_Possession_SmokeTest.report.json
           if-no-files-found: error
           retention-days: 14
-          PY
