@@ -68,7 +68,7 @@ py -3.12 FM27GEN1_Offline_FMF_Generator.py "NEW_TACTIC_GEN1.txt" --catalog "cata
 原创战术的正式 FMF 构建使用独立工作流：`.github/workflows/fm27-tactic-build.yml`。
 
 1. 将本次完整单行 GEN1 TXT 放入仓库根目录 `build_requests/`，例如 `build_requests/My_Tactic_GEN1.txt`。
-2. 每个 commit 只提交一份待构建配方，并 push 到 `main`。
+2. 每次 push 到 `main` 只提交一份待构建配方；一次 push 不要包含多份待构建 TXT。
 3. GitHub Actions 自动触发 **FM27 Tactic Build**，在 Ubuntu runner 安装 Python 3.12 和生成器依赖。
 4. 云端调用本目录正式生成器，按风格注册表选择 FMF 模板，生成全新的 `.fmf` 和同次 `.report.json`。
 5. 工作流检查 D3 独立回读：FMF 容器/TAC、11 组 IP/OOP、22 个阶段、角色/职责/PI、TI 和原生风格字段。
