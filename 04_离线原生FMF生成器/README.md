@@ -50,7 +50,7 @@
 
 ## 实验性未映射指令导入测试
 
-2026-11-18 新增一批实验性 PI/TI 映射，并构建 `build_requests/Unmapped_Mapping_Import_Test_v1.txt` 进行 FMF 实验。原生目录对照、22 个阶段 PI 权限及离线 FMF 回读均通过；新增映射仍标记为 `unverified_in_game`，需要用户在 FM27 中导入并检查后才能正式验收。对应测试为 `tests/test_fm27gen1_experimental_unmapped_mapping.py`，明细见 [字段契约](FM27GEN1_离线原生FMF_字段契约.md)。
+2026-11-18 新增一批实验性 PI/TI 映射，并构建 `build_requests/Unmapped_Mapping_Import_Test_v1.txt` 进行 FMF 实验。原生目录对照、22 个阶段 PI 权限及离线 FMF 回读均通过。2026-11-18 用户反馈导入 FM27 后新增球队指令和球员指令全部显示，故本批映射已通过游戏内导入显示验证；比赛效果仍未验证。对应测试为 `tests/test_fm27gen1_experimental_unmapped_mapping.py`，明细见 [字段契约](FM27GEN1_离线原生FMF_字段契约.md)。
 
 ## Windows 使用方法
 
