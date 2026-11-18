@@ -1,17 +1,25 @@
 name: FM27 A4.3 Single-Mechanism Experiment Build
+run-name: A4.3 experiment build · ${{ inputs.recipe_path || 'push-triggered recipe' }}
 
 on:
   push:
     branches: [main]
     paths:
-      - "build_requests/a43_experiments/*.json"
+      - "build_requests/a43_experiments/**"
+  workflow_dispatch:
+    inputs:
+      recipe_path:
+        description: "实验配方 JSON 路径（必须位于 build_requests/a43_experiments/）"
+        required: false
+        type: string
+        default: "build_requests/a43_experiments/FM27_A4.3_Vanco_Defensive_Block_01.json"
 
 permissions:
   contents: read
 
 jobs:
   build-a43-experiment:
-    name: Build A4.3 controlled experiment as native FMF
+    name: Build A4.3 experiment as native FMF
     runs-on: ubuntu-latest
     steps:
       - name: Check out generator, catalog, and native templates
@@ -22,14 +30,35 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Validate recipe path and create unique run identity
+        id: meta
+        env:
+          RECIPE_PATH: ${{ inputs.recipe_path || 'build_requests/a43_experiments/FM27_A4.3_Vanco_Defensive_Block_01.json' }}
+        run: |
+          set -euo pipefail
+          case "$RECIPE_PATH" in
+            build_requests/a43_experiments/*.json) ;;
+            *) echo "::error::Recipe must be a JSON file under build_requests/a43_experiments/"; exit 1 ;;
+          esac
+          test -f "$RECIPE_PATH" || { echo "::error::Recipe not found: $RECIPE_PATH"; exit 1; }
+          recipe_file="${RECIPE_PATH##*/}"
+          recipe_stem="${recipe_file%.json}"
+          output_stem="${recipe_stem}_run${GITHUB_RUN_NUMBER}_attempt${GITHUB_RUN_ATTEMPT}"
+          echo "output_stem=$output_stem" >> "$GITHUB_OUTPUT"
+          echo "recipe_path=$RECIPE_PATH" >> "$GITHUB_OUTPUT"
+          echo "Recipe: $RECIPE_PATH"
+          echo "Run: $GITHUB_RUN_ID / attempt $GITHUB_RUN_ATTEMPT"
+          echo "Commit: $GITHUB_SHA"
+
       - name: Install native generator dependencies
         run: python -m pip install -r "04_离线原生FMF生成器/requirements.txt"
 
       - name: Generate native FMF and same-run report
         env:
-          RECIPE_PATH: build_requests/a43_experiments/FM27_A4.3_Vanco_Defensive_Block_01.json
-          OUTPUT_STEM: FM27_A4.3_Vanco_Defensive_Block_01_run${{ github.run_number }}
+          RECIPE_PATH: ${{ steps.meta.outputs.recipe_path }}
+          OUTPUT_STEM: ${{ steps.meta.outputs.output_stem }}
         run: |
+          set -euo pipefail
           python scripts/build_fm27_tactic.py \
             --recipe-path "$RECIPE_PATH" \
             --catalog "04_离线原生FMF生成器/catalog.json" \
@@ -37,10 +66,11 @@ jobs:
             --output "$RUNNER_TEMP/$OUTPUT_STEM.fmf" \
             --report "$RUNNER_TEMP/$OUTPUT_STEM.report.json"
 
-      - name: Enforce D3 readback and single-variable integrity
+      - name: Enforce D3 native readback and recipe structural checks
         env:
-          OUTPUT_STEM: FM27_A4.3_Vanco_Defensive_Block_01_run${{ github.run_number }}
+          OUTPUT_STEM: ${{ steps.meta.outputs.output_stem }}
         run: |
+          set -euo pipefail
           python - "$RUNNER_TEMP/$OUTPUT_STEM.fmf" "$RUNNER_TEMP/$OUTPUT_STEM.report.json" <<'PY'
           import hashlib
           import json
@@ -77,10 +107,10 @@ jobs:
           if len(phases) != 22 or len(readback) != 22:
               raise SystemExit("Expected 22 designed and 22 read-back phases.")
 
-          # A4.3's five original PIs are preserved unchanged; this experiment changes TI only.
+          # Structural guard only: this verifies the PI count, not exact equality to the A4.3 baseline.
           total_pi = sum(int(x.get("pi_count", 0)) for x in phases)
           if total_pi != 5:
-              raise SystemExit(f"Expected five original A4.3 PIs, got {total_pi}.")
+              raise SystemExit(f"Expected five PI entries, got {total_pi}.")
 
           digest = hashlib.sha256(fmf_path.read_bytes()).hexdigest()
           if report.get("sha256") != digest:
@@ -89,20 +119,81 @@ jobs:
               raise SystemExit("FMF byte count differs from the same-run report.")
 
           empty = sum(1 for x in phases if x.get("pi_count", 0) == 0)
-          print("PASS: D3 native FMF readback and A4.3 single-variable integrity")
+          print("PASS: D3 native FMF readback and structural checks")
           print(f"FMF: {fmf_path.name} ({fmf_path.stat().st_size} bytes)")
           print(f"SHA256: {digest}")
-          print(f"Total PI: {total_pi}; empty-PI phases preserved: {empty}")
+          print(f"Total PI: {total_pi}; empty-PI phases: {empty}")
           print("Game import and match performance: not tested.")
           PY
 
-      - name: Upload native FMF and report
+      - name: Write trace manifest and job summary
+        env:
+          RECIPE_PATH: ${{ steps.meta.outputs.recipe_path }}
+          OUTPUT_STEM: ${{ steps.meta.outputs.output_stem }}
+          GH_RUN_ID: ${{ github.run_id }}
+          GH_RUN_NUMBER: ${{ github.run_number }}
+          GH_RUN_ATTEMPT: ${{ github.run_attempt }}
+          GH_SHA: ${{ github.sha }}
+          GH_REF: ${{ github.ref }}
+          GH_EVENT: ${{ github.event_name }}
+          GH_SERVER_URL: ${{ github.server_url }}
+          GH_REPOSITORY: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          python - "$RUNNER_TEMP/$OUTPUT_STEM.fmf" "$RUNNER_TEMP/$OUTPUT_STEM.report.json" "$RUNNER_TEMP/$OUTPUT_STEM.manifest.json" <<'PY'
+          import hashlib
+          import json
+          import os
+          import sys
+          from pathlib import Path
+
+          fmf_path, report_path, manifest_path = map(Path, sys.argv[1:])
+          report = json.loads(report_path.read_text(encoding="utf-8"))
+          digest = hashlib.sha256(fmf_path.read_bytes()).hexdigest()
+          run_url = f"{os.environ['GH_SERVER_URL']}/{os.environ['GH_REPOSITORY']}/actions/runs/{os.environ['GH_RUN_ID']}"
+          manifest = {
+              "workflow": "FM27 A4.3 Single-Mechanism Experiment Build",
+              "run_id": os.environ["GH_RUN_ID"],
+              "run_number": int(os.environ["GH_RUN_NUMBER"]),
+              "run_attempt": int(os.environ["GH_RUN_ATTEMPT"]),
+              "run_url": run_url,
+              "event": os.environ["GH_EVENT"],
+              "ref": os.environ["GH_REF"],
+              "commit_sha": os.environ["GH_SHA"],
+              "recipe_path": os.environ["RECIPE_PATH"],
+              "fmf_file": fmf_path.name,
+              "fmf_bytes": fmf_path.stat().st_size,
+              "fmf_sha256": digest,
+              "report_file": report_path.name,
+              "report_status": report.get("status"),
+              "game_import_verified": False,
+              "match_engine_verified": False,
+          }
+          manifest_path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+          summary = Path(os.environ["GITHUB_STEP_SUMMARY"])
+          summary.write_text(
+              "# FM27 A4.3 build trace\n\n"
+              f"- **Result:** D3 offline binary round-trip passed\n"
+              f"- **Run:** [{manifest['run_id']} / attempt {manifest['run_attempt']}]({run_url})\n"
+              f"- **Trigger:** {manifest['event']}\n"
+              f"- **Commit:** `{manifest['commit_sha']}`\n"
+              f"- **Recipe:** `{manifest['recipe_path']}`\n"
+              f"- **FMF:** `{manifest['fmf_file']}` ({manifest['fmf_bytes']} bytes)\n"
+              f"- **SHA256:** `{manifest['fmf_sha256']}`\n"
+              "- **Scope:** Game import and match-engine performance are not tested.\n",
+              encoding="utf-8",
+          )
+          print(json.dumps(manifest, ensure_ascii=False, indent=2))
+          PY
+
+      - name: Upload native FMF, report, and trace manifest
         if: success()
         uses: actions/upload-artifact@v4
         with:
-          name: FM27_A4.3_Vanco_Defensive_Block_01
+          name: ${{ steps.meta.outputs.output_stem }}
           path: |
-            ${{ runner.temp }}/FM27_A4.3_Vanco_Defensive_Block_01_run${{ github.run_number }}.fmf
-            ${{ runner.temp }}/FM27_A4.3_Vanco_Defensive_Block_01_run${{ github.run_number }}.report.json
+            ${{ runner.temp }}/${{ steps.meta.outputs.output_stem }}.fmf
+            ${{ runner.temp }}/${{ steps.meta.outputs.output_stem }}.report.json
+            ${{ runner.temp }}/${{ steps.meta.outputs.output_stem }}.manifest.json
           if-no-files-found: error
-          retention-days: 14
+          retention-days: 30
