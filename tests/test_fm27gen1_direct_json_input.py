@@ -104,7 +104,7 @@ class DirectJSONInputTest(unittest.TestCase):
             )
             self.assertEqual(
                 completed.returncode, 0,
-                msg=f"In-memory cloud build failed.\\nSTDOUT:\\n{completed.stdout}\\nSTDERR:\\n{completed.stderr}",
+                msg=f"In-memory cloud build failed.\nSTDOUT:\n{completed.stdout}\nSTDERR:\n{completed.stderr}",
             )
             self.assertTrue(output_path.is_file())
             report = json.loads(report_path.read_text(encoding="utf-8"))
@@ -112,6 +112,7 @@ class DirectJSONInputTest(unittest.TestCase):
             self.assertEqual(report.get("recipe"), "workflow_dispatch inline JSON payload")
             self.assertEqual(report.get("sha256"), hashlib.sha256(output_path.read_bytes()).hexdigest())
             self.assertEqual(len(report.get("readback_player_phase_map", [])), 22)
+
     def test_direct_api_rejects_unknown_and_incomplete_recipe_fields(self):
 
         with self.subTest(case="unknown root field"):
@@ -131,11 +132,13 @@ class DirectJSONInputTest(unittest.TestCase):
             malformed["ment"] = True
             with self.assertRaisesRegex(ValueError, "ment 必须是 1–7 的整数"):
                 gen.validate_recipe_structure(malformed)
+
     def test_schema_accepts_ip_oop_base_metadata_without_using_it_as_phase_data(self):
         recipe = json.loads(json.dumps(self.recipe))
         recipe["base"]["ip"] = "native"
         recipe["base"]["oop"] = "native"
         self.assertIsNone(gen.validate_recipe_structure(recipe))
+
     def test_cli_generates_and_reads_back_native_fmf_from_direct_json(self):
         with tempfile.TemporaryDirectory() as temp:
             temp_dir = Path(temp)
