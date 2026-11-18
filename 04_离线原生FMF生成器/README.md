@@ -75,7 +75,7 @@ py -3.12 FM27GEN1_Offline_FMF_Generator.py "NEW_TACTIC_GEN1.txt" --catalog "cata
 6. 只有全部检查通过才上传 artifact：`FM27_<配方名>_run<运行号>`，包含 FMF 与 report，保留 14 天。
 7. 助手取回 artifact、检查文件，再直接向用户交付附件。GEN1 源配方留在 `build_requests/`。
 
-也可在 GitHub Actions 页面手动运行 **FM27 Tactic Build**，通过 `recipe_path` 选择仓库中已有的配方用于重试。完整触发、验收、失败处理和交付说明见 [FM27GEN1_离线原生FMF_生成流程](./FM27GEN1_离线原生FMF_生成流程.md) 与 [build_requests/README](../../build_requests/README.md)。
+也可在 GitHub Actions 页面手动运行 **FM27 Tactic Build**，通过 `recipe_path` 选择仓库中已有的配方用于重试。完整触发、验收、失败处理和交付说明见 [FM27GEN1_离线原生FMF_生成流程](./FM27GEN1_离线原生FMF_生成流程.md) 与 [build_requests/README](../build_requests/README.md)。
 
 该工作流只负责 D3 云端原生生成与独立回读，不会启动用户本机 FM27，也不声称游戏内导入或实战效果已验证。原有 `fm27-native-tactics-regression.yml` 继续只负责回归测试，不作为指定新战术的构建入口。
 
