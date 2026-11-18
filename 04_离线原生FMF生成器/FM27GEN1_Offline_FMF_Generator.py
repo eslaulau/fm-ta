@@ -53,8 +53,9 @@ PI_MAP = {
     ('ATTACK_BOX_SIDE','FAR_POST'): 40,
 }
 
-# Experimental first-pass mappings sourced from catalog.json native option IDs.
-# These are intentionally reported as unverified-in-game until the user imports the test FMF.
+# Experimental mappings sourced from catalog.json native option IDs.
+# The user confirmed all test instructions are visible after FM27 import on 2026-11-18;
+# in-match tactical effects remain unverified.
 EXPERIMENTAL_PI_MAP = {
     ('CROSSING_TARGET','BACK_POST'): 10,          # catalog player_instructions group 9
     ('ROAMING','ROAM_FROM_POSITION'): 24,         # catalog group 4
@@ -246,8 +247,9 @@ TI_MAP = {
     ('SHORT_GOALKEEPER_DISTRIBUTION','YES'): 69,
 }
 
-# Experimental first-pass mappings sourced from catalog.json native_bit values.
-# No raw bit positions are guessed; game import remains the final acceptance test.
+# Experimental mappings sourced from catalog.json native_bit values.
+# The user confirmed all test instructions are visible after FM27 import on 2026-11-18;
+# in-match tactical effects remain unverified.
 EXPERIMENTAL_TI_MAP = {
     ('DEFENSIVE_LINE','MUCH_HIGHER'): 56,
     ('PRESSING_TRAP','TRAP_INSIDE'): 80,
@@ -699,7 +701,7 @@ def apply_recipe(tac:Tac,recipe:dict,catalog:dict,style_registry:dict|None=None)
                 if key in EXPERIMENTAL_PI_MAP:
                     experimental_pi.append({'slot':slot,'phase':phase_key,'group':key[0],'option':key[1],'native_option_id':EXPERIMENTAL_PI_MAP[key]})
     experimental_ti=[{'group':key[0],'option':key[1],'native_bit':bit} for key,bit in EXPERIMENTAL_TI_MAP.items() if recipe.get('ti',{}).get(key[0])==key[1]]
-    return {'name':title,'style':style_name,'tac_style_string':style_def['tac_style_string'],'style_code_hex':style_def['style_code'].hex(),'template_name':style_def['template'],'mentality':recipe['ment'],'team_instruction_bits':[i for i in range(96) if tac.packed[i//8]>>(i%8)&1],'players':pi_summary,'experimental_mappings':{'status':'unverified_in_game','player_instructions':experimental_pi,'team_instructions':experimental_ti}}
+    return {'name':title,'style':style_name,'tac_style_string':style_def['tac_style_string'],'style_code_hex':style_def['style_code'].hex(),'template_name':style_def['template'],'mentality':recipe['ment'],'team_instruction_bits':[i for i in range(96) if tac.packed[i//8]>>(i%8)&1],'players':pi_summary,'experimental_mappings':{'status':'game_import_display_verified_match_unverified','player_instructions':experimental_pi,'team_instructions':experimental_ti}}
 
 # ---- native archive layout and emission -------------------------------------------------
 def verify_recipe_roundtrip(tac:Tac,recipe:dict,catalog:dict)->dict:
