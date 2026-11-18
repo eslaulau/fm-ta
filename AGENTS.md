@@ -41,9 +41,7 @@ Never conclude that a role, PI, TI, style, or data source is missing from a sing
 - data absent;
 - data present but not mapped;
 - code mapped but not covered by tests;
-- D3 generated/read-back;
-- D4 imported and saved/reopened in FM27;
-- D5 tested in matches.
+- D3: the native FMF is generated and all required independent binary/read-back checks pass; this is the final acceptance point for this project.
 
 ## 3. Tactical design rules
 
@@ -85,11 +83,9 @@ A failed first build is a debugging signal, not a reason to abandon the task, si
 - D0: original tactical concept designed.
 - D1: native position/role/duty/PI permissions checked.
 - D2: complete structured recipe/schema validated.
-- D3: the specific native FMF generated and all required independent binary/read-back checks passed. D3 is the minimum deliverable.
-- D4: only after the user actually imports that specific FMF into FM27, checks it, saves, closes, and reopens it.
-- D5: only after a sufficiently controlled match test.
+- D3: the specific native FMF generated and all required independent binary/read-back checks passed. **D3 is the final acceptance point and complete deliverable for this project.**
 
-Never describe D3 as D4 or D5. Do not claim match effectiveness based on generation, static checks, CI, old reports, or preset names.
+The project does not include game-client import, in-game inspection, match simulation, or match-performance testing as required steps, acceptance gates, or delivery blockers. Once the exact-run FMF and report pass D3 and are delivered, the project task is complete. Describe only the checks actually performed by the generator; never claim tactical match effectiveness without evidence.
 
 ## 6. Response behavior
 
