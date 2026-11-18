@@ -4,7 +4,12 @@ on:
   push:
     branches: [main]
     paths:
+      - "AGENTS.md"
+      - ".github/copilot-instructions.md"
+      - "README.md"
+      - "build_requests/README.md"
       - "00_资料总索引与检索规范.md"
+      - "04_离线原生FMF生成器/**/*.md"
       - "01_网站生成规则/**"
       - "02_FM27原生权限规则/**"
       - "03_GEN1编码与导入规则/**"
@@ -16,7 +21,12 @@ on:
       - ".github/workflows/test-fm-ta-native-generation.yml"
   pull_request:
     paths:
+      - "AGENTS.md"
+      - ".github/copilot-instructions.md"
+      - "README.md"
+      - "build_requests/README.md"
       - "00_资料总索引与检索规范.md"
+      - "04_离线原生FMF生成器/**/*.md"
       - "01_网站生成规则/**"
       - "02_FM27原生权限规则/**"
       - "03_GEN1编码与导入规则/**"
