@@ -1,0 +1,112 @@
+name: FM27 A4.3 Single-Mechanism Experiment Build
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "build_requests/a43_experiments/*.json"
+
+permissions:
+  contents: read
+
+jobs:
+  build-a43-experiment:
+    name: Build A4.3 controlled experiment as native FMF
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out generator, catalog, and native templates
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install native generator dependencies
+        run: python -m pip install -r "04_离线原生FMF生成器/requirements.txt"
+
+      - name: Generate native FMF and same-run report
+        env:
+          RECIPE_PATH: build_requests/a43_experiments/FM27_A4.3_Mechanism_01_LateRuns.json
+          OUTPUT_STEM: FM27_A4.3_Mechanism_01_LateRuns_run${{ github.run_number }}
+        run: |
+          python scripts/build_fm27_tactic.py \
+            --recipe-path "$RECIPE_PATH" \
+            --catalog "04_离线原生FMF生成器/catalog.json" \
+            --style-registry "04_离线原生FMF生成器/style_template_registry.json" \
+            --output "$RUNNER_TEMP/$OUTPUT_STEM.fmf" \
+            --report "$RUNNER_TEMP/$OUTPUT_STEM.report.json"
+
+      - name: Enforce D3 readback and single-variable integrity
+        env:
+          OUTPUT_STEM: FM27_A4.3_Mechanism_01_LateRuns_run${{ github.run_number }}
+        run: |
+          python - "$RUNNER_TEMP/$OUTPUT_STEM.fmf" "$RUNNER_TEMP/$OUTPUT_STEM.report.json" <<'PY'
+          import hashlib
+          import json
+          import sys
+          from pathlib import Path
+
+          fmf_path, report_path = map(Path, sys.argv[1:])
+          if not fmf_path.is_file() or fmf_path.stat().st_size == 0:
+              raise SystemExit(f"FMF output missing or empty: {fmf_path}")
+          if not report_path.is_file():
+              raise SystemExit(f"Same-run report missing: {report_path}")
+
+          report = json.loads(report_path.read_text(encoding="utf-8"))
+          if report.get("status") != "offline_binary_roundtrip_verified_not_game_import_verified":
+              raise SystemExit(f"Unexpected report status: {report.get('status')!r}")
+
+          required_checks = [
+              "fmf_outer_roundtrip",
+              "all_member_decrypt_and_zstd_checksums",
+              "tac_full_parse",
+              "11_ip_oop_pairs",
+              "22_positions_roles_pi_readback_exact",
+              "pi_permissions_checked_against_catalog",
+              "team_instruction_vector_readback",
+              "native_style_string_and_code_readback",
+          ]
+          checks = report.get("checks", {})
+          failed = [key for key in required_checks if checks.get(key) is not True]
+          if failed:
+              raise SystemExit(f"D3 readback checks failed: {failed}")
+
+          phases = report.get("player_phase_map", [])
+          readback = report.get("readback_player_phase_map", [])
+          if len(phases) != 22 or len(readback) != 22:
+              raise SystemExit("Expected 22 designed and 22 read-back phases.")
+
+          # A4.3 original had five PIs. This experiment adds exactly one
+          # permission-checked IP instruction to slot 6 (MCL): Late Runs.
+          total_pi = sum(int(x.get("pi_count", 0)) for x in phases)
+          target = [x for x in phases if x.get("slot") == 6 and x.get("phase") == "in"]
+          if len(target) != 1 or int(target[0].get("pi_count", 0)) != 1:
+              raise SystemExit("Expected exactly one new PI on slot 6 IP (MCL).")
+          if total_pi != 6:
+              raise SystemExit(f"Expected six total PIs (five A4.3 + one experiment), got {total_pi}.")
+
+          digest = hashlib.sha256(fmf_path.read_bytes()).hexdigest()
+          if report.get("sha256") != digest:
+              raise SystemExit("FMF SHA256 differs from the same-run report.")
+          if report.get("bytes") != fmf_path.stat().st_size:
+              raise SystemExit("FMF byte count differs from the same-run report.")
+
+          empty = sum(1 for x in phases if x.get("pi_count", 0) == 0)
+          print("PASS: D3 native FMF readback and A4.3 single-variable integrity")
+          print(f"FMF: {fmf_path.name} ({fmf_path.stat().st_size} bytes)")
+          print(f"SHA256: {digest}")
+          print(f"Total PI: {total_pi}; empty-PI phases preserved: {empty}")
+          print("Game import and match performance: not tested.")
+          PY
+
+      - name: Upload native FMF and report
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: FM27_A4.3_Mechanism_01_LateRuns
+          path: |
+            ${{ runner.temp }}/FM27_A4.3_Mechanism_01_LateRuns_run${{ github.run_number }}.fmf
+            ${{ runner.temp }}/FM27_A4.3_Mechanism_01_LateRuns_run${{ github.run_number }}.report.json
+          if-no-files-found: error
+          retention-days: 14
