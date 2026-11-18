@@ -41,6 +41,7 @@ jobs:
           import json
           import os
           import re
+          import subprocess
           from pathlib import Path
 
           event_name = os.environ["EVENT_NAME"]
@@ -52,6 +53,14 @@ jobs:
               for commit in event.get("commits", []):
                   raw_paths.extend(commit.get("added", []))
                   raw_paths.extend(commit.get("modified", []))
+              # Contents-API pushes can arrive with an empty commits array.
+              # In that case, inspect the checked-out tip commit directly.
+              if not raw_paths:
+                  changed = subprocess.run(
+                      ["git", "show", "--pretty=format:", "--name-only", "HEAD"],
+                      check=True, capture_output=True, text=True
+                  )
+                  raw_paths = [line.strip() for line in changed.stdout.splitlines() if line.strip()]
 
           recipes = sorted({
               p for p in raw_paths
