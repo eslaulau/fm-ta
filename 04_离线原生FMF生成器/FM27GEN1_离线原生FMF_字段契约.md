@@ -32,6 +32,13 @@ D3 离线回读、D4 游戏内验证和 D5 比赛效果是不同证据等级，�
 - 生成器直接将 JSON 对象加载成 Python 字典，传入现有 `apply_recipe()`，然后执行原生 FMF 序列化和独立回读。报告字段 `recipe_input_format` 应为 `json`。
 - 结构允许 `pi: []`，但本项目正式战术交付规则要求 22 个阶段均完成非空 PI；不能把结构接受等同于满足交付标准。
 
+### 2.2 进程内结构化对象 API
+
+- 正式生成核心公开函数：`build_fmf_from_recipe(recipe, catalog, style_registry=None, template_path=None)`。
+- `recipe` 是已经解析的 Python `dict`；不需要先写成 JSON 文件，也不需要经过 `FM27GEN1:` 或 Base64。
+- 函数直接调用同一套 `apply_recipe()`、原生 FMF 写入和独立回读逻辑；CLI JSON 与历史 GEN1 入口也调用该函数，避免多套编码实现。
+- 返回 `(fmf_bytes, report)`；报告的 `recipe_input_format` 默认为 `python_dict`，状态仍明确为 `offline_binary_roundtrip_verified_not_game_import_verified`。
+- 此接口为 ChatGPT/其他宿主后续将对话设计结果直接交给原生生成器提供正式调用面。通过函数调用和 D3 回读测试不等于 FM27 客户端导入（D4）或比赛效果（D5）。
 ### 2.2 旧 GEN1 TXT 兼容输入
 
 - 仅为读取历史文件保留：TXT 前缀 `FM27GEN1:`，后接 Base64 编码的 UTF-8 JSON。
