@@ -20,12 +20,12 @@
 
 构建在 GitHub Actions 的 Ubuntu runner 中执行，使用 Python 3.12，安装生成器 requirements，然后调用：
 
-```powershell
-python "04_离线原生FMF生成器/FM27GEN1_Offline_FMF_Generator.py" ^
-  "build_requests/My_Original_Tactic_GEN1.txt" ^
-  --catalog "04_离线原生FMF生成器/catalog.json" ^
-  --output "<runner-temp>/My_Original_Tactic.fmf" ^
-  --report "<runner-temp>/My_Original_Tactic.report.json"
+```bash
+python "04_离线原生FMF生成器/FM27GEN1_Offline_FMF_Generator.py" \
+  "build_requests/My_Original_Tactic_GEN1.txt" \
+  --catalog "04_离线原生FMF生成器/catalog.json" \
+  --output "$RUNNER_TEMP/My_Original_Tactic.fmf" \
+  --report "$RUNNER_TEMP/My_Original_Tactic.report.json"
 ```
 
 随后检查本次 FMF 和 report，要求 22 个阶段设计表与回读表均完整，并且容器、TAC、位置/角色/职责/PI、TI、原生风格信息的独立回读检查全部通过。
