@@ -108,7 +108,7 @@ py -3.12 FM27GEN1_Offline_FMF_Generator.py "NEW_TACTIC.json" --catalog "catalog.
 6. 只有全部检查通过才上传 artifact：`FM27_<配方名>_run<运行号>`，包含 FMF 与 report，保留 14 天。
 7. 助手取回 artifact、检查文件，再直接向用户交付附件。正式流程不再要求 GEN1 TXT。
 
-也可在 GitHub Actions 页面手动运行 **FM27 Tactic Build**：只填写 `recipe_json` 并粘贴完整 JSON，可不在仓库保存配方；或填写 `recipe_path` 选择已有 JSON/TXT。自动化调用可使用 `repository_dispatch` 的 `fm27_tactic_build` 事件，将完整对象放入 `client_payload.recipe`。内联 JSON 通过 workflow output/env 变量直接交给 Python dict 构建脚本，不生成临时 JSON 文件；仓库文件模式与旧 `.txt` GEN1 兼容读取保留。完整触发、验收、失败处理和交付说明见 [FM27GEN1_离线原生FMF_生成流程](./FM27GEN1_离线原生FMF_生成流程.md) 与 [build_requests/README](../build_requests/README.md)。 Windows 用户也可一次性配置 `scripts/Invoke-FM27TacticBuild.ps1 -SetupToken`，以后复制 JSON 到剪贴板后运行 `scripts/Invoke-FM27TacticBuild.ps1`，自动触发、下载并校验 FMF/report；配置和隐私边界见 [build_requests/README](../build_requests/README.md)。
+也可在 GitHub Actions 页面手动运行 **FM27 Tactic Build**：只填写 `recipe_json` 并粘贴完整 JSON，可不在仓库保存配方；或填写 `recipe_path` 选择已有 JSON/TXT。自动化调用可使用 `repository_dispatch` 的 `fm27_tactic_build` 事件，将完整对象放入 `client_payload.recipe`。内联 JSON 通过 workflow output/env 变量直接交给 Python dict 构建脚本，不生成临时 JSON 文件；仓库文件模式与旧 `.txt` GEN1 兼容读取保留。完整触发、验收、失败处理和交付说明见 [FM27GEN1_离线原生FMF_生成流程](./FM27GEN1_离线原生FMF_生成流程.md) 与 [build_requests/README](../build_requests/README.md)。
 
 该工作流只负责 D3 云端原生生成与独立回读，不会启动用户本机 FM27，也不声称游戏内导入或实战效果已验证。原有 `fm27-native-tactics-regression.yml` 继续只负责回归测试，不作为指定新战术的构建入口。
 
