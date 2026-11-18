@@ -178,6 +178,36 @@ ROLE_DUTY_UNMAPPED = frozenset({
     'AdvancedCentreBack',
 })
 
+DUTY_NAME_TO_FLAG = {
+    'D': 2097152, 'DEFEND': 2097152,
+    'S': 4194304, 'SUPPORT': 4194304,
+    'A': 8388608, 'ATTACK': 8388608,
+    'NONE': 0,
+}
+
+def resolve_role_duty(roleid: str, phase_item: dict) -> int:
+    """Use an explicit native duty when provided; otherwise retain the legacy role default."""
+    if 'duty' not in phase_item:
+        duty = ROLE_DUTY.get(roleid)
+        if duty is None:
+            raise ValueError(
+                f'角色 {roleid} 没有固定 duty 默认值；请在该阶段对象中显式填写 duty（D/S/A 或原生 duty bit）'
+            )
+    else:
+        selected = phase_item['duty']
+        if isinstance(selected, str):
+            token = selected.strip().upper()
+            if token not in DUTY_NAME_TO_FLAG:
+                raise ValueError(f'未知 duty 名称：{selected!r}；使用 D/DEFEND、S/SUPPORT、A/ATTACK 或原生整数 bit')
+            duty = DUTY_NAME_TO_FLAG[token]
+        elif isinstance(selected, int) and not isinstance(selected, bool):
+            duty = selected
+        else:
+            raise ValueError('duty 必须是 D/S/A 名称或原生整数 bit')
+    if duty not in DUTY_FLAGS:
+        raise ValueError(f'角色 {roleid} 的 duty 不属于 FM27 原生 duty 集合：{duty}')
+    return duty
+
 # Native team-option bits for the non-default A9.0.2 selections.
 # Every bit below was cross-checked against the packed 12-byte vector in the
 # downloaded A9.0.2 .fmf and the current local catalog.
@@ -726,8 +756,7 @@ def apply_recipe(tac:Tac,recipe:dict,catalog:dict,style_registry:dict|None=None)
             seen[phase].add(pos)
             role_flag=int(role['flags'])
             if role_flag<=0 or role_flag&(role_flag-1): raise ValueError(f'角色标识不是 one-hot：{roleid}')
-            duty=ROLE_DUTY.get(roleid)
-            if duty is None or duty not in DUTY_FLAGS: raise ValueError(f'未确认的角色 duty 标签：{roleid}')
+            duty=resolve_role_duty(roleid,item)
             if 'pi' not in item:
                 raise ValueError(f'{slot} 槽位 {phase_key} 缺少必填 pi 字段；完整战术不得省略球员指令')
             pi_flags=encode_pi(item['pi'],catalog,phase,pos,roleid,duty)
@@ -759,8 +788,7 @@ def verify_recipe_roundtrip(tac:Tac,recipe:dict,catalog:dict)->dict:
         for phase,key,block in ((0,'in',pair.ip),(1,'out',pair.oop)):
             wanted_pos=native_position_id(str(spec[key]['pos']),phase)
             wanted_role=role_id_from_display(str(spec[key]['role']),phase,set(roles))
-            wanted_duty=ROLE_DUTY.get(wanted_role)
-            if wanted_duty is None: raise ValueError(f'回读角色缺少 duty 映射：{wanted_role}')
+            wanted_duty=resolve_role_duty(wanted_role,spec[key])
             wanted_pi=encode_pi(spec[key].get('pi',[]),catalog,phase,wanted_pos,wanted_role,wanted_duty)
             got_pos=positions.get(block.selector)
             got_role=role_by_flag_phase.get((block.mask & ROLE_MASK,phase))
@@ -835,7 +863,7 @@ def main():
             'opaque_sections_preserved':{'id_entries':before['ids'],'footer_lists':before['lists'],'footer_records':before['footer_records'],'image_member':'byte_identical'},
             'player_phase_map':summary['players'],'readback_player_phase_map':readback['verified_slots'],
             'checks':{'fmf_outer_roundtrip':True,'all_member_decrypt_and_zstd_checksums':True,'tac_full_parse':True,'11_ip_oop_pairs':True,'22_positions_roles_pi_readback_exact':True,'pi_permissions_checked_against_catalog':True,'team_instruction_vector_readback':True,'native_style_string_and_code_readback':True,'game_interactive_import':False,'match_engine':False},
-            'notes':['离线二进制重建，仅处理本地输入文件。','D/S/A 到 native duty bit 的编码由 FM27 TAC 样本确认；新增角色/职责组合来自 Netlify 90 条预设索引的交叉审计，不等于逐条原始 TAC 字节证据。','只有结构/自解包核验；必须由用户在 FM27 内手动导入后才能确认游戏接受。']
+            'notes':['离线二进制重建，仅处理本地输入文件。','D/S/A 到 native duty bit 的编码由 FM27 TAC 样本确认；配方可在阶段对象中显式指定 duty，映射表未提供默认值的角色必须明确指定。','PI 权限按指定的 phase/position/role/duty 目录策略检查。','只有结构/自解包核验；必须由用户在 FM27 内手动导入后才能确认游戏接受。']
         }
         rpt=args.report or out.with_suffix('.report.json');rpt.write_text(json.dumps(report,ensure_ascii=False,indent=2),encoding='utf-8')
         print(json.dumps(report,ensure_ascii=False,indent=2))
