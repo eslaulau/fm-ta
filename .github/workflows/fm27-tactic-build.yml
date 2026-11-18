@@ -91,6 +91,7 @@ jobs:
           python - "$RUNNER_TEMP/$OUTPUT_STEM.fmf" "$RUNNER_TEMP/$OUTPUT_STEM.report.json" "$RECIPE_PATH" <<'PY'
           import hashlib
           import json
+          import os
           import sys
           from pathlib import Path
 
