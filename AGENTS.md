@@ -49,7 +49,7 @@ Never conclude that a role, PI, TI, style, or data source is missing from a sing
 
 For a new tactic:
 - Design independently from the user's current tactical goal and explicit constraints.
-- Do not use any tactic, preset, recipe, FMF, old report, sample, template tactic configuration, or old AI output in this repository as a tactical design reference, seed, baseline, or recommendation.
+- Unless the user explicitly requests otherwise, do not use any tactic, preset, recipe, FMF, old report, sample, template tactic configuration, or old AI output in this repository as a tactical design reference, seed, baseline, or recommendation. A clear, task-specific instruction from the user may authorize use of the named historical material within the scope they specify; do not treat that exception as blanket permission to use other archived tactics.
 - Native FMF samples/templates may be inspected only for binary/file-format compatibility. Do not inherit their formation, roles, duties, PIs, TIs, or tactical logic.
 - Do not require squad analysis, player attributes, match reports, opponent analysis, save data, or real-match statistics unless the user explicitly asks for that analysis or makes those materials part of the task. Lack of such data is not a blocker for an original tactic based on the user's stated objective.
 - Do not force a named official style as the tactical idea. The ten registered styles/style codes are native serialization carriers where required, not a limit on tactical creativity.
