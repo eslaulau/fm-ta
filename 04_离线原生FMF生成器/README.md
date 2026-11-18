@@ -100,8 +100,8 @@ py -3.12 FM27GEN1_Offline_FMF_Generator.py "NEW_TACTIC.json" --catalog "catalog.
 
 原创战术的正式 FMF 构建使用独立工作流：`.github/workflows/fm27-tactic-build.yml`。
 
-1. 将本次直接生成的 UTF-8 JSON 配方放入仓库根目录 `build_requests/`，例如 `build_requests/My_Original_Tactic.json`。文件根节点是完整战术 JSON 对象，不经过 GEN1 前缀/Base64 包装。
-2. 每次 push 到 `main` 只提交一份待构建 JSON；一次 push 不要包含多份待构建配方。
+1. 战术设计完成后，助手直接通过 GitHub 仓库写入权限，将本次 UTF-8 JSON 配方提交到仓库根目录 `build_requests/`，例如 `build_requests/My_Original_Tactic.json`；不要求用户在本地创建或上传文件。文件根节点是完整战术 JSON 对象，不经过 GEN1 前缀/Base64 包装。
+2. 该单文件 commit push 到 `main` 后自动触发构建；一次 push 只提交一份待构建 JSON。
 3. GitHub Actions 自动触发 **FM27 Tactic Build**，在 Ubuntu runner 安装 Python 3.12 和生成器依赖。
 4. 云端把 JSON 对象直接交给本目录正式生成器，按风格注册表选择 FMF 模板，生成全新的 `.fmf` 和同次 `.report.json`。
 5. 工作流检查 D3 独立回读：FMF 容器/TAC、11 组 IP/OOP、22 个阶段、角色/职责/PI、TI 和原生风格字段。
