@@ -25,6 +25,8 @@ jobs:
     steps:
       - name: Check out recipe, generator, catalog, and native templates
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
 
       - name: Set up Python 3.12
         uses: actions/setup-python@v5
@@ -54,7 +56,7 @@ jobs:
               # tip commit only, so older recipe paths in the same webhook do not
               # get mistaken for multiple simultaneous requests.
               changed = subprocess.run(
-                  ["git", "show", "--pretty=format:", "--name-only", "HEAD"],
+                  ["git", "diff-tree", "--no-commit-id", "--name-only", "-r", "HEAD"],
                   check=True, capture_output=True, text=True
               )
               raw_paths = [line.strip() for line in changed.stdout.splitlines() if line.strip()]
