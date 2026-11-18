@@ -19,7 +19,7 @@
 - **自动文件触发：** 向 `main` push 一份 `build_requests/*.json`；适合需要在仓库留档的配方。
 - **API 直接对象：** 对仓库发送 `repository_dispatch`，`event_type` 使用 `fm27_tactic_build`，并在 `client_payload.recipe` 传完整 JSON 对象；不创建配方文件。
 - **历史兼容：** 手动选择或 push `build_requests/*.txt` 中的 `FM27GEN1:Base64` 文件仍可用，但新战术不应再使用此格式。
-- 三种输入路径共用同一个配方解析器和原生 FMF 生成器；输入解析由 `scripts/resolve_fm27_tactic_recipe.py` 负责，并有独立单元测试。
+- 三种输入路径共用同一个配方解析器和原生 FMF 生成器；内联对象经 `scripts/resolve_fm27_tactic_recipe.py` 作为单行 JSON workflow output 传递，再由 `scripts/build_fm27_tactic.py` 直接解析成 dict 并调用 `build_fmf_from_recipe()`，不创建输入文件。相关路径有独立单元测试。
 
 云端生成器直接读取 JSON 对象并调用原有原生写入逻辑：
 
