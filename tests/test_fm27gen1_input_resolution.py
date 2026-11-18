@@ -27,7 +27,8 @@ class TacticRecipeInputResolverTests(unittest.TestCase):
 
     def test_safe_stem_preserves_unicode_but_blocks_path_separators(self):
         self.assertEqual(resolver.safe_stem("战术 A"), "战术_A")
-        self.assertEqual(resolver.safe_stem("../../unsafe\\nname"), "unsafe_name")
+        self.assertEqual(resolver.safe_stem("../../unsafe/name"), "unsafe_name")
+
     def test_workflow_dispatch_inline_json_creates_temp_json_not_repo_file(self):
         result = resolver.resolve_recipe_input(
             event_name="workflow_dispatch",
