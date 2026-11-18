@@ -85,7 +85,20 @@ py -3.12 FM27GEN1_Offline_FMF_Generator.py "NEW_TACTIC_GEN1.txt" --catalog "cata
 
 ## 角色、职责与指令证据登记
 
-角色、职责与指令的原生数据状态见 [FM27_Role_Duty_PI_验证登记](./FM27_Role_Duty_PI_验证登记.md)：79/79 个角色定义、7/7 个职责标志值、17/17 组 PI 菜单及 54/54 个 PI 选项、29/29 组 TI 菜单及 103/103 个 TI 选项全部标记为**已验证**，不以 FM27 客户端是否导入为前提。当前 GEN1 生成器的写入映射覆盖单独统计：73 个角色职责映射、18 个 PI 选项、56 个 TI 选项；数据已验证不代表每项都已开放写入。
+角色、职责与指令的原生数据状态见 [FM27_Role_Duty_PI_验证登记](./FM27_Role_Duty_PI_验证登记.md)：79/79 个角色定义、7/7 个职责标志值、17/17 组 PI 菜单及 54/54 个 PI 选项、29/29 组 TI 菜单及 103/103 个 TI 选项均有原生数据证据。2026-11-18 全量映射对账后，当前生成器写入覆盖为：**PI 37/37 个非默认 Option ID、TI 75/75 个非零 native bit、TI 菜单组 29/29**；角色职责映射为 **73/79**，尚有 6 个角色的精确 duty 仍待原生分配证据，不能按名称猜测。12 项首轮新增映射（6 PI + 6 TI）已由用户确认 FM27 导入显示；本轮其余映射来自原生 catalog 编号/bit 并通过自动映射和编码测试，不能一概描述为逐项游戏导入测试通过。
+
+## 2026-11-18 PI/TI 全量目录映射
+
+本轮依据 `catalog.json` 的原生 Option ID 和 `native_bit`，将生成器可编码的 PI/TI 菜单选项补齐，并增加全覆盖回归测试：
+
+- **PI：37/37** 个非默认原生 Option ID 已接入 `PI_MAP`；`encode_pi()` 继续按 1,547 个角色/位置/阶段/duty 权限策略判断是否允许写入。
+- **TI：75/75** 个非零原生 bit 已接入 `TI_MAP`；`TI_GROUPS` 已覆盖 **29/29** 个原生 TI 组。
+- 修正 `ATTACKING_TRANSITION=HOLD_SHAPE` 为 native bit 55；将肋部内套与外侧套上拆为两个独立原生组；新增门将参与进攻定位球组（ID 32）。
+- 首轮 12 项映射已由用户确认在 FM27 导入后全部显示。其余本轮新增/补齐项目通过目录对应、编码及自动回归检查，但没有逐项向用户声称完成游戏导入验证。
+- 两项“指定盯防” PI（Option ID 34/35）目前写入的是原生菜单标志；GEN1 v1 尚未承载具体盯防对象的独立目标字段。
+- 仍待原生 duty 证据的角色为 `PlaymakingWinger`、`OPCoveringWideCentreBack`、`OverlappingCentreBack`、`FalseNine`、`HalfBack`、`AdvancedCentreBack`；这 6 项不阻止其他已映射角色与指令正常使用。
+
+详细 PI/TI 清单、原生编号及编码边界见 [字段契约](FM27GEN1_离线原生FMF_字段契约.md)。
 
 ## 原生验证与权限规则
 
