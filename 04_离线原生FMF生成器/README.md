@@ -55,31 +55,31 @@
 ## Windows 使用方法
 
 1. 先运行 `安装依赖.bat`。
-2. 将完整的 `FM27GEN1:...` 配方保存为 UTF-8 的 `.txt` 文件。
-3. 把配方 TXT 拖到 `运行离线生成器.bat`，或在本目录运行下面的命令。
+2. 将战术配方保存为普通 UTF-8 JSON 文件（扩展名 `.json`），根节点直接是 JSON 对象，不需要 `FM27GEN1:` 前缀，也不需要 Base64 编码。
+3. 把 JSON 配方拖到 `运行离线生成器.bat`，或在本目录运行下面的命令。
 
 ```powershell
 py -3.12 -m pip install -r requirements.txt
-py -3.12 FM27GEN1_Offline_FMF_Generator.py "NEW_TACTIC_GEN1.txt" --catalog "catalog.json" --output "NEW_TACTIC.fmf" --report "NEW_TACTIC.report.json"
+py -3.12 FM27GEN1_Offline_FMF_Generator.py "NEW_TACTIC.json" --catalog "catalog.json" --output "NEW_TACTIC.fmf" --report "NEW_TACTIC.report.json"
 ```
 
-**无需手动指定模板。** 生成器读取配方中的 `base.g`，自动从 `style_template_registry.json` 选择对应原生模板。也可显式提供 `--template`，但必须与该风格登记的模板完全一致；不允许把其他风格的模板改名冒用。
+**无需手动指定模板。** 生成器直接读取 JSON 对象中的 `base.g`，自动从 `style_template_registry.json` 选择对应原生模板。也可显式提供 `--template`，但必须与该风格登记的模板完全一致；不允许把其他风格的模板改名冒用。
 
-输出文件已存在时，生成器拒绝覆盖。每次新战术必须使用新的输出文件名。
+旧版 `.txt` 的 `FM27GEN1:Base64` 输入仍可读取，仅用于兼容已有配方；新战术不再需要生成或提交 GEN1。输出文件已存在时，生成器拒绝覆盖。每次新战术必须使用新的输出文件名。
 
 ## 正式战术云端构建
 
 原创战术的正式 FMF 构建使用独立工作流：`.github/workflows/fm27-tactic-build.yml`。
 
-1. 将本次完整单行 GEN1 TXT 放入仓库根目录 `build_requests/`，例如 `build_requests/My_Tactic_GEN1.txt`。
-2. 每次 push 到 `main` 只提交一份待构建配方；一次 push 不要包含多份待构建 TXT。
+1. 将本次直接生成的 UTF-8 JSON 配方放入仓库根目录 `build_requests/`，例如 `build_requests/My_Original_Tactic.json`。文件根节点是完整战术 JSON 对象，不经过 GEN1 前缀/Base64 包装。
+2. 每次 push 到 `main` 只提交一份待构建 JSON；一次 push 不要包含多份待构建配方。
 3. GitHub Actions 自动触发 **FM27 Tactic Build**，在 Ubuntu runner 安装 Python 3.12 和生成器依赖。
-4. 云端调用本目录正式生成器，按风格注册表选择 FMF 模板，生成全新的 `.fmf` 和同次 `.report.json`。
+4. 云端把 JSON 对象直接交给本目录正式生成器，按风格注册表选择 FMF 模板，生成全新的 `.fmf` 和同次 `.report.json`。
 5. 工作流检查 D3 独立回读：FMF 容器/TAC、11 组 IP/OOP、22 个阶段、角色/职责/PI、TI 和原生风格字段。
 6. 只有全部检查通过才上传 artifact：`FM27_<配方名>_run<运行号>`，包含 FMF 与 report，保留 14 天。
-7. 助手取回 artifact、检查文件，再直接向用户交付附件。GEN1 源配方留在 `build_requests/`。
+7. 助手取回 artifact、检查文件，再直接向用户交付附件。正式流程不再要求 GEN1 TXT。
 
-也可在 GitHub Actions 页面手动运行 **FM27 Tactic Build**，通过 `recipe_path` 选择仓库中已有的配方用于重试。完整触发、验收、失败处理和交付说明见 [FM27GEN1_离线原生FMF_生成流程](./FM27GEN1_离线原生FMF_生成流程.md) 与 [build_requests/README](../build_requests/README.md)。
+也可在 GitHub Actions 页面手动运行 **FM27 Tactic Build**，通过 `recipe_path` 选择仓库中已有的 JSON 配方用于重试。旧版 `.txt` GEN1 仅保留兼容读取。完整触发、验收、失败处理和交付说明见 [FM27GEN1_离线原生FMF_生成流程](./FM27GEN1_离线原生FMF_生成流程.md) 与 [build_requests/README](../build_requests/README.md)。
 
 该工作流只负责 D3 云端原生生成与独立回读，不会启动用户本机 FM27，也不声称游戏内导入或实战效果已验证。原有 `fm27-native-tactics-regression.yml` 继续只负责回归测试，不作为指定新战术的构建入口。
 
