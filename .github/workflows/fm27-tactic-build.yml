@@ -45,8 +45,8 @@ jobs:
         env:
           EVENT_NAME: ${{ github.event_name }}
           EVENT_PATH: ${{ github.event_path }}
-          RECIPE_PATH_INPUT: ${{ inputs.recipe_path }}
-          RECIPE_JSON_INPUT: ${{ inputs.recipe_json }}
+          RECIPE_PATH_INPUT: ${{ github.event.inputs.recipe_path || '' }}
+          RECIPE_JSON_INPUT: ${{ github.event.inputs.recipe_json || '' }}
           RUNNER_TEMP: ${{ runner.temp }}
           GITHUB_RUN_NUMBER: ${{ github.run_number }}
         run: |
