@@ -1,0 +1,99 @@
+from __future__ import annotations
+
+import json
+import subprocess
+import sys
+import tempfile
+import unittest
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+GEN_DIR = ROOT / "04_离线原生FMF生成器"
+GENERATOR = GEN_DIR / "FM27GEN1_Offline_FMF_Generator.py"
+CATALOG = GEN_DIR / "catalog.json"
+LEGACY_FIXTURE = ROOT / "build_requests" / "Unmapped_Mapping_Import_Test_v1.txt"
+
+sys.path.insert(0, str(GEN_DIR))
+import FM27GEN1_Offline_FMF_Generator as gen  # noqa: E402
+
+
+class DirectJSONInputTest(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        if not LEGACY_FIXTURE.is_file():
+            raise RuntimeError(f"Missing established FM27 input fixture: {LEGACY_FIXTURE}")
+        cls.recipe = gen.parse_gen1(LEGACY_FIXTURE)
+
+    def test_native_json_is_loaded_without_gen1_transport(self):
+        with tempfile.TemporaryDirectory() as temp:
+            path = Path(temp) / "direct_recipe.json"
+            path.write_text(
+                json.dumps(self.recipe, ensure_ascii=False, indent=2),
+                encoding="utf-8",
+            )
+            loaded, input_format = gen.load_recipe_input(path)
+
+            self.assertEqual(input_format, "json")
+            self.assertEqual(loaded, self.recipe)
+            self.assertTrue(path.read_text(encoding="utf-8").lstrip().startswith("{"))
+            self.assertFalse(path.read_text(encoding="utf-8").lstrip().startswith("FM27GEN1:"))
+
+    def test_cli_generates_and_reads_back_native_fmf_from_direct_json(self):
+        with tempfile.TemporaryDirectory() as temp:
+            temp_dir = Path(temp)
+            recipe_path = temp_dir / "direct_recipe.json"
+            output_path = temp_dir / "direct_recipe.fmf"
+            report_path = temp_dir / "direct_recipe.report.json"
+            recipe_path.write_text(
+                json.dumps(self.recipe, ensure_ascii=False, indent=2),
+                encoding="utf-8",
+            )
+
+            completed = subprocess.run(
+                [
+                    sys.executable,
+                    str(GENERATOR),
+                    str(recipe_path),
+                    "--catalog",
+                    str(CATALOG),
+                    "--output",
+                    str(output_path),
+                    "--report",
+                    str(report_path),
+                ],
+                cwd=ROOT,
+                capture_output=True,
+                text=True,
+                check=False,
+            )
+            self.assertEqual(
+                completed.returncode,
+                0,
+                msg=f"Direct JSON generation failed.\nSTDOUT:\n{completed.stdout}\nSTDERR:\n{completed.stderr}",
+            )
+            self.assertTrue(output_path.is_file())
+            self.assertGreater(output_path.stat().st_size, 0)
+            report = json.loads(report_path.read_text(encoding="utf-8"))
+            self.assertEqual(report.get("recipe_input_format"), "json")
+            self.assertEqual(
+                report.get("status"),
+                "offline_binary_roundtrip_verified_not_game_import_verified",
+            )
+            required = [
+                "fmf_outer_roundtrip",
+                "all_member_decrypt_and_zstd_checksums",
+                "tac_full_parse",
+                "11_ip_oop_pairs",
+                "22_positions_roles_pi_readback_exact",
+                "pi_permissions_checked_against_catalog",
+                "team_instruction_vector_readback",
+                "native_style_string_and_code_readback",
+            ]
+            for key in required:
+                self.assertIs(report.get("checks", {}).get(key), True, key)
+            self.assertEqual(len(report.get("player_phase_map", [])), 22)
+            self.assertEqual(len(report.get("readback_player_phase_map", [])), 22)
+
+
+if __name__ == "__main__":
+    unittest.main(verbosity=2)
