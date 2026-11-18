@@ -40,7 +40,7 @@ def _inline_recipe(
         raise ValueError("Direct recipe payload must be a JSON object.")
     stem = safe_stem(recipe_data.get("name"))
     compact_json = json.dumps(recipe_data, ensure_ascii=False, separators=(",", ":"))
-    if "\\n" in compact_json or "\\r" in compact_json:
+    if "\n" in compact_json or "\r" in compact_json:
         raise ValueError("Compact JSON unexpectedly contains a literal line break")
     return {
         "recipe_json": compact_json,
