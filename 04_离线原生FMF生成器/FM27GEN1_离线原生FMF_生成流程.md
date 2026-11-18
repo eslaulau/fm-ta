@@ -174,11 +174,11 @@ py -3.12 FM27GEN1_Offline_FMF_Generator.py "NEW_TACTIC.json" --catalog "catalog.
 
 ## 8.1 正式云端战术构建流程（默认正式交付通道）
 
-新战术不需要 GEN1，也不必把配方写入仓库。工作流支持三种输入，共用同一原生生成器：
+新战术不需要 GEN1。普通对话中的正式交付采用**助手直接提交仓库 JSON 文件**的方式；Actions 页面内联 JSON 和 `repository_dispatch` 保留给维护/外部自动化，共用同一原生生成器：
 
-1. **Actions 内联 JSON（推荐的人工入口）：** 在 Actions 页面手动运行 **FM27 Tactic Build**，只填写 `recipe_json`，粘贴完整 JSON 对象；不要填写 `recipe_path`。输入作为 workflow output/env 单行 JSON 传给 Python 构建进程，不创建临时配方文件，也不提交到仓库。
-2. **repository_dispatch（自动化对象入口）：** 事件类型为 `fm27_tactic_build`，完整对象放在 `client_payload.recipe`。不创建配方文件。
-3. **仓库 JSON 文件入口：** 将单份 UTF-8 JSON 放到 `build_requests/` 后 push 到 `main`。适合需要保留配方版本记录的任务。
+1. **正式默认：助手提交仓库 JSON。** 战术设计完成后，助手直接把唯一一份 UTF-8 JSON 请求提交到 `build_requests/`，push 到 `main` 自动触发 **FM27 Tactic Build**。用户无需创建文件、操作 Actions 页面或运行桌面命令。助手负责定位本次 run、下载 artifact、核验 FMF/report 并在对话中交付。
+2. **Actions 内联 JSON（维护入口）：** 仓库维护者可在 Actions 页面手动运行 **FM27 Tactic Build**，只填写 `recipe_json`，不填写 `recipe_path`。输入作为 workflow output/env 传给 Python 构建进程，不创建 runner 临时配方文件。
+3. **repository_dispatch（外部自动化入口）：** 事件类型为 `fm27_tactic_build`，完整对象放在 `client_payload.recipe`。不创建配方文件。
 
 旧版 `.txt` 的 `FM27GEN1:Base64` 只保留读取兼容。三种正式入口都不需要 GEN1 中间格式。
 
@@ -190,7 +190,7 @@ py -3.12 FM27GEN1_Offline_FMF_Generator.py "NEW_TACTIC.json" --catalog "catalog.
 
 ### B. 触发独立构建工作流
 
-正式构建工作流为 `.github/workflows/fm27-tactic-build.yml`。人工可在 Actions 页面使用 `recipe_json`；程序化入口可使用 `repository_dispatch`；需要留档时再 push `build_requests/*.json`。`workflow_dispatch` 必须且只能选择 `recipe_path` 或 `recipe_json` 其中一种输入。
+正式构建工作流为 `.github/workflows/fm27-tactic-build.yml`。普通对话任务由助手提交 `build_requests/*.json` 触发 push；Actions 页面 `recipe_json` 仅供维护调试；`repository_dispatch` 供具备调用权限的外部自动化使用。`workflow_dispatch` 必须且只能选择 `recipe_path` 或 `recipe_json` 其中一种输入。
 
 仓库路径模式只接受位于 `build_requests/` 直接子目录中的一份 `.json` 或历史 `.txt` 配方。路径穿越、多个请求、空请求、非对象 JSON 均会被拒绝。
 
