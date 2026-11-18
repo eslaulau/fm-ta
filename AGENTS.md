@@ -45,6 +45,8 @@ Never conclude that a role, PI, TI, style, or data source is missing from a sing
 
 ## 3. Tactical design rules
 
+**Tactical design priority rule — mandatory:** Native generator compatibility is a **post-design executability check, not the starting point of tactical design**. AI must not choose basic/default/already-tested roles merely because they are safer, easier to map, or more likely to pass the generator. During design, AI must actively explore the full set of current native roles, duties, and relevant PI combinations that could realize the tactical objective, and select the strongest evidence-backed combination for the requested goal. Only after the tactical concept and role structure are chosen should native position/role/duty/PI permissions be validated. If a preferred role fails validation, return to the tactical design stage and find the strongest native alternative that preserves the intended tactical behavior; do not weaken the tactical idea merely to make generation pass.
+
 For a new tactic:
 - Design independently from the user's current tactical goal and explicit constraints.
 - Do not use any tactic, preset, recipe, FMF, old report, sample, template tactic configuration, or old AI output in this repository as a tactical design reference, seed, baseline, or recommendation.
