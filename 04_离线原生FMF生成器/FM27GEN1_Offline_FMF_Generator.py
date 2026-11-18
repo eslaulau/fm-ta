@@ -811,13 +811,31 @@ def verify_recipe_roundtrip(tac:Tac,recipe:dict,catalog:dict)->dict:
     return {'verified_slots':checked,'ip_unique_positions':11,'oop_unique_positions':11}
 
 def parse_gen1(path:Path)->dict:
+    """Decode the legacy FM27GEN1:Base64 JSON transport format."""
     text=path.read_text(encoding='utf-8-sig').strip()
-    if not text.startswith('FM27GEN1:'): raise ValueError('输入缺少 FM27GEN1: 前缀')
-    return json.loads(base64.b64decode(text.split(':',1)[1],validate=True).decode('utf-8'))
+    if not text.startswith('FM27GEN1:'): raise ValueError('旧版 GEN1 输入缺少 FM27GEN1: 前缀')
+    recipe=json.loads(base64.b64decode(text.split(':',1)[1],validate=True).decode('utf-8'))
+    if not isinstance(recipe,dict): raise ValueError('GEN1 解码结果必须是 JSON 对象')
+    return recipe
+
+def load_recipe_input(path:Path)->tuple[dict,str]:
+    """Load the native structured JSON recipe; retain GEN1 TXT only for compatibility."""
+    suffix=path.suffix.lower()
+    if suffix=='.json':
+        recipe=json.loads(path.read_text(encoding='utf-8-sig'))
+        input_format='json'
+    elif suffix=='.txt':
+        recipe=parse_gen1(path)
+        input_format='legacy_gen1_base64'
+    else:
+        raise ValueError('输入文件必须使用 .json（原生结构化配方）或 .txt（旧版 GEN1 兼容格式）')
+    if not isinstance(recipe,dict):
+        raise ValueError('战术配方根节点必须是 JSON 对象')
+    return recipe,input_format
 
 def main():
-    ap=argparse.ArgumentParser(description='FM27GEN1 离线生成原生 FMF')
-    ap.add_argument('recipe',type=Path,help='FM27GEN1 TXT')
+    ap=argparse.ArgumentParser(description='FM27 结构化战术配方离线生成原生 FMF')
+    ap.add_argument('recipe',type=Path,help='原生 JSON 配方；旧版 GEN1 TXT 仅作兼容输入')
     ap.add_argument('--template',type=Path,help='可选：覆盖登记表中的原生 .fmf 模板；默认按战术风格自动选择')
     ap.add_argument('--catalog',type=Path,required=True,help='本机 FM27 catalog.json')
     ap.add_argument('--output',type=Path,required=True,help='新 FMF 输出路径')
@@ -828,7 +846,7 @@ def main():
         if args.output.exists(): raise FileExistsError('拒绝覆盖已有输出文件：'+str(args.output))
         catalog=json.loads(args.catalog.read_text(encoding='utf-8'))
         style_registry=json.loads(args.style_registry.read_text(encoding='utf-8')) if args.style_registry.is_file() else None
-        recipe=parse_gen1(args.recipe)
+        recipe,input_format=load_recipe_input(args.recipe)
         style_name=str(recipe.get('base',{}).get('g',''))
         template_path=resolve_template_path(style_name,style_registry,args.template)
         source=template_path.read_bytes();fmf=parse_fmf(source)
@@ -858,7 +876,7 @@ def main():
             'status':'offline_binary_roundtrip_verified_not_game_import_verified',
             'output':str(out),'sha256':hashlib.sha256(output).hexdigest(),'bytes':len(output),
             'template':str(template_path),'template_sha256':hashlib.sha256(source).hexdigest(),
-            'recipe':str(args.recipe),'name':summary['name'],'style':summary['style'],'tac_style_string':summary['tac_style_string'],'style_code_hex':summary['style_code_hex'],'style_registry':str(args.style_registry),'mentality':summary['mentality'],
+            'recipe':str(args.recipe),'recipe_input_format':input_format,'name':summary['name'],'style':summary['style'],'tac_style_string':summary['tac_style_string'],'style_code_hex':summary['style_code_hex'],'style_registry':str(args.style_registry),'mentality':summary['mentality'],
             'team_instruction_bits':summary['team_instruction_bits'],'experimental_mappings':summary['experimental_mappings'],'source_template_version':27,
             'opaque_sections_preserved':{'id_entries':before['ids'],'footer_lists':before['lists'],'footer_records':before['footer_records'],'image_member':'byte_identical'},
             'player_phase_map':summary['players'],'readback_player_phase_map':readback['verified_slots'],
