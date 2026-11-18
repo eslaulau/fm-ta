@@ -21,10 +21,11 @@ D3 离线回读、D4 游戏内验证和 D5 比赛效果是不同证据等级，�
 - TXT 前缀：`FM27GEN1:`，后接 Base64 编码的 UTF-8 JSON。
 - 根字段：`v`、`name`、`ment`、`base`、`ti`、`p`。
 - `v=1`；`ment` 必须为 1–7。
+- 每个阶段对象可选 `duty`，例如 `"duty":"S"`；支持 D/DEFEND、S/SUPPORT、A/ATTACK 或准确原生 duty 整数。
 - `base.g` 是风格名，必须在 `style_template_registry.json` 中有登记；**当前已登记十种官方风格，不再局限于 Gegenpress**。
 - `ti` 是单一共享球队指令对象，不区分 IP/OOP 两套 TI。
 - `p` 正好 11 个槽位；每个槽位包含 `in` 和 `out`。
-- 每个阶段必须包含 `pos`、`role`、`pi`。
+- 每个阶段必须包含 `pos`、`role`、`pi`；可选 `duty` 用于显式指定原生职责位。
 - PI 项格式为 `[group, option]`。重复项、未知映射和权限冲突均拒绝。
 - 结构允许 `pi: []`，但本项目正式战术交付规则要求 22 个阶段均完成非空 PI；不能把结构接受等同于满足交付标准。
 
@@ -53,13 +54,14 @@ D3 离线回读、D4 游戏内验证和 D5 比赛效果是不同证据等级，�
 
 ## 5. Duty
 
-GEN1 v1 没有独立 duty 字段。生成器按内部角色 ID 查源码 `ROLE_DUTY` 固定映射，并检查其值属于 `DUTY_FLAGS` 允许集合。
+GEN1 v1 的阶段对象允许可选 `duty` 字段。优先采用此字段的显式原生 duty；未提供时再查源码 `ROLE_DUTY` 固定默认映射。
 
-- 缺少 `ROLE_DUTY` 映射时直接报错。
-- catalog 保存角色 ID、阶段和位置资格；PI policy 中包含 7 个 duty 状态的权限记录，但这些状态本身不能证明某角色在原生战术方案中应使用哪一个 duty。
-- 当前有 73/79 个角色职责映射；仍待补证的 6 个是 `PlaymakingWinger`、`OPCoveringWideCentreBack`、`OverlappingCentreBack`、`FalseNine`、`HalfBack`、`AdvancedCentreBack`。
-- 这 6 个角色均存在于原生角色目录和位置资格数据中；其中若干还有原生角色描述/默认 PI 信息，但现有目录没有提供精确 role→duty 对照。不得按名称、动作描述或相似角色臆测职责位。
-- 回读检查写入 duty 与生成器期望值一致；这证明当前映射被正确写入，不等于每个可能 duty 组合都已游戏内验证。
+- 原生角色 duty 是独立于 role flag 的字段。当前 `ROLE_DUTY` 为 73/79 个角色提供历史样本/预设支持的默认 duty；其余 6 个没有可证明的固定默认值，不能按名称或相似角色猜测。
+- 6 个需要显式选择的角色是 `PlaymakingWinger`、`OPCoveringWideCentreBack`、`OverlappingCentreBack`、`FalseNine`、`HalfBack`、`AdvancedCentreBack`。它们均存在于原生角色目录和位置资格数据中。
+- GEN1 每个阶段对象可选填写 `duty`：`"D"`/`"DEFEND"`、`"S"`/`"SUPPORT"`、`"A"`/`"ATTACK"`，或 `catalog.json.duties` 中的准确原生整数 bit。显式字段优先于角色默认值；未填写时才读取 `ROLE_DUTY`。如果该角色既无默认值又未显式指定，生成器报错。
+- 显式 duty 仍必须属于 `DUTY_FLAGS`；随后 `encode_pi()` 使用选定的 phase/position/role/duty 查询权限策略。6 个角色的测试位置均具备 7 种目录 duty policy key，回归测试逐一确认可解析。
+- 这使全部 79 个原生角色都能进入生成流程；其中 6 个需要战术配方作者明确选职责，而不是伪造一个默认映射。
+- 回读检查写入 duty 与配方指定/解析出的期望值一致；这证明当前映射被正确写入，不等于每个可能 duty 组合都已游戏内验证。
 
 ## 6. PI 映射与权限检查
 
