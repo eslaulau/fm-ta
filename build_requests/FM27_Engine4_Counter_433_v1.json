@@ -1,0 +1,317 @@
+{
+  "v": 1,
+  "name": "FM27 Engine4 Counter 433 v1.0",
+  "ment": 5,
+  "base": {
+    "g": "Direct Counter Attack",
+    "ip": "4-3-3 DM Wide",
+    "oop": "4-1-4-1 DM"
+  },
+  "ti": {
+    "PASSING_DIRECTNESS": "MORE_DIRECT",
+    "TEMPO": "HIGHER",
+    "ATTACKING_WIDTH": "WIDER",
+    "ATTACKING_TRANSITION": "COUNTER_ATTACK",
+    "TIME_WASTING": "LESS_OFTEN",
+    "BUILD_UP_STRATEGY": "BYPASS_PRESS",
+    "GOAL_KICKS": "SHORT",
+    "GOALKEEPER_DISTRIBUTION": "CENTRE_BACKS",
+    "GK_DISTRIBUTION_(SPEED)": "DISTRIBUTE_QUICKLY",
+    "PASS_RECEPTION": "PASS_INTO_SPACE",
+    "SUPPORTING_RUNS": "BOTH_FLANKS",
+    "DRIBBLING": "ENCOURAGE",
+    "SHOTS_FROM_DISTANCE": "DISCOURAGE",
+    "CROSSING_STYLE": "LOW_CROSSES",
+    "LINE_OF_ENGAGEMENT": "MID_BLOCK",
+    "DEFENSIVE_LINE": "LOWER",
+    "DEFENSIVE_LINE_BEHAVIOR": "DROP_OFF_MORE",
+    "TRIGGER_PRESS": "MORE_OFTEN",
+    "DEFENSIVE_TRANSITION": "REGROUP",
+    "TACKLING": "STAY_ON_FEET",
+    "PRESSING_TRAP": "TRAP_OUTSIDE",
+    "SHORT_GOALKEEPER_DISTRIBUTION": "YES",
+    "CROSS_ENGAGEMENT": "INVITE_CROSSES"
+  },
+  "p": [
+    {
+      "in": {
+        "pos": "GK",
+        "role": "BallPlayingGoalkeeper",
+        "duty": "S",
+        "pi": [
+          [
+            "PASSING_STRATEGY",
+            "MORE_DIRECT"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "GK",
+        "role": "OPSweeperKeeper",
+        "duty": "A",
+        "pi": [
+          [
+            "TACKLING",
+            "EASE_OFF_TACKLES"
+          ]
+        ]
+      }
+    },
+    {
+      "in": {
+        "pos": "DR",
+        "role": "WingBack",
+        "duty": "S",
+        "pi": [
+          [
+            "CROSSING_FREQUENCY",
+            "BYLINE"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "DR",
+        "role": "OPHoldingFullBack",
+        "duty": "D",
+        "pi": [
+          [
+            "MARKING",
+            "MARK_TIGHTER"
+          ]
+        ]
+      }
+    },
+    {
+      "in": {
+        "pos": "DCR",
+        "role": "CentreBack",
+        "duty": "D",
+        "pi": [
+          [
+            "PASSING_STRATEGY",
+            "SHORTER"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "DCR",
+        "role": "OPCoveringCentreBack",
+        "duty": "D",
+        "pi": [
+          [
+            "TACKLING",
+            "EASE_OFF_TACKLES"
+          ]
+        ]
+      }
+    },
+    {
+      "in": {
+        "pos": "DCL",
+        "role": "BallPlayingCentreBack",
+        "duty": "D",
+        "pi": [
+          [
+            "PASSING_STRATEGY",
+            "SHORTER"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "DCL",
+        "role": "OPCentreBack",
+        "duty": "D",
+        "pi": [
+          [
+            "MARKING",
+            "MARK_TIGHTER"
+          ]
+        ]
+      }
+    },
+    {
+      "in": {
+        "pos": "DL",
+        "role": "FullBack",
+        "duty": "S",
+        "pi": [
+          [
+            "FORWARD_RUNS",
+            "KEEP_POSITION"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "DL",
+        "role": "OPHoldingFullBack",
+        "duty": "D",
+        "pi": [
+          [
+            "TACKLING",
+            "EASE_OFF_TACKLES"
+          ]
+        ]
+      }
+    },
+    {
+      "in": {
+        "pos": "DMC",
+        "role": "DefensiveMidfielder",
+        "duty": "D",
+        "pi": [
+          [
+            "PASSING_STRATEGY",
+            "SHORTER"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "DMC",
+        "role": "OPScreeningDefensiveMidfielder",
+        "duty": "D",
+        "pi": [
+          [
+            "MARKING",
+            "MARK_TIGHTER"
+          ]
+        ]
+      }
+    },
+    {
+      "in": {
+        "pos": "MCR",
+        "role": "ChannelMidfielder",
+        "duty": "A",
+        "pi": [
+          [
+            "FORWARD_RUNS",
+            "MAKE_MORE_RUNS"
+          ],
+          [
+            "ATTACK_BOX_DEPTH",
+            "LATE_RUNS"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "MCR",
+        "role": "OPPressingCentralMidfielder",
+        "duty": "A",
+        "pi": [
+          [
+            "TACKLING",
+            "EASE_OFF_TACKLES"
+          ]
+        ]
+      }
+    },
+    {
+      "in": {
+        "pos": "MCL",
+        "role": "ChannelMidfielder",
+        "duty": "S",
+        "pi": [
+          [
+            "PASSING_STRATEGY",
+            "SHORTER"
+          ],
+          [
+            "FORWARD_RUNS",
+            "MAKE_MORE_RUNS"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "MCL",
+        "role": "OPCentralMidfielder",
+        "duty": "S",
+        "pi": [
+          [
+            "MARKING",
+            "MARK_TIGHTER"
+          ]
+        ]
+      }
+    },
+    {
+      "in": {
+        "pos": "AMR",
+        "role": "Winger",
+        "duty": "S",
+        "pi": [
+          [
+            "DRIBBLING_DIRECTION",
+            "RUN_WIDE_WITH_BALL"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "MR",
+        "role": "OPTrackingWideMidfielder",
+        "duty": "D",
+        "pi": [
+          [
+            "TRIGGER_PRESS",
+            "MORE_OFTEN"
+          ]
+        ]
+      }
+    },
+    {
+      "in": {
+        "pos": "AML",
+        "role": "Winger",
+        "duty": "A",
+        "pi": [
+          [
+            "DRIBBLING_DIRECTION",
+            "RUN_WIDE_WITH_BALL"
+          ],
+          [
+            "SHOOTING",
+            "SHOOT_MORE_OFTEN"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "ML",
+        "role": "OPTrackingWideMidfielder",
+        "duty": "D",
+        "pi": [
+          [
+            "TACKLING",
+            "EASE_OFF_TACKLES"
+          ]
+        ]
+      }
+    },
+    {
+      "in": {
+        "pos": "ST",
+        "role": "CentreForward",
+        "duty": "A",
+        "pi": [
+          [
+            "ATTACK_BOX_SIDE",
+            "NEAR_POST"
+          ],
+          [
+            "ATTACK_BOX_DEPTH",
+            "ATTACK_DEFENSIVE_LINE"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "ST",
+        "role": "OPSplittingOutletCentreForward",
+        "duty": "A",
+        "pi": [
+          [
+            "TRIGGER_PRESS",
+            "LESS_OFTEN"
+          ]
+        ]
+      }
+    }
+  ]
+}
