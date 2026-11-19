@@ -53,7 +53,7 @@
       },
       "out": {
         "pos": "GK",
-        "role": "OPSweeperKeeper",
+        "role": "SweeperKeeper",
         "duty": "A",
         "pi": [
           [
@@ -77,7 +77,7 @@
       },
       "out": {
         "pos": "DR",
-        "role": "OPFullBack",
+        "role": "FullBack",
         "duty": "D",
         "pi": [
           [
@@ -101,7 +101,7 @@
       },
       "out": {
         "pos": "DCR",
-        "role": "OPCentreBack",
+        "role": "CentreBack",
         "duty": "D",
         "pi": [
           [
@@ -125,7 +125,7 @@
       },
       "out": {
         "pos": "DCL",
-        "role": "OPCentreBack",
+        "role": "CentreBack",
         "duty": "D",
         "pi": [
           [
@@ -149,7 +149,7 @@
       },
       "out": {
         "pos": "DL",
-        "role": "OPFullBack",
+        "role": "FullBack",
         "duty": "D",
         "pi": [
           [
@@ -173,7 +173,7 @@
       },
       "out": {
         "pos": "DMC",
-        "role": "OPDefensiveMidfielder",
+        "role": "DefensiveMidfielder",
         "duty": "D",
         "pi": [
           [
@@ -197,7 +197,7 @@
       },
       "out": {
         "pos": "MCR",
-        "role": "OPPressingCentralMidfielder",
+        "role": "PressingCentralMidfielder",
         "duty": "A",
         "pi": [
           [
@@ -221,7 +221,7 @@
       },
       "out": {
         "pos": "MCL",
-        "role": "OPScreeningCentralMidfielder",
+        "role": "ScreeningCentralMidfielder",
         "duty": "D",
         "pi": [
           [
@@ -245,7 +245,7 @@
       },
       "out": {
         "pos": "MR",
-        "role": "OPTrackingWideMidfielder",
+        "role": "TrackingWideMidfielder",
         "duty": "D",
         "pi": [
           [
@@ -269,7 +269,7 @@
       },
       "out": {
         "pos": "ML",
-        "role": "OPTrackingWideMidfielder",
+        "role": "TrackingWideMidfielder",
         "duty": "D",
         "pi": [
           [
@@ -293,7 +293,7 @@
       },
       "out": {
         "pos": "ST",
-        "role": "OPTrackingCentreForward",
+        "role": "TrackingCentreForward",
         "duty": "D",
         "pi": [
           [
