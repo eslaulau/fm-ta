@@ -121,80 +121,24 @@ def resolve_recipe_input(
     raise ValueError(f"Unsupported GitHub event: {event_name}")
 
 
-def _changed_files_from_push(event_data: dict[str, Any] | None = None) -> list[str]:
-    """Resolve files changed by this push; fall back to the authoritative push payload.
-
-    Some GitHub API-created commits can be checked out as shallow boundary commits
-    where diff-tree reports no paths even though the push payload lists them.
-    """
+def _changed_files_from_push() -> list[str]:
     result = subprocess.run(
         [
-            "git", "diff", "--name-only", "--diff-filter=AM",
-            "HEAD^", "HEAD", "--", "build_requests/",
+            "git", "diff-tree", "--no-commit-id", "--name-only",
+            "--diff-filter=AM", "-r", "HEAD",
         ],
-        check=False,
+        check=True,
         capture_output=True,
         text=True,
     )
-    paths = [line.strip() for line in result.stdout.splitlines() if line.strip()]
-    if result.returncode == 0 and paths:
-        return paths
-    payload_paths: list[str] = []
-    for commit in (event_data or {}).get("commits", []):
-        if not isinstance(commit, dict):
-            continue
-        for key in ("added", "modified"):
-            values = commit.get(key, [])
-            if isinstance(values, list):
-                payload_paths.extend(str(value).strip() for value in values if str(value).strip())
-    if payload_paths:
-        return sorted(set(payload_paths))
-
-    # Explicit commit-message fallback for API-driven build requests.
-    head_commit = (event_data or {}).get("head_commit") or {}
-    message = str(head_commit.get("message", "")).strip()
-    match = re.match(r"^Build recipe:\s*(build_requests/[^\r\n]+)$", message)
-    if match:
-        return [match.group(1).strip()]
-
-    # Final fallback: identify request files whose last-touch commit is this HEAD.
-    head = subprocess.run(
-        ["git", "rev-parse", "HEAD"], check=True, capture_output=True, text=True
-    ).stdout.strip()
-    for candidate in sorted((Path.cwd() / "build_requests").glob("*")):
-        if not candidate.is_file() or candidate.suffix.lower() not in {".json", ".txt"}:
-            continue
-        relative = candidate.relative_to(Path.cwd()).as_posix()
-        last_touch = subprocess.run(
-            ["git", "log", "-1", "--format=%H", "HEAD", "--", relative],
-            check=False, capture_output=True, text=True,
-        ).stdout.strip()
-        if last_touch == head:
-            payload_paths.append(relative)
-    if payload_paths:
-        return sorted(set(payload_paths))
-
-    # Date-stamped request fallback for GitHub Contents-API pushes whose webhook
-    # omits per-commit file lists. Refuse ambiguity rather than choosing arbitrarily.
-    dated: list[tuple[str, str]] = []
-    for candidate in sorted((Path.cwd() / "build_requests").glob("*.json")):
-        match_date = re.search(r"(20\d{6})", candidate.stem)
-        if match_date:
-            dated.append((match_date.group(1), candidate.relative_to(Path.cwd()).as_posix()))
-    if dated:
-        newest_date = max(item[0] for item in dated)
-        newest_paths = sorted(path for date, path in dated if date == newest_date)
-        if len(newest_paths) == 1:
-            return newest_paths
-        raise ValueError(f"Ambiguous newest date-stamped build requests: {newest_paths}")
-    return []
+    return [line.strip() for line in result.stdout.splitlines() if line.strip()]
 
 
 def main() -> int:
     event_name = os.environ["EVENT_NAME"]
     event_path = Path(os.environ["EVENT_PATH"])
     event_data = json.loads(event_path.read_text(encoding="utf-8"))
-    changed_files = _changed_files_from_push(event_data) if event_name == "push" else None
+    changed_files = _changed_files_from_push() if event_name == "push" else None
     result = resolve_recipe_input(
         event_name=event_name,
         event_data=event_data,
