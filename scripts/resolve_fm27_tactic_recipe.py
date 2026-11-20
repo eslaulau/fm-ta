@@ -103,7 +103,7 @@ def resolve_recipe_input(
             and Path(item.strip()).suffix.lower() in {".json", ".txt"}
         })
         if not recipes:
-            return {"skip_build": True}
+            raise RuntimeError(f"No build_requests recipe found in push paths: {changed_files!r}")
         if len(recipes) != 1:
             raise ValueError(
                 "Each push build must target exactly one JSON or legacy GEN1 TXT under build_requests/. "
@@ -138,19 +138,40 @@ def _changed_files_from_push(event_data: dict[str, Any]) -> list[str]:
             changed.update(commit.get("added") or [])
             changed.update(commit.get("modified") or [])
 
-    if changed:
-        return sorted(path for path in changed if isinstance(path, str) and path.strip())
+    normalized = {
+        path.strip().replace("\\\\", "/").removeprefix("./")
+        for path in changed if isinstance(path, str) and path.strip()
+    }
+    recipe_paths = sorted(
+        path for path in normalized
+        if path.startswith("build_requests/") and Path(path).suffix.lower() in {".json", ".txt"}
+    )
+    if recipe_paths:
+        return recipe_paths
 
-    commands = [
+    before = str(event_data.get("before") or "").strip()
+    after = str(event_data.get("after") or "").strip()
+    commands = []
+    if before and after and set(before) != {"0"}:
+        commands.append([
+            "git", "diff", "--name-only", "--diff-filter=AM",
+            before, after, "--", "build_requests/",
+        ])
+    commands.extend([
         ["git", "diff", "--name-only", "--diff-filter=AM", "HEAD^", "HEAD", "--", "build_requests/"],
-        ["git", "diff-tree", "--no-commit-id", "--name-only", "--diff-filter=AM", "-r", "HEAD"],
-    ]
+        ["git", "show", "--format=", "--name-only", "HEAD", "--", "build_requests/"],
+    ])
     for command in commands:
         result = subprocess.run(command, check=False, capture_output=True, text=True)
         if result.returncode == 0:
             paths = [line.strip() for line in result.stdout.splitlines() if line.strip()]
             if paths:
-                return paths
+                recipe_paths = sorted(
+                    path for path in paths
+                    if path.startswith("build_requests/") and Path(path).suffix.lower() in {".json", ".txt"}
+                )
+                if recipe_paths:
+                    return recipe_paths
 
     raise RuntimeError(
         "Push event contained no added/modified paths and Git history could not resolve them; "
