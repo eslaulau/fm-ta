@@ -153,7 +153,7 @@ def _changed_files_from_push(event_data: dict[str, Any] | None = None) -> list[s
     # Explicit commit-message fallback for API-driven build requests.
     head_commit = (event_data or {}).get("head_commit") or {}
     message = str(head_commit.get("message", "")).strip()
-    match = re.match(r"^Build recipe:\\s*(build_requests/[^\\r\\n]+)$", message)
+    match = re.match(r"^Build recipe:\s*(build_requests/[^\r\n]+)$", message)
     if match:
         return [match.group(1).strip()]
 
