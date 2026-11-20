@@ -37,7 +37,7 @@
       },
       "out": {
         "pos": "GK",
-        "role": "OPGoalkeeper",
+        "role": "Goalkeeper",
         "duty": "S",
         "pi": [
           [
@@ -61,7 +61,7 @@
       },
       "out": {
         "pos": "DR",
-        "role": "OPFullBack",
+        "role": "FullBack",
         "duty": "D",
         "pi": [
           [
@@ -85,7 +85,7 @@
       },
       "out": {
         "pos": "DCR",
-        "role": "OPCentreBack",
+        "role": "CentreBack",
         "duty": "D",
         "pi": [
           [
@@ -109,7 +109,7 @@
       },
       "out": {
         "pos": "DCL",
-        "role": "OPCentreBack",
+        "role": "CentreBack",
         "duty": "D",
         "pi": [
           [
@@ -133,7 +133,7 @@
       },
       "out": {
         "pos": "DL",
-        "role": "OPFullBack",
+        "role": "FullBack",
         "duty": "D",
         "pi": [
           [
@@ -157,7 +157,7 @@
       },
       "out": {
         "pos": "MCR",
-        "role": "OPCentralMidfielder",
+        "role": "CentralMidfielder",
         "duty": "S",
         "pi": [
           [
@@ -181,7 +181,7 @@
       },
       "out": {
         "pos": "MCL",
-        "role": "OPScreeningCentralMidfielder",
+        "role": "ScreeningCentralMidfielder",
         "duty": "D",
         "pi": [
           [
@@ -205,7 +205,7 @@
       },
       "out": {
         "pos": "MR",
-        "role": "OPWideMidfielder",
+        "role": "WideMidfielder",
         "duty": "S",
         "pi": [
           [
@@ -229,7 +229,7 @@
       },
       "out": {
         "pos": "AMC",
-        "role": "OPTrackingAttackingMidfielder",
+        "role": "TrackingAttackingMidfielder",
         "duty": "D",
         "pi": [
           [
@@ -253,7 +253,7 @@
       },
       "out": {
         "pos": "ML",
-        "role": "OPWideMidfielder",
+        "role": "WideMidfielder",
         "duty": "S",
         "pi": [
           [
@@ -277,7 +277,7 @@
       },
       "out": {
         "pos": "ST",
-        "role": "OPTrackingCentreForward",
+        "role": "TrackingCentreForward",
         "duty": "D",
         "pi": [
           [
