@@ -1,0 +1,291 @@
+{
+  "v": 1,
+  "name": "SABLE ENGINE HUNTER 4-2-3-1",
+  "ment": 5,
+  "base": {
+    "g": "Direct Counter Attack",
+    "ip": "4-2-3-1",
+    "oop": "4-4-1-1"
+  },
+  "ti": {
+    "PASSING_DIRECTNESS": "MORE_DIRECT",
+    "TEMPO": "HIGHER",
+    "ATTACKING_TRANSITION": "COUNTER_ATTACK",
+    "BUILD_UP_STRATEGY": "BYPASS_PRESS",
+    "PASS_RECEPTION": "PASS_INTO_SPACE",
+    "LINE_OF_ENGAGEMENT": "MID_BLOCK",
+    "DEFENSIVE_LINE": "LOWER",
+    "TRIGGER_PRESS": "LESS_OFTEN",
+    "DEFENSIVE_TRANSITION": "REGROUP",
+    "TACKLING": "STAY_ON_FEET",
+    "DEFENSIVE_LINE_BEHAVIOR": "DROP_OFF_MORE",
+    "CROSSING_STYLE": "LOW_CROSSES",
+    "SHOTS_FROM_DISTANCE": "DISCOURAGE"
+  },
+  "p": [
+    {
+      "in": {
+        "pos": "GK",
+        "role": "Goalkeeper",
+        "duty": "D",
+        "pi": [
+          [
+            "PASSING_STRATEGY",
+            "SHORTER"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "GK",
+        "role": "OPGoalkeeper",
+        "duty": "S",
+        "pi": [
+          [
+            "TACKLING",
+            "EASE_OFF_TACKLES"
+          ]
+        ]
+      }
+    },
+    {
+      "in": {
+        "pos": "DR",
+        "role": "InsideFullBack",
+        "duty": "D",
+        "pi": [
+          [
+            "FORWARD_RUNS",
+            "KEEP_POSITION"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "DR",
+        "role": "OPFullBack",
+        "duty": "D",
+        "pi": [
+          [
+            "MARKING",
+            "MARK_TIGHTER"
+          ]
+        ]
+      }
+    },
+    {
+      "in": {
+        "pos": "DCR",
+        "role": "CentreBack",
+        "duty": "D",
+        "pi": [
+          [
+            "PASSING_STRATEGY",
+            "MORE_DIRECT"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "DCR",
+        "role": "OPCentreBack",
+        "duty": "D",
+        "pi": [
+          [
+            "MARKING",
+            "MARK_TIGHTER"
+          ]
+        ]
+      }
+    },
+    {
+      "in": {
+        "pos": "DCL",
+        "role": "CentreBack",
+        "duty": "D",
+        "pi": [
+          [
+            "PASSING_STRATEGY",
+            "MORE_DIRECT"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "DCL",
+        "role": "OPCentreBack",
+        "duty": "D",
+        "pi": [
+          [
+            "TACKLING",
+            "EASE_OFF_TACKLES"
+          ]
+        ]
+      }
+    },
+    {
+      "in": {
+        "pos": "DL",
+        "role": "FullBack",
+        "duty": "S",
+        "pi": [
+          [
+            "FORWARD_RUNS",
+            "MAKE_MORE_RUNS"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "DL",
+        "role": "OPFullBack",
+        "duty": "D",
+        "pi": [
+          [
+            "MARKING",
+            "MARK_TIGHTER"
+          ]
+        ]
+      }
+    },
+    {
+      "in": {
+        "pos": "DMC",
+        "role": "DefensiveMidfielder",
+        "duty": "D",
+        "pi": [
+          [
+            "PASSING_STRATEGY",
+            "MORE_DIRECT"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "MCR",
+        "role": "OPCentralMidfielder",
+        "duty": "S",
+        "pi": [
+          [
+            "MARKING",
+            "MARK_TIGHTER"
+          ]
+        ]
+      }
+    },
+    {
+      "in": {
+        "pos": "MCL",
+        "role": "CentralMidfielder",
+        "duty": "S",
+        "pi": [
+          [
+            "PASSING_RISKS",
+            "TAKE_MORE_RISKS"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "MCL",
+        "role": "OPScreeningCentralMidfielder",
+        "duty": "D",
+        "pi": [
+          [
+            "TACKLING",
+            "EASE_OFF_TACKLES"
+          ]
+        ]
+      }
+    },
+    {
+      "in": {
+        "pos": "AMR",
+        "role": "Winger",
+        "duty": "S",
+        "pi": [
+          [
+            "FORWARD_RUNS",
+            "MAKE_MORE_RUNS"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "MR",
+        "role": "OPWideMidfielder",
+        "duty": "S",
+        "pi": [
+          [
+            "MARKING",
+            "MARK_TIGHTER"
+          ]
+        ]
+      }
+    },
+    {
+      "in": {
+        "pos": "AMC",
+        "role": "AttackingMidfielder",
+        "duty": "A",
+        "pi": [
+          [
+            "PASSING_RISKS",
+            "TAKE_MORE_RISKS"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "AMC",
+        "role": "OPTrackingAttackingMidfielder",
+        "duty": "D",
+        "pi": [
+          [
+            "MARKING",
+            "MARK_TIGHTER"
+          ]
+        ]
+      }
+    },
+    {
+      "in": {
+        "pos": "AML",
+        "role": "InsideForward",
+        "duty": "A",
+        "pi": [
+          [
+            "DRIBBLING_DIRECTION",
+            "CUT_INSIDE_WITH_BALL"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "ML",
+        "role": "OPWideMidfielder",
+        "duty": "S",
+        "pi": [
+          [
+            "MARKING",
+            "MARK_TIGHTER"
+          ]
+        ]
+      }
+    },
+    {
+      "in": {
+        "pos": "ST",
+        "role": "CentreForward",
+        "duty": "A",
+        "pi": [
+          [
+            "ATTACK_BOX_DEPTH",
+            "ATTACK_DEFENSIVE_LINE"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "ST",
+        "role": "OPTrackingCentreForward",
+        "duty": "D",
+        "pi": [
+          [
+            "MARKING",
+            "MARK_TIGHTER"
+          ]
+        ]
+      }
+    }
+  ]
+}
