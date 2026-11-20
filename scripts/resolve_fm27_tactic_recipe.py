@@ -171,7 +171,23 @@ def _changed_files_from_push(event_data: dict[str, Any] | None = None) -> list[s
         ).stdout.strip()
         if last_touch == head:
             payload_paths.append(relative)
-    return sorted(set(payload_paths))
+    if payload_paths:
+        return sorted(set(payload_paths))
+
+    # Date-stamped request fallback for GitHub Contents-API pushes whose webhook
+    # omits per-commit file lists. Refuse ambiguity rather than choosing arbitrarily.
+    dated: list[tuple[str, str]] = []
+    for candidate in sorted((Path.cwd() / "build_requests").glob("*.json")):
+        match_date = re.search(r"(20\\d{6})", candidate.stem)
+        if match_date:
+            dated.append((match_date.group(1), candidate.relative_to(Path.cwd()).as_posix()))
+    if dated:
+        newest_date = max(item[0] for item in dated)
+        newest_paths = sorted(path for date, path in dated if date == newest_date)
+        if len(newest_paths) == 1:
+            return newest_paths
+        raise ValueError(f"Ambiguous newest date-stamped build requests: {newest_paths}")
+    return []
 
 
 def main() -> int:
