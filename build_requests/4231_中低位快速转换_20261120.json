@@ -32,7 +32,7 @@
       },
       "out": {
         "pos": "GK",
-        "role": "OPGoalkeeper",
+        "role": "Goalkeeper",
         "pi": [
           [
             "TACKLING",
@@ -54,7 +54,7 @@
       },
       "out": {
         "pos": "DR",
-        "role": "OPFullBack",
+        "role": "FullBack",
         "pi": [
           [
             "TRIGGER_PRESS",
@@ -76,7 +76,7 @@
       },
       "out": {
         "pos": "DCR",
-        "role": "OPCoveringCentreBack",
+        "role": "CoveringCentreBack",
         "pi": [
           [
             "TACKLING",
@@ -98,7 +98,7 @@
       },
       "out": {
         "pos": "DCL",
-        "role": "OPCentreBack",
+        "role": "CentreBack",
         "pi": [
           [
             "TACKLING",
@@ -120,7 +120,7 @@
       },
       "out": {
         "pos": "DL",
-        "role": "OPFullBack",
+        "role": "FullBack",
         "pi": [
           [
             "TRIGGER_PRESS",
@@ -142,7 +142,7 @@
       },
       "out": {
         "pos": "MCR",
-        "role": "OPScreeningCentralMidfielder",
+        "role": "ScreeningCentralMidfielder",
         "pi": [
           [
             "TRIGGER_PRESS",
@@ -164,7 +164,7 @@
       },
       "out": {
         "pos": "MCL",
-        "role": "OPCentralMidfielder",
+        "role": "CentralMidfielder",
         "pi": [
           [
             "TRIGGER_PRESS",
@@ -186,7 +186,7 @@
       },
       "out": {
         "pos": "MR",
-        "role": "OPTrackingWideMidfielder",
+        "role": "TrackingWideMidfielder",
         "pi": [
           [
             "TRIGGER_PRESS",
@@ -208,7 +208,7 @@
       },
       "out": {
         "pos": "AMC",
-        "role": "OPTrackingAttackingMidfielder",
+        "role": "TrackingAttackingMidfielder",
         "pi": [
           [
             "TRIGGER_PRESS",
@@ -230,7 +230,7 @@
       },
       "out": {
         "pos": "ML",
-        "role": "OPTrackingWideMidfielder",
+        "role": "TrackingWideMidfielder",
         "pi": [
           [
             "TRIGGER_PRESS",
@@ -252,7 +252,7 @@
       },
       "out": {
         "pos": "ST",
-        "role": "OPTrackingCentreForward",
+        "role": "TrackingCentreForward",
         "pi": [
           [
             "TRIGGER_PRESS",
@@ -263,7 +263,3 @@
     }
   ]
 }
-
-
-
-
