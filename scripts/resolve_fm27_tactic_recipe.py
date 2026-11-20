@@ -183,7 +183,7 @@ def _changed_files_from_push(event_data: dict[str, Any]) -> list[str]:
     if build_dir.is_dir():
         for candidate in sorted(build_dir.iterdir()):
             if candidate.is_file() and candidate.suffix.lower() in {".json", ".txt"}:
-                relative = candidate.relative_to(repo_root).as_posix()
+                relative = candidate.relative_to(Path.cwd()).as_posix()
                 if relative in commit_message or candidate.stem in commit_message:
                     message_matches.append(relative)
     if len(message_matches) == 1:
