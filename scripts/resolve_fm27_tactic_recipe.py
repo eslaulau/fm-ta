@@ -121,24 +121,40 @@ def resolve_recipe_input(
     raise ValueError(f"Unsupported GitHub event: {event_name}")
 
 
-def _changed_files_from_push() -> list[str]:
+def _changed_files_from_push(event_data: dict[str, Any] | None = None) -> list[str]:
+    """Resolve files changed by this push; fall back to the authoritative push payload.
+
+    Some GitHub API-created commits can be checked out as shallow boundary commits
+    where diff-tree reports no paths even though the push payload lists them.
+    """
     result = subprocess.run(
         [
-            "git", "diff-tree", "--no-commit-id", "--name-only",
-            "--diff-filter=AM", "-r", "HEAD",
+            "git", "diff", "--name-only", "--diff-filter=AM",
+            "HEAD^", "HEAD", "--", "build_requests/",
         ],
-        check=True,
+        check=False,
         capture_output=True,
         text=True,
     )
-    return [line.strip() for line in result.stdout.splitlines() if line.strip()]
+    paths = [line.strip() for line in result.stdout.splitlines() if line.strip()]
+    if result.returncode == 0 and paths:
+        return paths
+    payload_paths: list[str] = []
+    for commit in (event_data or {}).get("commits", []):
+        if not isinstance(commit, dict):
+            continue
+        for key in ("added", "modified"):
+            values = commit.get(key, [])
+            if isinstance(values, list):
+                payload_paths.extend(str(value).strip() for value in values if str(value).strip())
+    return sorted(set(payload_paths))
 
 
 def main() -> int:
     event_name = os.environ["EVENT_NAME"]
     event_path = Path(os.environ["EVENT_PATH"])
     event_data = json.loads(event_path.read_text(encoding="utf-8"))
-    changed_files = _changed_files_from_push() if event_name == "push" else None
+    changed_files = _changed_files_from_push(event_data) if event_name == "push" else None
     result = resolve_recipe_input(
         event_name=event_name,
         event_data=event_data,
