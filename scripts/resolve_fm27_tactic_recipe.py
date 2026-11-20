@@ -147,6 +147,23 @@ def _changed_files_from_push(event_data: dict[str, Any] | None = None) -> list[s
             values = commit.get(key, [])
             if isinstance(values, list):
                 payload_paths.extend(str(value).strip() for value in values if str(value).strip())
+    if payload_paths:
+        return sorted(set(payload_paths))
+
+    # Final fallback: identify request files whose last-touch commit is this HEAD.
+    head = subprocess.run(
+        ["git", "rev-parse", "HEAD"], check=True, capture_output=True, text=True
+    ).stdout.strip()
+    for candidate in sorted((Path.cwd() / "build_requests").glob("*")):
+        if not candidate.is_file() or candidate.suffix.lower() not in {".json", ".txt"}:
+            continue
+        relative = candidate.relative_to(Path.cwd()).as_posix()
+        last_touch = subprocess.run(
+            ["git", "log", "-1", "--format=%H", "HEAD", "--", relative],
+            check=False, capture_output=True, text=True,
+        ).stdout.strip()
+        if last_touch == head:
+            payload_paths.append(relative)
     return sorted(set(payload_paths))
 
 
