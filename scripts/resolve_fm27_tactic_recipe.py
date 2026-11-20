@@ -121,24 +121,48 @@ def resolve_recipe_input(
     raise ValueError(f"Unsupported GitHub event: {event_name}")
 
 
-def _changed_files_from_push() -> list[str]:
-    result = subprocess.run(
-        [
-            "git", "diff-tree", "--no-commit-id", "--name-only",
-            "--diff-filter=AM", "-r", "HEAD",
-        ],
-        check=True,
-        capture_output=True,
-        text=True,
+def _changed_files_from_push(event_data: dict[str, Any]) -> list[str]:
+    """Resolve changed paths from the GitHub push payload first, then Git history.
+
+    GitHub's push payload is the authoritative event record. The git fallback
+    covers unusual/empty payloads and shallow-checkout edge cases.
+    """
+    changed: set[str] = set()
+    head_commit = event_data.get("head_commit") or {}
+    if isinstance(head_commit, dict):
+        changed.update(head_commit.get("added") or [])
+        changed.update(head_commit.get("modified") or [])
+
+    for commit in event_data.get("commits") or []:
+        if isinstance(commit, dict):
+            changed.update(commit.get("added") or [])
+            changed.update(commit.get("modified") or [])
+
+    if changed:
+        return sorted(path for path in changed if isinstance(path, str) and path.strip())
+
+    commands = [
+        ["git", "diff", "--name-only", "--diff-filter=AM", "HEAD^", "HEAD", "--", "build_requests/"],
+        ["git", "diff-tree", "--no-commit-id", "--name-only", "--diff-filter=AM", "-r", "HEAD"],
+    ]
+    for command in commands:
+        result = subprocess.run(command, check=False, capture_output=True, text=True)
+        if result.returncode == 0:
+            paths = [line.strip() for line in result.stdout.splitlines() if line.strip()]
+            if paths:
+                return paths
+
+    raise RuntimeError(
+        "Push event contained no added/modified paths and Git history could not resolve them; "
+        "refusing to silently skip a build triggered by build_requests/**."
     )
-    return [line.strip() for line in result.stdout.splitlines() if line.strip()]
 
 
 def main() -> int:
     event_name = os.environ["EVENT_NAME"]
     event_path = Path(os.environ["EVENT_PATH"])
     event_data = json.loads(event_path.read_text(encoding="utf-8"))
-    changed_files = _changed_files_from_push() if event_name == "push" else None
+    changed_files = _changed_files_from_push(event_data) if event_name == "push" else None
     result = resolve_recipe_input(
         event_name=event_name,
         event_data=event_data,
