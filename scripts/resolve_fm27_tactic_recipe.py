@@ -173,9 +173,25 @@ def _changed_files_from_push(event_data: dict[str, Any]) -> list[str]:
                 if recipe_paths:
                     return recipe_paths
 
+    # Some GitHub push deliveries omit the changed-file arrays and the
+    # checkout can expose no usable parent diff. In that case, accept only a
+    # single request whose filename is explicitly identified by the commit
+    # message; never guess from file timestamps or choose an old recipe.
+    commit_message = str((event_data.get("head_commit") or {}).get("message") or "")
+    build_dir = repo_root / "build_requests"
+    message_matches = []
+    if build_dir.is_dir():
+        for candidate in sorted(build_dir.iterdir()):
+            if candidate.is_file() and candidate.suffix.lower() in {".json", ".txt"}:
+                relative = candidate.relative_to(repo_root).as_posix()
+                if relative in commit_message or candidate.stem in commit_message:
+                    message_matches.append(relative)
+    if len(message_matches) == 1:
+        return message_matches
+
     raise RuntimeError(
-        "Push event contained no added/modified paths and Git history could not resolve them; "
-        "refusing to silently skip a build triggered by build_requests/**."
+        "Push event contained no resolvable added/modified recipe path and the commit message "
+        f"did not identify exactly one build request (matches={message_matches!r})."
     )
 
 
