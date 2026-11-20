@@ -178,7 +178,7 @@ def _changed_files_from_push(event_data: dict[str, Any]) -> list[str]:
     # single request whose filename is explicitly identified by the commit
     # message; never guess from file timestamps or choose an old recipe.
     commit_message = str((event_data.get("head_commit") or {}).get("message") or "")
-    build_dir = repo_root / "build_requests"
+    build_dir = Path.cwd() / "build_requests"
     message_matches = []
     if build_dir.is_dir():
         for candidate in sorted(build_dir.iterdir()):
