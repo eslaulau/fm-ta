@@ -178,7 +178,7 @@ def _changed_files_from_push(event_data: dict[str, Any] | None = None) -> list[s
     # omits per-commit file lists. Refuse ambiguity rather than choosing arbitrarily.
     dated: list[tuple[str, str]] = []
     for candidate in sorted((Path.cwd() / "build_requests").glob("*.json")):
-        match_date = re.search(r"(20\\d{6})", candidate.stem)
+        match_date = re.search(r"(20\d{6})", candidate.stem)
         if match_date:
             dated.append((match_date.group(1), candidate.relative_to(Path.cwd()).as_posix()))
     if dated:
