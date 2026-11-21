@@ -1,0 +1,23 @@
+{
+  "name": "FM27_A4.11_IP_3421_P1_OOP_Fusion_v1",
+  "build_revision": "a411_highest_goals_ip_3421_p1_oop_v1_native_phase_copy",
+  "sources": {
+    "ip_source_label": "ENGINE HARVESTER A4.11 - COMPLETE TASK SPECIALISATION",
+    "ip_source_file": "FM27_A4.11_Legacy_Reproduction_run3.fmf",
+    "ip_source_run_id": 44915340709,
+    "ip_source_artifact": "FM27_A4.11_Legacy_Reproduction",
+    "ip_source_sha256": "9bb9422c7241ed3c7eda081c3ef8091a0a72e723615993a4c0cb6e55361c9c12",
+    "oop_source_label": "3421 p1",
+    "oop_source_file": "3421 p1.fmf",
+    "oop_source_git_blob_sha": "8b3fb079e4921be9ad87340dcc0cc60603e712aa",
+    "oop_source_repository": "eslaulau/FM27",
+    "oop_source_path": "FM27资料汇总/FM27战术/战术参考资料/3421 p1.fmf"
+  },
+  "merge_policy": {
+    "in_possession": "copy all 11 native player phase blocks from A4.11 (64 matches, 175 goals)",
+    "out_of_possession": "copy all 11 native player phase blocks from 3421 p1",
+    "team_instructions": "phase-owned IP groups from A4.11 and OOP groups from 3421 p1",
+    "shared_metadata": "A4.11",
+    "no_role_or_instruction_reconstruction": true
+  }
+}
