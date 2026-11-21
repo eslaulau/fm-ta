@@ -43,7 +43,13 @@
       "out": {
         "pos": "GK",
         "role": "SweeperKeeper",
-        "duty": "S"
+        "duty": "S",
+        "pi": [
+          [
+            "TACKLING",
+            "EASE_OFF_TACKLES"
+          ]
+        ]
       }
     },
     {
@@ -109,7 +115,13 @@
       "out": {
         "pos": "DCL",
         "role": "CoveringCentreBack",
-        "duty": "D"
+        "duty": "D",
+        "pi": [
+          [
+            "TACKLING",
+            "EASE_OFF_TACKLES"
+          ]
+        ]
       }
     },
     {
@@ -164,12 +176,14 @@
       "in": {
         "pos": "DML",
         "role": "DefensiveMidfielder",
-        "duty": "D"
+        "duty": "D",
+        "pi": []
       },
       "out": {
         "pos": "DML",
         "role": "ScreeningDefensiveMidfielder",
-        "duty": "D"
+        "duty": "D",
+        "pi": []
       }
     },
     {
