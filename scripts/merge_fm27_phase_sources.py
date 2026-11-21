@@ -51,12 +51,12 @@ def merge_ti(v14,b16,catalog,ip_source_label='IP source',oop_source_label='OOP s
         if bit not in owned and bit_is_set(v14,bit)!=bit_is_set(b16,bit):
             unclassified.append(bit)
     report={
-      "in_possession_source":"V14","out_of_possession_source":"B16",
+      "in_possession_source":ip_source_label,"out_of_possession_source":oop_source_label,
       "ip_native_bits":sorted(bits[0]),"oop_native_bits":sorted(bits[1]),
-      "opaque_template_bits_retained_from_v14":sorted(OPAQUE_TEMPLATE_BITS),
-      "opaque_template_bit_differences_retained_from_v14":[b for b in unclassified if b in OPAQUE_TEMPLATE_BITS],
-      "unclassified_source_differences_retained_from_v14":unclassified,
-      "v14_set_bits":set_bits(v14),"b16_set_bits":set_bits(b16),
+      "opaque_template_bits_retained_from_ip_template":sorted(OPAQUE_TEMPLATE_BITS),
+      "opaque_template_bit_differences_retained_from_ip_template":[b for b in unclassified if b in OPAQUE_TEMPLATE_BITS],
+      "unclassified_source_differences_retained_from_ip_template":unclassified,
+      "ip_source_set_bits":set_bits(v14),"oop_source_set_bits":set_bits(b16),
       "merged_set_bits":set_bits(out),
       "groups":[]
     }
@@ -252,8 +252,8 @@ def main():
       "exact_phase_copy":{"ip_blocks_from_source":sum(x["ip_exact_source"] for x in checks),
         "oop_blocks_from_source":sum(x["oop_exact_source"] for x in checks),
         "total_blocks":22,"all_exact":True},
-      "source_tac_metadata":{"v14_footer":footer_diagnostic(vt),
-        "b16_suffix_after_11_pairs":{"offset":bt["pairs_end_offset"],
+      "source_tac_metadata":{"ip_source_footer":footer_diagnostic(vt),
+        "oop_source_suffix_after_11_pairs":{"offset":bt["pairs_end_offset"],
           "length":len(bt["suffix"]),"hex":bt["suffix"].hex()}},
       "player_phase_map":phases,
       "checks":{"both_source_archives_parse":True,"both_source_tac_prefixes_parse":True,
@@ -264,9 +264,9 @@ def main():
       "notes":["All role-cache records from each copied player block are preserved; the report enumerates every cache entry, not only the selected role.",
         "All catalogued IP team-instruction bits are copied from "+ip_label+".",
         "All catalogued OOP team-instruction bits are copied from "+oop_label+"; TI remains one shared 12-byte native vector with phase-owned groups.",
-        "Opaque template bits 33/34/74/75/76 are retained from V14 according to the repository field contract.",
+        "Opaque template bits 33/34/74/75/76 are retained from the IP-source template according to the repository field contract.",
         "Unclassified raw bit differences are explicitly listed and must match the documented template-owned opaque set.",
-        "The non-phase TAC footer, common native header, style, and archive artwork follow "+ip_label+".",,
+        "The non-phase TAC footer, common native header, style, and archive artwork follow "+ip_label+".",
         "FM27 in-game import and match-engine performance are not tested."]}
     a.report.write_text(json.dumps(report,ensure_ascii=False,indent=2),encoding="utf-8")
     print(json.dumps(report,ensure_ascii=False,indent=2))
