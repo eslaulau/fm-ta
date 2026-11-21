@@ -87,6 +87,7 @@ PI_MAP.update(EXPERIMENTAL_PI_MAP)
 PI_INPUT_ALIASES = {
     ('CROSS_FROM', 'BYLINE'): ('CROSSING_FREQUENCY', 'BYLINE'),
     ('CROSS_FROM', 'FROM_DEEP'): ('CROSSING_FREQUENCY', 'FROM_DEEP'),
+    ('CROSSING_STRATEGY', 'FAR_POST'): ('CROSSING_TARGET', 'BACK_POST'),
 }
 
 # Native duty bit values are confirmed by FM27 TAC samples. The additional
