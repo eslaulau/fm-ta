@@ -1,17 +1,17 @@
-name: FM27 MAD AS A HATTER IP + Dark Mark OOP Fusion
+name: FM27 MAD AS A HATTER IP + 3421 P1 OOP Fusion
 
 on:
   push:
     branches: [main]
     paths:
-      - "build_requests/phase_merges/MAD_HATTER_4132N_P93_IP_DARK_MARK_3421_OOP.json"
+      - "build_requests/phase_merges/MAD_HATTER_4132N_P93_IP_3421_P1_OOP.json"
 
 permissions:
   contents: read
 
 jobs:
   merge-native-phases:
-    name: Merge MAD AS A HATTER attack and Dark Mark defense
+    name: Merge MAD AS A HATTER attack and 3421 P1 defense
     runs-on: ubuntu-latest
     steps:
       - name: Check out generator and request
@@ -25,13 +25,13 @@ jobs:
       - name: Merge native phases and verify all instructions
         run: |
           python scripts/merge_fm27_phase_sources.py \
-            --request "build_requests/phase_merges/MAD_HATTER_4132N_P93_IP_DARK_MARK_3421_OOP.json" \
+            --request "build_requests/phase_merges/MAD_HATTER_4132N_P93_IP_3421_P1_OOP.json" \
             --catalog "04_离线原生FMF生成器/catalog.json" \
-            --output "build_output/MAD_AS_A_HATTER_4132N_P93_IP_3421_Dark_mark_OOP_Fusion_v1.fmf" \
-            --report "build_output/MAD_AS_A_HATTER_4132N_P93_IP_3421_Dark_mark_OOP_Fusion_v1.report.json"
+            --output "build_output/MAD_AS_A_HATTER_4132N_P93_IP_3421_P1_OOP_Fusion_v1.fmf" \
+            --report "build_output/MAD_AS_A_HATTER_4132N_P93_IP_3421_P1_OOP_Fusion_v1.report.json"
       - name: Publish merge summary
         run: |
-          python - "build_output/MAD_AS_A_HATTER_4132N_P93_IP_3421_Dark_mark_OOP_Fusion_v1.report.json" <<'PY'
+          python - "build_output/MAD_AS_A_HATTER_4132N_P93_IP_3421_P1_OOP_Fusion_v1.report.json" <<'PY'
           import json, sys
           from pathlib import Path
           r = json.loads(Path(sys.argv[1]).read_text(encoding="utf-8"))
@@ -56,9 +56,9 @@ jobs:
       - name: Upload merged FMF and complete audit
         uses: actions/upload-artifact@v4
         with:
-          name: FM27_MAD_AS_A_HATTER_IP_DARK_MARK_OOP_Fusion_v1
+          name: FM27_MAD_AS_A_HATTER_IP_3421_P1_OOP_Fusion_v1
           path: |
-            build_output/MAD_AS_A_HATTER_4132N_P93_IP_3421_Dark_mark_OOP_Fusion_v1.fmf
-            build_output/MAD_AS_A_HATTER_4132N_P93_IP_3421_Dark_mark_OOP_Fusion_v1.report.json
+            build_output/MAD_AS_A_HATTER_4132N_P93_IP_3421_P1_OOP_Fusion_v1.fmf
+            build_output/MAD_AS_A_HATTER_4132N_P93_IP_3421_P1_OOP_Fusion_v1.report.json
           if-no-files-found: error
           retention-days: 14
