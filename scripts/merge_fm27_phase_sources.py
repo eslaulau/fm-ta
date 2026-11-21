@@ -7,6 +7,31 @@ GEN_DIR=Path(__file__).resolve().parents[1]/"04_离线原生FMF生成器"
 sys.path.insert(0,str(GEN_DIR))
 import FM27GEN1_Offline_FMF_Generator as gen
 
+# Vanco Corsair v35 carries a valid TAC footer whose final 30-byte native
+# trailer is not all-zero. The stock parser rejects it, and the stock writer
+# would normalize it to zero. Preserve the exact template trailer while still
+# parsing/rebuilding every preceding native field normally.
+_native_parse_tac = gen.parse_tac
+_native_write_tac = gen.write_tac
+
+def parse_tac_preserve_native_tail(data: bytes):
+    if len(data) < 30:
+        return _native_parse_tac(data)
+    normalized = data[:-30] + bytes(30)
+    tac = _native_parse_tac(normalized)
+    tac._native_tail_30 = bytes(data[-30:])
+    return tac
+
+def write_tac_preserve_native_tail(tac):
+    raw = _native_write_tac(tac)
+    tail = getattr(tac, "_native_tail_30", bytes(30))
+    if len(tail) != 30 or len(raw) < 30:
+        raise ValueError("Native TAC tail must be exactly 30 bytes")
+    return raw[:-30] + tail
+
+gen.parse_tac = parse_tac_preserve_native_tail
+gen.write_tac = write_tac_preserve_native_tail
+
 # The field contract identifies these as template-owned opaque TI bits.
 # They are not assigned to IP or OOP and must remain from the V14 template.
 OPAQUE_TEMPLATE_BITS={33,34,74,75,76}
