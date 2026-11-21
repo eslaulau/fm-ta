@@ -72,7 +72,11 @@ def main():
     vf,bf=gen.parse_fmf(vb),gen.parse_fmf(bb)
     for lab,f in (("V14",vf),("B16",bf)):
         if not {".tac",".aom",".img"}.issubset(f.data_by_ext): raise ValueError(lab+" missing FMF members")
-    vt,bt=gen.parse_tac(vf.data_by_ext[".tac"]),gen.parse_tac(bf.data_by_ext[".tac"])
+    vraw,braw=vf.data_by_ext[".tac"],bf.data_by_ext[".tac"]
+    print("V14 TAC",len(vraw),"tail64",vraw[-64:].hex())
+    print("B16 TAC",len(braw),"tail64",braw[-64:].hex())
+    vt=gen.parse_tac(vraw)
+    bt=gen.parse_tac(braw)
     if vf.data_by_ext[".tac"][11]!=27 or bf.data_by_ext[".tac"][11]!=27: raise ValueError("Not FM27 source-major 27")
     vs={p.slot:p for p in vt.pairs};bs={p.slot:p for p in bt.pairs}
     if set(vs)!=set(range(11)) or set(bs)!=set(range(11)): raise ValueError("Need slots 0..10 in both files")
