@@ -114,6 +114,27 @@ class ExperimentalMappingTest(unittest.TestCase):
                     break
             self.assertTrue(found_editable_context, f"PI option {native_id} has no editable role context")
 
+
+    def test_legacy_cross_from_byline_alias_encodes_native_option_8(self):
+        # catalog.json group 10 is the native "Crossing From" menu;
+        # option ID 8 is "Crossing From Byline". The source A4.11 GEN1
+        # uses the older CROSS_FROM token for this same native option.
+        group = next(g for g in self.catalog["player_instructions"] if int(g["id"]) == 10)
+        self.assertIn(8, {int(option["id"]) for option in group["options"]})
+        policy_key = "0:DR:WingBack:4194304"
+        self.assertEqual(
+            {value[8] for value in self.catalog["pi_policies"][policy_key].values()},
+            {"0"},
+        )
+        legacy_bits = gen.encode_pi(
+            [["CROSS_FROM", "BYLINE"]], self.catalog, 0, "DR", "WingBack", 4194304
+        )
+        canonical_bits = gen.encode_pi(
+            [["CROSSING_FREQUENCY", "BYLINE"]], self.catalog, 0, "DR", "WingBack", 4194304
+        )
+        self.assertEqual(legacy_bits, 1 << 8)
+        self.assertEqual(legacy_bits, canonical_bits)
+
     def test_conflicting_pi_catalog_revisions_are_rejected_for_that_context(self):
         with self.assertRaisesRegex(ValueError, "权限冲突"):
             gen.encode_pi(
