@@ -7,13 +7,9 @@ GEN_DIR=Path(__file__).resolve().parents[1]/"04_离线原生FMF生成器"
 sys.path.insert(0,str(GEN_DIR))
 import FM27GEN1_Offline_FMF_Generator as gen
 
-# Native bits 74/75 are undocumented but belong to the OOP defensive-line
-# behaviour field (adjacent to catalogued OOP bits 76/77). Transfer them with
-# the OOP phase instead of silently inheriting V14's values.
-OPAQUE_OOP_BITS={74,75}
-# These two bits are template/common metadata and are not assigned to either
-# phase in the current native catalog. They are deliberately retained from V14.
-OPAQUE_SHARED_BITS={33,34}
+# The field contract identifies these as template-owned opaque TI bits.
+# They are not assigned to IP or OOP and must remain from the V14 template.
+OPAQUE_TEMPLATE_BITS={33,34,74,75,76}
 
 def sha(b): return hashlib.sha256(b).hexdigest()
 
@@ -39,7 +35,6 @@ def build_phase_bitsets(catalog):
                 raise ValueError(f"Native TI bit {bit} is assigned to both phases")
             owners[bit]=phase
             by_phase[phase].add(bit)
-    by_phase[1].update(OPAQUE_OOP_BITS)
     overlap=by_phase[0]&by_phase[1]
     if overlap: raise ValueError("Overlapping IP/OOP TI bits: "+str(sorted(overlap)))
     return by_phase
@@ -58,8 +53,8 @@ def merge_ti(v14,b16,catalog):
     report={
       "in_possession_source":"V14","out_of_possession_source":"B16",
       "ip_native_bits":sorted(bits[0]),"oop_native_bits":sorted(bits[1]),
-      "opaque_oop_bits_transferred":sorted(OPAQUE_OOP_BITS),
-      "opaque_shared_bits_retained_from_v14":sorted(OPAQUE_SHARED_BITS),
+      "opaque_template_bits_retained_from_v14":sorted(OPAQUE_TEMPLATE_BITS),
+      "opaque_template_bit_differences_retained_from_v14":[b for b in unclassified if b in OPAQUE_TEMPLATE_BITS],
       "unclassified_source_differences_retained_from_v14":unclassified,
       "v14_set_bits":set_bits(v14),"b16_set_bits":set_bits(b16),
       "merged_set_bits":set_bits(out),
@@ -80,7 +75,10 @@ def merge_ti(v14,b16,catalog):
           "source":"V14" if phase==0 else "B16",
           "selected_non_default_options":selected
         })
-    # Verify every catalogued bit and undocumented OOP bit against its source.
+    unclassified_not_template=sorted(set(unclassified)-OPAQUE_TEMPLATE_BITS)
+    if unclassified_not_template:
+        raise ValueError("Unclassified TI bits differ between sources and are not documented template-owned opaque bits: "+str(unclassified_not_template))
+    # Verify every catalogued phase-owned bit against its source.
     for bit in bits[0]:
         if bit_is_set(out,bit)!=bit_is_set(v14,bit):
             raise ValueError(f"IP TI bit {bit} did not survive merge")
@@ -251,7 +249,7 @@ def main():
         "total_blocks":22,"all_exact":True},
       "source_tac_metadata":{"v14_footer":footer_diagnostic(vt),
         "b16_suffix_after_11_pairs":{"offset":bt["pairs_end_offset"],
-          "length":len(bt["suffix"]),"hex_prefix":bt["suffix"][:96].hex()}},
+          "length":len(bt["suffix"]),"hex":bt["suffix"].hex()}},
       "player_phase_map":phases,
       "checks":{"both_source_archives_parse":True,"both_source_tac_prefixes_parse":True,
         "11_slots_each_source":True,"all_11_ip_blocks_exact_v14":True,
@@ -260,9 +258,9 @@ def main():
         "output_title_readback":True,"game_import":False,"match_engine":False},
       "notes":["All role-cache records from each copied player block are preserved; the report enumerates every cache entry, not only the selected role.",
         "All catalogued IP team-instruction bits are copied from V14.",
-        "All catalogued OOP team-instruction bits plus opaque OOP bits 74/75 are copied from B16.",
-        "Opaque/shared bits 33/34 are retained from V14 because the current catalog does not assign them to either phase.",
-        "Unclassified raw bit differences are explicitly listed; they are not silently claimed as phase-specific.",
+        "All catalogued OOP team-instruction bits are copied from B16; TI remains one shared 12-byte native vector with phase-owned groups.",
+        "Opaque template bits 33/34/74/75/76 are retained from V14 according to the repository field contract.",
+        "Unclassified raw bit differences are explicitly listed and must match the documented template-owned opaque set.",
         "The non-phase TAC footer, common native header, style, and archive artwork follow V14.",
         "FM27 in-game import and match-engine performance are not tested."]}
     a.report.write_text(json.dumps(report,ensure_ascii=False,indent=2),encoding="utf-8")
