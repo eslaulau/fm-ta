@@ -1,4 +1,4 @@
-name: FM27 Complete Instruction Phase Merge
+name: FM27 Vanco IP + Dark Mark OOP Fusion
 
 on:
   push:
@@ -25,13 +25,13 @@ jobs:
       - name: Merge native phases and verify all instructions
         run: |
           python scripts/merge_fm27_phase_sources.py \
-            --request "build_requests/phase_merges/V14_IP_B16_OOP_Exact.json" \
+            --request "build_requests/phase_merges/Vanco35_IP_Darkmark_OOP_Fusion.json" \
             --catalog "04_离线原生FMF生成器/catalog.json" \
-            --output "build_output/V14_IP_B16_OOP_Complete_Instruction_Merge_v3.fmf" \
-            --report "build_output/V14_IP_B16_OOP_Complete_Instruction_Merge_v3.report.json"
+            --output "build_output/Vanco_Corsair_v35_IP_3421_Dark_mark_OOP_Fusion_v1.fmf" \
+            --report "build_output/Vanco_Corsair_v35_IP_3421_Dark_mark_OOP_Fusion_v1.report.json"
       - name: Publish merge summary
         run: |
-          python - "build_output/V14_IP_B16_OOP_Complete_Instruction_Merge_v3.report.json" <<'PY'
+          python - "build_output/Vanco_Corsair_v35_IP_3421_Dark_mark_OOP_Fusion_v1.report.json" <<'PY'
           import json, sys
           from pathlib import Path
           r = json.loads(Path(sys.argv[1]).read_text(encoding="utf-8"))
@@ -44,7 +44,7 @@ jobs:
             "- IP team-instruction bits: " + str(ti["ip_bits_checked"]) + " checked against V14.",
             "- OOP team-instruction bits: " + str(ti["oop_bits_checked"]) + " checked against B16, with opaque template bits preserved from V14.",
             "- Team-instruction phase-bit readback: " + str(ti["checked_bits"]) + "/" + str(ti["checked_bits"]) + " matched.",
-            "- Unclassified raw bit differences: " + str(r["team_instruction_merge"]["unclassified_source_differences_retained_from_v14"]),
+            "- Unclassified raw bit differences: " + str(r["team_instruction_merge"]["unclassified_source_differences_retained_from_ip_template"]),
             "- Shared style, mentality and non-phase TAC metadata: V14.",
             "- Output: " + r["output"] + " (" + str(r["bytes"]) + " bytes)",
             "- SHA256: " + r["sha256"],
@@ -56,9 +56,9 @@ jobs:
       - name: Upload merged FMF and complete audit
         uses: actions/upload-artifact@v4
         with:
-          name: FM27_V14_IP_B16_OOP_Complete_Instruction_Merge_v3
+          name: FM27_Vanco_Corsair_v35_IP_3421_Dark_mark_OOP_Fusion_v1
           path: |
-            build_output/V14_IP_B16_OOP_Complete_Instruction_Merge_v3.fmf
-            build_output/V14_IP_B16_OOP_Complete_Instruction_Merge_v3.report.json
+            build_output/Vanco_Corsair_v35_IP_3421_Dark_mark_OOP_Fusion_v1.fmf
+            build_output/Vanco_Corsair_v35_IP_3421_Dark_mark_OOP_Fusion_v1.report.json
           if-no-files-found: error
           retention-days: 14
