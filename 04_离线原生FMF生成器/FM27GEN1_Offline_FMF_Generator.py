@@ -82,6 +82,13 @@ EXPERIMENTAL_PI_MAP = {
 }
 PI_MAP.update(EXPERIMENTAL_PI_MAP)
 
+# Legacy GEN1 token alias: native catalog group 10 labels this as CROSSING_FREQUENCY;
+# older A4.x recipes used CROSS_FROM for the same native 'from byline/deep' options.
+PI_INPUT_ALIASES = {
+    ('CROSS_FROM', 'BYLINE'): ('CROSSING_FREQUENCY', 'BYLINE'),
+    ('CROSS_FROM', 'FROM_DEEP'): ('CROSSING_FREQUENCY', 'FROM_DEEP'),
+}
+
 # Native duty bit values are confirmed by FM27 TAC samples. The additional
 # role-specific choices below are read directly from the 90-preset index
 # (D=Defend, S=Support, A=Attack) and are checked against catalog role/phase/
@@ -696,6 +703,7 @@ def encode_pi(pis:list, catalog:dict, phase:int, position:str, roleid:str, duty:
     for pair in pis:
         if not isinstance(pair,list) or len(pair)!=2: raise ValueError('PI 项必须是 [group, option]')
         key=(str(pair[0]),str(pair[1]))
+        key=PI_INPUT_ALIASES.get(key,key)
         if key in seen: raise ValueError(f'PI 项重复：{key[0]}={key[1]}')
         seen.add(key)
         if key not in PI_MAP: raise ValueError(f'个人指令尚未建立离线映射：{key[0]}={key[1]}')
