@@ -190,8 +190,8 @@
         "duty": "D",
         "pi": [
           [
-            "TRIGGER_PRESS",
-            "MORE_OFTEN"
+            "TACKLING",
+            "EASE_OFF_TACKLES"
           ]
         ]
       }
