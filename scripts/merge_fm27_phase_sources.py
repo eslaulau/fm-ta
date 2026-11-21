@@ -67,7 +67,7 @@ def main():
     req=json.loads(a.request.read_text(encoding="utf-8"))
     name=str(req.get("name") or "V14_IP_B16_OOP_Exact_Merge").strip()
     cat=json.loads(a.catalog.read_text(encoding="utf-8"))
-    vb=base64.b64decode(req["sources"]["v14_fmf_base64"],validate=True)
+    vb=base64.b64decode(req["sources"]["v14_fmf_base64"],validate=False)
     bb=base64.b64decode(req["sources"]["b16_fmf_base64"],validate=True)
     vf,bf=gen.parse_fmf(vb),gen.parse_fmf(bb)
     for lab,f in (("V14",vf),("B16",bf)):
