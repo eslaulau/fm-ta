@@ -103,7 +103,7 @@ def main():
     vt=gen.parse_tac(vraw)
     bt=parse_phase_prefix(braw)
     if vf.data_by_ext[".tac"][11]!=27 or bf.data_by_ext[".tac"][11]!=27: raise ValueError("Not FM27 source-major 27")
-    vs={p.slot:p for p in vt.pairs};bs={p.slot:p for p in bt.pairs}
+    vs={p.slot:p for p in vt.pairs};bs={p.slot:p for p in bt["pairs"]}
     if set(vs)!=set(range(11)) or set(bs)!=set(range(11)): raise ValueError("Need slots 0..10 in both files")
     mt=copy.deepcopy(vt);ms={p.slot:p for p in mt.pairs}
     phases=[]
@@ -112,7 +112,7 @@ def main():
         phases.append({"slot":s,"ip":details(ms[s].ip,0,cat),"oop":details(ms[s].oop,1,cat),
                        "ip_block_sha256":sha(gen.write_block(ms[s].ip)),
                        "oop_block_sha256":sha(gen.write_block(ms[s].oop))})
-    mt.packed,ti=merge_ti(bytes(vt.packed),bytes(bt.packed),cat)
+    mt.packed,ti=merge_ti(bytes(vt.packed),bytes(bt["packed"]),cat)
     mt.title=name
     out=gen.write_fmf(vf,gen.write_tac(mt),name)
     rf=gen.parse_fmf(out);rt=gen.parse_tac(rf.data_by_ext[".tac"]);rs={p.slot:p for p in rt.pairs}
