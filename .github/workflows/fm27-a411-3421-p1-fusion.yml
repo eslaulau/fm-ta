@@ -26,25 +26,6 @@ jobs:
           run-id: 44915340709
           github-token: ${{ github.token }}
 
-      - name: Download 3421 p1 source tactic from FM27 repository
-        env:
-          RUNNER_TEMP: ${{ runner.temp }}
-        run: |
-          curl --fail --location --silent --show-error \
-            "https://raw.githubusercontent.com/eslaulau/FM27/main/FM27%E8%B5%84%E6%B1%87%E6%80%BB/FM27%E6%88%98%E6%9C%AF/%E6%88%98%E6%9C%AF%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99/3421%20p1.fmf" \
-            --output "${RUNNER_TEMP}/3421_p1.fmf"
-          python - <<'PY'
-          import hashlib, os
-          from pathlib import Path
-          p = Path(os.environ["RUNNER_TEMP"]) / "3421_p1.fmf"
-          data = p.read_bytes()
-          git_blob = hashlib.sha1(b"blob " + str(len(data)).encode() + b"\\0" + data).hexdigest()
-          expected = "8b3fb079e4921be9ad87340dcc0cc60603e712aa"
-          if git_blob != expected:
-              raise SystemExit(f"3421 p1 Git blob SHA mismatch: {git_blob}")
-          print("Verified 3421 p1 Git blob SHA:", git_blob)
-          PY
-
       - name: Set up Python 3.12
         uses: actions/setup-python@v5
         with:
@@ -74,13 +55,10 @@ jobs:
           if ip_sha != req["sources"]["ip_source_sha256"] or ip_report.get("sha256") != ip_sha:
               raise SystemExit("A4.11 artifact SHA256 does not match its successful D3 build report")
 
-          oop_path = temp / "3421_p1.fmf"
-          if not oop_path.is_file():
-              raise SystemExit(f"3421 p1 source file missing: {oop_path}")
-          git_blob = hashlib.sha1(b"blob " + str(len(oop_path.read_bytes())).encode() + b"\\0" + oop_path.read_bytes()).hexdigest()
+          oop_bytes = base64.b64decode(req["sources"]["b16_fmf_base64"], validate=True)
+          git_blob = hashlib.sha1(b"blob " + str(len(oop_bytes)).encode() + b"\\0" + oop_bytes).hexdigest()
           if git_blob != req["sources"]["oop_source_git_blob_sha"]:
               raise SystemExit(f"3421 p1 Git blob SHA mismatch: {git_blob}")
-          oop_bytes = oop_path.read_bytes()
 
           req["sources"]["v14_fmf_base64"] = base64.b64encode(ip_bytes).decode("ascii")
           req["sources"]["b16_fmf_base64"] = base64.b64encode(oop_bytes).decode("ascii")
