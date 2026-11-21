@@ -35,6 +35,33 @@ def details(block, phase, catalog):
             "pi_options":decoded,"unknown_pi_option_bits":unknown,
             "cached_role_instruction_entries":len(block.items)}
 
+def parse_phase_prefix(data):
+    """Read FM27's 11 native phase pairs without assuming a shared footer format."""
+    if len(data)<64 or data[:11]!=gen.TAC_PREFIX or data[11]!=27:
+        raise ValueError("Not an FM27 source-major 27 TAC")
+    p=16
+    title,p=gen.lp_read(data,p)
+    if data[p:p+12]!=bytes(12):
+        raise ValueError("TAC title padding differs from expected native header")
+    p+=12
+    hdr=bytearray(data[p:p+6]); p+=6
+    packed=bytearray(data[p:p+12]); p+=12
+    if data[p]!=255:
+        raise ValueError("Missing TAC style string marker")
+    p+=1
+    style,p=gen.lp_read(data,p)
+    quad=bytearray(data[p:p+4]); p+=4
+    pairs=[]
+    while len(pairs)<11 and data[p:p+3]==gen.BLOCK_MARK:
+        ip,p=gen.parse_block(data,p)
+        oop,p=gen.parse_block(data,p)
+        slot=data[p]; p+=1
+        pairs.append(gen.Pair(slot,ip,oop))
+    if len(pairs)!=11 or sorted(x.slot for x in pairs)!=list(range(11)):
+        raise ValueError("Source TAC does not contain exactly 11 valid native phase pairs")
+    return {"title":title,"hdr":hdr,"packed":packed,"style":style,"quad":quad,"pairs":pairs}
+
+
 def merge_ti(v14,b16,catalog):
     if len(v14)!=len(b16): raise ValueError("TI vector sizes differ")
     out=bytearray(v14); rows=[]
@@ -73,10 +100,8 @@ def main():
     for lab,f in (("V14",vf),("B16",bf)):
         if not {".tac",".aom",".img"}.issubset(f.data_by_ext): raise ValueError(lab+" missing FMF members")
     vraw,braw=vf.data_by_ext[".tac"],bf.data_by_ext[".tac"]
-    print("V14 TAC",len(vraw),"tail64",vraw[-64:].hex())
-    print("B16 TAC",len(braw),"tail64",braw[-64:].hex())
     vt=gen.parse_tac(vraw)
-    bt=gen.parse_tac(braw)
+    bt=parse_phase_prefix(braw)
     if vf.data_by_ext[".tac"][11]!=27 or bf.data_by_ext[".tac"][11]!=27: raise ValueError("Not FM27 source-major 27")
     vs={p.slot:p for p in vt.pairs};bs={p.slot:p for p in bt.pairs}
     if set(vs)!=set(range(11)) or set(bs)!=set(range(11)): raise ValueError("Need slots 0..10 in both files")
