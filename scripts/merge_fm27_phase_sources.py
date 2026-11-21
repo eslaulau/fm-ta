@@ -19,8 +19,9 @@ def parse_block_preserve_pi_terminators(data: bytes, p: int):
         raise ValueError(f"FM27 tactic block marker error at {p:x}")
     p += 3
     selector = gen.u32(data,p); p += 4
-    if data[p:p+2] != b"\\x00\\x01":
-        raise ValueError("FM27 tactic block constant error")
+    block_constant = bytes(data[p:p+2])
+    if len(block_constant) != 2:
+        raise ValueError("Truncated FM27 tactic block header")
     p += 2
     flag = data[p]; p += 1
     count = gen.u32(data,p); p += 4
@@ -37,21 +38,29 @@ def parse_block_preserve_pi_terminators(data: bytes, p: int):
         value = gen.u32(data,p); p += 4
         items.append({"key":key,"mask2":mask2,"value":value,
                       "_native_terminator":terminator})
-    if data[p:p+4] != bytes(4):
-        raise ValueError("FM27 tactic block footer constant error")
+    block_footer_constant = bytes(data[p:p+4])
+    if len(block_footer_constant) != 4:
+        raise ValueError("Truncated FM27 tactic block footer")
     p += 4
     mask = gen.u64(data,p); p += 8
-    return gen.Block(selector,flag,items,mask),p
+    block = gen.Block(selector,flag,items,mask)
+    block._native_block_constant = block_constant
+    block._native_footer_constant = block_footer_constant
+    return block,p
 
 def write_block_preserve_pi_terminators(block):
-    out=bytearray(gen.BLOCK_MARK+__import__("struct").pack("<I",block.selector)+b"\\x00\\x01"+
+    block_constant=getattr(block,"_native_block_constant",b"\\x00\\x01")
+    footer_constant=getattr(block,"_native_footer_constant",bytes(4))
+    if len(block_constant)!=2 or len(footer_constant)!=4:
+        raise ValueError("Invalid preserved FM27 block constants")
+    out=bytearray(gen.BLOCK_MARK+__import__("struct").pack("<I",block.selector)+block_constant+
                   bytes([block.flag])+__import__("struct").pack("<I",len(block.items)))
     for item in sorted(block.items,key=lambda x:x["key"]):
         out += __import__("struct").pack("<Q",item["key"])+gen.ITEM_MARK
         out += __import__("struct").pack("<Q",item["mask2"])
         out += bytes([int(item.get("_native_terminator",255))])
         out += __import__("struct").pack("<I",item["value"])
-    out += bytes(4)+__import__("struct").pack("<Q",block.mask)
+    out += footer_constant+__import__("struct").pack("<Q",block.mask)
     return bytes(out)
 
 gen.parse_block = parse_block_preserve_pi_terminators
