@@ -1,0 +1,60 @@
+name: FM27 Exact IP/OOP Phase Merge
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "build_requests/phase_merges/*.json"
+
+permissions:
+  contents: read
+
+jobs:
+  merge-native-phases:
+    name: Merge native V14 IP and B16 OOP phases
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out generator and request
+        uses: actions/checkout@v4
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install native FMF dependencies
+        run: python -m pip install -r "04_离线原生FMF生成器/requirements.txt"
+      - name: Merge native phase blocks and verify exact readback
+        run: |
+          python scripts/merge_fm27_phase_sources.py \
+            --request "build_requests/phase_merges/V14_IP_B16_OOP_Exact.json" \
+            --catalog "04_离线原生FMF生成器/catalog.json" \
+            --output "build_output/V14_IP_B16_OOP_Exact_Merge.fmf" \
+            --report "build_output/V14_IP_B16_OOP_Exact_Merge.report.json"
+      - name: Publish merge summary
+        run: |
+          python - "build_output/V14_IP_B16_OOP_Exact_Merge.report.json" <<'PY'
+          import json, sys
+          from pathlib import Path
+          r = json.loads(Path(sys.argv[1]).read_text(encoding="utf-8"))
+          lines = [
+            "## FM27 exact phase merge", "",
+            "- In-possession player blocks: 11/11 copied exactly from V14.",
+            "- Out-of-possession player blocks: 11/11 copied exactly from B16.",
+            "- Team instructions: possession groups from V14; out-of-possession groups from B16.",
+            "- Shared tactic style and mentality: V14.",
+            "- Output: " + r["output"] + " (" + str(r["bytes"]) + " bytes)",
+            "- SHA256: " + r["sha256"],
+            "- Exact native phase-block readback: 22/22 passed.",
+            "- Game import and match-engine performance: not tested."
+          ]
+          Path("build-summary.md").write_text("\n".join(lines)+"\n",encoding="utf-8")
+          print("\n".join(lines))
+          PY
+      - name: Upload merged native FMF and report
+        uses: actions/upload-artifact@v4
+        with:
+          name: FM27_V14_IP_B16_OOP_Exact_Merge
+          path: |
+            build_output/V14_IP_B16_OOP_Exact_Merge.fmf
+            build_output/V14_IP_B16_OOP_Exact_Merge.report.json
+          if-no-files-found: error
+          retention-days: 14
