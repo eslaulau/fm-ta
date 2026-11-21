@@ -1,4 +1,4 @@
-name: FM27 Full Instruction Phase Merge
+name: FM27 Complete Instruction Phase Merge
 
 on:
   push:
@@ -27,11 +27,11 @@ jobs:
           python scripts/merge_fm27_phase_sources.py \
             --request "build_requests/phase_merges/V14_IP_B16_OOP_Exact.json" \
             --catalog "04_离线原生FMF生成器/catalog.json" \
-            --output "build_output/V14_IP_B16_OOP_Full_Instruction_Merge_v2.fmf" \
-            --report "build_output/V14_IP_B16_OOP_Full_Instruction_Merge_v2.report.json"
+            --output "build_output/V14_IP_B16_OOP_Complete_Instruction_Merge_v3.fmf" \
+            --report "build_output/V14_IP_B16_OOP_Complete_Instruction_Merge_v3.report.json"
       - name: Publish merge summary
         run: |
-          python - "build_output/V14_IP_B16_OOP_Full_Instruction_Merge_v2.report.json" <<'PY'
+          python - "build_output/V14_IP_B16_OOP_Complete_Instruction_Merge_v3.report.json" <<'PY'
           import json, sys
           from pathlib import Path
           r = json.loads(Path(sys.argv[1]).read_text(encoding="utf-8"))
@@ -42,7 +42,7 @@ jobs:
             "- Out-of-possession player blocks: 11/11 exact from B16.",
             "- All role-cache entries retained and enumerated in the report.",
             "- IP team-instruction bits: " + str(ti["ip_bits_checked"]) + " checked against V14.",
-            "- OOP team-instruction bits: " + str(ti["oop_bits_checked"]) + " checked against B16, including opaque OOP bits 74/75.",
+            "- OOP team-instruction bits: " + str(ti["oop_bits_checked"]) + " checked against B16, with opaque template bits preserved from V14.",
             "- Team-instruction phase-bit readback: " + str(ti["checked_bits"]) + "/" + str(ti["checked_bits"]) + " matched.",
             "- Unclassified raw bit differences: " + str(r["team_instruction_merge"]["unclassified_source_differences_retained_from_v14"]),
             "- Shared style, mentality and non-phase TAC metadata: V14.",
@@ -56,9 +56,9 @@ jobs:
       - name: Upload merged FMF and complete audit
         uses: actions/upload-artifact@v4
         with:
-          name: FM27_V14_IP_B16_OOP_Full_Instruction_Merge_v2
+          name: FM27_V14_IP_B16_OOP_Complete_Instruction_Merge_v3
           path: |
-            build_output/V14_IP_B16_OOP_Full_Instruction_Merge_v2.fmf
-            build_output/V14_IP_B16_OOP_Full_Instruction_Merge_v2.report.json
+            build_output/V14_IP_B16_OOP_Complete_Instruction_Merge_v3.fmf
+            build_output/V14_IP_B16_OOP_Complete_Instruction_Merge_v3.report.json
           if-no-files-found: error
           retention-days: 14
