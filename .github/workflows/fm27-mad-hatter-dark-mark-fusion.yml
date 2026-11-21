@@ -1,0 +1,64 @@
+name: FM27 MAD AS A HATTER IP + Dark Mark OOP Fusion
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "build_requests/phase_merges/MAD_HATTER_4132N_P93_IP_DARK_MARK_3421_OOP.json"
+
+permissions:
+  contents: read
+
+jobs:
+  merge-native-phases:
+    name: Merge MAD AS A HATTER attack and Dark Mark defense
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out generator and request
+        uses: actions/checkout@v4
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install native FMF dependencies
+        run: python -m pip install -r "04_离线原生FMF生成器/requirements.txt"
+      - name: Merge native phases and verify all instructions
+        run: |
+          python scripts/merge_fm27_phase_sources.py \
+            --request "build_requests/phase_merges/MAD_HATTER_4132N_P93_IP_DARK_MARK_3421_OOP.json" \
+            --catalog "04_离线原生FMF生成器/catalog.json" \
+            --output "build_output/MAD_AS_A_HATTER_4132N_P93_IP_3421_Dark_mark_OOP_Fusion_v1.fmf" \
+            --report "build_output/MAD_AS_A_HATTER_4132N_P93_IP_3421_Dark_mark_OOP_Fusion_v1.report.json"
+      - name: Publish merge summary
+        run: |
+          python - "build_output/MAD_AS_A_HATTER_4132N_P93_IP_3421_Dark_mark_OOP_Fusion_v1.report.json" <<'PY'
+          import json, sys
+          from pathlib import Path
+          r = json.loads(Path(sys.argv[1]).read_text(encoding="utf-8"))
+          ti = r["team_instruction_bit_readback"]
+          lines = [
+            "## FM27 complete IP/OOP phase fusion", "",
+            "- In-possession player blocks: 11/11 exact from " + r["sources"]["ip_source"]["label"] + ".",
+            "- Out-of-possession player blocks: 11/11 exact from " + r["sources"]["oop_source"]["label"] + ".",
+            "- All role-cache entries retained and enumerated in the report.",
+            "- IP team-instruction bits: " + str(ti["ip_bits_checked"]) + " checked against " + r["sources"]["ip_source"]["label"] + ".",
+            "- OOP team-instruction bits: " + str(ti["oop_bits_checked"]) + " checked against " + r["sources"]["oop_source"]["label"] + "; opaque template bits kept from IP template.",
+            "- Team-instruction phase-bit readback: " + str(ti["checked_bits"]) + "/" + str(ti["checked_bits"]) + " matched.",
+            "- Unclassified raw bit differences: " + str(r["team_instruction_merge"]["unclassified_source_differences_retained_from_ip_template"]),
+            "- Shared style, mentality and non-phase TAC metadata: " + r["sources"]["ip_source"]["label"] + ".",
+            "- Output: " + r["output"] + " (" + str(r["bytes"]) + " bytes)",
+            "- SHA256: " + r["sha256"],
+            "- Game import and match-engine performance: not tested."
+          ]
+          Path("build-summary.md").write_text("\n".join(lines)+"\n",encoding="utf-8")
+          print("\n".join(lines))
+          PY
+      - name: Upload merged FMF and complete audit
+        uses: actions/upload-artifact@v4
+        with:
+          name: FM27_MAD_AS_A_HATTER_IP_DARK_MARK_OOP_Fusion_v1
+          path: |
+            build_output/MAD_AS_A_HATTER_4132N_P93_IP_3421_Dark_mark_OOP_Fusion_v1.fmf
+            build_output/MAD_AS_A_HATTER_4132N_P93_IP_3421_Dark_mark_OOP_Fusion_v1.report.json
+          if-no-files-found: error
+          retention-days: 14
