@@ -38,14 +38,14 @@ jobs:
           ti = r["team_instruction_bit_readback"]
           lines = [
             "## FM27 full-instruction phase merge", "",
-            "- In-possession player blocks: 11/11 exact from V14.",
-            "- Out-of-possession player blocks: 11/11 exact from B16.",
+            "- In-possession player blocks: 11/11 exact from " + r["sources"]["ip_source"]["label"] + ".",
+            "- Out-of-possession player blocks: 11/11 exact from " + r["sources"]["oop_source"]["label"] + ".",
             "- All role-cache entries retained and enumerated in the report.",
-            "- IP team-instruction bits: " + str(ti["ip_bits_checked"]) + " checked against V14.",
-            "- OOP team-instruction bits: " + str(ti["oop_bits_checked"]) + " checked against B16, with opaque template bits preserved from V14.",
+            "- IP team-instruction bits: " + str(ti["ip_bits_checked"]) + " checked against " + r["sources"]["ip_source"]["label"] + ".",
+            "- OOP team-instruction bits: " + str(ti["oop_bits_checked"]) + " checked against " + r["sources"]["oop_source"]["label"] + "; opaque template bits kept from IP template.",
             "- Team-instruction phase-bit readback: " + str(ti["checked_bits"]) + "/" + str(ti["checked_bits"]) + " matched.",
             "- Unclassified raw bit differences: " + str(r["team_instruction_merge"]["unclassified_source_differences_retained_from_ip_template"]),
-            "- Shared style, mentality and non-phase TAC metadata: V14.",
+            "- Shared style, mentality and non-phase TAC metadata: " + r["sources"]["ip_source"]["label"] + ".",
             "- Output: " + r["output"] + " (" + str(r["bytes"]) + " bytes)",
             "- SHA256: " + r["sha256"],
             "- Game import and match-engine performance: not tested."
