@@ -1,6 +1,6 @@
 {
   "name": "Vanco_Corsair_v35_IP__3421_Dark_mark_OOP_Fusion_v1",
-  "build_revision": "vanco35_ip_darkmark3421_oop_v1",
+  "build_revision": "vanco35_ip_darkmark3421_oop_v1_preserve_opaque_tac_tail",
   "sources": {
     "ip_source_label": "Vanco Corsair v35",
     "ip_source_file": "Vanco Corsair v35.fmf",
