@@ -39,7 +39,7 @@ def build_phase_bitsets(catalog):
     if overlap: raise ValueError("Overlapping IP/OOP TI bits: "+str(sorted(overlap)))
     return by_phase
 
-def merge_ti(v14,b16,catalog):
+def merge_ti(v14,b16,catalog,ip_source_label='IP source',oop_source_label='OOP source'):
     if len(v14)!=len(b16): raise ValueError("TI vector sizes differ")
     bits=build_phase_bitsets(catalog)
     out=bytearray(v14)
@@ -72,7 +72,7 @@ def merge_ti(v14,b16,catalog):
           "group_id":int(group["id"]),
           "label":group.get("label",group.get("name")),
           "phase":"IP" if phase==0 else "OOP",
-          "source":"V14" if phase==0 else "B16",
+          "source":ip_source_label if phase==0 else oop_source_label,
           "selected_non_default_options":selected
         })
     unclassified_not_template=sorted(set(unclassified)-OPAQUE_TEMPLATE_BITS)
@@ -180,12 +180,17 @@ def main():
     ap.add_argument("--report",type=Path,required=True)
     a=ap.parse_args()
     req=json.loads(a.request.read_text(encoding="utf-8"))
-    name=str(req.get("name") or "V14_IP_B16_OOP_Full_Instruction_Merge").strip()
+    name=str(req.get("name") or "FM27_IP_OOP_Phase_Fusion").strip()
     cat=json.loads(a.catalog.read_text(encoding="utf-8"))
-    vb=base64.b64decode(req["sources"]["v14_fmf_base64"],validate=False)
-    bb=base64.b64decode(req["sources"]["b16_fmf_base64"],validate=False)
+    sources=req["sources"]
+    ip_label=str(sources.get("ip_source_label","IP source"))
+    oop_label=str(sources.get("oop_source_label","OOP source"))
+    ip_file=str(sources.get("ip_source_file","IP source.fmf"))
+    oop_file=str(sources.get("oop_source_file","OOP source.fmf"))
+    vb=base64.b64decode(sources["v14_fmf_base64"],validate=False)
+    bb=base64.b64decode(sources["b16_fmf_base64"],validate=False)
     vf,bf=gen.parse_fmf(vb),gen.parse_fmf(bb)
-    for lab,f in (("V14",vf),("B16",bf)):
+    for lab,f in ((ip_label,vf),(oop_label,bf)):
         if not {".tac",".aom",".img"}.issubset(f.data_by_ext):
             raise ValueError(lab+" missing FMF members")
     vraw,braw=vf.data_by_ext[".tac"],bf.data_by_ext[".tac"]
@@ -204,7 +209,7 @@ def main():
           "ip":details(ms[s].ip,0,cat),"oop":details(ms[s].oop,1,cat),
           "ip_block_sha256":sha(gen.write_block(ms[s].ip)),
           "oop_block_sha256":sha(gen.write_block(ms[s].oop))})
-    mt.packed,ti=merge_ti(bytes(vt.packed),bytes(bt["packed"]),cat)
+    mt.packed,ti=merge_ti(bytes(vt.packed),bytes(bt["packed"]),cat,ip_label,oop_label)
     mt.title=name
     out=gen.write_fmf(vf,gen.write_tac(mt),name)
     rf=gen.parse_fmf(out)
@@ -213,9 +218,9 @@ def main():
     checks=[]
     for s in range(11):
         checks.append({"slot":s,
-          "ip_exact_v14":gen.write_block(rs[s].ip)==gen.write_block(vs[s].ip),
-          "oop_exact_b16":gen.write_block(rs[s].oop)==gen.write_block(bs[s].oop)})
-    if not all(x["ip_exact_v14"] and x["oop_exact_b16"] for x in checks):
+          "ip_exact_source":gen.write_block(rs[s].ip)==gen.write_block(vs[s].ip),
+          "oop_exact_source":gen.write_block(rs[s].oop)==gen.write_block(bs[s].oop)})
+    if not all(x["ip_exact_source"] and x["oop_exact_source"] for x in checks):
         raise ValueError("Exact phase-block readback failed")
     if bytes(rt.packed)!=bytes(mt.packed) or rt.title!=name or rf.root_title!=name:
         raise ValueError("Header/TI/title readback failed")
@@ -236,32 +241,32 @@ def main():
     report={
       "status":"native_phase_merge_verified_not_game_import_verified",
       "name":name,"output":a.output.name,"bytes":len(out),"sha256":sha(out),
-      "sources":{"v14":{"file":"v14.fmf","sha256":sha(vb),"used_for":"all 11 IP player blocks and IP TI bits"},
-                 "b16":{"file":"B16.fmf","sha256":sha(bb),"used_for":"all 11 OOP player blocks and OOP TI bits"}},
-      "shared_metadata_source":"V14 (style, mentality, native header, non-phase TAC footer and archive artwork)",
+      "sources":{"ip_source":{"label":ip_label,"file":ip_file,"git_blob_sha":sources.get("ip_source_git_blob_sha"),"sha256":sha(vb),"used_for":"all 11 IP player blocks and IP TI bits"},
+                 "oop_source":{"label":oop_label,"file":oop_file,"git_blob_sha":sources.get("oop_source_git_blob_sha"),"sha256":sha(bb),"used_for":"all 11 OOP player blocks and OOP TI bits"}},
+      "shared_metadata_source":ip_label+" (style, mentality, native header, non-phase TAC footer and archive artwork)",
       "team_instruction_merge":ti,
       "team_instruction_bit_readback":{"checked_bits":len(ti_readback),
         "ip_bits_checked":sum(1 for x in ti_readback if x["phase"]=="IP"),
         "oop_bits_checked":sum(1 for x in ti_readback if x["phase"]=="OOP"),
         "all_match":all(x["match"] for x in ti_readback),"details":ti_readback},
-      "exact_phase_copy":{"ip_blocks_from_v14":sum(x["ip_exact_v14"] for x in checks),
-        "oop_blocks_from_b16":sum(x["oop_exact_b16"] for x in checks),
+      "exact_phase_copy":{"ip_blocks_from_source":sum(x["ip_exact_source"] for x in checks),
+        "oop_blocks_from_source":sum(x["oop_exact_source"] for x in checks),
         "total_blocks":22,"all_exact":True},
       "source_tac_metadata":{"v14_footer":footer_diagnostic(vt),
         "b16_suffix_after_11_pairs":{"offset":bt["pairs_end_offset"],
           "length":len(bt["suffix"]),"hex":bt["suffix"].hex()}},
       "player_phase_map":phases,
       "checks":{"both_source_archives_parse":True,"both_source_tac_prefixes_parse":True,
-        "11_slots_each_source":True,"all_11_ip_blocks_exact_v14":True,
-        "all_11_oop_blocks_exact_b16":True,"all_role_cache_records_included_in_audit":True,
+        "11_slots_each_source":True,"all_11_ip_blocks_exact_source":True,
+        "all_11_oop_blocks_exact_source":True,"all_role_cache_records_included_in_audit":True,
         "team_instruction_phase_bits_readback":True,"output_archive_and_tac_parse":True,
         "output_title_readback":True,"game_import":False,"match_engine":False},
       "notes":["All role-cache records from each copied player block are preserved; the report enumerates every cache entry, not only the selected role.",
-        "All catalogued IP team-instruction bits are copied from V14.",
-        "All catalogued OOP team-instruction bits are copied from B16; TI remains one shared 12-byte native vector with phase-owned groups.",
+        "All catalogued IP team-instruction bits are copied from "+ip_label+".",
+        "All catalogued OOP team-instruction bits are copied from "+oop_label+"; TI remains one shared 12-byte native vector with phase-owned groups.",
         "Opaque template bits 33/34/74/75/76 are retained from V14 according to the repository field contract.",
         "Unclassified raw bit differences are explicitly listed and must match the documented template-owned opaque set.",
-        "The non-phase TAC footer, common native header, style, and archive artwork follow V14.",
+        "The non-phase TAC footer, common native header, style, and archive artwork follow "+ip_label+".",,
         "FM27 in-game import and match-engine performance are not tested."]}
     a.report.write_text(json.dumps(report,ensure_ascii=False,indent=2),encoding="utf-8")
     print(json.dumps(report,ensure_ascii=False,indent=2))
