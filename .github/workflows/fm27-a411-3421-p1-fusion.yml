@@ -56,7 +56,7 @@ jobs:
               raise SystemExit("A4.11 artifact SHA256 does not match its successful D3 build report")
 
           oop_bytes = base64.b64decode(req["sources"]["b16_fmf_base64"], validate=True)
-          git_blob = hashlib.sha1(b"blob " + str(len(oop_bytes)).encode() + b"\\0" + oop_bytes).hexdigest()
+          git_blob = hashlib.sha1(b"blob " + str(len(oop_bytes)).encode() + bytes([0]) + oop_bytes).hexdigest()
           if git_blob != req["sources"]["oop_source_git_blob_sha"]:
               raise SystemExit(f"3421 p1 Git blob SHA mismatch: {git_blob}")
 
