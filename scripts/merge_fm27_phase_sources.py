@@ -11,6 +11,52 @@ import FM27GEN1_Offline_FMF_Generator as gen
 # trailer is not all-zero. The stock parser rejects it, and the stock writer
 # would normalize it to zero. Preserve the exact template trailer while still
 # parsing/rebuilding every preceding native field normally.
+_native_parse_block = gen.parse_block
+_native_write_block = gen.write_block
+
+def parse_block_preserve_pi_terminators(data: bytes, p: int):
+    if data[p:p+3] != gen.BLOCK_MARK:
+        raise ValueError(f"FM27 tactic block marker error at {p:x}")
+    p += 3
+    selector = gen.u32(data,p); p += 4
+    if data[p:p+2] != b"\\x00\\x01":
+        raise ValueError("FM27 tactic block constant error")
+    p += 2
+    flag = data[p]; p += 1
+    count = gen.u32(data,p); p += 4
+    if flag not in (0,1) or count > 4096:
+        raise ValueError("FM27 tactic block fields out of range")
+    items = []
+    for _ in range(count):
+        key = gen.u64(data,p); p += 8
+        if data[p:p+3] != gen.ITEM_MARK:
+            raise ValueError(f"FM27 PI item marker error at {p:x}")
+        p += 3
+        mask2 = gen.u64(data,p); p += 8
+        terminator = data[p]; p += 1
+        value = gen.u32(data,p); p += 4
+        items.append({"key":key,"mask2":mask2,"value":value,
+                      "_native_terminator":terminator})
+    if data[p:p+4] != bytes(4):
+        raise ValueError("FM27 tactic block footer constant error")
+    p += 4
+    mask = gen.u64(data,p); p += 8
+    return gen.Block(selector,flag,items,mask),p
+
+def write_block_preserve_pi_terminators(block):
+    out=bytearray(gen.BLOCK_MARK+__import__("struct").pack("<I",block.selector)+b"\\x00\\x01"+
+                  bytes([block.flag])+__import__("struct").pack("<I",len(block.items)))
+    for item in sorted(block.items,key=lambda x:x["key"]):
+        out += __import__("struct").pack("<Q",item["key"])+gen.ITEM_MARK
+        out += __import__("struct").pack("<Q",item["mask2"])
+        out += bytes([int(item.get("_native_terminator",255))])
+        out += __import__("struct").pack("<I",item["value"])
+    out += bytes(4)+__import__("struct").pack("<Q",block.mask)
+    return bytes(out)
+
+gen.parse_block = parse_block_preserve_pi_terminators
+gen.write_block = write_block_preserve_pi_terminators
+
 _native_parse_tac = gen.parse_tac
 _native_write_tac = gen.write_tac
 
