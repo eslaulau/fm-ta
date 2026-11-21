@@ -135,6 +135,26 @@ class ExperimentalMappingTest(unittest.TestCase):
         self.assertEqual(legacy_bits, 1 << 8)
         self.assertEqual(legacy_bits, canonical_bits)
 
+
+    def test_legacy_crossing_strategy_far_post_alias_encodes_native_option_10(self):
+        # The original A4.11 GEN1 uses CROSSING_STRATEGY=FAR_POST.
+        # In the native catalog this is group 9, option 10 ("后点").
+        group = next(g for g in self.catalog["player_instructions"] if int(g["id"]) == 9)
+        self.assertIn(10, {int(option["id"]) for option in group["options"]})
+        policy_key = "0:DR:WingBack:4194304"
+        self.assertEqual(
+            {value[10] for value in self.catalog["pi_policies"][policy_key].values()},
+            {"0"},
+        )
+        legacy_bits = gen.encode_pi(
+            [["CROSSING_STRATEGY", "FAR_POST"]], self.catalog, 0, "DR", "WingBack", 4194304
+        )
+        canonical_bits = gen.encode_pi(
+            [["CROSSING_TARGET", "BACK_POST"]], self.catalog, 0, "DR", "WingBack", 4194304
+        )
+        self.assertEqual(legacy_bits, 1 << 10)
+        self.assertEqual(legacy_bits, canonical_bits)
+
     def test_conflicting_pi_catalog_revisions_are_rejected_for_that_context(self):
         with self.assertRaisesRegex(ValueError, "权限冲突"):
             gen.encode_pi(
