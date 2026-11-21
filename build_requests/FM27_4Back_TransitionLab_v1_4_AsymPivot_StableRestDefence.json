@@ -177,13 +177,23 @@
         "pos": "DML",
         "role": "DefensiveMidfielder",
         "duty": "D",
-        "pi": []
+        "pi": [
+          [
+            "PASSING_STRATEGY",
+            "SHORTER"
+          ]
+        ]
       },
       "out": {
         "pos": "DML",
         "role": "ScreeningDefensiveMidfielder",
         "duty": "D",
-        "pi": []
+        "pi": [
+          [
+            "TRIGGER_PRESS",
+            "MORE_OFTEN"
+          ]
+        ]
       }
     },
     {
