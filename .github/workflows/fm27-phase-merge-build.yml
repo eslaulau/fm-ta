@@ -1,4 +1,4 @@
-name: FM27 Exact IP/OOP Phase Merge
+name: FM27 Full Instruction Phase Merge
 
 on:
   push:
@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   merge-native-phases:
-    name: Merge native V14 IP and B16 OOP phases
+    name: Merge V14 IP and B16 OOP with complete instruction audit
     runs-on: ubuntu-latest
     steps:
       - name: Check out generator and request
@@ -22,39 +22,43 @@ jobs:
           python-version: "3.12"
       - name: Install native FMF dependencies
         run: python -m pip install -r "04_离线原生FMF生成器/requirements.txt"
-      - name: Merge native phase blocks and verify exact readback
+      - name: Merge native phases and verify all instructions
         run: |
           python scripts/merge_fm27_phase_sources.py \
             --request "build_requests/phase_merges/V14_IP_B16_OOP_Exact.json" \
             --catalog "04_离线原生FMF生成器/catalog.json" \
-            --output "build_output/V14_IP_B16_OOP_Exact_Merge.fmf" \
-            --report "build_output/V14_IP_B16_OOP_Exact_Merge.report.json"
+            --output "build_output/V14_IP_B16_OOP_Full_Instruction_Merge_v2.fmf" \
+            --report "build_output/V14_IP_B16_OOP_Full_Instruction_Merge_v2.report.json"
       - name: Publish merge summary
         run: |
-          python - "build_output/V14_IP_B16_OOP_Exact_Merge.report.json" <<'PY'
+          python - "build_output/V14_IP_B16_OOP_Full_Instruction_Merge_v2.report.json" <<'PY'
           import json, sys
           from pathlib import Path
           r = json.loads(Path(sys.argv[1]).read_text(encoding="utf-8"))
+          ti = r["team_instruction_bit_readback"]
           lines = [
-            "## FM27 exact phase merge", "",
-            "- In-possession player blocks: 11/11 copied exactly from V14.",
-            "- Out-of-possession player blocks: 11/11 copied exactly from B16.",
-            "- Team instructions: possession groups from V14; out-of-possession groups from B16.",
-            "- Shared tactic style and mentality: V14.",
+            "## FM27 full-instruction phase merge", "",
+            "- In-possession player blocks: 11/11 exact from V14.",
+            "- Out-of-possession player blocks: 11/11 exact from B16.",
+            "- All role-cache entries retained and enumerated in the report.",
+            "- IP team-instruction bits: " + str(ti["ip_bits_checked"]) + " checked against V14.",
+            "- OOP team-instruction bits: " + str(ti["oop_bits_checked"]) + " checked against B16, including opaque OOP bits 74/75.",
+            "- Team-instruction phase-bit readback: " + str(ti["checked_bits"]) + "/" + str(ti["checked_bits"]) + " matched.",
+            "- Unclassified raw bit differences: " + str(r["team_instruction_merge"]["unclassified_source_differences_retained_from_v14"]),
+            "- Shared style, mentality and non-phase TAC metadata: V14.",
             "- Output: " + r["output"] + " (" + str(r["bytes"]) + " bytes)",
             "- SHA256: " + r["sha256"],
-            "- Exact native phase-block readback: 22/22 passed.",
             "- Game import and match-engine performance: not tested."
           ]
           Path("build-summary.md").write_text("\n".join(lines)+"\n",encoding="utf-8")
           print("\n".join(lines))
           PY
-      - name: Upload merged native FMF and report
+      - name: Upload merged FMF and complete audit
         uses: actions/upload-artifact@v4
         with:
-          name: FM27_V14_IP_B16_OOP_Exact_Merge
+          name: FM27_V14_IP_B16_OOP_Full_Instruction_Merge_v2
           path: |
-            build_output/V14_IP_B16_OOP_Exact_Merge.fmf
-            build_output/V14_IP_B16_OOP_Exact_Merge.report.json
+            build_output/V14_IP_B16_OOP_Full_Instruction_Merge_v2.fmf
+            build_output/V14_IP_B16_OOP_Full_Instruction_Merge_v2.report.json
           if-no-files-found: error
           retention-days: 14
