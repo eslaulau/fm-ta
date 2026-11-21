@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
     paths:
-      - "build_requests/legacy_migrations/*.json"
+      - "build_requests/legacy_migrations/FM27_A4.3_Legacy_Reproduction.json"
 
 permissions:
   contents: read
