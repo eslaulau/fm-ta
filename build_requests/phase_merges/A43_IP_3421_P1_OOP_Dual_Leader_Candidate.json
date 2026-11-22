@@ -1,0 +1,22 @@
+{
+  "name": "FM27_A4.3_IP_3421_P1_OOP_Dual_Leader_Candidate_v1",
+  "build_revision": "a43_top_attack_p1_defensive_phase_candidate_v1",
+  "sources": {
+    "ip_source_label": "ENGINE HARVESTER A4.3 - BOX LANE ENGINE",
+    "ip_source_file": "FM27_A4.3_Legacy_Reproduction_run4.fmf",
+    "ip_source_run_id": 45009389247,
+    "ip_source_artifact": "FM27_A4.3_Legacy_Reproduction",
+    "ip_source_sha256": "7d214d6b1357bede15e5156a739c4b8e9cac720a51cb18c20cf0566445347a6f",
+    "oop_source_label": "3421 p1",
+    "oop_source_file": "3421 p1.fmf",
+    "oop_source_git_blob_sha": "8b3fb079e4921be9ad87340dcc0cc60603e712aa",
+    "b16_fmf_base64": "AgFhZmUuCAAAdAQAAAAAAAARAAAAAAAAAAMQAAAAEAAAAJ/Am1dL92HAW601BwF402lzsM50c2jncQe0/xKJZz689xf71cGnOmPPqVq5mOm1IvUV8Tp3ijbS0irQav5OUC+arAqCVtNu/Ovy34/7RpMh7ffsB1b0ncbI/JFXguyin5DZRao0PzX1vrBbO8EpbqB2XwGPEYyRPaQ5othRzi7lar6AEAAAABAAAABlUScizzkTpGb3sBFOEiRb9Gq+OsHumCnfMWBc5/yz5UjpLTALBk8DVYaAvs+hTCRJ3mBil7B6EAAAABAAAACCISUs/QNqcUMzo9CippHE/Jax6+MW/Di7dtpezo6YqSLPxFPPmw0zcdSc2Qp/QyJtZqg1tcaCbzDKPFnFXBNzYCvL2wbKWegTlKA0L3A3lvdNmSKqvvfJr67DPJKyvMNN+6OpdPqbSO1NSRnYI1pz+eWIVDs8LSqk8Av2XFBgEMZzLEV87q2kjS0bFnlesCtscIT82NF6hBcg1+DEA032Kbx/k7NnVBHM5QvvAn7rFPZorgkGogZRi1Ub8rvYiyJxWEHKBmTiQFdWLZ7WEd4hAqGcCAl6WnKeG16QKIllPfmwKmN3ogKN6hjGi+V42QfOSznIsxkYbycMKpqurnTLOH6b+WZ+VGca+DHALhy/z1HnOCuuobI/j/MkP2l8PPRjsBoqugcnuS8pHH2u5IPc59oZD6GEO4Sd8xyfeZCBt9zK5b4M8LlBBeO4rFa57BKKjxBwYhSzfzpJAPNcahDUsnNbrUQur5L2HsRYzrYOBYiG7D7gaO1yyJeehXyZraOP/JKkpOqajehEEbu89OYtqmTiI9CdDznQ+nb5h7XXF2Q+nNduZXuOhWyjwTX+BuPxeZgWt86wKO0uk5by1fLHC/Ah113WAPSqhl3fEzASurb8R0ytkF8Wrtcy8oc0bnQ7QLZAYz6mkVwz8hNg+mY0EsteFZ/sQcgGNuOp0w7aSeGfw0PKlzGPCgv+ooTv3Qbw+LetNUyCT1+B2aiUvvAZ76hdEddy9acitvBNW5davDBSKlrEOeWf7RW3QUTO/6DtoBA+lfzn5i5Ciw0Brmq+EN4dACyxIWL+5EGpiXgWfPZJtfmWuKLOx7vXLEJcOcDtsFok7gFb2bRxiXnCQbKVbwDxwo6oknicy8cANa02xj7Fg0/ua33EPymzNslcCdJIipNqi0C/7Xqcr8WQIylPubmWETusLNGW4FtQEGuCFVeEwIkrpKZge68FPmBqrPEAbY7SS47KGCqFSym3MEH9YKcBOpy9ICJwk5pAq/YU9wlQaVRu7RmvCLQwROHVj8holBdFI/NOACIkro3+lHeTmo+3yoF1ruvYfWVY1L8hZ4OJCRLdESvL29ravX9RxcF62wI6bhBESZlV7CfHMbJXPhS77AWSL+V/pItQiZOFExafWUISIU8ae0foCTNTohdqCKnspuBmi7h4uRX6vOqILBdflxmZujN+a7FLaDBeRamHIv7BWWocAwue2U4l07STAgFmbWYuCAAAKLUv/QRQ9QMA0oUVI7A1jQG4NHQ0DGTO8RQoLGsbe8fdSriDQVDLDhT1Int7Sdsp/3s5UPYrQiDqfO5ff9KpLkrKGgcEQCf71e4mCgLk5GcDlJH96kGV8T/+okFLY5zmXwEQAFDgCAQgn8SQIAzfQz5AwioCwMArAzfNtwQDVogBGYOBNYAnWt4QZw=="
+  },
+  "merge_policy": {
+    "in_possession": "copy all 11 native IP phase blocks from A4.3 top-scoring tactic",
+    "out_of_possession": "copy all 11 native OOP phase blocks from 3421 p1",
+    "team_instructions": "A4.3 IP phase-owned bits plus 3421 p1 OOP phase-owned bits",
+    "shared_metadata": "A4.3",
+    "no_role_or_instruction_reconstruction": true
+  }
+}
