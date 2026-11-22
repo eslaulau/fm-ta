@@ -1,0 +1,123 @@
+name: FM27 A4.3 IP + 3421 P1 OOP Dual-Leader Candidate
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "build_requests/phase_merges/A43_IP_3421_P1_OOP_Dual_Leader_Candidate.json"
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  merge-native-phases:
+    name: Merge A4.3 attack and 3421 P1 defense
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out FM-TA generator and request
+        uses: actions/checkout@v4
+
+      - name: Download verified A4.11 native FMF from its exact build run
+        uses: actions/download-artifact@v4
+        with:
+          name: FM27_A4.3_Legacy_Reproduction
+          path: ${{ runner.temp }}/a411
+          run-id: 45009389247
+          github-token: ${{ github.token }}
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install native FMF dependencies
+        run: python -m pip install -r "04_离线原生FMF生成器/requirements.txt"
+
+      - name: Assemble exact source bytes and build fusion request
+        env:
+          RUNNER_TEMP: ${{ runner.temp }}
+        run: |
+          python - <<'PY'
+          import base64, hashlib, json, subprocess
+          from pathlib import Path
+
+          req_path = Path("build_requests/phase_merges/A43_IP_3421_P1_OOP_Dual_Leader_Candidate.json")
+          req = json.loads(req_path.read_text(encoding="utf-8"))
+          temp = Path(__import__("os").environ["RUNNER_TEMP"])
+          ip_files = list((temp / "a411").glob("*.fmf"))
+          ip_reports = list((temp / "a411").glob("*.report.json"))
+          if len(ip_files) != 1 or len(ip_reports) != 1:
+              raise SystemExit(f"Expected one A4.11 FMF and report, found {len(ip_files)} / {len(ip_reports)}")
+          ip_bytes = ip_files[0].read_bytes()
+          ip_report = json.loads(ip_reports[0].read_text(encoding="utf-8"))
+          ip_sha = hashlib.sha256(ip_bytes).hexdigest()
+          if ip_sha != req["sources"]["ip_source_sha256"] or ip_report.get("sha256") != ip_sha:
+              raise SystemExit("A4.11 artifact SHA256 does not match its successful D3 build report")
+
+          oop_bytes = base64.b64decode(req["sources"]["b16_fmf_base64"], validate=True)
+          git_blob = hashlib.sha1(b"blob " + str(len(oop_bytes)).encode() + bytes([0]) + oop_bytes).hexdigest()
+          if git_blob != req["sources"]["oop_source_git_blob_sha"]:
+              raise SystemExit(f"3421 p1 Git blob SHA mismatch: {git_blob}")
+
+          req["sources"]["v14_fmf_base64"] = base64.b64encode(ip_bytes).decode("ascii")
+          req["sources"]["b16_fmf_base64"] = base64.b64encode(oop_bytes).decode("ascii")
+          req["sources"]["ip_source_git_blob_sha"] = "artifact-run-45009389247-sha256-" + ip_sha
+          build_req = temp / "A411_IP_3421_P1_OOP_Fusion.request.json"
+          build_req.write_text(json.dumps(req, ensure_ascii=False, indent=2), encoding="utf-8")
+          print("A4.11 IP source SHA256:", ip_sha)
+          print("3421 p1 source Git blob SHA:", git_blob)
+          print("Prepared phase merge request:", build_req)
+          PY
+
+      - name: Merge native phases and verify all instructions
+        env:
+          RUNNER_TEMP: ${{ runner.temp }}
+        run: |
+          python scripts/merge_fm27_phase_sources.py \
+            --request "${RUNNER_TEMP}/A411_IP_3421_P1_OOP_Fusion.request.json" \
+            --catalog "04_离线原生FMF生成器/catalog.json" \
+            --output "build_output/FM27_A4.3_IP_3421_P1_OOP_Dual_Leader_Candidate_v1.fmf" \
+            --report "build_output/FM27_A4.3_IP_3421_P1_OOP_Dual_Leader_Candidate_v1.report.json"
+
+      - name: Enforce exact native phase readback
+        run: |
+          python - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+          fmf = Path("build_output/FM27_A4.3_IP_3421_P1_OOP_Dual_Leader_Candidate_v1.fmf")
+          report = Path("build_output/FM27_A4.3_IP_3421_P1_OOP_Dual_Leader_Candidate_v1.report.json")
+          r = json.loads(report.read_text(encoding="utf-8"))
+          data = fmf.read_bytes()
+          if r.get("status") != "native_phase_merge_verified_not_game_import_verified":
+              raise SystemExit("Unexpected report status")
+          if hashlib.sha256(data).hexdigest() != r.get("sha256") or len(data) != r.get("bytes"):
+              raise SystemExit("FMF SHA256 or byte count differs from report")
+          checks = r.get("checks", {})
+          required = ["both_source_archives_parse", "both_source_tac_prefixes_parse",
+                      "11_slots_each_source", "all_11_ip_blocks_exact_source",
+                      "all_11_oop_blocks_exact_source", "all_role_cache_records_included_in_audit",
+                      "team_instruction_phase_bits_readback", "output_archive_and_tac_parse",
+                      "output_title_readback"]
+          if any(checks.get(k) is not True for k in required):
+              raise SystemExit("Required phase merge readback checks did not pass")
+          phase = r.get("exact_phase_copy", {})
+          if phase.get("ip_blocks_from_source") != 11 or phase.get("oop_blocks_from_source") != 11 or phase.get("all_exact") is not True:
+              raise SystemExit("Expected all 22 IP/OOP phase blocks to copy exactly")
+          if r.get("team_instruction_bit_readback", {}).get("all_match") is not True:
+              raise SystemExit("Team instruction readback mismatch")
+          print("PASS: 11/11 A4.11 IP blocks + 11/11 3421 p1 OOP blocks copied exactly")
+          print("FMF bytes:", len(data))
+          print("SHA256:", hashlib.sha256(data).hexdigest())
+          print("Game import and match-engine performance: not tested.")
+          PY
+
+      - name: Upload merged FMF and complete audit
+        uses: actions/upload-artifact@v4
+        with:
+          name: FM27_A4.3_IP_3421_P1_OOP_Dual_Leader_Candidate_v1
+          path: |
+            build_output/FM27_A4.3_IP_3421_P1_OOP_Dual_Leader_Candidate_v1.fmf
+            build_output/FM27_A4.3_IP_3421_P1_OOP_Dual_Leader_Candidate_v1.report.json
+          if-no-files-found: error
+          retention-days: 14
