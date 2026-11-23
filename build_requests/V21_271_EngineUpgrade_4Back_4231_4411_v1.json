@@ -1,0 +1,36 @@
+{
+  "v": 1,
+  "name": "V21_271_EngineUpgrade_4Back_4231_4411_ControlledTransition_v1",
+  "ment": 5,
+  "base": {"g": "Fluid Counter Attack", "ip": "4-2-3-1", "oop": "4-4-1-1"},
+  "ti": {
+    "PASSING_DIRECTNESS": "MORE_DIRECT",
+    "TEMPO": "HIGHER",
+    "ATTACKING_WIDTH": "NARROWER",
+    "ATTACKING_TRANSITION": "COUNTER_ATTACK",
+    "BUILD_UP_STRATEGY": "BYPASS_PRESS",
+    "PASS_RECEPTION": "PASS_INTO_SPACE",
+    "PROGRESS_THROUGH": "BOTH_FLANKS",
+    "SHOTS_FROM_DISTANCE": "DISCOURAGE",
+    "LINE_OF_ENGAGEMENT": "MID_BLOCK",
+    "DEFENSIVE_LINE_BEHAVIOR": "DROP_OFF_MORE",
+    "TRIGGER_PRESS": "LESS_OFTEN",
+    "DEFENSIVE_TRANSITION": "REGROUP",
+    "TACKLING": "STAY_ON_FEET",
+    "PRESSING_TRAP": "TRAP_OUTSIDE",
+    "CROSS_ENGAGEMENT": "STOP_CROSSES"
+  },
+  "p": [
+    {"in":{"pos":"GK","role":"BallPlayingGoalkeeper","duty":"S","pi":[["PASSING_STRATEGY","SHORTER"]]},"out":{"pos":"GK","role":"SweeperKeeper","duty":"A","pi":[["TACKLING","EASE_OFF_TACKLES"]]}},
+    {"in":{"pos":"DR","role":"WingBack","duty":"S","pi":[["ATTACKING_WIDTH","STAY_WIDER"]]},"out":{"pos":"DR","role":"PressingFullBack","duty":"S","pi":[["TACKLING","EASE_OFF_TACKLES"]]}},
+    {"in":{"pos":"DCR","role":"BallPlayingCentreBack","duty":"D","pi":[["PASSING_STRATEGY","SHORTER"]]},"out":{"pos":"DCR","role":"StoppingCentreBack","duty":"D","pi":[["MARKING","MARK_TIGHTER"]]}},
+    {"in":{"pos":"DCL","role":"CentreBack","duty":"D","pi":[["PASSING_RISKS","TAKE_FEWER_RISKS"]]},"out":{"pos":"DCL","role":"CoveringCentreBack","duty":"D","pi":[["TACKLING","EASE_OFF_TACKLES"]]}},
+    {"in":{"pos":"DL","role":"FullBack","duty":"D","pi":[["FORWARD_RUNS","HOLD_POSITION"]]},"out":{"pos":"DL","role":"HoldingFullBack","duty":"D","pi":[["MARKING","MARK_TIGHTER"]]}},
+    {"in":{"pos":"MCR","role":"ChannelMidfielder","duty":"A","pi":[["FORWARD_RUNS","MAKE_MORE_RUNS"]]},"out":{"pos":"MCR","role":"PressingCentralMidfielder","duty":"A","pi":[["TACKLING","EASE_OFF_TACKLES"]]}},
+    {"in":{"pos":"MCL","role":"CentralMidfielder","duty":"S","pi":[["PASSING_STRATEGY","SHORTER"]]},"out":{"pos":"MCL","role":"ScreeningCentralMidfielder","duty":"D","pi":[["MARKING","MARK_TIGHTER"]]}},
+    {"in":{"pos":"AMR","role":"Winger","duty":"S","pi":[["ATTACKING_WIDTH","STAY_WIDER"]]},"out":{"pos":"MR","role":"TrackingWideMidfielder","duty":"D","pi":[["TRIGGER_PRESS","LESS_OFTEN"]]}},
+    {"in":{"pos":"AML","role":"InsideForward","duty":"A","pi":[["DRIBBLING_DIRECTION","CUT_INSIDE_WITH_BALL"]]},"out":{"pos":"ML","role":"TrackingWideMidfielder","duty":"D","pi":[["TRIGGER_PRESS","MORE_OFTEN"]]}},
+    {"in":{"pos":"AMC","role":"AdvancedPlaymaker","duty":"A","pi":[["SHOOTING","SHOOT_LESS_OFTEN"]]},"out":{"pos":"AMC","role":"TrackingAttackingMidfielder","duty":"D","pi":[["TRIGGER_PRESS","LESS_OFTEN"]]}},
+    {"in":{"pos":"ST","role":"ChannelForward","duty":"A","pi":[["FORWARD_RUNS","MAKE_MORE_RUNS"]]},"out":{"pos":"ST","role":"TrackingCentreForward","duty":"D","pi":[["TRIGGER_PRESS","MORE_OFTEN"]]}}
+  ]
+}
