@@ -25,7 +25,7 @@
     {"in":{"pos":"DR","role":"WingBack","duty":"S","pi":[["ATTACKING_WIDTH","STAY_WIDER"]]},"out":{"pos":"DR","role":"PressingFullBack","duty":"S","pi":[["TACKLING","EASE_OFF_TACKLES"]]}},
     {"in":{"pos":"DCR","role":"BallPlayingCentreBack","duty":"D","pi":[["PASSING_STRATEGY","SHORTER"]]},"out":{"pos":"DCR","role":"StoppingCentreBack","duty":"D","pi":[["MARKING","MARK_TIGHTER"]]}},
     {"in":{"pos":"DCL","role":"CentreBack","duty":"D","pi":[["PASSING_RISKS","TAKE_FEWER_RISKS"]]},"out":{"pos":"DCL","role":"CoveringCentreBack","duty":"D","pi":[["TACKLING","EASE_OFF_TACKLES"]]}},
-    {"in":{"pos":"DL","role":"FullBack","duty":"D","pi":[["FORWARD_RUNS","HOLD_POSITION"]]},"out":{"pos":"DL","role":"HoldingFullBack","duty":"D","pi":[["MARKING","MARK_TIGHTER"]]}},
+    {"in":{"pos":"DL","role":"FullBack","duty":"D","pi":[["PASSING_RISKS","TAKE_FEWER_RISKS"]]},"out":{"pos":"DL","role":"HoldingFullBack","duty":"D","pi":[["MARKING","MARK_TIGHTER"]]}},
     {"in":{"pos":"MCR","role":"ChannelMidfielder","duty":"A","pi":[["FORWARD_RUNS","MAKE_MORE_RUNS"]]},"out":{"pos":"MCR","role":"PressingCentralMidfielder","duty":"A","pi":[["TACKLING","EASE_OFF_TACKLES"]]}},
     {"in":{"pos":"MCL","role":"CentralMidfielder","duty":"S","pi":[["PASSING_STRATEGY","SHORTER"]]},"out":{"pos":"MCL","role":"ScreeningCentralMidfielder","duty":"D","pi":[["MARKING","MARK_TIGHTER"]]}},
     {"in":{"pos":"AMR","role":"Winger","duty":"S","pi":[["ATTACKING_WIDTH","STAY_WIDER"]]},"out":{"pos":"MR","role":"TrackingWideMidfielder","duty":"D","pi":[["TRIGGER_PRESS","LESS_OFTEN"]]}},
