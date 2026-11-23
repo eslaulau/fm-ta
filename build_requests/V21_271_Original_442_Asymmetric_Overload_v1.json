@@ -1,0 +1,78 @@
+{
+  "v": 1,
+  "name": "V21_271_Original_442_Asymmetric_Overload_v1",
+  "ment": 5,
+  "base": {
+    "g": "Direct Counter Attack"
+  },
+  "ti": {
+    "PASSING_DIRECTNESS": "MORE_DIRECT",
+    "ATTACKING_TRANSITION": "COUNTER_ATTACK",
+    "ATTACKING_WIDTH": "WIDER",
+    "TEMPO": "MUCH_HIGHER",
+    "BUILD_UP_STRATEGY": "PLAY_THROUGH_PRESS",
+    "GOAL_KICKS": "SHORT",
+    "GOALKEEPER_DISTRIBUTION": "CENTRE_BACKS",
+    "GK_DISTRIBUTION_(SPEED)": "DISTRIBUTE_QUICKLY",
+    "PASS_RECEPTION": "PASS_INTO_SPACE",
+    "DRIBBLING": "ENCOURAGE",
+    "CROSSING_STYLE": "LOW_CROSSES",
+    "SHOTS_FROM_DISTANCE": "DISCOURAGE",
+    "PROGRESS_THROUGH": "MIDDLE",
+    "LINE_OF_ENGAGEMENT": "HIGH_PRESS",
+    "DEFENSIVE_LINE": "HIGHER",
+    "TRIGGER_PRESS": "MUCH_MORE_OFTEN",
+    "DEFENSIVE_TRANSITION": "COUNTER_PRESS",
+    "TACKLING": "GET_STUCK_IN",
+    "DEFENSIVE_LINE_BEHAVIOR": "STEP_UP_MORE",
+    "PRESSING_TRAP": "TRAP_INSIDE",
+    "CROSS_ENGAGEMENT": "STOP_CROSSES",
+    "SHORT_GOALKEEPER_DISTRIBUTION": "YES"
+  },
+  "p": [
+    {
+      "in": {"pos": "GK", "role": "BallPlayingGoalkeeper", "duty": "S", "pi": [["PASSING_STRATEGY", "SHORTER"]]},
+      "out": {"pos": "GK", "role": "SweeperKeeper", "duty": "S", "pi": [["TACKLING", "EASE_OFF_TACKLES"]]}
+    },
+    {
+      "in": {"pos": "DR", "role": "WingBack", "duty": "S", "pi": [["CROSSING_FREQUENCY", "BYLINE"]]},
+      "out": {"pos": "DR", "role": "PressingFullBack", "duty": "S", "pi": [["TACKLING", "GET_STUCK_IN"]]}
+    },
+    {
+      "in": {"pos": "DCR", "role": "AdvancedCentreBack", "duty": "S", "pi": [["PASSING_RISKS", "TAKE_MORE_RISKS"]]},
+      "out": {"pos": "DCR", "role": "StoppingCentreBack", "duty": "D", "pi": [["TACKLING", "GET_STUCK_IN"]]}
+    },
+    {
+      "in": {"pos": "DCL", "role": "BallPlayingCentreBack", "duty": "D", "pi": [["PASSING_STRATEGY", "SHORTER"]]},
+      "out": {"pos": "DCL", "role": "CoveringCentreBack", "duty": "D", "pi": [["MARKING", "MARK_TIGHTER"]]}
+    },
+    {
+      "in": {"pos": "DL", "role": "InsideWingBack", "duty": "S", "pi": [["ATTACKING_WIDTH", "SIT_NARROWER"]]},
+      "out": {"pos": "DL", "role": "HoldingFullBack", "duty": "D", "pi": [["TACKLING", "GET_STUCK_IN"]]}
+    },
+    {
+      "in": {"pos": "ML", "role": "PlaymakingWinger", "duty": "S", "pi": [["PASSING_STRATEGY", "MORE_DIRECT"]]},
+      "out": {"pos": "ML", "role": "TrackingWideMidfielder", "duty": "D", "pi": [["TRIGGER_PRESS", "MORE_OFTEN"]]}
+    },
+    {
+      "in": {"pos": "MCL", "role": "ChannelMidfielder", "duty": "A", "pi": [["ATTACK_BOX_DEPTH", "LATE_RUNS"]]},
+      "out": {"pos": "MCL", "role": "WideCoverCentralMidfielder", "duty": "S", "pi": [["TRIGGER_PRESS", "MORE_OFTEN"]]}
+    },
+    {
+      "in": {"pos": "MCR", "role": "MidfieldPlaymaker", "duty": "S", "pi": [["FORWARD_RUNS", "KEEP_POSITION"]]},
+      "out": {"pos": "MCR", "role": "ScreeningCentralMidfielder", "duty": "D", "pi": [["MARKING", "MARK_TIGHTER"]]}
+    },
+    {
+      "in": {"pos": "MR", "role": "InsideWinger", "duty": "S", "pi": [["DRIBBLING_DIRECTION", "CUT_INSIDE_WITH_BALL"]]},
+      "out": {"pos": "MR", "role": "WideMidfielder", "duty": "S", "pi": [["TRIGGER_PRESS", "MORE_OFTEN"]]}
+    },
+    {
+      "in": {"pos": "STL", "role": "DeepLyingForward", "duty": "S", "pi": [["ATTACKING_WIDTH", "MOVE_INTO_CHANNELS"]]},
+      "out": {"pos": "STL", "role": "TrackingCentreForward", "duty": "D", "pi": [["TRIGGER_PRESS", "MORE_OFTEN"]]}
+    },
+    {
+      "in": {"pos": "STR", "role": "Poacher", "duty": "A", "pi": [["ATTACK_BOX_SIDE", "RIGHT"]]},
+      "out": {"pos": "STR", "role": "SplittingOutletCentreForward", "duty": "A", "pi": [["TRIGGER_PRESS", "MORE_OFTEN"]]}
+    }
+  ]
+}
