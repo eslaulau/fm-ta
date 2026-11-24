@@ -135,4 +135,4 @@
 - **FM-Arena 27.0.1**：当前测试页仍列出 81 套战术、109,350 场；本项目使用的报告 build 为 27.0.1+2494687，版本对应。来源：[FM-Arena 27.0.1](https://fm-arena.com/tactic-testing/aggregators/1/)。
 - **metaFM 27.0.1**：当前归档 150 套战术、453,062 场；STORMBRINGER 27 BBMIW 424 P102 FA 明确为 IP 4-2-4 / OOP 4-4-2 DM，5,432 场、1.82 PPG、69.3 Pts/38、85.3 GF/38、56.6 GA/38、xG 2.14、xGA 1.45。协议固定相同球员与 2,689 个 AI 对手计划，主客场平衡。证据等级 A（受控协议）；仅用于四后卫结构成绩参照，不将其配置因果移植到 V0.4。来源：[榜单](https://metafm.net/versions/27.0.1)；[方法](https://metafm.net/how-we-test)。
 - **FM-Arena 与 metaFM 当前样本差异**：FM-Arena 27.0.1 的 81 套/109,350 场与 metaFM 的 150 套/453,062 场采用不同协议，分别存档，不换算混排。
-- **设计应用**：V0.4 将 DEFENSIVE_LINE 从 HIGHER 调至 LOWER，参考 FM-Arena 四后卫候选的高位逼抢+较低防线组合；将 PASS_RECEPTION 调为 PASS_TO_FEET、CROSSING_STYLE 调为 MIXED_CROSSES，是针对本地 V0.3 90 次越位与低传中成功率的本地数据驱动修正，不是外部榜单已验证的固定配方。
+- **设计应用**：V0.4 将 DEFENSIVE_LINE 从 HIGHER 调至 LOWER，参考 FM-Arena 四后卫候选的高位逼抢+较低防线组合；将 PASS_RECEPTION 调为 PASS_TO_FEET、删除 CROSSING_STYLE=LOW_CROSSES 显式覆盖，使用 catalog 原生默认混合传中（native bit 0），是针对本地 V0.3 90 次越位与低传中成功率的本地数据驱动修正，不是外部榜单已验证的固定配方。
