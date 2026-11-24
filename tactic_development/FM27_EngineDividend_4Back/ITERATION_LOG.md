@@ -373,5 +373,15 @@ V0.2 新增的 4 场联赛（2027-01-06、01-17、01-23、01-26）全部失利�
 
 ### 门禁与状态
 - G1–G9：完成；G5–G7 细节见专项审查。
-- G10：本轮配方、专项审查、README、日志归档；FMF 构建完成后补充 run/artifact/SHA。
+- G10：配方、专项审查、README、日志均已归档；FMF 构建与 D3 回读完成。
 - 配置层审查 COMPLETE；游戏内导入和比赛效果待验证。
+
+
+### V0.4 重做版构建记录（run #139）
+- GitHub Actions：[FM27 Tactic Build #139](https://github.com/eslaulau/fm-ta/actions/runs/45396091251) — **success**。
+- Artifact：[FM27_FM27_EngineDividend_4Back_V0.4_20261124_run139](https://github.com/eslaulau/fm-ta/actions/runs/45396091251/artifacts/14920777363)（Artifact ID 14920777363）。
+- FMF：`FM27_EngineDividend_4Back_V0.4_20261124_run139.fmf`；3,758 bytes。
+- SHA-256：`92aaa02c46a8aec76107274a2735548a343c2d8aa72f092cf179e15f9915791d`。
+- D3 独立回读：8/8 必需检查通过；22/22 IP/OOP 阶段角色与 PI 精确回读；11 个有球位置、11 个无球位置；PI 权限、TI 向量与 Gegenpress 原生风格字段全部通过。
+- 状态：`offline_binary_roundtrip_verified_not_game_import_verified`。游戏内导入与比赛表现尚未验证。
+- 旧版 V0.4 的正文迭代报告已从主日志移除；旧 Actions artifact 属于 GitHub 历史构建记录，当前连接没有删除 artifact 的权限/操作入口，仍可能通过旧 run 页面访问。新版本唯一有效入口为 run #139。
