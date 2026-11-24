@@ -121,3 +121,11 @@ DL、DCL、DCR、DR、DML、DMR 的 OOP `TACKLING` 由 `GET_STUCK_IN` 改为 `EA
 - FMF：`FM27_EngineDividend_4Back_V0.3_20261124_run136.fmf`（3,806 bytes）。
 - SHA-256：`fe17432d0f2fa5bdc803c179ff7a861effc41c58f4fcc52a30f09ff8188a5aff`。
 - D3 独立回读全部通过；尚未验证游戏内导入和比赛表现。
+
+
+## V0.3 赛季报告（Exporter run 45391011796）
+- 用户确认报告使用 V0.3；存档 build `27.0.1+2494687`，日期 2027-01-08。
+- 联赛 20 场：**13胜3平4负，35:24，42分**。
+- 与 V0.2 相同的 20 场联赛逐场匹配：V0.2 为 7胜3平10负、25:22、24分；V0.3 为 13胜3平4负、35:24、42分。V0.3 是明显正向信号，但不是相同随机条件的受控 A/B。
+- 详细球队统计覆盖 6/20 场联赛；球员逐场报告 93 条全部未识别。27.0.1 parser build 未上游注册，schema 6 借用 27.0.0 布局，114/114 总量核对通过但覆盖不完整。
+- 决策：保留 V0.3 DML OOP `TRIGGER_PRESS=MORE_OFTEN`、高防线及其余配置；本轮不强行生成 V0.4。补足 8–10 场详细统计或做同存档原生引擎 A/B 后再确定下一变量。完整分析见 [ITERATION_LOG.md](ITERATION_LOG.md)。
