@@ -1,0 +1,346 @@
+{
+  "v": 1,
+  "name": "FM27_Engine_4Back_424_BoxAttack_20261124_v1",
+  "ment": 6,
+  "base": {
+    "g": "Direct Counter Attack"
+  },
+  "ti": {
+    "PASSING_DIRECTNESS": "MUCH_MORE_DIRECT",
+    "TEMPO": "MUCH_HIGHER",
+    "ATTACKING_WIDTH": "MUCH_WIDER",
+    "ATTACKING_TRANSITION": "COUNTER_ATTACK",
+    "BUILD_UP_STRATEGY": "BYPASS_PRESS",
+    "GOAL_KICKS": "LONG",
+    "GOALKEEPER_DISTRIBUTION": "OVER_OPPOSITION_DEFENCE",
+    "GK_DISTRIBUTION_(SPEED)": "DISTRIBUTE_QUICKLY",
+    "PASS_RECEPTION": "PASS_INTO_SPACE",
+    "SUPPORTING_RUNS": "BOTH_FLANKS",
+    "DRIBBLING": "ENCOURAGE",
+    "PATIENCE": "HIT_EARLY_CROSSES",
+    "SHOTS_FROM_DISTANCE": "DISCOURAGE",
+    "CROSSING_STYLE": "LOW_CROSSES",
+    "LINE_OF_ENGAGEMENT": "HIGH_PRESS",
+    "DEFENSIVE_LINE": "MUCH_HIGHER",
+    "DEFENSIVE_LINE_BEHAVIOR": "STEP_UP_MORE",
+    "TRIGGER_PRESS": "MUCH_MORE_OFTEN",
+    "DEFENSIVE_TRANSITION": "COUNTER_PRESS",
+    "PRESSING_TRAP": "TRAP_INSIDE",
+    "TACKLING": "GET_STUCK_IN",
+    "CROSS_ENGAGEMENT": "STOP_CROSSES"
+  },
+  "p": [
+    {
+      "in": {
+        "pos": "GK",
+        "role": "BallPlayingGoalkeeper",
+        "duty": "S",
+        "pi": [
+          [
+            "PASSING_STRATEGY",
+            "SHORTER"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "GK",
+        "role": "Goalkeeper",
+        "duty": "S",
+        "pi": [
+          [
+            "TACKLING",
+            "EASE_OFF_TACKLES"
+          ]
+        ]
+      }
+    },
+    {
+      "in": {
+        "pos": "DL",
+        "role": "PlaymakingWingBack",
+        "duty": "S",
+        "pi": [
+          [
+            "PASSING_RISKS",
+            "TAKE_MORE_RISKS"
+          ],
+          [
+            "FORWARD_RUNS",
+            "MAKE_MORE_RUNS"
+          ],
+          [
+            "ATTACKING_WIDTH",
+            "STAY_WIDER"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "DL",
+        "role": "HoldingFullBack",
+        "duty": "D",
+        "pi": [
+          [
+            "TACKLING",
+            "EASE_OFF_TACKLES"
+          ]
+        ]
+      }
+    },
+    {
+      "in": {
+        "pos": "DCL",
+        "role": "OverlappingCentreBack",
+        "duty": "A",
+        "pi": [
+          [
+            "PASSING_RISKS",
+            "TAKE_MORE_RISKS"
+          ],
+          [
+            "ATTACKING_WIDTH",
+            "STAY_WIDER"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "DCL",
+        "role": "CoveringCentreBack",
+        "duty": "D",
+        "pi": [
+          [
+            "TACKLING",
+            "EASE_OFF_TACKLES"
+          ]
+        ]
+      }
+    },
+    {
+      "in": {
+        "pos": "DCR",
+        "role": "AdvancedCentreBack",
+        "duty": "S",
+        "pi": [
+          [
+            "PASSING_RISKS",
+            "TAKE_MORE_RISKS"
+          ],
+          [
+            "ATTACKING_WIDTH",
+            "STAY_WIDER"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "DCR",
+        "role": "StoppingCentreBack",
+        "duty": "D",
+        "pi": [
+          [
+            "TACKLING",
+            "GET_STUCK_IN"
+          ]
+        ]
+      }
+    },
+    {
+      "in": {
+        "pos": "DR",
+        "role": "InsideWingBack",
+        "duty": "D",
+        "pi": [
+          [
+            "DRIBBLING_DIRECTION",
+            "CUT_INSIDE_WITH_BALL"
+          ],
+          [
+            "ROAMING",
+            "ROAM_FROM_POSITION"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "DR",
+        "role": "PressingFullBack",
+        "duty": "S",
+        "pi": [
+          [
+            "TACKLING",
+            "GET_STUCK_IN"
+          ]
+        ]
+      }
+    },
+    {
+      "in": {
+        "pos": "DML",
+        "role": "BoxToBoxPlaymaker",
+        "duty": "S",
+        "pi": [
+          [
+            "FORWARD_RUNS",
+            "MAKE_MORE_RUNS"
+          ],
+          [
+            "ATTACK_BOX_SIDE",
+            "CENTRE"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "DML",
+        "role": "ScreeningDefensiveMidfielder",
+        "duty": "D",
+        "pi": [
+          [
+            "TACKLING",
+            "EASE_OFF_TACKLES"
+          ]
+        ]
+      }
+    },
+    {
+      "in": {
+        "pos": "DMR",
+        "role": "DeepLyingPlaymaker",
+        "duty": "S",
+        "pi": [
+          [
+            "PASSING_STRATEGY",
+            "SHORTER"
+          ],
+          [
+            "ATTACKING_WIDTH",
+            "STAY_WIDER"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "DMR",
+        "role": "PressingDefensiveMidfielder",
+        "duty": "S",
+        "pi": [
+          [
+            "TACKLING",
+            "GET_STUCK_IN"
+          ]
+        ]
+      }
+    },
+    {
+      "in": {
+        "pos": "AML",
+        "role": "WideForward",
+        "duty": "A",
+        "pi": [
+          [
+            "DRIBBLING_FREQUENCY",
+            "DRIBBLE_MORE"
+          ],
+          [
+            "DRIBBLING_DIRECTION",
+            "RUN_WIDE_WITH_BALL"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "ML",
+        "role": "TrackingWideMidfielder",
+        "duty": "D",
+        "pi": [
+          [
+            "TRIGGER_PRESS",
+            "MORE_OFTEN"
+          ]
+        ]
+      }
+    },
+    {
+      "in": {
+        "pos": "AMR",
+        "role": "InsideWinger",
+        "duty": "A",
+        "pi": [
+          [
+            "DRIBBLING_DIRECTION",
+            "CUT_INSIDE_WITH_BALL"
+          ],
+          [
+            "ATTACK_BOX_SIDE",
+            "CENTRE"
+          ],
+          [
+            "ATTACK_BOX_DEPTH",
+            "ATTACK_DEFENSIVE_LINE"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "MR",
+        "role": "TrackingWideMidfielder",
+        "duty": "D",
+        "pi": [
+          [
+            "TRIGGER_PRESS",
+            "MORE_OFTEN"
+          ]
+        ]
+      }
+    },
+    {
+      "in": {
+        "pos": "STL",
+        "role": "FalseNine",
+        "duty": "S",
+        "pi": [
+          [
+            "HOLD_UP_BALL",
+            "YES"
+          ],
+          [
+            "PASSING_RISKS",
+            "TAKE_MORE_RISKS"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "STL",
+        "role": "SplittingOutletCentreForward",
+        "duty": "A",
+        "pi": [
+          [
+            "TRIGGER_PRESS",
+            "MORE_OFTEN"
+          ]
+        ]
+      }
+    },
+    {
+      "in": {
+        "pos": "STR",
+        "role": "Poacher",
+        "duty": "A",
+        "pi": [
+          [
+            "SHOOTING",
+            "SHOOT_MORE_OFTEN"
+          ],
+          [
+            "ATTACK_BOX_SIDE",
+            "CENTRE"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "STR",
+        "role": "TrackingCentreForward",
+        "duty": "D",
+        "pi": [
+          [
+            "TRIGGER_PRESS",
+            "MORE_OFTEN"
+          ]
+        ]
+      }
+    }
+  ]
+}
