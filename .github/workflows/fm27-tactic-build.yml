@@ -66,7 +66,7 @@ jobs:
           RECIPE_LABEL: ${{ steps.recipe.outputs.recipe_label }}
         run: |
           python tests/test_fm27gen1_direct_json_input.py
-          python tests/test_fm27gen1_experimental_unmapped_mapping.py
+          RECIPE_PATH=build_requests/Unmapped_Mapping_Import_Test_v1.txt python tests/test_fm27gen1_experimental_unmapped_mapping.py
           if [ -n "$RECIPE_JSON" ]; then
             python scripts/preflight_fm27_tactic.py
           else
