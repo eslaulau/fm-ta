@@ -8,7 +8,9 @@
 - [外部引擎红利基准库](EXTERNAL_ENGINE_BENCHMARK.md)：持续记录外部引擎研究、战术榜单、四后卫候选、证据等级与日期快照。\n- [版本迭代记录](ITERATION_LOG.md)：逐版本记录父子关系、实际变更字段、设计依据、构建产物与实测状态。以后每次战术版本更新都必须追加记录。
 
 - [V0.1 原始配方](V0.1.json)：从原始构建请求逐字保留。
-- [V0.2 升级配方](V0.2.json)：本次唯一候选版本。
+- [V0.2 升级配方](V0.2.json)：历史版本。
+- [V0.3 升级配方](V0.3.json)：历史版本。
+- [V0.4 升级配方](V0.4.json)：当前最新升级版本，父版本为 V0.3。
 - [V0.2 构建请求](../../build_requests/FM27_EngineDividend_4Back_V0.2_20261124.json)：正式云端 FMF 构建入口。
 
 ## V0.1 基准与问题定位
@@ -129,3 +131,13 @@ DL、DCL、DCR、DR、DML、DMR 的 OOP `TACKLING` 由 `GET_STUCK_IN` 改为 `EA
 - 与 V0.2 相同的 20 场联赛逐场匹配：V0.2 为 7胜3平10负、25:22、24分；V0.3 为 13胜3平4负、35:24、42分。V0.3 是明显正向信号，但不是相同随机条件的受控 A/B。
 - 详细球队统计覆盖 6/20 场联赛；球员逐场报告 93 条全部未识别。27.0.1 parser build 未上游注册，schema 6 借用 27.0.0 布局，114/114 总量核对通过但覆盖不完整。
 - 决策：保留 V0.3 DML OOP `TRIGGER_PRESS=MORE_OFTEN`、高防线及其余配置；本轮不强行生成 V0.4。补足 8–10 场详细统计或做同存档原生引擎 A/B 后再确定下一变量。完整分析见 [ITERATION_LOG.md](ITERATION_LOG.md)。
+
+
+## V0.4 进攻效率与防守纵深重构（2026-11-24）
+- [V0.4 配方](V0.4.json)：父版本 V0.3。
+- [V0.4 构建请求](../../build_requests/FM27_EngineDividend_4Back_V0.4_20261124.json)。
+- 赛季报告问题：607 次传中仅 82 次成功（13.5%）；90 次越位/20 场（4.5 次/场）；联赛失球 24/20 场（1.20/场）。
+- 本轮直接调整三项 TI：PASS_RECEPTION 由 PASS_INTO_SPACE 改为 PASS_TO_FEET；CROSSING_STYLE 由 LOW_CROSSES 改为 MIXED_CROSSES；DEFENSIVE_LINE 由 HIGHER 改为 LOWER。
+- 目的：减少高风险身后球带来的越位、减少强制低平传中依赖，并降低高防线身后纵深风险。
+- 保留 V0.3 的 4-2-3-1 IP / 四后卫 OOP、所有角色职责、PI、DML TRIGGER_PRESS=MORE_OFTEN、高位逼抢、立即反抢、两翼推进、反击和其余 TI。
+- 本轮是基于现有报告与外部 27.0.1 四后卫候选机制的定向升级；以上改动的比赛效果均待 V0.4 实测，不能将构建回读当作比赛表现证明。
