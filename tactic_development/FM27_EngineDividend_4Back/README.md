@@ -137,7 +137,7 @@ DL、DCL、DCR、DR、DML、DMR 的 OOP `TACKLING` 由 `GET_STUCK_IN` 改为 `EA
 - [V0.4 配方](V0.4.json)：父版本 V0.3。
 - [V0.4 构建请求](../../build_requests/FM27_EngineDividend_4Back_V0.4_20261124.json)。
 - 赛季报告问题：607 次传中仅 82 次成功（13.5%）；90 次越位/20 场（4.5 次/场）；联赛失球 24/20 场（1.20/场）。
-- 本轮直接调整三项 TI：PASS_RECEPTION 由 PASS_INTO_SPACE 改为 PASS_TO_FEET；CROSSING_STYLE 由 LOW_CROSSES 改为 MIXED_CROSSES；DEFENSIVE_LINE 由 HIGHER 改为 LOWER。
+- 本轮直接调整三项 TI：PASS_RECEPTION 由 PASS_INTO_SPACE 改为 PASS_TO_FEET；删除显式 CROSSING_STYLE=LOW_CROSSES，回到原生默认混合传中；DEFENSIVE_LINE 由 HIGHER 改为 LOWER。
 - 目的：减少高风险身后球带来的越位、减少强制低平传中依赖，并降低高防线身后纵深风险。
 - 保留 V0.3 的 4-2-3-1 IP / 四后卫 OOP、所有角色职责、PI、DML TRIGGER_PRESS=MORE_OFTEN、高位逼抢、立即反抢、两翼推进、反击和其余 TI。
 - 本轮是基于现有报告与外部 27.0.1 四后卫候选机制的定向升级；以上改动的比赛效果均待 V0.4 实测，不能将构建回读当作比赛表现证明。
