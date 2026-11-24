@@ -35,10 +35,12 @@ jobs:
         with:
           fetch-depth: 2
 
-      - name: Set up Python 3.12
+      - name: Set up Python 3.12 with dependency cache
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+          cache: "pip"
+          cache-dependency-path: "04_离线原生FMF生成器/requirements.txt"
 
       - name: Resolve exactly one structured recipe
         id: recipe
@@ -56,20 +58,19 @@ jobs:
         if: steps.recipe.outputs.skip_build != 'true'
         run: python -m pip install -r "04_离线原生FMF生成器/requirements.txt"
 
-      - name: Validate structured JSON input, experimental mappings, and all PI permission contexts
+      - name: Run fast catalog-backed role, duty, PI permission, and style preflight
         if: steps.recipe.outputs.skip_build != 'true'
         env:
-          RECIPE_PATH: build_requests/Unmapped_Mapping_Import_Test_v1.txt
-          DELIVERY_RECIPE_PATH: ${{ steps.recipe.outputs.recipe_path }}
+          RECIPE_PATH: ${{ steps.recipe.outputs.recipe_path }}
           RECIPE_JSON: ${{ steps.recipe.outputs.recipe_json }}
           RECIPE_LABEL: ${{ steps.recipe.outputs.recipe_label }}
         run: |
           python tests/test_fm27gen1_direct_json_input.py
           python tests/test_fm27gen1_experimental_unmapped_mapping.py
           if [ -n "$RECIPE_JSON" ]; then
-            python scripts/validate_fm27_tactic_delivery.py
+            python scripts/preflight_fm27_tactic.py
           else
-            python scripts/validate_fm27_tactic_delivery.py "$DELIVERY_RECIPE_PATH"
+            python scripts/preflight_fm27_tactic.py --recipe "$RECIPE_PATH"
           fi
 
       - name: Generate native FMF and same-run report
