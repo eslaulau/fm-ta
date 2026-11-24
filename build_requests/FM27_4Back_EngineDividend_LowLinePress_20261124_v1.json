@@ -35,7 +35,7 @@
       },
       "out": {
         "pos": "GK",
-        "role": "OPGoalkeeper",
+        "role": "Goalkeeper",
         "pi": [
           [
             "TRIGGER_PRESS",
@@ -69,7 +69,7 @@
       },
       "out": {
         "pos": "DL",
-        "role": "OPHoldingFullBack",
+        "role": "HoldingFullBack",
         "pi": [
           [
             "TRIGGER_PRESS",
@@ -99,7 +99,7 @@
       },
       "out": {
         "pos": "DCL",
-        "role": "OPCoveringCentreBack",
+        "role": "CoveringCentreBack",
         "pi": [
           [
             "TRIGGER_PRESS",
@@ -129,7 +129,7 @@
       },
       "out": {
         "pos": "DCR",
-        "role": "OPCoveringCentreBack",
+        "role": "CoveringCentreBack",
         "pi": [
           [
             "TRIGGER_PRESS",
@@ -167,7 +167,7 @@
       },
       "out": {
         "pos": "DR",
-        "role": "OPHoldingFullBack",
+        "role": "HoldingFullBack",
         "pi": [
           [
             "TRIGGER_PRESS",
@@ -193,7 +193,7 @@
       },
       "out": {
         "pos": "DML",
-        "role": "OPScreeningDefensiveMidfielder",
+        "role": "ScreeningDefensiveMidfielder",
         "pi": [
           [
             "TRIGGER_PRESS",
@@ -219,7 +219,7 @@
       },
       "out": {
         "pos": "DMR",
-        "role": "OPPressingDefensiveMidfielder",
+        "role": "PressingDefensiveMidfielder",
         "pi": [
           [
             "TRIGGER_PRESS",
@@ -249,7 +249,7 @@
       },
       "out": {
         "pos": "AML",
-        "role": "OPTrackingWinger",
+        "role": "TrackingWinger",
         "pi": [
           [
             "TRIGGER_PRESS",
@@ -279,7 +279,7 @@
       },
       "out": {
         "pos": "AMR",
-        "role": "OPTrackingWinger",
+        "role": "TrackingWinger",
         "pi": [
           [
             "TRIGGER_PRESS",
@@ -309,7 +309,7 @@
       },
       "out": {
         "pos": "STL",
-        "role": "OPTrackingCentreForward",
+        "role": "TrackingCentreForward",
         "pi": [
           [
             "TRIGGER_PRESS",
@@ -335,7 +335,7 @@
       },
       "out": {
         "pos": "STR",
-        "role": "OPSplittingOutletCentreForward",
+        "role": "SplittingOutletCentreForward",
         "pi": [
           [
             "TRIGGER_PRESS",
