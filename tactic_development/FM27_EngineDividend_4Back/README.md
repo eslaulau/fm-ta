@@ -86,3 +86,11 @@ DL、DCL、DCR、DR、DML、DMR 的 OOP `TACKLING` 由 `GET_STUCK_IN` 改为 `EA
 - SHA-256：`396a46969c6d694d0fd166a880c27cdbff482862728c9a5a196d1b9ef44738e6`
 - 回读：22/22 阶段完整；22/22 PI 非空；设计表与回读表逐项一致；FMF 容器、成员校验、TAC、TI 向量、原生风格字段均通过。
 - 报告状态：`offline_binary_roundtrip_verified_not_game_import_verified`。这代表 D3 原生文件生成与独立回读成功，不代表游戏内导入或比赛表现已经验证。
+
+
+## V0.2 赛季报告（2026-11-24）
+- 已读取 [Exporter run 45381925241](https://github.com/eslaulau/FM27-Exporter/tree/main/season-reports/FM27_EngineDividend_4Back_V0.2/45381925241)，用户确认报告使用 V0.2。
+- 联赛 23 场：7胜3平13负，29-34，24 分；球队详细比赛统计仅覆盖 4 场联赛。
+- 4 场详细联赛样本全部失利，对手 xG 9.52、绝佳机会 17；球员联赛赛季汇总为 29 球、32.35 xG、27 助攻、31.05 xA。
+- 球员详细比赛报告 94 条均未识别身份，评分缺失；FM27 27.0.1 build 使用借用 schema，球队比赛统计覆盖不足。完整限制和 V0.3 待研究方向见 [ITERATION_LOG.md](ITERATION_LOG.md)。
+- **当前决定：不仓促构建 V0.3。** 先补充球队逐场统计与可识别球员数据，再针对防线纵深做小变量实验。
