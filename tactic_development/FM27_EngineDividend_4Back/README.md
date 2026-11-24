@@ -70,3 +70,16 @@ DL、DCL、DCR、DR、DML、DMR 的 OOP `TACKLING` 由 `GET_STUCK_IN` 改为 `EA
 - 每轮只维护一条 V0.x 迭代主线，不另开无关战术。
 - 每次版本必须记录：父版本、完整配方、变更字段、对应数据问题、预期效果、构建报告及之后的实测结果。
 - D3 报告只证明 FMF 生成与独立回读；不能冒充游戏内比赛表现验证。
+
+
+## V0.2 原生构建记录
+
+- GitHub Actions： [FM27 Tactic Build #135](https://github.com/eslaulau/fm-ta/actions/runs/45377758101)
+- 构建请求 commit：`696b4db67f65c14cc765855e9cea36c44301046a`
+- 结果：成功；catalog-backed preflight、原生 FMF 生成、D3 独立回读和 artifact 上传全部通过。
+- Artifact：`FM27_FM27_EngineDividend_4Back_V0.2_20261124_run135`
+- FMF：`FM27_EngineDividend_4Back_V0.2_20261124_run135.fmf`
+- 大小：3,806 bytes
+- SHA-256：`396a46969c6d694d0fd166a880c27cdbff482862728c9a5a196d1b9ef44738e6`
+- 回读：22/22 阶段完整；22/22 PI 非空；设计表与回读表逐项一致；FMF 容器、成员校验、TAC、TI 向量、原生风格字段均通过。
+- 报告状态：`offline_binary_roundtrip_verified_not_game_import_verified`。这代表 D3 原生文件生成与独立回读成功，不代表游戏内导入或比赛表现已经验证。
