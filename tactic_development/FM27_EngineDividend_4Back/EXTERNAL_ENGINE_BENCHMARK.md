@@ -103,3 +103,29 @@
 - V0.2 的 DML OOP `TRIGGER_PRESS=LESS_OFTEN`，而独立四后卫候选将 DM 设为 `Press More Often`。这是角色级候选，不是机制已证实。
 - V0.3 仅把 DML 的 `TRIGGER_PRESS` 从 `LESS_OFTEN` 改为 `MORE_OFTEN`；其余结构与配置全部保持不变，作为单变量本地实验。V0.2 的 `DEFENSIVE_LINE=HIGHER` 保留，因为共同 19 场比较中净胜球改善 +9，当前数据不足以证明防线高度应回退。
 - 27.1.0 排行榜与项目报告的 27.0.1 build 不混排；新版本赛季测试必须记录实际 build。
+
+
+## 外部基准快照｜2026-11-24（配合 V0.3 报告，锁定 FM27 27.0.1）
+
+### 1. FM-Arena：27.0.1 受测战术
+- 页面记录：81 套、109,350 场；每套候选条目通常 1,350 场，需按各自页面确认具体测试重复次数。来源：[27.0.1 排行榜](https://www.fm-arena.com/tactic-testing/aggregators/1/)。
+- **HIGHWAY STAR 27 BBMIW 4231 P96 FA**：1,350 场，68/114 分、+27 GD、79 GF、52 GA、xGF 72、xGA 52；主题页注明 3 次测试结果。其战术信息图可直接确认无球后场为 FB-CB-CB-FB 四人线，故符合本项目 OOP 四后卫筛选。图中还显示高位逼抢、较低防线、Step Up More、Trigger Press More Often、Counter-Press。来源：[测试主题](https://www.fm-arena.com/threads/highway-star-27-bbmiw-4231-p96-fa.110/)；[原始战术信息图](https://www.fm-arena.com/data/fmt_tactic_info/0/508-e41f9d790a6091b3c15fdc531aa7b8bc.webp)。
+- 证据等级 B：公开 build、样本量、结果与实际 OOP 结构截图；尚未取得并解析该战术 FMF 的完整 PI/TI。它支持“高位压迫可与真实四后卫 OOP 共存”作为候选机制，但其低防线与本项目高防线不同，不直接复制。
+- 榜单其他 4-2-3-1/4-3-3 标题不能仅凭标题认定 OOP 四后卫；没有截图或 FMF 的条目不计入严格四后卫样本。
+
+### 2. metaFM：27.0.1 独立受控榜单
+- 27.0.1 存档页：150 套战术、453,062 场；页面说明使用同一批 2,689 个 AI 对手计划（417 家俱乐部、14 种阵型）、相同球员、主客场均衡，逐步筛选至每套最多 5,432 场。来源：[metaFM 27.0.1](https://metafm.net/versions/27.0.1)；[测试方法](https://metafm.net/how-we-test)。
+- 榜首大量样本是 OOP 5-2-3/5-4-1，均排除出四后卫成绩排名。页面可见的四后卫候选之一 **STORMBRINGER 27 BBMIW 424 P102 FA**：IP 4-2-4 / OOP 4-4-2 DM，5,432 场，69.3/114 分，85.3 GF/38、56.6 GA/38，xG 2.14、xGA 1.45。其 OOP 标示为四后卫，但尚未下载原始 FMF 独立解析，故结构证据低于 FM-Arena 上述截图。
+- 证据等级 A（榜单测试协议和大样本控制）；该具体条目的战术细节仍待原始 FMF 复核。不得把 27.0.1 与 metaFM 27.1.0 成绩混排。
+
+### 3. Sortitoutsi：异质社区赛果表
+- 当前页面列出 **XPOS META 4-2-3-1 DM**：52 场、2.27 PPG、2.33 GF/场、1.21 GA/场。该站明确混有手动比赛与假期模拟、不同球队与测试数量；没有统一控制协议和明确 build 时，证据等级 C，只作社区信号，不用于与 FM-Arena/metaFM 的受控排名直接换算。来源：[FM27 Tactics Testing Table](https://sortitoutsi.net/football-manager-2027-tactics)。
+
+### 4. 引擎版本隔离
+- SI 官方 27.1.0 更新说明明确提及 OOP 压迫决策/强度调整、边路压迫改善，以及进攻转换、传球与 AMC 行为变化。来源：[官方 27.1.0 changelist](https://footballmanager.sega.com/asia-en/info/details/000290.html)。
+- 本轮 V0.3 存档实际 build 为 **27.0.1+2494687**，所以本轮本地表现必须与 27.0.1 外部结果对照；27.1.0 只能登记为后续版本机制变化，不可用来解释本轮赛果。
+
+### 5. 对本项目的决策
+- V0.3 DML OOP `TRIGGER_PRESS=MORE_OFTEN` 与 FM-Arena 四后卫样本的主动压迫方向一致，但一个使用 DML 个体 PI、另一个显示团队 Trigger Press TI，不能视为同一配置。
+- V0.3 的 20 场共同赛程成绩明显优于 V0.2；当前保留该 PI，不回退、不叠加第二项更改。
+- 下一轮优先完成同存档/同阵容/同 build 的 V0.2 对 V0.3 原生引擎 A/B；在本地详细统计覆盖不足时，不强制创建 V0.4。
