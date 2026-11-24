@@ -113,3 +113,11 @@ DL、DCL、DCR、DR、DML、DMR 的 OOP `TACKLING` 由 `GET_STUCK_IN` 改为 `EA
 - 本轮不是宣称已验证的性能升级，而是依据 V0.2 防守机会质量风险及外部四后卫 DM 压迫候选，设计的单变量实验。其余配置全部保持不变。
 - 实测要求：至少 8–10 场同口径球队详细统计，记录实际 FM27 build；以对手 xG/绝佳机会/射门和我方 xG/绝佳机会为主，不分析犯规、黄牌、红牌。
 - 当前外部研究快照与证据分级见 [EXTERNAL_ENGINE_BENCHMARK.md](EXTERNAL_ENGINE_BENCHMARK.md)；完整决策见 [ITERATION_LOG.md](ITERATION_LOG.md)。
+
+
+### V0.3 构建记录
+- GitHub Actions：[FM27 Tactic Build #136](https://github.com/eslaulau/fm-ta/actions/runs/45388048044) 成功。
+- Artifact：`FM27_FM27_EngineDividend_4Back_V0.3_20261124_run136`。
+- FMF：`FM27_EngineDividend_4Back_V0.3_20261124_run136.fmf`（3,806 bytes）。
+- SHA-256：`fe17432d0f2fa5bdc803c179ff7a861effc41c58f4fcc52a30f09ff8188a5aff`。
+- D3 独立回读全部通过；尚未验证游戏内导入和比赛表现。
