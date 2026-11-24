@@ -101,7 +101,7 @@ V0.1 基准报告显示：
 ### 报告来源与版本归属
 - 报告：[FM27-Exporter / run 45381925241](https://github.com/eslaulau/FM27-Exporter/tree/main/season-reports/FM27_EngineDividend_4Back_V0.2/45381925241)
 - 用户明确确认该报告使用 V0.2。
-- 源存档：`FM27_EngineDividend_4Back_V0.2.fm`；FM27 build `27.0.1+2494687)；存档日期 2027-01-27。
+- 源存档：`FM27_EngineDividend_4Back_V0.2.fm`；FM27 build `27.0.1+2494687`；存档日期 2027-01-27。
 - 导出器 1.5.0；fmsave 0.12.4；源存档 SHA-256：`0d5a6315fda5ccc0c3ac7c1f9977bf9d3c4f7d98c103bb8c70507e0d405ae287`。
 
 ### 样本覆盖与可靠性
@@ -121,7 +121,7 @@ V0.1 基准报告显示：
 - 4 场详细联赛样本对手 xG 9.52、绝佳机会 17，防守机会质量值得优先处理；但不能断言高防线、DML 少压迫或谨慎抢断中的任何一项是直接原因。
 
 ### 下一版本方向（V0.3，暂不构建）
-- 优先实验方向：单独回测防线纵深方案，将 V0.2 的 `DEFENSIVE_LINE=HIGHER` 与 V0.1 的 `DEFENSIVE_LINE=LOWER` 作为对照重点；不要同时改动后场六人 `EASE_OFF_TACKLES)、DML `TRIGGER_PRESS=LESS_OFTEN` 和进攻结构，避免混淆变量。
+- 优先实验方向：单独回测防线纵深方案，将 V0.2 的 `DEFENSIVE_LINE=HIGHER` 与 V0.1 的 `DEFENSIVE_LINE=LOWER` 作为对照重点；不要同时改动后场六人 `EASE_OFF_TACKLES`、DML `TRIGGER_PRESS=LESS_OFTEN` 和进攻结构，避免混淆变量。
 - 暂时保留 V0.2 的 4-2-3-1 有球位置与核心角色、IP/OOP 位置转换、前场进攻 PI/TI，以及后场谨慎抢断配置。
 - 当前证据不足以安全确定 V0.3 的正式改动：详细联赛球队统计只有 4 场，球员详细报告又无法识别。因此本轮不创建 V0.3 JSON、不构建 FMF，避免把假设包装成已确认升级。
 - 下一轮优先提高 team-match-stats 覆盖率，并修复球员比赛报告身份识别；若做防线方案 A/B 对照，尽量保持阵容、比赛范围和其他指令不变。
