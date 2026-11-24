@@ -16,6 +16,7 @@ import FM27GEN1_Offline_FMF_Generator as gen  # noqa: E402
 def preflight(recipe: dict, catalog: dict, style_registry: dict) -> dict:
     gen.validate_recipe_structure(recipe)
     gen.resolve_style_definition(str(recipe["base"]["g"]), style_registry)
+    gen.encode_ti(recipe, catalog, bytearray(12))
 
     positions = {item["id"]: int(item["mask"]) for item in catalog["positions"]}
     roles = {item["id"]: item for item in catalog["roles"]}
@@ -35,11 +36,11 @@ def preflight(recipe: dict, catalog: dict, style_registry: dict) -> dict:
             role = roles[role_id]
             if int(role["phase"]) != phase:
                 raise ValueError(f"slot {slot} {phase_key}: role phase mismatch: {role_id}")
-            if role_id not in eligibility.get(pos_name, [[], []])[phase]:
+            if role_id not in eligibility.get(pos_id, [[], []])[phase]:
                 raise ValueError(f"slot {slot} {phase_key}: incompatible position/role {pos_name}/{role_id}")
 
             duty = gen.resolve_role_duty(role_id, item)
-            gen.encode_pi(item["pi"], catalog, phase, pos_name, role_id, duty)
+            gen.encode_pi(item["pi"], catalog, phase, pos_id, role_id, duty)
             if not item["pi"]:
                 empty_pi.append(f"slot {slot} {phase_key}")
             checked.append({"slot": slot, "phase": phase_key, "position": pos_name, "role": role_id})
