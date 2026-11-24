@@ -141,4 +141,5 @@ DL、DCL、DCR、DR、DML、DMR 的 OOP `TACKLING` 由 `GET_STUCK_IN` 改为 `EA
 - [V0.4 角色与 PI 完整审查](V0.4_ROLE_PI_AUDIT.md)：11 个位置 IP/OOP 矩阵、全部 PI、组合冲突和变更决策均已完成。
 - TI：PASS_RECEPTION 改为 PASS_TO_FEET；删除显式 LOW_CROSSES（原生默认混合传中）；DEFENSIVE_LINE 改为 LOWER。
 - 角色/PI：DL InsideFullBack/D 改 FullBack/S 并取消 SIT_NARROWER；DCR OverlappingCentreBack/S 改 CentreBack/D 并移除 SHORTER；AMC 移除 DRIBBLE_MORE，保留游弋。
-- 比赛效果待实测；FMF 构建状态见本轮追加记录。
+- [FM27 Tactic Build #139](https://github.com/eslaulau/fm-ta/actions/runs/45396091251) 成功；[构建 Artifact](https://github.com/eslaulau/fm-ta/actions/runs/45396091251/artifacts/14920777363)。FMF 3,758 bytes，SHA-256：`92aaa02c46a8aec76107274a2735548a343c2d8aa72f092cf179e15f9915791d`。
+- D3 独立回读 8/8 检查、22/22 阶段角色/PI 回读通过；游戏内导入和比赛效果待验证。
