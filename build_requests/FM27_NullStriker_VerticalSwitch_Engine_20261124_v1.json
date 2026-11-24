@@ -27,7 +27,7 @@
     "GK_DISTRIBUTION_(SPEED)": "DEFAULT",
     "PROGRESS_THROUGH": "BOTH_FLANKS",
     "PASS_RECEPTION": "PASS_INTO_SPACE",
-    "SUPPORTING_RUNS": "DEFAULT",
+    "SUPPORTING_RUNS": "RIGHT_INSIDE",
     "SUPPORTING_RUNS_SECONDARY": "DEFAULT",
     "GOALKEEPER_ATTACKING_SET_PIECES": "DEFAULT",
     "PATIENCE": "WORK_BALL_INTO_BOX",
@@ -52,7 +52,7 @@
       },
       "out": {
         "pos": "GK",
-        "role": "OPSweeperKeeper",
+        "role": "SweeperKeeper",
         "pi": [
           [
             "TACKLING",
@@ -78,7 +78,7 @@
       },
       "out": {
         "pos": "DCR",
-        "role": "OPCoveringCentreBack",
+        "role": "CoveringCentreBack",
         "pi": [
           [
             "MARKING",
@@ -108,7 +108,7 @@
       },
       "out": {
         "pos": "DC",
-        "role": "OPCentreBack",
+        "role": "CentreBack",
         "pi": [
           [
             "TRIGGER_PRESS",
@@ -138,7 +138,7 @@
       },
       "out": {
         "pos": "DCL",
-        "role": "OPCoveringCentreBack",
+        "role": "CoveringCentreBack",
         "pi": [
           [
             "MARKING",
@@ -168,7 +168,7 @@
       },
       "out": {
         "pos": "MCL",
-        "role": "OPScreeningCentralMidfielder",
+        "role": "ScreeningCentralMidfielder",
         "pi": [
           [
             "MARKING",
@@ -198,7 +198,7 @@
       },
       "out": {
         "pos": "MCR",
-        "role": "OPScreeningCentralMidfielder",
+        "role": "ScreeningCentralMidfielder",
         "pi": [
           [
             "MARKING",
@@ -236,7 +236,7 @@
       },
       "out": {
         "pos": "DL",
-        "role": "OPHoldingFullBack",
+        "role": "HoldingFullBack",
         "pi": [
           [
             "MARKING",
@@ -274,7 +274,7 @@
       },
       "out": {
         "pos": "DR",
-        "role": "OPHoldingFullBack",
+        "role": "HoldingFullBack",
         "pi": [
           [
             "MARKING",
@@ -308,7 +308,7 @@
       },
       "out": {
         "pos": "ML",
-        "role": "OPTrackingWideMidfielder",
+        "role": "TrackingWideMidfielder",
         "pi": [
           [
             "TRIGGER_PRESS",
@@ -342,7 +342,7 @@
       },
       "out": {
         "pos": "AMC",
-        "role": "OPTrackingAttackingMidfielder",
+        "role": "TrackingAttackingMidfielder",
         "pi": [
           [
             "TRIGGER_PRESS",
@@ -376,7 +376,7 @@
       },
       "out": {
         "pos": "MR",
-        "role": "OPTrackingWideMidfielder",
+        "role": "TrackingWideMidfielder",
         "pi": [
           [
             "TRIGGER_PRESS",
