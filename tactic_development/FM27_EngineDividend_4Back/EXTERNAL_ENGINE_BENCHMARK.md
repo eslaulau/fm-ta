@@ -83,3 +83,23 @@
 - 可迁移到本项目的候选机制：
 - 反例/副作用/证据等级：
 - 下一步本地复现实验：
+
+
+## 外部研究快照｜2026-11-24（V0.3 设计输入）
+
+### 当前受控榜单（FM27 27.1.0）
+- **metaFM**（抓取：2026-11-24 10:04 UTC）：441 套战术、684,691 场总测试；榜首 Vanco Corsair v70 为 2.09 PPG，示例结构 IP 2-4-1-3 DM / OOP 5-2-3，16,016 场、79.6 Pts/38、xG 2.48、xGA 1.60。头部示例为无球五后卫，排除出本项目四后卫成绩基准。协议：同一批 3,977 个 AI game plans、相同球员、主客场对半，分阶段筛选至最多 8,008 场。证据等级 A（平台统一控制测试；单套战术完成场次需单独核对）。来源：[排行榜](https://metafm.net/leaderboard)。
+- **FMDelicious**（抓取：2026-11-24）：协议 `fmd-twin-mid v2`、FM27 27.1.0，266 套、总计 1,608,768 场，每套 6,048 场，95% 误差范围。可明确筛出 IP/OOP 均为 4-2-3-1 的 **FM27 Meta**：#9，66.7±1.2 Pts/38，51% 胜率，78.9 GF/38、53.8 GA/38，xG 2.00、xGA 1.28。属于四后卫比较样本；未取得并解析其 FMF 前，不将 PI/TI 视为已核对配置。证据等级 A。来源：[排行榜](https://fmdelicious.com/tactics?fm_version=FM27&view_mode=all)。
+
+### 四后卫机制候选（FM-Arena 社区测试）
+- **ZaZ - Ace of Diamonds 1.0**：作者标注 base 4-3-3；战术信息截图显示无球后防线为 FB-CB-CB-FB，即真实四后卫，另有 DM、双 CM、双边锋和 CFD。FM27 27.1.0：1,350 场，68/114 分，+24 GD，77 GF、53 GA，xGF 74、xGA 54；FM27 27.0.1：1,350 场，69/114 分，+26 GD，85 GF、59 GA，xGF 76、xGA 56。两 build 分开记录，不合并。来源：[测试主题及原始战术信息图](https://fm-arena.com/threads/zaz-ace-of-diamonds-1-0.84/)。证据等级 B（单一独立测试站、公开 build/样本/主客场拆分；非本项目相同球队条件）。
+- 其 PI 公布：DM `Press More Often`；两名 BCB `Press Less Often`；WB `Press More Often`；CB 短传；WB 内收、少射门、底线传中。TI 包含 More Direct、Much Higher、Much Narrower、Counter、High Press、Much Lower Defensive Line、Counter-Press。仅将“后腰主动触发压迫”登记为可移植的单变量候选，不复制整套战术。图像核对了四后卫 OOP 结构。该作者战术在 metaFM 另一套协议下，27.0.1 为 5,432 场、1.73 PPG；27.1.0 测试在 560 场检查点停止、1.63 PPG。不同协议结果不可直接换算，提示不能把单一榜单当成绝对排名。来源：[metaFM 该战术版本记录](https://metafm.net/zh/tactics/zaz-ace-of-diamonds-1-0-3b0c82)。
+
+### 引擎版本变化
+- 27.1.0 的公开更新整理提及 OOP 压迫决策/强度调整、边路压迫改善、最后一名防守者不再像此前那样大幅前顶，以及 AMC 有球站位变化。此信息来自社区对更新说明的整理，证据等级 C；V0.2 报告来自 27.0.1，不能直接等同于 27.1.0 表现。来源：[27.1.0 变化汇总](https://fm27.vi.ki/tactics-after-update-27-1)。
+
+### 对 V0.3 的实际影响
+- V0.2 新增 4 场联赛样本显示对手 xG 9.52、绝佳机会 17，防守机会质量是首要风险；但只有 4 场，不能归因到单个 PI。
+- V0.2 的 DML OOP `TRIGGER_PRESS=LESS_OFTEN`，而独立四后卫候选将 DM 设为 `Press More Often`。这是角色级候选，不是机制已证实。
+- V0.3 仅把 DML 的 `TRIGGER_PRESS` 从 `LESS_OFTEN` 改为 `MORE_OFTEN`；其余结构与配置全部保持不变，作为单变量本地实验。V0.2 的 `DEFENSIVE_LINE=HIGHER` 保留，因为共同 19 场比较中净胜球改善 +9，当前数据不足以证明防线高度应回退。
+- 27.1.0 排行榜与项目报告的 27.0.1 build 不混排；新版本赛季测试必须记录实际 build。
