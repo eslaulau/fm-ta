@@ -1,0 +1,96 @@
+# FM27 引擎红利四后卫｜版本迭代记录
+
+本文件是 `tactic_development/FM27_EngineDividend_4Back/` 的唯一迭代日志。每次产生新版本时，必须在这里追加记录，不覆盖既有版本记录。
+
+记录原则：
+- 以对应版本 JSON 原文为配置依据，逐项比较父版本与新版本。
+- 明确区分实际改动、未改动部分、改动依据/假设和待实测指标。
+- 不把设计目的写成已证实效果；没有新版本赛季数据时，结果标记为“待实测”。
+- 每次记录新版本的配方文件、构建请求、构建产物及可用的报告/提交信息。
+- V0.1 永久作为基准，不被后续版本覆盖。
+
+---
+
+## V0.1 → V0.2（2026-11-24）
+
+### 版本关系
+- 父版本：[`V0.1.json`](V0.1.json)
+- 新版本：[`V0.2.json`](V0.2.json)
+- 构建请求：[`FM27_EngineDividend_4Back_V0.2_20261124.json`](../../build_requests/FM27_EngineDividend_4Back_V0.2_20261124.json)
+- 构建工作流：[FM27 Tactic Build #135](https://github.com/eslaulau/fm-ta/actions/runs/45377758101)
+- 构建请求 commit：`696b4db67f65c14cc765855e9cea36c44301046a`
+
+### 实际改动清单
+
+本次只调整防守纵深、后场对抗方式和左后腰无球压迫倾向。其余角色、职责、位置转换和球队指令保持不变。
+
+| 配置位置 | 字段 | V0.1 | V0.2 |
+|---|---|---|---|
+| 球队无球指令 | `DEFENSIVE_LINE` | `LOWER` | `HIGHER` |
+| 球队无球指令 | `DEFENSIVE_LINE_BEHAVIOR` | `DROP_OFF_MORE` | 删除该显式覆盖，使用默认行为 |
+| DL 无球 PI | `TACKLING` | `GET_STUCK_IN` | `EASE_OFF_TACKLES` |
+| DCL 无球 PI | `TACKLING` | `GET_STUCK_IN` | `EASE_OFF_TACKLES` |
+| DCR 无球 PI | `TACKLING` | `GET_STUCK_IN` | `EASE_OFF_TACKLES` |
+| DR 无球 PI | `TACKLING` | `GET_STUCK_IN` | `EASE_OFF_TACKLES` |
+| DML 无球 PI | `TRIGGER_PRESS` | `MORE_OFTEN` | `LESS_OFTEN` |
+| DML 无球 PI | `TACKLING` | `GET_STUCK_IN` | `EASE_OFF_TACKLES` |
+| DMR 无球 PI | `TACKLING` | `GET_STUCK_IN` | `EASE_OFF_TACKLES` |
+
+补充说明：
+- GK 的无球 `TACKLING=EASE_OFF_TACKLES` 在 V0.1 已存在，V0.2 没有改变。
+- DCL、DCR 的无球 `TRIGGER_PRESS=LESS_OFTEN` 在 V0.1 已存在，V0.2 没有改变。
+- 前场 MCL、MC、MCR、AMC 的积极对抗设置没有改变。
+- V0.2 删除的是 `DEFENSIVE_LINE_BEHAVIOR` 这一显式字段，不是将其改成另一个显式枚举值。
+
+### 改动依据与设计假设
+
+V0.1 基准报告显示：
+- 联赛 19 场：8 胜、1 平、10 负，21 进球、26 失球。
+- 详细球队统计仅覆盖 9 场，其中 7 场联赛；该联赛样本我方 xG 8.91、对方 xG 12.81，我方绝佳机会 5 次、对方 15 次。
+- 9 场详细样本共 24 张黄牌、81 次犯规。
+
+据此提出以下待检验假设：
+1. 将防线从较低位置提高，并取消额外回撤行为，可能缩短高位逼抢线与后防线之间的纵向距离，减少对手获得高质量机会的空间。
+2. 让 DML 更少主动触发压迫，可能使其更稳定地保护后防线前方区域。
+3. 将 DL、DCL、DCR、DR、DML、DMR 的无球铲抢改为谨慎，可能减少后场犯规和黄牌成本，同时保留前场压迫球员的积极对抗。
+
+这些是配置调整的设计理由，不代表效果已经得到比赛数据证实。V0.1 的详细比赛数据覆盖不完整，也没有逐场战术使用映射，因此不能据此将问题因果归结到某一个 PI/TI。
+
+### 明确保留项
+
+- 11 个球员槽位的 IP/OOP 位置、角色和职责全部保留。
+- IP/OOP 位置转换不变：AML→MCL、AMC→MC、AMR→MCR、ST→AMC。
+- 全部有球 PI 不变。
+- 除表格列出的项目外，其余 OOP PI 不变。
+- 除防线高度及删除的防线行为字段外，其余球队 TI 不变。
+- 心态 `ment=6`、原生风格标识 `Gegenpress` 不变。
+
+### 构建产物记录
+
+- 构建结果：成功。
+- Artifact：`FM27_FM27_EngineDividend_4Back_V0.2_20261124_run135`
+- FMF：`FM27_EngineDividend_4Back_V0.2_20261124_run135.fmf`
+- 文件大小：3,806 bytes
+- SHA-256：`396a46969c6d694d0fd166a880c27cdbff482862728c9a5a196d1b9ef44738e6`
+
+### 比赛表现状态
+
+**待实测。** 当前记录没有 V0.2 的赛季/比赛表现报告，不能宣称防守机会质量、犯规或黄牌已经改善。
+
+后续拿到 V0.2 报告后，优先与 V0.1 按共同样本或每场均值比较：
+- 对手 xGA、绝佳机会、射正；
+- 黄牌、犯规及抢断成功率；
+- 我方 xG、绝佳机会及进攻产量；
+- 越位和传中成功率作为结构监测项。
+
+---
+
+## 后续版本记录模板
+
+每次迭代追加一个新章节，至少包含：
+1. 父版本与新版本 JSON 链接；
+2. 每一项实际变更字段及旧值→新值；
+3. 明确列出保留不变的核心配置；
+4. 对应的基准数据问题与设计假设；
+5. 构建请求、工作流、FMF 产物信息；
+6. 新版本比赛数据状态与后续对比指标。
