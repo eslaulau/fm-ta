@@ -308,8 +308,8 @@
         "role": "Poacher",
         "pi": [
           [
-            "FORWARD_RUNS",
-            "MAKE_MORE_RUNS"
+            "SHOOTING",
+            "SHOOT_LESS_OFTEN"
           ]
         ]
       },
