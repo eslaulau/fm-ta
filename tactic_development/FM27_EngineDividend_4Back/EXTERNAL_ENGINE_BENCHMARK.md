@@ -145,3 +145,13 @@
 - metaFM 27.0.1：150 套、453,062 场；STORMBRINGER 27 BBMIW 424 P102 FA 为 IP 4-2-4/OOP 4-4-2 DM，5,432 场、1.82 PPG、85.3 GF/38、56.6 GA/38、xG 2.14、xGA 1.45。来源：[27.0.1 榜单](https://metafm.net/versions/27.0.1)；[测试协议](https://metafm.net/how-we-test)。证据 A（平台控制协议）；只作四后卫参照，不跨站混排。
 - metaFM 27.1.0 已采用新引擎；版本更新后重新测试。来源：[27.1.0 更新影响](https://metafm.net/patch/27.1.0)。不用于解释本地 27.0.1 赛果。
 - 设计应用：保留 PASS_TO_FEET、原生默认混合传中、LOWER 防线；补左侧宽度、右中卫留守、AMC 减少重复盘带。所有本地效果仍待实测。
+
+
+## 外部研究快照｜2026-11-24（V0.4 run139 报告复核，build 27.0.1）
+
+- FM-Arena 27.0.1：81 套战术、109,350 场。HIGHWAY STAR 27 BBMIW 4231 P96 FA：1,350 场、68/114 分、+27 GD、79:52、xGF72、xGA52；原始战术信息图确认 OOP 四后卫 FB-CB-CB-FB。证据 B。来源：[榜单](https://www.fm-arena.com/tactic-testing/aggregators/1/)；[测试条目](https://fm-arena.com/threads/highway-star-27-bbmiw-4231-p96-fa.110/)。
+- metaFM 27.0.1：150 套、453,062 场；STORMBRINGER 27 BBMIW 424 P102 FA：IP 4-2-4/OOP 4-4-2 DM，5,432 场、1.82 PPG、69.3 Pts/38、85.3 GF/38、56.6 GA/38、xG2.14、xGA1.45。证据 A（固定球员与同一批 2,689 个 AI 对手计划，主客场均衡）。来源：[版本榜单](https://metafm.net/versions/27.0.1)；[测试方法](https://metafm.net/how-we-test)；[STORMBRINGER](https://metafm.net/tactics/stormbringer-27-bbmiw-424-p102-fa-d5a3d4)。
+- 两个测试体系分别存档，PPG、Pts/38、FM-Arena PTS 不换算混排。仅筛选 OOP 真正四后卫的候选，不纳入 3/5 后卫结构成绩。
+- SI 27.1.0 更新包括越位跑动、短传、OOP 压迫和边路压迫等变化；与本项目 27.0.1 build 隔离。来源：[官方更新公告](https://steamcommunity.com/app/4530370/allnews)。
+- 官方引擎说明强调球员智能、Anticipation、Off The Ball 对禁区跑动决策的影响，以及 Marking/Anticipation 对防守表现的影响。来源：[FM27 Match Engine 深度说明](https://www.footballmanager.com/fm27/features/fm27-tactical-tweaks-and-match-engine-upgrades)。
+- 本轮本地数据结论：V0.4 联赛 30 场 13-10-7、50:39、49 分；球队详细联赛统计仅 5 场；94 条逐场出场均未识别身份。V0.5 暂不建配方，避免从不同存档的共同赛程差异推断单一 PI/TI 因果。
