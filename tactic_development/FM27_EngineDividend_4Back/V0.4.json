@@ -54,13 +54,9 @@
     {
       "in": {
         "pos": "DL",
-        "role": "InsideFullBack",
-        "duty": "D",
+        "role": "FullBack",
+        "duty": "S",
         "pi": [
-          [
-            "ATTACKING_WIDTH",
-            "SIT_NARROWER"
-          ],
           [
             "SHOOTING",
             "SHOOT_LESS_OFTEN"
@@ -114,16 +110,12 @@
     {
       "in": {
         "pos": "DCR",
-        "role": "OverlappingCentreBack",
-        "duty": "S",
+        "role": "CentreBack",
+        "duty": "D",
         "pi": [
           [
             "SHOOTING",
             "SHOOT_LESS_OFTEN"
-          ],
-          [
-            "PASSING_STRATEGY",
-            "SHORTER"
           ]
         ]
       },
@@ -265,10 +257,6 @@
         "role": "SecondStriker",
         "duty": "A",
         "pi": [
-          [
-            "DRIBBLING_FREQUENCY",
-            "DRIBBLE_MORE"
-          ],
           [
             "ROAMING",
             "ROAM_FROM_POSITION"
