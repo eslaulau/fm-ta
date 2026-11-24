@@ -30,132 +30,242 @@
       "in": {
         "pos": "GK",
         "role": "BallPlayingGoalkeeper",
-        "pi": []
+        "pi": [
+          [
+            "PASSING_STRATEGY",
+            "SHORTER"
+          ]
+        ]
       },
       "out": {
         "pos": "GK",
         "role": "LineKeeper",
-        "pi": []
+        "pi": [
+          [
+            "TACKLING",
+            "EASE_OFF_TACKLES"
+          ]
+        ]
       }
     },
     {
       "in": {
         "pos": "DR",
         "role": "WingBack",
-        "pi": []
+        "pi": [
+          [
+            "PASSING_STRATEGY",
+            "SHORTER"
+          ]
+        ]
       },
       "out": {
         "pos": "DR",
         "role": "PressingFullBack",
-        "pi": []
+        "pi": [
+          [
+            "MARKING",
+            "MARK_TIGHTER"
+          ]
+        ]
       }
     },
     {
       "in": {
         "pos": "DCR",
         "role": "BallPlayingCentreBack",
-        "pi": []
+        "pi": [
+          [
+            "PASSING_STRATEGY",
+            "SHORTER"
+          ]
+        ]
       },
       "out": {
         "pos": "DCR",
         "role": "CoveringCentreBack",
-        "pi": []
+        "pi": [
+          [
+            "MARKING",
+            "MARK_TIGHTER"
+          ]
+        ]
       }
     },
     {
       "in": {
         "pos": "DCL",
         "role": "CentreBack",
-        "pi": []
+        "pi": [
+          [
+            "PASSING_STRATEGY",
+            "SHORTER"
+          ]
+        ]
       },
       "out": {
         "pos": "DCL",
         "role": "StoppingCentreBack",
-        "pi": []
+        "pi": [
+          [
+            "MARKING",
+            "MARK_TIGHTER"
+          ]
+        ]
       }
     },
     {
       "in": {
         "pos": "DL",
         "role": "InsideFullBack",
-        "pi": []
+        "pi": [
+          [
+            "PASSING_STRATEGY",
+            "SHORTER"
+          ]
+        ]
       },
       "out": {
         "pos": "DL",
         "role": "HoldingFullBack",
-        "pi": []
+        "pi": [
+          [
+            "MARKING",
+            "MARK_TIGHTER"
+          ]
+        ]
       }
     },
     {
       "in": {
         "pos": "DMC",
-        "role": "HalfBack",
-        "pi": []
+        "role": "DefensiveMidfielder",
+        "pi": [
+          [
+            "PASSING_STRATEGY",
+            "SHORTER"
+          ]
+        ]
       },
       "out": {
         "pos": "DMC",
         "role": "ScreeningDefensiveMidfielder",
-        "pi": []
+        "pi": [
+          [
+            "MARKING",
+            "MARK_TIGHTER"
+          ]
+        ]
       }
     },
     {
       "in": {
         "pos": "MCR",
         "role": "AdvancedPlaymaker",
-        "pi": []
+        "pi": [
+          [
+            "PASSING_STRATEGY",
+            "SHORTER"
+          ]
+        ]
       },
       "out": {
         "pos": "MCR",
         "role": "PressingCentralMidfielder",
-        "pi": []
+        "pi": [
+          [
+            "MARKING",
+            "MARK_TIGHTER"
+          ]
+        ]
       }
     },
     {
       "in": {
         "pos": "MCL",
         "role": "CentralMidfielder",
-        "pi": []
+        "pi": [
+          [
+            "PASSING_STRATEGY",
+            "SHORTER"
+          ]
+        ]
       },
       "out": {
         "pos": "MCL",
         "role": "CentralMidfielder",
-        "pi": []
+        "pi": [
+          [
+            "TRIGGER_PRESS",
+            "MORE_OFTEN"
+          ]
+        ]
       }
     },
     {
       "in": {
         "pos": "AMR",
         "role": "Winger",
-        "pi": []
+        "pi": [
+          [
+            "PASSING_STRATEGY",
+            "SHORTER"
+          ]
+        ]
       },
       "out": {
         "pos": "AMR",
         "role": "TrackingWinger",
-        "pi": []
+        "pi": [
+          [
+            "TRIGGER_PRESS",
+            "MORE_OFTEN"
+          ]
+        ]
       }
     },
     {
       "in": {
         "pos": "AML",
         "role": "InsideForward",
-        "pi": []
+        "pi": [
+          [
+            "PASSING_STRATEGY",
+            "SHORTER"
+          ]
+        ]
       },
       "out": {
         "pos": "AML",
         "role": "InsideOutletWinger",
-        "pi": []
+        "pi": [
+          [
+            "TRIGGER_PRESS",
+            "MORE_OFTEN"
+          ]
+        ]
       }
     },
     {
       "in": {
         "pos": "ST",
         "role": "ChannelForward",
-        "pi": []
+        "pi": [
+          [
+            "PASSING_STRATEGY",
+            "SHORTER"
+          ]
+        ]
       },
       "out": {
         "pos": "ST",
         "role": "TrackingCentreForward",
-        "pi": []
+        "pi": [
+          [
+            "TRIGGER_PRESS",
+            "MORE_OFTEN"
+          ]
+        ]
       }
     }
   ]
