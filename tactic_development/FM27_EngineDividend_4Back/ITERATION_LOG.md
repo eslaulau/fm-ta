@@ -331,3 +331,47 @@ V0.2 新增的 4 场联赛（2027-01-06、01-17、01-23、01-26）全部失利�
 
 ### 生效方式
 自本次提交起，所有“赛季报告在仓库/已上传/已提交”通知自动触发新门禁。未完成 G5–G7 不得声称战术分析完成或只改 TI 后直接构建；所有未完成项必须显式报告。
+
+
+---
+
+## V0.4 重做版（2026-11-24）
+
+### 重做原因与版本关系
+- 父版本：V0.3；本次复用 V0.4 编号，撤下旧 V0.4 迭代报告并按新增 G1–G10 门禁重新审查。
+- 旧版未提供全位置角色矩阵、逐条 PI 审查和组合冲突表，因此不再作为有效迭代结论引用。
+- 完整审查：[V0.4_ROLE_PI_AUDIT.md](V0.4_ROLE_PI_AUDIT.md)。
+
+### 实际改动（相对 V0.3）
+| 项目 | 旧值 | 新值 |
+|---|---|---|
+| TI PASS_RECEPTION | PASS_INTO_SPACE | PASS_TO_FEET |
+| TI CROSSING_STYLE | LOW_CROSSES | 删除显式覆盖，使用原生默认混合传中 |
+| TI DEFENSIVE_LINE | HIGHER | LOWER |
+| IP DL | InsideFullBack/D；SIT_NARROWER + SHOOT_LESS_OFTEN | FullBack/S；仅保留 SHOOT_LESS_OFTEN |
+| IP DCR | OverlappingCentreBack/S；SHOOT_LESS_OFTEN + SHORTER | CentreBack/D；仅保留 SHOOT_LESS_OFTEN |
+| IP AMC | DRIBBLE_MORE + ROAM_FROM_POSITION | 仅 ROAM_FROM_POSITION |
+
+### 设计依据与风险
+- 左侧 InsideFullBack 收窄、AML 内切、DML HalfBack 回撤叠加，造成左侧宽度不足；FullBack S 提供外线接应。
+- 右侧 OverlappingCentreBack S 与 WingBack S、WideForward A 同时前进，形成右侧堆叠；DCR 改 CentreBack D 留守，保留 DCL BPD 作为主要出球中卫。
+- AML/AMC/AMR 三名攻击手均主动盘带，AMC 同时游弋；移除 AMC DRIBBLE_MORE，保留两翼持球突破和 SS 游弋。
+- PASS_TO_FEET、混合传中默认、较低防线分别针对越位/低传中效率/身后空间风险；收益与副作用均待实测。
+- 所有设计均为配置层假设，不是比赛引擎已证实的单项因果。
+
+### 保留项
+- IP 4-2-3-1、OOP 四后卫、11 个槽位与 AML→MCL、AMC→MC、AMR→MCR、ST→AMC 转换。
+- DML OOP TRIGGER_PRESS=MORE_OFTEN；双 OOP CoveringCentreBack、双 PressingFullBack；前场三名 PressingCentralMidfielder。
+- DCL BallPlayingCentreBack、DR WingBack、双后腰、FalseNine/SecondStriker/InsideForward/WideForward 核心。
+- 除表格列出的字段外，其余 PI/TI、心态和 Gegenpress 原生风格保持 V0.3 原值。
+
+### 外部研究与证据边界
+- FM-Arena 27.0.1：81 套、109,350 场；HIGHWAY STAR 27 BBMIW 4231 P96 FA 1,350 场，OOP 信息图确认四后卫 FB-CB-CB-FB；证据 B。
+- metaFM 27.0.1：150 套、453,062 场；STORMBRINGER 27 BBMIW 424 P102 FA 为 IP 4-2-4/OOP 4-4-2 DM，5,432 场、1.82 PPG、xG 2.14、xGA 1.45；协议证据 A。
+- 27.1.0 结果与本地 27.0.1 build 隔离，不用于解释 V0.3 报告。
+- 外部来源只提供四后卫结构/测试参照，不能证明本轮具体角色或 PI 变更的因果效果。
+
+### 门禁与状态
+- G1–G9：完成；G5–G7 细节见专项审查。
+- G10：本轮配方、专项审查、README、日志归档；FMF 构建完成后补充 run/artifact/SHA。
+- 配置层审查 COMPLETE；游戏内导入和比赛效果待验证。
