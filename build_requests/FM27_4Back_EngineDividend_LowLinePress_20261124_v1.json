@@ -282,12 +282,8 @@
         "role": "ChannelForward",
         "pi": [
           [
-            "ATTACK_BOX_SIDE",
-            "FAR_POST"
-          ],
-          [
-            "SHOOTING",
-            "SHOOT_LESS_OFTEN"
+            "FORWARD_RUNS",
+            "MAKE_MORE_RUNS"
           ]
         ]
       },
