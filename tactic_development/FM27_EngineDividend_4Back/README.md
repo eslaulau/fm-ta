@@ -105,3 +105,11 @@ DL、DCL、DCR、DR、DML、DMR 的 OOP `TACKLING` 由 `GET_STUCK_IN` 改为 `EA
 ## 外部研究与排行榜交叉基准
 
 后续每轮战术分析必须联网检索当前 FM27 build 的引擎机制研究、受控战术榜单、社区实测库和战术结构分析工具。必须区分测试协议与版本，单独筛选无球阶段真实四后卫；三中卫/五后卫高排名仅用于寻找候选机制，不得混入四后卫成绩基准。来源分级、筛选和归档规范见 [ANALYSIS_AND_ITERATION_RULES.md](ANALYSIS_AND_ITERATION_RULES.md)，动态快照见 [EXTERNAL_ENGINE_BENCHMARK.md](EXTERNAL_ENGINE_BENCHMARK.md)。
+
+
+## V0.3 单变量实验（2026-11-24）
+- [V0.3 配方](V0.3.json)：以 V0.2 为父版本，仅将 DML 无球 `TRIGGER_PRESS` 从 `LESS_OFTEN` 改为 `MORE_OFTEN`。
+- [V0.3 构建请求](../../build_requests/FM27_EngineDividend_4Back_V0.3_20261124.json)。
+- 本轮不是宣称已验证的性能升级，而是依据 V0.2 防守机会质量风险及外部四后卫 DM 压迫候选，设计的单变量实验。其余配置全部保持不变。
+- 实测要求：至少 8–10 场同口径球队详细统计，记录实际 FM27 build；以对手 xG/绝佳机会/射门和我方 xG/绝佳机会为主，不分析犯规、黄牌、红牌。
+- 当前外部研究快照与证据分级见 [EXTERNAL_ENGINE_BENCHMARK.md](EXTERNAL_ENGINE_BENCHMARK.md)；完整决策见 [ITERATION_LOG.md](ITERATION_LOG.md)。
