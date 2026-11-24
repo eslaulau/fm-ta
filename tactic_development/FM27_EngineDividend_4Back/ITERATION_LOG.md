@@ -206,5 +206,9 @@ V0.2 新增的 4 场联赛（2027-01-06、01-17、01-23、01-26）全部失利�
 - 判断标准：若对手机会质量下降且我方进攻产量未明显受损，保留；若对手机会质量上升或中场屏障明显失效，回退至 `LESS_OFTEN`；若差异不稳定，延长样本，不宣称结论。
 
 ### 构建与比赛状态
-- 配方与构建请求归档后，等待 GitHub Actions 原生 FMF 构建及 D3 独立回读。
-- 构建通过仅证明文件生成/回读；游戏导入和比赛表现仍待实测。
+- GitHub Actions：[FM27 Tactic Build #136](https://github.com/eslaulau/fm-ta/actions/runs/45388048044)，状态成功。
+- Artifact：`FM27_FM27_EngineDividend_4Back_V0.3_20261124_run136`（Artifact ID `14917077576`）。
+- FMF：`FM27_EngineDividend_4Back_V0.3_20261124_run136.fmf`；3,806 bytes。
+- SHA-256：`fe17432d0f2fa5bdc803c179ff7a861effc41c58f4fcc52a30f09ff8188a5aff`。
+- D3 独立回读：8 项必需检查全部通过；11/11 IP/OOP 配对，22/22 位置/角色/PI 设计与回读一致，PI 权限及 TI 向量、原生风格字段通过。
+- 状态：`offline_binary_roundtrip_verified_not_game_import_verified`。游戏内导入和比赛表现仍待实测。
