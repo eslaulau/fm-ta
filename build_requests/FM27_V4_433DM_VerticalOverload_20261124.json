@@ -18,12 +18,12 @@
     "GOALKEEPER_DISTRIBUTION": "OVER_OPPOSITION_DEFENCE",
     "GK_DISTRIBUTION_(SPEED)": "DISTRIBUTE_QUICKLY",
     "PASS_RECEPTION": "PASS_INTO_SPACE",
-    "SUPPORTING_RUNS": "BOTH_FLANKS",
+    "SUPPORTING_RUNS": "RIGHT_INSIDE",
     "PATIENCE": "HIT_EARLY_CROSSES",
     "DRIBBLING": "ENCOURAGE",
     "SHOTS_FROM_DISTANCE": "DISCOURAGE",
     "CROSSING_STYLE": "WHIPPED_CROSSES",
-    "PROGRESS_THROUGH": "BOTH_FLANKS",
+    "PROGRESS_THROUGH": "RIGHT",
     "LINE_OF_ENGAGEMENT": "HIGH_PRESS",
     "DEFENSIVE_LINE": "MUCH_HIGHER",
     "DEFENSIVE_LINE_BEHAVIOR": "STEP_UP_MORE",
@@ -60,12 +60,8 @@
     {
       "in": {
         "pos": "DR",
-        "role": "WingBack",
+        "role": "FullBack",
         "pi": [
-          [
-            "ATTACKING_WIDTH",
-            "STAY_WIDER"
-          ],
           [
             "CROSSING_FREQUENCY",
             "BYLINE"
@@ -77,8 +73,8 @@
         "role": "PressingFullBack",
         "pi": [
           [
-            "MARKING",
-            "MARK_TIGHTER"
+            "TACKLING",
+            "GET_STUCK_IN"
           ]
         ]
       }
@@ -90,7 +86,7 @@
         "pi": [
           [
             "PASSING_STRATEGY",
-            "MORE_DIRECT"
+            "SHORTER"
           ]
         ]
       },
@@ -118,11 +114,11 @@
       },
       "out": {
         "pos": "DCL",
-        "role": "CentreBack",
+        "role": "StoppingCentreBack",
         "pi": [
           [
-            "TRIGGER_PRESS",
-            "MORE_OFTEN"
+            "TACKLING",
+            "GET_STUCK_IN"
           ]
         ]
       }
@@ -130,21 +126,21 @@
     {
       "in": {
         "pos": "DL",
-        "role": "FullBack",
+        "role": "WingBack",
         "pi": [
           [
-            "FORWARD_RUNS",
-            "MAKE_MORE_RUNS"
+            "CROSSING_TARGET",
+            "BACK_POST"
           ]
         ]
       },
       "out": {
         "pos": "DL",
-        "role": "PressingFullBack",
+        "role": "FullBack",
         "pi": [
           [
-            "MARKING",
-            "MARK_TIGHTER"
+            "TRIGGER_PRESS",
+            "LESS_OFTEN"
           ]
         ]
       }
@@ -188,7 +184,7 @@
       },
       "out": {
         "pos": "MCR",
-        "role": "PressingCentralMidfielder",
+        "role": "ScreeningCentralMidfielder",
         "pi": [
           [
             "TACKLING",
@@ -203,18 +199,58 @@
         "role": "CentralMidfielder",
         "pi": [
           [
-            "FORWARD_RUNS",
-            "KEEP_POSITION"
-          ],
-          [
-            "PASSING_RISKS",
-            "TAKE_FEWER_RISKS"
+            "ROAMING",
+            "ROAM_FROM_POSITION"
           ]
         ]
       },
       "out": {
         "pos": "MCL",
-        "role": "CentralMidfielder",
+        "role": "PressingCentralMidfielder",
+        "pi": [
+          [
+            "TACKLING",
+            "GET_STUCK_IN"
+          ]
+        ]
+      }
+    },
+    {
+      "in": {
+        "pos": "AMR",
+        "role": "InsideForward",
+        "pi": [
+          [
+            "CROSSING_TARGET",
+            "BACK_POST"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "MR",
+        "role": "TrackingWideMidfielder",
+        "pi": [
+          [
+            "TRIGGER_PRESS",
+            "LESS_OFTEN"
+          ]
+        ]
+      }
+    },
+    {
+      "in": {
+        "pos": "AML",
+        "role": "Winger",
+        "pi": [
+          [
+            "ATTACKING_WIDTH",
+            "STAY_WIDER"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "ML",
+        "role": "TrackingWideMidfielder",
         "pi": [
           [
             "MARKING",
@@ -225,68 +261,12 @@
     },
     {
       "in": {
-        "pos": "AMR",
-        "role": "Winger",
-        "pi": [
-          [
-            "ATTACKING_WIDTH",
-            "STAY_WIDER"
-          ],
-          [
-            "DRIBBLING_DIRECTION",
-            "RUN_WIDE_WITH_BALL"
-          ]
-        ]
-      },
-      "out": {
-        "pos": "MR",
-        "role": "TrackingWideMidfielder",
-        "pi": [
-          [
-            "TRIGGER_PRESS",
-            "MORE_OFTEN"
-          ]
-        ]
-      }
-    },
-    {
-      "in": {
-        "pos": "AML",
-        "role": "InsideForward",
-        "pi": [
-          [
-            "DRIBBLING_DIRECTION",
-            "CUT_INSIDE_WITH_BALL"
-          ],
-          [
-            "SHOOTING",
-            "SHOOT_MORE_OFTEN"
-          ]
-        ]
-      },
-      "out": {
-        "pos": "ML",
-        "role": "TrackingWideMidfielder",
-        "pi": [
-          [
-            "TRIGGER_PRESS",
-            "MORE_OFTEN"
-          ]
-        ]
-      }
-    },
-    {
-      "in": {
         "pos": "ST",
-        "role": "ChannelForward",
+        "role": "CentreForward",
         "pi": [
           [
-            "FORWARD_RUNS",
-            "MAKE_MORE_RUNS"
-          ],
-          [
-            "SHOOTING",
-            "SHOOT_MORE_OFTEN"
+            "ATTACK_BOX_DEPTH",
+            "LATE_RUNS"
           ]
         ]
       },
@@ -295,8 +275,8 @@
         "role": "TrackingCentreForward",
         "pi": [
           [
-            "TRIGGER_PRESS",
-            "MORE_OFTEN"
+            "TACKLING",
+            "EASE_OFF_TACKLES"
           ]
         ]
       }
