@@ -38,7 +38,7 @@
       },
       "out": {
         "pos": "GK",
-        "role": "OPGoalkeeper",
+        "role": "Goalkeeper",
         "pi": [
           [
             "TACKLING",
@@ -72,7 +72,7 @@
       },
       "out": {
         "pos": "DL",
-        "role": "OPHoldingFullBack",
+        "role": "HoldingFullBack",
         "pi": [
           [
             "TACKLING",
@@ -98,7 +98,7 @@
       },
       "out": {
         "pos": "DCL",
-        "role": "OPCoveringCentreBack",
+        "role": "CoveringCentreBack",
         "pi": [
           [
             "TACKLING",
@@ -124,7 +124,7 @@
       },
       "out": {
         "pos": "DCR",
-        "role": "OPCoveringCentreBack",
+        "role": "CoveringCentreBack",
         "pi": [
           [
             "TACKLING",
@@ -158,7 +158,7 @@
       },
       "out": {
         "pos": "DR",
-        "role": "OPHoldingFullBack",
+        "role": "HoldingFullBack",
         "pi": [
           [
             "TACKLING",
@@ -180,7 +180,7 @@
       },
       "out": {
         "pos": "MCL",
-        "role": "OPScreeningCentralMidfielder",
+        "role": "ScreeningCentralMidfielder",
         "pi": [
           [
             "TACKLING",
@@ -202,7 +202,7 @@
       },
       "out": {
         "pos": "MCR",
-        "role": "OPPressingCentralMidfielder",
+        "role": "PressingCentralMidfielder",
         "pi": [
           [
             "TACKLING",
@@ -228,7 +228,7 @@
       },
       "out": {
         "pos": "AML",
-        "role": "OPTrackingWinger",
+        "role": "TrackingWinger",
         "pi": [
           [
             "TACKLING",
@@ -254,7 +254,7 @@
       },
       "out": {
         "pos": "AMR",
-        "role": "OPTrackingWinger",
+        "role": "TrackingWinger",
         "pi": [
           [
             "TACKLING",
@@ -276,7 +276,7 @@
       },
       "out": {
         "pos": "STL",
-        "role": "OPTrackingCentreForward",
+        "role": "TrackingCentreForward",
         "pi": [
           [
             "TACKLING",
@@ -302,7 +302,7 @@
       },
       "out": {
         "pos": "STR",
-        "role": "OPCentralOutletCentreForward",
+        "role": "CentralOutletCentreForward",
         "pi": [
           [
             "TACKLING",
