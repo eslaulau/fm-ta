@@ -17,6 +17,13 @@
 4. 将 JSON 文件放在本目录的直接子路径，例如 `build_requests/My_Original_Tactic.json`。
 5. 每次 push 事件只新增/修改一份待构建 JSON；多份配方应分开 push。提交到 `main` 后会自动触发构建。
 
+## 快速构建路径（2026-11 更新）
+
+- **Catalog 指纹缓存：** 助手端以 `catalog.json` 的 Git blob SHA / 内容指纹作为缓存键。指纹未变化时复用已读取的角色、职责、位置资格与 PI 权限索引；指纹变化时才重新读取。catalog 始终以仓库当前版本为准，不使用过期缓存做构建验收。
+- **PI 预检前移：** `scripts/preflight_fm27_tactic.py` 在正式构建前一次检查 11 个槽位的 22 个阶段，包括原生位置归一化、角色阶段与位置资格、duty、每条 PI 的 catalog 权限、22/22 非空 PI、TI 编码映射和原生风格登记。预检失败不启动 FMF 生成。
+- **依赖缓存：** Actions 使用 `setup-python` 的 pip cache，缓存键由 `requirements.txt` 决定；依赖未变化时跳过重复下载。
+- **直接 API 触发：** 工作流保留 `repository_dispatch` 的 `fm27_tactic_build` 事件，配方作为 `client_payload.recipe` 直接传入，不创建配方文件、不产生配方 Git commit。调用方需有仓库 `contents:write` 权限。当前对话连接提供 GitHub GET/文件写入操作，但不提供任意 POST dispatch 操作；因此本次已完成工作流接收端和预检接入，不能声称已从本对话直接 POST 触发。可用的文件提交 push 路径仍作为自动构建后备方案。
+
 ## 云端工作流
 
 工作流：`.github/workflows/fm27-tactic-build.yml`
@@ -40,7 +47,7 @@ python "04_离线原生FMF生成器/FM27GEN1_Offline_FMF_Generator.py" "build_re
 
 ## 自动验收
 
-工作流先运行 direct-JSON 到原生 FMF 的端到端回归测试，再对本次请求检查 PI/TI 映射和 22 个阶段权限，随后实际生成本次 `.fmf` 与 `.report.json`。要求 22 个阶段设计表与回读表均完整，容器、TAC、位置/角色/职责/PI、TI、原生风格字段的独立回读检查全部通过。
+工作流先运行 direct-JSON 与实验映射回归测试，再运行 catalog-backed preflight：对 22 个阶段逐项检查角色/位置/duty、PI 权限、TI 映射和风格登记；全部通过后才实际生成本次 `.fmf` 与 `.report.json`。要求 22 个阶段设计表与回读表均完整，容器、TAC、位置/角色/职责/PI、TI、原生风格字段的独立回读检查全部通过。
 
 ### 直接 API 载荷示例
 
