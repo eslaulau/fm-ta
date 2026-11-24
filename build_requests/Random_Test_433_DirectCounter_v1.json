@@ -1,0 +1,162 @@
+{
+  "v": 1,
+  "name": "Random_Test_433_DirectCounter_v1",
+  "ment": 5,
+  "base": {
+    "g": "Fluid Counter Attack",
+    "ip": "4-1-2-3",
+    "oop": "4-1-2-3"
+  },
+  "ti": {
+    "TEMPO": "HIGHER",
+    "PASSING_DIRECTNESS": "MORE_DIRECT",
+    "ATTACKING_WIDTH": "WIDER",
+    "ATTACKING_TRANSITION": "COUNTER_ATTACK",
+    "BUILD_UP_STRATEGY": "BYPASS_PRESS",
+    "GOAL_KICKS": "LONG",
+    "GOALKEEPER_DISTRIBUTION": "FULL_BACKS",
+    "PASS_RECEPTION": "PASS_INTO_SPACE",
+    "PATIENCE": "HIT_EARLY_CROSSES",
+    "SHOTS_FROM_DISTANCE": "DISCOURAGE",
+    "LINE_OF_ENGAGEMENT": "MID_BLOCK",
+    "DEFENSIVE_LINE": "LOWER",
+    "DEFENSIVE_LINE_BEHAVIOR": "DROP_OFF_MORE",
+    "TRIGGER_PRESS": "MORE_OFTEN",
+    "DEFENSIVE_TRANSITION": "REGROUP",
+    "TIME_WASTING": "LESS_OFTEN"
+  },
+  "p": [
+    {
+      "in": {
+        "pos": "GK",
+        "role": "BallPlayingGoalkeeper",
+        "pi": []
+      },
+      "out": {
+        "pos": "GK",
+        "role": "LineKeeper",
+        "pi": []
+      }
+    },
+    {
+      "in": {
+        "pos": "DR",
+        "role": "WingBack",
+        "pi": []
+      },
+      "out": {
+        "pos": "DR",
+        "role": "PressingFullBack",
+        "pi": []
+      }
+    },
+    {
+      "in": {
+        "pos": "DCR",
+        "role": "BallPlayingCentreBack",
+        "pi": []
+      },
+      "out": {
+        "pos": "DCR",
+        "role": "CoveringCentreBack",
+        "pi": []
+      }
+    },
+    {
+      "in": {
+        "pos": "DCL",
+        "role": "CentreBack",
+        "pi": []
+      },
+      "out": {
+        "pos": "DCL",
+        "role": "StoppingCentreBack",
+        "pi": []
+      }
+    },
+    {
+      "in": {
+        "pos": "DL",
+        "role": "InsideFullBack",
+        "pi": []
+      },
+      "out": {
+        "pos": "DL",
+        "role": "HoldingFullBack",
+        "pi": []
+      }
+    },
+    {
+      "in": {
+        "pos": "DMC",
+        "role": "HalfBack",
+        "pi": []
+      },
+      "out": {
+        "pos": "DMC",
+        "role": "ScreeningDefensiveMidfielder",
+        "pi": []
+      }
+    },
+    {
+      "in": {
+        "pos": "MCR",
+        "role": "AdvancedPlaymaker",
+        "pi": []
+      },
+      "out": {
+        "pos": "MCR",
+        "role": "PressingCentralMidfielder",
+        "pi": []
+      }
+    },
+    {
+      "in": {
+        "pos": "MCL",
+        "role": "CentralMidfielder",
+        "pi": []
+      },
+      "out": {
+        "pos": "MCL",
+        "role": "CentralMidfielder",
+        "pi": []
+      }
+    },
+    {
+      "in": {
+        "pos": "AMR",
+        "role": "Winger",
+        "pi": []
+      },
+      "out": {
+        "pos": "AMR",
+        "role": "TrackingWinger",
+        "pi": []
+      }
+    },
+    {
+      "in": {
+        "pos": "AML",
+        "role": "InsideForward",
+        "pi": []
+      },
+      "out": {
+        "pos": "AML",
+        "role": "InsideOutletWinger",
+        "pi": []
+      }
+    },
+    {
+      "in": {
+        "pos": "ST",
+        "role": "ChannelForward",
+        "pi": []
+      },
+      "out": {
+        "pos": "ST",
+        "role": "TrackingCentreForward",
+        "pi": []
+      }
+    }
+  ]
+}
