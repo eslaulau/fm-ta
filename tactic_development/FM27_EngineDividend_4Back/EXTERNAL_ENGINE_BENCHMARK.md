@@ -136,3 +136,12 @@
 - **metaFM 27.0.1**：当前归档 150 套战术、453,062 场；STORMBRINGER 27 BBMIW 424 P102 FA 明确为 IP 4-2-4 / OOP 4-4-2 DM，5,432 场、1.82 PPG、69.3 Pts/38、85.3 GF/38、56.6 GA/38、xG 2.14、xGA 1.45。协议固定相同球员与 2,689 个 AI 对手计划，主客场平衡。证据等级 A（受控协议）；仅用于四后卫结构成绩参照，不将其配置因果移植到 V0.4。来源：[榜单](https://metafm.net/versions/27.0.1)；[方法](https://metafm.net/how-we-test)。
 - **FM-Arena 与 metaFM 当前样本差异**：FM-Arena 27.0.1 的 81 套/109,350 场与 metaFM 的 150 套/453,062 场采用不同协议，分别存档，不换算混排。
 - **设计应用**：V0.4 将 DEFENSIVE_LINE 从 HIGHER 调至 LOWER，参考 FM-Arena 四后卫候选的高位逼抢+较低防线组合；将 PASS_RECEPTION 调为 PASS_TO_FEET、删除 CROSSING_STYLE=LOW_CROSSES 显式覆盖，使用 catalog 原生默认混合传中（native bit 0），是针对本地 V0.3 90 次越位与低传中成功率的本地数据驱动修正，不是外部榜单已验证的固定配方。
+
+
+## 外部基准快照｜2026-11-24（重做 V0.4，锁定 FM27 27.0.1）
+
+- FM-Arena 27.0.1：81 套战术、109,350 场；本地报告 build 27.0.1+2494687 与其版本一致。来源：[FM-Arena 27.0.1](https://fm-arena.com/tactic-testing/aggregators/1/)。证据 A（榜单整体测试数据）。
+- HIGHWAY STAR 27 BBMIW 4231 P96 FA：1,350 场、68/114 分、+27 GD、79 GF、52 GA、xGF 72、xGA 52；原始战术信息图显示 OOP 为 FB-CB-CB-FB。来源：[测试主题](https://fm-arena.com/threads/highway-star-27-bbmiw-4231-p96-fa.110/)；[战术信息图](https://www.fm-arena.com/data/fmt_tactic_info/0/508-e41f9d790a6091b3c15fdc531aa7b8bc.webp)。证据 B；支持高位压迫与四后卫、较低防线共存，不证明单一指令因果。
+- metaFM 27.0.1：150 套、453,062 场；STORMBRINGER 27 BBMIW 424 P102 FA 为 IP 4-2-4/OOP 4-4-2 DM，5,432 场、1.82 PPG、85.3 GF/38、56.6 GA/38、xG 2.14、xGA 1.45。来源：[27.0.1 榜单](https://metafm.net/versions/27.0.1)；[测试协议](https://metafm.net/how-we-test)。证据 A（平台控制协议）；只作四后卫参照，不跨站混排。
+- metaFM 27.1.0 已采用新引擎；版本更新后重新测试。来源：[27.1.0 更新影响](https://metafm.net/patch/27.1.0)。不用于解释本地 27.0.1 赛果。
+- 设计应用：保留 PASS_TO_FEET、原生默认混合传中、LOWER 防线；补左侧宽度、右中卫留守、AMC 减少重复盘带。所有本地效果仍待实测。
