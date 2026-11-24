@@ -141,3 +141,11 @@ DL、DCL、DCR、DR、DML、DMR 的 OOP `TACKLING` 由 `GET_STUCK_IN` 改为 `EA
 - 目的：减少高风险身后球带来的越位、减少强制低平传中依赖，并降低高防线身后纵深风险。
 - 保留 V0.3 的 4-2-3-1 IP / 四后卫 OOP、所有角色职责、PI、DML TRIGGER_PRESS=MORE_OFTEN、高位逼抢、立即反抢、两翼推进、反击和其余 TI。
 - 本轮是基于现有报告与外部 27.0.1 四后卫候选机制的定向升级；以上改动的比赛效果均待 V0.4 实测，不能将构建回读当作比赛表现证明。
+
+### V0.4 原生构建记录
+- GitHub Actions：[FM27 Tactic Build #138](https://github.com/eslaulau/fm-ta/actions/runs/45392679696) 成功。
+- Artifact：[FM27_FM27_EngineDividend_4Back_V0.4_20261124_run138](https://github.com/eslaulau/fm-ta/actions/runs/45392679696/artifacts/14919451882)。
+- FMF：FM27_EngineDividend_4Back_V0.4_20261124_run138.fmf；3,806 bytes。
+- SHA-256：aac9657d4d92cec9bc24c69f00d363a14ca1fa383468f755c8c970f55ca090f5。
+- D3 独立回读全部通过：FMF 容器/成员校验、TAC 完整解析、11 组 IP/OOP、22 个阶段角色/PI 回读、PI 权限、TI 向量及原生风格字段均通过。
+- 状态：offline_binary_roundtrip_verified_not_game_import_verified。尚未验证游戏内导入和比赛表现。
