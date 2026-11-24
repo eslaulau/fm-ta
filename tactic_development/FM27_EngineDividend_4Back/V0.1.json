@@ -1,0 +1,353 @@
+{
+  "v": 1,
+  "name": "FM27_EngineDividend_4Back_V0.1",
+  "ment": 6,
+  "base": {
+    "g": "Gegenpress"
+  },
+  "ti": {
+    "PASSING_DIRECTNESS": "MORE_DIRECT",
+    "TEMPO": "HIGHER",
+    "ATTACKING_WIDTH": "WIDER",
+    "ATTACKING_TRANSITION": "COUNTER_ATTACK",
+    "BUILD_UP_STRATEGY": "PLAY_THROUGH_PRESS",
+    "PASS_RECEPTION": "PASS_INTO_SPACE",
+    "PATIENCE": "WORK_BALL_INTO_BOX",
+    "SHOTS_FROM_DISTANCE": "DISCOURAGE",
+    "CROSSING_STYLE": "LOW_CROSSES",
+    "PROGRESS_THROUGH": "BOTH_FLANKS",
+    "GOALKEEPER_DISTRIBUTION": "FULL_BACKS",
+    "GOAL_KICKS": "SHORT",
+    "SHORT_GOALKEEPER_DISTRIBUTION": "YES",
+    "LINE_OF_ENGAGEMENT": "HIGH_PRESS",
+    "DEFENSIVE_LINE": "LOWER",
+    "DEFENSIVE_LINE_BEHAVIOR": "DROP_OFF_MORE",
+    "TRIGGER_PRESS": "MORE_OFTEN",
+    "DEFENSIVE_TRANSITION": "COUNTER_PRESS",
+    "TACKLING": "DEFAULT",
+    "PRESSING_TRAP": "TRAP_OUTSIDE",
+    "CROSS_ENGAGEMENT": "INVITE_CROSSES"
+  },
+  "p": [
+    {
+      "in": {
+        "pos": "GK",
+        "role": "BallPlayingGoalkeeper",
+        "duty": "S",
+        "pi": [
+          [
+            "PASSING_STRATEGY",
+            "SHORTER"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "GK",
+        "role": "Goalkeeper",
+        "duty": "S",
+        "pi": [
+          [
+            "TACKLING",
+            "EASE_OFF_TACKLES"
+          ]
+        ]
+      }
+    },
+    {
+      "in": {
+        "pos": "DL",
+        "role": "InsideFullBack",
+        "duty": "D",
+        "pi": [
+          [
+            "ATTACKING_WIDTH",
+            "SIT_NARROWER"
+          ],
+          [
+            "SHOOTING",
+            "SHOOT_LESS_OFTEN"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "DL",
+        "role": "PressingFullBack",
+        "duty": "S",
+        "pi": [
+          [
+            "TACKLING",
+            "GET_STUCK_IN"
+          ]
+        ]
+      }
+    },
+    {
+      "in": {
+        "pos": "DCL",
+        "role": "BallPlayingCentreBack",
+        "duty": "D",
+        "pi": [
+          [
+            "SHOOTING",
+            "SHOOT_LESS_OFTEN"
+          ],
+          [
+            "PASSING_STRATEGY",
+            "SHORTER"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "DCL",
+        "role": "CoveringCentreBack",
+        "duty": "D",
+        "pi": [
+          [
+            "TRIGGER_PRESS",
+            "LESS_OFTEN"
+          ],
+          [
+            "TACKLING",
+            "GET_STUCK_IN"
+          ]
+        ]
+      }
+    },
+    {
+      "in": {
+        "pos": "DCR",
+        "role": "OverlappingCentreBack",
+        "duty": "S",
+        "pi": [
+          [
+            "SHOOTING",
+            "SHOOT_LESS_OFTEN"
+          ],
+          [
+            "PASSING_STRATEGY",
+            "SHORTER"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "DCR",
+        "role": "CoveringCentreBack",
+        "duty": "D",
+        "pi": [
+          [
+            "TRIGGER_PRESS",
+            "LESS_OFTEN"
+          ],
+          [
+            "TACKLING",
+            "GET_STUCK_IN"
+          ]
+        ]
+      }
+    },
+    {
+      "in": {
+        "pos": "DR",
+        "role": "WingBack",
+        "duty": "S",
+        "pi": [
+          [
+            "ATTACKING_WIDTH",
+            "SIT_NARROWER"
+          ],
+          [
+            "SHOOTING",
+            "SHOOT_LESS_OFTEN"
+          ],
+          [
+            "CROSSING_FREQUENCY",
+            "BYLINE"
+          ],
+          [
+            "CROSSING_TARGET",
+            "BACK_POST"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "DR",
+        "role": "PressingFullBack",
+        "duty": "S",
+        "pi": [
+          [
+            "TACKLING",
+            "GET_STUCK_IN"
+          ]
+        ]
+      }
+    },
+    {
+      "in": {
+        "pos": "DML",
+        "role": "HalfBack",
+        "duty": "D",
+        "pi": [
+          [
+            "PASSING_STRATEGY",
+            "SHORTER"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "DML",
+        "role": "DroppingDefensiveMidfielder",
+        "duty": "D",
+        "pi": [
+          [
+            "TRIGGER_PRESS",
+            "MORE_OFTEN"
+          ],
+          [
+            "TACKLING",
+            "GET_STUCK_IN"
+          ]
+        ]
+      }
+    },
+    {
+      "in": {
+        "pos": "DMR",
+        "role": "DeepLyingPlaymaker",
+        "duty": "S",
+        "pi": [
+          [
+            "PASSING_STRATEGY",
+            "SHORTER"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "DMR",
+        "role": "PressingDefensiveMidfielder",
+        "duty": "S",
+        "pi": [
+          [
+            "TACKLING",
+            "GET_STUCK_IN"
+          ]
+        ]
+      }
+    },
+    {
+      "in": {
+        "pos": "AML",
+        "role": "InsideForward",
+        "duty": "A",
+        "pi": [
+          [
+            "DRIBBLING_FREQUENCY",
+            "DRIBBLE_MORE"
+          ],
+          [
+            "DRIBBLING_DIRECTION",
+            "CUT_INSIDE_WITH_BALL"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "MCL",
+        "role": "PressingCentralMidfielder",
+        "duty": "A",
+        "pi": [
+          [
+            "TACKLING",
+            "GET_STUCK_IN"
+          ]
+        ]
+      }
+    },
+    {
+      "in": {
+        "pos": "AMC",
+        "role": "SecondStriker",
+        "duty": "A",
+        "pi": [
+          [
+            "DRIBBLING_FREQUENCY",
+            "DRIBBLE_MORE"
+          ],
+          [
+            "ROAMING",
+            "ROAM_FROM_POSITION"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "MC",
+        "role": "PressingCentralMidfielder",
+        "duty": "A",
+        "pi": [
+          [
+            "TACKLING",
+            "GET_STUCK_IN"
+          ]
+        ]
+      }
+    },
+    {
+      "in": {
+        "pos": "AMR",
+        "role": "WideForward",
+        "duty": "A",
+        "pi": [
+          [
+            "DRIBBLING_FREQUENCY",
+            "DRIBBLE_MORE"
+          ],
+          [
+            "CROSSING_FREQUENCY",
+            "BYLINE"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "MCR",
+        "role": "PressingCentralMidfielder",
+        "duty": "A",
+        "pi": [
+          [
+            "TACKLING",
+            "GET_STUCK_IN"
+          ]
+        ]
+      }
+    },
+    {
+      "in": {
+        "pos": "ST",
+        "role": "FalseNine",
+        "duty": "S",
+        "pi": [
+          [
+            "PASSING_RISKS",
+            "TAKE_MORE_RISKS"
+          ],
+          [
+            "ATTACK_BOX_DEPTH",
+            "LATE_RUNS"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "AMC",
+        "role": "TrackingAttackingMidfielder",
+        "duty": "D",
+        "pi": [
+          [
+            "TRIGGER_PRESS",
+            "MORE_OFTEN"
+          ],
+          [
+            "TACKLING",
+            "GET_STUCK_IN"
+          ]
+        ]
+      }
+    }
+  ]
+}
