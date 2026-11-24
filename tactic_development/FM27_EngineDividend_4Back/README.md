@@ -143,3 +143,11 @@ DL、DCL、DCR、DR、DML、DMR 的 OOP `TACKLING` 由 `GET_STUCK_IN` 改为 `EA
 - 角色/PI：DL InsideFullBack/D 改 FullBack/S 并取消 SIT_NARROWER；DCR OverlappingCentreBack/S 改 CentreBack/D 并移除 SHORTER；AMC 移除 DRIBBLE_MORE，保留游弋。
 - [FM27 Tactic Build #139](https://github.com/eslaulau/fm-ta/actions/runs/45396091251) 成功；[构建 Artifact](https://github.com/eslaulau/fm-ta/actions/runs/45396091251/artifacts/14920777363)。FMF 3,758 bytes，SHA-256：`92aaa02c46a8aec76107274a2735548a343c2d8aa72f092cf179e15f9915791d`。
 - D3 独立回读 8/8 检查、22/22 阶段角色/PI 回读通过；游戏内导入和比赛效果待验证。
+
+
+## V0.4 run139 赛季报告分析（Exporter 45399643857）
+- [完整报告分析](V0.4_SEASON_REPORT_ANALYSIS_45399643857.md)。用户确认使用 V0.4 run139。
+- 联赛 30 场：13胜10平7负，50:39，49分；与 V0.3 的 20 场共同赛程比较，V0.4 为 8胜7平5负、31分（不同存档，不是受控 A/B）。
+- 球队详细统计覆盖 5/30 场联赛；球员逐场 94 条全部未识别身份；球员赛季汇总可用但不能归因到角色。
+- 传中成功率 15.76%（赛季汇总），越位 130 次/30 场；较 V0.3 的每场传中成功和越位仅呈小幅改善，不能作因果判断。
+- 决策：本轮完成分析与角色/PI审查，但不创建 V0.5，现有数据不足以定位单一负收益配置。优先候选实验为仅将防线 LOWER→HIGHER，其余 V0.4 锁定；尚不落配方。
