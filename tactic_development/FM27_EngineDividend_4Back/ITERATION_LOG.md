@@ -299,6 +299,10 @@ V0.2 新增的 4 场联赛（2027-01-06、01-17、01-23、01-26）全部失利�
 - 防守：预期对手直塞和反越位冲刺可利用的身后空间减少；风险是较低防线与高位逼抢之间的纵向距离变大，可能让对手在中场获得更多控球空间。
 - 本轮不改进攻宽度、两翼推进、后腰压迫、双中卫角色或边后卫角色，避免同时拆除多个结构支点。
 
-### 实测状态
-- 首次预检因 CROSSING_STYLE=MIXED_CROSSES 未建立离线映射而失败；查阅生成器映射后，确认混合传中是原生默认位（native bit 0），因此删除该显式字段并重新提交。第二次构建状态待 Actions 完成。
-- 即使构建成功，也只代表原生 FMF 生成与独立回读通过，不代表游戏内导入或比赛表现已验证。
+### 构建与实测状态
+- 首次预检因 CROSSING_STYLE=MIXED_CROSSES 未建立离线映射而失败；查阅生成器映射后，确认混合传中是原生默认位（native bit 0），因此删除该显式字段并重新提交。最终配方与构建请求保持一致。
+- GitHub Actions：[FM27 Tactic Build #138](https://github.com/eslaulau/fm-ta/actions/runs/45392679696)，成功。
+- Artifact：[FM27_FM27_EngineDividend_4Back_V0.4_20261124_run138](https://github.com/eslaulau/fm-ta/actions/runs/45392679696/artifacts/14919451882)，Artifact ID 14919451882。
+- FMF：FM27_EngineDividend_4Back_V0.4_20261124_run138.fmf，3,806 bytes；SHA-256：aac9657d4d92cec9bc24c69f00d363a14ca1fa383468f755c8c970f55ca090f5。
+- D3 独立回读 8/8 项通过：FMF 外层回读、成员解密与校验、TAC 完整解析、11 组 IP/OOP、22 个阶段角色/PI 精确回读、PI 权限目录校验、TI 向量回读、原生风格字段回读。
+- 状态：offline_binary_roundtrip_verified_not_game_import_verified。游戏内导入与比赛表现仍未验证。
