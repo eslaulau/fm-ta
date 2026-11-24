@@ -72,10 +72,6 @@
         "role": "HoldingFullBack",
         "pi": [
           [
-            "TRIGGER_PRESS",
-            "MORE_OFTEN"
-          ],
-          [
             "TACKLING",
             "GET_STUCK_IN"
           ]
@@ -102,10 +98,6 @@
         "role": "CoveringCentreBack",
         "pi": [
           [
-            "TRIGGER_PRESS",
-            "LESS_OFTEN"
-          ],
-          [
             "TACKLING",
             "GET_STUCK_IN"
           ]
@@ -131,10 +123,6 @@
         "pos": "DCR",
         "role": "CoveringCentreBack",
         "pi": [
-          [
-            "TRIGGER_PRESS",
-            "LESS_OFTEN"
-          ],
           [
             "TACKLING",
             "GET_STUCK_IN"
@@ -169,10 +157,6 @@
         "pos": "DR",
         "role": "HoldingFullBack",
         "pi": [
-          [
-            "TRIGGER_PRESS",
-            "MORE_OFTEN"
-          ],
           [
             "TACKLING",
             "GET_STUCK_IN"
