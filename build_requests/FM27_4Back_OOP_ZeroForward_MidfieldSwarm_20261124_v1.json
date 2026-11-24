@@ -232,6 +232,10 @@
           [
             "FORWARD_RUNS",
             "MAKE_MORE_RUNS"
+          ],
+          [
+            "ATTACK_BOX_DEPTH",
+            "LATE_RUNS"
           ]
         ]
       },
@@ -256,6 +260,10 @@
           [
             "DRIBBLING_DIRECTION",
             "CUT_INSIDE_WITH_BALL"
+          ],
+          [
+            "CROSSING_FREQUENCY",
+            "BYLINE"
           ]
         ]
       },
