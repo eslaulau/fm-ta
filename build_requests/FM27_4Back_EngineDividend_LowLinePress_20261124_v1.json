@@ -38,8 +38,8 @@
         "role": "Goalkeeper",
         "pi": [
           [
-            "TRIGGER_PRESS",
-            "LESS_OFTEN"
+            "TACKLING",
+            "GET_STUCK_IN"
           ]
         ]
       }
