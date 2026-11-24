@@ -1,0 +1,266 @@
+{
+  "v": 1,
+  "name": "Brighton_V3_1_Balanced_4231",
+  "ment": 5,
+  "base": {
+    "g": "Fluid Counter Attack",
+    "ip": "4-2-3-1",
+    "oop": "4-2-3-1"
+  },
+  "ti": {
+    "TEMPO": "HIGHER",
+    "PASS_RECEPTION": "PASS_INTO_SPACE",
+    "BUILD_UP_STRATEGY": "PLAY_THROUGH_PRESS",
+    "CROSSING_STYLE": "LOW_CROSSES",
+    "ATTACKING_TRANSITION": "COUNTER_ATTACK",
+    "SHOTS_FROM_DISTANCE": "DISCOURAGE",
+    "LINE_OF_ENGAGEMENT": "HIGH_PRESS",
+    "DEFENSIVE_LINE": "LOWER",
+    "TRIGGER_PRESS": "MORE_OFTEN",
+    "DEFENSIVE_TRANSITION": "COUNTER_PRESS"
+  },
+  "p": [
+    {
+      "in": {
+        "pos": "GK",
+        "role": "Goalkeeper",
+        "pi": [
+          [
+            "PASSING_STRATEGY",
+            "SHORTER"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "GK",
+        "role": "OPGoalkeeper",
+        "pi": [
+          [
+            "TACKLING",
+            "EASE_OFF_TACKLES"
+          ]
+        ]
+      }
+    },
+    {
+      "in": {
+        "pos": "DR",
+        "role": "FullBack",
+        "pi": [
+          [
+            "FORWARD_RUNS",
+            "MAKE_MORE_RUNS"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "DR",
+        "role": "OPPressingFullBack",
+        "pi": [
+          [
+            "MARKING",
+            "MARK_TIGHTER"
+          ]
+        ]
+      }
+    },
+    {
+      "in": {
+        "pos": "DCR",
+        "role": "CentreBack",
+        "pi": [
+          [
+            "PASSING_STRATEGY",
+            "SHORTER"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "DCR",
+        "role": "OPCoveringCentreBack",
+        "pi": [
+          [
+            "MARKING",
+            "MARK_TIGHTER"
+          ]
+        ]
+      }
+    },
+    {
+      "in": {
+        "pos": "DCL",
+        "role": "CentreBack",
+        "pi": [
+          [
+            "PASSING_STRATEGY",
+            "SHORTER"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "DCL",
+        "role": "OPCentreBack",
+        "pi": [
+          [
+            "TRIGGER_PRESS",
+            "MORE_OFTEN"
+          ]
+        ]
+      }
+    },
+    {
+      "in": {
+        "pos": "DL",
+        "role": "FullBack",
+        "pi": [
+          [
+            "FORWARD_RUNS",
+            "MAKE_MORE_RUNS"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "DL",
+        "role": "OPPressingFullBack",
+        "pi": [
+          [
+            "MARKING",
+            "MARK_TIGHTER"
+          ]
+        ]
+      }
+    },
+    {
+      "in": {
+        "pos": "MCR",
+        "role": "ChannelMidfielder",
+        "pi": [
+          [
+            "FORWARD_RUNS",
+            "MAKE_MORE_RUNS"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "DMR",
+        "role": "OPDefensiveMidfielder",
+        "pi": [
+          [
+            "TRIGGER_PRESS",
+            "MORE_OFTEN"
+          ]
+        ]
+      }
+    },
+    {
+      "in": {
+        "pos": "MCL",
+        "role": "ChannelMidfielder",
+        "pi": [
+          [
+            "DRIBBLING_FREQUENCY",
+            "DRIBBLE_LESS"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "DML",
+        "role": "OPDefensiveMidfielder",
+        "pi": [
+          [
+            "MARKING",
+            "MARK_TIGHTER"
+          ]
+        ]
+      }
+    },
+    {
+      "in": {
+        "pos": "AMR",
+        "role": "InsideForward",
+        "pi": [
+          [
+            "SHOOTING",
+            "SHOOT_MORE_OFTEN"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "AMR",
+        "role": "OPTrackingWinger",
+        "pi": [
+          [
+            "TRIGGER_PRESS",
+            "MORE_OFTEN"
+          ]
+        ]
+      }
+    },
+    {
+      "in": {
+        "pos": "AML",
+        "role": "InsideForward",
+        "pi": [
+          [
+            "SHOOTING",
+            "SHOOT_MORE_OFTEN"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "AML",
+        "role": "OPTrackingWinger",
+        "pi": [
+          [
+            "TRIGGER_PRESS",
+            "MORE_OFTEN"
+          ]
+        ]
+      }
+    },
+    {
+      "in": {
+        "pos": "AMC",
+        "role": "ChannelMidfielder",
+        "pi": [
+          [
+            "FORWARD_RUNS",
+            "MAKE_MORE_RUNS"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "AMC",
+        "role": "OPAttackingMidfielder",
+        "pi": [
+          [
+            "TRIGGER_PRESS",
+            "MORE_OFTEN"
+          ]
+        ]
+      }
+    },
+    {
+      "in": {
+        "pos": "ST",
+        "role": "ChannelForward",
+        "pi": [
+          [
+            "SHOOTING",
+            "SHOOT_MORE_OFTEN"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "ST",
+        "role": "OPTrackingCentreForward",
+        "pi": [
+          [
+            "TRIGGER_PRESS",
+            "MORE_OFTEN"
+          ]
+        ]
+      }
+    }
+  ]
+}
