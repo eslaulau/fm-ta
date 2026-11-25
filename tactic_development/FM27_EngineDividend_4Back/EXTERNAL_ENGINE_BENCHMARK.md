@@ -155,3 +155,37 @@
 - SI 27.1.0 更新包括越位跑动、短传、OOP 压迫和边路压迫等变化；与本项目 27.0.1 build 隔离。来源：[官方更新公告](https://steamcommunity.com/app/4530370/allnews)。
 - 官方引擎说明强调球员智能、Anticipation、Off The Ball 对禁区跑动决策的影响，以及 Marking/Anticipation 对防守表现的影响。来源：[FM27 Match Engine 深度说明](https://www.footballmanager.com/fm27/features/fm27-tactical-tweaks-and-match-engine-upgrades)。
 - 本轮本地数据结论：V0.4 联赛 30 场 13-10-7、50:39、49 分；球队详细联赛统计仅 5 场；94 条逐场出场均未识别身份。V0.5 暂不建配方，避免从不同存档的共同赛程差异推断单一 PI/TI 因果。
+
+
+---
+
+## 2026-11-25｜FM27 build 27.1.1 外部榜单与测试协议快照
+
+### 1. metaFM：27.1.1 受控排行榜（证据 A）
+
+- 页面：[FM27.1.1 Leaderboard](https://metafm.net/leaderboard)；检索日期 2026-11-25，页面更新时间 01:02 UTC。
+- 页面当前显示 **12 套战术、28,560 场测试**。协议使用同一批 3,977 个真实 AI 对手计划、相同球员阵容，改变被测战术；分四种强弱条件测试，并综合四类条件的 PPG 排名。
+- 当前榜首 ARGUS 27.1 3322 P85 EC：有球 3-3-2-2、无球 **5-2-3**；综合 2.074 PPG、2,240 场总测试、79.0 Pts/38、xG 2.40、xGA 1.47。
+- 第二名 2-1-4-3 TOP NEW：有球 2-5-3 DM、无球 **5-2-3**；2.062 PPG、2,240 场、83.1 Pts/38、xG 2.36、xGA 1.44。
+- 当前榜单前 12 名的无球结构均显示为 **5-2-3 或 5-3-2**。因此本快照没有可直接纳入“真实无球四后卫”成绩对比的候选。它们只能用于发现引擎机制/指令候选，不可作为四后卫基准或照搬结构。
+- metaFM 报告使用相同战术、AI 计划、球员和比赛 seed 的 1,664 场 27.1.0→27.1.1 重放中，有 974 场（58.5%）结果不同；页面明确提醒不要跨 27.1.0 与 27.1.1 直接比较排名数值。该站测试口径自身属于 A 级，但该结论不等于独立第二来源复现。
+- 页面链接：[排行榜与当前测试统计](https://metafm.net/leaderboard)；[完整方法说明](https://metafm.net/how-we-test)。
+
+### 2. FM-Arena：27.1.1 测试进度（证据 C，未完成）
+
+- 来源：[FM Tactic Testing Log](https://fm-arena.com/tactic-testing-log/)，检索日期 2026-11-25。
+- 日志显示 27.1.1 的不同战术仍有 Test #2 / Test #3 陆续新增，例如 Roman Empire、STORMBRINGER 424 P94、ZaZ - Ace of Hearts 2.1、ARGUS 27.1 3421 等。
+- 本次读取的是测试活动日志，不是完整的 27.1.1 已完成成绩汇总；因此不引用其战术最终排名/PPG，也不根据战术名称推断 OOP 站位。后续取得战术页/信息图/FMF 并核对 OOP 结构后再分类。
+
+### 3. 官方引擎更新事实（机制候选，不等于性能因果）
+
+- 官方 [FM27 Update 27.1.0 Changelist](https://footballmanager.sega.com/asia-en/info/details/000290.html)（2026-11-17）明确列出：反击阶段传球与盘带决策调整；越位跑动与相关传球决策调整；短传精度及接球逻辑调整；AMC 有球时更宽移动；OOP 压迫决策/强度和边路压迫调整；Wide Midfielder 无球内收频率调整；次级盯防者覆盖位置/压迫重做；双后腰情况下 AI 更少选择 Dropping DM。
+- 这些变化与 V0.5 的“传入空当/立即反击”、AMC Channel Midfielder、ML/MR Tracking Wide Midfielder 及双后腰结构直接相关。故 V0.5 数据必须以存档 build 27.1.1 为独立版本解释，不与 V0.4 的 27.0.1 数值作因果比较。
+- 官方 [27.1.1 发布说明](https://steamcommunity.com/app/4530370/allnews/)描述了较小的后续更新；metaFM 自身相同输入重放仍观察到跨版本结果变化。两者的表述层面不同，本项目遵循实测隔离原则，不推断 27.1.1 变化由某个单独战术机制造成。
+
+### 4. 对 V0.5 / V0.6 的影响
+
+- 当前外部 27.1.1 metaFM 前列战术没有真实 OOP 四后卫对照；FM-Arena 同 build 结果仍在测试中。
+- 不把 OOP 五后卫榜首的 2.07 PPG、xG 等指标与 V0.5 38 场联赛的 2.03 PPG 或 xG 直接比较；测试协议、阵容、赛程强度和比赛环境均不同。
+- 对 V0.5 有价值的机制监测候选：高压迫边路行为、Wide Midfielder 无球内收、反击传球决策、短传/接球质量、AMC 有球宽度。现有 V0.5 报告中，团队机会质量已经强，尚无证据要求仅凭这些 patch notes 改角色或 PI。
+- 本轮不把任何榜单冠军的五后卫配置移植到真实四后卫体系；等待可核对的 27.1.1 OOP 四后卫 FMF/信息图再做字段级比较。
