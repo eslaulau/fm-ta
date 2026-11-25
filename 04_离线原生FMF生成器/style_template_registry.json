@@ -1,6 +1,6 @@
 {
   "schema": "fm27-style-template-registry-v1",
-  "policy": "All ten official styles are backed by uploaded FM27 native TAC samples. Use the per-style template entry; opaque native TI bits remain template-owned until a catalog mapping is proven.",
+  "policy": "The ten official styles are backed by uploaded FM27 native TAC samples and remain in styles[]. native_carriers[] contains separately verified custom/native FMF snapshots used only as format carriers; carriers are not official styles and their tactical configuration must be fully overwritten by the recipe. Opaque native TI bits remain template-owned until a catalog mapping is proven.",
   "source_major_required": 27,
   "styles": [
     {
@@ -240,5 +240,24 @@
       "use": "说明其比较 28 项球队指令与游戏预设风格；用于交叉核对分析结果，不作为 style code 来源。"
     }
   ],
-  "repository_layout": "fm-ta stores the rules directory at repository root; evidence.sample_path values are repository-relative. Original source paths are retained in evidence.repository_path/source metadata where present."
+  "repository_layout": "fm-ta stores the rules directory at repository root; evidence.sample_path values are repository-relative. Original source paths are retained in evidence.repository_path/source metadata where present.",
+  "native_carriers": [
+    {
+      "name": "FM27 Native Blank (V0.8 Carrier)",
+      "status": "native_snapshot_verified",
+      "style_code_hex": "4c4c554e",
+      "tac_style_string": "",
+      "template": "../tactic_development/FM27_EngineDividend_4Back/V0.8.fmf",
+      "carrier_only": true,
+      "evidence": {
+        "repository_path": "tactic_development/FM27_EngineDividend_4Back/V0.8.fmf",
+        "sha256": "c7480f2c32c55c1b8e8ce3f8724c9ea2c7b2f02fa4e9759b9c6aff8c31d7bb2e",
+        "source_major": 27,
+        "source": "User-authorized V0.8 parent FMF; its native blank style string and FourCC were independently confirmed in the V0.8 native build report.",
+        "offline_fmf_roundtrip": "passed",
+        "game_import": "not_verified",
+        "note": "Format-only carrier, not an official style and not a tactical design template. A complete structured recipe overwrites all 22 IP/OOP position, role, duty and PI phase configurations; declared TI values update the shared native vector."
+      }
+    }
+  ]
 }

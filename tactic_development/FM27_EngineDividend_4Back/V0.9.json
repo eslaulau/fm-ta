@@ -1,25 +1,305 @@
 {
-  "version": "V0.9",
-  "parent_version": "V0.8",
-  "parent_file": "tactic_development/FM27_EngineDividend_4Back/V0.8.fmf",
-  "parent_sha256": "c7480f2c32c55c1b8e8ce3f8724c9ea2c7b2f02fa4e9759b9c6aff8c31d7bb2e",
-  "output_file": "V0.9.fmf",
-  "title": "FM27_EngineDividend_IP_4Back_V0.9",
-  "mentality_native_value": 4,
-  "native_style_lock": {
-    "style_string": "",
-    "fourcc_hex": "4c4c554e"
+  "v": 1,
+  "name": "FM27_EngineDividend_IP_4Back_V0.9",
+  "ment": 4,
+  "base": {
+    "g": "FM27 Native Blank (V0.8 Carrier)"
   },
-  "design_objective": "在保留 V0.8 已验证有效的有球四后卫、中场连接、前腰攻击、球队节奏/宽度/逼抢组合的前提下，针对中锋位置的 xG 转化不足与额外前插带来的越位暴露，改为更集中于禁区终结的原生抢点前锋；继续保留射门倾向与后点攻击。",
-  "team_instructions": {},
-  "team_instruction_changes": [],
-  "player_changes": [
+  "ti": {
+    "TEMPO": "HIGHER",
+    "ATTACKING_WIDTH": "NARROWER",
+    "DEFENSIVE_LINE": "LOWER",
+    "TRIGGER_PRESS": "MORE_OFTEN"
+  },
+  "p": [
     {
-      "slot": 10,
-      "phase": "IP",
-      "position": "ST",
-      "old": {
-        "role": "ChannelForward",
+      "in": {
+        "pos": "GK",
+        "role": "BallPlayingGoalkeeper",
+        "duty": "S",
+        "pi": [
+          [
+            "PASSING_STRATEGY",
+            "SHORTER"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "GK",
+        "role": "OPSweeperKeeper",
+        "duty": "A",
+        "pi": [
+          [
+            "TACKLING",
+            "EASE_OFF_TACKLES"
+          ]
+        ]
+      }
+    },
+    {
+      "in": {
+        "pos": "DR",
+        "role": "WingBack",
+        "duty": "A",
+        "pi": [
+          [
+            "ATTACKING_WIDTH",
+            "STAY_WIDER"
+          ],
+          [
+            "CROSSING_TARGET",
+            "BACK_POST"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "DR",
+        "role": "OPPressingFullBack",
+        "duty": "S",
+        "pi": [
+          [
+            "TACKLING",
+            "GET_STUCK_IN"
+          ]
+        ]
+      }
+    },
+    {
+      "in": {
+        "pos": "DCR",
+        "role": "BallPlayingCentreBack",
+        "duty": "D",
+        "pi": [
+          [
+            "PASSING_STRATEGY",
+            "SHORTER"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "DCR",
+        "role": "OPCoveringCentreBack",
+        "duty": "D",
+        "pi": [
+          [
+            "TACKLING",
+            "GET_STUCK_IN"
+          ]
+        ]
+      }
+    },
+    {
+      "in": {
+        "pos": "DCL",
+        "role": "WideCentreBack",
+        "duty": "D",
+        "pi": [
+          [
+            "PASSING_STRATEGY",
+            "SHORTER"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "DCL",
+        "role": "OPCentreBack",
+        "duty": "D",
+        "pi": [
+          [
+            "TRIGGER_PRESS",
+            "LESS_OFTEN"
+          ],
+          [
+            "TACKLING",
+            "GET_STUCK_IN"
+          ]
+        ]
+      }
+    },
+    {
+      "in": {
+        "pos": "DL",
+        "role": "InsideFullBack",
+        "duty": "D",
+        "pi": [
+          [
+            "PASSING_STRATEGY",
+            "SHORTER"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "DL",
+        "role": "OPPressingFullBack",
+        "duty": "S",
+        "pi": [
+          [
+            "TACKLING",
+            "GET_STUCK_IN"
+          ]
+        ]
+      }
+    },
+    {
+      "in": {
+        "pos": "MCR",
+        "role": "CentralMidfielder",
+        "duty": "S",
+        "pi": [
+          [
+            "PASSING_RISKS",
+            "TAKE_FEWER_RISKS"
+          ],
+          [
+            "FORWARD_RUNS",
+            "KEEP_POSITION"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "DMR",
+        "role": "OPDroppingDefensiveMidfielder",
+        "duty": "D",
+        "pi": [
+          [
+            "TRIGGER_PRESS",
+            "MORE_OFTEN"
+          ],
+          [
+            "TACKLING",
+            "GET_STUCK_IN"
+          ]
+        ]
+      }
+    },
+    {
+      "in": {
+        "pos": "MCL",
+        "role": "ChannelMidfielder",
+        "duty": "A",
+        "pi": [
+          [
+            "PASSING_RISKS",
+            "TAKE_FEWER_RISKS"
+          ],
+          [
+            "FORWARD_RUNS",
+            "MAKE_MORE_RUNS"
+          ],
+          [
+            "ROAMING",
+            "ROAM_FROM_POSITION"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "DML",
+        "role": "OPDefensiveMidfielder",
+        "duty": "D",
+        "pi": [
+          [
+            "TRIGGER_PRESS",
+            "MORE_OFTEN"
+          ],
+          [
+            "TACKLING",
+            "GET_STUCK_IN"
+          ]
+        ]
+      }
+    },
+    {
+      "in": {
+        "pos": "AMR",
+        "role": "PlaymakingWinger",
+        "duty": "S",
+        "pi": [
+          [
+            "PASSING_STRATEGY",
+            "SHORTER"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "MR",
+        "role": "OPTrackingWideMidfielder",
+        "duty": "D",
+        "pi": [
+          [
+            "TRIGGER_PRESS",
+            "MORE_OFTEN"
+          ],
+          [
+            "TACKLING",
+            "GET_STUCK_IN"
+          ]
+        ]
+      }
+    },
+    {
+      "in": {
+        "pos": "AML",
+        "role": "PlaymakingWinger",
+        "duty": "S",
+        "pi": [
+          [
+            "PASSING_STRATEGY",
+            "SHORTER"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "ML",
+        "role": "OPTrackingWideMidfielder",
+        "duty": "D",
+        "pi": [
+          [
+            "TRIGGER_PRESS",
+            "MORE_OFTEN"
+          ],
+          [
+            "TACKLING",
+            "GET_STUCK_IN"
+          ]
+        ]
+      }
+    },
+    {
+      "in": {
+        "pos": "AMC",
+        "role": "AdvancedPlaymaker",
+        "duty": "A",
+        "pi": [
+          [
+            "ROAMING",
+            "ROAM_FROM_POSITION"
+          ],
+          [
+            "FORWARD_RUNS",
+            "MAKE_MORE_RUNS"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "MC",
+        "role": "OPCentralMidfielder",
+        "duty": "S",
+        "pi": [
+          [
+            "TRIGGER_PRESS",
+            "MORE_OFTEN"
+          ],
+          [
+            "TACKLING",
+            "GET_STUCK_IN"
+          ]
+        ]
+      }
+    },
+    {
+      "in": {
+        "pos": "ST",
+        "role": "Poacher",
         "duty": "A",
         "pi": [
           [
@@ -27,57 +307,26 @@
             "SHOOT_MORE_OFTEN"
           ],
           [
-            "FORWARD_RUNS",
-            "MAKE_MORE_RUNS"
-          ],
-          [
             "ATTACK_BOX_SIDE",
             "FAR_POST"
           ]
         ]
       },
-      "role": "Poacher",
-      "duty": "A",
-      "pi": [
-        [
-          "SHOOTING",
-          "SHOOT_MORE_OFTEN"
-        ],
-        [
-          "ATTACK_BOX_SIDE",
-          "FAR_POST"
+      "out": {
+        "pos": "AMC",
+        "role": "OPAttackingMidfielder",
+        "duty": "S",
+        "pi": [
+          [
+            "TRIGGER_PRESS",
+            "MORE_OFTEN"
+          ],
+          [
+            "TACKLING",
+            "GET_STUCK_IN"
+          ]
         ]
-      ],
-      "reason": "联赛 ST 位置为 12 球/19.63 xG，整体终结低于预期；ST 位置共有 40 次越位。已解码的 ChannelForward 子样本只有 18 次出场/904 分钟，5 球/5.73 xG、14 次越位，样本有限且不能证明角色因果，但提示值得减少额外 MAKE_MORE_RUNS 并尝试更集中禁区的抢点角色。原生 catalog 允许 ST/Poacher/Attack，SHOOT_MORE_OFTEN 与 FAR_POST 可写入；MAKE_MORE_RUNS 在该角色职责下不提供，故不写入。此调整是针对本报告弱点的设计假设，需由下一完整赛季复盘验证。"
+      }
     }
-  ],
-  "retained_design": [
-    "IP 四后卫 DL-DCL-DCR-DR 的四个位置与全部槽位位置保持不变",
-    "四名 IP 后卫角色、职责、PI 原样保留",
-    "MCR 中前卫（策应）、MCL 肋部中场（进攻）原样保留",
-    "AMC 前场组织核心（进攻）及自由跑位、更多前插原样保留",
-    "AMR/AML 组织型边锋（策应）原样保留",
-    "ST 保留更多射门与禁区后点攻击，只把拉边前锋（进攻）改为抢点前锋（进攻），并取消额外更多前插",
-    "全部 OOP 11 组位置、角色、职责与 PI 保持字节级不变",
-    "球队指令向量保持 V0.8 原值：极高节奏、极窄进攻宽度、极多逼抢及其他全部原设置",
-    "心态 native value 4、空白 style string、FourCC 4c4c554e 保持"
-  ],
-  "status": "offline_binary_roundtrip_verified_not_game_import_verified",
-  "build": {
-    "workflow_run_id": 45572441695,
-    "workflow_run_number": 3,
-    "workflow_run_url": "https://github.com/eslaulau/fm-ta/actions/runs/45572441695",
-    "job_conclusion": "success",
-    "artifact_id": 15002228385,
-    "artifact_name": "FM27_EngineDividend_IP_4Back_V0.9_run3",
-    "output_file": "V0.9.fmf",
-    "output_size_bytes": 4352,
-    "output_sha256": "36df4c0d83142b6aaede3b15c01173ed9ebf848f76ea8581d80143f9286957a2",
-    "report_file": "V0.9_BUILD_REPORT.json",
-    "report_sha256": "bc506e8a048aad54bf098efa5c592247c568aff0fc99183f76d118e66544d267",
-    "artifact_zip_sha256": "282705659bc65b775ed3586a1de54cd74164b19bb75fc30ac241de342717e5b3",
-    "status": "offline_binary_roundtrip_verified_not_game_import_verified",
-    "game_import": false,
-    "match_performance": false
-  }
+  ]
 }

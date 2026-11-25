@@ -351,23 +351,32 @@ STYLE_CODE = {
 
 
 def resolve_style_definition(style_name: str, registry: dict | None) -> dict:
-    """Resolve a style only from a verified registry entry; never infer its native code."""
+    """Resolve official styles and separately registered native snapshot carriers."""
     if registry is not None:
-        matches = [x for x in registry.get('styles', []) if x.get('name') == style_name]
+        entries = list(registry.get('styles', [])) + list(registry.get('native_carriers', []))
+        matches = [x for x in entries if x.get('name') == style_name]
         if len(matches) != 1:
-            raise ValueError(f'风格登记表中不存在唯一条目：{style_name}')
+            raise ValueError(f'风格/原生载体登记表中不存在唯一条目：{style_name}')
         item = matches[0]
-        if item.get('status') != 'implemented_sample_verified':
-            raise ValueError(f'该风格尚未完成原生样本验证，拒绝生成：{style_name}')
+        status = item.get('status')
         code_hex = item.get('style_code_hex')
         tac_style = item.get('tac_style_string')
         template = item.get('template')
-        if not code_hex or not tac_style or not template:
-            raise ValueError(f'风格登记条目缺少原生证据字段：{style_name}')
+        if status == 'implemented_sample_verified':
+            if not code_hex or not isinstance(tac_style, str) or not tac_style or not template:
+                raise ValueError(f'官方风格登记条目缺少原生证据字段：{style_name}')
+        elif status == 'native_snapshot_verified':
+            # Native carriers are not official styles. The empty-style carrier is
+            # accepted only for the exact V0.8 parent identity, never by inference.
+            if (item.get('carrier_only') is not True or code_hex != '4c4c554e'
+                    or tac_style != '' or not template):
+                raise ValueError(f'原生载体身份/格式标记无效：{style_name}')
+        else:
+            raise ValueError(f'该风格/载体尚未完成原生样本验证，拒绝生成：{style_name}')
         try:
             code = bytes.fromhex(code_hex)
-        except ValueError as exc:
-            raise ValueError(f'风格代码不是有效十六进制：{style_name}') from exc
+        except (TypeError, ValueError) as exc:
+            raise ValueError(f'风格/载体代码不是有效十六进制：{style_name}') from exc
         if len(code) != 4:
             raise ValueError(f'原生风格代码必须为四字节：{style_name}')
         return {'name': style_name, 'tac_style_string': tac_style,
