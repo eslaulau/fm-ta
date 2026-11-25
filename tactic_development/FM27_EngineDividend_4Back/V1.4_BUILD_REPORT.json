@@ -1,0 +1,119 @@
+{
+  "version": "V1.4",
+  "parent_version": "V1.3 / Run147",
+  "parent_fmf_sha256": "e14574cd691c2e8d6cadb50af036b815a63fa84525a29a2b704ae69998322f86",
+  "recipe_path": "tactic_development/FM27_EngineDividend_4Back/V1.4.json",
+  "recipe_blob_sha": "23f094b5c370324564a34caa1559672f7939ec74",
+  "build_request_path": "build_requests/FM27_EngineDividend_IP4Back_OOP42121_V1.4_20261125.json",
+  "build_request_commit": "80950ce399f8164b21427581ef9a0363deff15ca",
+  "workflow": "FM27 Tactic Build",
+  "workflow_file": ".github/workflows/fm27-tactic-build.yml",
+  "workflow_run_id": 45648313293,
+  "workflow_run_url": "https://github.com/eslaulau/fm-ta/actions/runs/45648313293",
+  "workflow_conclusion": "success",
+  "trigger_event": "push",
+  "artifact": {
+    "id": 15038337551,
+    "name": "FM27_FM27_EngineDividend_IP4Back_OOP42121_V1.4_20261125_run148",
+    "zip_bytes": 6993,
+    "zip_sha256": "bcebb5fca6741de79770ced994a1edf0f5d64af951d868764d6750b02abd6d55",
+    "expires_at": "2026-12-09T15:43:18Z"
+  },
+  "fmf": {
+    "name": "FM27_EngineDividend_IP4Back_OOP42121_V1.4_20261125_run148.fmf",
+    "bytes": 4504,
+    "sha256": "5bce6f33f70ec9aa8627e18cc866b51f5cd79b99e2e52ba667087b4e142e92bc"
+  },
+  "same_run_report": {
+    "name": "FM27_EngineDividend_IP4Back_OOP42121_V1.4_20261125_run148.report.json",
+    "bytes": 11700,
+    "sha256": "b17203dd4f0557504a15b685d70a4efdfaf613c3d65fded43c0b4797ed1866bf",
+    "status": "offline_binary_roundtrip_verified_not_game_import_verified",
+    "recipe_input_format": "json"
+  },
+  "design": {
+    "configured_pi_items": 31,
+    "serialized_pi_override_bits": 29,
+    "selected_fixed_on_options": 2,
+    "designed_phases": 22,
+    "readback_phases": 22,
+    "parent_child_phases_unchanged": 21,
+    "changed_phase": "IP slot 8 AML"
+  },
+  "native_identity": {
+    "carrier": "FM27 Native Parent Snapshot (V0.9)",
+    "source_template_sha256": "5dc33a05f032345ca9c674b02d48e7619b32303e3e0eb549305d6ef135f55bb",
+    "tac_style_string": "",
+    "fourcc": "4c4c554e",
+    "mentality": 4,
+    "team_instruction_bits": [
+      2,
+      5,
+      7,
+      11,
+      13,
+      16,
+      28,
+      35,
+      44,
+      47,
+      51,
+      54,
+      61,
+      66,
+      69,
+      71,
+      72,
+      79,
+      83
+    ],
+    "ip_back_four": [
+      "DL",
+      "DCL",
+      "DCR",
+      "DR"
+    ],
+    "aml_ip": {
+      "position": "AML",
+      "role": "InsideForward",
+      "duty": "Attack",
+      "pi": [
+        [
+          "PASSING_STRATEGY",
+          "SHORTER"
+        ],
+        [
+          "DRIBBLING_DIRECTION",
+          "CUT_INSIDE_WITH_BALL"
+        ],
+        [
+          "ROAMING",
+          "ROAM_FROM_POSITION"
+        ]
+      ]
+    },
+    "role_readback_and_pi_masks_exact": true
+  },
+  "checks": {
+    "fmf_outer_roundtrip": true,
+    "all_member_decrypt_and_zstd_checksums": true,
+    "tac_full_parse": true,
+    "11_ip_oop_pairs": true,
+    "22_positions_roles_pi_readback_exact": true,
+    "pi_permissions_checked_against_catalog": true,
+    "team_instruction_vector_readback": true,
+    "native_style_string_and_code_readback": true,
+    "fmf_sha256_matches_report": true,
+    "fmf_bytes_matches_report": true,
+    "game_interactive_import": false,
+    "match_engine": false
+  },
+  "acceptance": {
+    "D0": "complete",
+    "D1": "complete",
+    "D2": "complete",
+    "D3": "complete",
+    "D4": "pending FM27 game import and visual verification",
+    "D5": "pending real match/season report"
+  }
+}
