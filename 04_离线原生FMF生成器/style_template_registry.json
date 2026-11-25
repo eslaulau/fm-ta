@@ -266,6 +266,29 @@
       "aliases": [
         "FM27 Native Blank (V0.8 Carrier)"
       ]
+    },
+    {
+      "name": "FM27 Native Parent Snapshot (V0.9)",
+      "status": "native_snapshot_verified",
+      "style_code_hex": "4c4c554e",
+      "tac_style_string": "",
+      "template": "../tactic_development/FM27_EngineDividend_4Back/V0.9.fmf",
+      "carrier_only": true,
+      "evidence": {
+        "repository_path": "tactic_development/FM27_EngineDividend_4Back/V0.9.fmf",
+        "sha256": "5dc33a05f032345ca9c674b02d48e7619b32303e3e0eb54930598941df3456a1",
+        "source_major": 27,
+        "source": "Official integrated V0.9 Run 142 native FMF, confirmed by same-run report and 4,400-byte repository artifact. This is a user-confirmed in-game-used parent snapshot, not a blank tactic.",
+        "offline_fmf_roundtrip": "passed",
+        "game_import": "user_confirmed_used_in_full_season",
+        "note": "V0.9 is a real tactical parent snapshot used as the native format carrier. A complete structured recipe replaces all 22 IP/OOP phase configurations. Shared TI starts from V0.9; only recipe-declared mapped TI groups are updated; undeclared TI and opaque bits remain inherited.",
+        "inheritance_policy": {
+          "phase_configuration": "Complete recipe replacement for all 22 IP/OOP phases",
+          "team_instruction_vector": "V0.9 parent snapshot base with recipe-declared mapped TI overlay",
+          "opaque_bits": "Remain parent-owned unless a mapped native bit is explicitly changed"
+        }
+      },
+      "aliases": []
     }
   ]
 }

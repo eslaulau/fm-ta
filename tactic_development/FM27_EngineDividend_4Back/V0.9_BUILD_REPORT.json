@@ -61,7 +61,7 @@
   "status": "offline_binary_roundtrip_verified_not_game_import_verified",
   "version_id": "V0.9-integrated-run142",
   "supersedes": "V0.9-ST-only-draft-run3",
-  "validation_scope": "D3 native serialization/readback only. Some individual PI mapping display states have D4 evidence, but the complete V0.9 tactic import/display is not verified. D5 match/season performance is unverified.",
+  "validation_scope": "Run 142 D3 native serialization/readback verified; D4 game use confirmed by user for this full season, but not every setting was screenshot-audited; D5 full 59-match formal season report reviewed. Performance conclusions remain descriptive and schema-6 data remain partial/unverified.",
   "superseded_run3": {
     "run_id": "45572441695",
     "artifact_id": "15002228385",
@@ -77,13 +77,51 @@
       "scope": "Run 142 native FMF serialization and independent binary readback"
     },
     "D4": {
-      "status": "partially_verified",
-      "complete_tactic_import": false,
-      "selected_pi_mapping_display": "some individual mapping display evidence exists; not complete-tactic import proof"
+      "status": "user_confirmed_used_in_full_season",
+      "complete_tactic_import": true,
+      "field_by_field_display_audit": false,
+      "scope": "User confirms the full report at FM27-Exporter run 45584292488 used V0.9. This confirms the tactic was selected/used in game, but is not a screenshot audit of every displayed field."
     },
     "D5": {
-      "status": "unverified",
-      "complete_season_performance": false
+      "status": "season_review_completed",
+      "report": "https://github.com/eslaulau/FM27-Exporter/tree/main/season-reports/1/45584292488",
+      "analysis_file": "V0.9_SEASON_REPORT_ANALYSIS_45584292488.md",
+      "next_iteration": "V1.0"
     }
+  },
+  "season_review": {
+    "exporter_workflow_run_id": 45584292488,
+    "save_file": "1.fm",
+    "save_sha256": "7a387c63247f77490ceee5fe28e0decb207340200b3fcecae1a9a6198b8ea219",
+    "exporter_version": "1.5.0",
+    "fmsave_version": "0.14.3",
+    "game_build": "27.1.1+2511875",
+    "team_id": 472,
+    "club_uid": 618,
+    "formal_matches": 59,
+    "premier_league": {
+      "matches": 38,
+      "wins": 25,
+      "draws": 5,
+      "losses": 8,
+      "goals_for": 86,
+      "goals_against": 48,
+      "points": 80,
+      "xg": 73.83296537399292,
+      "npxg": 72.16709971427917,
+      "xga": 43.244716465473175
+    },
+    "role_code_coverage": {
+      "league_rows": 190,
+      "league_appearances": 593,
+      "share": 0.3204,
+      "complete_role_attribution": false
+    },
+    "goal_reconciliation": {
+      "formal_matches_equal": 58,
+      "unattributed_score_difference_matches": 1,
+      "unattributed_goals": 1
+    },
+    "analysis_status": "descriptive_partial_unverified_due_unregistered_fmsave_schema6_layout"
   }
 }
