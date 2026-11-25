@@ -45,6 +45,23 @@ class NativePiPreflightTests(unittest.TestCase):
                 {"pos": "DR", "role": "FullBack"},
             ], 0)
 
+    def test_oop_wide_centre_back_is_rejected_in_four_back_shape(self):
+        with self.assertRaisesRegex(ValueError, "only available to an outer centre-back in a back-three shape"):
+            validate_formation_role_compatibility([
+                {"pos": "DL", "role": "OPFullBack"},
+                {"pos": "DCL", "role": "OPWideCentreBack"},
+                {"pos": "DCR", "role": "OPCoveringCentreBack"},
+                {"pos": "DR", "role": "OPFullBack"},
+            ], 1)
+
+    def test_oop_wide_centre_back_is_allowed_in_three_back_shape(self):
+        result = validate_formation_role_compatibility([
+            {"pos": "DCL", "role": "OPWideCentreBack"},
+            {"pos": "DC", "role": "OPCentreBack"},
+            {"pos": "DCR", "role": "OPCoveringCentreBack"},
+        ], 1)
+        self.assertEqual(result["centre_back_count"], 3)
+
     def test_empty_pi_arrays_are_valid_for_all_22_phases(self):
         recipe = copy.deepcopy(self.recipe)
         for slot in recipe["p"]:
