@@ -83,7 +83,7 @@
 | **V1.1 Run145** | V1.0 | 修正 DCL 为普通中后卫；OOP 改为无锋 5-2-3、五后卫+双后腰+前场三人 | 19胜10平9负，84:48，67分；xG 81.73，xGA 52.53 | 相比 V1.0 明显回退，尤其防守机会控制和客场表现；该 OOP 结构退出当前主线 |
 | **V1.2 Run146** | V1.1 | IP 与 TI 保留；OOP 重建为四后卫底线、双后腰、双回防边前卫、屏障 MC、AMC 接应 | 26胜8平4负，72:29，86分；xG 70.31，xGA 39.97 | 防守和客场表现出现明显正向结构观察；进攻产量下降，不能将收益拆给某个 OOP PI |
 | **V1.3 Run147** | V1.2 | 保留 V1.2 OOP；进攻宽度标准→较宽；IP MCR 前插保持位置→更多前插 | **27胜7平4负，83:30，88分；xG80.54 / xGA34.27** | Run45644106773：相较V1.2有正向组合级观察（xG+10.23、xGA-5.70、射门/传中/推进增加）；大机会从76降至65、7场平局仅进5球；单项PI/TI仍未准入，D4待验证 |
-| **V1.4（D0–D2完成）** | V1.3 / Run147 | AML：组织型边锋（策应）→内锋（进攻）；短传保留，新增内切与自由跑位；其余 21 阶段及 TI 不变 | **待 D5** | 仅有数据诊断、角色权限和设计假设；D3 待构建、D4/D5 待验证；新 AML 组合未准入 |
+| **V1.4 Run148** | V1.3 / Run147 | AML：组织型边锋（策应）→内锋（进攻）；短传保留，新增内切与自由跑位；其余 21 阶段及 TI 不变 | **待 D5** | D3 Run148 通过；FMF 4,504 bytes，SHA `5bce6f33…`; 新 AML 组合仍待 D5、单项未准入；D4 pending |
 
 不同版本不是同一随机 seed 的受控实验。以上联赛结果用于发现版本级表现变化，不代表对单项指令的因果证明。
 
@@ -365,11 +365,19 @@ V0.9 ST-only Run3 是已取代草案，不属于正式版本主线。V0.5 是 V2
 - D4：游戏内导入及22阶段角色/职责/PI/TI显示核对仍待完成。
 - D5：Run45644106773分析完成并回写；这是组合级观察，不是受控因果实验。
 
-## 7.2 下一代设计记录：V1.4（父版 V1.3 / Run147；D0–D2 完成，D3 待构建）
+## 7.2 下一代设计记录：V1.4 / Run148（父版 V1.3 / Run147；D0–D3 完成，D4/D5 待验证）
 
 **父版本与身份：** V1.3 / Run147；父 FMF SHA-256 `e14574cd691c2e8d6cadb50af036b815a63fa84525a29a2b704ae69998322f86`；父 recipe blob SHA `ec5a1ab8a902b30913736725a10659b7669ba3d7`。
 
 **子配方：** [V1.4.json](V1.4.json)；[V1.4 设计及完整父子差异](V1.4_DESIGN_AND_AUDIT.md)。
+
+### D3 构建身份（Run148）
+- Build request commit：`80950ce399f8164b21427581ef9a0363deff15ca`；Actions [Run148](https://github.com/eslaulau/fm-ta/actions/runs/45648313293)，success。
+- Artifact ID `15038337551`；ZIP SHA-256 `bcebb5fca6741de79770ced994a1edf0f5d64af951d868764d6750b02abd6d55`。
+- FMF 4,504 bytes；SHA-256 `5bce6f33f70ec9aa8627e18cc866b51f5cd79b99e2e52ba667087b4e142e92bc`。
+- Same-run report 11,700 bytes；SHA-256 `b17203dd4f0557504a15b685d70a4efdfaf613c3d65fded43c0b4797ed1866bf`。
+- D3 8/8 核心检查通过；22/22 阶段回读，IP 四后场 DL/DCL/DCR/DR，AML InsideForward/A 及三项 PI 回读一致；TI bits、mentality、空 style string/FourCC 一致。D4/D5 仍 pending。
+- 构建机器报告：[V1.4_BUILD_REPORT.json](V1.4_BUILD_REPORT.json)。
 
 ### 本轮完整四类配置决策
 
@@ -391,12 +399,12 @@ V0.9 ST-only Run3 是已取代草案，不属于正式版本主线。V0.5 是 V2
 - 新 AML 组合尚无 D5 证据；不因角色兼容或静态预检通过而称为有效。
 - 角色码覆盖、逐场战术映射和 fmsave 目标 build 兼容性限制继续适用于 D5 数据解释。
 
-### 本轮 D0–D3 状态
+### 本轮 D0–D5 状态
 - D0：基于 V1.3 D5 的 xG、绝佳机会和比赛结果组诊断完成。
-- D1：当前 catalog 位置/角色/duty/PI 权限静态检查通过；GitHub Actions 正式 preflight 待唯一 build request 触发。
+- D1：catalog 权限及 Actions 正式 preflight 通过。
 - D2：11 槽/22 阶段与完整父子 diff 已完成。
-- D3：待 Actions exact-run FMF、same-run report、artifact 与回读核验。
-- D4：V1.3 用户导入仍待；V1.4 待用户导入检查。
+- D3：Run148 完成；FMF 4,504 bytes，SHA-256 `5bce6f33f70ec9aa8627e18cc866b51f5cd79b99e2e52ba667087b4e142e92bc`；same-run report 11,700 bytes，SHA-256 `b17203dd4f0557504a15b685d70a4efdfaf613c3d65fded43c0b4797ed1866bf`；Artifact ID `15038337551`，ZIP SHA-256 `bcebb5fca6741de79770ced994a1edf0f5d64af951d868764d6750b02abd6d55`。8 项核心 D3 检查全部通过。
+- D4：V1.3 用户导入仍待；V1.4 待游戏内导入/显示检查。
 - D5：待 V1.4 后续实际使用报告。
 
 ## 8. 下一轮 D5 更新模板

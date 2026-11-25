@@ -1085,3 +1085,12 @@ V1.1与V1.2英超38场有相同的主客场对手配对，但只有27场日期�
 - 四类配置：继承保留（其余 10 个 IP 阶段、全部 11 个 OOP 阶段、TI/原生格式字段）；替换淘汰（仅 AML PlaymakingWinger/S→InsideForward/A）；新增待验证（AML 内切、自由跑位、内线纵深攻击组合）；证据不足（没有逐场槽位/PI 使用链，不能拆分角色对机会质量的因果贡献）。完整 22 阶段表见 [V1.4_DESIGN_AND_AUDIT.md](V1.4_DESIGN_AND_AUDIT.md)。
 - 新配方：[V1.4.json](V1.4.json)。当前 catalog SHA `b5a292676f2398849b241054f49575ab96c1dba9`；风格注册表 SHA `71132794c2ebe326cb1270b939f66b1894435e77`。内存预检父版 22/22 phases、29 PI items、27 overrides、2 fixed-on；子版 22/22 phases、31 PI items、29 overrides、2 fixed-on。
 - D0/D1静态/D2完成；Actions正式 preflight与D3待本轮唯一build request触发。V1.3 D4 pending不阻断下一代D0–D3。
+
+
+### V1.4 Run148｜D3 构建与交付结果
+
+- Request commit：`80950ce399f8164b21427581ef9a0363deff15ca`；[FM27 Tactic Build Run148](https://github.com/eslaulau/fm-ta/actions/runs/45648313293)，success。
+- Artifact ID：`15038337551`；ZIP SHA-256：`bcebb5fca6741de79770ced994a1edf0f5d64af951d868764d6750b02abd6d55`。
+- FMF：4,504 bytes，SHA-256 `5bce6f33f70ec9aa8627e18cc866b51f5cd79b99e2e52ba667087b4e142e92bc`；same-run report：11,700 bytes，SHA-256 `b17203dd4f0557504a15b685d70a4efdfaf613c3d65fded43c0b4797ed1866bf`。
+- D3 8/8 检查通过；22/22 阶段回读一致；IP 四后场 DL/DCL/DCR/DR；AML 为内锋（进攻），短传、内切、自由跑位；TI 和原生格式字段不变。实际导入与 match engine 检查均未执行，故 D4/D5 pending。
+- 机器构建报告：[V1.4_BUILD_REPORT.json](V1.4_BUILD_REPORT.json)。
