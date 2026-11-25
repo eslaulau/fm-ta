@@ -54,13 +54,9 @@
       },
       "out": {
         "pos": "WBR",
-        "role": "HoldingWingBack",
+        "role": "PressingWingBack",
         "duty": "D",
         "pi": [
-          [
-            "TRIGGER_PRESS",
-            "MORE_OFTEN"
-          ],
           [
             "TACKLING",
             "GET_STUCK_IN"
@@ -138,13 +134,9 @@
       },
       "out": {
         "pos": "WBL",
-        "role": "HoldingWingBack",
+        "role": "PressingWingBack",
         "duty": "D",
         "pi": [
-          [
-            "TRIGGER_PRESS",
-            "MORE_OFTEN"
-          ],
           [
             "TACKLING",
             "GET_STUCK_IN"
@@ -209,10 +201,6 @@
         "role": "PressingDefensiveMidfielder",
         "duty": "D",
         "pi": [
-          [
-            "TRIGGER_PRESS",
-            "MORE_OFTEN"
-          ],
           [
             "TACKLING",
             "GET_STUCK_IN"
@@ -297,10 +285,6 @@
         "role": "ScreeningDefensiveMidfielder",
         "duty": "D",
         "pi": [
-          [
-            "TRIGGER_PRESS",
-            "LESS_OFTEN"
-          ],
           [
             "TACKLING",
             "GET_STUCK_IN"
