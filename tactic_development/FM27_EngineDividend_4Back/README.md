@@ -1,6 +1,6 @@
 # FM27 引擎红利四后卫
 
-本目录维护一个持续进行的数据驱动战术研发项目，而非只负责输出一个 FMF 文件。正式循环是：读取用户确认的赛季报告 → 数据质量审计与整体诊断 → 外部引擎机制交叉研究 → IP/OOP、角色、职责、PI、TI 协同设计 → D3 原生 FMF 构建 → D4 游戏内导入/显示确认（需对 DCL 边中卫角色差异复核）→ D5 比赛/赛季效果复盘 → 下一轮升级。
+本目录维护一个持续进行的数据驱动战术研发项目，而非只负责输出一个 FMF 文件。正式循环是：读取用户确认的赛季报告 → 数据质量审计与整体诊断 → 外部引擎机制交叉研究 → IP/OOP、角色、职责、PI、TI 协同设计 → D3 原生 FMF 构建 → D4 游戏内导入/显示确认 → D5 比赛/赛季效果复盘 → 下一轮升级。
 
 ## 当前项目文件
 
@@ -14,7 +14,8 @@
 - V0.9_SEASON_REPORT_ANALYSIS_45584292488.md：V0.9 正式使用赛季的完整数据复核和下一轮诊断。
 - V1.0.json / V1.0_DESIGN_AND_AUDIT.md：基于 V0.9 赛季复盘的下一版完整配方与设计审计。
 - V1.0_SEASON_REPORT_ANALYSIS_45602694823.md：V1.0 正式赛季复盘，记录英超 87 分、进攻/防守机会质量改善、客场推进差距及 DCL 角色一致性警报。
-- V1.0 正式 FMF：Run 144 artifact `15009749134`，FMF 4,400 bytes，SHA-256 `31abf4454e3d4c5e816a2221b669a2e5b31507bdcfa280c059007359f7eab666`；本对话已提供独立 FMF 下载。`V1.0_BUILD_REPORT.json` 记录完整构建身份与同次 report 哈希。
+- V1.0 正式 FMF：Run 144 artifact `15009749134`，FMF 4,400 bytes，SHA-256 `31abf4454e3d4c5e816a2221b669a2e5b31507bdcfa280c059007359f7eab666`；原始文件保留，配方结构含四后卫不可用的 DCL 边中卫，已由 V1.1 修正。
+- V1.1 正式 FMF：Run 145 artifact `15018939550`，FMF 4,544 bytes，SHA-256 `b4d757cca5a849b771fc18683775234e2c3d445cfb581d961a5524afdfaf40dc`；同次 report SHA-256 `8636e20931373d2915578970e9adcbe8dce5de31a1bf8abf3e8df9b2e7223101`；本对话提供 FMF、同次报告与完整 artifact ZIP。
 - V0.9.fmf：Run 142 正式 V0.9 原生 FMF；同次原始 report 保存在 Actions artifact `15005190567`，SHA-256 记录于 `V0.9_BUILD_REPORT.json`。
 - V0.9_BUILD_REPORT.json：Run 142 的版本与哈希摘要。
 - V0.9_ST_ONLY_DRAFT_SUPERSEDED_run3.fmf：首轮单改 ST 草案历史 FMF；Run 3 同次 report 保存在 Actions artifact `15002228385`；已取代，不是正式 V0.9。
@@ -22,7 +23,7 @@
 
 ## 项目硬约束与开放项
 
-- 唯一战术结构硬约束：有球四后场位置为 DL、DCL、DCR、DR。
+- 唯一战术结构硬约束：有球四后场位置为 DL、DCL、DCR、DR；阵型级角色适用条件必须同时通过。
 - 四后卫角色、职责、PI 完全开放；OOP 阵型、位置、角色、职责、PI 也完全开放。
 - 允许多个位置、角色、职责、PI 和 TI 协同调整；不强制单变量实验。
 - 每个阶段对象必须有 PI 数组，但可为空；只对实际选择的 PI 核验原生权限，禁止填充无意义 PI。
