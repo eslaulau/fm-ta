@@ -642,3 +642,7 @@ V0.2 新增的 4 场联赛（2027-01-06、01-17、01-23、01-26）全部失利�
 - FMF：V0.7.fmf，4,352 bytes；SHA-256 6c39e9506b91cdbf7fa686311fcab5ed7b88e136a3b019e55b453e8372ae32d7。
 - 原生回读：11/11 IP/OOP 配对、22/22 角色/职责/位置 catalog 检查、有球四后卫 DL/DCL/DCR/DR、PI mask、TI 向量、空 style string、FourCC 4c4c554e、心态 4、TAC ID/footer/opaque records、AOM 标题、IMG envelope 和其他 FMF 成员检查全部通过；11 个 OOP block 字节级不变。
 - 状态：offline_binary_roundtrip_verified_not_game_import_verified。游戏内导入及赛季表现尚未验证。
+
+
+### 外部 IP 四后卫基准刷新（2026-11-25）
+metaFM 27.1.1 当前页更新到 28 套/64,400 场。可见 IP 四后卫参照 OLE GUNNER COUNTER #18（IP 4-2-3-1、OOP 4-4-1-1 DM、1.70 PPG）与 Iraola #23（IP 4-2-3-1、OOP 4-4-2、1.46 PPG）。它们提供双出球中卫、双后腰策应/全能中场与组织点等候选组合，不足以证明角色组合本身有效。V0.7 以本队赛季数据为主，不复制其配置。FM-Arena 27.1.1 当前显示 27 套/36,450 场；不同 build 与协议不混排。
