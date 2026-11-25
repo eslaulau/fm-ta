@@ -9,7 +9,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 GEN_DIR = ROOT / "04_离线原生FMF生成器"
 sys.path.insert(0, str(GEN_DIR))
-from scripts.preflight_fm27_tactic import preflight
+from scripts.preflight_fm27_tactic import preflight, validate_formation_role_compatibility
 import FM27GEN1_Offline_FMF_Generator as gen  # noqa: E402
 
 
@@ -18,7 +18,32 @@ class NativePiPreflightTests(unittest.TestCase):
     def setUpClass(cls):
         cls.catalog = json.loads((GEN_DIR / "catalog.json").read_text(encoding="utf-8"))
         cls.registry = json.loads((GEN_DIR / "style_template_registry.json").read_text(encoding="utf-8"))
-        cls.recipe = gen.load_recipe_input(ROOT / "tactic_development/FM27_EngineDividend_4Back/V0.9.json")[0]
+        cls.recipe = gen.load_recipe_input(ROOT / "tactic_development/FM27_EngineDividend_4Back/V0.8.json")[0]
+
+    def test_four_back_wide_centre_back_is_rejected(self):
+        recipe = gen.load_recipe_input(ROOT / "tactic_development/FM27_EngineDividend_4Back/V1.0.json")[0]
+        with self.assertRaisesRegex(ValueError, "only available to an outer centre-back in a back-three shape"):
+            preflight(recipe, self.catalog, self.registry)
+
+    def test_wide_centre_back_is_allowed_on_outer_slot_of_back_three(self):
+        result = validate_formation_role_compatibility([
+            {"pos": "DCL", "role": "WideCentreBack"},
+            {"pos": "DC", "role": "CentreBack"},
+            {"pos": "DCR", "role": "BallPlayingCentreBack"},
+        ], 0)
+        self.assertEqual(result["centre_back_count"], 3)
+        self.assertEqual(result["formation_dependent_roles"], [
+            {"position": "DCL", "role": "WideCentreBack"}
+        ])
+
+    def test_overlapping_centre_back_is_rejected_in_four_back_shape(self):
+        with self.assertRaisesRegex(ValueError, "only available to an outer centre-back in a back-three shape"):
+            validate_formation_role_compatibility([
+                {"pos": "DL", "role": "FullBack"},
+                {"pos": "DCL", "role": "CentreBack"},
+                {"pos": "DCR", "role": "OverlappingCentreBack"},
+                {"pos": "DR", "role": "FullBack"},
+            ], 0)
 
     def test_empty_pi_arrays_are_valid_for_all_22_phases(self):
         recipe = copy.deepcopy(self.recipe)
