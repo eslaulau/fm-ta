@@ -1,5 +1,11 @@
 # FM27 全位置角色权限目录 v2
 
+> **重要：位置权限表不等于阵型可用性。** 本表列出的是“单个位置槽位”的基础角色菜单/原生权限，不能单独证明角色在当前整条阵型中可用。FM27 的动态阵型条件还会限制部分角色：
+> - 有球 `WideCentreBack`（边中卫）与 `OverlappingCentreBack`（套上中卫），以及无球 `OPWideCentreBack`、`OPCoveringWideCentreBack`、`OPStoppingWideCentreBack`，只适用于三中卫体系中的外侧中卫位置（DCL/DCR）。
+> - 对应阶段必须同时存在三个中卫槽位（`DCL`、`DC`、`DCR`）；仅有 `DCL+DCR` 的四后卫结构不满足条件。
+> - 因此下文 DCL/DCR 的角色清单表示基础位置权限，并不表示这些宽中卫角色可以用于四后卫。
+> - FM27 资料：[角色定义](https://guide.ludens.com.tw/fm27/roles/)；[阵型形状限制](https://assman.ai/guides/fm27-tactics-whats-changed)。
+
 ## 完整性结论
 
 - 原始权限提取：24 个原生角色菜单位置；IP 40 个不同角色 ID，OOP 39 个不同角色 ID，共 79 个阶段角色 ID。
