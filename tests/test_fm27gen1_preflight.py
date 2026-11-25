@@ -74,10 +74,10 @@ class NativePiPreflightTests(unittest.TestCase):
         self.assertEqual(result["formation_role_checks"][0]["centre_back_count"], 2)
         self.assertEqual(set(result["formation_role_checks"][1]["centre_back_positions"]), {"DCR", "DCL", "DC"})
         self.assertEqual(result["formation_role_checks"][1]["centre_back_count"], 3)
-        self.assertEqual(set(result["formation_role_checks"][1]["formation_dependent_roles"]), {
-            ("DCR", "OPCoveringWideCentreBack"),
-            ("DCL", "OPCoveringWideCentreBack"),
-        })
+        self.assertEqual(
+            {(item["position"], item["role"]) for item in result["formation_role_checks"][1]["formation_dependent_roles"]},
+            {("DCR", "OPCoveringWideCentreBack"), ("DCL", "OPCoveringWideCentreBack")},
+        )
         oop_positions = {slot["out"]["pos"] for slot in recipe["p"]}
         self.assertEqual(oop_positions, {"GK", "WBR", "DCR", "DCL", "WBL", "DC", "DMR", "AMR", "AML", "DML", "AMC"})
         oop_by_pos = {slot["out"]["pos"]: slot["out"] for slot in recipe["p"]}
