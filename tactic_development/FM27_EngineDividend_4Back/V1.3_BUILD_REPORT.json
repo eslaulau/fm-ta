@@ -1,0 +1,169 @@
+{
+  "version": "V1.3",
+  "version_id": "V1.3-run147",
+  "parent_version": "V1.2-run146",
+  "parent_fmf": "FM27_EngineDividend_IP4Back_OOP42121_V1.2_20261125_run146.fmf",
+  "parent_sha256": "66c831f96bf7329f09ed4aa41c50bb61406a524f9e630bcbbb234dac2728e7e7",
+  "season_report": "FM27-Exporter/season-reports/1/45635282210",
+  "user_confirmed_tactic": "V1.2",
+  "recipe": "V1.3.json",
+  "recipe_git_blob_sha": "ec5a1ab8a902b30913736725a10659b7669ba3d7",
+  "build_request": "build_requests/FM27_EngineDividend_IP4Back_OOP42121_V1.3_20261125.json",
+  "build_request_git_blob_sha": "ec5a1ab8a902b30913736725a10659b7669ba3d7",
+  "build_request_commit": "0cfcc93264dcd36f35620b4db82d213002c88648",
+  "catalog_blob_sha": "b5a292676f2398849b241054f49575ab96c1dba9",
+  "workflow": {
+    "name": "FM27 Tactic Build",
+    "run_number": 147,
+    "run_id": 45638142105,
+    "url": "https://github.com/eslaulau/fm-ta/actions/runs/45638142105",
+    "conclusion": "success",
+    "artifact_id": 15033178333,
+    "artifact_name": "FM27_FM27_EngineDividend_IP4Back_OOP42121_V1.3_20261125_run147"
+  },
+  "output": {
+    "repository_file": null,
+    "delivery": "Exact-run Actions artifact and attached conversation downloads",
+    "artifact_file": "FM27_EngineDividend_IP4Back_OOP42121_V1.3_20261125_run147.fmf",
+    "bytes": 4504,
+    "sha256": "e14574cd691c2e8d6cadb50af036b815a63fa84525a29a2b704ae69998322f86",
+    "same_run_report_file": "FM27_EngineDividend_IP4Back_OOP42121_V1.3_20261125_run147.report.json",
+    "same_run_report_bytes": 11536,
+    "same_run_report_sha256": "1302dfba8d21b8566e099c0e69d1a6c7c671acc9b51450ceb3fd77a15ccb150f",
+    "artifact_zip_bytes": 6975,
+    "artifact_zip_sha256": "3a8d65456097e243c2122a7947f787159ca0783c48b3e5ef3d9f11bd1d9dc3f9"
+  },
+  "native_carrier": {
+    "name": "FM27 Native Parent Snapshot (V0.9)",
+    "sha256": "5dc33a05f032345ca9c674b02d48e7619b32303e3e0eb54930598941df3456a1",
+    "role": "serialization carrier only; conceptual tactical parent is V1.2",
+    "style_string": "",
+    "fourcc": "4c4c554e",
+    "mentality": 4,
+    "inheritance": "All 22 IP/OOP phases are explicitly written by V1.3. Team instruction vector starts from native carrier and declared mapped TI changes apply over it; opaque sections remain protected."
+  },
+  "changes": {
+    "IP": "All V1.2 IP positions, roles and duties retained; DL/DCL/DCR/DR remain the IP back four. MCR CentralMidfielder/Support PI changes from FORWARD_RUNS=KEEP_POSITION to FORWARD_RUNS=MAKE_MORE_RUNS; PASSING_RISKS=TAKE_FEWER_RISKS remains.",
+    "OOP": "All 11 V1.2 OOP positions, roles, duties and PIs retained unchanged, including four-back line, double DM, screening MC, two tracking wide midfielders and high outlet AMC.",
+    "team_instructions": {
+      "TEMPO": "HIGHER",
+      "ATTACKING_WIDTH": "WIDER",
+      "DEFENSIVE_LINE": "DEFAULT",
+      "TRIGGER_PRESS": "MORE_OFTEN",
+      "native_bits": [
+        2,
+        5,
+        7,
+        11,
+        13,
+        16,
+        28,
+        35,
+        44,
+        47,
+        51,
+        54,
+        61,
+        66,
+        69,
+        71,
+        72,
+        79,
+        83
+      ],
+      "delta_from_V1_2": "Adds native bit 51 (WIDER) only; other declared TI values retained."
+    },
+    "configured_pi_items": 29,
+    "serialized_override_bits": 27,
+    "selected_fixed_on_options": 2
+  },
+  "validation": {
+    "phase_count": 22,
+    "designed_phase_count": 22,
+    "readback_phase_count": 22,
+    "ip_back_four": [
+      "DL",
+      "DCL",
+      "DCR",
+      "DR"
+    ],
+    "ip_back_four_valid": true,
+    "oop_positions": [
+      "GK",
+      "DR",
+      "DCR",
+      "DCL",
+      "DL",
+      "DMR",
+      "DML",
+      "MR",
+      "ML",
+      "MC",
+      "AMC"
+    ],
+    "roles_duties_pi_readback_exact": true,
+    "pi_permissions_checked_against_catalog": true,
+    "team_instruction_bits_readback": [
+      2,
+      5,
+      7,
+      11,
+      13,
+      16,
+      28,
+      35,
+      44,
+      47,
+      51,
+      54,
+      61,
+      66,
+      69,
+      71,
+      72,
+      79,
+      83
+    ],
+    "native_style_string": "",
+    "native_fourcc": "4c4c554e",
+    "checks": {
+      "fmf_outer_roundtrip": true,
+      "all_member_decrypt_and_zstd_checksums": true,
+      "tac_full_parse": true,
+      "11_ip_oop_pairs": true,
+      "22_positions_roles_pi_readback_exact": true,
+      "pi_permissions_checked_against_catalog": true,
+      "team_instruction_vector_readback": true,
+      "native_style_string_and_code_readback": true,
+      "game_interactive_import": false,
+      "match_engine": false
+    }
+  },
+  "verification_stages": {
+    "D0": {
+      "status": "completed",
+      "scope": "V1.2 report diagnosis and V1.3 coordinated IP attack restoration design."
+    },
+    "D1": {
+      "status": "passed",
+      "scope": "Current catalog-backed native position/role/duty/PI permissions and WIDER TI mapping."
+    },
+    "D2": {
+      "status": "passed",
+      "scope": "11 slots, 22 phases, complete recipe and IP four-back positions."
+    },
+    "D3": {
+      "status": "verified",
+      "scope": "Run 147 FMF generation, independent binary readback, exact-run artifact and SHA/byte verification."
+    },
+    "D4": {
+      "status": "pending",
+      "scope": "Import V1.3 in FM27 and inspect roles, duties, PIs, TIs and phase shapes."
+    },
+    "D5": {
+      "status": "pending",
+      "scope": "Use explicit V1.3 mapping for a new match/season report and compare with the V1.2 baseline."
+    }
+  },
+  "status": "offline_binary_roundtrip_verified_not_game_import_verified"
+}
