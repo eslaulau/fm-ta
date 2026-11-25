@@ -28,6 +28,15 @@ class NativeParentSnapshotCarrierTests(unittest.TestCase):
         cls.recipe = json.loads(RECIPE_PATH.read_text(encoding="utf-8"))
         cls.carrier = next(x for x in cls.registry["native_carriers"] if x["name"] == CANONICAL_CARRIER)
 
+    @staticmethod
+    def make_four_back_compatible_copy(recipe):
+        """Keep the historical recipe unchanged; correct only its illegal WCB test fixture."""
+        result = json.loads(json.dumps(recipe))
+        for slot in result["p"]:
+            if slot["in"]["pos"] == "DCL" and slot["in"]["role"] == "WideCentreBack":
+                slot["in"]["role"] = "CentreBack"
+        return result
+
     def test_native_parent_snapshot_is_not_an_official_style_or_blank_tactic(self):
         self.assertEqual(len(self.registry["styles"]), 10)
         self.assertNotIn(self.carrier, self.registry["styles"])
@@ -80,9 +89,12 @@ class NativeParentSnapshotCarrierTests(unittest.TestCase):
         self.assertEqual(len(recipe["p"]), 11)
         for old_slot, new_slot in zip(self.recipe["p"], recipe["p"]):
             self.assertEqual(old_slot, new_slot)
-        preflight_result = preflight(recipe, self.catalog, self.registry)
+        with self.assertRaisesRegex(ValueError, "only available to an outer centre-back in a back-three shape"):
+            preflight(recipe, self.catalog, self.registry)
+        compatible_recipe = self.make_four_back_compatible_copy(recipe)
+        preflight_result = preflight(compatible_recipe, self.catalog, self.registry)
         self.assertEqual(preflight_result["checked_phases"], 22)
-        fmf_bytes, report = gen.build_fmf_from_recipe(recipe, self.catalog, style_registry=self.registry)
+        fmf_bytes, report = gen.build_fmf_from_recipe(compatible_recipe, self.catalog, style_registry=self.registry)
         self.assertEqual(
             report["template_sha256"],
             "5dc33a05f032345ca9c674b02d48e7619b32303e3e0eb54930598941df3456a1",
@@ -96,16 +108,19 @@ class NativeParentSnapshotCarrierTests(unittest.TestCase):
         self.assertEqual(tac.style, "")
         self.assertEqual(bytes(tac.quad).hex(), "4c4c554e")
 
-    def test_full_v09_recipe_preflight_and_roundtrip(self):
+    def test_original_v09_recipe_is_rejected_but_corrected_four_back_copy_roundtrips(self):
         gen.validate_recipe_structure(self.recipe)
         phases = [x for slot in self.recipe["p"] for x in (slot["in"], slot["out"])]
         self.assertEqual(len(self.recipe["p"]), 11)
         self.assertEqual(len(phases), 22)
         self.assertTrue(all(x["pi"] for x in phases))
-        preflight_result = preflight(self.recipe, self.catalog, self.registry)
+        with self.assertRaisesRegex(ValueError, "only available to an outer centre-back in a back-three shape"):
+            preflight(self.recipe, self.catalog, self.registry)
+        compatible_recipe = self.make_four_back_compatible_copy(self.recipe)
+        preflight_result = preflight(compatible_recipe, self.catalog, self.registry)
         self.assertEqual(preflight_result["checked_phases"], 22)
         self.assertEqual(preflight_result["configured_pi_phases"], 22)
-        fmf_bytes, report = gen.build_fmf_from_recipe(self.recipe, self.catalog, style_registry=self.registry)
+        fmf_bytes, report = gen.build_fmf_from_recipe(compatible_recipe, self.catalog, style_registry=self.registry)
         self.assertEqual(report["status"], "offline_binary_roundtrip_verified_not_game_import_verified")
         self.assertEqual(report["template_sha256"], PARENT_SHA256)
         self.assertEqual(report["tac_style_string"], "")
@@ -119,7 +134,7 @@ class NativeParentSnapshotCarrierTests(unittest.TestCase):
         self.assertEqual(bytes(tac.quad).hex(), "4c4c554e")
 
     def test_all_empty_pi_arrays_pass_permission_preflight_and_build(self):
-        recipe = json.loads(json.dumps(self.recipe))
+        recipe = self.make_four_back_compatible_copy(self.recipe)
         for slot in recipe["p"]:
             slot["in"]["pi"] = []
             slot["out"]["pi"] = []
@@ -134,7 +149,7 @@ class NativeParentSnapshotCarrierTests(unittest.TestCase):
         self.assertTrue(fmf_bytes)
 
     def test_invalid_selected_pi_is_rejected(self):
-        recipe = json.loads(json.dumps(self.recipe))
+        recipe = self.make_four_back_compatible_copy(self.recipe)
         recipe["p"][0]["in"]["pi"] = [["PASSING_STRATEGY", "NOT_A_NATIVE_OPTION"]]
         with self.assertRaises(ValueError):
             preflight(recipe, self.catalog, self.registry)
