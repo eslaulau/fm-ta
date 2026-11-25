@@ -1,0 +1,137 @@
+{
+  "version": "V1.0",
+  "version_id": "V1.0-run144",
+  "parent_version": "V0.9-integrated-run142",
+  "parent_fmf": "V0.9.fmf",
+  "parent_sha256": "5dc33a05f032345ca9c674b02d48e7619b32303e3e0eb549305d6ef135f55bb",
+  "recipe": "V1.0.json",
+  "recipe_sha256": "bd4b448ab5161496e54776bded0caf070986de603763c243327fd5bd3f82c844",
+  "recipe_git_blob_sha": "229af0df4d513e46d3fe7e80e3b0fbfa6c8a15eb",
+  "build_request": "build_requests/FM27_EngineDividend_IP_4Back_V1.0_20261125.json",
+  "build_request_sha256": "579f6eac553ba311c7ce6e515e2a124633575ff41312895cd3b4244f630d5191",
+  "build_request_git_blob_sha": "474628625865984e97e343e9236efaa97e802076",
+  "build_request_commit": "157ff1dd40552e3dc10724a0332425852b1293bb",
+  "workflow": {
+    "name": "FM27 Tactic Build",
+    "run_number": 144,
+    "run_id": 45589785955,
+    "url": "https://github.com/eslaulau/fm-ta/actions/runs/45589785955",
+    "conclusion": "success",
+    "artifact_id": 15009749134,
+    "artifact_name": "FM27_FM27_EngineDividend_IP_4Back_V1.0_20261125_run144"
+  },
+  "output": {
+    "repository_file": null,
+    "delivery": "Exact-run Actions artifact and attached conversation download",
+    "artifact_file": "FM27_EngineDividend_IP_4Back_V1.0_20261125_run144.fmf",
+    "bytes": 4400,
+    "sha256": "31abf4454e3d4c5e816a2221b669a2e5b31507bdcfa280c059007359f7eab666",
+    "same_run_report_file": "FM27_EngineDividend_IP_4Back_V1.0_20261125_run144.report.json",
+    "same_run_report_bytes": 12113,
+    "same_run_report_sha256": "c96fa9c74e7ea8b3af8e27647b66a64013b4471448da2ff7c96867984ab496a3",
+    "artifact_zip_bytes": 6811,
+    "artifact_zip_sha256": "d830ca106044ad4ca808496ed58612d9f690af0e2f14339b408d6ca62cdfd865"
+  },
+  "native_carrier": {
+    "name": "FM27 Native Parent Snapshot (V0.9)",
+    "parent_sha256": "5dc33a05f032345ca9c674b02d48e7619b32303e3e0eb549305d6ef135f55bb",
+    "style_string": "",
+    "fourcc": "4c4c554e",
+    "mentality": 4,
+    "inheritance": "The V1.0 recipe completely specifies all 22 IP/OOP phase configurations. TI starts from V0.9; only ATTACKING_WIDTH and DEFENSIVE_LINE are reset to native defaults, while other TI and opaque sections remain parent-inherited."
+  },
+  "changes": {
+    "TEMPO": {
+      "before": "HIGHER",
+      "after": "HIGHER",
+      "changed": false
+    },
+    "ATTACKING_WIDTH": {
+      "before": "NARROWER",
+      "after": "DEFAULT",
+      "changed": true,
+      "native_action": "clear V0.9 narrower-width option bit"
+    },
+    "DEFENSIVE_LINE": {
+      "before": "LOWER",
+      "after": "DEFAULT",
+      "changed": true,
+      "native_action": "clear V0.9 lower-defensive-line option bit"
+    },
+    "TRIGGER_PRESS": {
+      "before": "MORE_OFTEN",
+      "after": "MORE_OFTEN",
+      "changed": false
+    }
+  },
+  "validation": {
+    "phase_count": 22,
+    "ip_back_four": [
+      "DL",
+      "DCL",
+      "DCR",
+      "DR"
+    ],
+    "ip_back_four_valid": true,
+    "roles_and_duties_readback_exact": true,
+    "player_instruction_masks_readback_exact": true,
+    "all_selected_pi_permissions_valid": true,
+    "team_instruction_vector_readback_exact": true,
+    "width_and_defensive_line_reset_bits_absent": [
+      52,
+      58
+    ],
+    "team_instruction_bits": [
+      2,
+      5,
+      7,
+      11,
+      13,
+      16,
+      28,
+      35,
+      44,
+      47,
+      54,
+      61,
+      66,
+      69,
+      71,
+      72,
+      79,
+      83
+    ],
+    "native_style_string": "",
+    "native_fourcc": "4c4c554e",
+    "all_d3_readback_checks": true,
+    "game_import": false,
+    "match_engine_performance": false
+  },
+  "verification_stages": {
+    "D0": {
+      "status": "completed",
+      "scope": "V1.0 full 22-phase design"
+    },
+    "D1": {
+      "status": "passed",
+      "scope": "catalog-backed native position/role/duty and selected PI permission preflight"
+    },
+    "D2": {
+      "status": "passed",
+      "scope": "11 slots and 22 IP/OOP phase structures"
+    },
+    "D3": {
+      "status": "verified",
+      "scope": "Run 144 native FMF generation, independent readback and exact-run artifact"
+    },
+    "D4": {
+      "status": "pending",
+      "scope": "import V1.0 in FM27 and inspect displayed settings"
+    },
+    "D5": {
+      "status": "pending",
+      "scope": "use V1.0 in a new season and review results"
+    }
+  },
+  "status": "offline_binary_roundtrip_verified_not_game_import_verified"
+}

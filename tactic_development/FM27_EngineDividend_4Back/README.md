@@ -12,6 +12,7 @@
 - V0.9.json / V0.9_DESIGN_AND_AUDIT.md：正式 V0.9 综合版 recipe 与审查。
 - V0.9_SEASON_REPORT_ANALYSIS_45584292488.md：V0.9 正式使用赛季的完整数据复核和下一轮诊断。
 - V1.0.json / V1.0_DESIGN_AND_AUDIT.md：基于 V0.9 赛季复盘的下一版完整配方与设计审计。
+- V1.0 正式 FMF：Run 144 artifact `15009749134`，FMF 4,400 bytes，SHA-256 `31abf4454e3d4c5e816a2221b669a2e5b31507bdcfa280c059007359f7eab666`；本对话已提供独立 FMF 下载。`V1.0_BUILD_REPORT.json` 记录完整构建身份与同次 report 哈希。
 - V0.9.fmf：Run 142 正式 V0.9 原生 FMF；同次原始 report 保存在 Actions artifact `15005190567`，SHA-256 记录于 `V0.9_BUILD_REPORT.json`。
 - V0.9_BUILD_REPORT.json：Run 142 的版本与哈希摘要。
 - V0.9_ST_ONLY_DRAFT_SUPERSEDED_run3.fmf：首轮单改 ST 草案历史 FMF；Run 3 同次 report 保存在 Actions artifact `15002228385`；已取代，不是正式 V0.9。

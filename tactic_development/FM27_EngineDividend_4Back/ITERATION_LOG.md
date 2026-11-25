@@ -790,4 +790,6 @@ ST位置12球对19.63 xG，非胜场进球转化明显偏低；已解码的联�
 - 角色/职责/PI矩阵及OOP 11槽本轮完整保留V0.9；这不是永久锁定，而是因为V0.9攻击核心表现强、角色码覆盖不足以支撑高风险更改。
 - TI：进攻宽度“较窄”→“默认”；防线高度“较低”→“默认”。比赛节奏“较高”和团队逼抢频率“较多”保留。两组通过 `DEFAULT` 清除父快照对应的窄宽度/低防线native bits，其余未声明TI及opaque bits继续从V0.9父快照继承。
 - 目标：增加客场出球横向接应，并缩短较低防线与高位压迫线之间的纵向空隙。风险为横向距离增大、后防身后空间上升，需在V1.0赛季重点检查客场推进、xGA、射门/绝佳机会和终结差额。
-- recipe：[V1.0.json](V1.0.json)；设计审计：[V1.0_DESIGN_AND_AUDIT.md](V1.0_DESIGN_AND_AUDIT.md)。本日志更新时构建尚待Actions确认，不能把D3写成已通过。
+- recipe：[V1.0.json](V1.0.json)；设计审计：[V1.0_DESIGN_AND_AUDIT.md](V1.0_DESIGN_AND_AUDIT.md)。
+- 正式构建：[FM27 Tactic Build Run 144](https://github.com/eslaulau/fm-ta/actions/runs/45589785955)，success；artifact ID `15009749134`。FMF 4,400 bytes，SHA-256 `31abf4454e3d4c5e816a2221b669a2e5b31507bdcfa280c059007359f7eab666`；同次 report 12,113 bytes，SHA-256 `c96fa9c74e7ea8b3af8e27647b66a64013b4471448da2ff7c96867984ab496a3`；artifact ZIP SHA-256 `d830ca106044ad4ca808496ed58612d9f690af0e2f14339b408d6ca62cdfd865`。
+- D3：FMF 外层、全部成员解密/Zstd 校验、TAC 完整解析、11 组 IP/OOP、22 阶段角色/职责/PI 精确回读、所选 PI 权限、TI 向量、style string/FourCC 全部通过；IP 四后场为 DL/DCL/DCR/DR。D4 游戏内导入与 D5 新赛季表现仍待验证。
