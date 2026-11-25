@@ -230,10 +230,10 @@ DL、DCL、DCR、DR、DML、DMR 的 OOP `TACKLING` 由 `GET_STUCK_IN` 改为 `EA
 
 ---
 
-## 当前版本｜V1.2（Run 146）
+## 当前版本｜V1.3（Run 147）
 
-- 最新已构建版本：[V1.2 配方](V1.2.json)、[V1.2 设计审计](V1.2_DESIGN_AND_AUDIT.md)、[V1.2 构建摘要](V1.2_BUILD_REPORT.json)。
-- V1.1 正式赛季报告复盘：[V1.1_SEASON_REPORT_ANALYSIS_45617475212.md](V1.1_SEASON_REPORT_ANALYSIS_45617475212.md)。
-- V1.2 父版本：V1.1 Run145；V1.2 保留 IP 四后卫与进攻核心，OOP 重建为四后卫底线、双后腰、回防宽中场、屏障中场和 AMC 高位接应点。
-- Build Run146：[Actions](https://github.com/eslaulau/fm-ta/actions/runs/45619871449)，artifact ID 15023997021；FMF 4,504 bytes，SHA-256 66c831f96bf7329f09ed4aa41c50bb61406a524f9e630bcbbb234dac2728e7e7。
-- D3 原生回读已通过；V1.2 游戏内导入/显示与比赛表现待验证。V1.1 D5 已完成，不能将 V1.2 D3 写成实战成功。
+- 最新版本：[V1.3 配方](V1.3.json)、[V1.3 设计与审计](V1.3_DESIGN_AND_AUDIT.md)、[V1.3 构建摘要](V1.3_BUILD_REPORT.json)。
+- V1.2 正式赛季分析：[V1.2_SEASON_REPORT_ANALYSIS_45635282210.md](V1.2_SEASON_REPORT_ANALYSIS_45635282210.md)。V1.2 英超38场：26胜8平4负、72:29、86分；xG70.31/xGA39.97。相较V1.1多19分，客场防守明显改善，但进攻xG、射门与边路供给下降。
+- V1.3 父版本为 V1.2 Run146；保留IP四后卫与整套OOP防守结构，只把进攻宽度调为较宽，并把MCR中前卫前插调为更多前插。
+- Build Run147：[Actions](https://github.com/eslaulau/fm-ta/actions/runs/45638142105)，artifact ID 15033178333；FMF 4,504 bytes，SHA-256 `e14574cd691c2e8d6cadb50af036b815a63fa84525a29a2b704ae69998322f86`。
+- Same-run report SHA-256：`1302dfba8d21b8566e099c0e69d1a6c7c671acc9b51450ceb3fd77a15ccb150f`；D1-D3均通过，D4游戏内完整导入显示与D5实战效果待验证。V1.2 D5已完成；不能把V1.3 D3写成实战成功。
