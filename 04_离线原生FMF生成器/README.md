@@ -8,7 +8,7 @@
 
 ## 全仓库战术使用政策（必须遵守）
 
-本仓库所有 FMF 战术、十份原生样本、各风格模板、历史重建文件和其他战术配方，**全部非推荐战术、非成功战术，不得作为新战术开发参考**。不得复制或继承其中的阵型、角色、职责、PI、TI 或整体攻防配置，也不得把离线生成/回读成功理解为战术实战成功。
+本仓库历史 FMF/配方不会自动成为推荐战术或成功案例。单次新战术不得把它们当作通用战术模板；对于用户明确授权的持续迭代项目，可以使用指定父版本与该版本对应的用户确认赛季报告作为版本谱系和复盘依据。离线生成/回读成功不等于战术实战成功。
 
 这些文件只允许在必要时用于原生 FMF 容器、字段编码、style code、二进制结构和生成器兼容性研究。技术模板作为容器基础时，不代表其战术内容被采纳；未知/opaque 数据若因格式兼容而保留，也不得视为战术建议或性能证据。新战术的战术设计必须独立完成。
 
@@ -16,7 +16,7 @@
 
 上述禁止复制和改造仓库现存战术的规则，目的是消除路径依赖，**不是限制创新**。本项目必须积极鼓励原创战术设计：
 
-- 从用户当前目标和明确限制出发，从零提出战术解法；球队阵容、球员属性、历史比赛和对手数据分析只有在用户明确要求时才执行。不得先挑一个旧战术再做局部修改。
+- 单次战术从用户目标和限制出发独立设计；对已授权持续研发项目，使用该项目指定父版本、用户确认的报告与实测映射进行完整迭代。球队阵容/比赛数据是否使用按项目授权范围执行。
 - 鼓励探索全新的攻防结构，包括但不限于非对称 IP/OOP 阵型、不同阶段的角色与职责重组、全新的 PI/TI 协同、压迫与回撤结构、攻防转换方式，以及不依赖单一传统风格的混合思路。
 - 不受仓库现有战术文件、90 条网站预设、历史配方、模板或十种风格名称的战术思路限制。十种风格及其 style code 只是目前掌握的原生文件身份/格式兼容资料，不是必须遵循的战术蓝图，也不代表只有这十种战术思路才可创新。
 - 如果当前 FMF 生成链路要求选择已登记的原生 style code 或技术模板，只能把它们作为文件序列化和兼容性载体；实际阵型、角色、职责、PI、TI 与整体攻防逻辑仍须独立原创，不能继承模板原有战术配置。
@@ -76,10 +76,9 @@ Path("NEW_TACTIC.report.json").write_text(
 )
 ```
 
-返回报告默认标记 `recipe_input_format=python_dict`，并已完成 FMF 外层、成员解密、TAC、22 个阶段与 PI/TI/风格字段的 D3 独立回读。D3 独立回读通过并交付 FMF 与报告，即为本项目完整验收。
+返回报告默认标记 `recipe_input_format=python_dict`，并已完成 FMF 外层、成员解密、TAC、22 个阶段与 PI/TI/风格字段的 D3 独立回读。D3 是本生成器的技术交付验收：它证明文件结构和回读，不证明游戏内导入或比赛效果。
 
-正式云端工作流通过 `scripts/resolve_fm27_tactic_recipe.py` 将内联对象作为 workflow output/env 单行 JSON 传递，再由 `scripts/build_fm27_tactic.py` 在 Python 内存中解析为 `dict` 并调用上述 API；不会创建临时配方 JSON 文件。`scripts/validate_fm27_tactic_delivery.py` 在写入前强制 22/22 阶段非空 PI。
-正式云端构建由 `scripts/validate_fm27_tactic_delivery.py` 强制要求 **22/22 个 IP/OOP 阶段都至少有一条 PI**；空 PI 仍可用于底层格式烟雾测试，但不能作为正式战术 artifact 上传。
+正式云端工作流通过 `scripts/resolve_fm27_tactic_recipe.py` 将内联对象作为 workflow output/env 单行 JSON 传递，再由 `scripts/build_fm27_tactic.py` 在 Python 内存中解析为 dict 并调用上述 API；不会创建临时配方 JSON 文件。`scripts/validate_fm27_tactic_delivery.py` 只检查配方结构：11 个槽位、22 个阶段对象以及必需字段。每阶段必须提供 PI 数组，空数组合法。`scripts/preflight_fm27_tactic.py` 和生成器逐条验证实际选择的 PI；不要求 22/22 阶段非空。
 
 ## Windows 使用方法
 
@@ -110,7 +109,7 @@ py -3.12 FM27GEN1_Offline_FMF_Generator.py "NEW_TACTIC.json" --catalog "catalog.
 
 也可在 GitHub Actions 页面手动运行 **FM27 Tactic Build**：只填写 `recipe_json` 并粘贴完整 JSON，可不在仓库保存配方；或填写 `recipe_path` 选择已有 JSON/TXT。自动化调用可使用 `repository_dispatch` 的 `fm27_tactic_build` 事件，将完整对象放入 `client_payload.recipe`。内联 JSON 通过 workflow output/env 变量直接交给 Python dict 构建脚本，不生成临时 JSON 文件；仓库文件模式与旧 `.txt` GEN1 兼容读取保留。完整触发、验收、失败处理和交付说明见 [FM27GEN1_离线原生FMF_生成流程](./FM27GEN1_离线原生FMF_生成流程.md) 与 [build_requests/README](../build_requests/README.md)。
 
-该工作流完成 D3 云端原生生成、独立回读和 artifact 上传，即为本项目完整交付。原有 `fm27-native-tactics-regression.yml` 继续只负责代码/映射回归测试，不作为指定新战术的构建入口。
+该工作流完成 D3 云端原生生成、独立回读和 artifact 上传，即为一次 FMF 构建的完整技术交付。用户授权的持续战术研发可继续进行 D4 游戏内导入/显示验证和 D5 比赛/赛季效果复盘。原有 `fm27-native-tactics-regression.yml` 继续只负责代码/映射回归测试，不作为指定新战术的构建入口。
 
 ## 角色、职责与指令证据登记
 
@@ -173,4 +172,4 @@ GitHub Actions 会自动执行样本解析、模板回读、十种风格映射�
 
 ## 验证边界
 
-报告状态 `offline_binary_roundtrip_verified_not_game_import_verified` 表示本次 FMF 离线二进制重建和独立回读已通过；该状态名描述生成器报告的验证范围，不代表存在后续项目验收阶段。D3 完成后即交付 FMF 与同次报告。
+报告状态 `offline_binary_roundtrip_verified_not_game_import_verified` 表示本次 FMF 离线二进制生成和独立回读已通过；它不表示游戏内导入或比赛表现已验证。D3 完成后交付 FMF 与同次报告，D4/D5 属于生成器之外的后续验证阶段。

@@ -10,9 +10,9 @@ Before designing, generating, debugging, or modifying any tactic, read this file
 
 ## 1. Project identity and non-negotiable outcome
 
-This repository (`eslaulau/fm-ta`) is the FM27 original-tactic design and native-FMF delivery project.
-Its normal user-facing task is:
-**user describes a tactical goal → AI designs an original tactic → AI submits one build request to this repository → GitHub Actions builds and independently reads back the native FM27 `.fmf` → AI downloads and verifies the artifact → AI attaches the actual `.fmf` and its same-run `.report.json` in the conversation.**
+This repository (`eslaulau/fm-ta`) provides the FM27 original-tactic design and native-FMF build pipeline. A single build operation is complete at D3 when its exact-run FMF and same-run report are retrieved and verified; this technical output gate is not a judgment that a tactic is effective.
+
+The repository also contains the explicitly user-authorized continuing R&D line `tactic_development/FM27_EngineDividend_4Back/`. For that project, the normal lifecycle is: **user-confirmed season report/version mapping → full-team and player-data audit → engine-mechanism research → coordinated IP/OOP/role/duty/PI/TI redesign → native FMF generation/read-back (D0–D3) → in-game import/display verification (D4) → match/season performance review (D5) → next iteration**. Use the user's confirmed parent version and its report as the version lineage; do not ask the user to re-authorize this ongoing analysis each time a report is added.
 
 The user must not be asked to:
 - create, edit, upload, or convert JSON/GEN1 files;
@@ -41,7 +41,9 @@ Never conclude that a role, PI, TI, style, or data source is missing from a sing
 - data absent;
 - data present but not mapped;
 - code mapped but not covered by tests;
-- D3: the native FMF is generated and all required independent binary/read-back checks pass; this is the final acceptance point for this project.
+- D3: native FMF generation and independent binary/read-back checks passed for this exact build;
+- D4: the tactic was imported into FM27 and the intended visible settings were checked;
+- D5: match/season evidence was reviewed under a stated data-quality and version-mapping scope.
 
 ## 3. Tactical design rules
 
@@ -49,14 +51,14 @@ Never conclude that a role, PI, TI, style, or data source is missing from a sing
 
 For a new tactic:
 - Design independently from the user's current tactical goal and explicit constraints.
-- Unless the user explicitly requests otherwise, do not use any tactic, preset, recipe, FMF, old report, sample, template tactic configuration, or old AI output in this repository as a tactical design reference, seed, baseline, or recommendation. A clear, task-specific instruction from the user may authorize use of the named historical material within the scope they specify; do not treat that exception as blanket permission to use other archived tactics.
+- For a one-off tactic, do not use repository tactics as generic recommendations or success cases. A specific parent version and user-confirmed reports may be used when the user authorizes a continuing iteration project. In particular, `tactic_development/FM27_EngineDividend_4Back/` is an explicitly authorized ongoing line: use its confirmed version lineage, reports, recipes, audits, and engine research for that line only; do not copy unrelated archived or external tactics wholesale.
 - Native FMF samples/templates may be inspected only for binary/file-format compatibility. Do not inherit their formation, roles, duties, PIs, TIs, or tactical logic.
-- Do not require squad analysis, player attributes, match reports, opponent analysis, save data, or real-match statistics unless the user explicitly asks for that analysis or makes those materials part of the task. Lack of such data is not a blocker for an original tactic based on the user's stated objective.
+- For a one-off tactic, do not require squad analysis, player attributes, match reports, opponent analysis, save data, or real-match statistics unless requested. Exception: the user has explicitly made season-report analysis and whole-tactic iteration part of the FM27 EngineDividend project; when its report is available, analyze it and continue the iteration without asking again.
 - Do not force a named official style as the tactical idea. The ten registered styles/style codes are native serialization carriers where required, not a limit on tactical creativity.
 - Do not silently replace roles, remove instructions, weaken the tactical idea, or downgrade unsupported settings to defaults merely to make generation pass.
 
 Design all 11 slots and both phases (IP/OOP), with an explicit role and a valid duty for each phase. Use the canonical native position/role/duty and PI permission information; resolve aliases only through the documented crosswalk and generator normalization rules.
-The current formal delivery contract requires 22/22 phases to contain at least one effective, mapped, permission-valid PI. Do not add meaningless or invented PIs just to satisfy the gate. If this contract cannot be met for the requested concept, identify the exact slot/phase and native permission/mapping reason, investigate the original evidence, and report the precise blocker.
+Every phase object must contain a PI array, but the array may be empty when no player override is needed. Validate every PI that is actually selected against the current phase/position/role/duty permission policy. A catalog state of fixed-on means the role already supplies that instruction; it is not a serialized override bit. Never add meaningless PI merely to make all 22 arrays non-empty or to inflate a phase count.
 Team instructions use the generator's shared native TI vector. Do not invent independent IP/OOP TI vectors.
 
 ## 4. Mandatory research and error-handling sequence
@@ -66,7 +68,7 @@ For every requested tactic:
 2. Read the current index and identify authoritative native position, role, duty, PI and TI sources.
 3. Design an original complete 11-slot, IP/OOP tactic; state internally the tactical purpose of each line/phase and how TI/PI choices support it.
 4. Validate every position/role/duty/PI against the current catalog and permissions. Verify TI keys/options against the current native map. Do not rely on README counts alone when current code or catalog has changed.
-5. Build the complete structured JSON object in memory. Validate schema, 11 slots, 22 phase objects, and the 22/22 nonempty-PI delivery gate.
+5. Build the complete structured JSON object in memory. Validate schema, 11 slots, 22 phase objects, an explicit PI array on every phase, and native permission for every selected PI; empty PI arrays are valid.
 6. Submit exactly one uniquely named UTF-8 JSON build request to `build_requests/` on `main` using the available GitHub repository write action. Do not create an issue/comment or commit multiple candidate recipes to trigger a build.
 7. Identify the **FM27 Tactic Build** run caused by that exact request commit. Do not confuse it with native-generator test CI or the fixed native regression workflow.
 8. Wait for that run's completed result. If it fails, inspect the failing job/step/log and classify the failure before acting:
@@ -85,9 +87,11 @@ A failed first build is a debugging signal, not a reason to abandon the task, si
 - D0: original tactical concept designed.
 - D1: native position/role/duty/PI permissions checked.
 - D2: complete structured recipe/schema validated.
-- D3: the specific native FMF generated and all required independent binary/read-back checks passed. **D3 is the final acceptance point and complete deliverable for this project.**
+- D3: the exact native FMF and same-run report were generated, independently read back, retrieved, and hash/size verified. This completes the native-file build operation.
+- D4: game-client import and visible position/role/duty/PI/TI verification.
+- D5: match/season performance review and the next evidence-led iteration.
 
-The project does not include game-client import, in-game inspection, match simulation, or match-performance testing as required steps, acceptance gates, or delivery blockers. Once the exact-run FMF and report pass D3 and are delivered, the project task is complete. Describe only the checks actually performed by the generator; never claim tactical match effectiveness without evidence.
+D3 is not the final acceptance of the continuing EngineDividend R&D line and does not establish game import or tactical effectiveness. D4/D5 are tracked separately; if unavailable, report them as pending rather than falsely passing them or blocking delivery of a verified D3 artifact. The generator workflow itself only claims D3 checks.
 
 ## 6. Response behavior
 
@@ -103,10 +107,10 @@ This section is an execution requirement, not optional performance advice. Whene
 2. **Use a catalog-fingerprint cache for research efficiency.** Key reusable parsed indexes by the current Git blob SHA (or an equivalent content hash) of `04_离线原生FMF生成器/catalog.json`. Reuse cached role, duty, position eligibility, and PI policy indexes only when the fingerprint matches exactly. If the SHA changes or cannot be verified, reread the current catalog and rebuild the cache. A cache accelerates lookup; it never replaces current-source validation.
 3. **Design before compatibility filtering.** Follow Section 3: choose the strongest original tactical concept first. Do not constrain tactical design to cached/easy roles. Then resolve positions, role aliases, OOP naming, duty, PI, and TI against current generator code and catalog.
 4. **Build the complete recipe in memory.** Do not commit trial recipes or candidate variants. Use one uniquely named final JSON recipe for one requested tactic.
-5. **Run the catalog-backed preflight before triggering a build.** Execute `python scripts/preflight_fm27_tactic.py` with the recipe and current catalog/style registry (or the equivalent workflow step for inline JSON). It must check all 22 phases, native position normalization, role/phase/position eligibility, duty, every PI permission, non-empty effective PI in all 22 phases, TI mapping, and registered native style. If preflight fails, do not trigger the FMF build. Investigate the authoritative source and correct the in-memory recipe or source-backed mapping first.
+5. **Run the catalog-backed preflight before triggering a build.** Execute `python scripts/preflight_fm27_tactic.py` with the recipe and current catalog/style registry (or the equivalent workflow step for inline JSON). It must check all 22 phases, native position normalization, role/phase/position eligibility, duty, every selected PI permission, TI mapping, and registered native style. Empty PI arrays are valid; report configured PI counts separately from serialized override bits and fixed-on selections. If a selected PI fails preflight, do not trigger the FMF build. Investigate the authoritative source and correct the in-memory recipe or source-backed mapping first.
 6. **Prefer direct JSON dispatch when the caller has an actual dispatch capability.** Use the workflow's `repository_dispatch` event type `fm27_tactic_build` and pass the complete recipe as `client_payload.recipe`; this avoids a recipe-file commit. If the active GitHub integration cannot issue the required POST dispatch request, do not pretend it did: use exactly one uniquely named JSON file commit on `main` as the documented push-trigger fallback. Never create multiple recipe commits just to start or retry builds.
 7. **Use cached Actions dependencies.** The workflow's Python setup should retain pip caching keyed to `04_离线原生FMF生成器/requirements.txt`. Do not remove dependency caching as a speed shortcut unless the workflow proves it is incompatible.
 8. **Track the exact build run and complete D3 delivery.** Identify the FM27 Tactic Build run associated with the exact dispatch/request commit, inspect failures, retrieve only that run's artifact, and verify the actual `.fmf` and same-run `.report.json` per Section 4. A preflight pass is D1/D2 preparation, not D3. Do not claim success until the exact-run artifact is downloaded and checked.
 
-**Required status disclosure:** In the final response, briefly distinguish (a) catalog cache reused or refreshed and its fingerprint, (b) preflight passed/failed and phase count, (c) direct dispatch used or push fallback used, (d) exact Actions run result, and (e) D3 artifact verification/delivery. Never label a capability "implemented", "cached", "triggered", or "verified" unless that action was actually performed in the current task.
+**Required status disclosure:** For a build task, distinguish catalog cache/fingerprint, preflight result, dispatch method, exact Actions run, and D3 artifact verification. For the continuing EngineDividend line, also state D4 import/display and D5 performance status independently. Never label an unperformed action as verified.
 

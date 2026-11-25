@@ -20,7 +20,7 @@
 ## 快速构建路径（2026-11 更新）
 
 - **Catalog 指纹缓存：** 助手端以 `catalog.json` 的 Git blob SHA / 内容指纹作为缓存键。指纹未变化时复用已读取的角色、职责、位置资格与 PI 权限索引；指纹变化时才重新读取。catalog 始终以仓库当前版本为准，不使用过期缓存做构建验收。
-- **PI 预检前移：** `scripts/preflight_fm27_tactic.py` 在正式构建前一次检查 11 个槽位的 22 个阶段，包括原生位置归一化、角色阶段与位置资格、duty、每条 PI 的 catalog 权限、22/22 非空 PI、TI 编码映射和原生风格登记。预检失败不启动 FMF 生成。
+- **PI 预检前移：** `scripts/preflight_fm27_tactic.py` 在正式构建前检查 11 个槽位的 22 个阶段，包括原生位置归一化、角色阶段与位置资格、duty、每条已选择 PI 的 catalog 权限、TI 编码映射和原生风格登记。每阶段必须有 PI 数组，但空数组合法；预检失败不启动 FMF 生成。
 - **依赖缓存：** Actions 使用 `setup-python` 的 pip cache，缓存键由 `requirements.txt` 决定；依赖未变化时跳过重复下载。
 - **直接 API 触发：** 工作流保留 `repository_dispatch` 的 `fm27_tactic_build` 事件，配方作为 `client_payload.recipe` 直接传入，不创建配方文件、不产生配方 Git commit。调用方需有仓库 `contents:write` 权限。当前对话连接提供 GitHub GET/文件写入操作，但不提供任意 POST dispatch 操作；因此本次已完成工作流接收端和预检接入，不能声称已从本对话直接 POST 触发。可用的文件提交 push 路径仍作为自动构建后备方案。
 
@@ -43,7 +43,7 @@ python "04_离线原生FMF生成器/FM27GEN1_Offline_FMF_Generator.py" "build_re
 
 原生生成器仍执行角色/位置/duty 验证、每一条 PI 的原生权限检查、TI 编码、模板风格核对，以及 FMF/TAC 独立回读。回读报告中的 `recipe_input_format` 应为 `json`。
 
-正式交付额外要求 **22/22 个阶段均至少填写一条 PI**。云端在原生 FMF 写入之前运行 `scripts/validate_fm27_tactic_delivery.py`，任何空 PI 阶段都会明确报出槽位/阶段并中止构建；这与生成器为通用烟雾测试保留空数组兼容不同。
+`scripts/validate_fm27_tactic_delivery.py` 只检查配方结构、11 个槽位、22 个阶段对象及必需字段。每阶段的 PI 字段必须存在且为数组，但 [] 合法；是否需要额外个人指令由战术设计决定，不得为了通过校验而填充。所选 PI 的具体原生权限由 catalog 预检和生成器逐条验证。
 
 ## 自动验收
 
@@ -82,15 +82,14 @@ Artifact 保留 14 天。直接 JSON 源配方留在本目录；无需额外生�
 
 ## 结果边界
 
-该工作流完成 D3：云端原生 FMF 生成、独立二进制回读、SHA-256/长度核验和 artifact 上传。D3 即本项目正式交付终点；本项目不设置后续游戏内或比赛测试阶段。
+该工作流完成 D3：云端原生 FMF 生成、独立二进制回读、SHA-256/长度核验和 artifact 上传。D3 是生成器的技术输出门槛，不声明游戏内导入或比赛效果；持续研发项目可在 D4/D5 继续验证。
 
 ## 历史战术迁移兼容通道（仅限用户明确授权）
 
 `build_requests/legacy_migrations/*.json` 使用独立工作流 `.github/workflows/fm27-legacy-migration-build.yml`。该通道只用于将用户明确要求复刻的旧版战术转换为当前原生 FMF，不作为新战术创作入口。
 
 与普通正式交付的区别：
-- 历史战术原有的空 PI 阶段必须原样保留，不得为通过 22/22 非空 PI 门槛而虚构个人指令。
-- 兼容通道仅跳过普通交付的“22/22 非空 PI”完整性门槛。
+- 历史战术原有的空 PI 阶段必须原样保留；所有合法配方都允许空 PI 数组，不存在普通交付的非空 PI 门槛。
 - 角色/位置/duty 兼容性、PI 原生权限、TI 编码、FMF 容器完整性和全部 D3 独立回读仍必须通过。
 - D3 只证明原生文件生成和二进制回读，不代表游戏内导入或比赛效果已验证。
 - 历史战术迁移必须有用户明确授权；不得将其结果自动作为新战术设计模板或成功战术证据。
