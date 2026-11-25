@@ -9,6 +9,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 GEN_DIR = ROOT / "04_离线原生FMF生成器"
+sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(GEN_DIR))
 import FM27GEN1_Offline_FMF_Generator as gen
 from scripts.preflight_fm27_tactic import preflight
