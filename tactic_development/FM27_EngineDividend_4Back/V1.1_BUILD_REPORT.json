@@ -1,0 +1,145 @@
+{
+  "version": "V1.1",
+  "version_id": "V1.1-run145",
+  "parent_version": "V1.0-run144",
+  "parent_fmf": "V1.0_20261125_run144.fmf",
+  "parent_sha256": "31abf4454e3d4c5e816a2221b669a2e5b31507bdcfa280c059007359f7eab666",
+  "recipe": "V1.1.json",
+  "recipe_git_blob_sha": "2f1cfcafd33843a3dd59bc2f23540637b3f54c26",
+  "build_request": "build_requests/FM27_EngineDividend_IP4Back_OOP523_V1.1_20261125.json",
+  "build_request_git_blob_sha": "2f1cfcafd33843a3dd59bc2f23540637b3f54c26",
+  "build_request_commit": "98a8821b9b81140b8f09960c9b2b88f4d1a8d08c",
+  "workflow": {
+    "name": "FM27 Tactic Build",
+    "run_number": 145,
+    "run_id": 45609801350,
+    "url": "https://github.com/eslaulau/fm-ta/actions/runs/45609801350",
+    "conclusion": "success",
+    "artifact_id": 15018939550,
+    "artifact_name": "FM27_FM27_EngineDividend_IP4Back_OOP523_V1.1_20261125_run145"
+  },
+  "output": {
+    "repository_file": null,
+    "delivery": "Exact-run Actions artifact and attached conversation downloads",
+    "artifact_file": "FM27_EngineDividend_IP4Back_OOP523_V1.1_20261125_run145.fmf",
+    "bytes": 4544,
+    "sha256": "b4d757cca5a849b771fc18683775234e2c3d445cfb581d961a5524afdfaf40dc",
+    "same_run_report_file": "FM27_EngineDividend_IP4Back_OOP523_V1.1_20261125_run145.report.json",
+    "same_run_report_bytes": 12417,
+    "same_run_report_sha256": "8636e20931373d2915578970e9adcbe8dce5de31a1bf8abf3e8df9b2e7223101",
+    "artifact_zip_bytes": 6985,
+    "artifact_zip_sha256": "a32630da7ceb72de05e3156a02345a41bc4886690d814c435e5b082e79c02eb7"
+  },
+  "native_carrier": {
+    "name": "FM27 Native Parent Snapshot (V0.9)",
+    "sha256": "5dc33a05f032345ca9c674b02d48e7619b32303e3e0eb54930598941df3456a1",
+    "role": "serialization carrier only; conceptual tactical parent is V1.0",
+    "style_string": "",
+    "fourcc": "4c4c554e",
+    "mentality": 4,
+    "inheritance": "All 22 IP/OOP phases are explicitly written by V1.1. Four team instructions are explicitly kept at V1.0 values. Other unmentioned TI/opaque bits inherit from the V0.9 native carrier."
+  },
+  "changes": {
+    "IP_DCL": {
+      "before": "WideCentreBack/Defend (invalid in a four-back shape)",
+      "after": "CentreBack/Defend"
+    },
+    "OOP": {
+      "before": "V1.0 inherited shape",
+      "after": "strikerless 5-2-3 with WBL-DCL-DC-DCR-WBR, DML-DMR, AML-AMC-AMR"
+    },
+    "OOP_pressing": {
+      "wingbacks": "OPPressingWingBack (More Often is role-default/fixed-on)",
+      "DCR_DCL_DC": "Less Often",
+      "DMR": "OPPressingDefensiveMidfielder (More Often is role-default/fixed-on)",
+      "DML": "OPScreeningDefensiveMidfielder (Less Often is role-default/fixed-on)",
+      "AMR_AML_AMC": "More Often"
+    },
+    "OOP_tackling": "Tackle Harder for outfield players; GK Ease Off Tackles"
+  },
+  "validation": {
+    "phase_count": 22,
+    "designed_phase_count": 22,
+    "readback_phase_count": 22,
+    "ip_back_four": [
+      "DL",
+      "DCL",
+      "DCR",
+      "DR"
+    ],
+    "oop_strikerless_523": {
+      "back_line": [
+        "WBL",
+        "DCL",
+        "DC",
+        "DCR",
+        "WBR"
+      ],
+      "midfield": [
+        "DML",
+        "DMR"
+      ],
+      "front_three": [
+        "AML",
+        "AMC",
+        "AMR"
+      ],
+      "no_st": true
+    },
+    "roles_duties_pi_readback_exact": true,
+    "pi_permissions_checked_against_catalog": true,
+    "team_instruction_vector_readback_exact": true,
+    "team_instruction_bits": [
+      2,
+      5,
+      7,
+      11,
+      13,
+      16,
+      28,
+      35,
+      44,
+      47,
+      54,
+      61,
+      66,
+      69,
+      71,
+      72,
+      79,
+      83
+    ],
+    "native_style_string": "",
+    "native_fourcc": "4c4c554e",
+    "all_d3_readback_checks": true,
+    "game_import": false,
+    "match_engine_performance": false
+  },
+  "verification_stages": {
+    "D0": {
+      "status": "completed",
+      "scope": "Complete V1.1 IP/OOP 22-phase design"
+    },
+    "D1": {
+      "status": "passed",
+      "scope": "catalog-backed role/position/duty/PI plus formation-level back-three role compatibility"
+    },
+    "D2": {
+      "status": "passed",
+      "scope": "11 slots and 22 phase objects"
+    },
+    "D3": {
+      "status": "verified",
+      "scope": "Run145 FMF generation, full independent readback and exact-run artifact"
+    },
+    "D4": {
+      "status": "pending",
+      "scope": "Import in FM27 and inspect IP4-back/OOP5-2-3 shape, roles, duties, PI, TI"
+    },
+    "D5": {
+      "status": "pending",
+      "scope": "Use explicit V1.1 mapping in the next match/season report and evaluate performance"
+    }
+  },
+  "status": "offline_binary_roundtrip_verified_not_game_import_verified"
+}
