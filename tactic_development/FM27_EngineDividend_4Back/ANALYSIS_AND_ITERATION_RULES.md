@@ -131,6 +131,10 @@
 - 即使本轮没有触发任何配置修改，也必须追加一条对应报告的复盘记录，明确“无配置状态变化”及其原因，不得省略台账回写。
 - 提交后重新读取 GitHub 上的台账，核验报告条目、版本映射和四类清单确实存在；只有 read-back 成功后，才可对用户说该赛季分析和台账同步完成。
 
+#### 6.6 每次 D3 构建后的身份回写
+
+D3 构建成功后，必须更新台账对应版本记录：父版本及父 FMF SHA、子版本/recipe SHA、build request commit、Actions run/workflow ID、artifact ID/name（若可取得）、FMF 文件名/字节数/SHA-256、same-run report SHA-256、实际 read-back 检查结果，以及 D4/D5 尚未完成的状态。详细构建说明可保存在 `*_BUILD_REPORT.json` 和 `*_DESIGN_AND_AUDIT.md`，但台账必须保留可定位的身份索引。若 D3 失败，也要记录失败 run 与阻断原因，不得把失败或未取得的 artifact 标成完成。
+
 #### 6.5 四类清单的简短模板
 
 | 分类 | 配置 ID / 阶段 / 位置 | 父版值 → 子版值 | 决策依据/效果证据 | 当前效能准入 |
