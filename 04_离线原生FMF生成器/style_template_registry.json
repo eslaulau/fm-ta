@@ -1,6 +1,6 @@
 {
   "schema": "fm27-style-template-registry-v1",
-  "policy": "The ten official styles are backed by uploaded FM27 native TAC samples and remain in styles[]. native_carriers[] contains separately verified custom/native FMF snapshots used only as format carriers; carriers are not official styles and their tactical configuration must be fully overwritten by the recipe. Opaque native TI bits remain template-owned until a catalog mapping is proven.",
+  "policy": "The ten official styles are backed by uploaded FM27 native TAC samples and remain in styles[]. native_carriers[] contains verified native parent snapshots used only as format carriers; a parent snapshot is not necessarily a blank tactic. A complete recipe replaces all 22 IP/OOP phase configurations. Shared team-instruction bits are a parent-based overlay: only declared, mapped TI changes are written; undeclared or opaque bits may remain inherited from the parent and must be recorded.",
   "source_major_required": 27,
   "styles": [
     {
@@ -243,7 +243,7 @@
   "repository_layout": "fm-ta stores the rules directory at repository root; evidence.sample_path values are repository-relative. Original source paths are retained in evidence.repository_path/source metadata where present.",
   "native_carriers": [
     {
-      "name": "FM27 Native Blank (V0.8 Carrier)",
+      "name": "FM27 Native Parent Snapshot (V0.8)",
       "status": "native_snapshot_verified",
       "style_code_hex": "4c4c554e",
       "tac_style_string": "",
@@ -256,8 +256,16 @@
         "source": "User-authorized V0.8 parent FMF; its native blank style string and FourCC were independently confirmed in the V0.8 native build report.",
         "offline_fmf_roundtrip": "passed",
         "game_import": "not_verified",
-        "note": "Format-only carrier, not an official style and not a tactical design template. A complete structured recipe overwrites all 22 IP/OOP position, role, duty and PI phase configurations; declared TI values update the shared native vector."
-      }
+        "note": "Format-only parent snapshot carrier, not an official style, blank FMF, or tactical recommendation. A complete structured recipe overwrites all 22 IP/OOP position, role, duty and PI phase configurations. The shared TI vector starts from the parent; only recipe-declared mapped TI options are updated, while undeclared and opaque bits remain inherited.",
+        "inheritance_policy": {
+          "phase_configuration": "Complete recipe replacement for all 22 IP/OOP phases",
+          "team_instruction_vector": "Parent snapshot base with recipe-declared mapped TI overlay",
+          "opaque_bits": "Remain parent-owned unless a mapped native bit is explicitly changed"
+        }
+      },
+      "aliases": [
+        "FM27 Native Blank (V0.8 Carrier)"
+      ]
     }
   ]
 }

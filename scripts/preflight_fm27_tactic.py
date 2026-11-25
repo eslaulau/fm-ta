@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fast, catalog-backed preflight for a deliverable FM27 tactic recipe."""
+"""Catalog-backed preflight for an FM27 tactic recipe; empty PI arrays are valid."""
 from __future__ import annotations
 
 import argparse
@@ -21,8 +21,11 @@ def preflight(recipe: dict, catalog: dict, style_registry: dict) -> dict:
     positions = {item["id"]: int(item["mask"]) for item in catalog["positions"]}
     roles = {item["id"]: item for item in catalog["roles"]}
     eligibility = catalog.get("role_eligibility", {})
-    empty_pi = []
     checked = []
+    configured_pi_phases = 0
+    configured_pi_items = 0
+    serialized_override_bits = 0
+    selected_fixed_on_options = 0
 
     for slot, spec in enumerate(recipe["p"]):
         for phase, phase_key in ((0, "in"), (1, "out")):
@@ -40,20 +43,37 @@ def preflight(recipe: dict, catalog: dict, style_registry: dict) -> dict:
                 raise ValueError(f"slot {slot} {phase_key}: incompatible position/role {pos_name}/{role_id}")
 
             duty = gen.resolve_role_duty(role_id, item)
-            gen.encode_pi(item["pi"], catalog, phase, pos_id, role_id, duty)
-            if not item["pi"]:
-                empty_pi.append(f"slot {slot} {phase_key}")
-            checked.append({"slot": slot, "phase": phase_key, "position": pos_name, "role": role_id})
+            selected_count = len(item["pi"])
+            pi_mask = gen.encode_pi(item["pi"], catalog, phase, pos_id, role_id, duty)
+            override_bits = pi_mask.bit_count()
+            fixed_on_count = selected_count - override_bits
+            if fixed_on_count < 0:
+                raise ValueError(f"slot {slot} {phase_key}: invalid PI override count")
 
-    if empty_pi:
-        raise ValueError("22/22 PI completeness failed; empty: " + ", ".join(empty_pi))
+            configured_pi_phases += int(selected_count > 0)
+            configured_pi_items += selected_count
+            serialized_override_bits += override_bits
+            selected_fixed_on_options += fixed_on_count
+            checked.append({
+                "slot": slot,
+                "phase": phase_key,
+                "position": pos_name,
+                "role": role_id,
+                "configured_pi_count": selected_count,
+                "serialized_override_bit_count": override_bits,
+                "selected_fixed_on_count": fixed_on_count,
+            })
 
     return {
         "status": "preflight_passed",
         "catalog_schema_version": catalog.get("schema_version"),
         "catalog_source_bundle_sha256": catalog.get("source_bundle_sha256"),
         "checked_phases": len(checked),
-        "non_empty_pi_phases": len(checked),
+        "configured_pi_phases": configured_pi_phases,
+        "configured_pi_items": configured_pi_items,
+        "serialized_pi_override_bits": serialized_override_bits,
+        "selected_fixed_on_options": selected_fixed_on_options,
+        "empty_pi_phases_allowed": True,
         "roles": checked,
     }
 

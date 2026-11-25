@@ -354,9 +354,9 @@ def resolve_style_definition(style_name: str, registry: dict | None) -> dict:
     """Resolve official styles and separately registered native snapshot carriers."""
     if registry is not None:
         entries = list(registry.get('styles', [])) + list(registry.get('native_carriers', []))
-        matches = [x for x in entries if x.get('name') == style_name]
+        matches = [x for x in entries if x.get('name') == style_name or style_name in x.get('aliases', [])]
         if len(matches) != 1:
-            raise ValueError(f'风格/原生载体登记表中不存在唯一条目：{style_name}')
+            raise ValueError(f'风格/原生载体或别名登记表中不存在唯一条目：{style_name}')
         item = matches[0]
         status = item.get('status')
         code_hex = item.get('style_code_hex')
@@ -366,8 +366,8 @@ def resolve_style_definition(style_name: str, registry: dict | None) -> dict:
             if not code_hex or not isinstance(tac_style, str) or not tac_style or not template:
                 raise ValueError(f'官方风格登记条目缺少原生证据字段：{style_name}')
         elif status == 'native_snapshot_verified':
-            # Native carriers are not official styles. The empty-style carrier is
-            # accepted only for the exact V0.8 parent identity, never by inference.
+            # Native carriers are not official styles. The registered V0.8 parent
+            # snapshot is a format carrier, not a blank tactical configuration.
             if (item.get('carrier_only') is not True or code_hex != '4c4c554e'
                     or tac_style != '' or not template):
                 raise ValueError(f'原生载体身份/格式标记无效：{style_name}')
