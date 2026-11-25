@@ -1,28 +1,27 @@
-> 当前迭代：V0.7，父版本 V0.6。项目目标已纠正为 FM27 有球阶段四后卫结构开发。OOP 不再强制四后卫；现实足球理论不作为设计约束。V0.7 基于 V0.6 完整赛季报告重构中场接应、前腰组织和三项球队指令，保留有球 DL–DCL–DCR–DR 四后卫。原生 FMF 已构建并通过独立二进制回读：4,352 bytes，SHA-256 6c39e9506b91cdbf7fa686311fcab5ed7b88e136a3b019e55b453e8372ae32d7。游戏内导入与比赛表现仍待验证。
+> 当前迭代候选：V0.8，父版本 V0.7。核心目标为 FM27 有球阶段四后卫 DL–DCL–DCR–DR。V0.7 正常赛季报告显示联赛 15胜8平15负、53分，较 V0.6 少15分；共同36场联赛样本中，场均 xG 下降、对手 xG 上升。V0.8 保留 MCR 中前卫（策应）稳定接应，将 AMC 前场组织核心改为进攻职责并启用更多前插，同时恢复极高节奏、极窄进攻宽度和极多团队逼抢。V0.8 原生 FMF 构建状态以 GitHub Actions 结果为准。
 
-本项目研发的是利用 FM27 引擎红利机制的高效有球四后卫战术，不是将现实足球体系翻译成游戏阵型。每轮按五步执行：读取赛季报告、诊断整体优势与弱点、重构整套配置、生成下一正式 FMF、正常赛季复盘。允许多个相关位置、角色、职责、PI 和 TI 协同升级；逐字段实验和 OOP 四后卫不再作为强制门槛。
+本项目研发利用 FM27 引擎红利机制的高效有球四后卫战术，不以现实足球理论作为限制。每轮按五步执行：读取赛季报告、诊断整体优势与弱点、重构整套配置、生成下一正式 FMF、正常赛季复盘。允许多个相关位置、角色、职责、PI 和 TI 协同升级；逐字段实验和 OOP 四后卫不再是强制门槛。
 
 ## 当前项目文件
 
-- ANALYSIS_AND_ITERATION_RULES.md：正式五步研发规则，明确有球四后卫为核心目标。
-- ROLE_PI_AUDIT_TEMPLATE.md：用于审查完整角色/PI/TI 协同，不是逐字段效能准入表。
-- EXTERNAL_ENGINE_BENCHMARK.md：外部引擎研究与榜单基准，按 IP 结构分类，OOP 独立记录。
+- ANALYSIS_AND_ITERATION_RULES.md：正式五步研发规则，有球四后卫为核心目标。
+- ROLE_PI_AUDIT_TEMPLATE.md：审查完整角色/PI/TI 协同，不是逐字段效能准入表。
+- EXTERNAL_ENGINE_BENCHMARK.md：外部引擎研究与榜单基准，按 IP 结构分类。
 - ITERATION_LOG.md：唯一版本主线及构建/复盘记录。
-- V0.5_BASELINE.md：V0.5 原始父基准。
-- V0.6.fmf / V0.6.json / V0.6_BUILD_REPORT.json：V0.7 唯一父版本及原生构建信息。
-- V0.6_REANALYSIS_45554864463.md：V0.6 完整赛季报告重新分析。
-- V0.7.json / V0.7_DESIGN_AND_AUDIT.md：下一版本配方与协同设计审查。
-- V0.7.fmf：4,352 bytes，SHA-256 6c39e9506b91cdbf7fa686311fcab5ed7b88e136a3b019e55b453e8372ae32d7；原生回读通过，游戏内导入待验证。
-- V0.7_BUILD_REPORT.json：完整原生字段保护与回读检查摘要。
-- ../../scripts/build_fm27_snapshot_tactic.py：从 V0.6 原生快照定点改写的构建器。
-- ../../.github/workflows/fm27-native-snapshot-build.yml：V0.7 原生 FMF 构建与 artifact 工作流。
+- V0.6_REANALYSIS_45554864463.md：V0.6 赛季报告重新分析。
+- V0.7.fmf / V0.7_BUILD_REPORT.json：V0.8 唯一父版本及原生构建报告。
+- V0.7_REANALYSIS_45564413834.md：V0.7 正常赛季完整复盘，含共同赛程比较和数据质量审计。
+- V0.8.json / V0.8_DESIGN_AND_AUDIT.md：V0.8 升级配方与协同设计审查。
+- V0.8_BUILD_REPORT.json：V0.8 原生构建回读结果（构建完成后归档）。
+- ../../scripts/build_fm27_snapshot_tactic.py：从指定父版原生快照定点改写的构建器。
+- ../../.github/workflows/fm27-v0.8-native-build.yml：V0.8 原生 FMF 构建和 artifact 工作流。
 
 ## 版本原则
 
-- V0.1 至 V0.6 全部保留，V0.7 的唯一父版本为 V0.6。
+- V0.1 至 V0.7 全部保留，V0.8 唯一父版本为 V0.7。
 - 有球四后卫位置为 DL、DCL、DCR、DR；无球结构可以独立设计。
 - 原生 style string 保持空白，FourCC 保持 4c4c554e。
-- 不能把原生二进制回读说成游戏内导入或赛季表现验证。
+- 原生二进制回读不等于游戏内导入或赛季表现验证。
 
 ---
 

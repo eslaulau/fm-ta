@@ -1,0 +1,85 @@
+{
+  "version": "V0.8",
+  "parent_version": "V0.7",
+  "parent_file": "tactic_development/FM27_EngineDividend_4Back/V0.7.fmf",
+  "parent_sha256": "6c39e9506b91cdbf7fa686311fcab5ed7b88e136a3b019e55b453e8372ae32d7",
+  "output_file": "V0.8.fmf",
+  "title": "FM27_EngineDividend_IP_4Back_V0.8",
+  "mentality_native_value": 4,
+  "native_style_lock": {
+    "style_string": "",
+    "fourcc_hex": "4c4c554e"
+  },
+  "design_objective": "保留 V0.7 的有球中场稳定接应点，恢复 AMC 纵深攻击职责与高强度压迫，提升射门/绝佳机会与防守限制能力，同时保持 IP DL-DCL-DCR-DR 四后卫。",
+  "team_instructions": {
+    "TEMPO": "MUCH_HIGHER",
+    "ATTACKING_WIDTH": "MUCH_NARROWER",
+    "TRIGGER_PRESS": "MUCH_MORE_OFTEN"
+  },
+  "team_instruction_changes": [
+    {
+      "field": "TEMPO",
+      "old": "HIGHER",
+      "new": "MUCH_HIGHER",
+      "native_bits": {
+        "old": 47,
+        "new": 46
+      },
+      "reason": "V0.7 在共同联赛样本中传球量基本不变，但射门、射正、绝佳机会和 xG 下降；恢复高节奏以增加进攻回合和攻击密度。"
+    },
+    {
+      "field": "ATTACKING_WIDTH",
+      "old": "NARROWER",
+      "new": "MUCH_NARROWER",
+      "native_bits": {
+        "old": 52,
+        "new": 53
+      },
+      "reason": "恢复 V0.6 的紧凑有球宽度，与 AMC 纵深前插和保留的边路组织点形成更密集的中路攻击支援。"
+    },
+    {
+      "field": "TRIGGER_PRESS",
+      "old": "MORE_OFTEN",
+      "new": "MUCH_MORE_OFTEN",
+      "native_bits": {
+        "old": 66,
+        "new": 65
+      },
+      "reason": "V0.7 联赛对手 xG 明显上升；恢复更高团队逼抢频率，个体化 OOP 压迫 PI 保持原值。"
+    }
+  ],
+  "player_changes": [
+    {
+      "slot": 9,
+      "phase": "IP",
+      "position": "AMC",
+      "old": {
+        "role": "AdvancedPlaymaker",
+        "duty": "S",
+        "pi": [
+          ["ROAMING", "ROAM_FROM_POSITION"]
+        ]
+      },
+      "role": "AdvancedPlaymaker",
+      "duty": "A",
+      "pi": [
+        ["ROAMING", "ROAM_FROM_POSITION"],
+        ["FORWARD_RUNS", "MAKE_MORE_RUNS"]
+      ],
+      "reason": "保留前场组织核心的组织属性与自由跑位，将职责提升为进攻，并启用更多前插，补回 V0.7 进攻机会下降时缺少的中路纵深攻击点。原生 catalog 显示该 PI 在 Support 下固定关闭，在 Attack 下可编辑。"
+    }
+  ],
+  "retained_design": [
+    "有球四后卫 DL-DCL-DCR-DR 不变",
+    "四名后卫的角色、职责与个人指令全部保持 V0.7",
+    "MCR CentralMidfielder Support 保留，个人指令继续减少冒险传球、保持位置",
+    "MCL ChannelMidfielder Attack 保留为另一条中路纵深攻击线",
+    "AMC 保留 AdvancedPlaymaker 组织核心角色，只把职责改为 Attack 并加更多前插",
+    "AMR/AML WidePlaymaker Support 保留",
+    "ST ChannelForward Attack 与 V0.6 后点攻击 PI 保留",
+    "全部 OOP 位置、角色、职责及个人指令保持 V0.7 原值",
+    "除三项列出的 TI 外，其余球队指令全部保持 V0.7 原值",
+    "心态 native value 4、空白 style string、FourCC 4c4c554e 保持"
+  ],
+  "status": "awaiting_native_snapshot_build"
+}
