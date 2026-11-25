@@ -1,0 +1,105 @@
+{
+  "version": "V0.7",
+  "parent_version": "V0.6",
+  "parent_file": "tactic_development/FM27_EngineDividend_4Back/V0.6.fmf",
+  "parent_sha256": "97e8ac91ce369024745905d5e22c9a29167c85faad9b3454a30920e23f67cf0c",
+  "output_file": "V0.7.fmf",
+  "title": "FM27_EngineDividend_IP_4Back_V0.7",
+  "mentality_native_value": 4,
+  "native_style_lock": {
+    "style_string": "",
+    "fourcc_hex": "4c4c554e"
+  },
+  "design_objective": "以有球四后卫为核心，改善客场和败场中的中场接应、出球连接与推进稳定性；整体协同调整，不以现实足球理论为约束。",
+  "team_instructions": {
+    "TEMPO": "HIGHER",
+    "ATTACKING_WIDTH": "NARROWER",
+    "TRIGGER_PRESS": "MORE_OFTEN"
+  },
+  "team_instruction_changes": [
+    {
+      "field": "TEMPO",
+      "old": "MUCH_HIGHER",
+      "new": "HIGHER",
+      "native_bits": {
+        "old": 46,
+        "new": 47
+      },
+      "reason": "让后场四人和中场连接点获得更多控球与接应时间，降低受压时过快出球的风险。"
+    },
+    {
+      "field": "ATTACKING_WIDTH",
+      "old": "MUCH_NARROWER",
+      "new": "NARROWER",
+      "native_bits": {
+        "old": 53,
+        "new": 52
+      },
+      "reason": "适度释放横向接应距离，不彻底放弃中路密度。"
+    },
+    {
+      "field": "TRIGGER_PRESS",
+      "old": "MUCH_MORE_OFTEN",
+      "new": "MORE_OFTEN",
+      "native_bits": {
+        "old": 65,
+        "new": 66
+      },
+      "reason": "保留积极逼抢，但避免极高团队压迫与极端进攻节奏同时叠加。"
+    }
+  ],
+  "player_changes": [
+    {
+      "slot": 5,
+      "phase": "IP",
+      "position": "MCR",
+      "old": {
+        "role": "ChannelMidfielder",
+        "duty": "A",
+        "pi": [
+          ["PASSING_RISKS", "TAKE_FEWER_RISKS"],
+          ["FORWARD_RUNS", "MAKE_MORE_RUNS"]
+        ]
+      },
+      "role": "CentralMidfielder",
+      "duty": "S",
+      "pi": [
+        ["PASSING_RISKS", "TAKE_FEWER_RISKS"],
+        ["FORWARD_RUNS", "KEEP_POSITION"]
+      ],
+      "reason": "把右侧中场从又一个进攻型肋部跑位点改为稳定接应点，减少中路三个同型角色同时前插造成的出球断层。"
+    },
+    {
+      "slot": 9,
+      "phase": "IP",
+      "position": "AMC",
+      "old": {
+        "role": "ChannelMidfielder",
+        "duty": "A",
+        "pi": [
+          ["PASSING_RISKS", "TAKE_FEWER_RISKS"],
+          ["FORWARD_RUNS", "MAKE_MORE_RUNS"],
+          ["ROAMING", "ROAM_FROM_POSITION"]
+        ]
+      },
+      "role": "AdvancedPlaymaker",
+      "duty": "S",
+      "pi": [
+        ["ROAMING", "ROAM_FROM_POSITION"]
+      ],
+      "reason": "把前腰从第三个同型纵向攻击点改为策应组织点，利用角色原生默认的冒险传球参与连接与创造；该 PI 为角色固定开启，不重复序列化。"
+    }
+  ],
+  "retained_design": [
+    "有球四后卫四个位置 DL-DCL-DCR-DR 不变",
+    "四后卫位置、角色和职责不变",
+    "MCL ChannelMidfielder Attack 保留为主要中场纵向攻击点",
+    "AMR/AML WidePlaymaker Support 保留为两侧连接与进攻点",
+    "ST ChannelForward Attack 与 V0.6 后点攻击 PI 保留",
+    "V0.6 两侧后点传中 PI 保留；现有报告不能证明其成功或失败",
+    "全部 OOP 位置、角色、职责和个人指令保持 V0.6 原值",
+    "除三项列出的 TI 外，其余球队指令全部保持 V0.6 原值",
+    "心态 native value 4、空白 style string、FourCC 4c4c554e 保持"
+  ],
+  "status": "awaiting_native_snapshot_build"
+}
