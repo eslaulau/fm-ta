@@ -1,0 +1,106 @@
+{
+  "version": "V0.8",
+  "parent_version": "V0.7",
+  "parent_file": "tactic_development/FM27_EngineDividend_4Back/V0.7.fmf",
+  "parent_sha256": "6c39e9506b91cdbf7fa686311fcab5ed7b88e136a3b019e55b453e8372ae32d7",
+  "output_file": "V0.8.fmf",
+  "bytes": 4352,
+  "sha256": "c7480f2c32c55c1b8e8ce3f8724c9ea2c7b2f02fa4e9759b9c6aff8c31d7bb2e",
+  "native_style_string": "",
+  "native_fourcc_hex": "4c4c554e",
+  "mentality_native_value": 4,
+  "parent_ti_vector_hex": "a428011008905028a4810800",
+  "output_ti_vector_hex": "a428011008506028a2810800",
+  "team_instruction_changes": [
+    {
+      "field": "TEMPO",
+      "old": "HIGHER",
+      "new": "MUCH_HIGHER",
+      "native_bits": {
+        "old": 47,
+        "new": 46
+      }
+    },
+    {
+      "field": "ATTACKING_WIDTH",
+      "old": "NARROWER",
+      "new": "MUCH_NARROWER",
+      "native_bits": {
+        "old": 52,
+        "new": 53
+      }
+    },
+    {
+      "field": "TRIGGER_PRESS",
+      "old": "MORE_OFTEN",
+      "new": "MUCH_MORE_OFTEN",
+      "native_bits": {
+        "old": 66,
+        "new": 65
+      }
+    }
+  ],
+  "role_changes": [
+    {
+      "slot": 9,
+      "phase": "IP",
+      "position": "AMC",
+      "old_role": "AdvancedPlaymaker",
+      "new_role": "AdvancedPlaymaker",
+      "old_duty": 4194304,
+      "new_duty": 8388608,
+      "pi": [
+        [
+          "ROAMING",
+          "ROAM_FROM_POSITION"
+        ],
+        [
+          "FORWARD_RUNS",
+          "MAKE_MORE_RUNS"
+        ]
+      ],
+      "pi_mask": "0x1400000"
+    }
+  ],
+  "ip_back_four": [
+    "DCL",
+    "DCR",
+    "DL",
+    "DR"
+  ],
+  "checks": {
+    "parent_sha256_verified": true,
+    "parent_fmf_members_parsed": true,
+    "11_ip_oop_pairs": true,
+    "22_phase_role_duty_catalog_checks": true,
+    "ip_four_back_dl_dcl_dcr_dr": true,
+    "all_positions_preserved": true,
+    "only_declared_ip_blocks_changed": true,
+    "all_11_oop_blocks_byte_identical": true,
+    "changed_pi_masks_read_back_exactly": true,
+    "team_instruction_vector_read_back_exactly": true,
+    "native_style_string_and_fourcc_preserved": true,
+    "mentality_preserved": true,
+    "tac_ids_footer_and_opaque_records_preserved": true,
+    "aom_title_only_updated": true,
+    "img_envelope_byte_identical": true,
+    "other_fmf_members_unchanged": true,
+    "output_fmf_reparsed": true
+  },
+  "workflow": {
+    "run_id": 45565832193,
+    "url": "https://github.com/eslaulau/fm-ta/actions/runs/45565832193",
+    "job_id": 139040258334,
+    "job_conclusion": "success",
+    "artifact_id": 14999952171,
+    "artifact_name": "FM27_EngineDividend_IP_4Back_V0.8_run1"
+  },
+  "status": "offline_binary_roundtrip_verified_not_game_import_verified",
+  "game_import": false,
+  "match_performance": false,
+  "limitations": [
+    "Save build 27.1.1+2511875 is not registered in fmsave 0.14.3 upstream; report used borrowed schema-6 layout with local cross-checks.",
+    "The V0.7 exporter validates match-position codes via native FM27 position masks; role_code remains undecoded and does not identify tactical roles/duties/slots.",
+    "Native FMF build/readback does not verify in-game import or match performance."
+  ]
+}

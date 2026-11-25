@@ -10,6 +10,9 @@
 - ITERATION_LOG.md：唯一版本主线及构建/复盘记录。
 - V0.6_REANALYSIS_45554864463.md：V0.6 赛季报告重新分析。
 - V0.7.fmf / V0.7_BUILD_REPORT.json：V0.8 唯一父版本及原生构建报告。
+- V0.7_REANALYSIS_45564413834.md：V0.7 完整赛季复盘，含共同赛程比较和位置字段质量审计。
+- V0.8.fmf：4,352 bytes；SHA-256 `c7480f2c32c55c1b8e8ce3f8724c9ea2c7b2f02fa4e9759b9c6aff8c31d7bb2e`；原生回读通过，游戏内导入待验证。
+- V0.8.json / V0.8_DESIGN_AND_AUDIT.md / V0.8_BUILD_REPORT.json：正式配方、设计审查和原生构建报告。
 - V0.7_REANALYSIS_45564413834.md：V0.7 正常赛季完整复盘，含共同赛程比较和数据质量审计。
 - V0.8.json / V0.8_DESIGN_AND_AUDIT.md：V0.8 升级配方与协同设计审查。
 - V0.8_BUILD_REPORT.json：V0.8 原生构建回读结果（构建完成后归档）。

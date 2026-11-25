@@ -57,14 +57,23 @@
         "role": "AdvancedPlaymaker",
         "duty": "S",
         "pi": [
-          ["ROAMING", "ROAM_FROM_POSITION"]
+          [
+            "ROAMING",
+            "ROAM_FROM_POSITION"
+          ]
         ]
       },
       "role": "AdvancedPlaymaker",
       "duty": "A",
       "pi": [
-        ["ROAMING", "ROAM_FROM_POSITION"],
-        ["FORWARD_RUNS", "MAKE_MORE_RUNS"]
+        [
+          "ROAMING",
+          "ROAM_FROM_POSITION"
+        ],
+        [
+          "FORWARD_RUNS",
+          "MAKE_MORE_RUNS"
+        ]
       ],
       "reason": "保留前场组织核心的组织属性与自由跑位，将职责提升为进攻，并启用更多前插，补回 V0.7 进攻机会下降时缺少的中路纵深攻击点。原生 catalog 显示该 PI 在 Support 下固定关闭，在 Attack 下可编辑。"
     }
@@ -81,5 +90,17 @@
     "除三项列出的 TI 外，其余球队指令全部保持 V0.7 原值",
     "心态 native value 4、空白 style string、FourCC 4c4c554e 保持"
   ],
-  "status": "awaiting_native_snapshot_build"
+  "status": "offline_binary_roundtrip_verified_not_game_import_verified",
+  "build": {
+    "workflow_run_id": 45565832193,
+    "workflow_run_url": "https://github.com/eslaulau/fm-ta/actions/runs/45565832193",
+    "artifact_id": 14999952171,
+    "artifact_name": "FM27_EngineDividend_IP_4Back_V0.8_run1",
+    "output_file": "V0.8.fmf",
+    "output_size_bytes": 4352,
+    "output_sha256": "c7480f2c32c55c1b8e8ce3f8724c9ea2c7b2f02fa4e9759b9c6aff8c31d7bb2e",
+    "status": "offline_binary_roundtrip_verified_not_game_import_verified",
+    "game_import": false,
+    "match_performance": false
+  }
 }

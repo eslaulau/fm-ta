@@ -670,3 +670,12 @@ metaFM 27.1.1 当前页更新到 28 套/64,400 场。可见 IP 四后卫参照 O
 - 设计目的：在保留中场稳定接应的同时，恢复一个明确的AMC纵深攻击点及V0.6的高节奏/高压迫。风险包括攻守转换更激进、中路拥挤及压迫身后空间。
 - 配方与设计审查：V0.8.json、V0.8_DESIGN_AND_AUDIT.md。专用原生构建工作流：fm27-v0.8-native-build.yml。
 - 状态：设计和配方已归档；FMF大小、SHA及PASS状态等待实际GitHub Actions构建回读。游戏导入和赛季表现待验证。
+
+
+## V0.8 原生 FMF 构建结果
+
+- GitHub Actions：[FM27 V0.8 Native Snapshot Build run #1](https://github.com/eslaulau/fm-ta/actions/runs/45565832193)，job `Build V0.8 from exact V0.7 native snapshot` 结论 success。
+- Artifact `FM27_EngineDividend_IP_4Back_V0.8_run1`（ID `14999952171`）。
+- FMF：`V0.8.fmf`，4,352 bytes；SHA-256 `c7480f2c32c55c1b8e8ce3f8724c9ea2c7b2f02fa4e9759b9c6aff8c31d7bb2e`。
+- 原生回读：父文件 SHA、IP 四后卫、22 阶段目录核验、AMC 新 PI/职责、TI 向量、11 个 OOP block 字节级不变、未改 IP block、style string/FourCC、心态、TAC 尾部/opaque、AOM、IMG 和其他 FMF 成员全部通过。
+- 游戏内导入与比赛表现：未验证。
