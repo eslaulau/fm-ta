@@ -17,7 +17,7 @@
     "sha256": "5dc33a05f032345ca9c674b02d48e7619b32303e3e0eb54930598941df3456a1",
     "same_run_report_sha256": "328bebee7a97f693ad2281bbb67f6d5d067b1e58bc145b344605d6ef135f55bb",
     "artifact_zip_sha256": "feb00a47d400cc92a83c182cc5f66668b6dfc6d3dd00d0c667388d9b81106574",
-    "same_run_report_file": "V0.9.report.json"
+    "same_run_report_file": "FM27_EngineDividend_IP_4Back_V0.9_20261125_run142.report.json (inside Actions artifact 15005190567; not duplicated as a repository file)"
   },
   "recipe": "V0.9.json",
   "build_request": "build_requests/FM27_EngineDividend_IP_4Back_V0.9_20261125.json",
@@ -61,5 +61,14 @@
   "status": "offline_binary_roundtrip_verified_not_game_import_verified",
   "version_id": "V0.9-integrated-run142",
   "supersedes": "V0.9-ST-only-draft-run3",
-  "validation_scope": "D3 native serialization/readback only. D4 game import/display and D5 match/season performance are separate and remain unverified for the complete V0.9 tactic."
+  "validation_scope": "D3 native serialization/readback only. D4 game import/display and D5 match/season performance are separate and remain unverified for the complete V0.9 tactic.",
+  "superseded_run3": {
+    "run_id": "45572441695",
+    "artifact_id": "15002228385",
+    "fmf_file": "V0.9_ST_ONLY_DRAFT_SUPERSEDED_run3.fmf",
+    "fmf_bytes": 4352,
+    "fmf_sha256": "36df4c0d83142b6aaede3b15c01173ed9ebf848f76ea8581d80143f9286957a2",
+    "report_sha256": "bc506e8a048aad54bf098efa5c592247c568aff0fc99183f76d118e66544d267",
+    "status": "superseded_historical_draft"
+  }
 }

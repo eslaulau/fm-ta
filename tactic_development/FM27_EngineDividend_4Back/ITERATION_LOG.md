@@ -712,8 +712,8 @@ ST位置12球对19.63 xG，非胜场进球转化明显偏低；已解码的联�
 ### 原生构建
 
 - GitHub Actions：[FM27 Native Snapshot Build run #3](https://github.com/eslaulau/fm-ta/actions/runs/45572441695)，成功；Artifact `FM27_EngineDividend_IP_4Back_V0.9_run3`（ID `15002228385`）。
-- 历史 FMF：`V0.9_ST_ONLY_DRAFT_SUPERSEDED_run3.fmf`，4,352 bytes；SHA-256 `36df4c0d83142b6aaede3f8724c9ea2c7b2f02fa4e9759b9c6aff8c31d7bb2e`。
-- 同次原始报告：`V0.9_ST_ONLY_DRAFT_SUPERSEDED_run3.report.json`；SHA-256 `bc506e8a048aad54bf098efa5c592247c568aff0fc99183f76d118e66544d267`。
+- 历史 FMF：`V0.9_ST_ONLY_DRAFT_SUPERSEDED_run3.fmf`，4,352 bytes；SHA-256 `36df4c0d83142b6aaede3b15c01173ed9ebf848f76ea8581d80143f9286957a2`。
+- 同次原始报告：Run 3 同次原始 report 位于 Actions artifact `15002228385`；SHA-256 `bc506e8a048aad54bf098efa5c592247c568aff0fc99183f76d118e66544d267`。
 - 父 SHA、成员解析、11组IP/OOP、22阶段角色职责目录校验、IP四后卫、仅声明IP块变化、11个OOP block字节级不变、PI/TI回读、风格/心态、TAC footer/opaque、AOM、IMG和其他成员保护检查全部通过。
 - 状态：`offline_binary_roundtrip_verified_not_game_import_verified`。游戏内导入和比赛表现待验证。
 
