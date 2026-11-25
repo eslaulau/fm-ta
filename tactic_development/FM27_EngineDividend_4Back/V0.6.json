@@ -1,548 +1,82 @@
 {
-  "schema": "fm27-native-snapshot-patch",
-  "schema_version": "1.0.0",
   "version": "V0.6",
-  "name": "V0.6",
   "parent_version": "V0.5",
-  "parent_source_file": "V21_Leaderboard_TeamInstructions(1).fmf",
-  "parent_source_sha256": "e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257",
-  "source_snapshot_schema": "fm27-native-tactic-snapshot/1.0.0",
-  "native_metadata": {
-    "source_major": 27,
-    "mentality_native_value": 6,
-    "mentality_label": "进攻",
-    "style_string": "",
-    "style_fourcc_hex": "4c4c554e"
-  },
-  "formations": {
-    "in_possession_positions": [
-      "GK",
-      "DR",
-      "DCR",
-      "DCL",
-      "DL",
-      "DMR",
-      "DML",
-      "AMR",
-      "AML",
-      "AMC",
-      "ST"
-    ],
-    "out_of_possession_positions": [
-      "GK",
-      "DR",
-      "DCR",
-      "DCL",
-      "DL",
-      "DMR",
-      "DML",
-      "AMR",
-      "AML",
-      "AMC",
-      "ST"
-    ],
-    "shape": "4-2-3-1 / 4-2-3-1",
-    "oop_back_four": [
-      "DL",
-      "DCL",
-      "DCR",
-      "DR"
-    ]
-  },
-  "players": [
-    {
-      "slot": 0,
-      "in": {
-        "position": "GK",
-        "role_id": "BallPlayingGoalkeeper",
-        "role_label_zh": "出球门将",
-        "duty": "S",
-        "native_role_flag": "4096",
-        "native_duty_flag": 4194304,
-        "pi": [],
-        "pi_mask_hex": "0x0"
-      },
-      "out": {
-        "position": "GK",
-        "role_id": "OPSweeperKeeper",
-        "role_label_zh": "清道夫门将",
-        "duty": "A",
-        "native_role_flag": "2",
-        "native_duty_flag": 8388608,
-        "pi": [],
-        "pi_mask_hex": "0x0"
-      }
-    },
+  "parent_file": "V21_Leaderboard_TeamInstructions(1).fmf",
+  "parent_sha256": "e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257",
+  "output_file": "V0.6.fmf",
+  "output_size_bytes": 4236,
+  "output_sha256": "97e8ac91ce369024745905d5e22c9a29167c85faad9b3454a30920e23f67cf0c",
+  "changes": [
     {
       "slot": 1,
-      "in": {
-        "position": "DR",
-        "role_id": "FullBack",
-        "role_label_zh": "边后卫",
-        "duty": "S",
-        "native_role_flag": "4",
-        "native_duty_flag": 4194304,
-        "pi": [
-          {
-            "native_option_id": 26,
-            "label_zh": "进攻站位：靠近中路"
-          },
-          {
-            "native_option_id": 16,
-            "label_zh": "带球方向：内切"
-          },
-          {
-            "native_option_id": 13,
-            "label_zh": "盘带频率：更多盘带"
-          },
-          {
-            "native_option_id": 22,
-            "label_zh": "前插：更多前插"
-          },
-          {
-            "native_option_id": 3,
-            "label_zh": "传球风险：更多冒险传球"
-          },
-          {
-            "native_option_id": 10,
-            "label_zh": "传中目标：后点"
-          },
-          {
-            "native_option_id": 8,
-            "label_zh": "传中位置：下底传中"
-          }
-        ],
-        "pi_mask_hex": "0x4412508"
-      },
-      "out": {
-        "position": "DR",
-        "role_id": "OPFullBack",
-        "role_label_zh": "边后卫",
-        "duty": "D",
-        "native_role_flag": "512",
-        "native_duty_flag": 2097152,
-        "pi": [
-          {
-            "native_option_id": 31,
-            "label_zh": "铲抢：凶狠铲抢"
-          }
-        ],
-        "pi_mask_hex": "0x80000000"
-      }
-    },
-    {
-      "slot": 2,
-      "in": {
-        "position": "DCR",
-        "role_id": "BallPlayingCentreBack",
-        "role_label_zh": "出球中卫",
-        "duty": "D",
-        "native_role_flag": "16777216",
-        "native_duty_flag": 2097152,
-        "pi": [
-          {
-            "native_option_id": 13,
-            "label_zh": "盘带频率：更多盘带"
-          }
-        ],
-        "pi_mask_hex": "0x2000"
-      },
-      "out": {
-        "position": "DCR",
-        "role_id": "OPCentreBack",
-        "role_label_zh": "中后卫",
-        "duty": "D",
-        "native_role_flag": "8",
-        "native_duty_flag": 2097152,
-        "pi": [],
-        "pi_mask_hex": "0x0"
-      }
-    },
-    {
-      "slot": 3,
-      "in": {
-        "position": "DCL",
-        "role_id": "BallPlayingCentreBack",
-        "role_label_zh": "出球中卫",
-        "duty": "D",
-        "native_role_flag": "16777216",
-        "native_duty_flag": 2097152,
-        "pi": [
-          {
-            "native_option_id": 13,
-            "label_zh": "盘带频率：更多盘带"
-          }
-        ],
-        "pi_mask_hex": "0x2000"
-      },
-      "out": {
-        "position": "DCL",
-        "role_id": "OPCentreBack",
-        "role_label_zh": "中后卫",
-        "duty": "D",
-        "native_role_flag": "8",
-        "native_duty_flag": 2097152,
-        "pi": [],
-        "pi_mask_hex": "0x0"
-      }
+      "phase": "IP",
+      "position": "DR",
+      "role": "WingBack",
+      "duty": "S",
+      "add_PI_option": [
+        10
+      ],
+      "old_PI_options": [
+        25
+      ],
+      "new_PI_options": [
+        10,
+        25
+      ],
+      "meaning": "Cross target: Far Post"
     },
     {
       "slot": 4,
-      "in": {
-        "position": "DL",
-        "role_id": "FullBack",
-        "role_label_zh": "边后卫",
-        "duty": "S",
-        "native_role_flag": "4",
-        "native_duty_flag": 4194304,
-        "pi": [
-          {
-            "native_option_id": 26,
-            "label_zh": "进攻站位：靠近中路"
-          },
-          {
-            "native_option_id": 16,
-            "label_zh": "带球方向：内切"
-          },
-          {
-            "native_option_id": 13,
-            "label_zh": "盘带频率：更多盘带"
-          },
-          {
-            "native_option_id": 22,
-            "label_zh": "前插：更多前插"
-          },
-          {
-            "native_option_id": 3,
-            "label_zh": "传球风险：更多冒险传球"
-          },
-          {
-            "native_option_id": 10,
-            "label_zh": "传中目标：后点"
-          },
-          {
-            "native_option_id": 8,
-            "label_zh": "传中位置：下底传中"
-          }
-        ],
-        "pi_mask_hex": "0x4412508"
-      },
-      "out": {
-        "position": "DL",
-        "role_id": "OPFullBack",
-        "role_label_zh": "边后卫",
-        "duty": "D",
-        "native_role_flag": "512",
-        "native_duty_flag": 2097152,
-        "pi": [],
-        "pi_mask_hex": "0x0"
-      }
-    },
-    {
-      "slot": 5,
-      "in": {
-        "position": "DMR",
-        "role_id": "BoxToBoxMidfielder",
-        "role_label_zh": "全能中场",
-        "duty": "S",
-        "native_role_flag": "65536",
-        "native_duty_flag": 4194304,
-        "pi": [
-          {
-            "native_option_id": 27,
-            "label_zh": "进攻站位：拉边接应／游弋肋部"
-          },
-          {
-            "native_option_id": 22,
-            "label_zh": "前插：更多前插"
-          }
-        ],
-        "pi_mask_hex": "0x8400000"
-      },
-      "out": {
-        "position": "DMR",
-        "role_id": "OPDefensiveMidfielder",
-        "role_label_zh": "防守中场",
-        "duty": "D",
-        "native_role_flag": "32768",
-        "native_duty_flag": 2097152,
-        "pi": [],
-        "pi_mask_hex": "0x0"
-      }
-    },
-    {
-      "slot": 6,
-      "in": {
-        "position": "DML",
-        "role_id": "BoxToBoxMidfielder",
-        "role_label_zh": "全能中场",
-        "duty": "S",
-        "native_role_flag": "65536",
-        "native_duty_flag": 4194304,
-        "pi": [],
-        "pi_mask_hex": "0x0"
-      },
-      "out": {
-        "position": "DML",
-        "role_id": "OPDefensiveMidfielder",
-        "role_label_zh": "防守中场",
-        "duty": "D",
-        "native_role_flag": "32768",
-        "native_duty_flag": 2097152,
-        "pi": [],
-        "pi_mask_hex": "0x0"
-      }
-    },
-    {
-      "slot": 7,
-      "in": {
-        "position": "AMR",
-        "role_id": "InsideWinger",
-        "role_label_zh": "内收边锋",
-        "duty": "S",
-        "native_role_flag": "562949953421312",
-        "native_duty_flag": 4194304,
-        "pi": [
-          {
-            "native_option_id": 25,
-            "label_zh": "进攻站位：拉开宽度"
-          },
-          {
-            "native_option_id": 3,
-            "label_zh": "传球风险：更多冒险传球"
-          },
-          {
-            "native_option_id": 10,
-            "label_zh": "传中目标：后点"
-          }
-        ],
-        "pi_mask_hex": "0x2000408"
-      },
-      "out": {
-        "position": "AMR",
-        "role_id": "OPWinger",
-        "role_label_zh": "边锋",
-        "duty": "S",
-        "native_role_flag": "274877906944",
-        "native_duty_flag": 4194304,
-        "pi": [],
-        "pi_mask_hex": "0x0"
-      }
-    },
-    {
-      "slot": 8,
-      "in": {
-        "position": "AML",
-        "role_id": "InsideWinger",
-        "role_label_zh": "内收边锋",
-        "duty": "S",
-        "native_role_flag": "562949953421312",
-        "native_duty_flag": 4194304,
-        "pi": [
-          {
-            "native_option_id": 25,
-            "label_zh": "进攻站位：拉开宽度"
-          },
-          {
-            "native_option_id": 22,
-            "label_zh": "前插：更多前插"
-          },
-          {
-            "native_option_id": 3,
-            "label_zh": "传球风险：更多冒险传球"
-          },
-          {
-            "native_option_id": 10,
-            "label_zh": "传中目标：后点"
-          }
-        ],
-        "pi_mask_hex": "0x2400408"
-      },
-      "out": {
-        "position": "AML",
-        "role_id": "OPWinger",
-        "role_label_zh": "边锋",
-        "duty": "S",
-        "native_role_flag": "274877906944",
-        "native_duty_flag": 4194304,
-        "pi": [],
-        "pi_mask_hex": "0x0"
-      }
-    },
-    {
-      "slot": 9,
-      "in": {
-        "position": "AMC",
-        "role_id": "AttackingMidfielder",
-        "role_label_zh": "前腰",
-        "duty": "A",
-        "native_role_flag": "512",
-        "native_duty_flag": 8388608,
-        "pi": [
-          {
-            "native_option_id": 27,
-            "label_zh": "进攻站位：拉边接应／游弋肋部"
-          },
-          {
-            "native_option_id": 13,
-            "label_zh": "盘带频率：更多盘带"
-          },
-          {
-            "native_option_id": 22,
-            "label_zh": "前插：更多前插"
-          },
-          {
-            "native_option_id": 3,
-            "label_zh": "传球风险：更多冒险传球"
-          }
-        ],
-        "pi_mask_hex": "0x8402008"
-      },
-      "out": {
-        "position": "AMC",
-        "role_id": "OPAttackingMidfielder",
-        "role_label_zh": "前腰",
-        "duty": "S",
-        "native_role_flag": "1073741824",
-        "native_duty_flag": 4194304,
-        "pi": [],
-        "pi_mask_hex": "0x0"
-      }
+      "phase": "IP",
+      "position": "DL",
+      "role": "FullBack",
+      "duty": "S",
+      "add_PI_option": [
+        10
+      ],
+      "old_PI_options": [
+        25
+      ],
+      "new_PI_options": [
+        10,
+        25
+      ],
+      "meaning": "Cross target: Far Post"
     },
     {
       "slot": 10,
-      "in": {
-        "position": "ST",
-        "role_id": "CentreForward",
-        "role_label_zh": "中锋",
-        "duty": "A",
-        "native_role_flag": "2048",
-        "native_duty_flag": 8388608,
-        "pi": [
-          {
-            "native_option_id": 27,
-            "label_zh": "进攻站位：拉边接应／游弋肋部"
-          }
-        ],
-        "pi_mask_hex": "0x8000000"
-      },
-      "out": {
-        "position": "ST",
-        "role_id": "OPCentreForward",
-        "role_label_zh": "中锋",
-        "duty": "S",
-        "native_role_flag": "4398046511104",
-        "native_duty_flag": 4194304,
-        "pi": [],
-        "pi_mask_hex": "0x0"
-      }
+      "phase": "IP",
+      "position": "ST",
+      "role": "ChannelForward",
+      "duty": "A",
+      "remove_PI_option": [
+        39
+      ],
+      "add_PI_option": [
+        40
+      ],
+      "old_PI_options": [
+        18,
+        22,
+        39
+      ],
+      "new_PI_options": [
+        18,
+        22,
+        40
+      ],
+      "meaning": "Box attack direction: Near Post -> Far Post"
     }
   ],
-  "team_instructions": [
-    {
-      "native_bit": 3,
-      "phase": "有球",
-      "group": "传球方式",
-      "option": "短传"
-    },
-    {
-      "native_bit": 53,
-      "phase": "有球",
-      "group": "进攻宽度",
-      "option": "极窄"
-    },
-    {
-      "native_bit": 13,
-      "phase": "有球",
-      "group": "盘带",
-      "option": "更多盘带突破"
-    },
-    {
-      "native_bit": 46,
-      "phase": "有球",
-      "group": "比赛节奏",
-      "option": "极高"
-    },
-    {
-      "native_bit": 12,
-      "phase": "有球",
-      "group": "传中方式",
-      "option": "低平传中"
-    },
-    {
-      "native_bit": 16,
-      "phase": "有球",
-      "group": "远射",
-      "option": "减少远射"
-    },
-    {
-      "native_bit": 24,
-      "phase": "有球",
-      "group": "推进方向",
-      "option": "两翼"
-    },
-    {
-      "native_bit": 61,
-      "phase": "无球",
-      "group": "防守介入线",
-      "option": "高位逼抢"
-    },
-    {
-      "native_bit": 57,
-      "phase": "无球",
-      "group": "防线高度",
-      "option": "较高"
-    },
-    {
-      "native_bit": 65,
-      "phase": "无球",
-      "group": "逼抢频率",
-      "option": "极多"
-    },
-    {
-      "native_bit": 72,
-      "phase": "无球",
-      "group": "铲抢",
-      "option": "凶狠铲抢"
-    },
-    {
-      "native_bit": 83,
-      "phase": "无球",
-      "group": "防守传中",
-      "option": "允许传中"
-    },
-    {
-      "native_bit": 69,
-      "phase": "无球",
-      "group": "阻止门将短传",
-      "option": "是"
-    }
-  ],
-  "native_team_instruction_vector_hex": "083001010040202222010800",
-  "build_artifact": {
-    "filename": "V0.6.fmf",
-    "bytes": 4284,
-    "sha256": "58aa50060888233b1592b291a53b947d9ea9fb9b592dea8482d916ba8349f568",
-    "validation_report": "V0.6_BUILD_REPORT.json"
+  "unchanged": {
+    "positions_and_transitions": "all 11 slots",
+    "roles_and_duties": "all 22 phase entries",
+    "other_PI": "unchanged",
+    "team_instructions": "all 20 unchanged",
+    "mentality_native_value": 4,
+    "style_string": "",
+    "fourcc": "4c4c554e",
+    "oop_back_four": "DL-DCL-DCR-DR"
   },
-  "permission_audit": {
-    "role_position_eligibility": "22/22 passed",
-    "selected_pi_permissions": "All 31 selected PI options are editable (state 0) in both policy revisions",
-    "style_lock": "preserved"
-  },
-  "native_team_instruction_bits": [
-    3,
-    53,
-    13,
-    46,
-    12,
-    16,
-    24,
-    61,
-    57,
-    65,
-    72,
-    83,
-    69
-  ]
+  "status": "offline_native_binary_roundtrip_verified_not_game_import_or_performance_verified"
 }

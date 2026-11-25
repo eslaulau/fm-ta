@@ -1,60 +1,108 @@
 {
   "version": "V0.6",
-  "parent": "V0.5",
-  "parent_source_sha256": "e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257",
+  "parent_version": "V0.5",
+  "parent_sha256": "e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257",
   "output": "V0.6.fmf",
-  "bytes": 4284,
-  "sha256": "58aa50060888233b1592b291a53b947d9ea9fb9b592dea8482d916ba8349f568",
-  "status": "offline_native_snapshot_binary_roundtrip_verified_not_game_import_verified",
+  "bytes": 4236,
+  "sha256": "97e8ac91ce369024745905d5e22c9a29167c85faad9b3454a30920e23f67cf0c",
   "native_style_string": "",
   "native_fourcc_hex": "4c4c554e",
-  "mentality_native_value": 6,
-  "explicit_pi_count": 31,
-  "preserved_non_active_role_cache_entries": 87,
-  "oop_back_four": [
-    "DR",
-    "DCR",
-    "DCL",
-    "DL"
-  ],
-  "team_instruction_bits": [
-    3,
-    53,
-    13,
-    46,
-    12,
-    16,
-    24,
-    61,
-    57,
-    65,
-    72,
-    83,
-    69
+  "mentality_native_value": 4,
+  "team_instruction_vector_hex": "a428011008506028a2810800",
+  "changes": [
+    {
+      "slot": 1,
+      "phase": "IP",
+      "position": "DR",
+      "role": "WingBack",
+      "duty": "S",
+      "add_PI_option": [
+        10
+      ],
+      "old_PI_options": [
+        25
+      ],
+      "new_PI_options": [
+        10,
+        25
+      ],
+      "meaning": "Cross target: Far Post"
+    },
+    {
+      "slot": 4,
+      "phase": "IP",
+      "position": "DL",
+      "role": "FullBack",
+      "duty": "S",
+      "add_PI_option": [
+        10
+      ],
+      "old_PI_options": [
+        25
+      ],
+      "new_PI_options": [
+        10,
+        25
+      ],
+      "meaning": "Cross target: Far Post"
+    },
+    {
+      "slot": 10,
+      "phase": "IP",
+      "position": "ST",
+      "role": "ChannelForward",
+      "duty": "A",
+      "remove_PI_option": [
+        39
+      ],
+      "add_PI_option": [
+        40
+      ],
+      "old_PI_options": [
+        18,
+        22,
+        39
+      ],
+      "new_PI_options": [
+        18,
+        22,
+        40
+      ],
+      "meaning": "Box attack direction: Near Post -> Far Post"
+    }
   ],
   "checks": {
-    "parent_source_sha256_verified": true,
+    "parent_sha_match": true,
     "source_tac_parse_write_identity": true,
-    "outer_fmf_readback": true,
-    "all_member_aes_zstd_readback": true,
-    "tac_parse_readback": true,
-    "eleven_ip_oop_slots": true,
-    "twenty_two_phase_position_role_duty_pi_readback": true,
-    "ip_4_2_3_1": true,
-    "oop_4_2_3_1": true,
-    "true_oop_back_four": true,
-    "all_non_active_role_cache_entries_preserved": true,
-    "opaque_id_footer_sections_preserved": true,
-    "img_member_byte_identical": true,
-    "ti_vector_readback": true,
-    "mentality_readback": true,
-    "native_style_lock_preserved": true,
+    "outer_fmf_all_members_readback": true,
+    "tac_readback": true,
+    "only_three_PI_masks_changed": true,
+    "all_11_positions_unchanged": true,
+    "all_22_roles_and_duties_unchanged": true,
+    "all_other_PI_unchanged": true,
+    "all_20_TI_unchanged": true,
+    "mentality_unchanged": true,
+    "style_fourcc_preserved": true,
+    "true_OOP_four_back_preserved": true,
+    "opaque_TAC_footer_preserved": true,
+    "AOM_title_only_updated": true,
+    "IMG_member_envelope_byte_identical": true,
     "game_import": false,
-    "match_engine_performance": false
+    "match_performance": false
   },
-  "limits": [
-    "FMDelicious reference uses FM27 27.1.0; V0.5 season report uses 27.1.1+2511875.",
-    "The reference tactic is a 6,048-match bundle; it does not prove isolated causal effects for every PI.",
-    "Game import and V0.6 match/season performance remain unverified."
+  "policy": {
+    "versions": [
+      "1a080000",
+      "1b000000"
+    ],
+    "DR_WingBack_S_option10": "editable",
+    "DL_FullBack_S_option10": "editable",
+    "ST_ChannelForward_A_option40": "editable"
+  },
+  "limitations": [
+    "No game import/performance validation.",
+    "27.1.1+2511875 not upstream registered in fmsave 0.14.3; schema-6 borrowed layout, report status partial/unverified.",
+    "No cross-to-shot/xG chain.",
+    "Player position candidates other than GK and role_code meanings are not UI verified."
   ]
 }
