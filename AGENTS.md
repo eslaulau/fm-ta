@@ -22,6 +22,7 @@ The repository also contains the explicitly user-authorized continuing R&D line 
 - After each confirmed season-report analysis is completed, update the same ledger **in that task before presenting the analysis as complete**. Record report/run identity, user-confirmed tactic version, FM27 build, sample/coverage/compatibility limits, key performance observations, parent/child differences relevant to the report, the four dispositions, evidence status, and next validation questions. If no disposition changes, still append a dated/report-keyed review entry stating that no changes were warranted and why.
 - Verify the ledger write by fetching the committed file again and checking the new report/version entry and four-category record. Do not claim the ledger was updated until the repository read-back succeeds.
 - A new FMF build is blocked until the current ledger has been read and the complete parent diff plus four-category disposition summary are documented. A completed D5 report is not complete until its ledger write-back and read-back are verified.
+- After each successful D3 build, update the corresponding ledger iteration entry with the exact child recipe identity, parent SHA-256, request/workflow/run identity when available, artifact identity when available, FMF byte length/SHA-256, same-run report SHA-256, read-back result, and D4/D5 pending states. Keep build audit files as detailed evidence, but do not leave the ledger stale.
 
 
 The user must not be asked to:
