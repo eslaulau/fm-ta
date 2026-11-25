@@ -13,6 +13,54 @@ sys.path.insert(0, str(GEN_DIR))
 import FM27GEN1_Offline_FMF_Generator as gen  # noqa: E402
 
 
+# These roles are position-compatible in the native catalogue, but only valid
+# when the phase shape contains a three-centre-back line. Catalogue eligibility
+# does not encode this formation-level condition.
+THREE_BACK_OUTER_CENTRE_BACK_ROLES = {
+    0: {"WideCentreBack", "OverlappingCentreBack"},
+    1: {"OPWideCentreBack", "OPCoveringWideCentreBack", "OPStoppingWideCentreBack"},
+}
+CENTRE_BACK_POSITIONS = {"DC", "DCL", "DCR"}
+OUTER_CENTRE_BACK_POSITIONS = {"DCL", "DCR"}
+
+
+def validate_formation_role_compatibility(phase_items: list[dict], phase: int) -> dict:
+    """Reject roles that require an outer centre-back in a back-three shape."""
+    phase_name = "in-possession" if phase == 0 else "out-of-possession"
+    centre_back_positions = [
+        str(item["pos"]) for item in phase_items
+        if str(item["pos"]) in CENTRE_BACK_POSITIONS
+    ]
+    special_roles = THREE_BACK_OUTER_CENTRE_BACK_ROLES.get(phase, set())
+
+    checked = []
+    for item in phase_items:
+        pos = str(item["pos"])
+        role_id = str(item["role"])
+        if role_id not in special_roles:
+            continue
+        if pos not in OUTER_CENTRE_BACK_POSITIONS:
+            raise ValueError(
+                f"{phase_name}: {role_id} requires an outer centre-back slot (DCL/DCR); "
+                f"found {pos}"
+            )
+        if len(centre_back_positions) != 3:
+            raise ValueError(
+                f"{phase_name}: {role_id} is only available to an outer centre-back "
+                "in a back-three shape; "
+                f"found {len(centre_back_positions)} centre-back slots "
+                f"({', '.join(centre_back_positions) or 'none'})"
+            )
+        checked.append({"position": pos, "role": role_id})
+
+    return {
+        "phase": phase_name,
+        "centre_back_positions": centre_back_positions,
+        "centre_back_count": len(centre_back_positions),
+        "formation_dependent_roles": checked,
+    }
+
+
 def preflight(recipe: dict, catalog: dict, style_registry: dict) -> dict:
     gen.validate_recipe_structure(recipe)
     gen.resolve_style_definition(str(recipe["base"]["g"]), style_registry)
@@ -22,6 +70,7 @@ def preflight(recipe: dict, catalog: dict, style_registry: dict) -> dict:
     roles = {item["id"]: item for item in catalog["roles"]}
     eligibility = catalog.get("role_eligibility", {})
     checked = []
+    phase_role_items = {0: [], 1: []}
     seen_positions = {0: set(), 1: set()}
     configured_pi_phases = 0
     configured_pi_items = 0
@@ -45,6 +94,7 @@ def preflight(recipe: dict, catalog: dict, style_registry: dict) -> dict:
                 raise ValueError(f"slot {slot} {phase_key}: role phase mismatch: {role_id}")
             if role_id not in eligibility.get(pos_id, [[], []])[phase]:
                 raise ValueError(f"slot {slot} {phase_key}: incompatible position/role {pos_name}/{role_id}")
+            phase_role_items[phase].append({"pos": pos_name, "role": role_id})
 
             duty = gen.resolve_role_duty(role_id, item)
             selected_count = len(item["pi"])
@@ -67,6 +117,11 @@ def preflight(recipe: dict, catalog: dict, style_registry: dict) -> dict:
                 "selected_fixed_on_count": fixed_on_count,
             })
 
+    formation_checks = [
+        validate_formation_role_compatibility(phase_role_items[phase], phase)
+        for phase in (0, 1)
+    ]
+
     return {
         "status": "preflight_passed",
         "catalog_schema_version": catalog.get("schema_version"),
@@ -77,6 +132,7 @@ def preflight(recipe: dict, catalog: dict, style_registry: dict) -> dict:
         "serialized_pi_override_bits": serialized_override_bits,
         "selected_fixed_on_options": selected_fixed_on_options,
         "empty_pi_phases_allowed": True,
+        "formation_role_checks": formation_checks,
         "roles": checked,
     }
 
