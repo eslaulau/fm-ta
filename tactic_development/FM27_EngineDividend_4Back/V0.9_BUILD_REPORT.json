@@ -1,0 +1,79 @@
+{
+  "version": "V0.9",
+  "parent_version": "V0.8",
+  "parent_file": "tactic_development/FM27_EngineDividend_4Back/V0.8.fmf",
+  "parent_sha256": "c7480f2c32c55c1b8e8ce3f8724c9ea2c7b2f02fa4e9759b9c6aff8c31d7bb2e",
+  "output_file": "V0.9.fmf",
+  "bytes": 4352,
+  "sha256": "36df4c0d83142b6aaede3b15c01173ed9ebf848f76ea8581d80143f9286957a2",
+  "native_style_string": "",
+  "native_fourcc_hex": "4c4c554e",
+  "mentality_native_value": 4,
+  "parent_ti_vector_hex": "a428011008506028a2810800",
+  "output_ti_vector_hex": "a428011008506028a2810800",
+  "team_instruction_changes": [],
+  "role_changes": [
+    {
+      "slot": 10,
+      "phase": "IP",
+      "position": "ST",
+      "old_role": "ChannelForward",
+      "new_role": "Poacher",
+      "old_duty": 8388608,
+      "new_duty": 8388608,
+      "pi": [
+        [
+          "SHOOTING",
+          "SHOOT_MORE_OFTEN"
+        ],
+        [
+          "ATTACK_BOX_SIDE",
+          "FAR_POST"
+        ]
+      ],
+      "pi_mask": "0x10000040000"
+    }
+  ],
+  "ip_back_four": [
+    "DCL",
+    "DCR",
+    "DL",
+    "DR"
+  ],
+  "checks": {
+    "parent_sha256_verified": true,
+    "parent_fmf_members_parsed": true,
+    "11_ip_oop_pairs": true,
+    "22_phase_role_duty_catalog_checks": true,
+    "ip_four_back_dl_dcl_dcr_dr": true,
+    "all_positions_preserved": true,
+    "only_declared_ip_blocks_changed": true,
+    "all_11_oop_blocks_byte_identical": true,
+    "changed_pi_masks_read_back_exactly": true,
+    "team_instruction_vector_read_back_exactly": true,
+    "native_style_string_and_fourcc_preserved": true,
+    "mentality_preserved": true,
+    "tac_ids_footer_and_opaque_records_preserved": true,
+    "aom_title_only_updated": true,
+    "img_envelope_byte_identical": true,
+    "other_fmf_members_unchanged": true,
+    "output_fmf_reparsed": true
+  },
+  "workflow": {
+    "run_id": 45572441695,
+    "run_number": 3,
+    "url": "https://github.com/eslaulau/fm-ta/actions/runs/45572441695",
+    "job_conclusion": "success",
+    "artifact_id": 15002228385,
+    "artifact_name": "FM27_EngineDividend_IP_4Back_V0.9_run3"
+  },
+  "status": "offline_binary_roundtrip_verified_not_game_import_verified",
+  "game_import": false,
+  "match_performance": false,
+  "limitations": [
+    "Save build 27.1.1+2511875 is not registered in fmsave 0.14.3 upstream; report used borrowed schema-6 layout with local cross-checks.",
+    "10 of 1,022 player appearances remain unidentified; role_code is present in only a subset of history rows.",
+    "Two league matches have one team-score goal not attributed to an individual player record.",
+    "Native FMF build/readback does not verify in-game import or match performance."
+  ]
+}

@@ -679,3 +679,40 @@ metaFM 27.1.1 当前页更新到 28 套/64,400 场。可见 IP 四后卫参照 O
 - FMF：`V0.8.fmf`，4,352 bytes；SHA-256 `c7480f2c32c55c1b8e8ce3f8724c9ea2c7b2f02fa4e9759b9c6aff8c31d7bb2e`。
 - 原生回读：父文件 SHA、IP 四后卫、22 阶段目录核验、AMC 新 PI/职责、TI 向量、11 个 OOP block 字节级不变、未改 IP block、style string/FourCC、心态、TAC 尾部/opaque、AOM、IMG 和其他 FMF 成员全部通过。
 - 游戏内导入与比赛表现：未验证。
+
+
+---
+
+## V0.8 正常赛季复盘｜Exporter run 45570292427（2026-11-25）
+
+- 用户确认使用 V0.8。FM27 build `27.1.1+2511875`；存档 `1.fm`；Exporter 1.5.0、fmsave 0.14.3；该 build 未在 parser upstream known-build 清单登记，team stats schema-6 使用借用布局。
+- 正式比赛 65 场，球队统计/球员详细比赛报告均 65/65。球员身份识别 1,012/1,022（99.02%），10 次未识别；10 种位置码均经原生目录验证；10 种 role_code 解码至原生 IP 角色，共 319 条记录，仍有 693 条 role_code 缺失；8 种角色码有两场同场阵型图视觉交叉核验。
+- 球队/球员总量核对 1,235/1,235 无差异；65 场进球核对中 63 场一致，另两场各有 1 个球队进球未归属。
+- 英超 38 场：**19胜9平10负、79:46、66分**；xG82.07、xGA44.01；场均射门14.89、射正8.00、绝佳机会1.92、控球43.37%、进攻三区传球111.9。
+- V0.7 英超 53分、xG/场1.810、xGA/场1.485；V0.8 为66分、2.160、1.158。33场共同联赛对阵 V0.8 17-7-9，V0.7 11-8-14；V0.8共同样本xG71.18/xGA38.08，V0.7为58.98/49.46。不同模拟并非同 seed 受控试验，结论仅为描述性。
+- 主场 10-6-3、45:18，xG/xGA42.07/22.21；客场 9-3-7、34:28，xG/xGA40.00/21.80。客场进攻三区传球100.6次/场，主场123.2；对手客场样本推进更频繁。
+- 平局与败场共19场，我方xG35.23仅进21球；ST位置12球/19.63xG、6助攻、24次创造绝佳机会、40次越位，平均评分6.73。弗格森9球/12.09xG、24次越位；鲁特10球/12.01xG、9助攻；格罗斯11球/11.21xG、8助攻。
+- 核心决策：V0.8整体结构已显著恢复，不拆 MCR/MCL/AMC/边锋和 TI；优先针对 ST 终结任务进行角色重构。
+- 完整分析：[V0.8_SEASON_REPORT_ANALYSIS_45570292427.md](V0.8_SEASON_REPORT_ANALYSIS_45570292427.md)。
+
+## V0.8 → V0.9｜中锋终结角色重构（2026-11-25）
+
+### 唯一父版本与实际变更
+
+- 父版本：V0.8.fmf；SHA-256 `c7480f2c32c55c1b8e8ce3f8724c9ea2c7b2f02fa4e9759b9c6aff8c31d7bb2e`。
+- IP Slot 10 / ST：`ChannelForward / Attack` → `Poacher / Attack`。
+- 保留 `SHOOTING=SHOOT_MORE_OFTEN` 与 `ATTACK_BOX_SIDE=FAR_POST`。
+- 不再写入 `FORWARD_RUNS=MAKE_MORE_RUNS`；原生 catalog 显示该选项在 Poacher/Attack 下不可用，不静默伪写。
+- 球队 TI 原生向量保持 `a428011008506028a2810800`；其他10槽 IP、全部11个OOP block、所有位置转换、心态4、空style string、FourCC `4c4c554e` 保持。
+
+### 设计依据与风险
+
+ST位置12球对19.63 xG，非胜场进球转化明显偏低；已解码的联赛 ChannelForward 子样本18场/904分钟、5球/5.73xG、14次越位。角色样本不覆盖全部ST出场，不能当成角色因果证明。V0.9 试图减少额外拉边/前插，将攻击终点集中于禁区和后点。风险是失去部分拉边接应、横向牵制和支点串联，须以整套赛季表现判断。
+
+### 原生构建
+
+- GitHub Actions：[FM27 Native Snapshot Build run #3](https://github.com/eslaulau/fm-ta/actions/runs/45572441695)，成功；Artifact `FM27_EngineDividend_IP_4Back_V0.9_run3`（ID `15002228385`）。
+- FMF：4,352 bytes；SHA-256 `36df4c0d83142b6aaede3b15c01173ed9ebf848f76ea8581d80143f9286957a2`。
+- 构建报告：`V0.9_BUILD_REPORT.json`；SHA-256 `bc506e8a048aad54bf098efa5c592247c568aff0fc99183f76d118e66544d267`。
+- 父 SHA、成员解析、11组IP/OOP、22阶段角色职责目录校验、IP四后卫、仅声明IP块变化、11个OOP block字节级不变、PI/TI回读、风格/心态、TAC footer/opaque、AOM、IMG和其他成员保护检查全部通过。
+- 状态：`offline_binary_roundtrip_verified_not_game_import_verified`。游戏内导入和比赛表现待验证。

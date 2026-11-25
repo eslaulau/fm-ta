@@ -62,5 +62,22 @@
     "球队指令向量保持 V0.8 原值：极高节奏、极窄进攻宽度、极多逼抢及其他全部原设置",
     "心态 native value 4、空白 style string、FourCC 4c4c554e 保持"
   ],
-  "status": "pending_native_build"
+  "status": "offline_binary_roundtrip_verified_not_game_import_verified",
+  "build": {
+    "workflow_run_id": 45572441695,
+    "workflow_run_number": 3,
+    "workflow_run_url": "https://github.com/eslaulau/fm-ta/actions/runs/45572441695",
+    "job_conclusion": "success",
+    "artifact_id": 15002228385,
+    "artifact_name": "FM27_EngineDividend_IP_4Back_V0.9_run3",
+    "output_file": "V0.9.fmf",
+    "output_size_bytes": 4352,
+    "output_sha256": "36df4c0d83142b6aaede3b15c01173ed9ebf848f76ea8581d80143f9286957a2",
+    "report_file": "V0.9_BUILD_REPORT.json",
+    "report_sha256": "bc506e8a048aad54bf098efa5c592247c568aff0fc99183f76d118e66544d267",
+    "artifact_zip_sha256": "282705659bc65b775ed3586a1de54cd74164b19bb75fc30ac241de342717e5b3",
+    "status": "offline_binary_roundtrip_verified_not_game_import_verified",
+    "game_import": false,
+    "match_performance": false
+  }
 }
