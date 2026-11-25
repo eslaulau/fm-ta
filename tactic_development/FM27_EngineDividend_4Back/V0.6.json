@@ -518,7 +518,7 @@
       "option": "是"
     }
   ],
-  "native_team_instruction_vector_hex": null,
+  "native_team_instruction_vector_hex": "083001010040202222010800",
   "build_artifact": {
     "filename": "V0.6.fmf",
     "bytes": 4284,
