@@ -1,0 +1,66 @@
+{
+  "version": "V0.9",
+  "parent_version": "V0.8",
+  "parent_file": "tactic_development/FM27_EngineDividend_4Back/V0.8.fmf",
+  "parent_sha256": "c7480f2c32c55c1b8e8ce3f8724c9ea2c7b2f02fa4e9759b9c6aff8c31d7bb2e",
+  "output_file": "V0.9.fmf",
+  "title": "FM27_EngineDividend_IP_4Back_V0.9",
+  "mentality_native_value": 4,
+  "native_style_lock": {
+    "style_string": "",
+    "fourcc_hex": "4c4c554e"
+  },
+  "design_objective": "在保留 V0.8 已验证有效的有球四后卫、中场连接、前腰攻击、球队节奏/宽度/逼抢组合的前提下，针对中锋位置的 xG 转化不足与额外前插带来的越位暴露，改为更集中于禁区终结的原生抢点前锋；继续保留射门倾向与后点攻击。",
+  "team_instructions": {},
+  "team_instruction_changes": [],
+  "player_changes": [
+    {
+      "slot": 10,
+      "phase": "IP",
+      "position": "ST",
+      "old": {
+        "role": "ChannelForward",
+        "duty": "A",
+        "pi": [
+          [
+            "SHOOTING",
+            "SHOOT_MORE_OFTEN"
+          ],
+          [
+            "FORWARD_RUNS",
+            "MAKE_MORE_RUNS"
+          ],
+          [
+            "ATTACK_BOX_SIDE",
+            "FAR_POST"
+          ]
+        ]
+      },
+      "role": "Poacher",
+      "duty": "A",
+      "pi": [
+        [
+          "SHOOTING",
+          "SHOOT_MORE_OFTEN"
+        ],
+        [
+          "ATTACK_BOX_SIDE",
+          "FAR_POST"
+        ]
+      ],
+      "reason": "联赛 ST 位置为 12 球/19.63 xG，整体终结低于预期；ST 位置共有 40 次越位。已解码的 ChannelForward 子样本只有 18 次出场/904 分钟，5 球/5.73 xG、14 次越位，样本有限且不能证明角色因果，但提示值得减少额外 MAKE_MORE_RUNS 并尝试更集中禁区的抢点角色。原生 catalog 允许 ST/Poacher/Attack，SHOOT_MORE_OFTEN 与 FAR_POST 可写入；MAKE_MORE_RUNS 在该角色职责下不提供，故不写入。此调整是针对本报告弱点的设计假设，需由下一完整赛季复盘验证。"
+    }
+  ],
+  "retained_design": [
+    "IP 四后卫 DL-DCL-DCR-DR 的四个位置与全部槽位位置保持不变",
+    "四名 IP 后卫角色、职责、PI 原样保留",
+    "MCR 中前卫（策应）、MCL 肋部中场（进攻）原样保留",
+    "AMC 前场组织核心（进攻）及自由跑位、更多前插原样保留",
+    "AMR/AML 组织型边锋（策应）原样保留",
+    "ST 保留更多射门与禁区后点攻击，只把拉边前锋（进攻）改为抢点前锋（进攻），并取消额外更多前插",
+    "全部 OOP 11 组位置、角色、职责与 PI 保持字节级不变",
+    "球队指令向量保持 V0.8 原值：极高节奏、极窄进攻宽度、极多逼抢及其他全部原设置",
+    "心态 native value 4、空白 style string、FourCC 4c4c554e 保持"
+  ],
+  "status": "pending_native_build"
+}
