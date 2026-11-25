@@ -633,3 +633,12 @@ V0.2 新增的 4 场联赛（2027-01-06、01-17、01-23、01-26）全部失利�
 本版设计意图是稳定后场至中场接应、建立 AMC 前场组织点，并适度放宽极端节奏/宽度/团队逼抢叠加。风险是中场支撑增加后禁区前插可能减少，TI 调整可能降低快速攻击和即时夺回频率。上述均为设计假设，必须在 V0.7 正常赛季复盘中综合评估。
 
 当前构建状态：V0.7 配方和专用原生快照构建器已准备；FMF 大小与 SHA、PASS 状态须等待 GitHub Actions 实际构建后更新。游戏内导入与赛季表现均待验证。
+
+
+### V0.7 原生 FMF 构建结果
+
+- GitHub Actions：[FM27 Native Snapshot Build run #1](https://github.com/eslaulau/fm-ta/actions/runs/45560727212) 成功。
+- Artifact：FM27_EngineDividend_IP_4Back_V0.7_run1（Artifact ID 14996994804）。
+- FMF：V0.7.fmf，4,352 bytes；SHA-256 6c39e9506b91cdbf7fa686311fcab5ed7b88e136a3b019e55b453e8372ae32d7。
+- 原生回读：11/11 IP/OOP 配对、22/22 角色/职责/位置 catalog 检查、有球四后卫 DL/DCL/DCR/DR、PI mask、TI 向量、空 style string、FourCC 4c4c554e、心态 4、TAC ID/footer/opaque records、AOM 标题、IMG envelope 和其他 FMF 成员检查全部通过；11 个 OOP block 字节级不变。
+- 状态：offline_binary_roundtrip_verified_not_game_import_verified。游戏内导入及赛季表现尚未验证。

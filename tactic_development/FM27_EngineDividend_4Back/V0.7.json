@@ -57,15 +57,27 @@
         "role": "ChannelMidfielder",
         "duty": "A",
         "pi": [
-          ["PASSING_RISKS", "TAKE_FEWER_RISKS"],
-          ["FORWARD_RUNS", "MAKE_MORE_RUNS"]
+          [
+            "PASSING_RISKS",
+            "TAKE_FEWER_RISKS"
+          ],
+          [
+            "FORWARD_RUNS",
+            "MAKE_MORE_RUNS"
+          ]
         ]
       },
       "role": "CentralMidfielder",
       "duty": "S",
       "pi": [
-        ["PASSING_RISKS", "TAKE_FEWER_RISKS"],
-        ["FORWARD_RUNS", "KEEP_POSITION"]
+        [
+          "PASSING_RISKS",
+          "TAKE_FEWER_RISKS"
+        ],
+        [
+          "FORWARD_RUNS",
+          "KEEP_POSITION"
+        ]
       ],
       "reason": "把右侧中场从又一个进攻型肋部跑位点改为稳定接应点，减少中路三个同型角色同时前插造成的出球断层。"
     },
@@ -77,15 +89,27 @@
         "role": "ChannelMidfielder",
         "duty": "A",
         "pi": [
-          ["PASSING_RISKS", "TAKE_FEWER_RISKS"],
-          ["FORWARD_RUNS", "MAKE_MORE_RUNS"],
-          ["ROAMING", "ROAM_FROM_POSITION"]
+          [
+            "PASSING_RISKS",
+            "TAKE_FEWER_RISKS"
+          ],
+          [
+            "FORWARD_RUNS",
+            "MAKE_MORE_RUNS"
+          ],
+          [
+            "ROAMING",
+            "ROAM_FROM_POSITION"
+          ]
         ]
       },
       "role": "AdvancedPlaymaker",
       "duty": "S",
       "pi": [
-        ["ROAMING", "ROAM_FROM_POSITION"]
+        [
+          "ROAMING",
+          "ROAM_FROM_POSITION"
+        ]
       ],
       "reason": "把前腰从第三个同型纵向攻击点改为策应组织点，利用角色原生默认的冒险传球参与连接与创造；该 PI 为角色固定开启，不重复序列化。"
     }
@@ -101,5 +125,17 @@
     "除三项列出的 TI 外，其余球队指令全部保持 V0.6 原值",
     "心态 native value 4、空白 style string、FourCC 4c4c554e 保持"
   ],
-  "status": "awaiting_native_snapshot_build"
+  "status": "offline_binary_roundtrip_verified_not_game_import_verified",
+  "build": {
+    "workflow_run_id": 45560727212,
+    "workflow_run_url": "https://github.com/eslaulau/fm-ta/actions/runs/45560727212",
+    "artifact_id": 14996994804,
+    "artifact_name": "FM27_EngineDividend_IP_4Back_V0.7_run1",
+    "output_file": "V0.7.fmf",
+    "output_size_bytes": 4352,
+    "output_sha256": "6c39e9506b91cdbf7fa686311fcab5ed7b88e136a3b019e55b453e8372ae32d7",
+    "status": "offline_binary_roundtrip_verified_not_game_import_verified",
+    "game_import": false,
+    "match_performance": false
+  }
 }
