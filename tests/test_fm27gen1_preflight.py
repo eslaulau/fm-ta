@@ -18,7 +18,11 @@ class NativePiPreflightTests(unittest.TestCase):
     def setUpClass(cls):
         cls.catalog = json.loads((GEN_DIR / "catalog.json").read_text(encoding="utf-8"))
         cls.registry = json.loads((GEN_DIR / "style_template_registry.json").read_text(encoding="utf-8"))
-        cls.recipe = gen.load_recipe_input(ROOT / "tactic_development/FM27_EngineDividend_4Back/V0.8.json")[0]
+        cls.recipe = gen.load_recipe_input(ROOT / "tactic_development/FM27_EngineDividend_4Back/V0.9.json")[0]
+        # These PI-focused tests need a valid four-back fixture; preserve V0.9 history and correct only the copied test data.
+        for slot in cls.recipe["p"]:
+            if slot["in"]["pos"] == "DCL" and slot["in"]["role"] == "WideCentreBack":
+                slot["in"]["role"] = "CentreBack"
 
     def test_four_back_wide_centre_back_is_rejected(self):
         recipe = gen.load_recipe_input(ROOT / "tactic_development/FM27_EngineDividend_4Back/V1.0.json")[0]
