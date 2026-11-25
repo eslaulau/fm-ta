@@ -331,3 +331,13 @@
 
 ### FM-Arena
 - [FM-Arena 27.1.1 独立测试页](https://fm-arena.com/tactic-testing/) 与 metaFM 使用不同测试协议，不能混合排名或合并场次；27.1.0归档成绩也不能与27.1.1直接比较。
+
+
+---
+
+## FM27 27.1.1 小型热修复核对｜2026-11-25
+
+- SI 27.1.1 热修复公开说明涉及比赛黄牌频率、Steam Workshop 后端、实时积分榜和 Microsoft Store 启动问题；没有公布新的战术角色平衡或IP/OOP行为调整。
+- 本条仅用于标注当前 build 的补丁背景，不把纪律数据纳入战术评价，也不据此推断任何 PI/TI 的表现效果。
+- 来源：[SI / FM27 Version 27.1.1 Preview](https://community.sports-interactive.com/forums/topic/613511-preview-of-fm27-version-2711/)。
+- metaFM 快照仍保持独立测试协议：2026-11-25 12:36 UTC 页面有42套战术、96,880场；FMAX仍独立记录，不与metaFM混排。榜单只供引擎结构线索，不替代本队IP四后卫与赛季数据。
