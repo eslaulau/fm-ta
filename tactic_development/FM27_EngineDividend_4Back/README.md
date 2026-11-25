@@ -210,7 +210,7 @@ DL、DCL、DCR、DR、DML、DMR 的 OOP `TACKLING` 由 `GET_STUCK_IN` 改为 `EA
 - 角色码已按原生 79 角色目录解码出 10 种实际角色码；位置语义 10/10 通过原生目录核验。仍有 10/1,022 出场身份未解析，693 条历史 role_code 缺失；build 27.1.1+2511875 未被 fmsave 0.14.3 上游登记，schema-6 使用借用布局。
 - 完整复盘见 [V0.8_SEASON_REPORT_ANALYSIS_45570292427.md](V0.8_SEASON_REPORT_ANALYSIS_45570292427.md)。
 
-## V0.9｜整套有球四后卫协同升级
+## 正式 V0.9｜整套有球四后卫协同升级（Run 142）
 
 - 父版本 V0.8 SHA-256：`c7480f2c32c55c1b8e8ce3f8724c9ea2c7b2f02fa4e9759b9c6aff8c31d7bb2e`。
 - IP 四后场：DL 内收型边后卫（防守）；DCL 宽中卫（防守）；DCR 出球中卫（防守）；DR 翼卫（进攻）。
