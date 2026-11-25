@@ -80,6 +80,14 @@ class NativePiPreflightTests(unittest.TestCase):
         })
         oop_positions = {slot["out"]["pos"] for slot in recipe["p"]}
         self.assertEqual(oop_positions, {"GK", "WBR", "DCR", "DCL", "WBL", "DC", "DMR", "AMR", "AML", "DML", "AMC"})
+        oop_by_pos = {slot["out"]["pos"]: slot["out"] for slot in recipe["p"]}
+        self.assertEqual(oop_by_pos["WBR"]["role"], "PressingWingBack")
+        self.assertEqual(oop_by_pos["WBL"]["role"], "PressingWingBack")
+        self.assertEqual(oop_by_pos["WBR"]["pi"], [["TACKLING", "GET_STUCK_IN"]])
+        self.assertEqual(oop_by_pos["WBL"]["pi"], [["TACKLING", "GET_STUCK_IN"]])
+        # The two pivot roles supply their own press-frequency defaults; do not serialize duplicate overrides.
+        self.assertNotIn(["TRIGGER_PRESS", "MORE_OFTEN"], oop_by_pos["DMR"]["pi"])
+        self.assertNotIn(["TRIGGER_PRESS", "LESS_OFTEN"], oop_by_pos["DML"]["pi"])
         self.assertNotIn("ST", oop_positions)
         self.assertEqual(result["configured_pi_items"], result["serialized_pi_override_bits"] + result["selected_fixed_on_options"])
 
