@@ -66,6 +66,23 @@ class NativePiPreflightTests(unittest.TestCase):
         ], 1)
         self.assertEqual(result["centre_back_count"], 3)
 
+    def test_v11_four_back_with_strikerless_oop_five_back_preflights(self):
+        recipe = gen.load_recipe_input(ROOT / "tactic_development/FM27_EngineDividend_4Back/V1.1.json")[0]
+        result = preflight(recipe, self.catalog, self.registry)
+        self.assertEqual(result["checked_phases"], 22)
+        self.assertEqual(result["formation_role_checks"][0]["centre_back_positions"], ["DCR", "DCL"])
+        self.assertEqual(result["formation_role_checks"][0]["centre_back_count"], 2)
+        self.assertEqual(set(result["formation_role_checks"][1]["centre_back_positions"]), {"DCR", "DCL", "DC"})
+        self.assertEqual(result["formation_role_checks"][1]["centre_back_count"], 3)
+        self.assertEqual(set(result["formation_role_checks"][1]["formation_dependent_roles"]), {
+            ("DCR", "OPCoveringWideCentreBack"),
+            ("DCL", "OPCoveringWideCentreBack"),
+        })
+        oop_positions = {slot["out"]["pos"] for slot in recipe["p"]}
+        self.assertEqual(oop_positions, {"GK", "WBR", "DCR", "DCL", "WBL", "DC", "DMR", "AMR", "AML", "DML", "AMC"})
+        self.assertNotIn("ST", oop_positions)
+        self.assertEqual(result["configured_pi_items"], result["serialized_pi_override_bits"] + result["selected_fixed_on_options"])
+
     def test_empty_pi_arrays_are_valid_for_all_22_phases(self):
         recipe = copy.deepcopy(self.recipe)
         for slot in recipe["p"]:
