@@ -1,4 +1,4 @@
-> 当前正式候选：V0.9，父版本 V0.8。核心目标为 FM27 有球阶段四后卫 DL–DCL–DCR–DR。V0.7 正常赛季报告显示联赛 15胜8平15负、53分，较 V0.6 少15分；共同36场联赛样本中，场均 xG 下降、对手 xG 上升。V0.8 保留 MCR 中前卫（策应）稳定接应，将 AMC 前场组织核心改为进攻职责并启用更多前插，同时恢复极高节奏、极窄进攻宽度和极多团队逼抢。V0.8 原生 FMF 构建状态以 GitHub Actions 结果为准。
+> 当前正式候选：V0.9（run 142，D3 原生回读通过），父版本 V0.8。唯一硬约束为 IP 后场四个位置槽位 DL–DCL–DCR–DR；四名后卫的角色、职责、PI 均可重新设计，OOP 结构与角色完全开放。V0.8 英超 38 场 19胜9平10负、79:46、66分，xG82.07/xGA44.01；19 场非胜场仅进21球（xG35.23）、客场进攻三区传球比主场少约18.3%，败场27个失球比对手累计xG16.36多约10.64。V0.9 因此协同调整 IP 后场、中场连接、禁区终结和 TI，不再把问题缩减成单一中锋。
 
 本项目研发利用 FM27 引擎红利机制的高效有球四后卫战术，不以现实足球理论作为限制。每轮按五步执行：读取赛季报告、诊断整体优势与弱点、重构整套配置、生成下一正式 FMF、正常赛季复盘。允许多个相关位置、角色、职责、PI 和 TI 协同升级；逐字段实验和 OOP 四后卫不再是强制门槛。
 
@@ -208,11 +208,13 @@ DL、DCL、DCR、DR、DML、DMR 的 OOP `TACKLING` 由 `GET_STUCK_IN` 改为 `EA
 - 角色码已按原生 79 角色目录解码出 10 种实际角色码；位置语义 10/10 通过原生目录核验。仍有 10/1,022 出场身份未解析，693 条历史 role_code 缺失；build 27.1.1+2511875 未被 fmsave 0.14.3 上游登记，schema-6 使用借用布局。
 - 完整复盘见 [V0.8_SEASON_REPORT_ANALYSIS_45570292427.md](V0.8_SEASON_REPORT_ANALYSIS_45570292427.md)。
 
-## V0.9｜中锋终结角色重构
+## V0.9｜整套有球四后卫协同升级
 
-- [V0.9 配方](V0.9.json)：父版本 V0.8；ST 从拉边前锋（进攻）改为抢点前锋（进攻），保留更多射门与禁区后点攻击；移除该角色不支持的更多前插 PI。
-- 其余 10 个槽位、全部 OOP block、球队 TI、心态4、有球四后卫 DL–DCL–DCR–DR、空白 style string 与 FourCC `4c4c554e` 均保持。
-- [V0.9 设计与原生审查](V0.9_DESIGN_AND_AUDIT.md)；[V0.9 构建报告](V0.9_BUILD_REPORT.json)；[V0.8 赛季复盘](V0.8_SEASON_REPORT_ANALYSIS_45570292427.md)。
-- GitHub Actions：[FM27 Native Snapshot Build run #3](https://github.com/eslaulau/fm-ta/actions/runs/45572441695) 成功；Artifact `FM27_EngineDividend_IP_4Back_V0.9_run3`（ID `15002228385`）。
-- FMF：4,352 bytes；SHA-256 `36df4c0d83142b6aaede3b15c01173ed9ebf848f76ea8581d80143f9286957a2`。
-- 原生 D3 readback 全部通过；游戏内导入、比赛性能仍待用户实测。V0.9 后续赛季重点看 ST 进球/xG 差额、越位、绝佳机会转化、全队 xG 与客场推进。
+- 父版本 V0.8 SHA-256：`c7480f2c32c55c1b8e8ce3f8724c9ea2c7b2f02fa4e9759b9c6aff8c31d7bb2e`。
+- IP 四后场：DL 内收型边后卫（防守）；DCL 宽中卫（防守）；DCR 出球中卫（防守）；DR 翼卫（进攻）。
+- 中前场：MCR 中前卫（策应）、MCL 肋部中场（进攻）、AMR/AML 组织型边锋（策应）、AMC 前场组织核心（进攻）、ST 抢点前锋（进攻）。
+- OOP 的 11 个位置/角色/职责/PI 本轮暂时保持 V0.8；这只是本轮策略，不是规则锁定。
+- TI：比赛节奏极高→较高、进攻宽度极窄→较窄、防线极低→较低、团队逼抢极多→较多；其他 TI 与心态沿用 V0.8。
+- V0.8 二次诊断：[赛季分析](V0.8_SEASON_REPORT_ANALYSIS_45570292427.md)；[V0.9 设计审计](V0.9_DESIGN_AND_AUDIT.md)。
+- 构建： [FM27 Tactic Build run 142](https://github.com/eslaulau/fm-ta/actions/runs/45576936835)，artifact `15005190567`。FMF 4,400 bytes，SHA-256 `5dc33a05f032345ca9c674b02d48e7619b32303e3e0eb54930598941df3456a1`。
+- D3 原生读回通过；游戏内导入和比赛引擎表现尚未验证。

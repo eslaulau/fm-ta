@@ -256,3 +256,10 @@
 
 - [FM27 Tactic Testing](https://fm-arena.com/tactic-testing/) 页面当前显示 32 套战术、42,300 场（检索时点）；该站与 metaFM 的协议和样本组织不同，不混排两站的分数。
 - 本轮外部资料只用于记录 build 机制变化、结构参照和测试协议，不把其他榜单成绩视为本项目战术的因果依据。
+
+
+## 2026-11-25｜27.1.1 引擎与测试协议校准
+- SI 官方27.1.0说明涉及反击传球/盘带、越位跑动与传球、射门位置、AMC有球移动、短传与接球逻辑，以及OOP压迫和宽区防守等变化：[官方更新说明](https://footballmanager.sega.com/asia-en/info/details/000290.html)。
+- metaFM 对相同输入的1,664场27.1.0比赛进行27.1.1重放，其中974场（58.5%）过程不同；不同版本榜单不应直接混比：[metaFM榜单与测试方法](https://metafm.net/leaderboard)。
+- FM-Arena有独立27.1.1测试池，不与metaFM合并：[FM-Arena](https://fm-arena.com/tactic-testing/)。
+- 外部榜单仅用于机制研究，不把三后卫/五后卫高排名当作本项目IP四后卫的成绩证据。
