@@ -90,13 +90,13 @@ class OfficialPresetIndexTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "权限冲突"):
             gen.encode_pi(conflict, catalog, 0, "AMC", "FreeRole", duty)
 
-    def test_empty_pi_list_still_requires_a_policy_row(self):
+    def test_empty_pi_list_does_not_require_a_policy_row_but_selected_pi_does(self):
         duty = gen.ROLE_DUTY["CentreBack"]
-        policy_key = f"0:DC:CentreBack:{duty}"
-        catalog = {"pi_policies": {policy_key: {"fixture": "0" * 64}}}
-        self.assertEqual(gen.encode_pi([], catalog, 0, "DC", "CentreBack", duty), 0)
+        empty_catalog = {"pi_policies": {}}
+        self.assertEqual(gen.encode_pi([], empty_catalog, 0, "DC", "CentreBack", duty), 0)
+        selected = [["SHOOTING", "SHOOT_MORE_OFTEN"]]
         with self.assertRaisesRegex(ValueError, "缺少原生 PI 权限策略"):
-            gen.encode_pi([], {"pi_policies": {}}, 0, "DC", "CentreBack", duty)
+            gen.encode_pi(selected, empty_catalog, 0, "DC", "CentreBack", duty)
 
     def test_all_mapped_ti_options_match_exactly_one_native_catalog_option(self):
         catalog = json.loads((GEN_DIR / "catalog.json").read_text(encoding="utf-8"))
