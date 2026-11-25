@@ -808,3 +808,27 @@ ST位置12球对19.63 xG，非胜场进球转化明显偏低；已解码的联�
 - **DCL角色一致性警报：** V1.0 配方 DCL 为边中卫（防守），原生 role bit index 51；报告可解码角色码没有51，而出现中后卫20条、出球中卫21条。DL内收边后卫34条、DR翼卫32条与配方吻合。因角色码部分覆盖、DC不能拆分DCL/DCR，不能据此否定整季使用V1.0，但需游戏内阵型截图核对。
 - 决策：保留 V1.0 默认进攻宽度、默认防线、较高节奏、较多团队逼抢及主要攻击角色；**暂缓 V1.1**，先核对 DCL 实际角色，避免在未确认的配置基线上继续叠加新改动。
 - D4：用户确认赛季使用V1.0，但逐项显示审计仍待 DCL 角色截图；D5：61场报告分析完成。完整分析：[V1.0_SEASON_REPORT_ANALYSIS_45602694823.md](V1.0_SEASON_REPORT_ANALYSIS_45602694823.md)。
+
+
+---
+
+## 阵型级角色条件纠错｜2026-11-25
+
+用户指出：**边中卫只适用于三后卫/三中卫体系。** 经 FM27 角色资料核实，边中卫（有球 `WideCentreBack`、无球 `OPWideCentreBack`）及其无球补位/上抢变体，只能用于三中卫体系的外侧中卫（DCL/DCR）；有球 `OverlappingCentreBack`（套上中卫）也要求三中卫外侧位置。单个位置权限目录虽把这些角色列在 DCL/DCR 下，但不代表四后卫形状可以使用。
+
+### 研发影响
+
+- 本项目 IP 四后场是 DL、DCL、DCR、DR，只含两个中卫槽位。V0.9 的 DCL `WideCentreBack`、V1.0 继承的 DCL `WideCentreBack` 均为阵型级无效配置；原 Run 142 / Run 144 的二进制读回通过，仅证明角色位被写入并可回读，不证明游戏允许在该四后卫形状中使用。
+- 历史扫描还发现 V0.1–V0.3 在只有 DCL/DCR 两名中卫的结构中配置了 `OverlappingCentreBack`，同样违反三中卫外侧角色条件。V0.4、V0.6、V0.7、V0.8 的结构化 recipe 未发现以上两类特殊角色；V0.5 原生快照记录为普通中后卫/出球中卫。历史配方保留原样，不回写伪造历史。
+- V0.9 和 V1.0 的赛季比赛结果、xG/xGA、球员输出等原始观测仍成立；但此前“DCL 宽中卫在四后卫中贡献了收益”的设计/归因撤销。Exporter 不导出战术配置，角色码只部分覆盖，也无法将 DC 进一步拆成 DCL/DCR，因此不得假设游戏实际应用了该非法角色。
+
+### 生成器修复
+
+- `scripts/preflight_fm27_tactic.py` 增加阵型级角色检查：
+  - 有球 `WideCentreBack`、`OverlappingCentreBack`；
+  - 无球 `OPWideCentreBack`、`OPCoveringWideCentreBack`、`OPStoppingWideCentreBack`；
+  - 仅在当前阶段同时存在 DCL、DC、DCR 三个中卫槽位，且角色处于外侧 DCL/DCR 时通过。
+- 测试以合法 V0.8 四后卫作为 PI 基准，明确断言 V1.0 四后卫边中卫配方拒绝；同时覆盖三中卫允许、四后卫拒绝，以及无球边中卫变体。
+- V1.0 原始 JSON、FMF、Run 144 和报告哈希全部保留；若修正，必须创建新版本/构建身份，不能覆盖历史版本。
+
+资料依据：[FM27 角色定义](https://guide.ludens.com.tw/fm27/roles/)；[FM27 阵型角色可用条件](https://assman.ai/guides/fm27-tactics-whats-changed)。
