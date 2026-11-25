@@ -116,6 +116,8 @@ class TacticRecipeInputResolverTests(unittest.TestCase):
             **common
         )
         self.assertTrue(skipped["skip_build"])
+        self.assertNotIn("recipe_path", skipped)
+        self.assertIn("no added/modified", skipped["recipe_label"])
         with self.assertRaisesRegex(ValueError, "exactly one"):
             resolver.resolve_recipe_input(
                 event_name="push",

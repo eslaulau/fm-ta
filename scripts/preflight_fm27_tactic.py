@@ -22,6 +22,7 @@ def preflight(recipe: dict, catalog: dict, style_registry: dict) -> dict:
     roles = {item["id"]: item for item in catalog["roles"]}
     eligibility = catalog.get("role_eligibility", {})
     checked = []
+    seen_positions = {0: set(), 1: set()}
     configured_pi_phases = 0
     configured_pi_items = 0
     serialized_override_bits = 0
@@ -34,6 +35,9 @@ def preflight(recipe: dict, catalog: dict, style_registry: dict) -> dict:
             pos_id = gen.native_position_id(pos_name, phase)
             if pos_id not in positions:
                 raise ValueError(f"slot {slot} {phase_key}: unknown native position {pos_name!r}")
+            if pos_id in seen_positions[phase]:
+                raise ValueError(f"slot {slot} {phase_key}: duplicate native position {pos_name!r}")
+            seen_positions[phase].add(pos_id)
 
             role_id = gen.role_id_from_display(str(item["role"]), phase, set(roles))
             role = roles[role_id]
@@ -44,11 +48,10 @@ def preflight(recipe: dict, catalog: dict, style_registry: dict) -> dict:
 
             duty = gen.resolve_role_duty(role_id, item)
             selected_count = len(item["pi"])
-            pi_mask = gen.encode_pi(item["pi"], catalog, phase, pos_id, role_id, duty)
+            pi_mask, fixed_on_count = gen.encode_pi_details(item["pi"], catalog, phase, pos_id, role_id, duty)
             override_bits = pi_mask.bit_count()
-            fixed_on_count = selected_count - override_bits
-            if fixed_on_count < 0:
-                raise ValueError(f"slot {slot} {phase_key}: invalid PI override count")
+            if fixed_on_count + override_bits != selected_count:
+                raise ValueError(f"slot {slot} {phase_key}: PI selection summary does not reconcile")
 
             configured_pi_phases += int(selected_count > 0)
             configured_pi_items += selected_count

@@ -93,3 +93,7 @@ Artifact 保留 14 天。直接 JSON 源配方留在本目录；无需额外生�
 - 角色/位置/duty 兼容性、PI 原生权限、TI 编码、FMF 容器完整性和全部 D3 独立回读仍必须通过。
 - D3 只证明原生文件生成和二进制回读，不代表游戏内导入或比赛效果已验证。
 - 历史战术迁移必须有用户明确授权；不得将其结果自动作为新战术设计模板或成功战术证据。
+
+## 旧版快照构建工作流
+
+`.github/workflows/fm27-native-snapshot-build.yml` 已改为仅手动触发的旧格式兼容入口，要求请求文件提供 `parent_file`、`parent_sha256`、`player_changes` 等旧字段。它不再监听 `V0.9.json`、生成器源码或普通文档变更；当前完整结构化战术必须走 `FM27 Tactic Build` 工作流，避免把结构化 recipe 误传给旧 parent-delta 脚本。

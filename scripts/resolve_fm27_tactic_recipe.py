@@ -103,7 +103,13 @@ def resolve_recipe_input(
             and Path(item.strip()).suffix.lower() in {".json", ".txt"}
         })
         if not recipes:
-            raise RuntimeError(f"No build_requests recipe found in push paths: {changed_files!r}")
+            # Deletion-only pushes and unrelated pushes must be clean no-ops.
+            # Never guess an older request just to make a build run.
+            return {
+                "output_stem": f"FM27_Tactic_no_request_run{run_number}",
+                "recipe_label": "push contained no added/modified build request",
+                "skip_build": True,
+            }
         if len(recipes) != 1:
             raise ValueError(
                 "Each push build must target exactly one JSON or legacy GEN1 TXT under build_requests/. "
@@ -189,10 +195,9 @@ def _changed_files_from_push(event_data: dict[str, Any]) -> list[str]:
     if len(message_matches) == 1:
         return message_matches
 
-    raise RuntimeError(
-        "Push event contained no resolvable added/modified recipe path and the commit message "
-        f"did not identify exactly one build request (matches={message_matches!r})."
-    )
+    # No added/modified recipe path is a safe no-op, typically a deletion-only
+    # request push. The caller will skip the build; it must not select an old file.
+    return []
 
 
 def main() -> int:

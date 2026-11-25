@@ -61,7 +61,7 @@
   "status": "offline_binary_roundtrip_verified_not_game_import_verified",
   "version_id": "V0.9-integrated-run142",
   "supersedes": "V0.9-ST-only-draft-run3",
-  "validation_scope": "D3 native serialization/readback only. D4 game import/display and D5 match/season performance are separate and remain unverified for the complete V0.9 tactic.",
+  "validation_scope": "D3 native serialization/readback only. Some individual PI mapping display states have D4 evidence, but the complete V0.9 tactic import/display is not verified. D5 match/season performance is unverified.",
   "superseded_run3": {
     "run_id": "45572441695",
     "artifact_id": "15002228385",
@@ -70,5 +70,20 @@
     "fmf_sha256": "36df4c0d83142b6aaede3b15c01173ed9ebf848f76ea8581d80143f9286957a2",
     "report_sha256": "bc506e8a048aad54bf098efa5c592247c568aff0fc99183f76d118e66544d267",
     "status": "superseded_historical_draft"
+  },
+  "verification_stages": {
+    "D3": {
+      "status": "verified",
+      "scope": "Run 142 native FMF serialization and independent binary readback"
+    },
+    "D4": {
+      "status": "partially_verified",
+      "complete_tactic_import": false,
+      "selected_pi_mapping_display": "some individual mapping display evidence exists; not complete-tactic import proof"
+    },
+    "D5": {
+      "status": "unverified",
+      "complete_season_performance": false
+    }
   }
 }

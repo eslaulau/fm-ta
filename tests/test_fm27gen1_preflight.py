@@ -31,6 +31,27 @@ class NativePiPreflightTests(unittest.TestCase):
         self.assertEqual(result["configured_pi_phases"], 0)
         self.assertEqual(result["configured_pi_items"], 0)
         self.assertEqual(result["serialized_pi_override_bits"], 0)
+        self.assertEqual(result["selected_fixed_on_options"], 0)
+
+    def test_empty_pi_does_not_require_a_policy_table(self):
+        recipe = copy.deepcopy(self.recipe)
+        item = recipe["p"][0]["in"]
+        role_id = gen.role_id_from_display(item["role"], 0, {x["id"] for x in self.catalog["roles"]})
+        duty = gen.resolve_role_duty(role_id, item)
+        pos_id = gen.native_position_id(item["pos"], 0)
+        catalog = copy.deepcopy(self.catalog)
+        catalog["pi_policies"].pop(f"0:{pos_id}:{role_id}:{duty}", None)
+        recipe["p"][0]["in"]["pi"] = []
+        result = preflight(recipe, catalog, self.registry)
+        self.assertEqual(result["checked_phases"], 22)
+        self.assertEqual(result["roles"][0]["serialized_override_bit_count"], 0)
+
+    def test_fixed_on_selections_are_counted_separately_from_override_bits(self):
+        result = preflight(self.recipe, self.catalog, self.registry)
+        self.assertEqual(
+            result["configured_pi_items"],
+            result["serialized_pi_override_bits"] + result["selected_fixed_on_options"],
+        )
 
     def test_selected_pi_is_still_checked(self):
         recipe = copy.deepcopy(self.recipe)

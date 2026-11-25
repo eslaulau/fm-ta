@@ -20,7 +20,7 @@ The user must not be asked to:
 - use PowerShell, a terminal, a desktop helper, or a local compiler;
 - locate or download the Actions artifact themselves.
 
-The AI owns the intermediate work. A tactic explanation, a JSON recipe, a command, or a successful unit test is not the deliverable. The deliverable is the actual generated and retrieved native `.fmf` plus its report.
+The AI owns the intermediate work. A tactic explanation, a JSON recipe, a command, or a successful unit test is not the deliverable. The deliverable is the actual generated and retrieved native `.fmf` plus its same-run report. GitHub Actions builds the native FMF, performs the D3 read-back checks, and uploads the exact-run artifact.
 
 This project is not the separate FM Tactics Lab / native match-engine bridge project. Do not switch to platform bypass, Steam/EPIC adaptation, engine injection, simulation-host development, player injury editing, or other adjacent projects unless the user explicitly changes the task.
 

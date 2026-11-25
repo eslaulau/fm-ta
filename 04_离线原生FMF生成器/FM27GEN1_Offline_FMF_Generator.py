@@ -695,9 +695,12 @@ def encode_ti(gen1:dict,catalog:dict,base:bytearray)->bytearray:
             raise ValueError(f'球队指令位 {bit} 不在本机目录且不是已知模板隐藏位')
     return vec
 
-def encode_pi(pis:list, catalog:dict, phase:int, position:str, roleid:str, duty:int)->int:
+def encode_pi_details(pis:list, catalog:dict, phase:int, position:str, roleid:str, duty:int)->tuple[int,int]:
     if not isinstance(pis,list):
         raise ValueError('PI 必须是数组；没有个人指令时使用空数组 []')
+    # Empty PI means no player override; no permission table is needed.
+    if not pis:
+        return 0,0
     policy_key=f'{phase}:{position}:{roleid}:{duty}'
     policies=catalog.get('pi_policies',{}).get(policy_key)
     if not isinstance(policies,dict) or not policies:
@@ -705,11 +708,10 @@ def encode_pi(pis:list, catalog:dict, phase:int, position:str, roleid:str, duty:
     policy_values=list(policies.values())
     if any(not isinstance(value,str) or not value or set(value)-set('0123') for value in policy_values):
         raise ValueError(f'PI 权限策略格式无效：{policy_key}')
-    # Different catalog revisions can disagree on unrelated PI options.
-    # Resolve conflicts per selected option, rather than rejecting a role whose
-    # recipe selects no PI or only options that are identical in every version.
     bits=0
+    fixed_on_count=0
     seen=set()
+    seen_native_options=set()
     for pair in pis:
         if not isinstance(pair,list) or len(pair)!=2: raise ValueError('PI 项必须是 [group, option]')
         key=(str(pair[0]),str(pair[1]))
@@ -718,21 +720,27 @@ def encode_pi(pis:list, catalog:dict, phase:int, position:str, roleid:str, duty:
         seen.add(key)
         if key not in PI_MAP: raise ValueError(f'个人指令尚未建立离线映射：{key[0]}={key[1]}')
         option_id=PI_MAP[key]
+        if option_id in seen_native_options:
+            raise ValueError(f'多个 PI 别名映射到同一原生选项：{key[0]}={key[1]}')
+        seen_native_options.add(option_id)
         if any(option_id>=len(value) for value in policy_values):
             raise ValueError(f'PI 选项 ID 超出角色权限表：{key[0]}={key[1]}')
         option_states={value[option_id] for value in policy_values}
         if len(option_states)!=1:
             raise ValueError(f'该 PI 在目录版本间权限冲突，拒绝猜测：{policy_key} / option={option_id}')
-        # Catalog provenance: 0=editable, 1=unavailable, 2=fixed off, 3=fixed on.
         state=next(iter(option_states))
         if state=='1': raise ValueError(f'该角色/阶段/位置不提供此 PI：{policy_key} / {key[0]}={key[1]}')
         if state=='2': raise ValueError(f'该 PI 被角色固定关闭，不能写入：{policy_key} / {key[0]}={key[1]}')
         if state=='3':
-            # The role already forces this instruction on; do not serialize an override bit.
+            fixed_on_count+=1
             continue
         if state!='0': raise ValueError(f'未知 PI 权限状态 {state!r}：{policy_key}')
         bits|=1<<option_id
-    return bits
+    return bits,fixed_on_count
+
+
+def encode_pi(pis:list, catalog:dict, phase:int, position:str, roleid:str, duty:int)->int:
+    return encode_pi_details(pis,catalog,phase,position,roleid,duty)[0]
 
 def update_role_entry(block:Block,role_flag:int,pi_flags:int):
     # Each PI cache entry is keyed by the active role flag (not its duty tag).

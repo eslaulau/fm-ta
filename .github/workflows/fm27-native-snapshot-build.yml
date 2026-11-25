@@ -1,13 +1,13 @@
-name: FM27 Native Snapshot Build
+# Legacy parent-delta builder for requests using the old parent_file/player_changes schema.
+# The structured V0.9 recipe is built by the main "FM27 Tactic Build" workflow.
+name: FM27 Native Snapshot Build (Legacy Manual)
 on:
-  push:
-    branches: [main]
-    paths:
-      - "tactic_development/FM27_EngineDividend_4Back/V0.9.json"
-      - "scripts/build_fm27_snapshot_tactic.py"
-      - "04_离线原生FMF生成器/FM27GEN1_Offline_FMF_Generator.py"
-      - "04_离线原生FMF生成器/catalog.json"
-      - "tactic_development/FM27_EngineDividend_4Back/V0.8.fmf"
+  workflow_dispatch:
+    inputs:
+      request_file:
+        description: "Path to a legacy snapshot request with parent_file, parent_sha256 and player_changes"
+        required: true
+        type: string
 permissions:
   contents: read
 jobs:
@@ -20,15 +20,17 @@ jobs:
           python-version: "3.12"
       - name: Install dependencies
         run: python -m pip install -r "04_离线原生FMF生成器/requirements.txt"
-      - name: Build V0.9 from exact V0.8 parent
+      - name: Build legacy parent-delta snapshot
+        env:
+          REQUEST_FILE: ${{ inputs.request_file }}
         run: |
           python scripts/build_fm27_snapshot_tactic.py \
-            --request tactic_development/FM27_EngineDividend_4Back/V0.9.json \
-            --output "${{ runner.temp }}/FM27_EngineDividend_IP_4Back_V0.9.fmf" \
-            --report "${{ runner.temp }}/FM27_EngineDividend_IP_4Back_V0.9.report.json"
+            --request "$REQUEST_FILE" \
+            --output "${{ runner.temp }}/FM27_Legacy_Snapshot_${{ github.run_number }}.fmf" \
+            --report "${{ runner.temp }}/FM27_Legacy_Snapshot_${{ github.run_number }}.report.json"
       - name: Enforce native readback report
         run: |
-          python - "${{ runner.temp }}/FM27_EngineDividend_IP_4Back_V0.9.report.json" <<'PY'
+          python - "${{ runner.temp }}/FM27_Legacy_Snapshot_${{ github.run_number }}.report.json" <<'PY'
           import json, sys
           from pathlib import Path
           report = json.loads(Path(sys.argv[1]).read_text(encoding="utf-8"))
@@ -38,12 +40,12 @@ jobs:
           if report["status"] != "offline_binary_roundtrip_verified_not_game_import_verified":
               raise SystemExit("Unexpected build status")
           PY
-      - name: Upload V0.9 FMF and native report
+      - name: Upload legacy snapshot and native report
         uses: actions/upload-artifact@v4
         with:
-          name: FM27_EngineDividend_IP_4Back_V0.9_run${{ github.run_number }}
+          name: FM27_Legacy_Native_Snapshot_run${{ github.run_number }}
           path: |
-            ${{ runner.temp }}/FM27_EngineDividend_IP_4Back_V0.9.fmf
-            ${{ runner.temp }}/FM27_EngineDividend_IP_4Back_V0.9.report.json
+            ${{ runner.temp }}/FM27_Legacy_Snapshot_${{ github.run_number }}.fmf
+            ${{ runner.temp }}/FM27_Legacy_Snapshot_${{ github.run_number }}.report.json
           if-no-files-found: error
           retention-days: 14
