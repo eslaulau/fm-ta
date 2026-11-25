@@ -1,0 +1,174 @@
+{
+  "version": "V1.2",
+  "version_id": "V1.2-run146",
+  "parent_version": "V1.1-run145",
+  "parent_fmf": "FM27_EngineDividend_IP4Back_OOP523_V1.1_20261125_run145.fmf",
+  "parent_sha256": "b4d757cca5a849b771fc18683775234e2c3d445cfb581d961a5524afdfaf40dc",
+  "recipe": "V1.2.json",
+  "recipe_git_blob_sha": "ca0c10e415aefd9f06acea3f96b6f4413ae10ced",
+  "build_request": "build_requests/FM27_EngineDividend_IP4Back_OOP42121_V1.2_20261125.json",
+  "build_request_git_blob_sha": "ca0c10e415aefd9f06acea3f96b6f4413ae10ced",
+  "build_request_commit": "69356f98a45c015b21064bc5122d521d432421a6",
+  "workflow": {
+    "name": "FM27 Tactic Build",
+    "run_number": 146,
+    "run_id": 45619871449,
+    "url": "https://github.com/eslaulau/fm-ta/actions/runs/45619871449",
+    "conclusion": "success",
+    "artifact_id": 15023997021,
+    "artifact_name": "FM27_FM27_EngineDividend_IP4Back_OOP42121_V1.2_20261125_run146"
+  },
+  "output": {
+    "repository_file": null,
+    "delivery": "Exact-run Actions artifact and attached conversation downloads",
+    "artifact_file": "FM27_EngineDividend_IP4Back_OOP42121_V1.2_20261125_run146.fmf",
+    "bytes": 4504,
+    "sha256": "66c831f96bf7329f09ed4aa41c50bb61406a524f9e630bcbbb234dac2728e7e7",
+    "same_run_report_file": "FM27_EngineDividend_IP4Back_OOP42121_V1.2_20261125_run146.report.json",
+    "same_run_report_bytes": 11528,
+    "same_run_report_sha256": "9b2935903d1f355d9088776c517841610a678e08165dd02b21529da529f86223",
+    "artifact_zip_bytes": 6972,
+    "artifact_zip_sha256": "4805504e2e4026a3530399f9b96c43b0a4148517efe52742a60a5a665f0a4381"
+  },
+  "native_carrier": {
+    "name": "FM27 Native Parent Snapshot (V0.9)",
+    "sha256": "5dc33a05f032345ca9c674b02d48e7619b32303e3e0eb549305d6ef135f55bb",
+    "role": "serialization carrier only; conceptual tactical parent is V1.1",
+    "style_string": "",
+    "fourcc": "4c4c554e",
+    "mentality": 4,
+    "inheritance": "All 22 IP/OOP phases are explicitly written by V1.2. The four team instructions are explicitly retained at V1.1 values. Other unmentioned opaque sections inherit from the V0.9 native carrier."
+  },
+  "changes": {
+    "IP": "All V1.1 IP slots, roles, duties, and PIs are retained: DL/DCL/DCR/DR remain the IP back four; DCL is the valid CentreBack/Defend role.",
+    "OOP": {
+      "before": "V1.1 strikerless 5-2-3: WBL-DCL-DC-DCR-WBR; DML-DMR; AML-AMC-AMR",
+      "after": "Compact four-back / 4-2-3-1 DM-style screen: DL-DCL-DCR-DR; DML-DMR; ML-MC-MR; AMC as the single high outlet",
+      "asymmetry": "DR Holding Full-Back/Defend holds the right lane; DL Pressing Full-Back/Support is the selective wide presser.",
+      "central_cover": "DCL Covering Centre-Back, DCR Centre-Back; DML Screening Defensive Midfielder; DMR Wide-Cover Defensive Midfielder; MC Screening Central Midfielder.",
+      "wide_cover": "ML/MR Tracking Wide Midfielder/Defend, with selective More Often pressing and Tackle Harder.",
+      "front_outlet": "ST slot becomes Splitting Outlet Attacking Midfielder/Attack at AMC, retaining one high outlet without an OOP ST."
+    },
+    "team_instructions": {
+      "TEMPO": "HIGHER",
+      "ATTACKING_WIDTH": "DEFAULT",
+      "DEFENSIVE_LINE": "DEFAULT",
+      "TRIGGER_PRESS": "MORE_OFTEN",
+      "native_bits": [
+        2,
+        5,
+        7,
+        11,
+        13,
+        16,
+        28,
+        35,
+        44,
+        47,
+        54,
+        61,
+        66,
+        69,
+        71,
+        72,
+        79,
+        83
+      ],
+      "changed_from_V1_1": false
+    },
+    "OOP_PI": {
+      "trigger_press": "Less Often on DCR and DMR; DCL Covering Centre-Back has Less Often fixed-on; More Often on DL Pressing Full-Back (fixed-on), ML/MR tracking midfielders and AMC outlet.",
+      "tackling": "Tackle Harder is selective on DL, DMR, ML and MR; central covering defenders and screening DML/MC are not forced into the same override.",
+      "configured_pi_items": 29,
+      "serialized_override_bits": 27,
+      "selected_fixed_on_options": 2
+    }
+  },
+  "validation": {
+    "phase_count": 22,
+    "designed_phase_count": 22,
+    "readback_phase_count": 22,
+    "ip_back_four": [
+      "DL",
+      "DCL",
+      "DCR",
+      "DR"
+    ],
+    "ip_back_four_valid": true,
+    "oop_positions": [
+      "GK",
+      "DR",
+      "DCR",
+      "DCL",
+      "DL",
+      "DMR",
+      "DML",
+      "MR",
+      "ML",
+      "MC",
+      "AMC"
+    ],
+    "oop_back_four": [
+      "DL",
+      "DCL",
+      "DCR",
+      "DR"
+    ],
+    "no_formation_dependent_back_three_roles": true,
+    "roles_duties_pi_readback_exact": true,
+    "pi_permissions_checked_against_catalog": true,
+    "team_instruction_vector_readback_exact": true,
+    "team_instruction_bits": [
+      2,
+      5,
+      7,
+      11,
+      13,
+      16,
+      28,
+      35,
+      44,
+      47,
+      54,
+      61,
+      66,
+      69,
+      71,
+      72,
+      79,
+      83
+    ],
+    "native_style_string": "",
+    "native_fourcc": "4c4c554e",
+    "all_d3_readback_checks": true,
+    "game_import": false,
+    "match_engine_performance": false
+  },
+  "verification_stages": {
+    "D0": {
+      "status": "completed",
+      "scope": "Complete V1.2 IP/OOP 22-phase design"
+    },
+    "D1": {
+      "status": "passed",
+      "scope": "Current catalog-backed position/role/duty/PI permissions plus formation-level role conditions"
+    },
+    "D2": {
+      "status": "passed",
+      "scope": "11 slots and 22 phase objects; empty PI arrays allowed"
+    },
+    "D3": {
+      "status": "verified",
+      "scope": "Run 146 FMF generation, independent binary readback, exact-run artifact and SHA/byte verification"
+    },
+    "D4": {
+      "status": "pending",
+      "scope": "Import V1.2 in FM27 and inspect IP/OOP positions, roles, duties, PIs and TIs"
+    },
+    "D5": {
+      "status": "pending",
+      "scope": "Use explicit V1.2 mapping in the next matches/season report and review performance"
+    }
+  },
+  "status": "offline_binary_roundtrip_verified_not_game_import_verified"
+}
