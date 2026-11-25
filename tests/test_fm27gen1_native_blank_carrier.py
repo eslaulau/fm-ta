@@ -63,7 +63,7 @@ class NativeBlankCarrierTests(unittest.TestCase):
         self.assertEqual(len(report["readback_player_phase_map"]), 22)
         self.assertEqual(
             sorted(x["position"] for x in report["readback_player_phase_map"]
-                   if x["phase"] == "IP" and x["position"] in {"DL", "DCL", "DCR", "DR"}),
+                   if x["phase"] == "in" and x["position"] in {"DL", "DCL", "DCR", "DR"}),
             ["DCL", "DCR", "DL", "DR"],
         )
         parsed = gen.parse_fmf(fmf_bytes)
