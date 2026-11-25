@@ -6,6 +6,7 @@
 
 - ANALYSIS_AND_ITERATION_RULES.md：正式研发、数据口径与 D0–D5 规则。
 - ROLE_PI_AUDIT_TEMPLATE.md：审查完整角色/PI/TI 协同、数据归因边界与验收阶段。
+- 阵型级角色约束：边中卫系列与套上中卫只适用于三中卫外侧槽位；生成器 preflight 已增加阵型检查，历史 V0.1–V0.3、V0.9/V1.0 的非法角色条目见迭代日志。
 - EXTERNAL_ENGINE_BENCHMARK.md：外部引擎研究与榜单基准，按 IP 结构和 build 区分。
 - ITERATION_LOG.md：唯一版本主线、唯一父版本和构建/复盘记录。
 - V0.8_SEASON_REPORT_ANALYSIS_45570292427.md：V0.8 正式赛季报告复核与 V0.9 草案/正式版差异记录。
