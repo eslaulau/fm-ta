@@ -59,6 +59,8 @@ Never conclude that a role, PI, TI, style, or data source is missing from a sing
 
 ## 3. Tactical design rules
 
+**Mentality is a freely optimizable tactical variable, not a project invariant.** The AI may change it in any iteration when the tactical diagnosis or evidence supports doing so; it must be included in the complete parent-to-child diff and the four decision dispositions. Do not freeze or inherit mentality merely to preserve the parent recipe or isolate a one-variable experiment. If unchanged, that must be an intentional evidence/design decision, not a mandatory rule. The only mandatory structural constraint is the four IP defensive positions DL/DCL/DCR/DR; mentality is not part of that constraint.
+
 **Tactical design priority rule — mandatory:** Native generator compatibility is a **post-design executability check, not the starting point of tactical design**. AI must not choose basic/default/already-tested roles merely because they are safer, easier to map, or more likely to pass the generator. During design, AI must actively explore the full set of current native roles, duties, and relevant PI combinations that could realize the tactical objective, and select the strongest evidence-backed combination for the requested goal. Only after the tactical concept and role structure are chosen should native position/role/duty/PI permissions be validated. If a preferred role fails validation, return to the tactical design stage and find the strongest native alternative that preserves the intended tactical behavior; do not weaken the tactical idea merely to make generation pass.
 
 For a new tactic:
