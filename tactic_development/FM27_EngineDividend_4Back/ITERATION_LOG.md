@@ -531,3 +531,49 @@ V0.2 新增的 4 场联赛（2027-01-06、01-17、01-23、01-26）全部失利�
 ### 文件状态
 - 项目强制规则、README、V0.5 基准、V0.5 角色/PI 审查、V0.5 赛季分析及本迭代日志均同步本次准入标准。
 - 本条为 2026-11-25 生效的后续决策覆盖，不回写或伪造 2026-11-24/此前已经执行的工作。
+
+
+---
+
+## V0.6｜原生快照四后卫 4-2-3-1 候选（2026-11-25）
+
+### 父版本与产物
+- 父版本：V0.5；源文件 `V21_Leaderboard_TeamInstructions(1).fmf`。
+- 父 FMF SHA-256：`e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257`。
+- 产物：`V0.6.fmf`，4,284 bytes。
+- SHA-256：`58aa50060888233b1592b291a53b947d9ea9fb9b592dea8482d916ba8349f568`。
+- 原生 style string 仍为空；FourCC `4c4c554e` 原样保留。
+
+### 设计来源与依据
+- V0.5 联赛38场：20胜9平9负、69分；xG72.92（1.92/场）、xGA44.12（1.16/场）；控球41.42%，射门12.45/场；传中完成率约13.7%。
+- 27.1.0 外部四后卫对照：FMDelicious「FM27 Meta」IP/OOP 均4-2-3-1，6,048场、66.7±1.2 Pts/38，xG2.00、xGA1.28/场。此结果是整套战术组合的样本证据，不是每条 PI 的孤立 A/B。
+- SI 27.1.0 更新涉及短传、AMC 宽度移动、OOP/边路压迫、Wide Midfielder 行为和双后腰 AI 选择，均与该版本结构调整相关。
+- 参考 build 为27.1.0；用户 V0.5 存档为27.1.1+2511875，不混同成绩和 engine build。
+
+### 主要配置变更
+1. **阵型/位置**：IP/OOP 统一为 GK、DR、DCR、DCL、DL、DMR、DML、AMR、AML、AMC、ST，即4-2-3-1/4-2-3-1；OOP最后防线DL–DCL–DCR–DR，真实四后卫。
+2. **双后腰**：MCR/MCL 改为 DMR/DML；IP 使用 BoxToBoxMidfielder（S），OOP 使用 OPDefensiveMidfielder（D），避免保留 OOP Dropping DM。
+3. **边路与前场**：两边 IP 均用 InsideWinger（S），OOP 用 OPWinger（S）；AMC 为 AttackingMidfielder（A）/OPAttackingMidfielder（S）；ST 为 CentreForward（A）/OPCentreForward（S）。
+4. **中卫与边后卫**：两中卫 IP 为 BallPlayingCentreBack（D），OOP 为 OPCentreBack（D）；边后卫 IP FullBack（S），OOP OPFullBack（D）。
+5. **PI**：外部FM27 Meta战术单组合共31条显式PI：IP 30条、OOP 1条。31/31选项经catalog两版权限检查均为editable（0）；22/22位置/角色/阶段组合符合资格。
+6. **TI**：13个非默认选项：短传、极窄宽度、更多盘带、极高节奏、低平传中、减少远射、两翼推进、高位逼抢、较高防线、极多逼抢、凶狠铲抢、允许传中、阻止门将短传。
+7. **心态**：native value 4 → 6（进攻）。
+
+### 二进制保护与验收
+- 原始 V0.5 TAC parse/write identity 通过，再对源快照的原始成员进行定点编辑。
+- 输出重新打开：外层 FMF、各成员 AES-CTR 解密、Zstandard 解压、TAC 结构与 11 槽位回读均通过。
+- 22阶段位置/角色/职责/PI回读匹配；TI向量和心态回读匹配。
+- 87个非当前活动角色缓存条目保持不变；TAC ID list、footer lists、footer records、end标志保留；IMG envelope byte-identical；AOM仅替换战术标题。
+- OOP真实四后卫通过；style string 与 FourCC锁定通过。
+
+### 逐项准入边界
+- 位置资格及 PI editable 仅证明原生兼容/权限，不证明实战最优。
+- FMDelicious测试为整套战术包；由于没有各 PI 的独立A/B，不能声称所有单项 PI 已被单独证明因果收益。
+- 因此 V0.6 定义为**外部高表现四后卫组合驱动的待实测候选**；不是已验证最终战术。防线从极低提高为较高，可能损害 V0.5 的 xGA 优势，是首要风险项。
+- 下一次同 build/同阵容/同协议实测重点：对手 xG、绝佳机会、身后球、高质量射门；本队 xG、射门/射正、绝佳机会、传中成功率与积分/场。纪律数据不参与评价。
+
+### 状态
+- 原生 FMF 生成和二进制回读：**PASS**。
+- 游戏内导入：**NOT TESTED**。
+- 比赛/赛季效果：**NOT TESTED**。
+- 本记录只确认文件与结构验收，不伪称战术实测通过。
