@@ -1,0 +1,60 @@
+{
+  "version": "V0.6",
+  "parent": "V0.5",
+  "parent_source_sha256": "e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257",
+  "output": "V0.6.fmf",
+  "bytes": 4284,
+  "sha256": "58aa50060888233b1592b291a53b947d9ea9fb9b592dea8482d916ba8349f568",
+  "status": "offline_native_snapshot_binary_roundtrip_verified_not_game_import_verified",
+  "native_style_string": "",
+  "native_fourcc_hex": "4c4c554e",
+  "mentality_native_value": 6,
+  "explicit_pi_count": 31,
+  "preserved_non_active_role_cache_entries": 87,
+  "oop_back_four": [
+    "DR",
+    "DCR",
+    "DCL",
+    "DL"
+  ],
+  "team_instruction_bits": [
+    3,
+    53,
+    13,
+    46,
+    12,
+    16,
+    24,
+    61,
+    57,
+    65,
+    72,
+    83,
+    69
+  ],
+  "checks": {
+    "parent_source_sha256_verified": true,
+    "source_tac_parse_write_identity": true,
+    "outer_fmf_readback": true,
+    "all_member_aes_zstd_readback": true,
+    "tac_parse_readback": true,
+    "eleven_ip_oop_slots": true,
+    "twenty_two_phase_position_role_duty_pi_readback": true,
+    "ip_4_2_3_1": true,
+    "oop_4_2_3_1": true,
+    "true_oop_back_four": true,
+    "all_non_active_role_cache_entries_preserved": true,
+    "opaque_id_footer_sections_preserved": true,
+    "img_member_byte_identical": true,
+    "ti_vector_readback": true,
+    "mentality_readback": true,
+    "native_style_lock_preserved": true,
+    "game_import": false,
+    "match_engine_performance": false
+  },
+  "limits": [
+    "FMDelicious reference uses FM27 27.1.0; V0.5 season report uses 27.1.1+2511875.",
+    "The reference tactic is a 6,048-match bundle; it does not prove isolated causal effects for every PI.",
+    "Game import and V0.6 match/season performance remain unverified."
+  ]
+}
