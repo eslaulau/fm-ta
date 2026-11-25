@@ -226,3 +226,14 @@ DL、DCL、DCR、DR、DML、DMR 的 OOP `TACKLING` 由 `GET_STUCK_IN` 改为 `EA
 - V0.8 二次诊断：[赛季分析](V0.8_SEASON_REPORT_ANALYSIS_45570292427.md)；[V0.9 设计审计](V0.9_DESIGN_AND_AUDIT.md)。
 - 构建： [FM27 Tactic Build run 142](https://github.com/eslaulau/fm-ta/actions/runs/45576936835)，artifact `15005190567`。FMF 4,400 bytes，SHA-256 `5dc33a05f032345ca9c674b02d48e7619b32303e3e0eb54930598941df3456a1`。
 - D3 原生读回通过；游戏内导入和比赛引擎表现尚未验证。
+
+
+---
+
+## 当前版本｜V1.2（Run 146）
+
+- 最新已构建版本：[V1.2 配方](V1.2.json)、[V1.2 设计审计](V1.2_DESIGN_AND_AUDIT.md)、[V1.2 构建摘要](V1.2_BUILD_REPORT.json)。
+- V1.1 正式赛季报告复盘：[V1.1_SEASON_REPORT_ANALYSIS_45617475212.md](V1.1_SEASON_REPORT_ANALYSIS_45617475212.md)。
+- V1.2 父版本：V1.1 Run145；V1.2 保留 IP 四后卫与进攻核心，OOP 重建为四后卫底线、双后腰、回防宽中场、屏障中场和 AMC 高位接应点。
+- Build Run146：[Actions](https://github.com/eslaulau/fm-ta/actions/runs/45619871449)，artifact ID 15023997021；FMF 4,504 bytes，SHA-256 66c831f96bf7329f09ed4aa41c50bb61406a524f9e630bcbbb234dac2728e7e7。
+- D3 原生回读已通过；V1.2 游戏内导入/显示与比赛表现待验证。V1.1 D5 已完成，不能将 V1.2 D3 写成实战成功。
