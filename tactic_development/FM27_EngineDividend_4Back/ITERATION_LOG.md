@@ -832,3 +832,39 @@ ST位置12球对19.63 xG，非胜场进球转化明显偏低；已解码的联�
 - V1.0 原始 JSON、FMF、Run 144 和报告哈希全部保留；若修正，必须创建新版本/构建身份，不能覆盖历史版本。
 
 资料依据：[FM27 角色定义](https://guide.ludens.com.tw/fm27/roles/)；[FM27 阵型角色可用条件](https://assman.ai/guides/fm27-tactics-whats-changed)。
+
+
+---
+
+## 正式 V1.1｜有球四后卫 / 无球无锋 5-2-3（Run 145）
+
+### 设计依据与目标
+
+- 父版本：V1.0 Run 144；FMF SHA-256 `31abf4454e3d4c5e816a2221b669a2e5b31507bdcfa280c059007359f7eab666`。V1.0 英超 38 场 87 分、107:35、xG85.40/xGA40.07，进攻创造强，不拆前场攻击核心与有球四后卫。
+- 数据问题：V1.0 后19轮对手 xGA 21.84（前19轮18.23），绝佳机会22次（前19轮6次），推进传球49.79次/场（前19轮45.63），进攻三区传球116.89次/场（前19轮112次）。但对手射门/射正反而下降，故主要信号是机会质量而非对手进攻量全面上涨；这些是关联观察，不作单项PI/TI因果证明。
+- 外部快照：2026-11-25 metaFM 27.1.1 显示34套战术、77,840场；多个前列样本采用 OOP 5-2-3，首个清晰 IP 四后卫条目在榜单第20位附近，为 IP4-2-3-1/OOP4-4-1-1 DM（2,240场、1.695 PPG、xG2.03/xGA1.49）。测试使用同一批3,977份真实俱乐部AI plans和相同球员，最高可运行四轮测试、每套最多8,008场。外部榜单只用于结构候选研究，不能直接预测本队成绩或复制整套战术。[metaFM 27.1.1](https://metafm.net/leaderboard)。
+
+### 本轮配置
+
+- IP：仍为四后卫 DL/DCL/DCR/DR 的4-2-3-1；保留 V1.0 的 GK、DR、DCR、DL、中场双人、AMR/AML、AMC、ST 角色职责与PI；只把非法的 DCL WideCentreBack 改为 CentreBack Defend。
+- OOP：转为无锋5-2-3。五后卫线 WBL-DCL-DC-DCR-WBR；双后腰 DML/DMR；前场 AML-AMC-AMR，不设置传统 ST。
+- 外侧 OOP 中卫 DCL/DCR 使用 OPCoveringWideCentreBack，中央 DC 使用 OPCentreBack；此阶段明确存在 DCL+DC+DCR 三个中卫槽位，因此满足边中卫系列三中卫外侧限定。
+- 两侧翼卫采用 OPPressingWingBack，角色原生固定更多逼抢；DMR 使用 OPPressingDefensiveMidfielder（固定更多逼抢），DML 使用 OPScreeningDefensiveMidfielder（固定较少逼抢），不重复序列化同一默认PI。三名中卫个人逼抢较少；前场三人更多逼抢。外场球员广泛采用凶狠铲抢作为待验证引擎假设，GK保持谨慎铲抢。
+- TI 完全保持 V1.0：较高节奏、默认进攻宽度、默认防线、较多团队逼抢；原生bits `[2,5,7,11,13,16,28,35,44,47,54,61,66,69,71,72,79,83]`。
+
+### 正式构建身份
+
+- Recipe：[V1.1.json](V1.1.json)，Git blob SHA `2f1cfcafd33843a3dd59bc2f23540637b3f54c26`。
+- Request：[FM27_EngineDividend_IP4Back_OOP523_V1.1_20261125.json](../../build_requests/FM27_EngineDividend_IP4Back_OOP523_V1.1_20261125.json)，提交 `98a8821b9b81140b8f09960c9b2b88f4d1a8d08c`。
+- Workflow：[FM27 Tactic Build Run 145](https://github.com/eslaulau/fm-ta/actions/runs/45609801350)，run ID `45609801350`，success；artifact ID `15018939550`。
+- FMF `FM27_EngineDividend_IP4Back_OOP523_V1.1_20261125_run145.fmf`：4,544 bytes；SHA-256 `b4d757cca5a849b771fc18683775234e2c3d445cfb581d961a5524afdfaf40dc`。
+- Same-run report `FM27_EngineDividend_IP4Back_OOP523_V1.1_20261125_run145.report.json`：12,417 bytes；SHA-256 `8636e20931373d2915578970e9adcbe8dce5de31a1bf8abf3e8df9b2e7223101`。
+- Artifact ZIP：6,985 bytes；SHA-256 `a32630da7ceb72de05e3156a02345a41bc4886690d814c435e5b082e79c02eb7`。
+- D3：8/8检查通过；22/22阶段设计/回读完整；IP四后场位置核验；OOP五后卫与三中卫外侧角色阵型条件核验；PI权限、TI向量、FMF容器、TAC与style/FourCC回读全部通过。状态 `offline_binary_roundtrip_verified_not_game_import_verified`；game import和match engine字段仍为false。
+
+### D0–D5
+
+- D0、D1、D2：完成；V1.1完整22阶段设计、基础权限和阵型级条件通过。
+- D3：Run 145通过，FMF及同次报告已交付。
+- D4：待用户导入并截图确认IP四后卫和OOP5-2-3显示、11个槽位转换、角色职责PI与TI。
+- D5：待新赛季/比赛报告；重点观察对手xGA、绝佳机会、对手推进、我方客场进入进攻三区效率和反击质量，同时检查我方xG/绝佳机会是否保留。禁止用犯规、黄牌、红牌评价凶狠铲抢。
