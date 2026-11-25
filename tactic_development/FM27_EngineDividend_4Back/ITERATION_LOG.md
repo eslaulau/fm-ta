@@ -1072,3 +1072,16 @@ V1.1与V1.2英超38场有相同的主客场对手配对，但只有27场日期�
 - 下一轮优先调查平局场景的禁区高质量机会与终结、最后一传，以及客场实际失球与xGA差额；不要只增加射门或传中总数，不依据犯规/黄牌/红牌判断Tackle Harder。
 - D0–D3：V1.3 Run147设计、原生预检、FMF和二进制回读已通过。D4仍待游戏内完整导入/22阶段角色职责PI/TI核对。D5：本次Run45644106773复盘已完成；仅为组合关联观察，不是受控因果实验。
 - 完整分析：[V1.3_SEASON_REPORT_ANALYSIS_45644106773.md](V1.3_SEASON_REPORT_ANALYSIS_45644106773.md)。跨版本决策总账：[TACTIC_INSTRUCTION_DECISION_LEDGER.md](TACTIC_INSTRUCTION_DECISION_LEDGER.md)。
+
+
+---
+
+## V1.4 设计升级｜父版本 V1.3 / Run147（D0–D2 已完成）
+
+- 父 FMF SHA-256：`e14574cd691c2e8d6cadb50af036b815a63fa84525a29a2b704ae69998322f86`；父 recipe blob SHA：`ec5a1ab8a902b30913736725a10659b7669ba3d7`。
+- 最新 D5 输入：V1.3 Exporter Run 45644106773。英超 38 场 27胜7平4负、83:30、88分；xG80.54、xGA34.27；绝佳机会65。7场平局只进5球、平局组xG10.70，提示需要直接攻击禁区的非对称跑位补充，而不是单纯增加射门/传中。
+- V1.4 仅改变 IP AML：组织型边锋（策应）→内锋（进攻）；短传保留，新增带球内切和自由跑位。角色默认具备更多前插与攻击防线行为。AMR 组织型边锋（策应）保留，DR 翼卫（进攻）保留，形成一侧外线供给、一侧内线纵深攻击的非对称 IP。
+- 其余 21 个阶段逐字段完全继承 V1.3；OOP 结构不变；TI 19 个 native bits 不变；mentality 4、空 style string、FourCC 4c4c554e 和 opaque 字段不变。
+- 四类配置：继承保留（其余 10 个 IP 阶段、全部 11 个 OOP 阶段、TI/原生格式字段）；替换淘汰（仅 AML PlaymakingWinger/S→InsideForward/A）；新增待验证（AML 内切、自由跑位、内线纵深攻击组合）；证据不足（没有逐场槽位/PI 使用链，不能拆分角色对机会质量的因果贡献）。完整 22 阶段表见 [V1.4_DESIGN_AND_AUDIT.md](V1.4_DESIGN_AND_AUDIT.md)。
+- 新配方：[V1.4.json](V1.4.json)。当前 catalog SHA `b5a292676f2398849b241054f49575ab96c1dba9`；风格注册表 SHA `71132794c2ebe326cb1270b939f66b1894435e77`。内存预检父版 22/22 phases、29 PI items、27 overrides、2 fixed-on；子版 22/22 phases、31 PI items、29 overrides、2 fixed-on。
+- D0/D1静态/D2完成；Actions正式 preflight与D3待本轮唯一build request触发。V1.3 D4 pending不阻断下一代D0–D3。
