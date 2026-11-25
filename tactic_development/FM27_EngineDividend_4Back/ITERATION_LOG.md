@@ -695,7 +695,7 @@ metaFM 27.1.1 当前页更新到 28 套/64,400 场。可见 IP 四后卫参照 O
 - 核心决策：V0.8整体结构已显著恢复，不拆 MCR/MCL/AMC/边锋和 TI；优先针对 ST 终结任务进行角色重构。
 - 完整分析：[V0.8_SEASON_REPORT_ANALYSIS_45570292427.md](V0.8_SEASON_REPORT_ANALYSIS_45570292427.md)。
 
-## V0.8 → V0.9｜中锋终结角色重构（2026-11-25）
+## V0.9-ST-only-draft｜Run 3（已撤回，历史草案）
 
 ### 唯一父版本与实际变更
 
@@ -712,15 +712,15 @@ ST位置12球对19.63 xG，非胜场进球转化明显偏低；已解码的联�
 ### 原生构建
 
 - GitHub Actions：[FM27 Native Snapshot Build run #3](https://github.com/eslaulau/fm-ta/actions/runs/45572441695)，成功；Artifact `FM27_EngineDividend_IP_4Back_V0.9_run3`（ID `15002228385`）。
-- FMF：4,352 bytes；SHA-256 `36df4c0d83142b6aaede3b15c01173ed9ebf848f76ea8581d80143f9286957a2`。
-- 构建报告：`V0.9_BUILD_REPORT.json`；SHA-256 `bc506e8a048aad54bf098efa5c592247c568aff0fc99183f76d118e66544d267`。
+- 历史 FMF：`V0.9_ST_ONLY_DRAFT_SUPERSEDED_run3.fmf`，4,352 bytes；SHA-256 `36df4c0d83142b6aaede3f8724c9ea2c7b2f02fa4e9759b9c6aff8c31d7bb2e`。
+- 同次原始报告：`V0.9_ST_ONLY_DRAFT_SUPERSEDED_run3.report.json`；SHA-256 `bc506e8a048aad54bf098efa5c592247c568aff0fc99183f76d118e66544d267`。
 - 父 SHA、成员解析、11组IP/OOP、22阶段角色职责目录校验、IP四后卫、仅声明IP块变化、11个OOP block字节级不变、PI/TI回读、风格/心态、TAC footer/opaque、AOM、IMG和其他成员保护检查全部通过。
 - 状态：`offline_binary_roundtrip_verified_not_game_import_verified`。游戏内导入和比赛表现待验证。
 
 
 ---
 
-## V0.9｜整套 IP 四后卫协同升级（正式构建 run 142）
+## V0.9-integrated｜Run 142（正式 V0.9）
 
 首轮只修改 ST 的草案已被本综合方案取代。唯一硬约束为 IP 后场四个位置 DL、DCL、DCR、DR；四名后卫角色、职责、PI 可调整。OOP 结构/角色完全开放，本轮只因现有数据暂时沿用 V0.8。
 
@@ -744,6 +744,14 @@ ST位置12球对19.63 xG，非胜场进球转化明显偏低；已解码的联�
 - Run #142：`45576936835`，success；artifact ID `15005190567`。
 - FMF 4,400 bytes；SHA-256 `5dc33a05f032345ca9c674b02d48e7619b32303e3e0eb54930598941df3456a1`。
 - 同次报告 SHA-256：`328bebee7a97f693ad2281bbb67f6d5d067b1e58bc145b344605d6ef135f55bb`。
-- 22/22阶段包含有效 PI；D3 格式、TAC、11组IP/OOP、22阶段、PI权限、TI、原生style/FourCC回读通过。
+- 本 recipe 的 22 个阶段均配置 PI；这只是 Run 142 配方本身的现状，不是正式构建的非空 PI 门槛。D3 格式、TAC、11组IP/OOP、22阶段、实际所选 PI 权限、TI、原生style/FourCC回读通过。
 - PI 映射状态为 `game_import_display_verified_match_unverified`；比赛实际行为仍未验证。
 - 总状态 `offline_binary_roundtrip_verified_not_game_import_verified`；游戏内导入和赛季收益待验证。
+
+## 版本身份与数据口径补充（2026-11-25）
+
+- 单独的版本标签（如 V0.9）不是充分的构建身份。每个构建必须绑定唯一父版本/父文件 SHA、recipe SHA、请求 commit、Actions run ID、artifact ID、FMF SHA/字节数和 same-run report SHA。
+- V0.9 正式版唯一身份为整套协同 Run 142；Run 3 ST-only 方案已撤回并独立归档。
+- 不得将 D3 原生文件回读成功写成 D4 游戏内导入成功或 D5 比赛效果成功。
+- 同一初始存档的不同模拟不是同 seed 受控试验；共同赛程仅作描述性对照。
+- 纪律统计不进入战术评价；原始推进计数尽可能按总传球、控球时间、每90和每100次总传球归一化。

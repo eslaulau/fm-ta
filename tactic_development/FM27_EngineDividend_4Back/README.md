@@ -1,30 +1,32 @@
-> 当前正式候选：V0.9（run 142，D3 原生回读通过），父版本 V0.8。唯一硬约束为 IP 后场四个位置槽位 DL–DCL–DCR–DR；四名后卫的角色、职责、PI 均可重新设计，OOP 结构与角色完全开放。V0.8 英超 38 场 19胜9平10负、79:46、66分，xG82.07/xGA44.01；19 场非胜场仅进21球（xG35.23）、客场进攻三区传球比主场少约18.3%，败场27个失球比对手累计xG16.36多约10.64。V0.9 因此协同调整 IP 后场、中场连接、禁区终结和 TI，不再把问题缩减成单一中锋。
+# FM27 引擎红利四后卫
 
-本项目研发利用 FM27 引擎红利机制的高效有球四后卫战术，不以现实足球理论作为限制。每轮按五步执行：读取赛季报告、诊断整体优势与弱点、重构整套配置、生成下一正式 FMF、正常赛季复盘。允许多个相关位置、角色、职责、PI 和 TI 协同升级；逐字段实验和 OOP 四后卫不再是强制门槛。
+本目录维护一个持续进行的数据驱动战术研发项目，而非只负责输出一个 FMF 文件。正式循环是：读取用户确认的赛季报告 → 数据质量审计与整体诊断 → 外部引擎机制交叉研究 → IP/OOP、角色、职责、PI、TI 协同设计 → D3 原生 FMF 构建 → D4 游戏内导入/显示确认 → D5 比赛/赛季效果复盘 → 下一轮升级。
 
 ## 当前项目文件
 
-- ANALYSIS_AND_ITERATION_RULES.md：正式五步研发规则，有球四后卫为核心目标。
-- ROLE_PI_AUDIT_TEMPLATE.md：审查完整角色/PI/TI 协同，不是逐字段效能准入表。
-- EXTERNAL_ENGINE_BENCHMARK.md：外部引擎研究与榜单基准，按 IP 结构分类。
-- ITERATION_LOG.md：唯一版本主线及构建/复盘记录。
-- V0.6_REANALYSIS_45554864463.md：V0.6 赛季报告重新分析。
-- V0.7.fmf / V0.7_BUILD_REPORT.json：V0.8 唯一父版本及原生构建报告。
-- V0.7_REANALYSIS_45564413834.md：V0.7 完整赛季复盘，含共同赛程比较和位置字段质量审计。
-- V0.8.fmf：4,352 bytes；SHA-256 `c7480f2c32c55c1b8e8ce3f8724c9ea2c7b2f02fa4e9759b9c6aff8c31d7bb2e`；原生回读通过，游戏内导入待验证。
-- V0.8.json / V0.8_DESIGN_AND_AUDIT.md / V0.8_BUILD_REPORT.json：正式配方、设计审查和原生构建报告。
-- V0.7_REANALYSIS_45564413834.md：V0.7 正常赛季完整复盘，含共同赛程比较和数据质量审计。
-- V0.8.json / V0.8_DESIGN_AND_AUDIT.md：V0.8 升级配方与协同设计审查。
-- V0.8_BUILD_REPORT.json：V0.8 原生构建回读结果（构建完成后归档）。
-- ../../scripts/build_fm27_snapshot_tactic.py：从指定父版原生快照定点改写的构建器。
-- ../../.github/workflows/fm27-v0.8-native-build.yml：V0.8 原生 FMF 构建和 artifact 工作流。
+- ANALYSIS_AND_ITERATION_RULES.md：正式研发、数据口径与 D0–D5 规则。
+- ROLE_PI_AUDIT_TEMPLATE.md：审查完整角色/PI/TI 协同、数据归因边界与验收阶段。
+- EXTERNAL_ENGINE_BENCHMARK.md：外部引擎研究与榜单基准，按 IP 结构和 build 区分。
+- ITERATION_LOG.md：唯一版本主线、唯一父版本和构建/复盘记录。
+- V0.8_SEASON_REPORT_ANALYSIS_45570292427.md：V0.8 正式赛季报告复核与 V0.9 草案/正式版差异记录。
+- V0.9.json / V0.9_DESIGN_AND_AUDIT.md：正式 V0.9 综合版 recipe 与审查。
+- V0.9.fmf / V0.9.report.json：Run 142 正式 V0.9 原生 FMF 与同次原始报告。
+- V0.9_BUILD_REPORT.json：Run 142 的版本与哈希摘要。
+- V0.9_ST_ONLY_DRAFT_SUPERSEDED_run3.fmf / .report.json：首轮单改 ST 草案的历史原始产物；已取代，不是正式 V0.9。
+- V0.8.fmf：4,352 bytes；SHA-256 c7480f2c32c55c1b8e8ce3f8724c9ea2c7b2f02fa4e9759b9c6aff8c31d7bb2e；Run 142 唯一父快照。
 
-## 版本原则
+## 项目硬约束与开放项
 
-- V0.1 至 V0.8 全部保留，V0.9 唯一父版本为 V0.8。
-- 有球四后卫位置为 DL、DCL、DCR、DR；无球结构可以独立设计。
-- 原生 style string 保持空白，FourCC 保持 4c4c554e。
-- 原生二进制回读不等于游戏内导入或赛季表现验证。
+- 唯一战术结构硬约束：有球四后场位置为 DL、DCL、DCR、DR。
+- 四后卫角色、职责、PI 完全开放；OOP 阵型、位置、角色、职责、PI 也完全开放。
+- 允许多个位置、角色、职责、PI 和 TI 协同调整；不强制单变量实验。
+- 每个阶段对象必须有 PI 数组，但可为空；只对实际选择的 PI 核验原生权限，禁止填充无意义 PI。
+- V0.9 使用 V0.8 原生父快照作为格式载体；不是空白 FMF。所有 22 个 IP/OOP 阶段配置由 recipe 重建，而共享 TI 向量仅显式覆盖四项，其余继承父快照。
+- 空 style string 与 FourCC 4c4c554e 是当前父快照的格式兼容身份，不是引擎效果或战术性能规则。
+- 纪律数据（犯规、黄牌、红牌）不进入战术评价。
+- 每个版本唯一对应父版本 SHA、recipe SHA、Actions run/artifact、FMF SHA 和同次 report SHA；标签复用必须增加唯一草案/修订/run 标识。
+
+D3 原生构建通过只说明文件能生成并独立回读；D4 游戏内显示验证、D5 比赛/赛季表现验证必须分别有证据，不得混淆。
 
 ---
 

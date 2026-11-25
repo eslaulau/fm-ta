@@ -16,15 +16,21 @@
     "bytes": 4400,
     "sha256": "5dc33a05f032345ca9c674b02d48e7619b32303e3e0eb54930598941df3456a1",
     "same_run_report_sha256": "328bebee7a97f693ad2281bbb67f6d5d067b1e58bc145b344605d6ef135f55bb",
-    "artifact_zip_sha256": "feb00a47d400cc92a83c182cc5f66668b6dfc6d3dd00d0c667388d9b81106574"
+    "artifact_zip_sha256": "feb00a47d400cc92a83c182cc5f66668b6dfc6d3dd00d0c667388d9b81106574",
+    "same_run_report_file": "V0.9.report.json"
   },
   "recipe": "V0.9.json",
   "build_request": "build_requests/FM27_EngineDividend_IP_4Back_V0.9_20261125.json",
   "native_carrier": {
-    "name": "FM27 Native Blank (V0.8 Carrier)",
+    "name": "FM27 Native Parent Snapshot (V0.8)",
+    "build_input_name": "FM27 Native Blank (V0.8 Carrier)",
+    "classification": "user-authorized V0.8 parent snapshot used as a native format carrier; not a blank tactic",
+    "template": "tactic_development/FM27_EngineDividend_4Back/V0.8.fmf",
+    "parent_sha256": "c7480f2c32c55c1b8e8ce3f8724c9ea2c7b2f02fa4e9759b9c6aff8c31d7bb2e",
     "style_string": "",
     "fourcc": "4c4c554e",
-    "mentality": 4
+    "mentality": 4,
+    "ti_inheritance": "Four recipe-declared TI groups were changed; all other TI and opaque bits remain inherited from the V0.8 parent snapshot."
   },
   "catalog_fingerprint": "b5a292676f2398849b241054f49575ab96c1dba9",
   "ip_back_four": {
@@ -40,10 +46,11 @@
     "team_press": "MUCH_MORE_OFTEN -> MORE_OFTEN"
   },
   "validation": {
-    "phases": 22,
-    "phases_with_pi": 22,
-    "all_role_duty_pi_permissions": true,
+    "phase_count": 22,
+    "phases_with_configured_pi": 22,
+    "every_selected_pi_permission_valid": true,
     "all_d3_readback_checks": true,
+    "non_empty_pi_phase_gate_required": false,
     "game_import": false,
     "match_engine_performance": false
   },
@@ -51,5 +58,8 @@
     "status": "game_import_display_verified_match_unverified",
     "note": "Some PI mapping display states have import-level records; their in-match behavior remains unverified."
   },
-  "status": "offline_binary_roundtrip_verified_not_game_import_verified"
+  "status": "offline_binary_roundtrip_verified_not_game_import_verified",
+  "version_id": "V0.9-integrated-run142",
+  "supersedes": "V0.9-ST-only-draft-run3",
+  "validation_scope": "D3 native serialization/readback only. D4 game import/display and D5 match/season performance are separate and remain unverified for the complete V0.9 tactic."
 }
