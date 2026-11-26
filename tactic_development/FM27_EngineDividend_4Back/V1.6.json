@@ -1,0 +1,318 @@
+{
+  "v": 1,
+  "name": "FM27_EngineDividend_IP4Back_OOP42121_V1.6",
+  "ment": 4,
+  "base": {
+    "g": "FM27 Native Parent Snapshot (V0.9)"
+  },
+  "ti": {
+    "TEMPO": "HIGHER",
+    "ATTACKING_WIDTH": "WIDER",
+    "DEFENSIVE_LINE": "DEFAULT",
+    "TRIGGER_PRESS": "MORE_OFTEN"
+  },
+  "p": [
+    {
+      "in": {
+        "pos": "GK",
+        "role": "BallPlayingGoalkeeper",
+        "duty": "S",
+        "pi": [
+          [
+            "PASSING_STRATEGY",
+            "SHORTER"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "GK",
+        "role": "SweeperKeeper",
+        "duty": "A",
+        "pi": [
+          [
+            "TACKLING",
+            "EASE_OFF_TACKLES"
+          ]
+        ]
+      }
+    },
+    {
+      "in": {
+        "pos": "DR",
+        "role": "WingBack",
+        "duty": "A",
+        "pi": [
+          [
+            "ATTACKING_WIDTH",
+            "STAY_WIDER"
+          ],
+          [
+            "CROSSING_TARGET",
+            "BACK_POST"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "DR",
+        "role": "HoldingFullBack",
+        "duty": "D",
+        "pi": []
+      }
+    },
+    {
+      "in": {
+        "pos": "DCR",
+        "role": "BallPlayingCentreBack",
+        "duty": "D",
+        "pi": [
+          [
+            "PASSING_STRATEGY",
+            "SHORTER"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "DCR",
+        "role": "CentreBack",
+        "duty": "D",
+        "pi": [
+          [
+            "TRIGGER_PRESS",
+            "LESS_OFTEN"
+          ]
+        ]
+      }
+    },
+    {
+      "in": {
+        "pos": "DCL",
+        "role": "CentreBack",
+        "duty": "D",
+        "pi": [
+          [
+            "PASSING_STRATEGY",
+            "SHORTER"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "DCL",
+        "role": "CoveringCentreBack",
+        "duty": "D",
+        "pi": [
+          [
+            "TRIGGER_PRESS",
+            "LESS_OFTEN"
+          ]
+        ]
+      }
+    },
+    {
+      "in": {
+        "pos": "DL",
+        "role": "InsideFullBack",
+        "duty": "D",
+        "pi": [
+          [
+            "PASSING_STRATEGY",
+            "SHORTER"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "DL",
+        "role": "PressingFullBack",
+        "duty": "S",
+        "pi": [
+          [
+            "TRIGGER_PRESS",
+            "MORE_OFTEN"
+          ],
+          [
+            "TACKLING",
+            "GET_STUCK_IN"
+          ]
+        ]
+      }
+    },
+    {
+      "in": {
+        "pos": "MCR",
+        "role": "CentralMidfielder",
+        "duty": "S",
+        "pi": [
+          [
+            "PASSING_RISKS",
+            "TAKE_FEWER_RISKS"
+          ],
+          [
+            "FORWARD_RUNS",
+            "MAKE_MORE_RUNS"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "DMR",
+        "role": "WideCoverDefensiveMidfielder",
+        "duty": "D",
+        "pi": [
+          [
+            "TACKLING",
+            "GET_STUCK_IN"
+          ],
+          [
+            "TRIGGER_PRESS",
+            "MORE_OFTEN"
+          ]
+        ]
+      }
+    },
+    {
+      "in": {
+        "pos": "MCL",
+        "role": "ChannelMidfielder",
+        "duty": "A",
+        "pi": [
+          [
+            "PASSING_RISKS",
+            "TAKE_FEWER_RISKS"
+          ],
+          [
+            "FORWARD_RUNS",
+            "MAKE_MORE_RUNS"
+          ],
+          [
+            "ROAMING",
+            "ROAM_FROM_POSITION"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "DML",
+        "role": "ScreeningDefensiveMidfielder",
+        "duty": "D",
+        "pi": [
+          [
+            "TRIGGER_PRESS",
+            "MORE_OFTEN"
+          ]
+        ]
+      }
+    },
+    {
+      "in": {
+        "pos": "AMR",
+        "role": "PlaymakingWinger",
+        "duty": "S",
+        "pi": [
+          [
+            "PASSING_STRATEGY",
+            "SHORTER"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "MR",
+        "role": "TrackingWideMidfielder",
+        "duty": "D",
+        "pi": [
+          [
+            "TRIGGER_PRESS",
+            "MORE_OFTEN"
+          ],
+          [
+            "TACKLING",
+            "GET_STUCK_IN"
+          ]
+        ]
+      }
+    },
+    {
+      "in": {
+        "pos": "AML",
+        "role": "InsideForward",
+        "duty": "A",
+        "pi": [
+          [
+            "PASSING_STRATEGY",
+            "SHORTER"
+          ],
+          [
+            "DRIBBLING_DIRECTION",
+            "CUT_INSIDE_WITH_BALL"
+          ],
+          [
+            "ROAMING",
+            "ROAM_FROM_POSITION"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "ML",
+        "role": "TrackingWideMidfielder",
+        "duty": "D",
+        "pi": [
+          [
+            "TRIGGER_PRESS",
+            "MORE_OFTEN"
+          ],
+          [
+            "TACKLING",
+            "GET_STUCK_IN"
+          ]
+        ]
+      }
+    },
+    {
+      "in": {
+        "pos": "AMC",
+        "role": "AdvancedPlaymaker",
+        "duty": "A",
+        "pi": [
+          [
+            "ROAMING",
+            "ROAM_FROM_POSITION"
+          ],
+          [
+            "FORWARD_RUNS",
+            "MAKE_MORE_RUNS"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "MC",
+        "role": "ScreeningCentralMidfielder",
+        "duty": "D",
+        "pi": []
+      }
+    },
+    {
+      "in": {
+        "pos": "ST",
+        "role": "Poacher",
+        "duty": "A",
+        "pi": [
+          [
+            "SHOOTING",
+            "SHOOT_MORE_OFTEN"
+          ],
+          [
+            "ATTACK_BOX_SIDE",
+            "FAR_POST"
+          ]
+        ]
+      },
+      "out": {
+        "pos": "AMC",
+        "role": "SplittingOutletAttackingMidfielder",
+        "duty": "A",
+        "pi": [
+          [
+            "TRIGGER_PRESS",
+            "MORE_OFTEN"
+          ]
+        ]
+      }
+    }
+  ]
+}
