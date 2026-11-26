@@ -64,3 +64,8 @@
 - FMAX 27.1.1：https://getfmax.com/en/lab/；出现4-1-2-1-2/菱形变体，作为阵型家族交叉参考，不能与其他平台分数混排。
 - PlayGM社区：https://playgm.cc/forum.php?mod=viewthread&tid=986807；2026-11-18“442边翼卫 菱形中场v2.fmf”社区分享，证据等级为用户案例/定性线索。
 - 旧V1.9 Run167采用4-3-3 DM / 4-1-4-1；当前27.1.1 4-3-3 DM分类样本较弱，4-1-4-1无当前build足量样本。R2将其标记为历史D3候选，不删除、不宣称D5失败。
+
+
+## 2026-11-26｜V1.9 R2 历史审计纠正
+
+- [V1.9_REDESIGN_R2_HISTORICAL_REAUDIT_REQUIRED.md](V1.9_REDESIGN_R2_HISTORICAL_REAUDIT_REQUIRED.md)：记录V0.4–V1.8历史总账复核缺口、已发现的版本转折和待补工作。该文件是本轮D0质量纠正依据。
