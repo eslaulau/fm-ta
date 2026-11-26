@@ -19,8 +19,8 @@
 9. 不使用犯规、黄牌、红牌评价战术；不把用户未确认的战术映射归因到某份赛季报告。
 
 ## 当前项目锚点
-- 当前版本：V1.7 / Run163。
+- 当前版本：V1.8 / Run164。
 - 唯一结构硬约束：IP四后场DL/DCL/DCR/DR。
 - V1.7父版：V1.6 / Run162；FMF SHA-256 `e67a5d218c18d3e5f7862889ab04248f8ced1f8c67a7bddb2d232b72d293748d`。
-- V1.7 FMF SHA-256 `42a7038c4fe89667d0f1f7c7ff1ff74f31633f52f570d0f8b4d4d9c774ee46ab`；Run163 D3通过；D4/D5待验证。
+- V1.7 FMF SHA-256 `42a7038c4fe89667d0f1f7c7ff1ff74f31633f52f570d0f8b4d4d9c774ee46ab`；Run163 D3通过；D5已由Exporter Run45748944770完成。\n- V1.8父版：V1.7；IP四后场与IP 11槽角色/职责/PI全部继承，OOP改为无锋5-2-3。\n- V1.8 FMF SHA-256 `51e94c684c66ce016950d93f2619a40086820e7a9dcf792b7251d4ac67fa4e72`；Run164 D3通过（8/8、22/22）；D4/D5待验证。
 - 当前权威状态和四类决策以 `TACTIC_INSTRUCTION_DECISION_LEDGER.md` 顶部“当前权威视图”为准。
