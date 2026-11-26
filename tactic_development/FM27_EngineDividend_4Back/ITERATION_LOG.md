@@ -1119,7 +1119,7 @@ V1.1与V1.2英超38场有相同的主客场对手配对，但只有27场日期�
 - 共享TI：直传、极高节奏、较宽、立刻反击、通过传递破解逼抢、短球门球、门将给中后卫、传入空当、两翼内套、更多盘带、减少远射、低平传中、从中路推进、高位逼抢、标准防线、团队较多逼抢、立即反抢、诱导边路、阻止传中。心态编码4；style string空白、FourCC `4c4c554e` 保持原样。
 
 ### 构建与验证
-- Run [45808599286](https://github.com/eslaulau/fm-ta/actions/runs/45808599286)，Artifact ID `15109429118`。
+- Run [45809444848](https://github.com/eslaulau/fm-ta/actions/runs/45809444848)，Artifact ID `15112455227`。
 - FMF 4,552 bytes，SHA-256 `ead1701ff6de352494521730ac5bcf51ac3a3b37d5d93919b3fb40dc45b31d25`；构建报告SHA-256 `18060a62b01d2465570d6a02d6ac2b3835c4a0345c4f4d938e3b513da59318f7`。
 - D1角色位置/职责/PI原生权限预检通过；D2 11个IP/OOP配对、22个阶段、IP四后场通过；D3 8/8独立二进制回读通过，包含FMF外层roundtrip、成员解密/Zstandard校验、TAC完整解析、22阶段配置精确回读、PI权限、TI向量、原生style字段。
 - D3不等于D4/D5。game_interactive_import=false、match_engine=false；游戏内导入、显示、熟悉度和比赛表现仍待验证。
