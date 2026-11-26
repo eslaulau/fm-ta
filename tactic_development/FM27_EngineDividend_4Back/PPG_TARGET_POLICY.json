@@ -56,5 +56,35 @@
     ],
     "defense_policy": "不得仅因xGA较高或防守排名较差而淘汰高进球结构；允许接受更高失球以换取更高且可重复的进球产出，但必须以最终积分验证。",
     "mandatory_2_2_review": "先建立进攻画像并筛选进球最多/最少的比赛，再逐场分析平局与失利，之后诊断防守代价；无证据不得生成2.3。"
+  },
+  "latest_d5_result": {
+    "version": "2.2",
+    "report_run_id": "45794923641",
+    "report_url": "https://github.com/eslaulau/FM27-Exporter/tree/main/season-reports/1/45794923641",
+    "tactic_mapping": "user_declared_2.2; exporter_does_not_export_tactics",
+    "completed_league_matches": 38,
+    "wins": 26,
+    "draws": 6,
+    "losses": 6,
+    "points": 84,
+    "ppg": 2.210526315789474,
+    "goals_for": 87,
+    "goals_against": 40,
+    "xg": 81.8287603259,
+    "npxg": 80.1628947258,
+    "big_chances": 98,
+    "shots": 492,
+    "shots_on_target": 273,
+    "status": "FAIL",
+    "points_short_of_target": 25,
+    "review_file": "2.2_D5_SEASON_REVIEW_20261126.md",
+    "next_step": "2.2 attacking-mechanism audit; do not generate 2.3 before audit completion",
+    "data_caveats": [
+      "Exporter does not export or infer tactic configurations; mapping is user-declared.",
+      "Player identity coverage is partial (90.07%).",
+      "One league team goal is not attributed to a player raw record.",
+      "Role-code semantics are unconfirmed.",
+      "Save build 27.1.1+2511875 is not a registered known_build in fmsave 0.14.3."
+    ]
   }
 }
