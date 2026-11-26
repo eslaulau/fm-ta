@@ -4,7 +4,7 @@
 >
 > - 唯一目标：IP有球阶段DL/DCL/DCR/DR各一次，完整英超38场至少109分（PPG≥2.85）。
 > - 最近完成D5：2.2（84分，FAIL）；历史最高：V1.6（89分）。
-> - **当前最新D3构建候选：2.5**；Run 45808599286 的项目门禁、原生权限预检、11槽/22阶段与8/8 FMF独立回读通过；D4游戏导入与D5实战效果尚未完成。
+> - **当前最新D3构建候选：2.5**；Run 45809444848 的最终Run 45809444848项目门禁、原生权限预检、11槽/22阶段与8/8 FMF独立回读通过；D4游戏导入与D5实战效果尚未完成。
 > - 2.2从V0.5原生FMF重生，IP 4-1-2-1-2 Diamond，OOP 5-2-3；11槽位置/角色/职责与metaFM公开菱形样本逐项对应。它是待验证候选，不是实战升级，也没有证明达到PPG 2.85。
 > - V1.9 R2、V2.1保留为历史结构/技术参考；不得自动继承。2.3仍是抽击传中单变量历史候选；2.4是V1.8 IP × V1.3 OOP历史融合候选；当前主线转为从V0.5重生的2.5菱形IP + OOP 4-2-1-2-1，不继承2.2/2.4。
 > - 2.2首次构建Run：[45789108253](https://github.com/eslaulau/fm-ta/actions/runs/45789108253)；审计哈希更新后复核Run：[45789543029](https://github.com/eslaulau/fm-ta/actions/runs/45789543029)，Artifact ID `15101682456`；FMF 4,528 bytes；SHA-256 `7feba49ad389125b64690ce00feaf01717f70ae80cb5854eec614e41fc058a34`。
@@ -188,7 +188,7 @@
 
 - 父版本/重生基准：V0.5；父FMF SHA-256 `e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257`。2.2、2.4仅作为历史证据，不是父版。
 - 配方：[2.5.json](2.5.json)；设计审计：[2.5_DESIGN_AND_AUDIT.md](2.5_DESIGN_AND_AUDIT.md)；[FMF文件](builds/2.5.fmf)；机器回读报告：[builds/2.5.report.json](builds/2.5.report.json)。
-- GitHub Actions项目专用门禁：[Run 45808599286](https://github.com/eslaulau/fm-ta/actions/runs/45808599286)；Artifact ID `15109429118`；Artifact ZIP SHA-256 `f37b5efee580d0511aad166ab6c92c97e70198851393b3682601f48b59a805fa`。
+- GitHub Actions项目专用门禁：[Run 45809444848](https://github.com/eslaulau/fm-ta/actions/runs/45809444848)；Artifact ID `15112455227`；Artifact ZIP SHA-256 `0dcf4f6393d89a22abf830f6408295db810ca0885f363fc1f7df338cccd1047f`。
 - FMF：4,552 bytes；SHA-256 `ead1701ff6de352494521730ac5bcf51ac3a3b37d5d93919b3fb40dc45b31d25`；构建报告SHA-256 `18060a62b01d2465570d6a02d6ac2b3835c4a0345c4f4d938e3b513da59318f7`；recipe SHA-256 `132e463277680319532bc668530d6277300509f5fde33ca86a05aa8541508ccd`。
 - IP：4-1-2-1-2 Diamond，严格DL/DCL/DCR/DR四后场；OOP：4-2-1-2-1。单侧DR翼卫进攻、DL内收边后卫防守；一攻一策应中场；前场组织核心策应；抢点前锋进攻+拖后前锋策应。
 - OOP采用V1.3分层保护的角色/职责结构重新映射；当前27.1.1 catalog不允许相关OOP角色写入个人Trigger Press/凶狠铲抢PI，因此没有伪造这些指令。抢点前锋不允许后点PI，也已移除。
