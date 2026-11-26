@@ -232,10 +232,13 @@ DL、DCL、DCR、DR、DML、DMR 的 OOP `TACKLING` 由 `GET_STUCK_IN` 改为 `EA
 
 ---
 
-## 当前版本｜V1.3（Run 147）
+## 当前版本｜V1.5（Run 149）
 
-- 最新版本：[V1.3 配方](V1.3.json)、[V1.3 设计与审计](V1.3_DESIGN_AND_AUDIT.md)、[V1.3 构建摘要](V1.3_BUILD_REPORT.json)。
-- V1.2 正式赛季分析：[V1.2_SEASON_REPORT_ANALYSIS_45635282210.md](V1.2_SEASON_REPORT_ANALYSIS_45635282210.md)。V1.2 英超38场：26胜8平4负、72:29、86分；xG70.31/xGA39.97。相较V1.1多19分，客场防守明显改善，但进攻xG、射门与边路供给下降。
-- V1.3 父版本为 V1.2 Run146；保留IP四后卫与整套OOP防守结构，只把进攻宽度调为较宽，并把MCR中前卫前插调为更多前插。
-- Build Run147：[Actions](https://github.com/eslaulau/fm-ta/actions/runs/45638142105)，artifact ID 15033178333；FMF 4,504 bytes，SHA-256 `e14574cd691c2e8d6cadb50af036b815a63fa84525a29a2b704ae69998322f86`。
-- Same-run report SHA-256：`1302dfba8d21b8566e099c0e69d1a6c7c671acc9b51450ceb3fd77a15ccb150f`；D1-D3均通过，D4游戏内完整导入显示与D5实战效果待验证。V1.2 D5已完成；不能把V1.3 D3写成实战成功。
+- 最新版本：[V1.5 配方](V1.5.json)、[V1.5 设计与完整差异审计](V1.5_DESIGN_AND_AUDIT.md)、[V1.5 构建摘要](V1.5_BUILD_REPORT.json)。
+- 父版本：V1.4 / Run148；父 FMF SHA-256 `5bce6f33f70ec9aa8627e18cc866b51f5cd79b99e2e52ba667087b4e142e92bc`。
+- V1.4 正式赛季报告：[Exporter Run 45727738275](https://github.com/eslaulau/FM27-Exporter/tree/main/season-reports/1/45727738275)。英超38场：27胜2平9负、101:53、83分；xG92.62/xGA43.46；我方/对手绝佳机会100/39。进攻产量上升，但失球、xGA和客场表现风险明显增加。
+- V1.5 战术迭代：心态 `4→3`；防线高度 `DEFAULT→LOWER`；保留较高比赛节奏、较宽进攻宽度、高位防守介入线和较多团队逼抢。IP 四后场 DL/DCL/DCR/DR 不变；22个阶段位置/角色/职责/PI均继承 V1.4。
+- Build Run149：[Actions](https://github.com/eslaulau/fm-ta/actions/runs/45729221041)，成功；artifact ID `15076425618`。FMF 4,504 bytes，SHA-256 `c4d68446a7da3e4857bc12dc1a2a9fa2b0c34341ec9653c77b08ce2ccb951711`；same-run report SHA-256 `b8a9c32e82c84eee2847c3328c25e4d569aedad4c64191cd4debe34be587a07f`。
+- D3 独立回读 8/8 通过，22/22阶段一致；状态为 `offline_binary_roundtrip_verified_not_game_import_verified`。**D4 游戏内导入和 D5 比赛效果仍待验证**，不得将构建成功表述为实战验证成功。
+- V1.4 完整数据复盘：[V1.4_SEASON_REPORT_ANALYSIS_45727738275.md](V1.4_SEASON_REPORT_ANALYSIS_45727738275.md)；V1.5 四类决策与 D0–D5 状态见 [TACTIC_INSTRUCTION_DECISION_LEDGER.md](TACTIC_INSTRUCTION_DECISION_LEDGER.md)。
+
