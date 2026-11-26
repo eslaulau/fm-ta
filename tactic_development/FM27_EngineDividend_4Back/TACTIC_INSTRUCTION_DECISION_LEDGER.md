@@ -38,7 +38,7 @@
 | V1.5 | V1.4 | 心态4→3；防线标准→较低 | 38场：25-3-10，78分 | 完整D5；客场防守未修复且进攻产量下降 |
 | V1.6 | V1.5 | 心态恢复4、防线恢复标准；OOP DML改逼抢后腰，DMR个人压迫较多 | 38场：28-5-5，89分 | D3完成；D5 Run45744550318已完成；报告语义状态partial/unverified |
 | **V1.7** | **V1.6** | **OOP DML逼抢后腰→屏障后腰；DMR个人压迫较多→较少** | **25胜7平6负；79:36；82分（65.8%）** | **D5 Run45748944770完成；D4未独立逐项验收** |
-| **V1.8** | **V1.7** | **OOP 4-2-1-2-1→无锋5-2-3；IP四后场及IP角色/PI全部保留** | **待实测** | **D0完成；D1–D3构建中，D4/D5待验证** |
+| **V1.8** | **V1.7** | **OOP 4-2-1-2-1→无锋5-2-3；IP四后场及IP角色/PI全部保留** | **待实测** | **D3 Run164通过；D4/D5待验证** |
 
 **成绩口径：** V0.1–V0.4为部分赛季，不进入完整赛季排名。V0.5–V1.7均为38场联赛结果。版本间并非同随机种子、同初始状态的受控A/B；不得将差异解释为单项配置因果。
 
@@ -127,9 +127,18 @@
 - 外部metaFM榜单的PPG不能与本队存档直接比较；球员位置熟悉度和逐场战术槽位映射未知。
 - Tackle Harder及各单项PI因果尚未证实。
 
+
+### V1.8构建身份
+- 父版本：V1.7；父FMF SHA-256 `42a7038c4fe89667d0f1f7c7ff1ff74f31633f52f570d0f8b4d4d9c774ee46ab`。
+- 子recipe blob SHA：`c5d7290c207a8322c4dffbd80ea6c7bf70277017`；build request commit：`d09235f26dd9648f3f831147316dc6363571a260`。
+- [FM27 Tactic Build Run164](https://github.com/eslaulau/fm-ta/actions/runs/45750563671)，run ID `45750563671`，artifact ID `15085292517`。
+- FMF：4,616 bytes；SHA-256 `51e94c684c66ce016950d93f2619a40086820e7a9dcf792b7251d4ac67fa4e72`。
+- Same-run report：12,605 bytes；SHA-256 `75c59445c84690170175a14c7bd62e16f16d9159803a9061b25456d1ab3bb7d8`；artifact ZIP SHA-256 `5e073f32f66c8cbf91ed6f75b23eda2a358f9aa5653f5a89e7eb59180b4e96d8`。
+- D3状态：`offline_binary_roundtrip_verified_not_game_import_verified`；8/8检查通过，22/22阶段精确回读；D4/D5待验证。
+
 ### D0–D3状态
 - D0：V1.7 D5报告分析、外部结构搜索、V1.8设计完成。
-- D1/D2/D3：构建前置校验、11槽/22阶段结构检查、原生FMF生成及独立回读待完成。
+- D1：catalog-backed位置/角色/职责/PI前置校验通过。\n- D2：11槽/22阶段检查通过；IP四后场DL/DCL/DCR/DR、OOP五后卫WBL/DCL/DC/DCR/WBR及双后腰/前场三人结构回读一致。\n- D3：Run164通过，8/8检查全true；FMF 4,616 bytes，SHA-256 `51e94c684c66ce016950d93f2619a40086820e7a9dcf792b7251d4ac67fa4e72`；same-run report SHA-256 `75c59445c84690170175a14c7bd62e16f16d9159803a9061b25456d1ab3bb7d8`；[Actions Run164](https://github.com/eslaulau/fm-ta/actions/runs/45750563671)；[构建摘要](V1.8_BUILD_REPORT_SUMMARY.json)。D3不代表游戏导入或比赛实测。
 - D4：游戏内导入逐项验收待完成。
 - D5：V1.8正式比赛/赛季报告待完成。
 
