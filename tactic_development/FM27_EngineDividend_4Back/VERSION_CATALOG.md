@@ -19,7 +19,7 @@
 
 ## 完整战术历史总账
 
-**逐代配置与差异的唯一主表：** [TACTIC_HISTORY_MASTER_V0.5-V1.8.md](TACTIC_HISTORY_MASTER_V0.5-V1.8.md)。它包含V0.5–V1.8每版的赛季表现、IP/OOP 11槽角色/职责/PI、TI/心态和父子版本逐项变化。本目录只保留成绩索引；不能代替完整配置历史总账。
+**逐代配置与差异的唯一主表：** [TACTIC_INSTRUCTION_DECISION_LEDGER.md（历史配置档案章节）](TACTIC_INSTRUCTION_DECISION_LEDGER.md（历史配置档案章节）)。它包含V0.5–V1.8每版的赛季表现、IP/OOP 11槽角色/职责/PI、TI/心态和父子版本逐项变化。本目录只保留成绩索引；不能代替完整配置历史总账。
 
 ## 历代联赛结果总表
 
