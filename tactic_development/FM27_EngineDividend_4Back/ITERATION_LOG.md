@@ -1030,3 +1030,29 @@ V1.1与V1.2英超38场有相同的主客场对手配对，但只有27场日期�
 - Same-run report SHA-256 `9d22ef9120bad01c2f65fd9a08235dc8072411af0f283ad0b640405bde8975d2`。
 - V0.5父模板SHA一致；D1/D2通过；D3 8/8独立回读通过，22阶段设计/回读一致。
 - D4待游戏内导入；D5待完整赛季报告。不得将离线构建成功写成实战有效或PPG达标。
+
+
+---
+
+## 2.2｜菱形有球四后卫 + OOP 5-2-3（2026-11-26）
+
+### 设计决策
+- 从V0.5原生FMF SHA-256 e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257 重生，不继承V1.9 R2或V2.1 FMF。
+- IP：4-1-2-1-2 Diamond，DL/DCL/DCR/DR四后场槽严格各一次；OOP：5-2-3。
+- 11槽IP/OOP位置、角色、职责与metaFM 27.1.1公开“442菱形中场”逐项对应；隐藏PI/TI不声称相同。
+- 保留个人压迫分层假设：边后卫、中央DC、双后腰和前场三人较多逼抢；DCR/DCL较少逼抢；团队逼抢较多但非最高档。
+- 主要机制假设：双翼卫宽度、双肋部中场纵深、AMC自由移动、双中锋攻击；无球时DMC落第三中卫、双CM回双后腰、双ST回边路；高位遭遇线与较低防线配合分层压迫和反抢。
+- 设计审计：2.2_DESIGN_AND_AUDIT.md；配方：2.2.json。
+
+### D1-D3构建结果
+- GitHub Actions Run：https://github.com/eslaulau/fm-ta/actions/runs/45789108253；Artifact ID 15101073066。
+- 状态：offline_binary_roundtrip_verified_not_game_import_verified。
+- FMF：4,528 bytes；SHA-256 7feba49ad389125b64690ce00feaf01717f70ae80cb5854eec614e41fc058a34。
+- 同次报告：12,666 bytes；SHA-256 ab436693df94409860b0ca4d6eb57ec79ca3b3ba6d643fdea72c5112ab6ed7e8。
+- 父模板V0.5 SHA-256回读一致；D1原生角色/职责/PI权限检查通过；D2 11槽/22阶段通过；D3 FMF外层回读、成员解密/Zstandard校验、TAC解析、22阶段精确回读、TI向量和原生style身份检查通过。
+- 8/8二进制检查通过；game_interactive_import=false、match_engine=false。D4游戏导入与D5完整赛季尚未完成。
+- 性能状态：未验证。不宣称达到PPG 2.85，不把外部1.949 PPG当成本队预测。
+
+### 后续门槛
+1. D4在FM27中导入并核对IP四后场、全部11槽角色/职责、OOP五人换位、PI/TI和心态；重点检查五名跨位球员的双位置/角色熟悉度。
+2. D5完整38场英超报告，至少109分才达到目标；未达标先分析全部平局/失利和主客场，不自动生成2.3。
