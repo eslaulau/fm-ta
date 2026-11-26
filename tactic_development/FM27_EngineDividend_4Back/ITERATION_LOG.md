@@ -1195,16 +1195,23 @@ V1.1与V1.2英超38场有相同的主客场对手配对，但只有27场日期�
 - 完整报告：[V1.6_SEASON_REPORT_ANALYSIS_45744550318.md](V1.6_SEASON_REPORT_ANALYSIS_45744550318.md)。
 
 ## V1.7 设计｜父版本 V1.6 / Run162
-- 父FMF SHA-256 `e67a5d218c18d3e5f7862889ab04248f8ced1f8c67a7bddb2d232b72d293748d`。
-- 保留V1.6全部IP角色/职责/PI、心态4和全部团队TI。
-- OOP DML由逼抢后腰回到屏障后腰；DMR Trigger Press MORE_OFTEN回到LESS_OFTEN，保留Tackle Harder。
-- 目标是恢复单一中路屏障+边路覆盖后腰的分层保护，优先降低客场xGA和对手绝佳机会；V1.6高胜率不能证明双后腰双积极压迫已最优。
-- 完整差异：[V1.7_DESIGN_AND_AUDIT.md](V1.7_DESIGN_AND_AUDIT.md)；配方：[V1.7.json](V1.7.json)；构建请求：[V1.7_BUILD_REQUEST.json](V1.7_BUILD_REQUEST.json)。
-- Build Run163：[Actions](https://github.com/eslaulau/fm-ta/actions/runs/45745327285)，当前进行中；D3尚未完成。
 
+### D5 输入与结论
+- 用户确认 [Exporter Run 45744550318](https://github.com/eslaulau/FM27-Exporter/tree/main/season-reports/1/45744550318) 使用 V1.6 / Run162；存档 SHA-256 `c91d8caa2e9a9030c784efb6b627a06d1098ac71ff48887843a68cd5386a8c75`；FM27 build `27.1.1+2511875`。
+- 英超38场：28胜5平5负、87:37、89分、73.7%；xG75.54/xGA46.33、绝佳机会63/40。主场17胜1平1负、xGA19.78；客场11胜4平4负、xGA26.55。
+- V1.6是当前项目完整赛季结果最佳版本；但实际失球比xGA低9.33、实际进球比xG高11.46。客场机会质量偏高，结果存在正向转化偏差，不能只看87:37判断防守稳定。
+- 正式报告覆盖65/65，团队统计对账1,235/1,235；球员身份967/1,021（94.71%）；1球未归属。Build 27.1.1+2511875未被fmsave 0.14.3上游登记，使用借用schema-6布局，局部字段核验通过但整体为partial/unverified。Exporter不提供逐场完整战术映射。
 
-## V1.7 D3 原生构建｜Run163
-- Actions Run163成功；Artifact ID 15082962594；artifact ZIP SHA-256 `1cf454b3af8bc5085232eb64d44a5f155c633deeae9561145ba8a8c7a1d0a845`。
-- FMF 4,504 bytes；SHA-256 `42a7038c4fe89667d0f1f7c7ff1ff74f31633f52f570d0f8b4d4d9c774ee46ab`；same-run report SHA-256 `07adf1cf6ae838262b8de9165ca710fbb1432ddf44c0a19c704a1af262009b4c`。
-- D3 8/8检查通过，22/22阶段精确回读；IP四后场DL/DCL/DCR/DR；心态4；OOP DML屏障后腰、DMR边路补位后腰Less Often。
-- D4：待用户在FM27内导入核对；D5：待使用V1.7后的正式比赛/赛季报告。
+### V1.6 → V1.7 设计与四类决策
+- 父版本 FMF SHA-256：`e67a5d218c18d3e5f7862889ab04248f8ced1f8c67a7bddb2d232b72d293748d`；父recipe blob SHA：`1e6fa00a575e8042288ffdf605c8d5d220ac6ec9`。
+- **继承保留：** 有球11个位置的角色/职责/PI和IP四后场DL/DCL/DCR/DR；心态4、较高节奏、较宽进攻宽度、标准防线、团队较多逼抢；OOP除DML/DMR目标字段外的其余角色/职责/PI；DMR凶狠铲抢保留。
+- **替换淘汰：** OOP DML「逼抢后腰」→「屏障后腰」；OOP DMR个人逼抢「较多」→「较少」。这是对双后腰同时积极逼抢组合的回调，不表示该指令在其他位置/情境普遍无效。
+- **新增待验证：** DML担任中路屏障，DMR保留边路补位后腰但减少主动跳出；两名中卫继续较少逼抢。目标是降低客场xGA/对手绝佳机会，同时维持V1.6进攻产量。
+- **证据不足：** 没有逐场战术配置，无法证明双后腰压迫导致xGA升高；球员role_code不完整，不能把个人表现归因到PI/角色；不同版本不是同随机种子A/B。
+
+### V1.7 D3 原生构建与归档
+- [FM27 Tactic Build Run163](https://github.com/eslaulau/fm-ta/actions/runs/45745327285) 成功；Artifact ID `15082962594`；artifact ZIP SHA-256 `1cf454b3af8bc5085232eb64d44a5f155c633deeae9561145ba8a8c7a1d0a845`。
+- 正式FMF已保存为 [V1.7.fmf](V1.7.fmf)，4,504 bytes；SHA-256 `42a7038c4fe89667d0f1f7c7ff1ff74f31633f52f570d0f8b4d4d9c774ee46ab`。
+- Same-run报告SHA-256：`07adf1cf6ae838262b8de9165ca710fbb1432ddf44c0a19c704a1af262009b4c`。
+- D3：8/8检查通过，11槽/22阶段设计与回读一致；IP四后场DL/DCL/DCR/DR；心态4；DMR保留凶狠铲抢并采用个人逼抢较少；DML为屏障后腰；PI权限检查通过。
+- D4：待用户在FM27内导入并核对；D5：待V1.7实战赛季报告。
