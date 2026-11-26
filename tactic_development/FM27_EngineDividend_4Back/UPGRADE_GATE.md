@@ -72,11 +72,11 @@
 
 必须读取并交叉核对：
 - `TACTIC_INSTRUCTION_DECISION_LEDGER.md`：每条IP/OOP指令、角色、职责、PI、TI、结构组合的沿革、证据、状态和下一步。
-- `TACTIC_INSTRUCTION_DECISION_LEDGER.md` 内的“历史配置档案｜V0.5–V1.8”章节：**逐代完整配置主表**，从V0.5起记录每版20项TI、心态、11槽×IP/OOP位置/角色/职责/PI、阵型和赛季表现，并逐项列出父子版本变化。历史配置审计必须先读此表，再回看对应recipe/build report原始来源；不得只看最近一版或只列赛季积分。
+- `TACTIC_INSTRUCTION_DECISION_LEDGER.md` 内的“历史配置档案｜V0.5–V1.8”章节：**逐代完整配置主表**，从V0.5起记录每版20项TI、心态、11槽×IP/OOP位置/角色/职责/PI、阵型和赛季表现，并逐项列出历史差异。历史配置审计必须先读此表，再回看对应recipe/build report原始来源；历史版本只作为证据来源，不自动成为父版。
 - `VERSION_CATALOG.md`：所有版本赛季成绩、父子关系、recipe、构建身份、FMF哈希、D4/D5状态。
 - `ITERATION_LOG.md`：完整历史问题、每轮决策、失败实验、未解决事项和结论变化。
 - `SOURCE_REGISTER.md`：每份赛季报告的原始来源、Run ID、版本映射、build与数据状态。
-- 当前唯一父版本的完整recipe、原生FMF、build request/build report、设计审计；最近D5分析及其原始报告。
+- 固定重生基准 V0.5 的原始 FMF（SHA-256 `e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257`）；全部历史版本 recipe/build request/build report/设计审计；最近及关键历史 D5 分析与原始报告。
 - 历代重要赛季分析和曾经表现最佳/最差的版本，不得只读取最近两版。
 
 总账比较要求：
@@ -129,7 +129,7 @@
 ## 7. 第五阶段：构建、验收、归档（同一轮完成）
 
 完成设计后，在同一研发任务内继续：
-1. 创建唯一子版本recipe/build request，记录唯一父版本、父FMF SHA、设计审计和四类决策。
+1. 创建唯一迭代recipe/build request，记录固定父版本 V0.5、V0.5 父FMF SHA、历史经验来源、设计审计和四类决策。
 2. 执行D1角色/职责/PI权限预检、D2 11槽/22阶段检查、D3原生FMF生成和独立回读。
 3. 生成正式FMF及构建报告，记录Actions Run/Artifact、文件大小、FMF SHA-256、报告SHA-256和所有验证结果。
 4. D3通过只表示离线文件生成/回读成功；不能声称游戏已导入或比赛表现有效。
