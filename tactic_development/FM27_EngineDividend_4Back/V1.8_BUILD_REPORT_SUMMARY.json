@@ -1,0 +1,70 @@
+{
+  "document_type": "build_report_summary",
+  "version": "V1.8",
+  "parent_version": "V1.7",
+  "recipe_path": "tactic_development/FM27_EngineDividend_4Back/V1.8.json",
+  "recipe_blob_sha": "c5d7290c207a8322c4dffbd80ea6c7bf70277017",
+  "build_request_path": "tactic_development/FM27_EngineDividend_4Back/V1.8_BUILD_REQUEST.json",
+  "build_request_commit": "d09235f26dd9648f3f831147316dc6363571a260",
+  "workflow": "FM27 Tactic Build",
+  "workflow_run_number": 164,
+  "workflow_run_id": 45750563671,
+  "workflow_run_url": "https://github.com/eslaulau/fm-ta/actions/runs/45750563671",
+  "artifact_id": 15085292517,
+  "artifact_name": "FM27_V1.8_BUILD_REQUEST_run164",
+  "artifact_zip_bytes": 6977,
+  "artifact_zip_sha256": "5e073f32f66c8cbf91ed6f75b23eda2a358f9aa5653f5a89e7eb59180b4e96d8",
+  "fmf_file": "V1.8_BUILD_REQUEST_run164.fmf",
+  "fmf_bytes": 4616,
+  "fmf_sha256": "51e94c684c66ce016950d93f2619a40086820e7a9dcf792b7251d4ac67fa4e72",
+  "same_run_report_file": "V1.8_BUILD_REQUEST_run164.report.json",
+  "same_run_report_bytes": 12605,
+  "same_run_report_sha256": "75c59445c84690170175a14c7bd62e16f16d9159803a9061b25456d1ab3bb7d8",
+  "status": "offline_binary_roundtrip_verified_not_game_import_verified",
+  "d1_catalog_preflight": "passed",
+  "d2_structure": {
+    "player_slots": 11,
+    "designed_phases": 22,
+    "readback_phases": 22,
+    "ip_back_four": [
+      "DL",
+      "DCL",
+      "DCR",
+      "DR"
+    ],
+    "oop_shape": "5-2-3 strikerless",
+    "oop_defensive_line": [
+      "WBL",
+      "DCL",
+      "DC",
+      "DCR",
+      "WBR"
+    ],
+    "oop_double_pivot": [
+      "DML",
+      "DMR"
+    ],
+    "oop_front_three": [
+      "AML",
+      "AMC",
+      "AMR"
+    ]
+  },
+  "d3_checks": {
+    "fmf_outer_roundtrip": true,
+    "all_member_decrypt_and_zstd_checksums": true,
+    "tac_full_parse": true,
+    "eleven_ip_oop_pairs": true,
+    "twenty_two_phase_positions_roles_duties_pi_exact": true,
+    "pi_permissions_checked_against_catalog": true,
+    "team_instruction_vector_readback": true,
+    "native_style_string_and_code_readback": true
+  },
+  "game_import_verified": false,
+  "match_engine_verified": false,
+  "notes": [
+    "D3 verifies native FMF generation and offline binary readback only.",
+    "Game import and match performance remain pending.",
+    "The V1.8 IP four-defender requirement is preserved; OOP is a five-defender strikerless shape."
+  ]
+}
