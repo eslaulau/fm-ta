@@ -4,6 +4,6 @@
   "audit": "tactic_development/FM27_EngineDividend_4Back/2.5_DESIGN_AND_AUDIT.md",
   "parent_version": "V0.5",
   "parent_sha256": "e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257",
-  "trigger_reason": "Final synchronized audit hash to the current frozen decision ledger; rerun D1-D3 unchanged recipe.",
-  "revision": 6
+  "trigger_reason": "Correct audit SHA-256 using the verified SHA-256 implementation; rebuild unchanged 2.5 recipe.",
+  "revision": 7
 }
