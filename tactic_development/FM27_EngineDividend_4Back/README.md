@@ -2,7 +2,7 @@
 >
 > - 唯一最高目标：联赛 PPG ≥ 2.85（38 场至少 109 分）。项目规则只在本目录生效。
 > - 正式规则：[PROJECT_RULES.md](PROJECT_RULES.md)；机器策略：[PPG_TARGET_POLICY.json](PPG_TARGET_POLICY.json)。
-> - 项目专属构建入口：[build_project_tactic.py](build_project_tactic.py) 是每轮正式迭代唯一允许的构建入口：必须提供真实父 FMF，校验父 FMF 与本轮 recipe 的 SHA-256，再运行 [validate_project_iteration.py](validate_project_iteration.py)。审计失败不会调用 FM-TA 通用预检或生成器。
+> - 项目专属构建入口：[build_project_tactic.py](build_project_tactic.py) 是每轮正式迭代唯一允许的构建入口：必须提供真实父 FMF，核验父 FMF、本轮 recipe、当前项目规则、决策总账和 PPG 策略的 SHA-256，再运行 [validate_project_iteration.py](validate_project_iteration.py)。任何规则/总账变更都会使旧审计失效；审计失败不会调用 FM-TA 通用预检或生成器。
 > - 配方、审计文件和生成输出均限定在项目目录；项目自动化测试见 [test_project_iteration_gate.py](test_project_iteration_gate.py)。
 > - 每轮设计审计使用 [ITERATION_DESIGN_AUDIT_TEMPLATE.md](ITERATION_DESIGN_AUDIT_TEMPLATE.md)；项目规则与执行命令见 [PROJECT_RULES.md](PROJECT_RULES.md)。
 > - FM-TA 仅作为 FMF 工具。本次及后续不得修改其通用导出器、生成器规则或通用工作流来承载本项目规则。
