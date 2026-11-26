@@ -111,6 +111,18 @@ def validate(recipe_path: Path, audit_path: Path, parent_fmf: Path) -> list[str]
             f"Parent FMF SHA-256 mismatch: audit={declared_parent_sha.lower()}, file={actual_parent_sha}."
         )
 
+    for audit_label, source_path, description in (
+        ("项目规则 SHA-256", RULES, "PROJECT_RULES.md"),
+        ("决策总账 SHA-256", LEDGER, "TACTIC_INSTRUCTION_DECISION_LEDGER.md"),
+        ("PPG 策略 SHA-256", POLICY, "PPG_TARGET_POLICY.json"),
+    ):
+        declared = one_line_value(audit, audit_label)
+        actual = sha256_file(source_path)
+        if not declared or not re.fullmatch(r"[0-9a-fA-F]{64}", declared):
+            errors.append(f"Design audit must include a 64-character {audit_label}.")
+        elif declared.lower() != actual:
+            errors.append(f"Stale design audit: {description} has changed since this audit was prepared.")
+
     declared_recipe_sha = one_line_value(audit, "本轮配方 SHA-256")
     actual_recipe_sha = hashlib.sha256(recipe_bytes).hexdigest()
     if not declared_recipe_sha or not re.fullmatch(r"[0-9a-fA-F]{64}", declared_recipe_sha):
