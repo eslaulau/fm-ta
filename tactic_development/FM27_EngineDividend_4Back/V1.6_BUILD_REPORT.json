@@ -2,7 +2,6 @@
   "version": "V1.6",
   "parent_version": "V1.5",
   "parent_fmf_sha256": "c4d68446a7da3e4857bc12dc1a2a9fa2b0c34341ec9653c77b08ce2ccb951711",
-  "recipe_commit": "dd4f979dafe2652bf33a00025db2acfe3a54354d",
   "workflow_run_id": 45737442923,
   "workflow_run_url": "https://github.com/eslaulau/fm-ta/actions/runs/45737442923",
   "artifact_id": 15080120509,
@@ -379,5 +378,8 @@
         }
       }
     ]
-  }
+  },
+  "recipe_blob_sha256": "1e6fa00a575e8042288ffdf605c8d5d220ac6ec9",
+  "build_request_blob_sha256": "1e6fa00a575e8042288ffdf605c8d5d220ac6ec9",
+  "build_request_commit": "dd4f979dafe2652bf33a00025db2acfe3a54354d"
 }
