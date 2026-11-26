@@ -1,6 +1,6 @@
 > **强制执行补充｜每轮升级唯一项目入口**
 >
-> 任何正式战术升级，无论修改结构、位置、角色、职责、PI、TI 或心态，都必须先完成项目设计审计，并通过 [build_project_tactic.py](build_project_tactic.py)。该入口要求提供父 FMF 文件，核验父 FMF SHA-256 和本轮 recipe SHA-256；验证 11 槽/22 阶段、IP 四后场、四类决策、PPG 2.85、风险和 D5 指标。失败即停止，不会调用 FM-TA 预检或生成器。配方、审计及构建输出均限定在项目目录内。FM-TA 通用工具保持不变。
+> 任何正式战术升级，无论修改结构、位置、角色、职责、PI、TI 或心态，都必须先完成项目设计审计，并通过 [build_project_tactic.py](build_project_tactic.py)。该入口要求提供父 FMF 文件，核验父 FMF、本轮 recipe、当前 PROJECT_RULES、决策总账和 PPG 策略的 SHA-256；规则或总账变化会使旧审计失效；验证 11 槽/22 阶段、IP 四后场、四类决策、PPG 2.85、风险和 D5 指标。失败即停止，不会调用 FM-TA 预检或生成器。配方、审计及构建输出均限定在项目目录内。FM-TA 通用工具保持不变。
 >
 > PowerShell 构建命令和测试方式见 [PROJECT_RULES.md](PROJECT_RULES.md)。
 
