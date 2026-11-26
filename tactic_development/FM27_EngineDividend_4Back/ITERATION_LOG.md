@@ -16,7 +16,7 @@
 ### 版本关系
 - 父版本：[`V0.1.json`](V0.1.json)
 - 新版本：[`V0.2.json`](V0.2.json)
-- 构建请求：[`FM27_EngineDividend_4Back_V0.2_20261124.json`](../../build_requests/FM27_EngineDividend_4Back_V0.2_20261124.json)
+- 构建请求：[`FM27_EngineDividend_4Back_V0.2_20261124.json`](V0.2_BUILD_REQUEST.json)
 - 构建工作流：[FM27 Tactic Build #135](https://github.com/eslaulau/fm-ta/actions/runs/45377758101)
 - 构建请求 commit：`696b4db67f65c14cc765855e9cea36c44301046a`
 
@@ -182,7 +182,7 @@ V0.2 新增的 4 场联赛（2027-01-06、01-17、01-23、01-26）全部失利�
 ### 版本关系与实验目的
 - 父版本：[`V0.2.json`](V0.2.json)（SHA: `948cbed69f70c11cac9a5ba825eaaebb2e2315db`）
 - 新版本：[`V0.3.json`](V0.3.json)
-- 构建请求：[`FM27_EngineDividend_4Back_V0.3_20261124.json`](../../build_requests/FM27_EngineDividend_4Back_V0.3_20261124.json)
+- 构建请求：[`FM27_EngineDividend_4Back_V0.3_20261124.json`](V0.3_BUILD_REQUEST.json)
 - 本轮类型：单变量 OOP 后腰压迫实验；不是已证实的性能升级。
 
 ### 唯一实际变更
@@ -266,7 +266,7 @@ V0.2 新增的 4 场联赛（2027-01-06、01-17、01-23、01-26）全部失利�
 ### 版本关系
 - 父版本：[V0.3.json](V0.3.json)。
 - 新版本：[V0.4.json](V0.4.json)。
-- 构建请求：[FM27_EngineDividend_4Back_V0.4_20261124.json](../../build_requests/FM27_EngineDividend_4Back_V0.4_20261124.json)。
+- 构建请求：[FM27_EngineDividend_4Back_V0.4_20261124.json](V0.4_BUILD_REQUEST.json)。
 - 本轮性质：直接针对 V0.3 暴露的进攻效率与防守纵深问题进行三项 TI 调整；不再以延长重复观察作为是否创建版本的前置条件。
 
 ### V0.3 的主要问题（只列缺陷）
@@ -855,7 +855,7 @@ ST位置12球对19.63 xG，非胜场进球转化明显偏低；已解码的联�
 ### 正式构建身份
 
 - Recipe：[V1.1.json](V1.1.json)，Git blob SHA `2f1cfcafd33843a3dd59bc2f23540637b3f54c26`。
-- Request：[FM27_EngineDividend_IP4Back_OOP523_V1.1_20261125.json](../../build_requests/FM27_EngineDividend_IP4Back_OOP523_V1.1_20261125.json)，提交 `98a8821b9b81140b8f09960c9b2b88f4d1a8d08c`。
+- Request：[FM27_EngineDividend_IP4Back_OOP523_V1.1_20261125.json](V1.1_BUILD_REQUEST.json)，提交 `98a8821b9b81140b8f09960c9b2b88f4d1a8d08c`。
 - Workflow：[FM27 Tactic Build Run 145](https://github.com/eslaulau/fm-ta/actions/runs/45609801350)，run ID `45609801350`，success；artifact ID `15018939550`。
 - FMF `FM27_EngineDividend_IP4Back_OOP523_V1.1_20261125_run145.fmf`：4,544 bytes；SHA-256 `b4d757cca5a849b771fc18683775234e2c3d445cfb581d961a5524afdfaf40dc`。
 - Same-run report `FM27_EngineDividend_IP4Back_OOP523_V1.1_20261125_run145.report.json`：12,417 bytes；SHA-256 `8636e20931373d2915578970e9adcbe8dce5de31a1bf8abf3e8df9b2e7223101`。
@@ -1011,7 +1011,7 @@ V1.1与V1.2英超38场有相同的主客场对手配对，但只有27场日期�
 
 ### 原生构建与身份
 - Recipe：[V1.3.json](V1.3.json)，blob SHA `ec5a1ab8a902b30913736725a10659b7669ba3d7`。
-- Build request：[FM27_EngineDividend_IP4Back_OOP42121_V1.3_20261125.json](../../build_requests/FM27_EngineDividend_IP4Back_OOP42121_V1.3_20261125.json)，commit `0cfcc93264dcd36f35620b4db82d213002c88648`。
+- Build request：[FM27_EngineDividend_IP4Back_OOP42121_V1.3_20261125.json](V1.3_BUILD_REQUEST.json)，commit `0cfcc93264dcd36f35620b4db82d213002c88648`。
 - Catalog blob SHA：`b5a292676f2398849b241054f49575ab96c1dba9`。
 - Actions：[FM27 Tactic Build Run147](https://github.com/eslaulau/fm-ta/actions/runs/45638142105)，run ID `45638142105`，success；artifact ID `15033178333`。
 - Artifact：`FM27_FM27_EngineDividend_IP4Back_OOP42121_V1.3_20261125_run147`；ZIP 6,975 bytes，SHA-256 `3a8d65456097e243c2122a7947f787159ca0783c48b3e5ef3d9f11bd1d9dc3f9`。
@@ -1113,7 +1113,7 @@ V1.1与V1.2英超38场有相同的主客场对手配对，但只有27场日期�
 - 父FMF SHA-256：`5bce6f33f70ec9aa8627e18cc866b51f5cd79b99e2e52ba667087b4e142e92bc`；父recipe blob：`23f094b5c370324564a34caa1559672f7939ec74`。
 - 全局调整：心态 `ment=4→3`；TI防线高度 `DEFAULT→LOWER`。保留HIGHER tempo、WIDER attacking width、HIGH_PRESS line of engagement、MORE_OFTEN trigger press。
 - 22/22阶段位置、角色、职责和PI均继承；IP四后场DL/DCL/DCR/DR不变；AML内锋进攻/内切/自由跑位保留以保护进攻产量候选。
-- 子配方：[V1.5.json](V1.5.json)；设计审计：[V1.5_DESIGN_AND_AUDIT.md](V1.5_DESIGN_AND_AUDIT.md)；构建请求：[FM27_EngineDividend_IP4Back_OOP42121_V1.5_20261126.json](../../build_requests/FM27_EngineDividend_IP4Back_OOP42121_V1.5_20261126.json)。
+- 子配方：[V1.5.json](V1.5.json)；设计审计：[V1.5_DESIGN_AND_AUDIT.md](V1.5_DESIGN_AND_AUDIT.md)；构建请求：[FM27_EngineDividend_IP4Back_OOP42121_V1.5_20261126.json](V1.5_BUILD_REQUEST.json)。
 - 本次Actions将执行catalog预检、原生FMF生成及D3独立回读；D4游戏导入、D5比赛效果仍须实际验证。
 
 
