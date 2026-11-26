@@ -2313,3 +2313,11 @@ D5至少完成38场英超后，以V1.8为直接父版基线，同时对照V1.7�
 - 替换：DR WingBack S→A；DMR DefensiveMidfielder D→BoxToBoxMidfielder S（OOP仍WideCover DM D）；AMC移除Shoot Less Often；OOP AML/AMR/AMC由TrackingWinger/AttackingMidfielder改为InsideOutletWinger A/WideOutletWinger A/CentralOutletAttackingMidfielder A。
 - 球队指令替换：PASS_INTO_SPACE→PASS_TO_FEET；HIT_EARLY_CROSSES→WORK_BALL_INTO_BOX；保留High Crosses、Back Post、较高节奏、直接推进和OOP低防线/高逼抢结构。
 - 新增待验证：三出口无锋反击、DMR第二线前插但OOP锁位、右翼卫有球进攻/OOP留守、传至脚下+做入禁区对越位与xG的影响。不得在D5前宣称有效。
+
+
+## R4 D3 原生构建结果（2026-11-26）
+
+- GitHub Actions Run 45854019401：D0项目门禁、原生预检、D3原生FMF生成与独立回读全部通过。
+- R4以V0.5原生快照为父模板（SHA-256 e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257），FMF 4,676 bytes，SHA-256 8fbe0bddac5e7645a42715e378a8d5dd67400dc9e0f1b7be3ea7c2427febf899。
+- D3 8/8通过：FMF外层往返、所有成员解密/Zstd校验、TAC完整解析、11组IP/OOP配对、22阶段位置/角色/PI精确回读、PI权限目录核验、球队指令向量回读、原生风格字符串/代码回读。
+- R4报告状态 offline_binary_roundtrip_verified_not_game_import_verified；game_interactive_import=false、match_engine=false。D4游戏内导入和D5赛季表现仍未验证。
