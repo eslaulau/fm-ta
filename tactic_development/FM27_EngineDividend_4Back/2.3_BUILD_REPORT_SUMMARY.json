@@ -1,0 +1,28 @@
+{
+  "version": "2.3",
+  "status": "D3_PASS_D4_PENDING_D5_PENDING",
+  "created_at": "2026-11-26",
+  "tactic": "FM27_EngineDividend_4Back_2.3.fmf",
+  "bytes": 4528,
+  "sha256": "ebceb7d4da76b386007f124dfb1ca0b917fdcbb68b549debd274c4b74d45b5aa",
+  "parent_version": "V0.5",
+  "parent_sha256": "e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257",
+  "recipe": "2.3.json",
+  "recipe_sha256": "eb6523f2b55f7e2ee6175ecb59f2366e76103d4e44e8a25bcb754b5a97f9fb8c",
+  "change": "CROSSING_STYLE LOW_CROSSES -> WHIPPED_CROSSES; all other recipe fields match 2.2",
+  "workflow_run_id": 45801670338,
+  "workflow_run_url": "https://github.com/eslaulau/fm-ta/actions/runs/45801670338",
+  "artifact_id": 15107846123,
+  "checks": {
+    "fmf_outer_roundtrip": true,
+    "all_member_decrypt_and_zstd_checksums": true,
+    "tac_full_parse": true,
+    "eleven_ip_oop_pairs": true,
+    "twenty_two_positions_roles_pi_readback_exact": true,
+    "pi_permissions_checked_against_catalog": true,
+    "team_instruction_vector_readback": true,
+    "native_style_string_and_code_readback": true
+  },
+  "game_interactive_import": false,
+  "match_engine": false
+}
