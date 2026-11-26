@@ -231,3 +231,17 @@
 - `FM27GEN1_Netlify90_OfficialPreset_Audit.py`：90 条预设职责/位置/PI 权限审计脚本。
 - `01_网站生成规则/Netlify_90官方预设索引.csv`：90 条网站预设原始索引。
 - `01_网站生成规则/Netlify_角色显示名称索引.csv`：网站角色显示名到索引的映射。
+
+
+## 2026-11-26 源码复核更正：TI/PI 映射覆盖率
+
+本节以当前 `FM27GEN1_Offline_FMF_Generator.py` 的 `TI_MAP`（含 `EXPERIMENTAL_TI_MAP` 扩展）和 `PI_MAP`（含 `EXPERIMENTAL_PI_MAP` 扩展）对照 `catalog.json` 的非默认选项 ID/native_bit 重新核验，覆盖率数字取代本文件前文的 56/18 旧数字。
+
+| 范围 | 原生目录总量 | 非默认选项 | 当前源码映射 | 结论 |
+|---|---:|---:|---:|---|
+| TI | 29 组 / 103 选项 | 75 | **75/75** | 所有非默认 native_bit 均有源码映射 |
+| PI | 17 组 / 54 选项 | 37 | **37/37** | 所有非默认 option ID 均有源码映射 |
+
+说明：目录中值为 0 的标准/默认选项不要求额外映射。这里的“映射覆盖”仅指源码有编码映射，不代表所有指令组合均经过比赛验证。实验映射此前已确认可在游戏界面显示，但其比赛行为仍须独立测试。
+
+另经复核，`raw_roles[].m_rolePlayerInstructions[]` 当前共有 36 个角色、41 条 GameID 默认行为引用。仓库未包含可将这些 GameID 解码为可读指令文本的本地化字典；不能将其猜测为 PI 名称。详见 [角色默认行为与指令映射复核](../tactic_development/FM27_EngineDividend_4Back/ROLE_DEFAULT_BEHAVIOR_AND_MAPPING_RECHECK_20261126.md)。
