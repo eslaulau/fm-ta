@@ -33,6 +33,15 @@ jobs:
       - name: Clear prior generated outputs for this version
         run: rm -f "tactic_development/FM27_EngineDividend_4Back/builds/2.6.fmf" "tactic_development/FM27_EngineDividend_4Back/builds/2.6.report.json"
 
+      - name: Print exact SHA-256 inputs for audit pinning
+        run: |
+          sha256sum \
+            "tactic_development/FM27_EngineDividend_4Back/2.6.json" \
+            "tactic_development/FM27_EngineDividend_4Back/PROJECT_RULES.md" \
+            "tactic_development/FM27_EngineDividend_4Back/TACTIC_INSTRUCTION_DECISION_LEDGER.md" \
+            "tactic_development/FM27_EngineDividend_4Back/PPG_TARGET_POLICY.json" \
+            "tactic_development/FM27_EngineDividend_4Back/POSITION_PERFORMANCE_ELIMINATION_STANDARD.md"
+
       - name: Run project gate, native preflight, build and independent readback
         run: |
           python "tactic_development/FM27_EngineDividend_4Back/build_project_tactic.py" \
