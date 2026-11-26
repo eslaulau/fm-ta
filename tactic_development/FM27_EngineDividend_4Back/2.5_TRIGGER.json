@@ -4,6 +4,6 @@
   "audit": "tactic_development/FM27_EngineDividend_4Back/2.5_DESIGN_AND_AUDIT.md",
   "parent_version": "V0.5",
   "parent_sha256": "e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257",
-  "trigger_reason": "Retry final D3 after correcting the recipe SHA-256 to the exact committed bytes.",
-  "revision": 4
+  "trigger_reason": "Re-run final D3 after broadening the audit limitation from OOP-only to all IP/OOP role PI vectors.",
+  "revision": 5
 }
