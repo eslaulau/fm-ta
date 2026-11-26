@@ -64,8 +64,8 @@
     {
       "in": {
         "pos": "DR",
-        "role": "WingBack",
-        "duty": "A",
+        "role": "PlaymakingWingBack",
+        "duty": "S",
         "pi": [
           [
             "ATTACKING_WIDTH",
@@ -87,7 +87,7 @@
     {
       "in": {
         "pos": "DCR",
-        "role": "BallPlayingCentreBack",
+        "role": "CentreBack",
         "duty": "D",
         "pi": [
           [
@@ -106,14 +106,9 @@
     {
       "in": {
         "pos": "DCL",
-        "role": "CentreBack",
+        "role": "NoNonsenseCentreBack",
         "duty": "D",
-        "pi": [
-          [
-            "PASSING_STRATEGY",
-            "SHORTER"
-          ]
-        ]
+        "pi": []
       },
       "out": {
         "pos": "DCL",
@@ -125,14 +120,9 @@
     {
       "in": {
         "pos": "DL",
-        "role": "InsideFullBack",
+        "role": "FullBack",
         "duty": "D",
-        "pi": [
-          [
-            "PASSING_STRATEGY",
-            "SHORTER"
-          ]
-        ]
+        "pi": []
       },
       "out": {
         "pos": "DL",
@@ -233,18 +223,9 @@
     {
       "in": {
         "pos": "STR",
-        "role": "Poacher",
+        "role": "CentreForward",
         "duty": "A",
-        "pi": [
-          [
-            "SHOOTING",
-            "SHOOT_MORE_OFTEN"
-          ],
-          [
-            "ATTACK_BOX_SIDE",
-            "FAR_POST"
-          ]
-        ]
+        "pi": []
       },
       "out": {
         "pos": "STR",
