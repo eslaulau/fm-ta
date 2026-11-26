@@ -93,6 +93,13 @@
 
 **逐项差异：**
 
+- **OOP位置 DR：** DR→WBR
+- **OOP位置 DL：** DL→WBL
+- **OOP位置 MCR：** DMR→DC
+- **OOP位置 MCL：** DML→DMR
+- **OOP位置 AMR：** MR→AMR
+- **OOP位置 AML：** ML→AML
+- **OOP位置 AMC：** MC→DML
 - **OOP DR：** 角色 逼抢边后卫→逼抢翼卫；职责 策应→防守
 - **OOP DCR：** 角色 补位中卫→补位边中卫；PI「铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN）」→「逼抢=更少（TRIGGER_PRESS:LESS_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN）」
 - **IP DCL：** 角色 边中卫→中后卫
@@ -111,6 +118,13 @@
 
 **逐项差异：**
 
+- **OOP位置 DR：** WBR→DR
+- **OOP位置 DL：** WBL→DL
+- **OOP位置 MCR：** DC→DMR
+- **OOP位置 MCL：** DMR→DML
+- **OOP位置 AMR：** AMR→MR
+- **OOP位置 AML：** AML→ML
+- **OOP位置 AMC：** DML→MC
 - **OOP DR：** 角色 逼抢翼卫→防守型边后卫；PI「铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN）」→「—」
 - **OOP DCR：** 角色 补位边中卫→中后卫；PI「逼抢=更少（TRIGGER_PRESS:LESS_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN）」→「逼抢=更少（TRIGGER_PRESS:LESS_OFTEN）」
 - **OOP DCL：** 角色 补位边中卫→补位中卫；PI「逼抢=更少（TRIGGER_PRESS:LESS_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN）」→「逼抢=更少（TRIGGER_PRESS:LESS_OFTEN）」
@@ -177,6 +191,13 @@
 
 **逐项差异：**
 
+- **OOP位置 DR：** DR→WBR
+- **OOP位置 DL：** DL→WBL
+- **OOP位置 MCR：** DMR→DC
+- **OOP位置 MCL：** DML→DMR
+- **OOP位置 AMR：** MR→AMR
+- **OOP位置 AML：** ML→AML
+- **OOP位置 AMC：** MC→DML
 - **OOP DR：** 角色 防守型边后卫→逼抢翼卫；PI「—」→「铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN）」
 - **OOP DCR：** 角色 中后卫→补位边中卫；PI「逼抢=更少（TRIGGER_PRESS:LESS_OFTEN）」→「逼抢=更少（TRIGGER_PRESS:LESS_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN）」
 - **OOP DCL：** 角色 补位中卫→补位边中卫；PI「逼抢=更少（TRIGGER_PRESS:LESS_OFTEN）」→「逼抢=更少（TRIGGER_PRESS:LESS_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN）」
@@ -228,12 +249,12 @@
 | DCR | DCR 出球中卫（BallPlayingCentreBack）/防守 | 传球距离=短传（PASSING_STRATEGY:SHORTER） | DCR 补位中卫（CoveringCentreBack）/防守 | 铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
 | DCL | DCL 中后卫（CentreBack）/防守 | 传球距离=短传（PASSING_STRATEGY:SHORTER） | DCL 中后卫（CentreBack）/防守 | 逼抢=更少（TRIGGER_PRESS:LESS_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
 | DL | DL 边后卫（FullBack）/策应 | 进攻站位=拉开宽度（ATTACKING_WIDTH:STAY_WIDER） | DL 逼抢边后卫（PressingFullBack）/策应 | 铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
-| MCR | MCR 肋部中场（ChannelMidfielder）/进攻 | 传球风险=减少冒险传球（PASSING_RISKS:TAKE_FEWER_RISKS）；前插=更多前插（FORWARD_RUNS:MAKE_MORE_RUNS） | MCR 回撤后腰（DroppingDefensiveMidfielder）/防守 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN）；指定盯防位置=ST（MARKING_TARGET:ST） |
-| MCL | MCL 肋部中场（ChannelMidfielder）/进攻 | 传球风险=减少冒险传球（PASSING_RISKS:TAKE_FEWER_RISKS）；前插=更多前插（FORWARD_RUNS:MAKE_MORE_RUNS）；跑位自由度=自由跑位（ROAMING:ROAM_FROM_POSITION） | MCL 防守中场（DefensiveMidfielder）/防守 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
-| AMR | AMR 组织型边锋（PlaymakingWinger）/策应 | — | AMR 回防边前卫（TrackingWideMidfielder）/防守 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
-| AML | AML 组织型边锋（PlaymakingWinger）/策应 | — | AML 回防边前卫（TrackingWideMidfielder）/防守 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
-| AMC | AMC 肋部中场（ChannelMidfielder）/进攻 | 传球风险=减少冒险传球（PASSING_RISKS:TAKE_FEWER_RISKS）；前插=更多前插（FORWARD_RUNS:MAKE_MORE_RUNS）；跑位自由度=自由跑位（ROAMING:ROAM_FROM_POSITION） | AMC 中前卫（CentralMidfielder）/策应 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
-| ST | ST 拉边前锋（ChannelForward）/进攻 | 射门倾向=更多射门（SHOOTING:SHOOT_MORE_OFTEN）；前插=更多前插（FORWARD_RUNS:MAKE_MORE_RUNS）；禁区进攻方向=前点（ATTACK_BOX_SIDE:NEAR_POST） | ST 进攻型中场（AttackingMidfielder）/策应 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
+| MCR | MCR 肋部中场（ChannelMidfielder）/进攻 | 传球风险=减少冒险传球（PASSING_RISKS:TAKE_FEWER_RISKS）；前插=更多前插（FORWARD_RUNS:MAKE_MORE_RUNS） | DMR 回撤后腰（DroppingDefensiveMidfielder）/防守 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN）；指定盯防位置=ST（MARKING_TARGET:ST） |
+| MCL | MCL 肋部中场（ChannelMidfielder）/进攻 | 传球风险=减少冒险传球（PASSING_RISKS:TAKE_FEWER_RISKS）；前插=更多前插（FORWARD_RUNS:MAKE_MORE_RUNS）；跑位自由度=自由跑位（ROAMING:ROAM_FROM_POSITION） | DML 防守中场（DefensiveMidfielder）/防守 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
+| AMR | AMR 组织型边锋（PlaymakingWinger）/策应 | — | MR 回防边前卫（TrackingWideMidfielder）/防守 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
+| AML | AML 组织型边锋（PlaymakingWinger）/策应 | — | ML 回防边前卫（TrackingWideMidfielder）/防守 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
+| AMC | AMC 肋部中场（ChannelMidfielder）/进攻 | 传球风险=减少冒险传球（PASSING_RISKS:TAKE_FEWER_RISKS）；前插=更多前插（FORWARD_RUNS:MAKE_MORE_RUNS）；跑位自由度=自由跑位（ROAMING:ROAM_FROM_POSITION） | MC 中前卫（CentralMidfielder）/策应 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
+| ST | ST 拉边前锋（ChannelForward）/进攻 | 射门倾向=更多射门（SHOOTING:SHOOT_MORE_OFTEN）；前插=更多前插（FORWARD_RUNS:MAKE_MORE_RUNS）；禁区进攻方向=前点（ATTACK_BOX_SIDE:NEAR_POST） | AMC 进攻型中场（AttackingMidfielder）/策应 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
 
 **来源：** [配方](./V0.5.json) · [赛季分析](./V0.5_SEASON_REPORT_ANALYSIS_45540803100.md)
 
@@ -273,12 +294,12 @@
 | DCR | DCR 出球中卫（BallPlayingCentreBack）/防守 | 传球距离=短传（PASSING_STRATEGY:SHORTER） | DCR 补位中卫（CoveringCentreBack）/防守 | 铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
 | DCL | DCL 中后卫（CentreBack）/防守 | 传球距离=短传（PASSING_STRATEGY:SHORTER） | DCL 中后卫（CentreBack）/防守 | 逼抢=更少（TRIGGER_PRESS:LESS_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
 | DL | DL 边后卫（FullBack）/策应 | 进攻站位=拉开宽度（ATTACKING_WIDTH:STAY_WIDER）；传中目标=后点（CROSSING_TARGET:BACK_POST） | DL 逼抢边后卫（PressingFullBack）/策应 | 铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
-| MCR | MCR 肋部中场（ChannelMidfielder）/进攻 | 传球风险=减少冒险传球（PASSING_RISKS:TAKE_FEWER_RISKS）；前插=更多前插（FORWARD_RUNS:MAKE_MORE_RUNS） | MCR 回撤后腰（DroppingDefensiveMidfielder）/防守 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN）；指定盯防位置=ST（MARKING_TARGET:ST） |
-| MCL | MCL 肋部中场（ChannelMidfielder）/进攻 | 传球风险=减少冒险传球（PASSING_RISKS:TAKE_FEWER_RISKS）；前插=更多前插（FORWARD_RUNS:MAKE_MORE_RUNS）；跑位自由度=自由跑位（ROAMING:ROAM_FROM_POSITION） | MCL 防守中场（DefensiveMidfielder）/防守 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
-| AMR | AMR 组织型边锋（PlaymakingWinger）/策应 | — | AMR 回防边前卫（TrackingWideMidfielder）/防守 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
-| AML | AML 组织型边锋（PlaymakingWinger）/策应 | — | AML 回防边前卫（TrackingWideMidfielder）/防守 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
-| AMC | AMC 肋部中场（ChannelMidfielder）/进攻 | 传球风险=减少冒险传球（PASSING_RISKS:TAKE_FEWER_RISKS）；前插=更多前插（FORWARD_RUNS:MAKE_MORE_RUNS）；跑位自由度=自由跑位（ROAMING:ROAM_FROM_POSITION） | AMC 中前卫（CentralMidfielder）/策应 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
-| ST | ST 拉边前锋（ChannelForward）/进攻 | 射门倾向=更多射门（SHOOTING:SHOOT_MORE_OFTEN）；前插=更多前插（FORWARD_RUNS:MAKE_MORE_RUNS）；禁区进攻方向=后点（ATTACK_BOX_SIDE:FAR_POST） | ST 进攻型中场（AttackingMidfielder）/策应 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
+| MCR | MCR 肋部中场（ChannelMidfielder）/进攻 | 传球风险=减少冒险传球（PASSING_RISKS:TAKE_FEWER_RISKS）；前插=更多前插（FORWARD_RUNS:MAKE_MORE_RUNS） | DMR 回撤后腰（DroppingDefensiveMidfielder）/防守 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN）；指定盯防位置=ST（MARKING_TARGET:ST） |
+| MCL | MCL 肋部中场（ChannelMidfielder）/进攻 | 传球风险=减少冒险传球（PASSING_RISKS:TAKE_FEWER_RISKS）；前插=更多前插（FORWARD_RUNS:MAKE_MORE_RUNS）；跑位自由度=自由跑位（ROAMING:ROAM_FROM_POSITION） | DML 防守中场（DefensiveMidfielder）/防守 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
+| AMR | AMR 组织型边锋（PlaymakingWinger）/策应 | — | MR 回防边前卫（TrackingWideMidfielder）/防守 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
+| AML | AML 组织型边锋（PlaymakingWinger）/策应 | — | ML 回防边前卫（TrackingWideMidfielder）/防守 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
+| AMC | AMC 肋部中场（ChannelMidfielder）/进攻 | 传球风险=减少冒险传球（PASSING_RISKS:TAKE_FEWER_RISKS）；前插=更多前插（FORWARD_RUNS:MAKE_MORE_RUNS）；跑位自由度=自由跑位（ROAMING:ROAM_FROM_POSITION） | MC 中前卫（CentralMidfielder）/策应 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
+| ST | ST 拉边前锋（ChannelForward）/进攻 | 射门倾向=更多射门（SHOOTING:SHOOT_MORE_OFTEN）；前插=更多前插（FORWARD_RUNS:MAKE_MORE_RUNS）；禁区进攻方向=后点（ATTACK_BOX_SIDE:FAR_POST） | AMC 进攻型中场（AttackingMidfielder）/策应 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
 
 **来源：** [配方](./V0.6.json) · [赛季分析](./V0.6_REANALYSIS_45554864463.md)
 
@@ -318,12 +339,12 @@
 | DCR | DCR 出球中卫（BallPlayingCentreBack）/防守 | 传球距离=短传（PASSING_STRATEGY:SHORTER） | DCR 补位中卫（CoveringCentreBack）/防守 | 铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
 | DCL | DCL 中后卫（CentreBack）/防守 | 传球距离=短传（PASSING_STRATEGY:SHORTER） | DCL 中后卫（CentreBack）/防守 | 逼抢=更少（TRIGGER_PRESS:LESS_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
 | DL | DL 边后卫（FullBack）/策应 | 进攻站位=拉开宽度（ATTACKING_WIDTH:STAY_WIDER）；传中目标=后点（CROSSING_TARGET:BACK_POST） | DL 逼抢边后卫（PressingFullBack）/策应 | 铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
-| MCR | MCR 中前卫（CentralMidfielder）/策应 | 传球风险=减少冒险传球（PASSING_RISKS:TAKE_FEWER_RISKS）；前插=保持位置（FORWARD_RUNS:KEEP_POSITION） | MCR 回撤后腰（DroppingDefensiveMidfielder）/防守 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN）；指定盯防位置=ST（MARKING_TARGET:ST） |
-| MCL | MCL 肋部中场（ChannelMidfielder）/进攻 | 传球风险=减少冒险传球（PASSING_RISKS:TAKE_FEWER_RISKS）；前插=更多前插（FORWARD_RUNS:MAKE_MORE_RUNS）；跑位自由度=自由跑位（ROAMING:ROAM_FROM_POSITION） | MCL 防守中场（DefensiveMidfielder）/防守 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
-| AMR | AMR 组织型边锋（PlaymakingWinger）/策应 | — | AMR 回防边前卫（TrackingWideMidfielder）/防守 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
-| AML | AML 组织型边锋（PlaymakingWinger）/策应 | — | AML 回防边前卫（TrackingWideMidfielder）/防守 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
-| AMC | AMC 前场组织核心（AdvancedPlaymaker）/策应 | 跑位自由度=自由跑位（ROAMING:ROAM_FROM_POSITION） | AMC 中前卫（CentralMidfielder）/策应 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
-| ST | ST 拉边前锋（ChannelForward）/进攻 | 射门倾向=更多射门（SHOOTING:SHOOT_MORE_OFTEN）；前插=更多前插（FORWARD_RUNS:MAKE_MORE_RUNS）；禁区进攻方向=后点（ATTACK_BOX_SIDE:FAR_POST） | ST 进攻型中场（AttackingMidfielder）/策应 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
+| MCR | MCR 中前卫（CentralMidfielder）/策应 | 传球风险=减少冒险传球（PASSING_RISKS:TAKE_FEWER_RISKS）；前插=保持位置（FORWARD_RUNS:KEEP_POSITION） | DMR 回撤后腰（DroppingDefensiveMidfielder）/防守 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN）；指定盯防位置=ST（MARKING_TARGET:ST） |
+| MCL | MCL 肋部中场（ChannelMidfielder）/进攻 | 传球风险=减少冒险传球（PASSING_RISKS:TAKE_FEWER_RISKS）；前插=更多前插（FORWARD_RUNS:MAKE_MORE_RUNS）；跑位自由度=自由跑位（ROAMING:ROAM_FROM_POSITION） | DML 防守中场（DefensiveMidfielder）/防守 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
+| AMR | AMR 组织型边锋（PlaymakingWinger）/策应 | — | MR 回防边前卫（TrackingWideMidfielder）/防守 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
+| AML | AML 组织型边锋（PlaymakingWinger）/策应 | — | ML 回防边前卫（TrackingWideMidfielder）/防守 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
+| AMC | AMC 前场组织核心（AdvancedPlaymaker）/策应 | 跑位自由度=自由跑位（ROAMING:ROAM_FROM_POSITION） | MC 中前卫（CentralMidfielder）/策应 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
+| ST | ST 拉边前锋（ChannelForward）/进攻 | 射门倾向=更多射门（SHOOTING:SHOOT_MORE_OFTEN）；前插=更多前插（FORWARD_RUNS:MAKE_MORE_RUNS）；禁区进攻方向=后点（ATTACK_BOX_SIDE:FAR_POST） | AMC 进攻型中场（AttackingMidfielder）/策应 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
 
 **来源：** [配方](./V0.7.json) · [赛季分析](./V0.7_REANALYSIS_45564413834.md)
 
@@ -363,12 +384,12 @@
 | DCR | DCR 出球中卫（BallPlayingCentreBack）/防守 | 传球距离=短传（PASSING_STRATEGY:SHORTER） | DCR 补位中卫（CoveringCentreBack）/防守 | 铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
 | DCL | DCL 中后卫（CentreBack）/防守 | 传球距离=短传（PASSING_STRATEGY:SHORTER） | DCL 中后卫（CentreBack）/防守 | 逼抢=更少（TRIGGER_PRESS:LESS_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
 | DL | DL 边后卫（FullBack）/策应 | 进攻站位=拉开宽度（ATTACKING_WIDTH:STAY_WIDER）；传中目标=后点（CROSSING_TARGET:BACK_POST） | DL 逼抢边后卫（PressingFullBack）/策应 | 铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
-| MCR | MCR 中前卫（CentralMidfielder）/策应 | 传球风险=减少冒险传球（PASSING_RISKS:TAKE_FEWER_RISKS）；前插=保持位置（FORWARD_RUNS:KEEP_POSITION） | MCR 回撤后腰（DroppingDefensiveMidfielder）/防守 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN）；指定盯防位置=ST（MARKING_TARGET:ST） |
-| MCL | MCL 肋部中场（ChannelMidfielder）/进攻 | 传球风险=减少冒险传球（PASSING_RISKS:TAKE_FEWER_RISKS）；前插=更多前插（FORWARD_RUNS:MAKE_MORE_RUNS）；跑位自由度=自由跑位（ROAMING:ROAM_FROM_POSITION） | MCL 防守中场（DefensiveMidfielder）/防守 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
-| AMR | AMR 组织型边锋（PlaymakingWinger）/策应 | — | AMR 回防边前卫（TrackingWideMidfielder）/防守 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
-| AML | AML 组织型边锋（PlaymakingWinger）/策应 | — | AML 回防边前卫（TrackingWideMidfielder）/防守 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
-| AMC | AMC 前场组织核心（AdvancedPlaymaker）/进攻 | 跑位自由度=自由跑位（ROAMING:ROAM_FROM_POSITION）；前插=更多前插（FORWARD_RUNS:MAKE_MORE_RUNS） | AMC 中前卫（CentralMidfielder）/策应 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
-| ST | ST 拉边前锋（ChannelForward）/进攻 | 射门倾向=更多射门（SHOOTING:SHOOT_MORE_OFTEN）；前插=更多前插（FORWARD_RUNS:MAKE_MORE_RUNS）；禁区进攻方向=后点（ATTACK_BOX_SIDE:FAR_POST） | ST 进攻型中场（AttackingMidfielder）/策应 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
+| MCR | MCR 中前卫（CentralMidfielder）/策应 | 传球风险=减少冒险传球（PASSING_RISKS:TAKE_FEWER_RISKS）；前插=保持位置（FORWARD_RUNS:KEEP_POSITION） | DMR 回撤后腰（DroppingDefensiveMidfielder）/防守 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN）；指定盯防位置=ST（MARKING_TARGET:ST） |
+| MCL | MCL 肋部中场（ChannelMidfielder）/进攻 | 传球风险=减少冒险传球（PASSING_RISKS:TAKE_FEWER_RISKS）；前插=更多前插（FORWARD_RUNS:MAKE_MORE_RUNS）；跑位自由度=自由跑位（ROAMING:ROAM_FROM_POSITION） | DML 防守中场（DefensiveMidfielder）/防守 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
+| AMR | AMR 组织型边锋（PlaymakingWinger）/策应 | — | MR 回防边前卫（TrackingWideMidfielder）/防守 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
+| AML | AML 组织型边锋（PlaymakingWinger）/策应 | — | ML 回防边前卫（TrackingWideMidfielder）/防守 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
+| AMC | AMC 前场组织核心（AdvancedPlaymaker）/进攻 | 跑位自由度=自由跑位（ROAMING:ROAM_FROM_POSITION）；前插=更多前插（FORWARD_RUNS:MAKE_MORE_RUNS） | MC 中前卫（CentralMidfielder）/策应 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
+| ST | ST 拉边前锋（ChannelForward）/进攻 | 射门倾向=更多射门（SHOOTING:SHOOT_MORE_OFTEN）；前插=更多前插（FORWARD_RUNS:MAKE_MORE_RUNS）；禁区进攻方向=后点（ATTACK_BOX_SIDE:FAR_POST） | AMC 进攻型中场（AttackingMidfielder）/策应 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
 
 **来源：** [配方](./V0.8.json) · [赛季分析](./V0.8_SEASON_REPORT_ANALYSIS_45570292427.md)
 
@@ -394,12 +415,12 @@
 | DCR | DCR 出球中卫（BallPlayingCentreBack）/防守 | 传球距离=短传（PASSING_STRATEGY:SHORTER） | DCR 补位中卫（CoveringCentreBack）/防守 | 铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
 | DCL | DCL 边中卫（WideCentreBack）/防守 | 传球距离=短传（PASSING_STRATEGY:SHORTER） | DCL 中后卫（CentreBack）/防守 | 逼抢=更少（TRIGGER_PRESS:LESS_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
 | DL | DL 内收型边后卫（InsideFullBack）/防守 | 传球距离=短传（PASSING_STRATEGY:SHORTER） | DL 逼抢边后卫（PressingFullBack）/策应 | 铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
-| MCR | MCR 中前卫（CentralMidfielder）/策应 | 传球风险=减少冒险传球（PASSING_RISKS:TAKE_FEWER_RISKS）；前插=保持位置（FORWARD_RUNS:KEEP_POSITION） | MCR 回撤后腰（DroppingDefensiveMidfielder）/防守 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
-| MCL | MCL 肋部中场（ChannelMidfielder）/进攻 | 传球风险=减少冒险传球（PASSING_RISKS:TAKE_FEWER_RISKS）；前插=更多前插（FORWARD_RUNS:MAKE_MORE_RUNS）；跑位自由度=自由跑位（ROAMING:ROAM_FROM_POSITION） | MCL 防守中场（DefensiveMidfielder）/防守 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
-| AMR | AMR 组织型边锋（PlaymakingWinger）/策应 | 传球距离=短传（PASSING_STRATEGY:SHORTER） | AMR 回防边前卫（TrackingWideMidfielder）/防守 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
-| AML | AML 组织型边锋（PlaymakingWinger）/策应 | 传球距离=短传（PASSING_STRATEGY:SHORTER） | AML 回防边前卫（TrackingWideMidfielder）/防守 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
-| AMC | AMC 前场组织核心（AdvancedPlaymaker）/进攻 | 跑位自由度=自由跑位（ROAMING:ROAM_FROM_POSITION）；前插=更多前插（FORWARD_RUNS:MAKE_MORE_RUNS） | AMC 中前卫（CentralMidfielder）/策应 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
-| ST | ST 抢点前锋（Poacher）/进攻 | 射门倾向=更多射门（SHOOTING:SHOOT_MORE_OFTEN）；禁区进攻方向=后点（ATTACK_BOX_SIDE:FAR_POST） | ST 进攻型中场（AttackingMidfielder）/策应 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
+| MCR | MCR 中前卫（CentralMidfielder）/策应 | 传球风险=减少冒险传球（PASSING_RISKS:TAKE_FEWER_RISKS）；前插=保持位置（FORWARD_RUNS:KEEP_POSITION） | DMR 回撤后腰（DroppingDefensiveMidfielder）/防守 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
+| MCL | MCL 肋部中场（ChannelMidfielder）/进攻 | 传球风险=减少冒险传球（PASSING_RISKS:TAKE_FEWER_RISKS）；前插=更多前插（FORWARD_RUNS:MAKE_MORE_RUNS）；跑位自由度=自由跑位（ROAMING:ROAM_FROM_POSITION） | DML 防守中场（DefensiveMidfielder）/防守 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
+| AMR | AMR 组织型边锋（PlaymakingWinger）/策应 | 传球距离=短传（PASSING_STRATEGY:SHORTER） | MR 回防边前卫（TrackingWideMidfielder）/防守 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
+| AML | AML 组织型边锋（PlaymakingWinger）/策应 | 传球距离=短传（PASSING_STRATEGY:SHORTER） | ML 回防边前卫（TrackingWideMidfielder）/防守 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
+| AMC | AMC 前场组织核心（AdvancedPlaymaker）/进攻 | 跑位自由度=自由跑位（ROAMING:ROAM_FROM_POSITION）；前插=更多前插（FORWARD_RUNS:MAKE_MORE_RUNS） | MC 中前卫（CentralMidfielder）/策应 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
+| ST | ST 抢点前锋（Poacher）/进攻 | 射门倾向=更多射门（SHOOTING:SHOOT_MORE_OFTEN）；禁区进攻方向=后点（ATTACK_BOX_SIDE:FAR_POST） | AMC 进攻型中场（AttackingMidfielder）/策应 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
 
 **来源：** [配方](./V0.9.json) · [赛季分析](./V0.9_SEASON_REPORT_ANALYSIS_45584292488.md)
 
@@ -425,12 +446,12 @@
 | DCR | DCR 出球中卫（BallPlayingCentreBack）/防守 | 传球距离=短传（PASSING_STRATEGY:SHORTER） | DCR 补位中卫（CoveringCentreBack）/防守 | 铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
 | DCL | DCL 边中卫（WideCentreBack）/防守 | 传球距离=短传（PASSING_STRATEGY:SHORTER） | DCL 中后卫（CentreBack）/防守 | 逼抢=更少（TRIGGER_PRESS:LESS_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
 | DL | DL 内收型边后卫（InsideFullBack）/防守 | 传球距离=短传（PASSING_STRATEGY:SHORTER） | DL 逼抢边后卫（PressingFullBack）/策应 | 铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
-| MCR | MCR 中前卫（CentralMidfielder）/策应 | 传球风险=减少冒险传球（PASSING_RISKS:TAKE_FEWER_RISKS）；前插=保持位置（FORWARD_RUNS:KEEP_POSITION） | MCR 回撤后腰（DroppingDefensiveMidfielder）/防守 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
-| MCL | MCL 肋部中场（ChannelMidfielder）/进攻 | 传球风险=减少冒险传球（PASSING_RISKS:TAKE_FEWER_RISKS）；前插=更多前插（FORWARD_RUNS:MAKE_MORE_RUNS）；跑位自由度=自由跑位（ROAMING:ROAM_FROM_POSITION） | MCL 防守中场（DefensiveMidfielder）/防守 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
-| AMR | AMR 组织型边锋（PlaymakingWinger）/策应 | 传球距离=短传（PASSING_STRATEGY:SHORTER） | AMR 回防边前卫（TrackingWideMidfielder）/防守 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
-| AML | AML 组织型边锋（PlaymakingWinger）/策应 | 传球距离=短传（PASSING_STRATEGY:SHORTER） | AML 回防边前卫（TrackingWideMidfielder）/防守 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
-| AMC | AMC 前场组织核心（AdvancedPlaymaker）/进攻 | 跑位自由度=自由跑位（ROAMING:ROAM_FROM_POSITION）；前插=更多前插（FORWARD_RUNS:MAKE_MORE_RUNS） | AMC 中前卫（CentralMidfielder）/策应 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
-| ST | ST 抢点前锋（Poacher）/进攻 | 射门倾向=更多射门（SHOOTING:SHOOT_MORE_OFTEN）；禁区进攻方向=后点（ATTACK_BOX_SIDE:FAR_POST） | ST 进攻型中场（AttackingMidfielder）/策应 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
+| MCR | MCR 中前卫（CentralMidfielder）/策应 | 传球风险=减少冒险传球（PASSING_RISKS:TAKE_FEWER_RISKS）；前插=保持位置（FORWARD_RUNS:KEEP_POSITION） | DMR 回撤后腰（DroppingDefensiveMidfielder）/防守 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
+| MCL | MCL 肋部中场（ChannelMidfielder）/进攻 | 传球风险=减少冒险传球（PASSING_RISKS:TAKE_FEWER_RISKS）；前插=更多前插（FORWARD_RUNS:MAKE_MORE_RUNS）；跑位自由度=自由跑位（ROAMING:ROAM_FROM_POSITION） | DML 防守中场（DefensiveMidfielder）/防守 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
+| AMR | AMR 组织型边锋（PlaymakingWinger）/策应 | 传球距离=短传（PASSING_STRATEGY:SHORTER） | MR 回防边前卫（TrackingWideMidfielder）/防守 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
+| AML | AML 组织型边锋（PlaymakingWinger）/策应 | 传球距离=短传（PASSING_STRATEGY:SHORTER） | ML 回防边前卫（TrackingWideMidfielder）/防守 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
+| AMC | AMC 前场组织核心（AdvancedPlaymaker）/进攻 | 跑位自由度=自由跑位（ROAMING:ROAM_FROM_POSITION）；前插=更多前插（FORWARD_RUNS:MAKE_MORE_RUNS） | MC 中前卫（CentralMidfielder）/策应 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
+| ST | ST 抢点前锋（Poacher）/进攻 | 射门倾向=更多射门（SHOOTING:SHOOT_MORE_OFTEN）；禁区进攻方向=后点（ATTACK_BOX_SIDE:FAR_POST） | AMC 进攻型中场（AttackingMidfielder）/策应 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
 
 **来源：** [配方](./V1.0.json) · [赛季分析](./V1.0_SEASON_REPORT_ANALYSIS_45602694823.md)
 
@@ -452,16 +473,16 @@
 | 槽位 | IP位置/角色/职责 | IP显式PI | OOP位置/角色/职责 | OOP显式PI |
 |---|---|---|---|---|
 | GK | GK 出球门将（BallPlayingGoalkeeper）/策应 | 传球距离=短传（PASSING_STRATEGY:SHORTER） | GK 清道夫门将（SweeperKeeper）/进攻 | 铲抢=谨慎铲抢（TACKLING:EASE_OFF_TACKLES） |
-| DR | DR 翼卫（WingBack）/进攻 | 进攻站位=拉开宽度（ATTACKING_WIDTH:STAY_WIDER）；传中目标=后点（CROSSING_TARGET:BACK_POST） | DR 逼抢翼卫（PressingWingBack）/防守 | 铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
+| DR | DR 翼卫（WingBack）/进攻 | 进攻站位=拉开宽度（ATTACKING_WIDTH:STAY_WIDER）；传中目标=后点（CROSSING_TARGET:BACK_POST） | WBR 逼抢翼卫（PressingWingBack）/防守 | 铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
 | DCR | DCR 出球中卫（BallPlayingCentreBack）/防守 | 传球距离=短传（PASSING_STRATEGY:SHORTER） | DCR 补位边中卫（CoveringWideCentreBack）/防守 | 逼抢=更少（TRIGGER_PRESS:LESS_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
 | DCL | DCL 中后卫（CentreBack）/防守 | 传球距离=短传（PASSING_STRATEGY:SHORTER） | DCL 补位边中卫（CoveringWideCentreBack）/防守 | 逼抢=更少（TRIGGER_PRESS:LESS_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
-| DL | DL 内收型边后卫（InsideFullBack）/防守 | 传球距离=短传（PASSING_STRATEGY:SHORTER） | DL 逼抢翼卫（PressingWingBack）/防守 | 铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
-| MCR | MCR 中前卫（CentralMidfielder）/策应 | 传球风险=减少冒险传球（PASSING_RISKS:TAKE_FEWER_RISKS）；前插=保持位置（FORWARD_RUNS:KEEP_POSITION） | MCR 中后卫（CentreBack）/防守 | 逼抢=更少（TRIGGER_PRESS:LESS_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
-| MCL | MCL 肋部中场（ChannelMidfielder）/进攻 | 传球风险=减少冒险传球（PASSING_RISKS:TAKE_FEWER_RISKS）；前插=更多前插（FORWARD_RUNS:MAKE_MORE_RUNS）；跑位自由度=自由跑位（ROAMING:ROAM_FROM_POSITION） | MCL 逼抢型防守中场（PressingDefensiveMidfielder）/防守 | 铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
+| DL | DL 内收型边后卫（InsideFullBack）/防守 | 传球距离=短传（PASSING_STRATEGY:SHORTER） | WBL 逼抢翼卫（PressingWingBack）/防守 | 铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
+| MCR | MCR 中前卫（CentralMidfielder）/策应 | 传球风险=减少冒险传球（PASSING_RISKS:TAKE_FEWER_RISKS）；前插=保持位置（FORWARD_RUNS:KEEP_POSITION） | DC 中后卫（CentreBack）/防守 | 逼抢=更少（TRIGGER_PRESS:LESS_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
+| MCL | MCL 肋部中场（ChannelMidfielder）/进攻 | 传球风险=减少冒险传球（PASSING_RISKS:TAKE_FEWER_RISKS）；前插=更多前插（FORWARD_RUNS:MAKE_MORE_RUNS）；跑位自由度=自由跑位（ROAMING:ROAM_FROM_POSITION） | DMR 逼抢型防守中场（PressingDefensiveMidfielder）/防守 | 铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
 | AMR | AMR 组织型边锋（PlaymakingWinger）/策应 | 传球距离=短传（PASSING_STRATEGY:SHORTER） | AMR 边锋（Winger）/策应 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
 | AML | AML 组织型边锋（PlaymakingWinger）/策应 | 传球距离=短传（PASSING_STRATEGY:SHORTER） | AML 边锋（Winger）/策应 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
-| AMC | AMC 前场组织核心（AdvancedPlaymaker）/进攻 | 跑位自由度=自由跑位（ROAMING:ROAM_FROM_POSITION）；前插=更多前插（FORWARD_RUNS:MAKE_MORE_RUNS） | AMC 屏障型防守中场（ScreeningDefensiveMidfielder）/防守 | 铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
-| ST | ST 抢点前锋（Poacher）/进攻 | 射门倾向=更多射门（SHOOTING:SHOOT_MORE_OFTEN）；禁区进攻方向=后点（ATTACK_BOX_SIDE:FAR_POST） | ST 进攻型中场（AttackingMidfielder）/策应 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
+| AMC | AMC 前场组织核心（AdvancedPlaymaker）/进攻 | 跑位自由度=自由跑位（ROAMING:ROAM_FROM_POSITION）；前插=更多前插（FORWARD_RUNS:MAKE_MORE_RUNS） | DML 屏障型防守中场（ScreeningDefensiveMidfielder）/防守 | 铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
+| ST | ST 抢点前锋（Poacher）/进攻 | 射门倾向=更多射门（SHOOTING:SHOOT_MORE_OFTEN）；禁区进攻方向=后点（ATTACK_BOX_SIDE:FAR_POST） | AMC 进攻型中场（AttackingMidfielder）/策应 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
 
 **来源：** [配方](./V1.1.json) · [赛季分析](./V1.1_SEASON_REPORT_ANALYSIS_45617475212.md)
 
@@ -487,12 +508,12 @@
 | DCR | DCR 出球中卫（BallPlayingCentreBack）/防守 | 传球距离=短传（PASSING_STRATEGY:SHORTER） | DCR 中后卫（CentreBack）/防守 | 逼抢=更少（TRIGGER_PRESS:LESS_OFTEN） |
 | DCL | DCL 中后卫（CentreBack）/防守 | 传球距离=短传（PASSING_STRATEGY:SHORTER） | DCL 补位中卫（CoveringCentreBack）/防守 | 逼抢=更少（TRIGGER_PRESS:LESS_OFTEN） |
 | DL | DL 内收型边后卫（InsideFullBack）/防守 | 传球距离=短传（PASSING_STRATEGY:SHORTER） | DL 逼抢边后卫（PressingFullBack）/策应 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
-| MCR | MCR 中前卫（CentralMidfielder）/策应 | 传球风险=减少冒险传球（PASSING_RISKS:TAKE_FEWER_RISKS）；前插=保持位置（FORWARD_RUNS:KEEP_POSITION） | MCR 宽幅覆盖型防守中场（WideCoverDefensiveMidfielder）/防守 | 逼抢=更少（TRIGGER_PRESS:LESS_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
-| MCL | MCL 肋部中场（ChannelMidfielder）/进攻 | 传球风险=减少冒险传球（PASSING_RISKS:TAKE_FEWER_RISKS）；前插=更多前插（FORWARD_RUNS:MAKE_MORE_RUNS）；跑位自由度=自由跑位（ROAMING:ROAM_FROM_POSITION） | MCL 屏障型防守中场（ScreeningDefensiveMidfielder）/防守 | — |
-| AMR | AMR 组织型边锋（PlaymakingWinger）/策应 | 传球距离=短传（PASSING_STRATEGY:SHORTER） | AMR 回防边前卫（TrackingWideMidfielder）/防守 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
-| AML | AML 组织型边锋（PlaymakingWinger）/策应 | 传球距离=短传（PASSING_STRATEGY:SHORTER） | AML 回防边前卫（TrackingWideMidfielder）/防守 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
-| AMC | AMC 前场组织核心（AdvancedPlaymaker）/进攻 | 跑位自由度=自由跑位（ROAMING:ROAM_FROM_POSITION）；前插=更多前插（FORWARD_RUNS:MAKE_MORE_RUNS） | AMC 屏障型中前卫（ScreeningCentralMidfielder）/防守 | — |
-| ST | ST 抢点前锋（Poacher）/进攻 | 射门倾向=更多射门（SHOOTING:SHOOT_MORE_OFTEN）；禁区进攻方向=后点（ATTACK_BOX_SIDE:FAR_POST） | ST 分离出球点进攻中场（SplittingOutletAttackingMidfielder）/进攻 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN） |
+| MCR | MCR 中前卫（CentralMidfielder）/策应 | 传球风险=减少冒险传球（PASSING_RISKS:TAKE_FEWER_RISKS）；前插=保持位置（FORWARD_RUNS:KEEP_POSITION） | DMR 宽幅覆盖型防守中场（WideCoverDefensiveMidfielder）/防守 | 逼抢=更少（TRIGGER_PRESS:LESS_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
+| MCL | MCL 肋部中场（ChannelMidfielder）/进攻 | 传球风险=减少冒险传球（PASSING_RISKS:TAKE_FEWER_RISKS）；前插=更多前插（FORWARD_RUNS:MAKE_MORE_RUNS）；跑位自由度=自由跑位（ROAMING:ROAM_FROM_POSITION） | DML 屏障型防守中场（ScreeningDefensiveMidfielder）/防守 | — |
+| AMR | AMR 组织型边锋（PlaymakingWinger）/策应 | 传球距离=短传（PASSING_STRATEGY:SHORTER） | MR 回防边前卫（TrackingWideMidfielder）/防守 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
+| AML | AML 组织型边锋（PlaymakingWinger）/策应 | 传球距离=短传（PASSING_STRATEGY:SHORTER） | ML 回防边前卫（TrackingWideMidfielder）/防守 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
+| AMC | AMC 前场组织核心（AdvancedPlaymaker）/进攻 | 跑位自由度=自由跑位（ROAMING:ROAM_FROM_POSITION）；前插=更多前插（FORWARD_RUNS:MAKE_MORE_RUNS） | MC 屏障型中前卫（ScreeningCentralMidfielder）/防守 | — |
+| ST | ST 抢点前锋（Poacher）/进攻 | 射门倾向=更多射门（SHOOTING:SHOOT_MORE_OFTEN）；禁区进攻方向=后点（ATTACK_BOX_SIDE:FAR_POST） | AMC 分离出球点进攻中场（SplittingOutletAttackingMidfielder）/进攻 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN） |
 
 **来源：** [配方](./V1.2.json) · [赛季分析](./V1.2_SEASON_REPORT_ANALYSIS_45635282210.md)
 
@@ -518,12 +539,12 @@
 | DCR | DCR 出球中卫（BallPlayingCentreBack）/防守 | 传球距离=短传（PASSING_STRATEGY:SHORTER） | DCR 中后卫（CentreBack）/防守 | 逼抢=更少（TRIGGER_PRESS:LESS_OFTEN） |
 | DCL | DCL 中后卫（CentreBack）/防守 | 传球距离=短传（PASSING_STRATEGY:SHORTER） | DCL 补位中卫（CoveringCentreBack）/防守 | 逼抢=更少（TRIGGER_PRESS:LESS_OFTEN） |
 | DL | DL 内收型边后卫（InsideFullBack）/防守 | 传球距离=短传（PASSING_STRATEGY:SHORTER） | DL 逼抢边后卫（PressingFullBack）/策应 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
-| MCR | MCR 中前卫（CentralMidfielder）/策应 | 传球风险=减少冒险传球（PASSING_RISKS:TAKE_FEWER_RISKS）；前插=更多前插（FORWARD_RUNS:MAKE_MORE_RUNS） | MCR 宽幅覆盖型防守中场（WideCoverDefensiveMidfielder）/防守 | 逼抢=更少（TRIGGER_PRESS:LESS_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
-| MCL | MCL 肋部中场（ChannelMidfielder）/进攻 | 传球风险=减少冒险传球（PASSING_RISKS:TAKE_FEWER_RISKS）；前插=更多前插（FORWARD_RUNS:MAKE_MORE_RUNS）；跑位自由度=自由跑位（ROAMING:ROAM_FROM_POSITION） | MCL 屏障型防守中场（ScreeningDefensiveMidfielder）/防守 | — |
-| AMR | AMR 组织型边锋（PlaymakingWinger）/策应 | 传球距离=短传（PASSING_STRATEGY:SHORTER） | AMR 回防边前卫（TrackingWideMidfielder）/防守 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
-| AML | AML 组织型边锋（PlaymakingWinger）/策应 | 传球距离=短传（PASSING_STRATEGY:SHORTER） | AML 回防边前卫（TrackingWideMidfielder）/防守 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
-| AMC | AMC 前场组织核心（AdvancedPlaymaker）/进攻 | 跑位自由度=自由跑位（ROAMING:ROAM_FROM_POSITION）；前插=更多前插（FORWARD_RUNS:MAKE_MORE_RUNS） | AMC 屏障型中前卫（ScreeningCentralMidfielder）/防守 | — |
-| ST | ST 抢点前锋（Poacher）/进攻 | 射门倾向=更多射门（SHOOTING:SHOOT_MORE_OFTEN）；禁区进攻方向=后点（ATTACK_BOX_SIDE:FAR_POST） | ST 分离出球点进攻中场（SplittingOutletAttackingMidfielder）/进攻 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN） |
+| MCR | MCR 中前卫（CentralMidfielder）/策应 | 传球风险=减少冒险传球（PASSING_RISKS:TAKE_FEWER_RISKS）；前插=更多前插（FORWARD_RUNS:MAKE_MORE_RUNS） | DMR 宽幅覆盖型防守中场（WideCoverDefensiveMidfielder）/防守 | 逼抢=更少（TRIGGER_PRESS:LESS_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
+| MCL | MCL 肋部中场（ChannelMidfielder）/进攻 | 传球风险=减少冒险传球（PASSING_RISKS:TAKE_FEWER_RISKS）；前插=更多前插（FORWARD_RUNS:MAKE_MORE_RUNS）；跑位自由度=自由跑位（ROAMING:ROAM_FROM_POSITION） | DML 屏障型防守中场（ScreeningDefensiveMidfielder）/防守 | — |
+| AMR | AMR 组织型边锋（PlaymakingWinger）/策应 | 传球距离=短传（PASSING_STRATEGY:SHORTER） | MR 回防边前卫（TrackingWideMidfielder）/防守 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
+| AML | AML 组织型边锋（PlaymakingWinger）/策应 | 传球距离=短传（PASSING_STRATEGY:SHORTER） | ML 回防边前卫（TrackingWideMidfielder）/防守 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
+| AMC | AMC 前场组织核心（AdvancedPlaymaker）/进攻 | 跑位自由度=自由跑位（ROAMING:ROAM_FROM_POSITION）；前插=更多前插（FORWARD_RUNS:MAKE_MORE_RUNS） | MC 屏障型中前卫（ScreeningCentralMidfielder）/防守 | — |
+| ST | ST 抢点前锋（Poacher）/进攻 | 射门倾向=更多射门（SHOOTING:SHOOT_MORE_OFTEN）；禁区进攻方向=后点（ATTACK_BOX_SIDE:FAR_POST） | AMC 分离出球点进攻中场（SplittingOutletAttackingMidfielder）/进攻 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN） |
 
 **来源：** [配方](./V1.3.json) · [赛季分析](./V1.3_SEASON_REPORT_ANALYSIS_45644106773.md)
 
@@ -549,12 +570,12 @@
 | DCR | DCR 出球中卫（BallPlayingCentreBack）/防守 | 传球距离=短传（PASSING_STRATEGY:SHORTER） | DCR 中后卫（CentreBack）/防守 | 逼抢=更少（TRIGGER_PRESS:LESS_OFTEN） |
 | DCL | DCL 中后卫（CentreBack）/防守 | 传球距离=短传（PASSING_STRATEGY:SHORTER） | DCL 补位中卫（CoveringCentreBack）/防守 | 逼抢=更少（TRIGGER_PRESS:LESS_OFTEN） |
 | DL | DL 内收型边后卫（InsideFullBack）/防守 | 传球距离=短传（PASSING_STRATEGY:SHORTER） | DL 逼抢边后卫（PressingFullBack）/策应 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
-| MCR | MCR 中前卫（CentralMidfielder）/策应 | 传球风险=减少冒险传球（PASSING_RISKS:TAKE_FEWER_RISKS）；前插=更多前插（FORWARD_RUNS:MAKE_MORE_RUNS） | MCR 宽幅覆盖型防守中场（WideCoverDefensiveMidfielder）/防守 | 逼抢=更少（TRIGGER_PRESS:LESS_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
-| MCL | MCL 肋部中场（ChannelMidfielder）/进攻 | 传球风险=减少冒险传球（PASSING_RISKS:TAKE_FEWER_RISKS）；前插=更多前插（FORWARD_RUNS:MAKE_MORE_RUNS）；跑位自由度=自由跑位（ROAMING:ROAM_FROM_POSITION） | MCL 屏障型防守中场（ScreeningDefensiveMidfielder）/防守 | — |
-| AMR | AMR 组织型边锋（PlaymakingWinger）/策应 | 传球距离=短传（PASSING_STRATEGY:SHORTER） | AMR 回防边前卫（TrackingWideMidfielder）/防守 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
-| AML | AML 内锋（InsideForward）/进攻 | 传球距离=短传（PASSING_STRATEGY:SHORTER）；盘带方向=持球内切（DRIBBLING_DIRECTION:CUT_INSIDE_WITH_BALL）；跑位自由度=自由跑位（ROAMING:ROAM_FROM_POSITION） | AML 回防边前卫（TrackingWideMidfielder）/防守 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
-| AMC | AMC 前场组织核心（AdvancedPlaymaker）/进攻 | 跑位自由度=自由跑位（ROAMING:ROAM_FROM_POSITION）；前插=更多前插（FORWARD_RUNS:MAKE_MORE_RUNS） | AMC 屏障型中前卫（ScreeningCentralMidfielder）/防守 | — |
-| ST | ST 抢点前锋（Poacher）/进攻 | 射门倾向=更多射门（SHOOTING:SHOOT_MORE_OFTEN）；禁区进攻方向=后点（ATTACK_BOX_SIDE:FAR_POST） | ST 分离出球点进攻中场（SplittingOutletAttackingMidfielder）/进攻 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN） |
+| MCR | MCR 中前卫（CentralMidfielder）/策应 | 传球风险=减少冒险传球（PASSING_RISKS:TAKE_FEWER_RISKS）；前插=更多前插（FORWARD_RUNS:MAKE_MORE_RUNS） | DMR 宽幅覆盖型防守中场（WideCoverDefensiveMidfielder）/防守 | 逼抢=更少（TRIGGER_PRESS:LESS_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
+| MCL | MCL 肋部中场（ChannelMidfielder）/进攻 | 传球风险=减少冒险传球（PASSING_RISKS:TAKE_FEWER_RISKS）；前插=更多前插（FORWARD_RUNS:MAKE_MORE_RUNS）；跑位自由度=自由跑位（ROAMING:ROAM_FROM_POSITION） | DML 屏障型防守中场（ScreeningDefensiveMidfielder）/防守 | — |
+| AMR | AMR 组织型边锋（PlaymakingWinger）/策应 | 传球距离=短传（PASSING_STRATEGY:SHORTER） | MR 回防边前卫（TrackingWideMidfielder）/防守 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
+| AML | AML 内锋（InsideForward）/进攻 | 传球距离=短传（PASSING_STRATEGY:SHORTER）；盘带方向=持球内切（DRIBBLING_DIRECTION:CUT_INSIDE_WITH_BALL）；跑位自由度=自由跑位（ROAMING:ROAM_FROM_POSITION） | ML 回防边前卫（TrackingWideMidfielder）/防守 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
+| AMC | AMC 前场组织核心（AdvancedPlaymaker）/进攻 | 跑位自由度=自由跑位（ROAMING:ROAM_FROM_POSITION）；前插=更多前插（FORWARD_RUNS:MAKE_MORE_RUNS） | MC 屏障型中前卫（ScreeningCentralMidfielder）/防守 | — |
+| ST | ST 抢点前锋（Poacher）/进攻 | 射门倾向=更多射门（SHOOTING:SHOOT_MORE_OFTEN）；禁区进攻方向=后点（ATTACK_BOX_SIDE:FAR_POST） | AMC 分离出球点进攻中场（SplittingOutletAttackingMidfielder）/进攻 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN） |
 
 **来源：** [配方](./V1.4.json) · [赛季分析](./V1.4_SEASON_REPORT_ANALYSIS_45727738275.md)
 
@@ -580,12 +601,12 @@
 | DCR | DCR 出球中卫（BallPlayingCentreBack）/防守 | 传球距离=短传（PASSING_STRATEGY:SHORTER） | DCR 中后卫（CentreBack）/防守 | 逼抢=更少（TRIGGER_PRESS:LESS_OFTEN） |
 | DCL | DCL 中后卫（CentreBack）/防守 | 传球距离=短传（PASSING_STRATEGY:SHORTER） | DCL 补位中卫（CoveringCentreBack）/防守 | 逼抢=更少（TRIGGER_PRESS:LESS_OFTEN） |
 | DL | DL 内收型边后卫（InsideFullBack）/防守 | 传球距离=短传（PASSING_STRATEGY:SHORTER） | DL 逼抢边后卫（PressingFullBack）/策应 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
-| MCR | MCR 中前卫（CentralMidfielder）/策应 | 传球风险=减少冒险传球（PASSING_RISKS:TAKE_FEWER_RISKS）；前插=更多前插（FORWARD_RUNS:MAKE_MORE_RUNS） | MCR 宽幅覆盖型防守中场（WideCoverDefensiveMidfielder）/防守 | 逼抢=更少（TRIGGER_PRESS:LESS_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
-| MCL | MCL 肋部中场（ChannelMidfielder）/进攻 | 传球风险=减少冒险传球（PASSING_RISKS:TAKE_FEWER_RISKS）；前插=更多前插（FORWARD_RUNS:MAKE_MORE_RUNS）；跑位自由度=自由跑位（ROAMING:ROAM_FROM_POSITION） | MCL 屏障型防守中场（ScreeningDefensiveMidfielder）/防守 | — |
-| AMR | AMR 组织型边锋（PlaymakingWinger）/策应 | 传球距离=短传（PASSING_STRATEGY:SHORTER） | AMR 回防边前卫（TrackingWideMidfielder）/防守 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
-| AML | AML 内锋（InsideForward）/进攻 | 传球距离=短传（PASSING_STRATEGY:SHORTER）；盘带方向=持球内切（DRIBBLING_DIRECTION:CUT_INSIDE_WITH_BALL）；跑位自由度=自由跑位（ROAMING:ROAM_FROM_POSITION） | AML 回防边前卫（TrackingWideMidfielder）/防守 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
-| AMC | AMC 前场组织核心（AdvancedPlaymaker）/进攻 | 跑位自由度=自由跑位（ROAMING:ROAM_FROM_POSITION）；前插=更多前插（FORWARD_RUNS:MAKE_MORE_RUNS） | AMC 屏障型中前卫（ScreeningCentralMidfielder）/防守 | — |
-| ST | ST 抢点前锋（Poacher）/进攻 | 射门倾向=更多射门（SHOOTING:SHOOT_MORE_OFTEN）；禁区进攻方向=后点（ATTACK_BOX_SIDE:FAR_POST） | ST 分离出球点进攻中场（SplittingOutletAttackingMidfielder）/进攻 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN） |
+| MCR | MCR 中前卫（CentralMidfielder）/策应 | 传球风险=减少冒险传球（PASSING_RISKS:TAKE_FEWER_RISKS）；前插=更多前插（FORWARD_RUNS:MAKE_MORE_RUNS） | DMR 宽幅覆盖型防守中场（WideCoverDefensiveMidfielder）/防守 | 逼抢=更少（TRIGGER_PRESS:LESS_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
+| MCL | MCL 肋部中场（ChannelMidfielder）/进攻 | 传球风险=减少冒险传球（PASSING_RISKS:TAKE_FEWER_RISKS）；前插=更多前插（FORWARD_RUNS:MAKE_MORE_RUNS）；跑位自由度=自由跑位（ROAMING:ROAM_FROM_POSITION） | DML 屏障型防守中场（ScreeningDefensiveMidfielder）/防守 | — |
+| AMR | AMR 组织型边锋（PlaymakingWinger）/策应 | 传球距离=短传（PASSING_STRATEGY:SHORTER） | MR 回防边前卫（TrackingWideMidfielder）/防守 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
+| AML | AML 内锋（InsideForward）/进攻 | 传球距离=短传（PASSING_STRATEGY:SHORTER）；盘带方向=持球内切（DRIBBLING_DIRECTION:CUT_INSIDE_WITH_BALL）；跑位自由度=自由跑位（ROAMING:ROAM_FROM_POSITION） | ML 回防边前卫（TrackingWideMidfielder）/防守 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
+| AMC | AMC 前场组织核心（AdvancedPlaymaker）/进攻 | 跑位自由度=自由跑位（ROAMING:ROAM_FROM_POSITION）；前插=更多前插（FORWARD_RUNS:MAKE_MORE_RUNS） | MC 屏障型中前卫（ScreeningCentralMidfielder）/防守 | — |
+| ST | ST 抢点前锋（Poacher）/进攻 | 射门倾向=更多射门（SHOOTING:SHOOT_MORE_OFTEN）；禁区进攻方向=后点（ATTACK_BOX_SIDE:FAR_POST） | AMC 分离出球点进攻中场（SplittingOutletAttackingMidfielder）/进攻 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN） |
 
 **来源：** [配方](./V1.5.json) · [赛季分析](./V1.5_SEASON_REPORT_ANALYSIS_45734426186.md)
 
@@ -611,12 +632,12 @@
 | DCR | DCR 出球中卫（BallPlayingCentreBack）/防守 | 传球距离=短传（PASSING_STRATEGY:SHORTER） | DCR 中后卫（CentreBack）/防守 | 逼抢=更少（TRIGGER_PRESS:LESS_OFTEN） |
 | DCL | DCL 中后卫（CentreBack）/防守 | 传球距离=短传（PASSING_STRATEGY:SHORTER） | DCL 补位中卫（CoveringCentreBack）/防守 | 逼抢=更少（TRIGGER_PRESS:LESS_OFTEN） |
 | DL | DL 内收型边后卫（InsideFullBack）/防守 | 传球距离=短传（PASSING_STRATEGY:SHORTER） | DL 逼抢边后卫（PressingFullBack）/策应 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
-| MCR | MCR 中前卫（CentralMidfielder）/策应 | 传球风险=减少冒险传球（PASSING_RISKS:TAKE_FEWER_RISKS）；前插=更多前插（FORWARD_RUNS:MAKE_MORE_RUNS） | MCR 宽幅覆盖型防守中场（WideCoverDefensiveMidfielder）/防守 | 铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN）；逼抢=更多（TRIGGER_PRESS:MORE_OFTEN） |
-| MCL | MCL 肋部中场（ChannelMidfielder）/进攻 | 传球风险=减少冒险传球（PASSING_RISKS:TAKE_FEWER_RISKS）；前插=更多前插（FORWARD_RUNS:MAKE_MORE_RUNS）；跑位自由度=自由跑位（ROAMING:ROAM_FROM_POSITION） | MCL 逼抢型防守中场（PressingDefensiveMidfielder）/防守 | — |
-| AMR | AMR 组织型边锋（PlaymakingWinger）/策应 | 传球距离=短传（PASSING_STRATEGY:SHORTER） | AMR 回防边前卫（TrackingWideMidfielder）/防守 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
-| AML | AML 内锋（InsideForward）/进攻 | 传球距离=短传（PASSING_STRATEGY:SHORTER）；盘带方向=持球内切（DRIBBLING_DIRECTION:CUT_INSIDE_WITH_BALL）；跑位自由度=自由跑位（ROAMING:ROAM_FROM_POSITION） | AML 回防边前卫（TrackingWideMidfielder）/防守 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
-| AMC | AMC 前场组织核心（AdvancedPlaymaker）/进攻 | 跑位自由度=自由跑位（ROAMING:ROAM_FROM_POSITION）；前插=更多前插（FORWARD_RUNS:MAKE_MORE_RUNS） | AMC 屏障型中前卫（ScreeningCentralMidfielder）/防守 | — |
-| ST | ST 抢点前锋（Poacher）/进攻 | 射门倾向=更多射门（SHOOTING:SHOOT_MORE_OFTEN）；禁区进攻方向=后点（ATTACK_BOX_SIDE:FAR_POST） | ST 分离出球点进攻中场（SplittingOutletAttackingMidfielder）/进攻 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN） |
+| MCR | MCR 中前卫（CentralMidfielder）/策应 | 传球风险=减少冒险传球（PASSING_RISKS:TAKE_FEWER_RISKS）；前插=更多前插（FORWARD_RUNS:MAKE_MORE_RUNS） | DMR 宽幅覆盖型防守中场（WideCoverDefensiveMidfielder）/防守 | 铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN）；逼抢=更多（TRIGGER_PRESS:MORE_OFTEN） |
+| MCL | MCL 肋部中场（ChannelMidfielder）/进攻 | 传球风险=减少冒险传球（PASSING_RISKS:TAKE_FEWER_RISKS）；前插=更多前插（FORWARD_RUNS:MAKE_MORE_RUNS）；跑位自由度=自由跑位（ROAMING:ROAM_FROM_POSITION） | DML 逼抢型防守中场（PressingDefensiveMidfielder）/防守 | — |
+| AMR | AMR 组织型边锋（PlaymakingWinger）/策应 | 传球距离=短传（PASSING_STRATEGY:SHORTER） | MR 回防边前卫（TrackingWideMidfielder）/防守 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
+| AML | AML 内锋（InsideForward）/进攻 | 传球距离=短传（PASSING_STRATEGY:SHORTER）；盘带方向=持球内切（DRIBBLING_DIRECTION:CUT_INSIDE_WITH_BALL）；跑位自由度=自由跑位（ROAMING:ROAM_FROM_POSITION） | ML 回防边前卫（TrackingWideMidfielder）/防守 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
+| AMC | AMC 前场组织核心（AdvancedPlaymaker）/进攻 | 跑位自由度=自由跑位（ROAMING:ROAM_FROM_POSITION）；前插=更多前插（FORWARD_RUNS:MAKE_MORE_RUNS） | MC 屏障型中前卫（ScreeningCentralMidfielder）/防守 | — |
+| ST | ST 抢点前锋（Poacher）/进攻 | 射门倾向=更多射门（SHOOTING:SHOOT_MORE_OFTEN）；禁区进攻方向=后点（ATTACK_BOX_SIDE:FAR_POST） | AMC 分离出球点进攻中场（SplittingOutletAttackingMidfielder）/进攻 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN） |
 
 **来源：** [配方](./V1.6.json) · [赛季分析](./V1.6_SEASON_REPORT_ANALYSIS_45744550318.md)
 
@@ -642,12 +663,12 @@
 | DCR | DCR 出球中卫（BallPlayingCentreBack）/防守 | 传球距离=短传（PASSING_STRATEGY:SHORTER） | DCR 中后卫（CentreBack）/防守 | 逼抢=更少（TRIGGER_PRESS:LESS_OFTEN） |
 | DCL | DCL 中后卫（CentreBack）/防守 | 传球距离=短传（PASSING_STRATEGY:SHORTER） | DCL 补位中卫（CoveringCentreBack）/防守 | 逼抢=更少（TRIGGER_PRESS:LESS_OFTEN） |
 | DL | DL 内收型边后卫（InsideFullBack）/防守 | 传球距离=短传（PASSING_STRATEGY:SHORTER） | DL 逼抢边后卫（PressingFullBack）/策应 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
-| MCR | MCR 中前卫（CentralMidfielder）/策应 | 传球风险=减少冒险传球（PASSING_RISKS:TAKE_FEWER_RISKS）；前插=更多前插（FORWARD_RUNS:MAKE_MORE_RUNS） | MCR 宽幅覆盖型防守中场（WideCoverDefensiveMidfielder）/防守 | 铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN）；逼抢=更少（TRIGGER_PRESS:LESS_OFTEN） |
-| MCL | MCL 肋部中场（ChannelMidfielder）/进攻 | 传球风险=减少冒险传球（PASSING_RISKS:TAKE_FEWER_RISKS）；前插=更多前插（FORWARD_RUNS:MAKE_MORE_RUNS）；跑位自由度=自由跑位（ROAMING:ROAM_FROM_POSITION） | MCL 屏障型防守中场（ScreeningDefensiveMidfielder）/防守 | — |
-| AMR | AMR 组织型边锋（PlaymakingWinger）/策应 | 传球距离=短传（PASSING_STRATEGY:SHORTER） | AMR 回防边前卫（TrackingWideMidfielder）/防守 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
-| AML | AML 内锋（InsideForward）/进攻 | 传球距离=短传（PASSING_STRATEGY:SHORTER）；盘带方向=持球内切（DRIBBLING_DIRECTION:CUT_INSIDE_WITH_BALL）；跑位自由度=自由跑位（ROAMING:ROAM_FROM_POSITION） | AML 回防边前卫（TrackingWideMidfielder）/防守 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
-| AMC | AMC 前场组织核心（AdvancedPlaymaker）/进攻 | 跑位自由度=自由跑位（ROAMING:ROAM_FROM_POSITION）；前插=更多前插（FORWARD_RUNS:MAKE_MORE_RUNS） | AMC 屏障型中前卫（ScreeningCentralMidfielder）/防守 | — |
-| ST | ST 抢点前锋（Poacher）/进攻 | 射门倾向=更多射门（SHOOTING:SHOOT_MORE_OFTEN）；禁区进攻方向=后点（ATTACK_BOX_SIDE:FAR_POST） | ST 分离出球点进攻中场（SplittingOutletAttackingMidfielder）/进攻 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN） |
+| MCR | MCR 中前卫（CentralMidfielder）/策应 | 传球风险=减少冒险传球（PASSING_RISKS:TAKE_FEWER_RISKS）；前插=更多前插（FORWARD_RUNS:MAKE_MORE_RUNS） | DMR 宽幅覆盖型防守中场（WideCoverDefensiveMidfielder）/防守 | 铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN）；逼抢=更少（TRIGGER_PRESS:LESS_OFTEN） |
+| MCL | MCL 肋部中场（ChannelMidfielder）/进攻 | 传球风险=减少冒险传球（PASSING_RISKS:TAKE_FEWER_RISKS）；前插=更多前插（FORWARD_RUNS:MAKE_MORE_RUNS）；跑位自由度=自由跑位（ROAMING:ROAM_FROM_POSITION） | DML 屏障型防守中场（ScreeningDefensiveMidfielder）/防守 | — |
+| AMR | AMR 组织型边锋（PlaymakingWinger）/策应 | 传球距离=短传（PASSING_STRATEGY:SHORTER） | MR 回防边前卫（TrackingWideMidfielder）/防守 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
+| AML | AML 内锋（InsideForward）/进攻 | 传球距离=短传（PASSING_STRATEGY:SHORTER）；盘带方向=持球内切（DRIBBLING_DIRECTION:CUT_INSIDE_WITH_BALL）；跑位自由度=自由跑位（ROAMING:ROAM_FROM_POSITION） | ML 回防边前卫（TrackingWideMidfielder）/防守 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
+| AMC | AMC 前场组织核心（AdvancedPlaymaker）/进攻 | 跑位自由度=自由跑位（ROAMING:ROAM_FROM_POSITION）；前插=更多前插（FORWARD_RUNS:MAKE_MORE_RUNS） | MC 屏障型中前卫（ScreeningCentralMidfielder）/防守 | — |
+| ST | ST 抢点前锋（Poacher）/进攻 | 射门倾向=更多射门（SHOOTING:SHOOT_MORE_OFTEN）；禁区进攻方向=后点（ATTACK_BOX_SIDE:FAR_POST） | AMC 分离出球点进攻中场（SplittingOutletAttackingMidfielder）/进攻 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN） |
 
 **来源：** [配方](./V1.7.json) · [赛季分析](./V1.7_SEASON_REPORT_ANALYSIS_45748944770.md)
 
@@ -669,16 +690,16 @@
 | 槽位 | IP位置/角色/职责 | IP显式PI | OOP位置/角色/职责 | OOP显式PI |
 |---|---|---|---|---|
 | GK | GK 出球门将（BallPlayingGoalkeeper）/策应 | 传球距离=短传（PASSING_STRATEGY:SHORTER） | GK 清道夫门将（SweeperKeeper）/进攻 | 铲抢=谨慎铲抢（TACKLING:EASE_OFF_TACKLES） |
-| DR | DR 翼卫（WingBack）/进攻 | 进攻站位=拉开宽度（ATTACKING_WIDTH:STAY_WIDER）；传中目标=后点（CROSSING_TARGET:BACK_POST） | DR 逼抢翼卫（PressingWingBack）/防守 | 铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
+| DR | DR 翼卫（WingBack）/进攻 | 进攻站位=拉开宽度（ATTACKING_WIDTH:STAY_WIDER）；传中目标=后点（CROSSING_TARGET:BACK_POST） | WBR 逼抢翼卫（PressingWingBack）/防守 | 铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
 | DCR | DCR 出球中卫（BallPlayingCentreBack）/防守 | 传球距离=短传（PASSING_STRATEGY:SHORTER） | DCR 补位边中卫（CoveringWideCentreBack）/防守 | 逼抢=更少（TRIGGER_PRESS:LESS_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
 | DCL | DCL 中后卫（CentreBack）/防守 | 传球距离=短传（PASSING_STRATEGY:SHORTER） | DCL 补位边中卫（CoveringWideCentreBack）/防守 | 逼抢=更少（TRIGGER_PRESS:LESS_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
-| DL | DL 内收型边后卫（InsideFullBack）/防守 | 传球距离=短传（PASSING_STRATEGY:SHORTER） | DL 逼抢翼卫（PressingWingBack）/防守 | 铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
-| MCR | MCR 中前卫（CentralMidfielder）/策应 | 传球风险=减少冒险传球（PASSING_RISKS:TAKE_FEWER_RISKS）；前插=更多前插（FORWARD_RUNS:MAKE_MORE_RUNS） | MCR 中后卫（CentreBack）/防守 | 逼抢=更少（TRIGGER_PRESS:LESS_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
-| MCL | MCL 肋部中场（ChannelMidfielder）/进攻 | 传球风险=减少冒险传球（PASSING_RISKS:TAKE_FEWER_RISKS）；前插=更多前插（FORWARD_RUNS:MAKE_MORE_RUNS）；跑位自由度=自由跑位（ROAMING:ROAM_FROM_POSITION） | MCL 宽幅覆盖型防守中场（WideCoverDefensiveMidfielder）/防守 | 铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN）；逼抢=更少（TRIGGER_PRESS:LESS_OFTEN） |
+| DL | DL 内收型边后卫（InsideFullBack）/防守 | 传球距离=短传（PASSING_STRATEGY:SHORTER） | WBL 逼抢翼卫（PressingWingBack）/防守 | 铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
+| MCR | MCR 中前卫（CentralMidfielder）/策应 | 传球风险=减少冒险传球（PASSING_RISKS:TAKE_FEWER_RISKS）；前插=更多前插（FORWARD_RUNS:MAKE_MORE_RUNS） | DC 中后卫（CentreBack）/防守 | 逼抢=更少（TRIGGER_PRESS:LESS_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
+| MCL | MCL 肋部中场（ChannelMidfielder）/进攻 | 传球风险=减少冒险传球（PASSING_RISKS:TAKE_FEWER_RISKS）；前插=更多前插（FORWARD_RUNS:MAKE_MORE_RUNS）；跑位自由度=自由跑位（ROAMING:ROAM_FROM_POSITION） | DMR 宽幅覆盖型防守中场（WideCoverDefensiveMidfielder）/防守 | 铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN）；逼抢=更少（TRIGGER_PRESS:LESS_OFTEN） |
 | AMR | AMR 组织型边锋（PlaymakingWinger）/策应 | 传球距离=短传（PASSING_STRATEGY:SHORTER） | AMR 边锋（Winger）/策应 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
 | AML | AML 内锋（InsideForward）/进攻 | 传球距离=短传（PASSING_STRATEGY:SHORTER）；盘带方向=持球内切（DRIBBLING_DIRECTION:CUT_INSIDE_WITH_BALL）；跑位自由度=自由跑位（ROAMING:ROAM_FROM_POSITION） | AML 边锋（Winger）/策应 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN）；铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
-| AMC | AMC 前场组织核心（AdvancedPlaymaker）/进攻 | 跑位自由度=自由跑位（ROAMING:ROAM_FROM_POSITION）；前插=更多前插（FORWARD_RUNS:MAKE_MORE_RUNS） | AMC 屏障型防守中场（ScreeningDefensiveMidfielder）/防守 | 铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
-| ST | ST 抢点前锋（Poacher）/进攻 | 射门倾向=更多射门（SHOOTING:SHOOT_MORE_OFTEN）；禁区进攻方向=后点（ATTACK_BOX_SIDE:FAR_POST） | ST 分离出球点进攻中场（SplittingOutletAttackingMidfielder）/进攻 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN） |
+| AMC | AMC 前场组织核心（AdvancedPlaymaker）/进攻 | 跑位自由度=自由跑位（ROAMING:ROAM_FROM_POSITION）；前插=更多前插（FORWARD_RUNS:MAKE_MORE_RUNS） | DML 屏障型防守中场（ScreeningDefensiveMidfielder）/防守 | 铲抢=凶狠铲抢（TACKLING:GET_STUCK_IN） |
+| ST | ST 抢点前锋（Poacher）/进攻 | 射门倾向=更多射门（SHOOTING:SHOOT_MORE_OFTEN）；禁区进攻方向=后点（ATTACK_BOX_SIDE:FAR_POST） | AMC 分离出球点进攻中场（SplittingOutletAttackingMidfielder）/进攻 | 逼抢=更多（TRIGGER_PRESS:MORE_OFTEN） |
 
 **来源：** [配方](./V1.8.json) · [赛季分析](./V1.8_SEASON_REPORT_ANALYSIS_45753659141.md)
 
