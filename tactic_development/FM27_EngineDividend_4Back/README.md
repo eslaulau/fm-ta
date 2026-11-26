@@ -1,10 +1,10 @@
 # FM27 引擎红利四后卫
 
-## 项目统一入口（当前 V1.8 / Build Run164）
+## 项目统一入口（当前 V1.9 / D0完成）
 
 - **唯一版本总目录：** [VERSION_CATALOG.md](VERSION_CATALOG.md)（所有版本成绩、配方、构建请求、设计审计、构建报告、FMF 与赛季分析索引）。
 - **原始数据来源：** [SOURCE_REGISTER.md](SOURCE_REGISTER.md)（Exporter Run ID、原始报告 URL、版本映射及缺失来源登记）。
-- **当前版本：** [V1.8 配方](V1.8.json) · [V1.8 设计审计](V1.8_DESIGN_AND_AUDIT.md) · [构建请求](V1.8_BUILD_REQUEST.json) · [D3构建摘要](V1.8_BUILD_REPORT_SUMMARY.json) · [Build Run164](https://github.com/eslaulau/fm-ta/actions/runs/45750563671)。D0–D3完成（8/8回读、22/22阶段）；D4游戏内导入与D5实战效果待验证。父版V1.7 D5分析见 [赛季报告](V1.7_SEASON_REPORT_ANALYSIS_45748944770.md)。
+- **当前版本：** [V1.9 配方](V1.9.json) · [V1.9 设计审计](V1.9_DESIGN_AND_AUDIT.md) · 构建请求待触发。V1.9 D0完成：IP完整继承V1.8，OOP回退至V1.7的4-2-1-2-1。V1.8 D5分析见 [赛季报告](V1.8_SEASON_REPORT_ANALYSIS_45753659141.md)；V1.8联赛21-9-8、72分，防守机会指标未达标。
 - **历代最佳：** V1.6以28胜5平5负、89分、73.7%胜率刷新完整英超赛季纪录；V1.3仍是失球最少（30）且仅4负的防守基准。
 - **唯一历史主线：** [ITERATION_LOG.md](ITERATION_LOG.md)；**逐项指令沿革：** [TACTIC_INSTRUCTION_DECISION_LEDGER.md](TACTIC_INSTRUCTION_DECISION_LEDGER.md)。
 - **归档约束：** 此后本项目的版本文件全部放在当前目录；不再放进仓库根目录的通用 `build_requests/`。
