@@ -127,3 +127,19 @@
 - 下一步不应另起一个无关阵型，也不应机械照抄R2全部TI/PI；应以V0.5为父基准重建这条已经有外部实测支持的角色结构，再用本队V1.2/V1.3/V1.7的防守保护经验和当前27.1.1原生目录，重新设计压迫分层与指令组合。
 
 **当前结构优先级更新：** R2式菱形IP/5-2-3换位链（角色/职责结构已外部逐槽对应）优先于未有外部同等证据的菱形IP/OOP四后卫方案；但其显式PI/TI和本队D5效果仍未验证。OOP四后卫双后腰方案保留为风险对照，不自动成为主线。
+
+
+## 6. 压迫PI分层：R2与用户既有引擎红利假设一致，但与部分本队历史样本存在情境差异
+
+项目外部基准档案保存的用户研究假设包括：边后卫/翼卫、双后腰和前场三人组可测试更多地逼抢；中卫较少主动逼抢以保护身后；凶狠铲抢作为候选PI；团队压迫频率不默认设最高。R2当前PI分布与这套假设高度一致：
+
+- OOP DR/DL边后卫：Trigger Press More Often + Tackle Harder。
+- OOP DC（由DMC回撤的中央中卫）：Trigger Press More Often + Tackle Harder。
+- OOP DMR/DML双后腰：Trigger Press More Often + Tackle Harder。
+- OOP AMC/AMR/AML前场三人：Trigger Press More Often + Tackle Harder。
+- OOP DCR/DCL两名中卫：Trigger Press Less Often + Tackle Harder。
+- 团队逼抢为More Often而非最高档；同时采用High Press、Lower Defensive Line与Counter-Press。
+
+**必须保留的证据张力：** V1.3/V1.7本队四后卫OOP结构中，DMR较少逼抢/屏障化与更好的对手机会控制同时出现；R2则是菱形IP、DMC回撤第三中卫、双CM组成双后腰、双ST回到边路的不同结构。不能直接把V1.3/V1.7的DMR Less Often移植为R2规则，也不能仅凭用户假设把R2双后腰More Often写成已证实机制。正确做法是把压迫PI作为R2完整结构的一部分进行赛季验证，并重点观察双后腰是否被吸出屏障区、对手中路推进、反击机会与客场xGA。
+
+**当前结论：** 暂时保留R2的分层压迫作为候选设计，不先行回退双后腰PI；团队逼抢不升至最高档。任何最终选择仍须通过D1原生PI权限检查和D5赛季结果验证。
