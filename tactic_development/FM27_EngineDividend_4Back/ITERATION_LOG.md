@@ -1182,3 +1182,22 @@ V1.1与V1.2英超38场有相同的主客场对手配对，但只有27场日期�
 - same-run report SHA-256 `2f9aa4cf6db35aa4cf981187293655337fca75ca4e9928e524cbced6e57587f1`；artifact ID `15080120509`。
 - 8/8 D3检查通过，22/22阶段精确回读；游戏内导入和比赛引擎未测试。
 - 完整机器报告：[V1.6_BUILD_REPORT.json](V1.6_BUILD_REPORT.json)。
+
+
+---
+
+## V1.6 正式 D5 赛季复盘｜Exporter Run 45744550318
+- 用户确认使用V1.6 / Run162；源存档SHA-256 `c91d8caa2e9a9030c784efb6b627a06d1098ac71ff48887843a68cd5386a8c75`；build 27.1.1+2511875。
+- 英超38场：28胜5平5负、87:37、89分、73.7%；xG75.54/xGA46.33、绝佳机会63/40。
+- 主场17胜1平1负、49:10、xGA19.78、对手绝佳机会18；客场11胜4平4负、38:27、xGA26.55、对手绝佳机会22。
+- V1.6刷新完整赛季胜率与积分纪录，但进球比xG高11.46、失球比xGA少9.33；机会质量层面仍有防守风险。
+- 球队/球员报告65/65、统计对账1235/1235；身份识别967/1021（94.71%）；1球未归属；位置10/10验证；role_code缺失647行，不能完整归因角色/PI；目标build借用schema-6，状态partial/unverified。
+- 完整报告：[V1.6_SEASON_REPORT_ANALYSIS_45744550318.md](V1.6_SEASON_REPORT_ANALYSIS_45744550318.md)。
+
+## V1.7 设计｜父版本 V1.6 / Run162
+- 父FMF SHA-256 `e67a5d218c18d3e5f7862889ab04248f8ced1f8c67a7bddb2d232b72d293748d`。
+- 保留V1.6全部IP角色/职责/PI、心态4和全部团队TI。
+- OOP DML由逼抢后腰回到屏障后腰；DMR Trigger Press MORE_OFTEN回到LESS_OFTEN，保留Tackle Harder。
+- 目标是恢复单一中路屏障+边路覆盖后腰的分层保护，优先降低客场xGA和对手绝佳机会；V1.6高胜率不能证明双后腰双积极压迫已最优。
+- 完整差异：[V1.7_DESIGN_AND_AUDIT.md](V1.7_DESIGN_AND_AUDIT.md)；配方：[V1.7.json](V1.7.json)；构建请求：[V1.7_BUILD_REQUEST.json](V1.7_BUILD_REQUEST.json)。
+- Build Run163：[Actions](https://github.com/eslaulau/fm-ta/actions/runs/45745327285)，当前进行中；D3尚未完成。
