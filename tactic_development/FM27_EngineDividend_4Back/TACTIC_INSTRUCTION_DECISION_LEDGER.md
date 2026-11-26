@@ -801,3 +801,11 @@ V0.9 ST-only Run3 是已取代草案，不属于正式版本主线。V0.5 是 V2
 - **新增待验证：** V1.7 OOP完整结构作为V1.9结构回退复测；目标xGA≤44.13、对手绝佳机会≤30、我方xG≥74.29、我方绝佳机会≥72、英超积分≥82。
 - **证据不足：** 这轮只验证整组OOP结构，不拆分到单项角色/PI因果；V1.7与V1.8样本不是同seed A/B。
 - D0完成；D1-D3待构建工作流；D4/D5待验证。
+
+
+### V1.9 D1–D3 构建身份（Run165）
+- recipe/build request blob SHA：`c05f8d0b8b99050175050c3686d7e0e0f2472817`；build request commit `83539cd1c4992cf61ac7be1e9adc78054484b904`。
+- Actions：[Run165](https://github.com/eslaulau/fm-ta/actions/runs/45754396168)；run ID `45754396168`；artifact ID `15086209218`。
+- FMF：4,552 bytes；SHA-256 `57446c3d4e4cb3cd957840a436843f8b87fcb2d119bc223e2136d9512f1af8e7`；same-run report SHA-256 `91438ae6978a2789d91b2942a17d52d7c1ac5726d5069e9073bfd8f721cdb93c`；artifact ZIP SHA-256 `ab65cf6d881e24b75e804728e060a7c5d67e67abf7b7e0b6c7eb01dd8faa28d7`。
+- D1/D2/D3通过；8/8独立回读检查、22/22阶段精确回读；IP后场DL/DCL/DCR/DR；OOP回归4-2-1-2-1。
+- 状态 `offline_binary_roundtrip_verified_not_game_import_verified`；D4/D5仍待验证。
