@@ -137,3 +137,13 @@
 - 方案来源：V1.6进攻骨架 + V1.7 OOP单屏障/宽幅覆盖保护 + V0.5深防线/高位遭遇线错位实验。不是从V1.7或V2.0继承FMF。
 - D1 catalog角色/职责/PI预检通过；D2 11槽/22阶段及IP四后场通过；D3 8/8独立二进制回读通过。
 - D4游戏内导入/显示待用户确认；D5完整赛季效果待验证。**本版不宣称已达到PPG≥2.85。**
+
+
+## V2.2｜菱形IP四后卫 + OOP 5-2-3｜D1-D3完成（2026-11-26）
+
+- 父版本/重生基准：V0.5；FMF SHA-256 e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257。
+- 配方：[2.2.json](2.2.json)；设计审计：[2.2_DESIGN_AND_AUDIT.md](2.2_DESIGN_AND_AUDIT.md)；触发：[2.2_TRIGGER.json](2.2_TRIGGER.json)。
+- GitHub Actions：[Run 45789108253](https://github.com/eslaulau/fm-ta/actions/runs/45789108253)；Artifact ID 15101073066。
+- FMF：4,528 bytes；SHA-256 7feba49ad389125b64690ce00feaf01717f70ae80cb5854eec614e41fc058a34；same-run report SHA-256 ab436693df94409860b0ca4d6eb57ec79ca3b3ba6d643fdea72c5112ab6ed7e8。
+- 方案：IP 4-1-2-1-2 Diamond，OOP 5-2-3；11槽位置/角色/职责与metaFM公开菱形样本逐项对应；五名球员跨位。
+- D1-D3：原生权限预检通过；11槽/22阶段通过；8/8独立二进制回读通过。D4游戏导入待核验；D5完整38场待验证。**不宣称已达到PPG≥2.85。**
