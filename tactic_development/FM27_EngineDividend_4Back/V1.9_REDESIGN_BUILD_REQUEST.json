@@ -61,7 +61,7 @@
       },
       "out": {
         "pos": "DR",
-        "role": "OPHoldingFullBack",
+        "role": "HoldingFullBack",
         "duty": "D",
         "pi": [
           [
@@ -85,7 +85,7 @@
       },
       "out": {
         "pos": "DCR",
-        "role": "OPCentreBack",
+        "role": "CentreBack",
         "duty": "D",
         "pi": [
           [
@@ -113,7 +113,7 @@
       },
       "out": {
         "pos": "DCL",
-        "role": "OPCoveringCentreBack",
+        "role": "CoveringCentreBack",
         "duty": "D",
         "pi": [
           [
@@ -137,7 +137,7 @@
       },
       "out": {
         "pos": "DL",
-        "role": "OPHoldingFullBack",
+        "role": "HoldingFullBack",
         "duty": "D",
         "pi": [
           [
@@ -165,7 +165,7 @@
       },
       "out": {
         "pos": "DMC",
-        "role": "OPScreeningDefensiveMidfielder",
+        "role": "ScreeningDefensiveMidfielder",
         "duty": "D",
         "pi": [
           [
@@ -193,7 +193,7 @@
       },
       "out": {
         "pos": "MCR",
-        "role": "OPPressingCentralMidfielder",
+        "role": "PressingCentralMidfielder",
         "duty": "D",
         "pi": [
           [
@@ -225,7 +225,7 @@
       },
       "out": {
         "pos": "MCL",
-        "role": "OPScreeningCentralMidfielder",
+        "role": "ScreeningCentralMidfielder",
         "duty": "D",
         "pi": [
           [
@@ -249,7 +249,7 @@
       },
       "out": {
         "pos": "MR",
-        "role": "OPTrackingWideMidfielder",
+        "role": "TrackingWideMidfielder",
         "duty": "D",
         "pi": [
           [
@@ -285,7 +285,7 @@
       },
       "out": {
         "pos": "ML",
-        "role": "OPTrackingWideMidfielder",
+        "role": "TrackingWideMidfielder",
         "duty": "D",
         "pi": [
           [
@@ -317,7 +317,7 @@
       },
       "out": {
         "pos": "ST",
-        "role": "OPSplittingOutletCentreForward",
+        "role": "SplittingOutletCentreForward",
         "duty": "A",
         "pi": [
           [
