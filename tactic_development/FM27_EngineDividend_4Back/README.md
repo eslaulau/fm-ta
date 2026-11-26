@@ -1,10 +1,10 @@
 # FM27 引擎红利四后卫
 
-## 项目统一入口（当前 V1.7 / Build Run163）
+## 项目统一入口（当前 V1.8 / Build Run164）
 
 - **唯一版本总目录：** [VERSION_CATALOG.md](VERSION_CATALOG.md)（所有版本成绩、配方、构建请求、设计审计、构建报告、FMF 与赛季分析索引）。
 - **原始数据来源：** [SOURCE_REGISTER.md](SOURCE_REGISTER.md)（Exporter Run ID、原始报告 URL、版本映射及缺失来源登记）。
-- **当前版本：** [V1.7 配方](V1.7.json) · [V1.7 FMF](V1.7.fmf) · [设计审计](V1.7_DESIGN_AND_AUDIT.md) · [构建请求](V1.7_BUILD_REQUEST.json) · [构建报告](V1.7_BUILD_REPORT.json) · [Build Run163](https://github.com/eslaulau/fm-ta/actions/runs/45745327285)。D0–D3完成（8/8回读、22/22阶段）；D4游戏内导入与D5实战效果待验证。父版V1.6 D5分析见 [赛季报告](V1.6_SEASON_REPORT_ANALYSIS_45744550318.md)。
+- **当前版本：** [V1.8 配方](V1.8.json) · [V1.8 设计审计](V1.8_DESIGN_AND_AUDIT.md) · [构建请求](V1.8_BUILD_REQUEST.json) · [D3构建摘要](V1.8_BUILD_REPORT_SUMMARY.json) · [Build Run164](https://github.com/eslaulau/fm-ta/actions/runs/45750563671)。D0–D3完成（8/8回读、22/22阶段）；D4游戏内导入与D5实战效果待验证。父版V1.7 D5分析见 [赛季报告](V1.7_SEASON_REPORT_ANALYSIS_45748944770.md)。
 - **历代最佳：** V1.6以28胜5平5负、89分、73.7%胜率刷新完整英超赛季纪录；V1.3仍是失球最少（30）且仅4负的防守基准。
 - **唯一历史主线：** [ITERATION_LOG.md](ITERATION_LOG.md)；**逐项指令沿革：** [TACTIC_INSTRUCTION_DECISION_LEDGER.md](TACTIC_INSTRUCTION_DECISION_LEDGER.md)。
 - **归档约束：** 此后本项目的版本文件全部放在当前目录；不再放进仓库根目录的通用 `build_requests/`。
@@ -268,4 +268,14 @@ DL、DCL、DCR、DR、DML、DMR 的 OOP `TACKLING` 由 `GET_STUCK_IN` 改为 `EA
 - OOP DML：逼抢后腰→屏障后腰；OOP DMR Trigger Press MORE_OFTEN→LESS_OFTEN，Tackle Harder保留。
 - 其余20阶段完全继承；IP四后场DL/DCL/DCR/DR保持。
 - 四类决策和完整22阶段矩阵见[V1.7_DESIGN_AND_AUDIT.md](V1.7_DESIGN_AND_AUDIT.md)。
-- V1.7 D3构建：[Run163](https://github.com/eslaulau/fm-ta/actions/runs/45745327285)成功；Artifact ID `15082962594`；正式 FMF 已归档：[V1.7.fmf](V1.7.fmf)，4,504 bytes，SHA-256 `42a7038c4fe89667d0f1f7c7ff1ff74f31633f52f570d0f8b4d4d9c774ee46ab`；8/8回读通过、22/22阶段一致。D4/D5待验证；完整构建报告：[V1.7_BUILD_REPORT.json](V1.7_BUILD_REPORT.json)。
+- V1.7 D3构建：[Run163](https://github.com/eslaulau/fm-ta/actions/runs/45745327285)成功；Artifact ID `15082962594`；正式 FMF 已归档：[V1.7.fmf](V1.7.fmf)，4,504 bytes，SHA-256 `42a7038c4fe89667d0f1f7c7ff1ff74f31633f52f570d0f8b4d4d9c774ee46ab`；8/8回读通过、22/22阶段一致。D5已由Exporter Run45748944770完成，英超25胜7平6负、82分；分析见 [V1.7赛季报告](V1.7_SEASON_REPORT_ANALYSIS_45748944770.md)。D4未单独逐项截图验收；构建报告：[V1.7_BUILD_REPORT.json](V1.7_BUILD_REPORT.json)。
+
+
+## V1.8 设计迭代｜父版 V1.7
+
+- 核心约束：IP四后场DL/DCL/DCR/DR完全保留；IP 11槽角色、职责、PI均继承V1.7。
+- OOP由4-2-1-2-1改为无锋5-2-3：WBL/DCL/DC/DCR/WBR五后卫、DML/DMR双后腰、AML/AMC/AMR前场三人组。
+- 结构依据：FM27 27.1.1 metaFM高排名样本反复出现OOP 5-2-3；本队V1.7数据也显示客场防守仍有优化空间。外部测试只作候选方向，不等于本队效果保证。
+- D1–D3： [Run164](https://github.com/eslaulau/fm-ta/actions/runs/45750563671)成功；8/8检查通过，22/22阶段精确回读。
+- FMF：4,616 bytes；SHA-256 `51e94c684c66ce016950d93f2619a40086820e7a9dcf792b7251d4ac67fa4e72`；构建摘要见 [V1.8_BUILD_REPORT_SUMMARY.json](V1.8_BUILD_REPORT_SUMMARY.json)。
+- D3不代表游戏内导入或比赛验证；D4/D5待完成。
