@@ -834,3 +834,10 @@ V0.9 ST-only Run3 是已取代草案，不属于正式版本主线。V0.5 是 V2
 - FMF：4,552 bytes；SHA-256 `57446c3d4e4cb3cd957840a436843f8b87fcb2d119bc223e2136d9512f1af8e7`；same-run report SHA-256 `91438ae6978a2789d91b2942a17d52d7c1ac5726d5069e9073bfd8f721cdb93c`；artifact ZIP SHA-256 `ab65cf6d881e24b75e804728e060a7c5d67e67abf7b7e0b6c7eb01dd8faa28d7`。
 - D1/D2/D3通过；8/8独立回读检查、22/22阶段精确回读；IP后场DL/DCL/DCR/DR；OOP回归4-2-1-2-1。
 - 状态 `offline_binary_roundtrip_verified_not_game_import_verified`；D4/D5仍待验证。
+
+ 
+## 赛季问题与配置决策追踪规则（2026-11-26新增）
+
+每轮新赛季复盘必须把报告问题编号（ISS-xx）和探索性机制编号（EXP-xx）登记到对应版本的设计审计及追踪矩阵。每条重要IP/OOP角色、职责、PI、TI、心态或结构决策，必须反向链接到问题/机制编号；若没有配置变化，记录本轮不改的理由。每轮D5后回看上一轮的目标，更新每条结论为达成、部分达成、未达成或无法判定。完整模板：[SEASON_TO_TACTIC_TRACEABILITY_TEMPLATE.md](SEASON_TO_TACTIC_TRACEABILITY_TEMPLATE.md)。
+
+配置状态必须区分：当前配方实际存在、历史曾用、证据支持、单项准入、结构性暂留、待验证、已被反证/淘汰。赛季相关性不能直接升级为因果证据；数据缺少逐场位置映射时不得归因到具体角色或PI。
