@@ -21,7 +21,7 @@
 | V1.5 | 45734426186 | [分析](V1.5_SEASON_REPORT_ANALYSIS_45734426186.md) | [Exporter Run 45734426186](https://github.com/eslaulau/FM27-Exporter/tree/main/season-reports/1/45734426186) |
 | V1.6 | 45744550318 | [分析](V1.6_SEASON_REPORT_ANALYSIS_45744550318.md) | [Exporter Run 45744550318](https://github.com/eslaulau/FM27-Exporter/tree/main/season-reports/1/45744550318) |
 | V1.7 | 45748944770 | [赛季分析](V1.7_SEASON_REPORT_ANALYSIS_45748944770.md)；[设计审计](V1.7_DESIGN_AND_AUDIT.md) | [Exporter Run 45748944770](https://github.com/eslaulau/FM27-Exporter/tree/main/season-reports/1/45748944770) |
-| V1.8 | —（D5待实测） | [设计审计](V1.8_DESIGN_AND_AUDIT.md) | 不适用；V1.8当前为D0–D3构建阶段，尚无赛季报告 |
+| V1.8 | 45753659141 | [赛季分析](V1.8_SEASON_REPORT_ANALYSIS_45753659141.md)；[设计审计](V1.8_DESIGN_AND_AUDIT.md) | [Exporter Run 45753659141](https://github.com/eslaulau/FM27-Exporter/tree/main/season-reports/1/45753659141) |
 
 ## 来源完整性规则
 
@@ -36,3 +36,6 @@
 - V1.7 / Run163：用户确认 [Exporter Run 45748944770](https://github.com/eslaulau/FM27-Exporter/tree/main/season-reports/1/45748944770) 使用V1.7；D5已完成，分析文件为 `V1.7_SEASON_REPORT_ANALYSIS_45748944770.md`。源存档SHA-256 `3af3b8a4d5a51903e2d2a2b6a1ae4e1ee40c8a0caed8fc787b054245ce5bc6a1`；FM27 build `27.1.1+2511875`；数据整体 `partial_or_unverified`，限制见分析文件。
 - V1.8：尚无D5报告；不得把V1.7 Run45748944770误登记为V1.8成绩。
 - 对每个后续版本，先登记用户确认的版本映射；未确认时写“未确认”，不得从文件名或最近一次导出推断。
+
+- V1.8 / Run45753659141：用户确认使用V1.8；英超38场21-9-8、98:55、72分；build 27.1.1+2511875；源存档SHA-256 `6c07ec389a2894a3d2a8829f2618b8dec337c06bb1a2e7af334d4acb798713e0`；数据partial/unverified，详情见V1.8赛季分析。
+- V1.9：由V1.8 D5触发，当前结构回退至V1.7 OOP 4-2-1-2-1，D0完成，等待D1–D3构建。
