@@ -1,11 +1,11 @@
 # FM27 引擎红利四后卫
 
-## 项目统一入口（当前 V1.6 / Run162）
+## 项目统一入口（当前 V1.7 / Build Run163）
 
 - **唯一版本总目录：** [VERSION_CATALOG.md](VERSION_CATALOG.md)（所有版本成绩、配方、构建请求、设计审计、构建报告、FMF 与赛季分析索引）。
 - **原始数据来源：** [SOURCE_REGISTER.md](SOURCE_REGISTER.md)（Exporter Run ID、原始报告 URL、版本映射及缺失来源登记）。
-- **当前版本：** [V1.6 配方](V1.6.json) · [V1.6 设计审计](V1.6_DESIGN_AND_AUDIT.md) · [V1.6 构建报告](V1.6_BUILD_REPORT.json) · [Run162 FMF构建产物](https://github.com/eslaulau/fm-ta/actions/runs/45737442923)。D0–D3完成（Run162，8/8回读）；D4游戏内导入、D5赛季效果待验证；父版V1.5 D5已完成，见 [赛季分析](V1.5_SEASON_REPORT_ANALYSIS_45734426186.md)。
-- **历代最佳：** 完整英超胜率最高为 V1.0、V1.3、V1.4 并列 71.1%；V1.3 以 88 分和仅 4 场失利作为综合基准。
+- **当前版本：** [V1.7 配方](V1.7.json) · [V1.7 设计审计](V1.7_DESIGN_AND_AUDIT.md) · [V1.7 构建请求](V1.7_BUILD_REQUEST.json) · [Build Run163](https://github.com/eslaulau/fm-ta/actions/runs/45745327285)。D0–D2完成，D3构建进行中；D4导入、D5赛季效果待验证。父版V1.6 D5已完成，见 [V1.6赛季分析](V1.6_SEASON_REPORT_ANALYSIS_45744550318.md)。
+- **历代最佳：** V1.6以28胜5平5负、89分、73.7%胜率刷新完整英超赛季纪录；V1.3仍是失球最少（30）且仅4负的防守基准。
 - **唯一历史主线：** [ITERATION_LOG.md](ITERATION_LOG.md)；**逐项指令沿革：** [TACTIC_INSTRUCTION_DECISION_LEDGER.md](TACTIC_INSTRUCTION_DECISION_LEDGER.md)。
 - **归档约束：** 此后本项目的版本文件全部放在当前目录；不再放进仓库根目录的通用 `build_requests/`。
 
@@ -252,3 +252,20 @@ DL、DCL、DCR、DR、DML、DMR 的 OOP `TACKLING` 由 `GET_STUCK_IN` 改为 `EA
 - D3 独立回读 8/8 通过，22/22阶段一致；状态为 `offline_binary_roundtrip_verified_not_game_import_verified`。**D4 游戏内导入和 D5 比赛效果仍待验证**，不得将构建成功表述为实战验证成功。
 - V1.4 完整数据复盘：[V1.4_SEASON_REPORT_ANALYSIS_45727738275.md](V1.4_SEASON_REPORT_ANALYSIS_45727738275.md)；V1.5 四类决策与 D0–D5 状态见 [TACTIC_INSTRUCTION_DECISION_LEDGER.md](TACTIC_INSTRUCTION_DECISION_LEDGER.md)。
 
+
+
+---
+
+## V1.6 正式赛季复盘｜Exporter Run 45744550318
+- 用户确认本报告使用V1.6；源存档SHA-256 `c91d8caa2e9a9030c784efb6b627a06d1098ac71ff48887843a68cd5386a8c75`；FM27 build 27.1.1+2511875。
+- 英超38场：**28胜5平5负、87:37、89分、73.7%胜率**，刷新本项目完整赛季胜率/积分纪录。
+- xG75.54/xGA46.33；我方/对手绝佳机会63/40；主场17-1-1、客场11-4-4；客场xGA26.55，对手绝佳机会22。
+- 实际失球低于xGA 9.33、进球高于xG 11.46；结果优秀，但机会质量提示防守风险，不能只看实际失球。
+- 完整分析：[V1.6_SEASON_REPORT_ANALYSIS_45744550318.md](V1.6_SEASON_REPORT_ANALYSIS_45744550318.md)。
+
+## V1.7 设计迭代｜父版 V1.6
+- 目标：保留V1.6进攻骨架和心态/TI，回调OOP双后腰同时积极逼抢的结构风险。
+- OOP DML：逼抢后腰→屏障后腰；OOP DMR Trigger Press MORE_OFTEN→LESS_OFTEN，Tackle Harder保留。
+- 其余20阶段完全继承；IP四后场DL/DCL/DCR/DR保持。
+- 四类决策和完整22阶段矩阵见[V1.7_DESIGN_AND_AUDIT.md](V1.7_DESIGN_AND_AUDIT.md)。
+- V1.7 D3构建：Run163进行中；D4/D5待验证。
