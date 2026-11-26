@@ -30,6 +30,9 @@ jobs:
       - name: Restore and verify immutable V0.5 parent
         run: python "tactic_development/FM27_EngineDividend_4Back/materialize_v05_baseline.py"
 
+      - name: Clear prior generated outputs for this version
+        run: rm -f "tactic_development/FM27_EngineDividend_4Back/builds/2.5.fmf" "tactic_development/FM27_EngineDividend_4Back/builds/2.5.report.json"
+
       - name: Run project gate, native preflight, build and independent readback
         run: |
           python "tactic_development/FM27_EngineDividend_4Back/build_project_tactic.py" \
