@@ -534,7 +534,7 @@ V0.9 ST-only Run3 是已取代草案，不属于正式版本主线。V0.5 是 V2
 - **证据不足：** 不能把V1.5的进攻回落单独归因于心态/防线；不能把球员数据归因到完整角色/PI；V1.6双后腰压迫尚无D5证据。
 - 完整分析：[V1.5_SEASON_REPORT_ANALYSIS_45734426186.md](V1.5_SEASON_REPORT_ANALYSIS_45734426186.md)。
 
-## 7.5 最近一次迭代：V1.6（父版V1.5 / Run149；D0–D2已完成，D3待构建）
+## 7.5 最近一次迭代：V1.6（父版V1.5 / Run149；D0–D3已完成，D4/D5待验证）
 
 **父版本：** V1.5 / Run149；父 FMF SHA-256 `c4d68446a7da3e4857bc12dc1a2a9fa2b0c34341ec9653c77b08ce2ccb951711`；父 recipe blob SHA `73b03b8c81b5c14139f88063b0eab9325d16a1a6`。
 
@@ -562,4 +562,12 @@ V0.9 ST-only Run3 是已取代草案，不属于正式版本主线。V0.5 是 V2
 - D0：V1.5 Run45734426186赛季分析完成。
 - D1：读取当前catalog与style registry；V1.6新PI需由Actions正式执行角色/位置/职责权限预检。
 - D2：父子11槽/22阶段差异完成；IP四后场硬约束保持。
-- D3：等待正式构建与独立回读。
+- D3：Run162成功；预检、构建、独立回读、artifact上传全部通过；8/8核心检查通过，22/22阶段精确回读；FMF SHA-256 `e67a5d218c18d3e5f7862889ab04248f8ced1f8c67a7bddb2d232b72d293748d`；artifact ID `15080120509`。
+
+
+### V1.6 D3 构建身份回写
+
+- [Run162](https://github.com/eslaulau/fm-ta/actions/runs/45737442923) success；artifact `15080120509`；ZIP SHA-256 `12ec3e96a151da18032de34d9a9d600b6c08f019f8ee2d5917e8fe8654486213`。
+- FMF 4,480 bytes；SHA-256 `e67a5d218c18d3e5f7862889ab04248f8ced1f8c67a7bddb2d232b72d293748d`；same-run report SHA-256 `2f9aa4cf6db35aa4cf981187293655337fca75ca4e9928e524cbced6e57587f1`。
+- D3 8/8通过，22/22阶段精确回读；IP四后场DL/DCL/DCR/DR；心态4；DML为原生逼抢后腰角色。
+- D4：待用户在FM27内导入核对；D5：待使用V1.6后的赛季报告。
