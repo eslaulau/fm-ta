@@ -12,7 +12,7 @@
 
 - **原始数据来源：** [SOURCE_REGISTER.md](SOURCE_REGISTER.md)（Exporter Run ID、原始报告 URL、版本映射及缺失来源登记）。
 - **原始战术：** [V0.5 原生基准](V0.5_BASELINE.md)，来源为 V21 原生快照；本项目全部历史追踪从 V0.5 开始。
-- **当前候选：** [V1.9 R2 配方](V1.9_REDESIGN_R2.json) · [设计审计](V1.9_REDESIGN_R2_DESIGN_AND_AUDIT.md) · [历史总账复核纠正记录](V1.9_REDESIGN_R2_HISTORICAL_REAUDIT_REQUIRED.md) · [Run169构建](https://github.com/eslaulau/fm-ta/actions/runs/45760556137)。D1-D3技术构建通过，但D0历史总账审计未验收，暂不作为已批准升级；D4/D5暂缓。V1.8仍是最近完成D5的研发基准。V1.8 D5分析见 [赛季报告](V1.8_SEASON_REPORT_ANALYSIS_45753659141.md)；V1.8联赛21-9-8、72分，防守机会指标未达标。
+- **当前候选：** [V1.9 R2 配方](V1.9_REDESIGN_R2.json) · [设计审计](V1.9_REDESIGN_R2_DESIGN_AND_AUDIT.md) · [历史总账复核纠正记录](V1.9_REDESIGN_R2_HISTORICAL_REAUDIT_REQUIRED.md) · [Run169构建](https://github.com/eslaulau/fm-ta/actions/runs/45760556137)。D0历史总账复核现已完成，D1-D3技术构建通过；R2可进入D4游戏内核验，D5仍待完整赛季。R2仍是高风险待验证候选，不是已验证升级。V1.8仍是最近完成D5的研发基准。V1.8 D5分析见 [赛季报告](V1.8_SEASON_REPORT_ANALYSIS_45753659141.md)；V1.8联赛21-9-8、72分，防守机会指标未达标。
 - **历代最佳：** V1.6以28胜5平5负、89分、73.7%胜率刷新完整英超赛季纪录；V1.3仍是失球最少（30）且仅4负的防守基准。
 - **辅助版本执行记录：** [ITERATION_LOG.md](ITERATION_LOG.md)；**唯一权威决策与完整历史配置总账：** [TACTIC_INSTRUCTION_DECISION_LEDGER.md](TACTIC_INSTRUCTION_DECISION_LEDGER.md)。
 - **归档约束：** 此后本项目的版本文件全部放在当前目录；不再放进仓库根目录的通用 `build_requests/`。
@@ -40,7 +40,7 @@
 - V0.9_ST_ONLY_DRAFT_SUPERSEDED_run3.fmf：首轮单改 ST 草案历史 FMF；Run 3 同次 report 保存在 Actions artifact `15002228385`；已取代，不是正式 V0.9。
 - V0.8.fmf：4,352 bytes；SHA-256 c7480f2c32c55c1b8e8ce3f8724c9ea2c7b2f02fa4e9759b9c6aff8c31d7bb2e；Run 142 唯一父快照。
 
-- V1.9_REDESIGN.json / V1.9_REDESIGN_DESIGN_AND_AUDIT.md / V1.9_REDESIGN_BUILD_REPORT_SUMMARY.json：IP 4-3-3 DM + OOP 4-1-4-1 的历史R1重设计配方、审计和Run167构建摘要；D1-D3技术构建通过，历史总账审计未验收，现由R2作为候选但同样等待D0补齐。
+- V1.9_REDESIGN.json / V1.9_REDESIGN_DESIGN_AND_AUDIT.md / V1.9_REDESIGN_BUILD_REPORT_SUMMARY.json：IP 4-3-3 DM + OOP 4-1-4-1 的历史R1重设计配方、审计和Run167构建摘要；D1-D3技术构建通过；R1为历史候选，未完成D4/D5；R2已完成历史D0复核并作为当前高风险待验证候选。
 
 ## 项目硬约束与开放项
 
@@ -156,5 +156,5 @@ V0.5 是本项目唯一原始战术基准，来源为 V21 原生快照，不继�
 - 唯一父版本：V1.8 / Run45753659141。
 - IP：4-1-2-1-2 Diamond；OOP：5-2-3；IP后场四槽DL/DCL/DCR/DR。
 - [配方](V1.9_REDESIGN_R2.json) · [构建请求](V1.9_REDESIGN_R2_BUILD_REQUEST.json) · [设计审计](V1.9_REDESIGN_R2_DESIGN_AND_AUDIT.md) · [赛季追踪矩阵](V1.9_REDESIGN_R2_SEASON_TO_TACTIC_TRACEABILITY_45753659141.md) · [D3构建摘要](V1.9_REDESIGN_R2_BUILD_REPORT_SUMMARY.json)。
-- [GitHub Actions Run169](https://github.com/eslaulau/fm-ta/actions/runs/45760556137)：D1-D3技术检查通过，8/8检查、22/22阶段精确回读；但D0历史总账审计未验收，R2暂不作为已批准升级。详见[历史复核纠正记录](V1.9_REDESIGN_R2_HISTORICAL_REAUDIT_REQUIRED.md)。FMF SHA-256 `b199063dec9f8745d692ba2abcb78664bdbaa41184d8ea03455afaf6fefea4a5`。
+- [GitHub Actions Run169](https://github.com/eslaulau/fm-ta/actions/runs/45760556137)：D1-D3技术检查通过，8/8检查、22/22阶段精确回读；D0历史复核现已完成；R2可进入D4游戏内核验，但尚非已验证升级。详见[历史复核记录](V1.9_REDESIGN_R2_HISTORICAL_REAUDIT_REQUIRED.md)及唯一权威总账。FMF SHA-256 `b199063dec9f8745d692ba2abcb78664bdbaa41184d8ea03455afaf6fefea4a5`。
 - D4游戏内导入和D5赛季表现尚未验证。Run167保留为历史R1，不覆盖、不宣称比赛失败。
