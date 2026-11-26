@@ -4,6 +4,6 @@
   "audit": "tactic_development/FM27_EngineDividend_4Back/2.6_DESIGN_AND_AUDIT.md",
   "parent_version": "V0.5",
   "parent_sha256": "e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257",
-  "trigger_reason": "Retry after correcting audit parser requirements: unbulleted hash metadata, exact 22-slot audit heading, 9-column evidence rows, and explicit PPG>=2.85 line.",
-  "revision": 2
+  "trigger_reason": "Re-run D0/D1-D3 after adding exact sha256sum input logging and completing the D5 marker in the 22-slot audit; update audit pins from the workflow's actual file-byte hashes.",
+  "revision": 3
 }
