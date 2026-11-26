@@ -1123,3 +1123,32 @@ V1.1与V1.2英超38场有相同的主客场对手配对，但只有27场日期�
 - FMF 4,504 bytes，SHA-256 `c4d68446a7da3e4857bc12dc1a2a9fa2b0c34341ec9653c77b08ce2ccb951711`；same-run report 11,708 bytes，SHA-256 `b8a9c32e82c84eee2847c3328c25e4d569aedad4c64191cd4debe34be587a07f`。
 - D3 8/8 通过；22/22 阶段回读一致；IP后场DL/DCL/DCR/DR；心态3；防线高度较低；TI bits新增58。D4游戏导入、D5比赛引擎均未验证。
 - [V1.5_BUILD_REPORT.json](V1.5_BUILD_REPORT.json)。
+
+
+---
+
+## V1.5 正式迭代归档｜父版本 V1.4 / Run148；Build Run149
+
+### 数据输入与诊断
+- 用户确认 Exporter Run 45727738275 使用 V1.4；完整来源、版本映射和数据质量见 [SOURCE_REGISTER.md](SOURCE_REGISTER.md) 与 [V1.4 赛季分析](V1.4_SEASON_REPORT_ANALYSIS_45727738275.md)。
+- 英超38场：27胜2平9负、101:53、83分；xG92.62、xGA43.46、我方/对手绝佳机会100/39。对比V1.3，进攻产量提高，但失球、xGA、对手绝佳机会和客场败场显著增加。
+- 核心诊断：不能把全部失利归因到单一角色/PI；优先降低防守纵深风险，同时保留V1.4的IP四后场和进攻端主要产量结构。
+
+### V1.5 配方与四类决策
+- 父版本：V1.4 / Run148；父FMF SHA-256 `5bce6f33f70ec9aa8627e18cc866b51f5cd79b99e2e52ba667087b4e142e92bc`。
+- 配方：[V1.5.json](V1.5.json)；构建请求：[V1.5_BUILD_REQUEST.json](V1.5_BUILD_REQUEST.json)；完整设计审计：[V1.5_DESIGN_AND_AUDIT.md](V1.5_DESIGN_AND_AUDIT.md)。
+- **继承保留：** IP四后场DL/DCL/DCR/DR；22个阶段的位置、角色、职责、PI；AML内锋进攻、内切和自由跑位；较高比赛节奏、较宽进攻宽度、高位防守介入线、较多团队逼抢。
+- **替换淘汰：** 心态原生值4→3；球队防线高度DEFAULT→LOWER。
+- **新增待验证：** 心态3 + 较低防线 + 高位防守介入线 + 较多团队逼抢的协同组合；重点监控客场xGA、对手绝佳机会、失球、积分及我方xG/绝佳机会是否保持。
+- **证据不足：** V1.4报告没有逐场战术槽位/PI映射；593/973球员报告行缺role_code，63次出场身份未识别，3球未归属；FM27 build 27.1.1+2511875 使用借用schema-6布局，状态partial/unverified。
+
+### Build Run149 与验收
+- [FM27 Tactic Build Run149](https://github.com/eslaulau/fm-ta/actions/runs/45729221041) 成功；Artifact ID `15076425618`。
+- FMF SHA-256：`c4d68446a7da3e4857bc12dc1a2a9fa2b0c34341ec9653c77b08ce2ccb951711`；same-run report SHA-256：`b8a9c32e82c84eee2847c3328c25e4d569aedad4c64191cd4debe34be587a07f`；artifact ZIP SHA-256：`87fb9d07f34214fb60cb945c4bf07613f740d17d4ac612d08164775b4a290be4`。
+- D3：8/8独立回读检查通过，22/22阶段设计与回读一致；状态为`offline_binary_roundtrip_verified_not_game_import_verified`。
+- D4：待用户在FM27内导入并核对阵型、角色、职责、PI、TI与心态显示。
+- D5：待使用V1.5后的正式比赛/赛季报告；不得在D5完成前宣称V1.5实战胜率或效果。
+
+### 归档约定
+- 本版本所有文件统一位于本目录；构建请求已由仓库根目录`build_requests/`迁入`V1.5_BUILD_REQUEST.json`。
+- 后续版本沿用同一目录和`Vx.y_<TYPE>`命名，版本总览统一维护在[VERSION_CATALOG.md](VERSION_CATALOG.md)，Exporter原始来源统一维护在[SOURCE_REGISTER.md](SOURCE_REGISTER.md)。
