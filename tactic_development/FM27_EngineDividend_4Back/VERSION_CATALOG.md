@@ -194,3 +194,14 @@
 - OOP采用V1.3分层保护的角色/职责结构重新映射；当前27.1.1 catalog不允许相关OOP角色写入个人Trigger Press/凶狠铲抢PI，因此没有伪造这些指令。抢点前锋不允许后点PI，也已移除。
 - D1原生角色/职责/PI权限预检通过；D2 11槽/22阶段及IP四后场约束通过；D3外层roundtrip、全部成员解密/Zstandard校验、TAC完整解析、22阶段精确回读、PI权限、TI向量和原生style身份检查8/8通过。
 - D4游戏内导入/中文显示/球员位置熟悉度待用户确认；D5完整38场英超报告待验证。**本版不宣称已经达到109分或PPG≥2.85。**
+
+
+## 2.6｜IP 4-1-3-2 / OOP 4-4-2 DM｜D1-D3完成（2026-11-26）
+
+- 定位：重启V1.6高要求升级计划；V1.6仅作历史证据，父版本固定V0.5。2.3用户实测数回合全败后正式放弃；2.5仅D3、无D4/D5，保留历史。
+- 配方：[2.6.json](2.6.json)；D0审计：[2.6_DESIGN_AND_AUDIT.md](2.6_DESIGN_AND_AUDIT.md)；FMF：[builds/2.6.fmf](builds/2.6.fmf)；回读报告：[builds/2.6.report.json](builds/2.6.report.json)。
+- IP严格4-1-3-2，DL/DCL/DCR/DR各一次；OOP 4-4-2 DM；心态5（积极）。
+- GitHub Actions [Run 45824386052](https://github.com/eslaulau/fm-ta/actions/runs/45824386052)；Artifact ID 15119676222；Artifact ZIP SHA-256 a84d03a5491f5728f646f91b1c69ffe877ddcd623c68e1f6860624d610907dba。
+- FMF 4,616 bytes；SHA-256 1cbdd6142fd40a60b1073915e78a3a9956f29c2a324383c8dd73213bb2457039；同次构建报告SHA-256 51eaa1a30dc0d6c60f5e5292ed5e421cf0465b6ba7c94a2a35a0e3f848255955；recipe SHA-256 675a6e5122d741c77183ad4f1d92081244600587663e12e8252b7fa7f4404b9c。
+- D1 catalog角色/职责/PI权限预检通过；D2 11槽/22阶段及IP四后场通过；D3 8/8独立二进制回读通过。game_interactive_import=false、match_engine=false。
+- D4：待用户在FM27导入并核对中文显示、IP/OOP阵型、位置熟悉度；D5：待完整38场赛季报告。未宣称109分或xG100达标。
