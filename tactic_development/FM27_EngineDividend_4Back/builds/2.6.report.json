@@ -1,13 +1,13 @@
 {
   "status": "offline_binary_roundtrip_verified_not_game_import_verified",
   "output": "/home/runner/work/fm-ta/fm-ta/tactic_development/FM27_EngineDividend_4Back/builds/2.6.fmf",
-  "sha256": "fe702fe43f7af5c5a0fc1c57c2a48abb04ce28642d28436183d1161ae2bf449f",
+  "sha256": "1cbdd6142fd40a60b1073915e78a3a9956f29c2a324383c8dd73213bb2457039",
   "bytes": 4616,
   "template": "/home/runner/work/fm-ta/fm-ta/tactic_development/FM27_EngineDividend_4Back/builds/V0.5.fmf",
   "template_sha256": "e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257",
   "recipe": "/home/runner/work/fm-ta/fm-ta/tactic_development/FM27_EngineDividend_4Back/2.6.json",
   "recipe_input_format": "json",
-  "name": "FM27_EngineDividend_4Back_2.6_IP4132_OOP442DM",
+  "name": "FM27_EngineDividend_4Back_IP4132_OOP442DM_2.6",
   "style": "FM27 Native Parent Snapshot (V0.5)",
   "tac_style_string": "",
   "style_code_hex": "4c4c554e",
@@ -461,8 +461,8 @@
     "PI 权限按指定的 phase/position/role/duty 目录策略检查。",
     "只有结构/自解包核验；必须由用户在 FM27 内手动导入后才能确认游戏接受。"
   ],
-  "project_version": "OOP442DM",
-  "project_recipe_sha256": "c51b0f48b1297715a4abe351504469c5f05c9c00863db37f07954542566ca971",
+  "project_version": "2.6",
+  "project_recipe_sha256": "675a6e5122d741c77183ad4f1d92081244600587663e12e8252b7fa7f4404b9c",
   "project_parent_version": "V0.5",
   "project_parent_sha256": "e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257",
   "project_style_registry_overlay": "temporary project-local V0.5 carrier; shared FM-TA registry unchanged"
