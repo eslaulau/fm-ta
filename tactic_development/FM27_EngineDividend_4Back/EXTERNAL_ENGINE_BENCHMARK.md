@@ -371,3 +371,33 @@
 - metaFM 4-2-3-1页面记录1,664场在完全相同战术、AI计划、球员与seed下由27.1.0重放到27.1.1；974场（58.5%）结果不同，页面测得PPG变化约-0.029 ±0.026、每场进球变化约-0.084 ±0.038。
 - 这说明跨patch的战术排名/结果不能直接沿用；本项目V1.7/V1.8都以27.1.1 build为当前报告和结构评估环境。
 - V1.8采用IP四后卫 + OOP无锋5-2-3，是基于当前patch快照的待验证候选，不是对榜单战术的复制或成绩承诺。
+
+ 
+## 2026-11-26｜FM27 27.1.1 菱形四后卫候选复核
+
+### metaFM 当前测试
+- 当前27.1.1总榜已更新至72套战术/164,080场的页面快照；排名中大量高分方案使用不同IP/OOP结构，许多IP不是四后卫，不能直接复制到本项目。
+- 4-3-3 DM分类当前5套，最佳1.49 PPG、类别均值1.41；旧V1.9 Run167以4-3-3 DM为IP骨架的外部理由需要重新评估。
+- 4-1-2-1-2 Diamond分类当前3套、6,720场；最佳“442菱形中场”综合1.949 PPG、2,240场，xG2.28、xGA1.43，IP 4-1-2-1-2 Diamond / OOP 5-2-3。
+- 页面公开结构：IP两名Wing-Back Support、双Channel Midfielder Attack、Attacking Midfielder Attack、双Centre Forward Attack；OOP两名Full-Back Defend、三名Centre-Back Defend、双Defensive Midfielder Defend、Attacking Midfielder Support、双Winger Support。5名球员跨位置切换：DMC→DC、MCR/MCL→DMR/DML、STR/STL→AMR/AML。
+- 外部样本使用全体非门将球员所有场上位置均为天然熟练度20；本队球员双位置熟悉度必须在D4检查。
+- 四项测试结果中主场2.26 PPG、客场1.64 PPG；作为强队2.73、均势1.97、作为弱队1.11、双方较弱1.99。说明样本对强弱和主客场情境敏感，不能将综合PPG直接套到用户存档。
+- 页面公开TI包括直传、极高节奏、传入空当、通过传递破解逼抢、低平传中、减少远射、推进中路、两翼套上、得球后反击；OOP高位逼抢介入线、较低防线、极多团队逼抢、凶狠铲抢。项目不照搬“极多”团队逼抢，遵循不把团队压迫拉满的既有研究原则，改为“较多”并通过个人PI分层。
+- 部分PI/TI在metaFM页面受会员权限限制；本项目只引用可见阵型、角色、职责与公开指令，不声称复制其隐藏PI或完整原生FMF。
+
+来源：
+- metaFM tactic: https://metafm.net/zh/tactics/442-0c7c98
+- metaFM formation: https://metafm.net/formations/4-1-2-1-2-diamond
+- metaFM leaderboard: https://metafm.net/zh/leaderboard
+- metaFM updates: https://metafm.net/updates
+
+### FM-Arena / FMAX / PlayGM交叉参考
+- FM-Arena 27.1.1聚合榜出现4-1-2-1-2变体，例如timmerl 4-1-2-1-2 v3：1,350场、73/114分、xGF74、xGA50。不同测试协议，不与metaFM数据合并。
+- FMAX 27.1.1榜单也有4-1-2-1-2/钻石中场变体；只作为阵型家族的交叉线索，分数不可与metaFM或FM-Arena混排。
+- PlayGM 2026-11-18发布“442边翼卫 菱形中场v2.fmf”，用户反馈提及球员习惯和个别PI适配；属于社区案例，不视为控制实验。
+- FM-Arena: https://fm-arena.com/tactic-testing/aggregators/13/
+- FMAX: https://getfmax.com/en/lab/
+- PlayGM: https://playgm.cc/forum.php?mod=viewthread&tid=986807
+
+### 对V1.9 Run167的影响
+Run167选择IP 4-3-3 DM / OOP 4-1-4-1；当前4-3-3 DM样本弱于4-1-2-1-2 Diamond，4-1-4-1缺少当前build样本。因此R2不覆盖Run167，而从V1.8重新建立唯一设计：IP四后卫菱形中场 / OOP五后卫5-2-3，重点区别于V1.8的高位逼抢翼卫与补位边中卫结构。
