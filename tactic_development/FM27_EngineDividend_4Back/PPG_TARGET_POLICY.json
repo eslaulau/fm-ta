@@ -1,0 +1,42 @@
+{
+  "policy_version": 1,
+  "project": "FM27_EngineDividend_4Back",
+  "primary_objective": "PPG >= 2.85",
+  "target_ppg": 2.85,
+  "formula": "league_points / completed_league_matches",
+  "38_match_minimum_points": 109,
+  "hard_constraints": {
+    "ip_back_four_positions": ["DL", "DCL", "DCR", "DR"],
+    "oop_shape": "open",
+    "one_primary_tactic_per_iteration": true,
+    "preserve_all_historical_evidence": true
+  },
+  "required_decision_classes": [
+    "继承保留",
+    "替换淘汰",
+    "新增待验证",
+    "证据不足"
+  ],
+  "evaluation_priority": [
+    "PPG, points, wins, draws, losses and repeatability",
+    "goals, xG/NPxG, big chances and chance conversion",
+    "xGA, goals conceded and opponent big chances",
+    "home-away splits and opponent/context differences",
+    "IP/OOP structure, positions, roles, duties, PI and TI"
+  ],
+  "evidence_rules": {
+    "historical_versions": "Evidence and comparison points, not mandatory templates",
+    "external_meta": "Hypothesis source only; not equivalent to this team's season evidence",
+    "build_success": "D3 technical verification only; never proof of match effectiveness",
+    "discipline_stats": "Fouls, yellow cards and red cards are excluded from tactic-quality evaluation"
+  },
+  "tool_boundary": {
+    "fm_ta_role": "Generic FMF generation and native-format tooling only",
+    "project_rules_location": "tactic_development/FM27_EngineDividend_4Back/",
+    "forbidden_changes": [
+      "Do not modify FM-TA generic exporter or generator rules for this project's policies",
+      "Do not modify generic repository build workflows to encode project-specific tactical decisions",
+      "Do not impose this project's PPG target on other projects using FM-TA"
+    ]
+  }
+}
