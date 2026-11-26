@@ -57,5 +57,9 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add "tactic_development/FM27_EngineDividend_4Back/builds/2.5.fmf" "tactic_development/FM27_EngineDividend_4Back/builds/2.5.report.json"
-          git commit -m "Build FM27 EngineDividend 4Back 2.5 D3"
-          git push
+          if git diff --cached --quiet; then
+            echo "D3 outputs are byte-identical to the archived files; no commit is required."
+          else
+            git commit -m "Build FM27 EngineDividend 4Back 2.5 D3"
+            git push
+          fi
