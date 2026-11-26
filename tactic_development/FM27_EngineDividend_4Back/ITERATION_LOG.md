@@ -1275,3 +1275,15 @@ V1.1与V1.2英超38场有相同的主客场对手配对，但只有27场日期�
 - 配方：[V1.9.json](V1.9.json)；审计：[V1.9_DESIGN_AND_AUDIT.md](V1.9_DESIGN_AND_AUDIT.md)。IP 11槽与共享TI/心态保持不变，OOP完整回退V1.7的4-2-1-2-1。
 - 四类决策：继承IP/共享设置（结构性暂留、单项未准入）；替换V1.8 OOP五后卫翼卫/三中卫/前场三人组合；新增OOP结构回退复测；证据不足为无同seed A/B、无逐场槽位映射和数据解析风险。
 - D0完成；D1-D3待构建；D4/D5待验证。
+
+
+## V1.9 D1–D3 原生构建完成｜Run165
+
+- recipe：[V1.9.json](V1.9.json)，blob SHA `c05f8d0b8b99050175050c3686d7e0e0f2472817`；build request：[V1.9_BUILD_REQUEST.json](V1.9_BUILD_REQUEST.json)，commit `83539cd1c4992cf61ac7be1e9adc78054484b904`。
+- Actions：[FM27 Tactic Build Run165](https://github.com/eslaulau/fm-ta/actions/runs/45754396168)；run ID `45754396168`；artifact ID `15086209218`。
+- D1 catalog-backed preflight通过；D2 11槽/22阶段检查通过，IP四后卫DL/DCL/DCR/DR，OOP 4-2-1-2-1无锋结构。
+- D3 8/8检查通过，22/22设计阶段与22/22回读阶段一致；PI权限、团队TI向量、style string/FourCC均通过。
+- FMF：`V1.9_BUILD_REQUEST_run165.fmf`，4,552 bytes；SHA-256 `57446c3d4e4cb3cd957840a436843f8b87fcb2d119bc223e2136d9512f1af8e7`。
+- Same-run report：11,678 bytes；SHA-256 `91438ae6978a2789d91b2942a17d52d7c1ac5726d5069e9073bfd8f721cdb93c`；artifact ZIP SHA-256 `ab65cf6d881e24b75e804728e060a7c5d67e67abf7b7e0b6c7eb01dd8faa28d7`。
+- 构建摘要：[V1.9_BUILD_REPORT_SUMMARY.json](V1.9_BUILD_REPORT_SUMMARY.json)。
+- 状态 `offline_binary_roundtrip_verified_not_game_import_verified`；D4游戏内导入与D5比赛/赛季表现仍待验证。
