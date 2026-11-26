@@ -42,8 +42,8 @@
       },
       "out": {
         "pos": "GK",
-        "role": "Goalkeeper",
-        "duty": "D",
+        "role": "OPGoalkeeper",
+        "duty": "S",
         "pi": []
       }
     },
