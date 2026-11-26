@@ -26,7 +26,7 @@ class ProjectGateTests(unittest.TestCase):
             "primary_objective": "PPG >= 2.85",
             "hard_constraints": {"ip_back_four_positions": ["DL", "DCL", "DCR", "DR"]},
         }), encoding="utf-8")
-        gate.RULES.write_text("PPG ≥ 2.85\n不以现实足球理论作为否决依据；强制引擎行为错位设计。", encoding="utf-8")
+        gate.RULES.write_text("PPG ≥ 2.85\n不以现实足球理论作为否决依据；强制引擎行为错位设计。\n每轮从 V0.5 重生；最高优先级。", encoding="utf-8")
         gate.LEDGER.write_text("PPG 2.85", encoding="utf-8")
         self.addCleanup(self.restore_gate_paths)
         self.recipe = self.root / "candidate.json"
@@ -67,7 +67,9 @@ class ProjectGateTests(unittest.TestCase):
         policy_sha = hashlib.sha256(gate.POLICY.read_bytes()).hexdigest()
         self.audit.write_text(
             "项目最高目标：PPG ≥ 2.85\n"
-            "父版本：V1.8\n"
+            "父版本：V0.5\n"
+            "重生基准：V0.5\n"
+            f"重生基准 FMF SHA-256：{gate.V05_BASELINE_SHA256}\n"
             f"父 FMF SHA-256：{parent_sha}\n"
             f"本轮配方 SHA-256：{recipe_sha}\n"
             f"项目规则 SHA-256：{rules_sha}\n"
