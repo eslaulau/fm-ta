@@ -18,6 +18,7 @@
 | V1.6 | 45744550318 | [分析](V1.6_SEASON_REPORT_ANALYSIS_45744550318.md) | [Exporter Run 45744550318](https://github.com/eslaulau/FM27-Exporter/tree/main/season-reports/1/45744550318) |
 | V1.7 | 45748944770 | [赛季分析](V1.7_SEASON_REPORT_ANALYSIS_45748944770.md)；[设计审计](V1.7_DESIGN_AND_AUDIT.md) | [Exporter Run 45748944770](https://github.com/eslaulau/FM27-Exporter/tree/main/season-reports/1/45748944770) |
 | V1.8 | 45753659141 | [赛季分析](V1.8_SEASON_REPORT_ANALYSIS_45753659141.md)；[设计审计](V1.8_DESIGN_AND_AUDIT.md) | [Exporter Run 45753659141](https://github.com/eslaulau/FM27-Exporter/tree/main/season-reports/1/45753659141) |
+| 2.2 | 45794923641 | [D5复盘](2.2_D5_SEASON_REVIEW_20261126.md) | [Exporter Run 45794923641](https://github.com/eslaulau/FM27-Exporter/tree/main/season-reports/1/45794923641)（用户确认本赛季使用2.2；Exporter不含战术配置，身份映射来自用户声明） |
 
 ## 来源完整性规则
 
@@ -81,3 +82,6 @@
 - 构建来源：V0.5原生FMF SHA-256 e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257；Run 45784291686；Artifact 15099985865。
 - FMF SHA-256 497afc117defebde99b3cb8433f3e21fee159eeea5f97e5a5aa98130103cc22d；same-run report SHA-256 9d22ef9120bad01c2f65fd9a08235dc8072411af0f283ad0b640405bde8975d2。
 - D0–D3完成；D4待游戏内导入；D5待完整赛季报告。
+
+
+- 2.2 / Run45794923641：用户确认38场英超使用2.2；38/38场、26胜6平6负、84分、87:40；D5性能FAIL。FM27 build 27.1.1+2511875；Exporter v1.5.0；源存档SHA-256 `ed659d74cdfefa0136d6559697797051f430e0684a2f9c7ef8aa4f6541131963`；导出时间2026-11-26T09:46:58Z。战术配置未由Exporter导出，2.2映射来自用户声明。详细复盘见 `2.2_D5_SEASON_REVIEW_20261126.md`。
