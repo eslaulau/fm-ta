@@ -71,3 +71,13 @@
 - 已逐一核对14份赛季分析/重分析及其用户确认版本映射；详细数据质量、指标、配置变化和R2历史映射见唯一权威总账 `TACTIC_INSTRUCTION_DECISION_LEDGER.md` 的“D0全历史重生式复核”章节。
 - 本次确认：V1.3为综合攻守参照；V1.6为最高积分参照；V1.2/V1.3/V1.7的OOP四后卫+双后腰分层保护有重复正向机会质量观察；V1.1/V1.8的两套具体OOP 5-2-3均需作为高风险历史样本。
 - 报告质量边界仍按各版分析文件执行；多数build/schema并非上游完整认证，且无同seed受控A/B，不得据此声称单项因果。
+
+
+## V2.1｜历史成功改动综合重构与D1-D3构建（2026-11-26）
+
+- 历史证据主索引：本项目唯一总账 TACTIC_INSTRUCTION_DECISION_LEDGER.md 中“历史配置档案｜V0.5–V1.8”及“V2.1 D0”章节；关键原始配方为V1.3.json、V1.6.json、V1.7.json，关键赛季结果及限制按对应D5分析记录。
+- 当前build外部快照：metaFM 27.1.1 leaderboard https://metafm.net/leaderboard（72套/164,080场；榜首2.07 PPG；测试覆盖相同AI game plans与球员的四种强弱条件）；metaFM meta https://metafm.net/meta（4-2-3-1分类最佳约1.70 PPG）；FM-Arena 27.1.1 https://fm-arena.com/tactic-testing/（页面快照62套/83,700场；独立协议，不与metaFM合并）。
+- 外部样本只作结构假设来源；不能与本队英超38场赛季PPG直接比较，也不能覆盖IP四后场硬约束。
+- 构建来源：V0.5原生FMF SHA-256 e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257；Run 45784291686；Artifact 15099985865。
+- FMF SHA-256 497afc117defebde99b3cb8433f3e21fee159eeea5f97e5a5aa98130103cc22d；same-run report SHA-256 9d22ef9120bad01c2f65fd9a08235dc8072411af0f283ad0b640405bde8975d2。
+- D0–D3完成；D4待游戏内导入；D5待完整赛季报告。
