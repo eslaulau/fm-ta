@@ -62,6 +62,9 @@ def validate(recipe_path: Path, audit_path: Path, parent_fmf: Path) -> list[str]
     except (OSError, UnicodeError, json.JSONDecodeError) as exc:
         return [f"Unable to read project policy or recipe: {exc}"]
 
+    if not isinstance(recipe, dict):
+        return ["Recipe root must be a JSON object."]
+
     rules = RULES.read_text(encoding="utf-8")
     ledger = LEDGER.read_text(encoding="utf-8")
     audit = audit_path.read_text(encoding="utf-8")
@@ -111,8 +114,6 @@ def validate(recipe_path: Path, audit_path: Path, parent_fmf: Path) -> list[str]
     if policy.get("hard_constraints", {}).get("ip_back_four_positions") != list(IP_BACK_FOUR):
         errors.append("Policy IP hard constraint must be exactly DL/DCL/DCR/DR.")
 
-    if not isinstance(recipe, dict):
-        return errors + ["Recipe root must be a JSON object."]
     if not isinstance(recipe.get("base"), dict) or not isinstance(recipe["base"].get("g"), str):
         errors.append("Recipe must identify its native base/template in base.g.")
     if not isinstance(recipe.get("ti"), dict):
