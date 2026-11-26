@@ -221,3 +221,27 @@ D5：完整38场英超报告，确认战术身份，完成PPG判定及所有平�
 - 当前最高优先级结构候选更新为“IP菱形四后场 + R2式OOP 5-2-3五人换位链”。可确认的是外部公开的角色/职责/位置结构一致；不能确认隐藏PI/TI完全相同，更不能预测本队PPG。
 - 下一步以V0.5为原生父基准重建该角色结构，重新设计OOP个人压迫分层与TI；不直接继承R2的V0.9父载体，也不机械照抄R2的显式PI/TI。
 - OOP四后卫+双后腰保留为对照架构，不再默认优先于已获得外部同槽结构对应的菱形/5-2-3候选。
+
+
+---
+
+## 11. 2.2整体方案与D1-D3构建结果（2026-11-26）
+
+### 当前唯一构建候选：2.2
+- 方案：IP 4-1-2-1-2 Diamond；OOP 5-2-3；IP四后场DL/DCL/DCR/DR各一次。
+- 设计来源：V0.5原生基准重生；采用V1.9 R2与metaFM 27.1.1公开菱形样本逐槽一致的位置/角色/职责结构；PI/TI结合本项目用户研究假设、当前引擎更新和历史数据重新审计。
+- 2.2不是直接继承V1.9 R2 FMF；其父FMF SHA严格固定为V0.5。
+- 2.2配方：2.2.json；设计审计：2.2_DESIGN_AND_AUDIT.md；触发记录：2.2_TRIGGER.json。
+
+### D1-D3结果
+- GitHub Actions Run：[45789108253](https://github.com/eslaulau/fm-ta/actions/runs/45789108253)；Artifact ID 15101073066。
+- <badge color="success">D1-D3通过</badge> 原生角色/职责/PI权限预检、11槽/22阶段检查、FMF生成与8/8独立二进制回读全部通过。
+- V0.5父模板SHA-256：e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257。
+- FMF：4,528 bytes；SHA-256：7feba49ad389125b64690ce00feaf01717f70ae80cb5854eec614e41fc058a34。
+- 同次报告：12,666 bytes；SHA-256：ab436693df94409860b0ca4d6eb57ec79ca3b3ba6d643fdea72c5112ab6ed7e8。
+- 状态仍为offline_binary_roundtrip_verified_not_game_import_verified；game_interactive_import=false、match_engine=false。
+
+### 当前下一步
+1. D4：FM27游戏内导入，核对有球四后场、11槽角色/职责/PI/TI/心态、无球5-2-3和五名跨位球员熟悉度。
+2. D5：完整38场英超；至少109分（PPG≥2.85）才算目标达成。
+3. D4/D5未完成前不生成2.3、不把2.2称为实战升级。若D5未达标，按全部平局/失利和主客场数据定位积分损失，再决定是否整体重构。
