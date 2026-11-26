@@ -287,3 +287,12 @@ DL、DCL、DCR、DR、DML、DMR 的 OOP `TACKLING` 由 `GET_STUCK_IN` 改为 `EA
 - D1–D3： [Run164](https://github.com/eslaulau/fm-ta/actions/runs/45750563671)成功；8/8检查通过，22/22阶段精确回读。
 - FMF：4,616 bytes；SHA-256 `51e94c684c66ce016950d93f2619a40086820e7a9dcf792b7251d4ac67fa4e72`；构建摘要见 [V1.8_BUILD_REPORT_SUMMARY.json](V1.8_BUILD_REPORT_SUMMARY.json)。
 - D3不代表游戏内导入或比赛验证；D4/D5待完成。
+
+ 
+## 当前研发版本｜V1.9重新执行版R2（Run169）
+
+- 唯一父版本：V1.8 / Run45753659141。
+- IP：4-1-2-1-2 Diamond；OOP：5-2-3；IP后场四槽DL/DCL/DCR/DR。
+- [配方](V1.9_REDESIGN_R2.json) · [构建请求](V1.9_REDESIGN_R2_BUILD_REQUEST.json) · [设计审计](V1.9_REDESIGN_R2_DESIGN_AND_AUDIT.md) · [赛季追踪矩阵](V1.9_REDESIGN_R2_SEASON_TO_TACTIC_TRACEABILITY_45753659141.md) · [D3构建摘要](V1.9_REDESIGN_R2_BUILD_REPORT_SUMMARY.json)。
+- [GitHub Actions Run169](https://github.com/eslaulau/fm-ta/actions/runs/45760556137)：D1-D3通过，8/8检查、22/22阶段精确回读；FMF SHA-256 `b199063dec9f8745d692ba2abcb78664bdbaa41184d8ea03455afaf6fefea4a5`。
+- D4游戏内导入和D5赛季表现尚未验证。Run167保留为历史R1，不覆盖、不宣称比赛失败。
