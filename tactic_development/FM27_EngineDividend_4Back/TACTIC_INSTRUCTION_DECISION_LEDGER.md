@@ -10,7 +10,7 @@
 - 高优先级参考文件：[ENGINE_DIVIDEND_PRIORITY_INDICATORS_27.1.1.md](ENGINE_DIVIDEND_PRIORITY_INDICATORS_27.1.1.md)。所有机制均为优先验证假设，不得写成已证实的本队效果。
 - 最终D5双门槛：38场英超至少109分（PPG≥2.85）且全队xG≥100；两项必须同时达标。
 - 2.6等此前候选仅保留历史技术/设计证据，不是R3父版；不自动继承。R3必须完整从V0.5重建。
-- 当前状态：R3设计文件正在建立；D0项目门禁、D1原生权限预检、D2结构检查、D3原生FMF构建/独立回读、D4游戏内导入、D5完整赛季依次验收。任何阶段未完成均不得提前宣称通过。
+- 当前状态：R3已完成D0项目门禁、D1原生权限预检、D2结构检查、D3原生FMF构建/独立回读；D4游戏内导入与D5完整38场赛季报告待完成。D3 Run：[45845663863](https://github.com/eslaulau/fm-ta/actions/runs/45845663863)，Artifact ID `15131511605`；FMF 4,676 bytes，SHA-256 `449fb1a76ca8967ccfd674e59c8dd007d40def9da8aafaf8f23edf10c8d3fa4e`；报告：[R3.report.json](builds/R3.report.json)。D3只证明原生结构构建与独立回读，不证明游戏内导入或比赛效果。
 
 ---
 
