@@ -21,10 +21,6 @@
 
 | 版本 | 英超场次 | 胜-平-负 | 胜率 | 进失球 | 积分 | 数据级别 |
 |---|---:|---:|---:|---:|---:|---|
-| V0.1 | 19 | 8-1-10 | 42.1% | 21:26 | 25 | 部分赛季 |
-| V0.2 | 23 | 7-3-13 | 30.4% | 29:34 | 24 | 部分赛季 |
-| V0.3 | 20 | 13-3-4 | 65.0% | 35:24 | 42 | 部分赛季 |
-| V0.4 | 30 | 13-10-7 | 43.3% | 50:39 | 49 | 部分赛季 |
 | V0.5 | 38 | 20-9-9 | 52.6% | 75:43 | 69 | 完整赛季 |
 | V0.6 | 38 | 20-8-10 | 52.6% | 83:49 | 68 | 完整赛季 |
 | V0.7 | 38 | 15-8-15 | 39.5% | 70:58 | 53 | 完整赛季 |
@@ -44,8 +40,7 @@
 | **V1.9重新执行版R2（Run169）** | **V1.8** | **IP 4-1-2-1-2 Diamond / OOP 5-2-3；DMC→DC、双MC→双DM、双ST→AMR/AML** | **待实测** | [R2构建摘要](V1.9_REDESIGN_R2_BUILD_REPORT_SUMMARY.json) · [Run169](https://github.com/eslaulau/fm-ta/actions/runs/45760556137) | [R2设计审计](V1.9_REDESIGN_R2_DESIGN_AND_AUDIT.md) · [赛季追踪矩阵](V1.9_REDESIGN_R2_SEASON_TO_TACTIC_TRACEABILITY_45753659141.md) | D0未验收；D1-D3技术通过；8/8回读、22/22阶段；FMF 4,688 bytes；SHA-256 `b199063dec9f8745d692ba2abcb78664bdbaa41184d8ea03455afaf6fefea4a5`；D4/D5待验证 |
 
 **口径提醒**
-- V0.1–V0.4 为未完成赛季样本，只能描述当前已赛成绩，不可与完整 38 场赛季作最终排名。
-- V0.5–V1.8 均为 38 场英超赛季；杯赛/欧战场次不混入该表。
+- V0.5 起各正式基准赛季按各自报告的英超赛季口径记录；杯赛/欧战场次不混入该表。
 - V0.6 的 20-8-10、83:49、68分；V0.7 的 15-8-15、70:58、53分，来自跨版本决策台账及相应版本审计。
 - 版本来自不同存档/阵容/赛季状态，结果是描述性历史比较，不是同随机种子受控 A/B。
 - V1.5已完成38场英超D5：25-3-10、78分、65.8%；V1.6已完成38场英超D5：28-5-5、89分、73.7%；V1.7由V1.6 D5触发，Build Run163已成功；D5已由Run45748944770完成，D4未单独逐项验收。V1.8由V1.7 D5触发；D3 Run164通过，D4由用户提供截图解析的位置/角色表确认IP四后卫及OOP无锋5-2-3，D5由Run45753659141完成（21-9-8、72分）。V1.9 Run165为旧回退实验；V1.9 R1 Run167保留为历史D3候选；V1.9 R2 Run169以V1.8为唯一战术父版本，D0-D3完成，D4/D5待验证。
@@ -56,10 +51,6 @@
 
 | 版本 | 配方 | 构建请求 | 设计/审计 | 构建报告 | 赛季分析/复核 | FMF |
 |---|---|---|---|---|---|---|
-| V0.1 | [JSON](V0.1.json) | [JSON](V0.1_BUILD_REQUEST.json) | 见 [README 历史记录](README.md) | 未单独归档 | README/迭代日志历史记录 | 未归档 |
-| V0.2 | [JSON](V0.2.json) | [JSON](V0.2_BUILD_REQUEST.json) | 见 [README 历史记录](README.md) | 未单独归档 | [迭代日志](ITERATION_LOG.md) | Actions 历史 |
-| V0.3 | [JSON](V0.3.json) | [JSON](V0.3_BUILD_REQUEST.json) | 见 [README 历史记录](README.md) | 未单独归档 | [迭代日志](ITERATION_LOG.md) | Actions 历史 |
-| V0.4 | [JSON](V0.4.json) | [JSON](V0.4_BUILD_REQUEST.json) | [角色/PI审计](V0.4_ROLE_PI_AUDIT.md) | 未单独归档 | [赛季分析](V0.4_SEASON_REPORT_ANALYSIS_45399643857.md) | Actions 历史 |
 | V0.5 | 基准见 [BASELINE](V0.5_BASELINE.md) | 未单独归档 | [角色/PI审计](V0.5_ROLE_PI_AUDIT_45540803100.md) | 未单独归档 | [赛季分析](V0.5_SEASON_REPORT_ANALYSIS_45540803100.md) | 基准 FMF 哈希见 BASELINE |
 | V0.6 | [JSON](V0.6.json) | 未单独归档 | [设计审计](V0.6_DESIGN_AND_AUDIT.md) | [报告](V0.6_BUILD_REPORT.json) | [复核](V0.6_REANALYSIS_45554864463.md) | [FMF](V0.6.fmf) |
 | V0.7 | [JSON](V0.7.json) | 未单独归档 | [设计审计](V0.7_DESIGN_AND_AUDIT.md) | [报告](V0.7_BUILD_REPORT.json) | [复核](V0.7_REANALYSIS_45564413834.md) | [FMF](V0.7.fmf) |
