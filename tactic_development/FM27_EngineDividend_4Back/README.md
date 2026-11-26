@@ -4,7 +4,7 @@
 
 - **唯一版本总目录：** [VERSION_CATALOG.md](VERSION_CATALOG.md)（所有版本成绩、配方、构建请求、设计审计、构建报告、FMF 与赛季分析索引）。
 - **原始数据来源：** [SOURCE_REGISTER.md](SOURCE_REGISTER.md)（Exporter Run ID、原始报告 URL、版本映射及缺失来源登记）。
-- **当前版本：** [V1.6 配方](V1.6.json) · [V1.6 设计审计](V1.6_DESIGN_AND_AUDIT.md)。D0–D2完成，D3待构建；父版V1.5 D5已完成，见 [赛季分析](V1.5_SEASON_REPORT_ANALYSIS_45734426186.md)。
+- **当前版本：** [V1.6 配方](V1.6.json) · [V1.6 设计审计](V1.6_DESIGN_AND_AUDIT.md) · [V1.6 构建报告](V1.6_BUILD_REPORT.json) · [V1.6 FMF](V1.6.fmf)。D0–D3完成（Run162，8/8回读）；D4游戏内导入、D5赛季效果待验证；父版V1.5 D5已完成，见 [赛季分析](V1.5_SEASON_REPORT_ANALYSIS_45734426186.md)。
 - **历代最佳：** 完整英超胜率最高为 V1.0、V1.3、V1.4 并列 71.1%；V1.3 以 88 分和仅 4 场失利作为综合基准。
 - **唯一历史主线：** [ITERATION_LOG.md](ITERATION_LOG.md)；**逐项指令沿革：** [TACTIC_INSTRUCTION_DECISION_LEDGER.md](TACTIC_INSTRUCTION_DECISION_LEDGER.md)。
 - **归档约束：** 此后本项目的版本文件全部放在当前目录；不再放进仓库根目录的通用 `build_requests/`。
