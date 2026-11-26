@@ -100,9 +100,14 @@ def validate(recipe_path: Path, audit_path: Path, parent_fmf: Path) -> list[str]
         errors.append("Design audit must state an explicit PPG/points improvement path.")
 
     parent_version = one_line_value(audit, "父版本")
-    if not parent_version or not re.fullmatch(r"V\d+(?:\.\d+)?(?:[-_A-Za-z0-9.]*)?", parent_version):
-        errors.append("Design audit must identify one exact parent version, e.g. 父版本：V1.8.")
-
+    if parent_version != "V0.5":
+        errors.append("重生模式强制要求父版本：V0.5；不得继承最近版本或任何 V1.x 版本。")
+    baseline_version = one_line_value(audit, "重生基准")
+    if baseline_version != "V0.5":
+        errors.append("Design audit must explicitly state 重生基准：V0.5.")
+    baseline_sha = one_line_value(audit, "重生基准 FMF SHA-256")
+    if baseline_sha != V05_BASELINE_SHA256:
+        errors.append("Design audit must pin the exact V0.5 baseline FMF SHA-256.")
     declared_parent_sha = one_line_value(audit, "父 FMF SHA-256")
     actual_parent_sha = sha256_file(parent_fmf)
     if not declared_parent_sha or not re.fullmatch(r"[0-9a-fA-F]{64}", declared_parent_sha):
