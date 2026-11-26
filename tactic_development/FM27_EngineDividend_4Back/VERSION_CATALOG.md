@@ -6,9 +6,9 @@
 
 > 2026-11-26：跨版本总账已进行结构修复。每轮战术迭代/赛季复盘必须同步更新 `TACTIC_INSTRUCTION_DECISION_LEDGER.md`、`ITERATION_LOG.md`、本目录与 `SOURCE_REGISTER.md`，并逐个GitHub read-back。详细门禁见 `ANALYSIS_AND_ITERATION_RULES.md` 第七节。
 
-- **当前开发版本：V1.8（D0完成；D1–D3构建中；D4/D5待验证）**
-- **最近完成阶段：V1.7 D5赛季复盘（Run45748944770）；V1.8已完成D0结构设计**
-- **仍待验证：V1.8 D1–D3构建、D4游戏内导入、D5比赛/赛季表现**
+- **当前开发版本：V1.8（D0–D3完成；D4/D5待验证）**
+- **最近完成阶段：V1.8 D3原生FMF构建与22阶段独立回读（Run164）**
+- **仍待验证：V1.8 D4游戏内导入、D5比赛/赛季表现**
 - **最高完整英超胜率：73.7%（V1.6，28胜5平5负、89分）**；V1.3仍是失球最少（30球）和4负的防守基准。
 - 版本比较必须使用英超联赛口径。非完整 38 场样本单独标记，不与完整赛季胜率排名混用。
 
@@ -35,14 +35,14 @@
 | V1.5 | 38 | 25-3-10 | 65.8% | 95:48 | 78 | 完整赛季 |
 | V1.6 | 38 | 28-5-5 | **73.7%** | 87:37 | **89** | 完整赛季 |
 | V1.7 | 38 | 25-7-6 | 65.8% | 79:36 | 82 | 完整赛季；Exporter Run45748944770；数据partial/unverified |
-| V1.8 | — | — | — | — | — | D0完成；D1–D3构建中，D4/D5待验证 |
+| V1.8 | — | — | — | — | — | D3 Run164通过；D4/D5待验证 |
 
 **口径提醒**
 - V0.1–V0.4 为未完成赛季样本，只能描述当前已赛成绩，不可与完整 38 场赛季作最终排名。
 - V0.5–V1.7 均为 38 场英超赛季；杯赛/欧战场次不混入该表。
 - V0.6 的 20-8-10、83:49、68分；V0.7 的 15-8-15、70:58、53分，来自跨版本决策台账及相应版本审计。
 - 版本来自不同存档/阵容/赛季状态，结果是描述性历史比较，不是同随机种子受控 A/B。
-- V1.5已完成38场英超D5：25-3-10、78分、65.8%；V1.6已完成38场英超D5：28-5-5、89分、73.7%；V1.7由V1.6 D5触发，Build Run163已成功；D5已由Run45748944770完成，D4未单独逐项验收。V1.8由V1.7 D5触发，D0已完成。
+- V1.5已完成38场英超D5：25-3-10、78分、65.8%；V1.6已完成38场英超D5：28-5-5、89分、73.7%；V1.7由V1.6 D5触发，Build Run163已成功；D5已由Run45748944770完成，D4未单独逐项验收。V1.8由V1.7 D5触发；D0–D3已完成（Run164，8/8检查通过，22/22阶段精确回读），D4/D5待验证。
 
 ## 版本文件清单
 
@@ -67,7 +67,7 @@
 | V1.5 | [JSON](V1.5.json) | [JSON](V1.5_BUILD_REQUEST.json) | [设计审计](V1.5_DESIGN_AND_AUDIT.md) | [报告](V1.5_BUILD_REPORT.json) | [赛季分析](V1.5_SEASON_REPORT_ANALYSIS_45734426186.md) | Actions Run149 artifact |
 | V1.6 | [JSON](V1.6.json) | [JSON](V1.6_BUILD_REQUEST.json) | [设计审计](V1.6_DESIGN_AND_AUDIT.md) | [构建报告](V1.6_BUILD_REPORT.json) | [赛季分析](V1.6_SEASON_REPORT_ANALYSIS_45744550318.md) | Run162 FMF 4,480 bytes |
 | V1.7 | [JSON](V1.7.json) | [JSON](V1.7_BUILD_REQUEST.json) | [设计审计](V1.7_DESIGN_AND_AUDIT.md) | [构建报告](V1.7_BUILD_REPORT.json) | [D5赛季分析](V1.7_SEASON_REPORT_ANALYSIS_45748944770.md) · Run45748944770 | [正式FMF](V1.7.fmf) · 4,504 bytes · SHA-256 `42a7038c4fe89667d0f1f7c7ff1ff74f31633f52f570d0f8b4d4d9c774ee46ab` |
-| V1.8 | [JSON](V1.8.json) | [JSON](V1.8_BUILD_REQUEST.json) | [设计审计](V1.8_DESIGN_AND_AUDIT.md) | 构建中 | D5待验证 | 构建中 |
+| V1.8 | [JSON](V1.8.json) | [JSON](V1.8_BUILD_REQUEST.json) | [设计审计](V1.8_DESIGN_AND_AUDIT.md) | [D3构建摘要](V1.8_BUILD_REPORT_SUMMARY.json) · [Run164](https://github.com/eslaulau/fm-ta/actions/runs/45750563671) | D5待验证 | [Run164 artifact](https://github.com/eslaulau/fm-ta/actions/runs/45750563671) · 4,616 bytes · SHA-256 `51e94c684c66ce016950d93f2619a40086820e7a9dcf792b7251d4ac67fa4e72` |
 
 ## 唯一研发入口与规则
 
