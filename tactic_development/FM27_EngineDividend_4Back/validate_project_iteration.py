@@ -11,6 +11,7 @@ from pathlib import Path
 PROJECT_DIR = Path(__file__).resolve().parent
 ROOT = PROJECT_DIR.parents[1]
 POLICY = PROJECT_DIR / "PPG_TARGET_POLICY.json"
+PERFORMANCE_STANDARD = PROJECT_DIR / "POSITION_PERFORMANCE_ELIMINATION_STANDARD.md"
 RULES = PROJECT_DIR / "PROJECT_RULES.md"
 LEDGER = PROJECT_DIR / "TACTIC_INSTRUCTION_DECISION_LEDGER.md"
 DECISIONS = ("继承保留", "替换淘汰", "新增待验证", "证据不足")
@@ -50,7 +51,7 @@ def validate(recipe_path: Path, audit_path: Path, parent_fmf: Path) -> list[str]
             errors.append(f"{label} must be inside the project directory: {path}")
         if not path.is_file():
             errors.append(f"{label} file is missing: {path}")
-    for required in (POLICY, RULES, LEDGER, parent_fmf):
+    for required in (POLICY, PERFORMANCE_STANDARD, RULES, LEDGER, parent_fmf):
         if not required.is_file():
             errors.append(f"Required project/parent file is missing: {required}")
     if errors:
@@ -69,6 +70,27 @@ def validate(recipe_path: Path, audit_path: Path, parent_fmf: Path) -> list[str]
     rules = RULES.read_text(encoding="utf-8")
     ledger = LEDGER.read_text(encoding="utf-8")
     audit = audit_path.read_text(encoding="utf-8")
+    performance_standard = PERFORMANCE_STANDARD.read_text(encoding="utf-8")
+
+    if "D0强制门禁" not in performance_standard or "低效配置清除规则" not in performance_standard:
+        errors.append("Position performance standard is incomplete or missing its mandatory elimination gate.")
+    performance_section = re.search(
+        r"(?ms)^##\\s*位置绩效高强度审查与低效淘汰\\s*\\n(.*?)(?=^##\\s|\\Z)",
+        audit,
+    )
+    if not performance_section:
+        errors.append("Design audit must include a dedicated 位置绩效高强度审查与低效淘汰 section.")
+    else:
+        section_text = performance_section.group(1)
+        for slot_id in [*(f"IP-{i:02d}" for i in range(1, 12)), *(f"OOP-{i:02d}" for i in range(1, 12))]:
+            row = next((line for line in section_text.splitlines() if slot_id in line and line.lstrip().startswith("|")), None)
+            if row is None or row.count("|") < 10:
+                errors.append(f"Position audit must contain a populated table row for {slot_id}.")
+            elif sum(bool(cell.strip()) for cell in row.strip().strip("|").split("|")) < 8:
+                errors.append(f"Position audit row {slot_id} is incomplete; mark unavailable fields explicitly.")
+        for required_term in ("低效淘汰清单", "证据等级", "准入保留", "条件保留", "替换淘汰", "D5"):
+            if required_term not in section_text:
+                errors.append(f"Position audit section must explicitly include: {required_term}.")
 
     if policy.get("target_ppg") != 2.85 or policy.get("primary_objective") != "PPG >= 2.85":
         errors.append("Project policy must define PPG >= 2.85 as the primary objective.")
@@ -127,6 +149,7 @@ def validate(recipe_path: Path, audit_path: Path, parent_fmf: Path) -> list[str]
         ("项目规则 SHA-256", RULES, "PROJECT_RULES.md"),
         ("决策总账 SHA-256", LEDGER, "TACTIC_INSTRUCTION_DECISION_LEDGER.md"),
         ("PPG 策略 SHA-256", POLICY, "PPG_TARGET_POLICY.json"),
+        ("位置绩效标准 SHA-256", PERFORMANCE_STANDARD, "POSITION_PERFORMANCE_ELIMINATION_STANDARD.md"),
     ):
         declared = one_line_value(audit, audit_label)
         actual = sha256_file(source_path)
