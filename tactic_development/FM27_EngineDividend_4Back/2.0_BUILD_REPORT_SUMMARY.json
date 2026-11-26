@@ -1,0 +1,32 @@
+{
+  "version": "2.0",
+  "parent_version": "V0.5",
+  "parent_fmf_sha256": "e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257",
+  "workflow_run_id": 45781102266,
+  "workflow_run_url": "https://github.com/eslaulau/fm-ta/actions/runs/45781102266",
+  "artifact_id": 15097803849,
+  "artifact_name": "FM27_EngineDividend_4Back_2.0",
+  "artifact_zip_sha256": "1e744bf20a3ee2ca86c834a3795bc1ed915c55acb9251d922b6c4c7cd13edc3a",
+  "fmf_filename": "FM27_EngineDividend_4Back_2.0.fmf",
+  "fmf_bytes": 4360,
+  "fmf_sha256": "80d3a98349eca59affb3d28057cc54550022b1e1e55942d2ce5f1f0920c54bb0",
+  "same_run_report_filename": "FM27_EngineDividend_4Back_2.0.report.json",
+  "same_run_report_bytes": 12512,
+  "same_run_report_sha256": "d7a64ac249f12eec596839dc6ccb4b8ab2f2dc5f26b91d7e1f4a6be0eadd18d2",
+  "native_template_sha256": "e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257",
+  "status": "offline_binary_roundtrip_verified_not_game_import_verified",
+  "checks": {
+    "fmf_outer_roundtrip": true,
+    "all_member_decrypt_and_zstd_checksums": true,
+    "tac_full_parse": true,
+    "eleven_ip_oop_pairs": true,
+    "twenty_two_phase_exact_readback": true,
+    "pi_permissions_checked_against_catalog": true,
+    "team_instruction_vector_readback": true,
+    "native_style_string_and_code_readback": true,
+    "game_interactive_import": false,
+    "match_engine": false
+  },
+  "d4": "pending_user_game_import",
+  "d5": "pending_full_season_report"
+}
