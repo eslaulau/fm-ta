@@ -1,12 +1,11 @@
-> **2026-11-26｜项目最高目标与规则执行入口更新**
+> **2026-11-26｜PPG 2.85整改与2.2构建状态**
 >
-> - 唯一最高目标：联赛 PPG ≥ 2.85（38 场至少 109 分）。项目规则只在本目录生效。
-> - 正式规则：[PROJECT_RULES.md](PROJECT_RULES.md)；机器策略：[PPG_TARGET_POLICY.json](PPG_TARGET_POLICY.json)。
-> - 项目审计是强制门禁，构建执行通道不设单一限制：[build_project_tactic.py](build_project_tactic.py) 是标准入口；若当前执行环境不能调用它，可先运行同一 [validate_project_iteration.py](validate_project_iteration.py)，再用本仓库离线原生生成器完成权限校验、FMF生成与独立回读。不得因 GitHub/聊天接口不能远程执行 Python 而停止迭代。具体执行政策见 [GENERATION_EXECUTION_POLICY.md](GENERATION_EXECUTION_POLICY.md)。审计失败绝不生成。
-> - 配方、审计文件和生成输出均限定在项目目录；项目自动化测试见 [test_project_iteration_gate.py](test_project_iteration_gate.py)。FMF生成可由本地工作区/附件工作区/合规runner执行，执行通道不能代替或绕过项目审计。
-> - 每轮设计审计使用 [ITERATION_DESIGN_AUDIT_TEMPLATE.md](ITERATION_DESIGN_AUDIT_TEMPLATE.md)；项目规则与执行命令见 [PROJECT_RULES.md](PROJECT_RULES.md)。
-> - FM-TA 仅作为 FMF 工具。本次及后续不得修改其通用导出器、生成器规则或通用工作流来承载本项目规则。
-> - 历史版本成绩保持原样；不追溯改写旧赛季为 PPG 2.85 目标下的成绩。
+> - 唯一目标：IP有球阶段DL/DCL/DCR/DR各一次，完整英超38场至少109分（PPG≥2.85）。
+> - 最近完成D5：V1.8（72分）；历史最高积分：V1.6（89分）。
+> - **当前最新构建候选：2.2**，从V0.5原生FMF重生；IP菱形4-1-2-1-2，OOP 5-2-3；D1-D3已通过，D4游戏导入和D5完整赛季待验证。
+> - 2.2的11槽位置/角色/职责与metaFM公开菱形样本逐项对应；显式PI/TI和本队效果仍待验证。不得称为已达标或实战升级。
+> - [2.2设计审计](2.2_DESIGN_AND_AUDIT.md) · [配方](2.2.json) · [构建Run](https://github.com/eslaulau/fm-ta/actions/runs/45789108253)。
+> - 在2.2完成D4/D5前，不自动生成2.3。V1.9 R2和V2.1只作为历史参考，不自动继承。
 
 ---
 
@@ -16,7 +15,7 @@
 >
 > - 用户已授权助手全权负责本项目整改规划与项目目录内规则/脚本/战术方案重构；唯一目标为IP有球阶段四后场DL/DCL/DCR/DR各一次，完整英超38场至少109分（PPG≥2.85）。
 > - **整改总规划：[PROJECT_REMEDIATION_PLAN.md](PROJECT_REMEDIATION_PLAN.md)。** 本规划优先于本README下方历史快照中的“当前版本/当前候选”描述。
-> - 最近完成D5仍为V1.8（72分）；历史最高积分为V1.6（89分）。V1.9 R1/R2、V2.0、V2.1均未完成D4/D5，不得称为实战升级。
+> - 最近完成D5仍为V1.8（72分）；历史最高积分为V1.6（89分）。V1.9 R1/R2、V2.0、V2.1均未完成D4/D5；2.2为最新D3候选，D4/D5待验证。
 > - 当前状态：整改中；没有任何版本已证明达到PPG 2.85。旧战术、配方、赛季报告和构建证据保留为历史档案，不自动成为下一版模板。
 
 ---
@@ -34,7 +33,7 @@
 
 - **原始数据来源：** [SOURCE_REGISTER.md](SOURCE_REGISTER.md)（Exporter Run ID、原始报告 URL、版本映射及缺失来源登记）。
 - **原始战术：** [V0.5 原生基准](V0.5_BASELINE.md)，来源为 V21 原生快照；本项目全部历史追踪从 V0.5 开始。
-- **历史未验证候选：** V1.9 R1/R2、V2.0、V2.1均有D1-D3构建记录，但未完成D4/D5；仅作历史实验与技术产物，不作为当前有效战术或性能升级。V1.8仍是最近完成D5的基准。详见 [整改总规划](PROJECT_REMEDIATION_PLAN.md)。
+- **当前构建候选：** [2.2配方](2.2.json) / [设计审计](2.2_DESIGN_AND_AUDIT.md)，D1-D3通过，D4/D5待验证。V1.9 R1/R2、V2.0、V2.1为历史实验，不自动继承。V1.8仍是最近完成D5的基准。详见 [整改总规划](PROJECT_REMEDIATION_PLAN.md)。
 
 - **历代最佳：** V1.6以28胜5平5负、89分、73.7%胜率刷新完整英超赛季纪录；V1.3仍是失球最少（30）且仅4负的防守基准。
 - **辅助版本执行记录：** [ITERATION_LOG.md](ITERATION_LOG.md)；**唯一权威决策与完整历史配置总账：** [TACTIC_INSTRUCTION_DECISION_LEDGER.md](TACTIC_INSTRUCTION_DECISION_LEDGER.md)。
