@@ -72,5 +72,7 @@
     "Game import and match performance have not been tested."
   ],
   "build_request_commit": "8eddf01d5e277c5b4c59523d59e289e7f7270dec",
-  "build_commit": "8eddf01d5e277c5b4c59523d59e289e7f7270dec"
+  "build_commit": "8eddf01d5e277c5b4c59523d59e289e7f7270dec",
+  "native_template_carrier": "V0.9.fmf",
+  "native_template_sha256": "5dc33a05f032345ca9c674b02d48e7619b32303e3e0eb54930598941df3456a1"
 }
