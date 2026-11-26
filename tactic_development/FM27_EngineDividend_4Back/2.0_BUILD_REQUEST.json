@@ -1,0 +1,10 @@
+{
+  "version": "2.0",
+  "recipe": "tactic_development/FM27_EngineDividend_4Back/2.0.json",
+  "audit": "tactic_development/FM27_EngineDividend_4Back/2.0_DESIGN_AND_AUDIT.md",
+  "parent_fmf": "tactic_development/FM27_EngineDividend_4Back/builds/V0.5.fmf",
+  "output": "tactic_development/FM27_EngineDividend_4Back/builds/FM27_EngineDividend_4Back_2.0.fmf",
+  "report": "tactic_development/FM27_EngineDividend_4Back/builds/FM27_EngineDividend_4Back_2.0.report.json",
+  "parent_version": "V0.5",
+  "parent_sha256": "e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257"
+}
