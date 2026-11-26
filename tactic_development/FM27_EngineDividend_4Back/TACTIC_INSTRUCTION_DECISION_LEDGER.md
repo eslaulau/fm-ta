@@ -2293,3 +2293,23 @@ D5至少完成38场英超后，以V1.8为直接父版基线，同时对照V1.7�
 用户提交的五组机制要点已归档为独立优先参考文件：[ENGINE_DIVIDEND_PRIORITY_INDICATORS_27.1.1.md](ENGINE_DIVIDEND_PRIORITY_INDICATORS_27.1.1.md)。后续每轮战术设计必须逐项审查该文件中的 P0/P1/P2 指标，并在“继承保留、替换淘汰、新增待验证、证据不足”四类决策中说明处理结果。
 
 **执行边界：** 这些内容是用户指定的高优先级外部机制假设，不是本队已验证结论；必须按 FM27 当前 build、原生 catalog 角色/PI权限及 D4/D5 实测验证。IP 有球阶段仍须保持 DL/DCL/DCR/DR 四个后场位置槽各一次，其余 IP 结构开放，OOP 结构完全开放；不得误读为固定 4-2-3-1。纪律数据仅作副作用背景记录，不作为战术质量评分，遵守项目现行绩效政策。
+
+
+## R3 D5 实测裁决（Exporter Run 45850910254，2026-11-26）
+
+- 用户确认该赛季使用 R3；38 场联赛：19胜9平10负，66分，PPG 1.737，进球65、失球37，xG 65.00、xGA46.18。109分与xG100双门槛均失败，R3 D5=FAIL。
+- 19场非胜场平均xG仅1.21、平均射门9.84；胜场平均xG2.21、平均射门13.95。主要问题是平局/败场的进攻机会产量不足，而不是只靠终结修正。
+- 完整位置统计：ST 19.73xG/30球；AMC 15.35xG/11球/6助；AML 13.03xG/9球/16助；AMR 3.88xG/3球/19助；DMC 9.16xG/7球/4助。四个进攻位置合计约52.0xG，支持保留4-2-3-1前场四人位置结构；不能据此判定单一角色或PI因果。
+- 右后卫位置仅0.94xG、4助攻；右边锋虽仅3.88xG但19助攻。R4将DR翼卫由支援改进攻，AMR供给型边锋保留。
+- 传中1,190次、完成192次（16.1%）；越位93次。R4保留高球/后点传中，但取消尽早传中，改为将球做入禁区；传球接应由传入空当改为传至脚下，检验越位与机会质量变化。
+- OOP前场从TrackingWinger/AttackingMidfielder改为InsideOutletWinger/WideOutletWinger/CentralOutletAttackingMidfielder，形成无锋5-2-3三出口；IP DMR改BoxToBoxMidfielder支援、OOP仍WideCover DM；DR WingBack Attack/OOP HoldingFullBack。
+- 数据边界：38场英超球员身份598/598；位置码208条交叉核对零不匹配；9类IP角色码可解码但只覆盖部分历史；无逐场OOP角色、PI/TI映射。不得将位置码统计冒充战术槽位或PI效果。27.1.1+2511875解析布局仍是借用schema-6，局部核对通过但整体状态partial/unverified。
+- 详细证据与19场非胜场清单见 R3_D5_SEASON_REVIEW_45850910254.md。纪律统计不纳入战术质量评价。
+
+## R4 设计裁决（待D0-D3）
+
+- 唯一主线：IP 4-2-3-1 / OOP strikerless 5-2-3；IP四后场硬约束不变。R4不从R3 FMF继承，严格以V0.5原生FMF重生，R3只作为D5证据和设计参照。
+- 继承：InsideForward A、FreeRole A、Winger S、TargetForward A、InsideFullBack D、双阶段5-2-3/四后场转换、高位逼抢遭遇线+极低防线+Drop Off More、OOP Tackle Harder。
+- 替换：DR WingBack S→A；DMR DefensiveMidfielder D→BoxToBoxMidfielder S（OOP仍WideCover DM D）；AMC移除Shoot Less Often；OOP AML/AMR/AMC由TrackingWinger/AttackingMidfielder改为InsideOutletWinger A/WideOutletWinger A/CentralOutletAttackingMidfielder A。
+- 球队指令替换：PASS_INTO_SPACE→PASS_TO_FEET；HIT_EARLY_CROSSES→WORK_BALL_INTO_BOX；保留High Crosses、Back Post、较高节奏、直接推进和OOP低防线/高逼抢结构。
+- 新增待验证：三出口无锋反击、DMR第二线前插但OOP锁位、右翼卫有球进攻/OOP留守、传至脚下+做入禁区对越位与xG的影响。不得在D5前宣称有效。
