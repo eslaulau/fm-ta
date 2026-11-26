@@ -4,6 +4,6 @@
   "audit": "tactic_development/FM27_EngineDividend_4Back/2.6_DESIGN_AND_AUDIT.md",
   "parent_version": "V0.5",
   "parent_sha256": "e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257",
-  "trigger_reason": "Re-run with audit SHA-256 pins replaced by exact sha256sum values captured from the build runner; all prior structural audit requirements now satisfied.",
-  "revision": 4
+  "trigger_reason": "Re-run after removing unsupported PASSING_RISKS=MORE_RISKY PI; refresh exact recipe SHA and continue native catalog preflight.",
+  "revision": 5
 }
