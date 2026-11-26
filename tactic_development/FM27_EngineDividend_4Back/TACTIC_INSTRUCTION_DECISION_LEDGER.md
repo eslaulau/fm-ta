@@ -1,12 +1,13 @@
 
 
-> **2026-11-26｜V1.9重新设计版当前权威状态**
+> **2026-11-26｜V1.9重新执行版R2当前权威状态**
 >
-> - 唯一父版本：V1.8，FMF SHA-256 `51e94c684c66ce016950d93f2619a40086820e7a9dcf792b7251d4ac67fa4e72`；V1.8 recipe blob `c5d7290c207a8322c4dffbd80ea6c7bf70277017`。
-> - 正式配方：[V1.9_REDESIGN.json](V1.9_REDESIGN.json)；审计：[V1.9_REDESIGN_DESIGN_AND_AUDIT.md](V1.9_REDESIGN_DESIGN_AND_AUDIT.md)。
-> - IP：4-3-3 DM，DL/DCL/DCR/DR四后场；OOP：4-1-4-1。不是4-2-3-1，也不是复制V1.7/V1.8。
-> - V1.9 Run165另行保留为V1.7配方回退实验，不作为本次父版或正式性能升级。
-> - Run167：D1 catalog预检通过；D2 11槽/22阶段结构通过；D3原生FMF生成及8/8独立回读通过。FMF SHA-256 `4b948f9dfeccddc8ae93e225a085a6d1f5b74e9ecd723670a68a7a1b032c4f85`；[构建运行](https://github.com/eslaulau/fm-ta/actions/runs/45756670647)；[构建摘要](V1.9_REDESIGN_BUILD_REPORT_SUMMARY.json)。D4/D5待验证。
+> - 唯一战术父版本：V1.8；父FMF SHA-256 `51e94c684c66ce016950d93f2619a40086820e7a9dcf792b7251d4ac67fa4e72`；父recipe blob `c5d7290c207a8322c4dffbd80ea6c7bf70277017`。
+> - 当前研发候选配方：[V1.9_REDESIGN_R2.json](V1.9_REDESIGN_R2.json)；设计审计：[V1.9_REDESIGN_R2_DESIGN_AND_AUDIT.md](V1.9_REDESIGN_R2_DESIGN_AND_AUDIT.md)；追踪矩阵：[V1.9_REDESIGN_R2_SEASON_TO_TACTIC_TRACEABILITY_45753659141.md](V1.9_REDESIGN_R2_SEASON_TO_TACTIC_TRACEABILITY_45753659141.md)。
+> - IP：4-1-2-1-2 Diamond，四后场槽严格为DL/DCL/DCR/DR；OOP：5-2-3。五名球员跨位置转换：DMC→DC、MCR/MCL→DMR/DML、STR/STL→AMR/AML。
+> - 历史V1.9 Run165仍是V1.7配方回退实验；历史R1 Run167为IP 4-3-3 DM / OOP 4-1-4-1。二者均保留原配方、哈希和构建记录，不覆盖；R1因当前27.1.1外部证据更新而被R2取代为当前研发候选，不宣称R1比赛失败。
+> - Run169：[Actions](https://github.com/eslaulau/fm-ta/actions/runs/45760556137)，artifact ID `15089946643`；D1/D2/D3全部通过；8/8独立回读、22/22阶段精确回读。FMF 4,688 bytes，SHA-256 `b199063dec9f8745d692ba2abcb78664bdbaa41184d8ea03455afaf6fefea4a5`；same-run report SHA-256 `3d72fd1365ab27beedc5f97e7adea34a22bd40432a5fdff40aa8243812a69d62`；artifact ZIP SHA-256 `79ee002b82e3a9e7a27ead21e20c092cddcaae533cf24f0d9c291895346a3a09`。
+> - 机器摘要：[V1.9_REDESIGN_R2_BUILD_REPORT_SUMMARY.json](V1.9_REDESIGN_R2_BUILD_REPORT_SUMMARY.json)。D3状态 `offline_binary_roundtrip_verified_not_game_import_verified`；D4游戏内导入未验证，D5比赛效果未验证。
 >
 > ---
 > **2026-11-26 当前权威规则与版本定性修订**
@@ -24,7 +25,7 @@
 >
 # FM27 引擎红利四后卫｜V0.5 起跨版本迭代与指令决策台账
 
-本台账当前覆盖 **V0.1–V1.9**：V0.5起为正式重建主线，V0.1–V0.4作为前序研发历史保留。历史汇总表可能含当时的快照状态；**当前有效状态以本文顶部“当前权威视图”、对应版本审计和 VERSION_CATALOG.md 为准**。每次战术迭代后必须同步更新版本总表、IP/OOP沿革、四类决策、来源登记和D0–D5状态，不能只在文末追加。
+本台账当前覆盖 **V0.1–V1.9 R2**：V0.5起为正式重建主线，V0.1–V0.4作为前序研发历史保留。历史汇总表可能含当时的快照状态；**当前有效状态以本文顶部“当前权威视图”、对应版本审计和 VERSION_CATALOG.md 为准**。每次战术迭代后必须同步更新版本总表、IP/OOP沿革、四类决策、来源登记和D0–D5状态，不能只在文末追加。
 
 核心目的是同时回答两个问题：
 
@@ -41,7 +42,7 @@
 >
 > 本节及其链接的版本审计/原始报告，是当前版本决策的权威入口。下方较早的历史表格保留原貌作为历史快照；若与本节或最新版本审计冲突，以本节和最新审计为准。历史快照中的过期状态不得继续用于新迭代。
 
-## A. 当前版本状态总览（V0.1–V1.8）
+## A. 当前版本状态总览（V0.1–V1.9 R2）
 
 | 版本 | 父版本 | 主要变化 | 联赛结果 | D阶段/证据状态 |
 |---|---|---|---|---|
@@ -65,6 +66,7 @@
 | **V1.8** | **V1.7** | **OOP 4-2-1-2-1→无锋5-2-3；IP四后场及IP角色/PI全部保留** | **21胜9平8负；98:55；72分（英超）** | **D5 Run45753659141完成；partial/unverified；结构级防守负向观察** |
 | **V1.9重新设计版** | **V1.8** | **IP 4-3-3 DM；OOP 4-1-4-1；单后腰+双中前卫；四后卫留守+双边前卫回收** | **待实测** | **D0-D3完成；Run167 8/8回读、22/22阶段；D4/D5待验证** |
 | **V1.9实验版** | **V1.8（构建载体）/ V1.7（整套配方来源）** | **实质复用V1.7整套配置；仅保留为OOP结构回退实验** | **待实测** | **Run165 D0-D3构建回读完成；非正式性能升级；D4/D5待验证** |
+| **V1.9 R2** | **V1.8** | **IP 4-1-2-1-2 Diamond / OOP 5-2-3；双翼卫提供宽度，DMC回撤DC，双CM回撤双DM，双ST回撤边锋** | **待实测** | **D0-D3完成；Run169 8/8、22/22；D4/D5待验证** |
 
 **成绩口径：** V0.1–V0.4为部分赛季，不进入完整赛季排名。V0.5–V1.7均为38场联赛结果。版本间并非同随机种子、同初始状态的受控A/B；不得将差异解释为单项配置因果。
 
@@ -841,3 +843,33 @@ V0.9 ST-only Run3 是已取代草案，不属于正式版本主线。V0.5 是 V2
 每轮新赛季复盘必须把报告问题编号（ISS-xx）和探索性机制编号（EXP-xx）登记到对应版本的设计审计及追踪矩阵。每条重要IP/OOP角色、职责、PI、TI、心态或结构决策，必须反向链接到问题/机制编号；若没有配置变化，记录本轮不改的理由。每轮D5后回看上一轮的目标，更新每条结论为达成、部分达成、未达成或无法判定。完整模板：[SEASON_TO_TACTIC_TRACEABILITY_TEMPLATE.md](SEASON_TO_TACTIC_TRACEABILITY_TEMPLATE.md)。
 
 配置状态必须区分：当前配方实际存在、历史曾用、证据支持、单项准入、结构性暂留、待验证、已被反证/淘汰。赛季相关性不能直接升级为因果证据；数据缺少逐场位置映射时不得归因到具体角色或PI。
+
+
+---
+
+## V1.9重新执行版R2｜Run169 D0-D3构建交付（2026-11-26）
+
+### 父子关系与设计来源
+- 本轮以V1.8 / Run164为唯一战术父版本；父FMF SHA-256 `51e94c684c66ce016950d93f2619a40086820e7a9dcf792b7251d4ac67fa4e72`。
+- R2与历史R1 Run167是同父版本的不同重设计；R1仍保留为历史D3候选，未有D4/D5，不作为本轮父版。
+- 赛季输入为用户确认使用V1.8的Exporter Run45753659141；完整D0分析、历史多维基准、输球/平局、外部27.1.1研究及问题追踪见 [R2设计审计](V1.9_REDESIGN_R2_DESIGN_AND_AUDIT.md) 与 [R2追踪矩阵](V1.9_REDESIGN_R2_SEASON_TO_TACTIC_TRACEABILITY_45753659141.md)。
+
+### 唯一设计
+- IP 4-1-2-1-2 Diamond；IP后场严格DL/DCL/DCR/DR。
+- OOP 5-2-3：DR/DL留守边后卫；DMC回撤DC；MCR/MCL转DMR/DML；AMC保留前场中路出口；STR/STL转AMR/AML。
+- 该5-2-3与V1.8旧版不同，不是复用V1.8的高位逼抢翼卫+补位边中卫结构。
+- 详细配置与四类决策见R2 recipe和设计审计。
+
+### D1-D3构建身份
+- Recipe：[V1.9_REDESIGN_R2.json](V1.9_REDESIGN_R2.json)；build request：[V1.9_REDESIGN_R2_BUILD_REQUEST.json](V1.9_REDESIGN_R2_BUILD_REQUEST.json)；request commit `f1ecca9804f7d9084b9296b02b74b757dfa5ca16`。
+- [FM27 Tactic Build Run169](https://github.com/eslaulau/fm-ta/actions/runs/45760556137) success；artifact ID `15089946643`；artifact ZIP SHA-256 `79ee002b82e3a9e7a27ead21e20c092cddcaae533cf24f0d9c291895346a3a09`。
+- FMF 4,688 bytes；SHA-256 `b199063dec9f8745d692ba2abcb78664bdbaa41184d8ea03455afaf6fefea4a5`；same-run report SHA-256 `3d72fd1365ab27beedc5f97e7adea34a22bd40432a5fdff40aa8243812a69d62`。
+- D1 catalog权限预检通过；D2 11槽/22阶段通过；D3 8/8独立回读通过，22/22设计阶段与22/22回读阶段一致。
+- 首次预检发现CentreForward角色不提供ATTACK_BOX_SIDE=FAR_POST；移除该不兼容PI后重新构建成功。翼卫后点传中PI保留。没有绕过权限检查。
+- 状态：`offline_binary_roundtrip_verified_not_game_import_verified`。D4游戏内导入与双位置熟悉度待用户核对；D5比赛效果待至少38场英超赛季报告。不得把D3称为游戏导入或赛季验证。
+
+### 四类决策摘要
+- **继承保留：** IP四后场硬约束、心态4、进攻宽度/节奏/纵深意图、后点供给候选、DCL/DCR减少主动逼抢、历史双后腰保护经验。
+- **替换淘汰：** R1的IP4-3-3 DM/OOP4-1-4-1当前不再作为主线；V1.8旧版OOP高位逼抢翼卫+补位边中卫+MCR单独回撤结构不再沿用。
+- **新增待验证：** IP菱形四后卫/OOP5-2-3及五人换位、边后卫留守、DMC回撤、双中场双后腰、双前锋回撤为边锋。
+- **证据不足：** 本队跨位置熟悉度、外部隐藏PI、球员个人角色/PI因果、任何比赛效果；D4/D5未完成。
