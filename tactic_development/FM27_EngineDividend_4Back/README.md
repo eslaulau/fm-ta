@@ -193,3 +193,9 @@ V0.5 是本项目唯一原始战术基准，来源为 V21 原生快照，不继�
 - 每一轮都以该 V0.5 文件作为唯一重生基准；V0.6 及之后版本只作为历史实验、赛季结果和机制经验来源，不自动成为父版本。
 - 历史有效经验经过证据审查后可以迁移；每轮必须重新设计完整战术，不是简单复制 V0.5，也不是从最近版本接着改。
 - 生成门禁已强制要求父版本 V0.5 及其固定 SHA-256；任何 V1.x 父版均应拒绝。详细规则见 [PROJECT_RULES.md](PROJECT_RULES.md) 第 11 节和 [UPGRADE_GATE.md](UPGRADE_GATE.md) 第 13 节。
+
+
+## 位置绩效与低效淘汰（强制）
+
+- **[位置与角色高强度绩效审查及低效淘汰标准](POSITION_PERFORMANCE_ELIMINATION_STANDARD.md)**：每轮逐项审查11个IP槽位和11个OOP槽位；明确低效配置必须从下一版移除；证据不足不得伪装成有效保留。
+- 本标准已纳入 [正式研发规则](ANALYSIS_AND_ITERATION_RULES.md)、[角色/PI审查模板](ROLE_PI_AUDIT_TEMPLATE.md)、[赛季追踪模板](SEASON_TO_TACTIC_TRACEABILITY_TEMPLATE.md) 和 [连续研发门禁](UPGRADE_GATE.md)。D0未通过逐槽审查及低效淘汰检查，不得构建。
