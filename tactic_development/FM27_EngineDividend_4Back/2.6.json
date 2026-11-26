@@ -51,14 +51,9 @@
       },
       "out": {
         "pos": "GK",
-        "role": "SweeperKeeper",
-        "duty": "A",
-        "pi": [
-          [
-            "TACKLING",
-            "EASE_OFF_TACKLES"
-          ]
-        ]
+        "role": "Goalkeeper",
+        "duty": "D",
+        "pi": []
       }
     },
     {
