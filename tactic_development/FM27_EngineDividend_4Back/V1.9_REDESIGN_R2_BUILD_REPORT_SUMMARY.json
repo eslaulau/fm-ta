@@ -58,7 +58,7 @@
     "game_interactive_import": false,
     "match_engine": false
   },
-  "d0": "complete",
+  "d0": "incomplete_not_accepted_historical_ledger_reaudit_required",
   "d1": "passed",
   "d2": "passed",
   "d3": "passed",
@@ -66,6 +66,7 @@
   "d5": "pending_full_season_report",
   "notes": [
     "The first preflight found an unsupported ATTACK_BOX_SIDE=FAR_POST PI on CentreForward; it was removed from that role before the successful build. Wing-back BACK_POST crossing target remains.",
-    "The build validates native binary generation and independent readback only; it does not establish game import or match-engine performance."
+    "The build validates native binary generation and independent readback only; it does not establish game import or match-engine performance.",
+    "Correction 2026-11-26: D1-D3 are technical build/readback facts only. D0 historical version/configuration lineage and cross-version loss/draw analysis are incomplete; R2 is not an approved full-cycle upgrade pending re-audit."
   ]
 }
