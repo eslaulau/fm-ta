@@ -139,6 +139,34 @@ def validate(recipe_path: Path, audit_path: Path, parent_fmf: Path) -> list[str]
     if not any(token in audit for token in ("风险", "副作用", "失败条件")):
         errors.append("Design audit must record risks, side effects or failure conditions.")
 
+    # The project must deliberately explore non-traditional engine behaviour.
+    # A template heading alone is insufficient: require populated mismatch fields.
+    if "现实足球理论不是战术筛选/否决标准" not in audit:
+        errors.append("Design audit must explicitly state that real-football theory is not a veto criterion.")
+    mismatch_heading = re.search(
+        r"(?ms)^##\\s*7\\.\\s*强制审计：引擎行为错位设计.*?\\n(.*?)(?=^##\\s|\\Z)",
+        audit,
+    )
+    if not mismatch_heading:
+        errors.append("Design audit must include section 7: 强制审计：引擎行为错位设计.")
+    else:
+        mismatch_text = mismatch_heading.group(1)
+        mismatch_fields = (
+            "错位类型", "错位配置", "角色/指令默认行为",
+            "FM27引擎预期执行行为", "对手AI可能",
+            "预期创造的空间", "对PPG", "可能副作用", "D5量化验证指标",
+        )
+        for field in mismatch_fields:
+            line = next(
+                (row for row in mismatch_text.splitlines()
+                 if row.strip().startswith("- ") and field in row),
+                None,
+            )
+            if line is None or not re.search(r"：\\s*[^：\\s].*", line):
+                errors.append(f"Engine-mismatch audit field must be completed: {field}.")
+    if "不以现实足球" not in rules or "引擎行为错位" not in rules:
+        errors.append("PROJECT_RULES.md must retain the mandatory engine-mismatch design rule.")
+
     if policy.get("hard_constraints", {}).get("ip_back_four_positions") != list(IP_BACK_FOUR):
         errors.append("Policy IP hard constraint must be exactly DL/DCL/DCR/DR.")
 
