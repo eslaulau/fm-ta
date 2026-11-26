@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Project-owned build entrypoint: project gate first, FM-TA generic tools second."""
+"""The only supported build entrypoint for FM27 EngineDividend 4Back iterations."""
 from __future__ import annotations
 
 import argparse
@@ -13,6 +13,16 @@ GEN_DIR = ROOT / "04_离线原生FMF生成器"
 VALIDATOR = PROJECT_DIR / "validate_project_iteration.py"
 PREFLIGHT = ROOT / "scripts" / "preflight_fm27_tactic.py"
 GENERATOR = ROOT / "scripts" / "build_fm27_tactic.py"
+BUILD_DIR = PROJECT_DIR / "builds"
+
+
+def project_path(path: Path, label: str) -> Path:
+    resolved = path.resolve() if path.is_absolute() else (ROOT / path).resolve()
+    try:
+        resolved.relative_to(PROJECT_DIR.resolve())
+    except ValueError as exc:
+        raise ValueError(f"{label} must be inside {PROJECT_DIR}: {resolved}") from exc
+    return resolved
 
 
 def run(command: list[str]) -> None:
@@ -22,29 +32,37 @@ def run(command: list[str]) -> None:
 
 def main() -> int:
     parser = argparse.ArgumentParser(
-        description="Build one EngineDividend tactic only after its project-specific PPG gate passes."
+        description="Mandatory project gate -> unchanged FM-TA preflight -> unchanged FM-TA generator."
     )
     parser.add_argument("--recipe", type=Path, required=True)
     parser.add_argument("--audit", type=Path, required=True)
+    parser.add_argument("--parent-fmf", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--report", type=Path, required=True)
     args = parser.parse_args()
 
-    def root_path(path: Path) -> Path:
-        return path.resolve() if path.is_absolute() else (ROOT / path).resolve()
+    recipe = project_path(args.recipe, "Recipe")
+    audit = project_path(args.audit, "Design audit")
+    parent_fmf = args.parent_fmf.resolve()
+    output = project_path(args.output, "FMF output")
+    report = project_path(args.report, "Build report")
 
-    recipe = root_path(args.recipe)
-    audit = root_path(args.audit)
-    output = root_path(args.output)
-    report = root_path(args.report)
+    if output == report or output.exists() or report.exists():
+        raise FileExistsError("Refusing to overwrite an existing FMF/report or use the same path.")
+    if not parent_fmf.is_file():
+        raise FileNotFoundError(f"Parent FMF not found: {parent_fmf}")
+    if not recipe.is_file() or not audit.is_file():
+        raise FileNotFoundError("Recipe or design audit is missing.")
 
-    if output.exists() or report.exists():
-        raise FileExistsError("Refusing to overwrite an existing FMF or report.")
+    # Fail closed: if this exits non-zero, neither generic tool is called.
+    run([
+        sys.executable, str(VALIDATOR),
+        "--recipe", str(recipe),
+        "--audit", str(audit),
+        "--parent-fmf", str(parent_fmf),
+    ])
 
-    # Project policy gate is mandatory and fail-closed.
-    run([sys.executable, str(VALIDATOR), "--recipe", str(recipe), "--audit", str(audit)])
-
-    # Only after project approval, call the unchanged generic FM-TA preflight and generator.
+    # Generic FM-TA tools remain unchanged and are invoked only after project approval.
     run([
         sys.executable, str(PREFLIGHT),
         "--recipe", str(recipe),
@@ -59,7 +77,7 @@ def main() -> int:
         "--output", str(output),
         "--report", str(report),
     ])
-    print("D3 build files generated. Game import and season performance remain unverified.")
+    print("D3 offline build complete. In-game import (D4) and season performance (D5) remain unverified.")
     return 0
 
 
