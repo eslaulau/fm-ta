@@ -6,6 +6,7 @@
 
 - **研发规则（最高优先级）：** IP唯一硬约束为后场DL/DCL/DCR/DR四个位置槽，不固定4-2-3-1或任何IP数字阵型；其余IP位置与全部OOP结构完全开放。每轮只设计、输出、构建一个完整方案，不提供多套候选战术，不把局部单变量调整当作默认升级。详见 [正式研发规则](ANALYSIS_AND_ITERATION_RULES.md)。
 - **唯一版本总目录：** [VERSION_CATALOG.md](VERSION_CATALOG.md)（所有版本成绩、配方、构建请求、设计审计、构建报告、FMF 与赛季分析索引）。
+- **逐代完整战术历史总账（核心表）：** [TACTIC_HISTORY_MASTER_V0.5-V1.8.md](TACTIC_HISTORY_MASTER_V0.5-V1.8.md)。从V0.5起逐代记录赛季表现、20项TI基准、11槽×IP/OOP位置/角色/职责/PI完整配置，以及每一代相对上一代的逐项差异。
 
 - **赛季分析到战术升级追踪模板：** [SEASON_TO_TACTIC_TRACEABILITY_TEMPLATE.md](SEASON_TO_TACTIC_TRACEABILITY_TEMPLATE.md)。每个问题必须贯通赛季数据、历史版本、引擎机制、配置决策、收益代价和下一轮D5验证。
 
