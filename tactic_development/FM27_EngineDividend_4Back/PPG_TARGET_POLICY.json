@@ -6,7 +6,12 @@
   "formula": "league_points / completed_league_matches",
   "38_match_minimum_points": 109,
   "hard_constraints": {
-    "ip_back_four_positions": ["DL", "DCL", "DCR", "DR"],
+    "ip_back_four_positions": [
+      "DL",
+      "DCL",
+      "DCR",
+      "DR"
+    ],
     "oop_shape": "open",
     "one_primary_tactic_per_iteration": true,
     "preserve_all_historical_evidence": true
@@ -18,9 +23,10 @@
     "证据不足"
   ],
   "evaluation_priority": [
+    "goals, goals per match, xG/NPxG, big chances, box shots, shot quality and conversion",
     "PPG, points, wins, draws, losses and repeatability",
-    "goals, xG/NPxG, big chances and chance conversion",
-    "xGA, goals conceded and opponent big chances",
+    "attacking repeatability and role/channel contribution where source data supports mapping",
+    "xGA, goals conceded and opponent big chances only as costs/constraints on points and attack",
     "home-away splits and opponent/context differences",
     "IP/OOP structure, positions, roles, duties, PI and TI"
   ],
@@ -38,5 +44,17 @@
       "Do not modify generic repository build workflows to encode project-specific tactical decisions",
       "Do not impose this project's PPG target on other projects using FM-TA"
     ]
+  },
+  "analysis_doctrine": {
+    "principle": "游戏引擎研发以可重复的进球产出为优先研究方向；不以现实足球攻守平衡或防守数据漂亮作为目标。",
+    "final_success_gate": "38场联赛至少109分，PPG >= 2.85；进球数不能替代积分验收。",
+    "review_order": [
+      "进球产出：总进球、场均进球、xG/NPxG、绝佳机会、禁区内射门、射门质量、转化差额与真实可映射的角色贡献",
+      "胜负与积分转化：胜平负、PPG、主客场积分、高进球失分与低进球丢分",
+      "进攻可重复性：机会创造质量、进球来源、不同比赛状态与对手下的持续性",
+      "必要防守诊断：仅判断防守问题是否实际限制积分或进攻发挥，不作为独立优化终点"
+    ],
+    "defense_policy": "不得仅因xGA较高或防守排名较差而淘汰高进球结构；允许接受更高失球以换取更高且可重复的进球产出，但必须以最终积分验证。",
+    "mandatory_2_2_review": "先建立进攻画像并筛选进球最多/最少的比赛，再逐场分析平局与失利，之后诊断防守代价；无证据不得生成2.3。"
   }
 }
