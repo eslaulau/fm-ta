@@ -1,6 +1,8 @@
-> **强制执行补充｜每轮升级唯一项目入口**
+> **强制执行补充｜每轮升级项目门禁**
 >
-> 任何正式战术升级，无论修改结构、位置、角色、职责、PI、TI 或心态，都必须先完成项目设计审计，并通过 [build_project_tactic.py](build_project_tactic.py)。该入口要求提供父 FMF 文件，核验父 FMF、本轮 recipe、当前 PROJECT_RULES、决策总账和 PPG 策略的 SHA-256；规则或总账变化会使旧审计失效；验证 11 槽/22 阶段、IP 四后场、四类决策、PPG 2.85、风险和 D5 指标。失败即停止，不会调用 FM-TA 预检或生成器。配方、审计及构建输出均限定在项目目录内。FM-TA 通用工具保持不变。
+> 任何正式战术升级，无论修改结构、位置、角色、职责、PI、TI 或心态，都必须先完成项目设计审计，并通过 [validate_project_iteration.py](validate_project_iteration.py)。该审计核验真实父 FMF、本轮 recipe、当前 PROJECT_RULES、决策总账和 PPG 策略的 SHA-256，以及 11 槽/22 阶段、IP 四后场、四类决策、PPG 2.85、风险和 D5 指标。审计失败即停止生成。
+>
+> [build_project_tactic.py](build_project_tactic.py) 是标准构建入口，但不是唯一允许的执行通道。若当前环境不能直接运行该入口，必须改用 [GENERATION_EXECUTION_POLICY.md](GENERATION_EXECUTION_POLICY.md) 规定的项目审计后离线原生生成路径；不得因为 GitHub/聊天工具不能远程执行 Python 而中止迭代。FM-TA 通用工具和通用工作流保持不变。
 >
 > PowerShell 构建命令和测试方式见 [PROJECT_RULES.md](PROJECT_RULES.md)。
 
@@ -11,7 +13,7 @@
 > - 本项目唯一最高目标：联赛 PPG ≥ 2.85；38 场至少 109 分。每轮以 PPG/胜平负/积分为首要结果判断，再用 xG、xGA、绝佳机会、主客场和过程指标解释原因与代价。
 > - 正式规则见 [PROJECT_RULES.md](PROJECT_RULES.md)，机器策略见 [PPG_TARGET_POLICY.json](PPG_TARGET_POLICY.json)。
 > - 生成前必须完成项目专属审计：父版身份及 FMF SHA-256、四类决策、PPG 目标与预期收益路径、D5 验证指标、11 槽/22 阶段以及 IP DL/DCL/DCR/DR 四后场约束。
-> - 项目战术只能通过 [build_project_tactic.py](build_project_tactic.py) 进入生成流程。该入口先运行项目审计，再调用 FM-TA 原有通用 preflight 与 FMF generator。
+> - 项目战术必须先通过项目审计；[build_project_tactic.py](build_project_tactic.py) 是标准执行入口。当前环境无法直接调用时，允许按 [GENERATION_EXECUTION_POLICY.md](GENERATION_EXECUTION_POLICY.md) 执行同一审计后的离线原生生成。
 > - FM-TA 只负责通用原生格式技术能力；禁止修改其通用导出器、生成器规则或工作流来加入本项目规则。通用构建路径不代表已通过本项目审计。
 > - 审计失败必须 fail-closed：不得生成 FMF，不得把缺少设计依据的 recipe 送入生成器。
 
@@ -278,3 +280,8 @@ D0 设计审计必须新增并通过“引擎行为错位”专项检查，才�
 ## 12. 执行环境与构建通道（修订）
 
 **执行器能力不是战术研发门禁。** 只要 D0 设计审计通过，项目必须继续推进 D1-D3。优先运行项目专属构建入口；若当前执行环境不支持直接执行该脚本，改用项目目录内的验证器 + 离线原生生成器。不得将“GitHub 工具只能读写仓库，不能执行脚本”作为终止理由。不得使用未运行项目门禁的通用 Actions 构建。详细顺序、命令和验收要求见 [GENERATION_EXECUTION_POLICY.md](GENERATION_EXECUTION_POLICY.md)。
+
+
+## 12. 执行环境与构建通道（2026-11-26修订）
+
+**执行器能力不是战术研发门禁。** 只要D0设计审计通过，项目必须继续推进D1-D3。优先运行项目专属构建入口；若当前执行环境不支持直接执行该脚本，改用项目目录内的验证器 + 离线原生生成器。不得将“GitHub工具只能读写仓库，不能执行脚本”作为终止理由。不得使用未运行项目门禁的通用Actions构建。详细顺序、命令和验收要求见 [GENERATION_EXECUTION_POLICY.md](GENERATION_EXECUTION_POLICY.md)。
