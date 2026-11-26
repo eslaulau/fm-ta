@@ -31,7 +31,8 @@
 | V1.3 | 38 | 27-7-4 | **71.1%** | 83:30 | **88** | 完整赛季 |
 | V1.4 | 38 | 27-2-9 | **71.1%** | 101:53 | 83 | 完整赛季 |
 | V1.5 | 38 | 25-3-10 | 65.8% | 95:48 | 78 | 完整赛季 |
-| V1.6 | 38 | 28-5-5 | **73.7%** | 87:37 | **89** | 完整赛季 |\n| V1.7 | — | — | — | — | — | D5待验证 |
+| V1.6 | 38 | 28-5-5 | **73.7%** | 87:37 | **89** | 完整赛季 |
+| V1.7 | — | — | — | — | — | D5待验证 |
 
 **口径提醒**
 - V0.1–V0.4 为未完成赛季样本，只能描述当前已赛成绩，不可与完整 38 场赛季作最终排名。
@@ -61,7 +62,7 @@
 | V1.3 | [JSON](V1.3.json) | [JSON](V1.3_BUILD_REQUEST.json) | [设计审计](V1.3_DESIGN_AND_AUDIT.md) | [报告](V1.3_BUILD_REPORT.json) | [赛季分析](V1.3_SEASON_REPORT_ANALYSIS_45644106773.md) | Actions 历史 |
 | V1.4 | [JSON](V1.4.json) | [JSON](V1.4_BUILD_REQUEST.json) | [设计审计](V1.4_DESIGN_AND_AUDIT.md) | [报告](V1.4_BUILD_REPORT.json) | [赛季分析](V1.4_SEASON_REPORT_ANALYSIS_45727738275.md) | Actions 历史 |
 | V1.5 | [JSON](V1.5.json) | [JSON](V1.5_BUILD_REQUEST.json) | [设计审计](V1.5_DESIGN_AND_AUDIT.md) | [报告](V1.5_BUILD_REPORT.json) | [赛季分析](V1.5_SEASON_REPORT_ANALYSIS_45734426186.md) | Actions Run149 artifact |
-| V1.6 | [JSON](V1.6.json) | [JSON](V1.6_BUILD_REQUEST.json) | [设计审计](V1.6_DESIGN_AND_AUDIT.md) | [构建报告](V1.6_BUILD_REPORT.json) | [赛季分析](V1.6_SEASON_REPORT_ANALYSIS_45744550318.md) | Run162 FMF 4,480 bytes |\n| V1.7 | [JSON](V1.7.json) | [JSON](V1.7_BUILD_REQUEST.json) | [设计审计](V1.7_DESIGN_AND_AUDIT.md) | D3进行中 | D5待验证 | Build Run163 |
+| V1.6 | [JSON](V1.6.json) | [JSON](V1.6_BUILD_REQUEST.json) | [设计审计](V1.6_DESIGN_AND_AUDIT.md) | [构建报告](V1.6_BUILD_REPORT.json) | [赛季分析](V1.6_SEASON_REPORT_ANALYSIS_45744550318.md) | Run162 FMF 4,480 bytes |\n| V1.7 | [JSON](V1.7.json) | [JSON](V1.7_BUILD_REQUEST.json) | [设计审计](V1.7_DESIGN_AND_AUDIT.md) | [构建报告](V1.7_BUILD_REPORT.json) | D5待验证 | Run163 FMF 4,504 bytes |
 
 ## 唯一研发入口与规则
 
