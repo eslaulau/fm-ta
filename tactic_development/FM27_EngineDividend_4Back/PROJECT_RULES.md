@@ -102,7 +102,13 @@
 
 ## 9. 项目专属构建命令
 
-在仓库根目录运行（PowerShell / Python 3.12）。先把父版本 FMF 的真实路径填入 `--parent-fmf`：
+在仓库根目录运行（PowerShell / Python 3.12）。每轮先从归档的原生快照恢复并核验固定 V0.5 FMF（不使用上一轮产物）：
+
+```powershell
+py -3.12 tactic_development\\FM27_EngineDividend_4Back\\materialize_v05_baseline.py
+```
+
+随后 `--parent-fmf` 必须指向刚恢复的 `tactic_development\\FM27_EngineDividend_4Back\\builds\\V0.5.fmf`：
 
 ```powershell
 py -3.12 tactic_development\FM27_EngineDividend_4Back\build_project_tactic.py `
