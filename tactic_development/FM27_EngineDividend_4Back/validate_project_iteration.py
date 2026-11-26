@@ -144,7 +144,7 @@ def validate(recipe_path: Path, audit_path: Path, parent_fmf: Path) -> list[str]
     if "现实足球理论不是战术筛选/否决标准" not in audit:
         errors.append("Design audit must explicitly state that real-football theory is not a veto criterion.")
     mismatch_heading = re.search(
-        r"(?ms)^##\\s*7\\.\\s*强制审计：引擎行为错位设计.*?\\n(.*?)(?=^##\\s|\\Z)",
+        r"(?ms)^##\s*7\.\s*强制审计：引擎行为错位设计.*?\n(.*?)(?=^##\s|\Z)",
         audit,
     )
     if not mismatch_heading:
@@ -162,7 +162,7 @@ def validate(recipe_path: Path, audit_path: Path, parent_fmf: Path) -> list[str]
                  if row.strip().startswith("- ") and field in row),
                 None,
             )
-            if line is None or not re.search(r"：\\s*[^：\\s].*", line):
+            if line is None or not re.search(r"：\s*[^：\s].*", line):
                 errors.append(f"Engine-mismatch audit field must be completed: {field}.")
     if "不以现实足球" not in rules or "引擎行为错位" not in rules:
         errors.append("PROJECT_RULES.md must retain the mandatory engine-mismatch design rule.")
