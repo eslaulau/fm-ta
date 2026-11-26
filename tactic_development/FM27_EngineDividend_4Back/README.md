@@ -33,7 +33,7 @@
 - V0.9_ST_ONLY_DRAFT_SUPERSEDED_run3.fmf：首轮单改 ST 草案历史 FMF；Run 3 同次 report 保存在 Actions artifact `15002228385`；已取代，不是正式 V0.9。
 - V0.8.fmf：4,352 bytes；SHA-256 c7480f2c32c55c1b8e8ce3f8724c9ea2c7b2f02fa4e9759b9c6aff8c31d7bb2e；Run 142 唯一父快照。
 
-- V1.9_REDESIGN.json / V1.9_REDESIGN_DESIGN_AND_AUDIT.md：IP 4-3-3 DM + OOP 4-1-4-1 的完整重设计配方与审计；D0完成，构建待执行。
+- V1.9_REDESIGN.json / V1.9_REDESIGN_DESIGN_AND_AUDIT.md / V1.9_REDESIGN_BUILD_REPORT_SUMMARY.json：IP 4-3-3 DM + OOP 4-1-4-1 的完整重设计配方、审计和Run167构建摘要；D0-D3完成，D4/D5待验证。
 
 ## 项目硬约束与开放项
 
