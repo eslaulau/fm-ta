@@ -47,3 +47,10 @@
 - metaFM 4-1-2-1-2 Diamond分类：https://metafm.net/formations/4-1-2-1-2-diamond（5套、11,200场；领先样本1.949 PPG；协议同上）。记录为未选择的结构参考，不代表无效。
 - metaFM 4-1-4-1分类：https://metafm.net/formations/4-1-4-1（27.1.1尚无样本，页面展示的是27.1.0单个560场样本）；OOP 4-1-4-1因此标记为本队待验证假设，不作为外部已证实META。
 - FM-Arena 27.1.1测试页：https://fm-arena.com/tactic-testing/（62套、83,700场；与metaFM协议不同，不合并样本）。
+
+ 
+## 赛季报告分析质量与追踪字段（新增）
+
+每个新Run在对应登记项或分析文件中，必须保留可用于复核的：用户确认战术版本映射、赛事/比赛数、球队与球员统计覆盖、身份匹配率、统计对账、位置/角色映射状态、FM27 build、Exporter版本、存档SHA、schema/兼容性状态和未解析字段。分析使用的分组、指标定义、样本数及限制必须能回溯到原始Run。每轮追踪矩阵链接：[SEASON_TO_TACTIC_TRACEABILITY_TEMPLATE.md](SEASON_TO_TACTIC_TRACEABILITY_TEMPLATE.md)。
+
+来源登记只负责记录来源与数据质量，不把Exporter字段自动解释为战术因果；缺少逐场槽位映射时必须明确限制角色/PI归因。
