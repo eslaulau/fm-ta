@@ -1191,3 +1191,10 @@ V1.1与V1.2英超38场有相同的主客场对手配对，但只有27场日期�
 - R4设计：IP 4-2-3-1/OOP无锋5-2-3；OOP三出口替代TrackingWinger；DMR IP BoxToBox Support/OOP WideCover DM；Pass Into Space改Pass To Feet；Hit Early Crosses改Work Ball Into Box；AMC移除Shoot Less Often。
 - R4严格从V0.5重生；当前状态为设计候选，D0-D3构建尚未执行，D4/D5待验证。
 - 详细复盘：R3_D5_SEASON_REVIEW_45850910254.md。
+
+
+## 2026-11-26｜R4 D3 构建通过
+
+- Workflow Run 45854019401，D0-D3 PASS；11组IP/OOP、22阶段位置/角色/PI全部精确回读，PI权限与TI向量校验通过。
+- R4 FMF：4,676 bytes；SHA-256 `8fbe0bddac5e7645a42715e378a8d5dd67400dc9e0f1b7be3ea7c2427febf899`；父模板V0.5 SHA-256固定。
+- D4游戏内导入、D5比赛效果仍未验证；不能宣称R4战术有效。
