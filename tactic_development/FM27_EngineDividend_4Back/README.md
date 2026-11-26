@@ -1,11 +1,11 @@
 # FM27 引擎红利四后卫
 
-## 项目统一入口（正式研发基准 V1.8；V1.9 Run165 为回退实验）
+## 项目统一入口（V1.9 重新设计版｜IP 4-3-3 DM / OOP 4-1-4-1）
 
 - **研发规则（最高优先级）：** IP唯一硬约束为后场DL/DCL/DCR/DR四个位置槽，不固定4-2-3-1或任何IP数字阵型；其余IP位置与全部OOP结构完全开放。每轮只设计、输出、构建一个完整方案，不提供多套候选战术，不把局部单变量调整当作默认升级。详见 [正式研发规则](ANALYSIS_AND_ITERATION_RULES.md)。
 - **唯一版本总目录：** [VERSION_CATALOG.md](VERSION_CATALOG.md)（所有版本成绩、配方、构建请求、设计审计、构建报告、FMF 与赛季分析索引）。
 - **原始数据来源：** [SOURCE_REGISTER.md](SOURCE_REGISTER.md)（Exporter Run ID、原始报告 URL、版本映射及缺失来源登记）。
-- **最近构建实验：** [V1.9 配方](V1.9.json) · [V1.9 设计审计](V1.9_DESIGN_AND_AUDIT.md) · [D3构建摘要](V1.9_BUILD_REPORT_SUMMARY.json) · [Build Run165](https://github.com/eslaulau/fm-ta/actions/runs/45754396168)。该配方实质上复用V1.7，仅作为OOP回退实验留档，不视为正式性能升级；D4/D5待验证。V1.8仍是最近完成D5的研发基准。V1.8 D5分析见 [赛季报告](V1.8_SEASON_REPORT_ANALYSIS_45753659141.md)；V1.8联赛21-9-8、72分，防守机会指标未达标。
+- **当前正式研发版本：** [V1.9重新设计配方](V1.9_REDESIGN.json) · [完整设计审计](V1.9_REDESIGN_DESIGN_AND_AUDIT.md)；IP 4-3-3 DM / OOP 4-1-4-1。D0已完成，D1-D3待构建与回读，D4/D5待验证。旧V1.9 Run165保留为V1.7配方回退实验，不视为正式升级。V1.8仍是最近完成D5的研发基准。V1.8 D5分析见 [赛季报告](V1.8_SEASON_REPORT_ANALYSIS_45753659141.md)；V1.8联赛21-9-8、72分，防守机会指标未达标。
 - **历代最佳：** V1.6以28胜5平5负、89分、73.7%胜率刷新完整英超赛季纪录；V1.3仍是失球最少（30）且仅4负的防守基准。
 - **唯一历史主线：** [ITERATION_LOG.md](ITERATION_LOG.md)；**逐项指令沿革：** [TACTIC_INSTRUCTION_DECISION_LEDGER.md](TACTIC_INSTRUCTION_DECISION_LEDGER.md)。
 - **归档约束：** 此后本项目的版本文件全部放在当前目录；不再放进仓库根目录的通用 `build_requests/`。
@@ -32,6 +32,8 @@
 - V0.9_BUILD_REPORT.json：Run 142 的版本与哈希摘要。
 - V0.9_ST_ONLY_DRAFT_SUPERSEDED_run3.fmf：首轮单改 ST 草案历史 FMF；Run 3 同次 report 保存在 Actions artifact `15002228385`；已取代，不是正式 V0.9。
 - V0.8.fmf：4,352 bytes；SHA-256 c7480f2c32c55c1b8e8ce3f8724c9ea2c7b2f02fa4e9759b9c6aff8c31d7bb2e；Run 142 唯一父快照。
+
+- V1.9_REDESIGN.json / V1.9_REDESIGN_DESIGN_AND_AUDIT.md：IP 4-3-3 DM + OOP 4-1-4-1 的完整重设计配方与审计；D0完成，构建待执行。
 
 ## 项目硬约束与开放项
 
