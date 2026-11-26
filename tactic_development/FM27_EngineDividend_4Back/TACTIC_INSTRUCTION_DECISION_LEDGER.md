@@ -518,3 +518,48 @@ V0.9 ST-only Run3 是已取代草案，不属于正式版本主线。V0.5 是 V2
 - FMF 4,504 bytes，SHA-256 `c4d68446a7da3e4857bc12dc1a2a9fa2b0c34341ec9653c77b08ce2ccb951711`；same-run report 11,708 bytes，SHA-256 `b8a9c32e82c84eee2847c3328c25e4d569aedad4c64191cd4debe34be587a07f`。
 - D3 8/8 通过；22/22 阶段精确回读；IP四后场DL/DCL/DCR/DR；心态3；防线高度较低；TI bits含新增bit58。游戏内导入与比赛引擎均未测试。
 - 状态：D0–D3完成，D4/D5待实际验证。机器记录：[V1.5_BUILD_REPORT.json](V1.5_BUILD_REPORT.json)。
+
+
+---
+
+## 7.4 V1.5 / Run149 正式 D5 复盘｜Exporter Run 45734426186
+
+- 用户确认本报告使用 V1.5；来源 [Exporter Run 45734426186](https://github.com/eslaulau/FM27-Exporter/tree/main/season-reports/1/45734426186)；存档 SHA-256 `415e4a637668c1188ea0ddfa00663528d3a25d07ba3a11b42fcd332a83f0703d`；FM27 build 27.1.1+2511875，fmsave 0.14.3 未登记，schema-6借用布局，partial/unverified。
+- 英超38场：25胜3平10负、95:48、78分、xG77.29/xGA40.51、我方/对手绝佳机会87/40。主场15胜1平3负、54:16、xGA15.83、对手绝佳机会15；客场10胜2平7负、41:32、xGA24.68、对手绝佳机会25。
+- 对比V1.4：全赛季失球少5、xGA少2.95，但进球少6、xG少15.33、积分少5；客场xGA和对手绝佳机会反而恶化。V1.5的谨慎心态+较低防线没有修复客场问题，且进攻产量明显回落。
+- 数据质量：65/65正式比赛球队/球员报告齐全；球队统计对账1235/1235；球员出场1018，识别995（97.74%），23未识别；6球未归属；位置10/10、role_code 11/11目录映射成功，但英超585条已识别球员报告行仅160条有可验证IP角色码，不包含完整职责/PI/OOP映射；build仍partial/unverified。
+- **继承保留：** IP四后场DL/DCL/DCR/DR；V1.4/V1.5进攻骨架与AML内锋组合；高位介入线、较高节奏、较宽进攻宽度、团队较多逼抢；DCR/DCL较少逼抢。
+- **替换淘汰：** V1.5 ment=3→V1.6 ment=4；防线LOWER→DEFAULT；OOP DMR Trigger Press LESS_OFTEN→MORE_OFTEN。
+- **新增待验证：** OOP DMR边路补位后腰与DML屏障后腰均Trigger Press MORE_OFTEN，形成双后腰积极压迫、双中卫保护的分层方案。
+- **证据不足：** 不能把V1.5的进攻回落单独归因于心态/防线；不能把球员数据归因到完整角色/PI；V1.6双后腰压迫尚无D5证据。
+- 完整分析：[V1.5_SEASON_REPORT_ANALYSIS_45734426186.md](V1.5_SEASON_REPORT_ANALYSIS_45734426186.md)。
+
+## 7.5 最近一次迭代：V1.6（父版V1.5 / Run149；D0–D2已完成，D3待构建）
+
+**父版本：** V1.5 / Run149；父 FMF SHA-256 `c4d68446a7da3e4857bc12dc1a2a9fa2b0c34341ec9653c77b08ce2ccb951711`；父 recipe blob SHA `73b03b8c81b5c14139f88063b0eab9325d16a1a6`。
+
+**子版本：** V1.6；recipe [V1.6.json](V1.6.json)；build request [V1.6_BUILD_REQUEST.json](V1.6_BUILD_REQUEST.json)；设计审计 [V1.6_DESIGN_AND_AUDIT.md](V1.6_DESIGN_AND_AUDIT.md)。
+
+### 四类决策（V1.5 → V1.6）
+
+**继承保留**
+- IP四后场DL/DCL/DCR/DR；11槽/22阶段的位置、角色、职责全部保持。
+- AML内锋进攻+内切+自由跑位、DR翼卫进攻、DL内收边后卫防守、两名中卫较少逼抢。
+- 较高比赛节奏、较宽进攻宽度、高位防守介入线、团队较多逼抢。
+
+**替换淘汰**
+- 心态 ment 3 → 4；防线LOWER → DEFAULT。
+- OOP DMR Trigger Press LESS_OFTEN → MORE_OFTEN。
+
+**新增待验证**
+- OOP DMR边路补位后腰与DML屏障后腰均Trigger Press MORE_OFTEN；观察客场xGA、对手绝佳机会、球权恢复和进攻端是否恢复。
+- 本轮没有改动双中卫的LESS_OFTEN，也没有给DML增加Tackle Harder。
+
+**证据不足**
+- V1.5角色码仅部分覆盖，不能证明单个PI因果；V1.6双后腰逼抢仍待D4/D5。
+- 目标FM27 build仍为partial/unverified；不能把静态预检或D3当成比赛效果验证。
+
+- D0：V1.5 Run45734426186赛季分析完成。
+- D1：读取当前catalog与style registry；V1.6新PI需由Actions正式执行角色/位置/职责权限预检。
+- D2：父子11槽/22阶段差异完成；IP四后场硬约束保持。
+- D3：等待正式构建与独立回读。
