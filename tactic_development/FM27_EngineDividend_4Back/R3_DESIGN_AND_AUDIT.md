@@ -9,7 +9,7 @@
 重生基准：V0.5
 重生基准 FMF SHA-256：`e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257`
 父 FMF SHA-256：`e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257`
-本轮配方 SHA-256：`06dec45e63f08ce2203c4f5a3cce3700bd0915ffb2758aa43f233deac160572f`
+本轮配方 SHA-256：`685ccf18cf5ef92c5a06d40a4b2faf247f73d25c9aaf339eae0bd888c934b096`
 项目规则 SHA-256：`3f5b03ed932aab6dd3dd7fb119946af6401cb964c7df127e9762c5b615b8aec3`
 决策总账 SHA-256：`b2d3fc4f0eb79f1623adff4741b6ea57876ef92337fd6d8c9913d6d2bdfe2815`
 PPG 策略 SHA-256：`69a356a998e270a141ea00cff0f041c0eff6f759cdeb54dde5fecce58ef888a6`
@@ -61,7 +61,7 @@ IP位置集合严格为：GK、DR、DCR、DCL、DL、DML、DMR、AML、AMC、AMR
 
 | 槽位 | 位置 | 原生角色 / 职责 | 设计任务 |
 |---|---|---|---|
-| OOP-01 | GK | Goalkeeper / D（门将/防守） | 门线职责 |
+| OOP-01 | GK | OPGoalkeeper / S（无球门将/支援） | 门线职责 |
 | OOP-02 | DR | OPHoldingFullBack / D（留守边后卫/防守） | 右侧留守，锁住边路防区 |
 | OOP-03 | DCR | OPCoveringCentreBack / D（补位中卫/防守） | 三中卫右侧覆盖 |
 | OOP-04 | DCL | OPCentreBack / D（中后卫/防守） | 中央防守；个人逼抢较少 |
@@ -167,7 +167,7 @@ OOP位置集合严格为：GK、DR、DCR、DCL、DL、DC、DML、DMR、AML、AMR
 | IP-09 | AMC FreeRole A | 未提供 | 未提供 | 未提供 | 未提供 | 创造/射门待补 | OOP转Dropping DM | U | 未准入 |
 | IP-10 | AMR Winger S | 未提供 | 未提供 | 未提供 | 未提供 | 传中/推进待补 | OOP回防边锋 | U | 未准入 |
 | IP-11 | ST TargetForward A | 未提供 | 未提供 | 未提供 | 未提供 | 争顶/做球/xG待补 | OOP转AMC | U | 未准入 |
-| OOP-01 | GK Goalkeeper D | 未提供 | 未提供 | 未提供 | 不适用 | 扑救/防止失球待补 | 极低防线 | U | 未准入 |
+| OOP-01 | GK OPGoalkeeper S | 未提供 | 未提供 | 未提供 | 不适用 | 扑救/防止失球待补 | 极低防线 | U | 未准入 |
 | OOP-02 | DR OPHoldingFullBack D | 未提供 | 未提供 | 未提供 | 不适用 | 边路防守待补 | 引诱传中 | U | 未准入 |
 | OOP-03 | DCR OPCoveringCentreBack D | 未提供 | 未提供 | 未提供 | 不适用 | 补位/身后球待补 | 三中卫 | U | 未准入 |
 | OOP-04 | DCL OPCentreBack D | 未提供 | 未提供 | 未提供 | 不适用 | 对抗/拦截待补 | 较少逼抢 | U | 未准入 |
