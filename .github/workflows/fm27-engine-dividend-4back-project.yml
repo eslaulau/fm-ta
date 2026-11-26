@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
     paths:
-      - "tactic_development/FM27_EngineDividend_4Back/2.2_TRIGGER.json"
+      - "tactic_development/FM27_EngineDividend_4Back/2.3_TRIGGER.json"
 
 permissions:
   contents: read
@@ -15,6 +15,19 @@ jobs:
     steps:
       - name: Checkout project
         uses: actions/checkout@v4
+
+      - name: Read project build request
+        id: request
+        run: |
+          python - <<'PY' >> "$GITHUB_OUTPUT"
+          import json
+          from pathlib import Path
+          p = Path("tactic_development/FM27_EngineDividend_4Back/2.3_TRIGGER.json")
+          d = json.loads(p.read_text(encoding="utf-8"))
+          for key in ("version", "recipe", "audit"):
+              print(f"{key}={d[key]}")
+          print(f"stem=FM27_EngineDividend_4Back_{d['version']}")
+          PY
 
       - name: Set up Python 3.12
         uses: actions/setup-python@v5
@@ -43,18 +56,18 @@ jobs:
       - name: Run project gate, native permission preflight, build and D3 readback
         run: |
           python "tactic_development/FM27_EngineDividend_4Back/build_project_tactic.py" \
-            --recipe "tactic_development/FM27_EngineDividend_4Back/2.2.json" \
-            --audit "tactic_development/FM27_EngineDividend_4Back/2.2_DESIGN_AND_AUDIT.md" \
+            --recipe "tactic_development/FM27_EngineDividend_4Back/${{ steps.request.outputs.recipe }}" \
+            --audit "tactic_development/FM27_EngineDividend_4Back/${{ steps.request.outputs.audit }}" \
             --parent-fmf "tactic_development/FM27_EngineDividend_4Back/builds/V0.5.fmf" \
-            --output "tactic_development/FM27_EngineDividend_4Back/builds/FM27_EngineDividend_4Back_2.2.fmf" \
-            --report "tactic_development/FM27_EngineDividend_4Back/builds/FM27_EngineDividend_4Back_2.2.report.json"
+            --output "tactic_development/FM27_EngineDividend_4Back/builds/${{ steps.request.outputs.stem }}.fmf" \
+            --report "tactic_development/FM27_EngineDividend_4Back/builds/${{ steps.request.outputs.stem }}.report.json"
 
-      - name: Upload the single FMF and same-run report
+      - name: Upload FMF and same-run report
         uses: actions/upload-artifact@v4
         with:
-          name: FM27_EngineDividend_4Back_2.2
+          name: ${{ steps.request.outputs.stem }}
           path: |
-            tactic_development/FM27_EngineDividend_4Back/builds/FM27_EngineDividend_4Back_2.2.fmf
-            tactic_development/FM27_EngineDividend_4Back/builds/FM27_EngineDividend_4Back_2.2.report.json
+            tactic_development/FM27_EngineDividend_4Back/builds/${{ steps.request.outputs.stem }}.fmf
+            tactic_development/FM27_EngineDividend_4Back/builds/${{ steps.request.outputs.stem }}.report.json
           if-no-files-found: error
           retention-days: 30
