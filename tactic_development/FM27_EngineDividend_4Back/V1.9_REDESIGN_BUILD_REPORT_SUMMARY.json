@@ -1,0 +1,74 @@
+{
+  "document_type": "build_report_summary",
+  "version": "V1.9 redesigned",
+  "parent_version": "V1.8",
+  "recipe_path": "tactic_development/FM27_EngineDividend_4Back/V1.9_REDESIGN.json",
+  "recipe_blob_sha": "d4cff71fdbf6ab5a64af4a69c6bf91df4cd60650",
+  "build_request_path": "tactic_development/FM27_EngineDividend_4Back/V1.9_REDESIGN_BUILD_REQUEST.json",
+  "build_request_blob_sha": "d4cff71fdbf6ab5a64af4a69c6bf91df4cd60650",
+  "parent_fmf_sha256": "51e94c684c66ce016950d93f2619a40086820e7a9dcf792b7251d4ac67fa4e72",
+  "workflow": "FM27 Tactic Build",
+  "workflow_run_number": 167,
+  "workflow_run_id": 45756670647,
+  "workflow_run_url": "https://github.com/eslaulau/fm-ta/actions/runs/45756670647",
+  "artifact_id": 15088380920,
+  "artifact_name": "FM27_V1.9_REDESIGN_BUILD_REQUEST_run167",
+  "artifact_zip_bytes": 7073,
+  "artifact_zip_sha256": "56fa213cb581f84db5c243e685d164bc8f05422e0bd69c32aca9b7f97bdd61cb",
+  "fmf_file": "V1.9_REDESIGN_BUILD_REQUEST_run167.fmf",
+  "fmf_bytes": 4688,
+  "fmf_sha256": "4b948f9dfeccddc8ae93e225a085a6d1f5b74e9ecd723670a68a7a1b032c4f85",
+  "same_run_report_file": "V1.9_REDESIGN_BUILD_REQUEST_run167.report.json",
+  "same_run_report_bytes": 12183,
+  "same_run_report_sha256": "a43fa446f7b4cddfff2a49c8bc146460508e46f2b62233be875f3690ed6ffd8b",
+  "status": "offline_binary_roundtrip_verified_not_game_import_verified",
+  "d1_catalog_preflight": "passed",
+  "d2_structure": {
+    "player_slots": 11,
+    "designed_phases": 22,
+    "readback_phases": 22,
+    "ip_shape": "4-3-3 DM (4-1-2-3)",
+    "ip_back_four": [
+      "DL",
+      "DCL",
+      "DCR",
+      "DR"
+    ],
+    "oop_shape": "4-1-4-1",
+    "oop_back_four": [
+      "DL",
+      "DCL",
+      "DCR",
+      "DR"
+    ],
+    "oop_midfield": [
+      "DMC",
+      "MCL",
+      "MCR",
+      "ML",
+      "MR"
+    ],
+    "oop_forward": [
+      "ST"
+    ]
+  },
+  "d3_checks": {
+    "fmf_outer_roundtrip": true,
+    "all_member_decrypt_and_zstd_checksums": true,
+    "tac_full_parse": true,
+    "eleven_ip_oop_pairs": true,
+    "twenty_two_phase_positions_roles_duties_pi_exact": true,
+    "pi_permissions_checked_against_catalog": true,
+    "team_instruction_vector_readback": true,
+    "native_style_string_and_code_readback": true
+  },
+  "game_import_verified": false,
+  "match_engine_verified": false,
+  "notes": [
+    "D1 catalog-backed role/duty/PI preflight passed.",
+    "D2 all 11 IP/OOP pairs and all 22 phases passed exact structural readback; IP back four is DL/DCL/DCR/DR.",
+    "D3 native FMF build and all 8 required independent readback checks passed.",
+    "The first Run166 preflight failed because OOP recipe labels incorrectly included OP prefixes; corrected labels and reran as Run167. Run166 produced no FMF and is not the final build.",
+    "Game import and match performance have not been tested."
+  ]
+}
