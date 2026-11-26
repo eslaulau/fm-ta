@@ -234,7 +234,7 @@ D5：完整38场英超报告，确认战术身份，完成PPG判定及所有平�
 - 2.2配方：2.2.json；设计审计：2.2_DESIGN_AND_AUDIT.md；触发记录：2.2_TRIGGER.json。
 
 ### D1-D3结果
-- GitHub Actions Run：[45789108253](https://github.com/eslaulau/fm-ta/actions/runs/45789108253)；Artifact ID 15101073066。
+- GitHub Actions首次构建Run：[45789108253](https://github.com/eslaulau/fm-ta/actions/runs/45789108253)；审计哈希复核Run：[45789543029](https://github.com/eslaulau/fm-ta/actions/runs/45789543029)；最新Artifact ID 15101682456。
 - <badge color="success">D1-D3通过</badge> 原生角色/职责/PI权限预检、11槽/22阶段检查、FMF生成与8/8独立二进制回读全部通过。
 - V0.5父模板SHA-256：e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257。
 - FMF：4,528 bytes；SHA-256：7feba49ad389125b64690ce00feaf01717f70ae80cb5854eec614e41fc058a34。
