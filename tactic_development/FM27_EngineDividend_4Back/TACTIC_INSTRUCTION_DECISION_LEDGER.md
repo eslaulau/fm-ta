@@ -2074,3 +2074,39 @@ D5至少完成38场英超后，以V1.8为直接父版基线，同时对照V1.7�
 - V0.5模板SHA-256回读一致；TI位向量为 [2,5,7,11,13,16,28,35,44,47,51,54,59,61,66,69,71,72,79,83]；心态4；style string为空、FourCC=4c4c554e。
 - Artifact ID 15099985865；ZIP SHA-256 `d9b974634d291685fd9f831386e7b45790bd264d51b2765b03cef6b0dd4abe0d`。
 - 当前状态：D0–D3完成；D4待用户游戏内导入；D5待该版本完整赛季报告。D3不代表游戏导入或战术效果已验证。
+
+
+ 
+---
+
+## 2.2｜菱形IP四后卫 + OOP 5-2-3（2026-11-26）
+
+### 版本身份与目标
+- 父版本：V0.5；重生基准：V0.5。
+- 父FMF SHA-256：e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257。
+- 配方：2.2.json；设计审计：2.2_DESIGN_AND_AUDIT.md。
+- 唯一目标仍为IP有球四后场DL/DCL/DCR/DR各一次，完整英超38场至少109分（PPG≥2.85）。
+- 本轮不从V1.9 R2或V2.1 FMF继承；仅重用其结构研究和历史证据。
+
+### 结构决策
+- IP：4-1-2-1-2 Diamond。DR/DL WingBack Support；DCR/DCL BallPlayingCentreBack Defend；DMC DefensiveMidfielder Defend；MCR/MCL ChannelMidfielder Attack；AMC AttackingMidfielder Attack；STR/STL CentreForward Attack。
+- OOP：5-2-3。DMC→DC CentreBack Defend；MCR/MCL→DMR/DML DefensiveMidfielder Defend；STR/STL→AMR/AML Winger Support；AMC保留AMC AttackingMidfielder Support；DR/DL FullBack Defend；DCR/DCL CentreBack Defend。
+- 五名跨位球员：DMC→DC、MCR→DMR、MCL→DML、STR→AMR、STL→AML。
+- IP四后场槽严格为DL/DCL/DCR/DR；OOP完全开放。
+
+### 证据依据与边界
+- V0.5–V1.8的14代历史赛季与22阶段配置见本总账历史配置档案；V1.6最高89分，V1.3防守机会质量最好，V1.8高进攻产量伴随防守机会质量恶化。
+- V1.9 R2与metaFM 27.1.1公开“442菱形中场”的11槽IP/OOP位置、角色、职责逐项一致；外部样本2,240场、1.949 PPG、xG2.28、xGA1.43。其PI/TI隐藏，不声称完整配置相同，也不将外部PPG换算为本队预期。
+- V1.1/V1.8虽同为OOP 5-2-3，但球员来源与换位链不同，不能作为对2.2同一结构的直接否决；仍需重点监控OOP转换、边路保护、双后腰离位和客场xGA。
+- 当前压迫PI分层与用户既有研究假设一致：DR/DL、DC、DMR/DML、AMC/AMR/AML更多逼抢；DCR/DCL较少逼抢；OOP广泛凶狠铲抢；团队逼抢More Often而非最高档。
+- 27.1.0官方更新提供反击决策、AMC移动、宽区压迫、secondary marker覆盖和最后一名防守者行为的机制背景；具体收益仍待验证。
+- 低平传中+后点目标、高位遭遇线+较低防线、短球门球/中卫接应+更直接传球/传入空当均为待验证行为错位，不得写成已证实引擎事实。
+
+### D1-D3构建记录
+- GitHub Actions Run：45789108253；Artifact ID：15101073066。
+- FMF：4,528 bytes；SHA-256：7feba49ad389125b64690ce00feaf01717f70ae80cb5854eec614e41fc058a34。
+- 同次报告：12,666 bytes；SHA-256：ab436693df94409860b0ca4d6eb57ec79ca3b3ba6d643fdea72c5112ab6ed7e8。
+- D1原生角色/职责/PI权限预检通过；D2 11槽/22阶段通过；D3 FMF外层回读、成员解密/Zstandard校验、TAC完整解析、22阶段精确回读、PI权限、TI向量和原生style身份检查8/8通过。
+- 构建状态：offline_binary_roundtrip_verified_not_game_import_verified；game_interactive_import=false、match_engine=false。
+- D4：待FM27游戏内导入及五名跨位球员熟悉度核验。D5：待完整38场英超报告。
+- **性能状态：未验证。** 2.2不宣称达到PPG 2.85，不因D1-D3通过晋级为已验证实战升级。
