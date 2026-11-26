@@ -87,7 +87,7 @@
 - 本项目规则、PPG 目标、历史台账、生成前审计及项目专属构建入口全部位于 `tactic_development/FM27_EngineDividend_4Back/`。
 - FM-TA 通用导出器/生成器只负责读取合法 recipe、原生权限预检、FMF 格式生成和回读；它不决定本项目战术目标、阵型、角色或迭代方向。
 - 不修改 FM-TA 通用生成器、导出器、通用工作流或全仓库规则来承载本项目要求。
-- 本项目每次正式迭代必须通过 [build_project_tactic.py](build_project_tactic.py)；它强制执行 [validate_project_iteration.py](validate_project_iteration.py)，并要求提供真实父 FMF 文件、核对父 FMF SHA-256 和本轮 recipe SHA-256。配方与审计文件必须位于本项目目录，构建输出也归档在本项目目录。禁止把直接调用通用 FM-TA 命令视为完成项目迭代。每轮设计审计从 [ITERATION_DESIGN_AUDIT_TEMPLATE.md](ITERATION_DESIGN_AUDIT_TEMPLATE.md) 创建。
+- 本项目每次正式迭代必须通过 [build_project_tactic.py](build_project_tactic.py)；它强制执行 [validate_project_iteration.py](validate_project_iteration.py)，并要求提供真实父 FMF 文件，核对父 FMF、当前项目规则、决策总账、PPG 策略和本轮 recipe 的 SHA-256；规则或总账更新后，旧审计自动失效。配方与审计文件必须位于本项目目录，构建输出也归档在本项目目录。禁止把直接调用通用 FM-TA 命令视为完成项目迭代。每轮设计审计从 [ITERATION_DESIGN_AUDIT_TEMPLATE.md](ITERATION_DESIGN_AUDIT_TEMPLATE.md) 创建。
 - 其他项目使用 FM-TA 时不继承本项目 PPG 目标或规则。
 
 ## 8. 权威文件与冲突处理
@@ -113,7 +113,7 @@ py -3.12 tactic_development\FM27_EngineDividend_4Back\build_project_tactic.py `
   --report tactic_development\FM27_EngineDividend_4Back\builds\<本轮版本>.report.json
 ```
 
-设计审计中的父 FMF 和 recipe SHA-256 必须与实际文件一致。可用以下命令读取哈希，再填写审计文件：
+设计审计中的父 FMF、recipe、项目规则、决策总账和 PPG 策略 SHA-256 必须与当前实际文件一致。每次规则或总账变更后都要重新制作审计。可用 `Get-FileHash -Algorithm SHA256` 分别读取这些文件的哈希，再填写审计文件：
 
 ```powershell
 Get-FileHash 'D:\<父版本>.fmf' -Algorithm SHA256
