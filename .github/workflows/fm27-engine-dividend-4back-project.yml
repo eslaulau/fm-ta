@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
     paths:
-      - "tactic_development/FM27_EngineDividend_4Back/2.0_TRIGGER.json"
+      - "tactic_development/FM27_EngineDividend_4Back/2.1_TRIGGER.json"
 
 permissions:
   contents: read
@@ -43,16 +43,16 @@ jobs:
       - name: Run project gate, native permission preflight, build and D3 readback
         run: |
           python "tactic_development/FM27_EngineDividend_4Back/build_project_tactic.py" \
-            --recipe "tactic_development/FM27_EngineDividend_4Back/2.0.json" \
-            --audit "tactic_development/FM27_EngineDividend_4Back/2.0_DESIGN_AND_AUDIT.md" \
+            --recipe "tactic_development/FM27_EngineDividend_4Back/2.1.json" \
+            --audit "tactic_development/FM27_EngineDividend_4Back/2.1_DESIGN_AND_AUDIT.md" \
             --parent-fmf "tactic_development/FM27_EngineDividend_4Back/builds/V0.5.fmf" \
-            --output "tactic_development/FM27_EngineDividend_4Back/builds/FM27_EngineDividend_4Back_2.0.fmf" \
-            --report "tactic_development/FM27_EngineDividend_4Back/builds/FM27_EngineDividend_4Back_2.0.report.json"
+            --output "tactic_development/FM27_EngineDividend_4Back/builds/FM27_EngineDividend_4Back_2.1.fmf" \
+            --report "tactic_development/FM27_EngineDividend_4Back/builds/FM27_EngineDividend_4Back_2.1.report.json"
 
       - name: Upload the single FMF and same-run report
         uses: actions/upload-artifact@v4
         with:
-          name: FM27_EngineDividend_4Back_2.0
+          name: FM27_EngineDividend_4Back_2.1
           path: |
             tactic_development/FM27_EngineDividend_4Back/builds/FM27_EngineDividend_4Back_2.0.fmf
             tactic_development/FM27_EngineDividend_4Back/builds/FM27_EngineDividend_4Back_2.0.report.json
