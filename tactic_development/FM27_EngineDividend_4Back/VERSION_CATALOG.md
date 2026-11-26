@@ -7,7 +7,7 @@
 > - **当前最新构建候选：2.2**；D1-D3原生权限预检、11槽/22阶段、FMF二进制独立回读均通过；D4游戏导入与D5完整赛季尚未完成。
 > - 2.2从V0.5原生FMF重生，IP 4-1-2-1-2 Diamond，OOP 5-2-3；11槽位置/角色/职责与metaFM公开菱形样本逐项对应。它是待验证候选，不是实战升级，也没有证明达到PPG 2.85。
 > - V1.9 R2、V2.1保留为历史结构/技术参考；不得自动继承。2.3须等待2.2完成D4/D5及积分损失诊断后再决定。
-> - 2.2 Run：[45789108253](https://github.com/eslaulau/fm-ta/actions/runs/45789108253)；Artifact ID `15101073066`；FMF 4,528 bytes；SHA-256 `7feba49ad389125b64690ce00feaf01717f70ae80cb5854eec614e41fc058a34`。
+> - 2.2首次构建Run：[45789108253](https://github.com/eslaulau/fm-ta/actions/runs/45789108253)；审计哈希更新后复核Run：[45789543029](https://github.com/eslaulau/fm-ta/actions/runs/45789543029)，Artifact ID `15101682456`；FMF 4,528 bytes；SHA-256 `7feba49ad389125b64690ce00feaf01717f70ae80cb5854eec614e41fc058a34`。
 
 ---
 
@@ -143,7 +143,7 @@
 
 - 父版本/重生基准：V0.5；FMF SHA-256 e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257。
 - 配方：[2.2.json](2.2.json)；设计审计：[2.2_DESIGN_AND_AUDIT.md](2.2_DESIGN_AND_AUDIT.md)；触发：[2.2_TRIGGER.json](2.2_TRIGGER.json)。
-- GitHub Actions：[Run 45789108253](https://github.com/eslaulau/fm-ta/actions/runs/45789108253)；Artifact ID 15101073066。
+- GitHub Actions：首次构建[Run 45789108253](https://github.com/eslaulau/fm-ta/actions/runs/45789108253)；审计哈希复核[Run 45789543029](https://github.com/eslaulau/fm-ta/actions/runs/45789543029)；最新Artifact ID 15101682456。
 - FMF：4,528 bytes；SHA-256 7feba49ad389125b64690ce00feaf01717f70ae80cb5854eec614e41fc058a34；same-run report SHA-256 ab436693df94409860b0ca4d6eb57ec79ca3b3ba6d643fdea72c5112ab6ed7e8。
 - 方案：IP 4-1-2-1-2 Diamond，OOP 5-2-3；11槽位置/角色/职责与metaFM公开菱形样本逐项对应；五名球员跨位。
 - D1-D3：原生权限预检通过；11槽/22阶段通过；8/8独立二进制回读通过。D4游戏导入待核验；D5完整38场待验证。**不宣称已达到PPG≥2.85。**
