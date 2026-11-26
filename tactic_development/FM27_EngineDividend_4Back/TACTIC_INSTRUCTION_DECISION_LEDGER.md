@@ -1,3 +1,14 @@
+
+
+> **2026-11-26｜V1.9重新设计版当前权威状态**
+>
+> - 唯一父版本：V1.8，FMF SHA-256 `51e94c684c66ce016950d93f2619a40086820e7a9dcf792b7251d4ac67fa4e72`；V1.8 recipe blob `c5d7290c207a8322c4dffbd80ea6c7bf70277017`。
+> - 正式配方：[V1.9_REDESIGN.json](V1.9_REDESIGN.json)；审计：[V1.9_REDESIGN_DESIGN_AND_AUDIT.md](V1.9_REDESIGN_DESIGN_AND_AUDIT.md)。
+> - IP：4-3-3 DM，DL/DCL/DCR/DR四后场；OOP：4-1-4-1。不是4-2-3-1，也不是复制V1.7/V1.8。
+> - V1.9 Run165另行保留为V1.7配方回退实验，不作为本次父版或正式性能升级。
+> - D0完成；D1-D3待catalog预检/原生构建/独立回读；D4/D5待验证。
+>
+> ---
 > **2026-11-26 当前权威规则与版本定性修订**
 >
 > - IP唯一硬约束：后场四槽DL、DCL、DCR、DR。**不固定4-2-3-1或任何其他IP数字阵型**；其余七个位置、层次、角色、职责、PI、TI、心态全部开放。
