@@ -21,7 +21,7 @@
 py -3.12 tactic_development\FM27_EngineDividend_4Back\build_project_tactic.py `
   --recipe tactic_development\FM27_EngineDividend_4Back\<本轮配方>.json `
   --audit tactic_development\FM27_EngineDividend_4Back\<本轮审计>.md `
-  --parent-fmf D:\<父版本>.fmf `
+  --parent-fmf D:\V0.5.fmf `
   --output tactic_development\FM27_EngineDividend_4Back\builds\<版本>.fmf `
   --report tactic_development\FM27_EngineDividend_4Back\builds\<版本>.report.json
 ```
@@ -99,3 +99,8 @@ D3不等于D4游戏内导入，也不等于D5赛季表现。没有实际FMF和�
 `tactic_development/FM27_EngineDividend_4Back/`
 
 不得修改FM-TA通用生成器、导出器、通用Actions工作流或其他项目目录来承载本项目政策。
+
+
+## 重生基准强制说明
+
+无论标准入口还是离线原生生成器，本轮传入的父 FMF 都必须是 V0.5 原始文件，SHA-256 固定为 `e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257`。任何 V1.x 文件不得作为 `--parent-fmf`。离线执行不得绕过 `validate_project_iteration.py` 的 V0.5 哈希检查。
