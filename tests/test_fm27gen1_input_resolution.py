@@ -22,6 +22,7 @@ class TacticRecipeInputResolverTests(unittest.TestCase):
         self.addCleanup(self.temp.cleanup)
         self.root = Path(self.temp.name)
         (self.root / "build_requests").mkdir()
+        (self.root / "tactic_development" / "FM27_EngineDividend_4Back").mkdir(parents=True)
         self.runner_temp = self.root / "runner_temp"
         self.recipe = {"v": 1, "name": "原创战术 A", "ment": 5, "base": {"g": "Gegenpress"}, "ti": {}, "p": []}
 
@@ -88,7 +89,7 @@ class TacticRecipeInputResolverTests(unittest.TestCase):
             )
         secret = self.root / "secret.json"
         secret.write_text("{}", encoding="utf-8")
-        with self.assertRaisesRegex(ValueError, "directly inside build_requests"):
+        with self.assertRaisesRegex(ValueError, "directly inside an approved recipe directory"):
             resolver.resolve_recipe_input(
                 event_name="workflow_dispatch",
                 event_data={},
@@ -107,6 +108,18 @@ class TacticRecipeInputResolverTests(unittest.TestCase):
             **common
         )
         self.assertEqual(selected["recipe_path"], "build_requests/one.json")
+        canonical = self.root / "tactic_development" / "FM27_EngineDividend_4Back" / "V1.6_BUILD_REQUEST.json"
+        canonical.write_text(json.dumps(self.recipe), encoding="utf-8")
+        selected_canonical = resolver.resolve_recipe_input(
+            event_name="push",
+            event_data={},
+            changed_files=["tactic_development/FM27_EngineDividend_4Back/V1.6_BUILD_REQUEST.json"],
+            **common
+        )
+        self.assertEqual(
+            selected_canonical["recipe_path"],
+            "tactic_development/FM27_EngineDividend_4Back/V1.6_BUILD_REQUEST.json",
+        )
         # The CLI obtains changed_files through git diff-tree --diff-filter=AM,
         # so a deletion-only push reaches this resolver as an empty list.
         skipped = resolver.resolve_recipe_input(
@@ -122,7 +135,7 @@ class TacticRecipeInputResolverTests(unittest.TestCase):
             resolver.resolve_recipe_input(
                 event_name="push",
                 event_data={},
-                changed_files=["build_requests/one.json", "build_requests/two.txt"],
+                changed_files=["build_requests/one.json", "tactic_development/FM27_EngineDividend_4Back/V1.6_BUILD_REQUEST.json"],
                 **common
             )
 
