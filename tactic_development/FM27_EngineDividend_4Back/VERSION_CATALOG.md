@@ -4,8 +4,8 @@
 
 ## 当前状态
 
-- **当前开发版本：V1.5 / Run149**
-- **最近完成阶段：D3 原生 FMF 生成与离线回读**
+- **当前开发版本：V1.6（父版 V1.5 / Run149；D0–D2完成，D3构建待验收）**
+- **最近完成阶段：V1.6 D0–D2分析与设计；D3原生FMF构建待执行**
 - **仍待验证：D4 游戏内导入；D5 比赛/赛季表现**
 - **最高完整英超胜率：71.1%**，由 V1.0、V1.3、V1.4 并列；其中 V1.3 以 88 分、4 负为综合最佳历史基准。
 - 版本比较必须使用英超联赛口径。非完整 38 场样本单独标记，不与完整赛季胜率排名混用。
@@ -30,14 +30,14 @@
 | V1.2 | 38 | 26-8-4 | 68.4% | 72:29 | 86 | 完整赛季 |
 | V1.3 | 38 | 27-7-4 | **71.1%** | 83:30 | **88** | 完整赛季 |
 | V1.4 | 38 | 27-2-9 | **71.1%** | 101:53 | 83 | 完整赛季 |
-| V1.5 | — | — | — | — | — | D5 未提供 |
+| V1.5 | 38 | 25-3-10 | 65.8% | 95:48 | 78 | 完整赛季 |
 
 **口径提醒**
 - V0.1–V0.4 为未完成赛季样本，只能描述当前已赛成绩，不可与完整 38 场赛季作最终排名。
 - V0.5–V1.4 均为 38 场英超赛季；杯赛/欧战场次不混入该表。
 - V0.6 的 20-8-10、83:49、68分；V0.7 的 15-8-15、70:58、53分，来自跨版本决策台账及相应版本审计。
 - 版本来自不同存档/阵容/赛季状态，结果是描述性历史比较，不是同随机种子受控 A/B。
-- V1.5 尚无赛季数据，不能评价胜率或宣称比 V1.4 更强。
+- V1.5 已完成38场英超D5：25-3-10、78分、65.8%；V1.6尚无构建与赛季数据。
 
 ## 版本文件清单
 
@@ -59,7 +59,8 @@
 | V1.2 | [JSON](V1.2.json) | [JSON](V1.2_BUILD_REQUEST.json) | [设计审计](V1.2_DESIGN_AND_AUDIT.md) | [报告](V1.2_BUILD_REPORT.json) | [赛季分析](V1.2_SEASON_REPORT_ANALYSIS_45635282210.md) | Actions 历史 |
 | V1.3 | [JSON](V1.3.json) | [JSON](V1.3_BUILD_REQUEST.json) | [设计审计](V1.3_DESIGN_AND_AUDIT.md) | [报告](V1.3_BUILD_REPORT.json) | [赛季分析](V1.3_SEASON_REPORT_ANALYSIS_45644106773.md) | Actions 历史 |
 | V1.4 | [JSON](V1.4.json) | [JSON](V1.4_BUILD_REQUEST.json) | [设计审计](V1.4_DESIGN_AND_AUDIT.md) | [报告](V1.4_BUILD_REPORT.json) | [赛季分析](V1.4_SEASON_REPORT_ANALYSIS_45727738275.md) | Actions 历史 |
-| V1.5 | [JSON](V1.5.json) | [JSON](V1.5_BUILD_REQUEST.json) | [设计审计](V1.5_DESIGN_AND_AUDIT.md) | [报告](V1.5_BUILD_REPORT.json) | D5 待提供 | Actions Run149 artifact |
+| V1.5 | [JSON](V1.5.json) | [JSON](V1.5_BUILD_REQUEST.json) | [设计审计](V1.5_DESIGN_AND_AUDIT.md) | [报告](V1.5_BUILD_REPORT.json) | [赛季分析](V1.5_SEASON_REPORT_ANALYSIS_45734426186.md) | Actions Run149 artifact |
+| V1.6 | [JSON](V1.6.json) | [JSON](V1.6_BUILD_REQUEST.json) | [设计审计](V1.6_DESIGN_AND_AUDIT.md) | D3待构建 | D5待提供 | 待构建 |
 
 ## 唯一研发入口与规则
 
