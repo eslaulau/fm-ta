@@ -75,7 +75,7 @@ def validate(recipe_path: Path, audit_path: Path, parent_fmf: Path) -> list[str]
     if "D0强制门禁" not in performance_standard or "低效配置清除规则" not in performance_standard:
         errors.append("Position performance standard is incomplete or missing its mandatory elimination gate.")
     performance_section = re.search(
-        r"(?ms)^##\\s*位置绩效高强度审查与低效淘汰\\s*\\n(.*?)(?=^##\\s|\\Z)",
+        r"(?ms)^##\s*位置绩效高强度审查与低效淘汰\s*\n(.*?)(?=^##\s|\Z)",
         audit,
     )
     if not performance_section:
