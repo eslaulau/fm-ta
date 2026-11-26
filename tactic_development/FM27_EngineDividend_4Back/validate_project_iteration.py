@@ -99,6 +99,16 @@ def validate(recipe_path: Path, audit_path: Path, parent_fmf: Path) -> list[str]
     if "PPG" not in ledger or "2.85" not in ledger:
         errors.append("Authoritative decision ledger has not recorded the PPG 2.85 objective.")
 
+    attack_gate = policy.get("minimum_attack_process_gate", {})
+    if attack_gate.get("metric") != "team_xG" or attack_gate.get("minimum_38_match_total") != 100:
+        errors.append("Project policy must enforce the 38-match team xG >= 100 minimum process gate.")
+    if "xG≥100" not in rules and "xG >= 100" not in rules:
+        errors.append("PROJECT_RULES.md does not state the 100 xG minimum process gate.")
+    if "xG≥100" not in ledger and "xG >= 100" not in ledger:
+        errors.append("Authoritative decision ledger has not recorded the 100 xG minimum process gate.")
+    if not any("xG" in line and "100" in line for line in audit.splitlines()):
+        errors.append("Design audit must explicitly state the 38-match xG >= 100 minimum gate.")
+
     if "PPG ≥ 2.85" not in audit and "PPG >= 2.85" not in audit:
         errors.append("Design audit must explicitly state the PPG 2.85 objective.")
     for decision in DECISIONS:
