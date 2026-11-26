@@ -124,3 +124,7 @@
 | D3构建Artifact | Artifact ID `15131511605` | FMF 4,676 bytes；SHA-256 `449fb1a76ca8967ccfd674e59c8dd007d40def9da8aafaf8f23edf10c8d3fa4e` |
 
 **R3当前没有Exporter赛季报告。** D4游戏内导入和D5完整38场英超报告待用户测试后登记；在此之前不得登记R3为实战有效版本。
+
+
+| R3 | 45850910254 | [D5复盘](R3_D5_SEASON_REVIEW_45850910254.md) | [Exporter Run 45850910254](https://github.com/eslaulau/FM27-Exporter/tree/main/season-reports/1/45850910254) |
+| R4 | 待生成 | 待补D3构建报告及D5赛季报告 | 以R3 D5复盘为设计证据，父FMF严格使用V0.5 |
