@@ -15,6 +15,7 @@ RULES = PROJECT_DIR / "PROJECT_RULES.md"
 LEDGER = PROJECT_DIR / "TACTIC_INSTRUCTION_DECISION_LEDGER.md"
 DECISIONS = ("继承保留", "替换淘汰", "新增待验证", "证据不足")
 IP_BACK_FOUR = ("DL", "DCL", "DCR", "DR")
+V05_BASELINE_SHA256 = "e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257"
 DUTIES = {"D", "S", "A"}
 
 
@@ -110,6 +111,12 @@ def validate(recipe_path: Path, audit_path: Path, parent_fmf: Path) -> list[str]
         errors.append(
             f"Parent FMF SHA-256 mismatch: audit={declared_parent_sha.lower()}, file={actual_parent_sha}."
         )
+    if actual_parent_sha != V05_BASELINE_SHA256:
+        errors.append(
+            f"重生模式拒绝非 V0.5 父文件：expected={V05_BASELINE_SHA256}, actual={actual_parent_sha}."
+        )
+    if declared_parent_sha and declared_parent_sha.lower() != V05_BASELINE_SHA256:
+        errors.append("父 FMF SHA-256 必须固定为 V0.5 原始基准 SHA-256。")
 
     for audit_label, source_path, description in (
         ("项目规则 SHA-256", RULES, "PROJECT_RULES.md"),
@@ -166,6 +173,8 @@ def validate(recipe_path: Path, audit_path: Path, parent_fmf: Path) -> list[str]
                 errors.append(f"Engine-mismatch audit field must be completed: {field}.")
     if "不以现实足球" not in rules or "引擎行为错位" not in rules:
         errors.append("PROJECT_RULES.md must retain the mandatory engine-mismatch design rule.")
+    if "每轮从 V0.5 重生" not in rules or "最高优先级" not in rules:
+        errors.append("PROJECT_RULES.md must enforce V0.5 reset-based iteration as the highest-priority rule.")
 
     if policy.get("hard_constraints", {}).get("ip_back_four_positions") != list(IP_BACK_FOUR):
         errors.append("Policy IP hard constraint must be exactly DL/DCL/DCR/DR.")
@@ -245,7 +254,7 @@ def main() -> int:
         for error in errors:
             print(f"- {error}")
         return 1
-    print("PASS: project rules, exact parent FMF, recipe hash, 11/22 slots, IP back-four and D5 audit.")
+    print("PASS: V0.5 reset baseline, exact V0.5 parent FMF SHA, project rules, recipe hash, 11/22 slots, IP back-four and D5 audit.")
     return 0
 
 
