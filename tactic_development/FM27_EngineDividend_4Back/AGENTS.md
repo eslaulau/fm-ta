@@ -13,7 +13,7 @@
 ## 每轮开始前必须重新读取
 
 1. `UPGRADE_GATE.md`、`ANALYSIS_AND_ITERATION_RULES.md`、`AGENTS.md`。
-2. `TACTIC_INSTRUCTION_DECISION_LEDGER.md`、`VERSION_CATALOG.md`、`SOURCE_REGISTER.md`、`ITERATION_LOG.md`。
+2. `TACTIC_INSTRUCTION_DECISION_LEDGER.md`（唯一权威总账，内含V0.5–V1.8完整历史配置档案）、`VERSION_CATALOG.md`、`SOURCE_REGISTER.md`、`ITERATION_LOG.md`。不得再查找或维护独立历史主表。
 3. 唯一父版本的完整recipe、原生FMF、build request/build report、设计审计。
 4. 本轮用户报告的原始内容、最近D5分析、历史上关键的最佳/最差赛季分析。
 5. 完整引擎红利资料库索引及相关研究；`EXTERNAL_ENGINE_BENCHMARK.md`和当前FM27 build的FM-Arena、FMAX、metaFM、爆棚/社区实测。
