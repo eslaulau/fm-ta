@@ -5,7 +5,7 @@
 重生基准 FMF SHA-256：e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257
 父 FMF SHA-256：e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257
 项目规则 SHA-256：3f5b03ed932aab6dd3dd7fb119946af6401cb964c7df127e9762c5b615b8aec3
-决策总账 SHA-256：2ccf522cf3aea93efbbeb061054c2a39df277c78a84826959ca36b5abc8c795a
+决策总账 SHA-256：267a277e7dadc992091fba463d0b691bcb2ef64e533ae9a9b82dc0171a59a6a5
 PPG 策略 SHA-256：3e0bb63315a72569016cae00fd30e276a5146dbb0977277b412d27496f10e9e0
 位置绩效标准 SHA-256：d79a62508aa31490a62c4c63524aa91146b953fd2eb82252e8501312e07838f1
 本轮配方 SHA-256：739090e76f46578a4c212a49faea98ef5c89d615f01e9033697fa0d6a5bc5ea0
@@ -181,7 +181,7 @@ PPG 策略 SHA-256：3e0bb63315a72569016cae00fd30e276a5146dbb0977277b412d27496f1
 - [x] 位置绩效矩阵覆盖IP/OOP 22槽，并标注证据等级。
 - [x] 四类决策、低效淘汰清单、引擎错位设计、风险和D5指标齐全。
 - [x] 原生目录PI权限已预检：Outlet前场角色允许Tackle Harder与Trigger Press More Often；HoldingFullBack/CoveringCentreBack不强写固定关闭的More Often。
-- [ ] D0-D3项目门禁与原生构建待运行。
+- [x] D0-D3项目门禁与原生构建通过（Workflow Run 45854019401；8/8独立回读通过；FMF SHA-256 8fbe0bddac5e7645a42715e378a8d5dd67400dc9e0f1b7be3ea7c2427febf899）。
 - [ ] D4游戏内导入待用户确认。
 - [ ] D5完整38场赛季报告待补。
 
