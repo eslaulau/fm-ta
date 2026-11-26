@@ -1247,3 +1247,15 @@ V1.1与V1.2英超38场有相同的主客场对手配对，但只有27场日期�
 - **新增待验证：** 五后卫最后防线 + 双后腰屏障 + AML/AMC/AMR无锋前场三人组；翼卫与前场三人主动压迫，三中卫/双后腰降低主动离位；后场与边路广泛Tackle Harder。
 - **证据不足：** 外部metaFM榜单与本队存档不能直接比较；V1.1旧版OOP 5-2-3曾取得67分，但配置/角色/压迫层级不同，不能据此否定整个结构家族；球员位置熟悉度和逐场槽位归因仍未知。
 - D0：V1.7 D5分析和外部结构检索完成；D1/D2/D3：待自动前置校验、22阶段检查与原生FMF构建；D4/D5：待游戏内验收与V1.8赛季报告。
+
+
+## V1.8 D1–D3 原生构建完成｜Run164
+
+- Build request：[V1.8_BUILD_REQUEST.json](V1.8_BUILD_REQUEST.json)；recipe：[V1.8.json](V1.8.json)；recipe blob SHA `c5d7290c207a8322c4dffbd80ea6c7bf70277017`。
+- Actions：[FM27 Tactic Build Run164](https://github.com/eslaulau/fm-ta/actions/runs/45750563671)，run ID `45750563671`；artifact ID `15085292517`。
+- D1 catalog-backed preflight通过；D2 11槽/22阶段检查通过，IP四后场DL/DCL/DCR/DR，OOP五后卫WBL/DCL/DC/DCR/WBR、双后腰DML/DMR、前场AML/AMC/AMR。
+- D3 8/8检查通过，22/22设计阶段与22/22回读阶段一致；PI权限、团队TI向量、style string/FourCC均通过。
+- FMF：4,616 bytes；SHA-256 `51e94c684c66ce016950d93f2619a40086820e7a9dcf792b7251d4ac67fa4e72`。
+- Same-run report：12,605 bytes；SHA-256 `75c59445c84690170175a14c7bd62e16f16d9159803a9061b25456d1ab3bb7d8`；artifact ZIP SHA-256 `5e073f32f66c8cbf91ed6f75b23eda2a358f9aa5653f5a89e7eb59180b4e96d8`。
+- 构建摘要：[V1.8_BUILD_REPORT_SUMMARY.json](V1.8_BUILD_REPORT_SUMMARY.json)。
+- 状态 `offline_binary_roundtrip_verified_not_game_import_verified`；D4游戏内导入与D5比赛/赛季表现仍未验证。
