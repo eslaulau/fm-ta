@@ -1,5 +1,37 @@
 # FM27 引擎红利四后卫｜版本迭代记录
 
+## R3｜IP 4-2-3-1 × OOP 无锋 5-2-3（2026-11-26）
+
+### 版本决策
+- 用户明确宣布R2淘汰；R2不再继续测试、不作为父版、不作为R3配置模板。历史文件和证据保留。
+- R3从V0.5原始FMF重新构建，父FMF SHA-256：`e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257`。
+- IP 4-2-3-1；OOP无锋5-2-3。IP后场DL/DCL/DCR/DR各一次，其余IP槽位与整个OOP结构开放。
+- 设计优先级来自用户指定的27.1.1引擎红利指标；归档：[ENGINE_DIVIDEND_PRIORITY_INDICATORS_27.1.1.md](ENGINE_DIVIDEND_PRIORITY_INDICATORS_27.1.1.md)。
+
+### 核心设计
+- IP DML回撤为OOP第三中卫；IP DMR转OOP Wide Cover DM；IP AMC Free Role转OOP Dropping DM；IP Target Forward转OOP AMC，形成无锋前场三人。
+- IP DL Inside Full-Back转OOP Holding Full-Back；IP DR Wing-Back转OOP Holding Full-Back。
+- 高位逼抢遭遇线 + 极低防线 + 更多回撤；OOP 5后卫、双锁位后腰、边路引诱传中。
+- 直接传球、极高节奏、反击、长球门球找支点、高球传中、下底/后点目标；中卫短传少射门。
+- OOP全体10名外场球员使用Tackle Harder个人PI；三中卫降低个人逼抢，允许的双后腰与前场三人提高个人逼抢。所有PI已按原生角色/位置/职责权限预检。
+
+### D0-D3构建结果
+- GitHub Actions Run：[45845663863](https://github.com/eslaulau/fm-ta/actions/runs/45845663863)；结论SUCCESS。
+- D0项目门禁：PASS。
+- D1原生角色/职责/PI权限预检：PASS。
+- D2 11槽/22阶段位置结构与IP四后场约束：PASS。
+- D3原生FMF构建与独立回读：8/8检查通过。
+- Artifact ID：`15131511605`；FMF 4,676 bytes；SHA-256：`449fb1a76ca8967ccfd674e59c8dd007d40def9da8aafaf8f23edf10c8d3fa4e`。
+- 构建报告：[R3.report.json](builds/R3.report.json)；设计审计：[R3_DESIGN_AND_AUDIT.md](R3_DESIGN_AND_AUDIT.md)；配方：[R3.json](R3.json)。
+- D3仅证明FMF原生结构/自解包与独立回读通过；游戏内导入和比赛效果均未验证。
+
+### 下一步
+- D4：用户在FM27内导入R3.fmf，确认游戏接受、11个球员槽、IP/OOP阵型与角色、职责、个人/球队指令显示正确。
+- D5：使用R3完成完整38场英超，检查109分（PPG≥2.85）与全队xG≥100双门槛；未同时达标即FAIL。
+
+---
+
+
 > **项目原始战术：V0.5（V21 原生快照）。** 本日志仅记录 V0.5 及之后的正式项目迭代。V0.5 之前的版本不属于本项目研发谱系。
 
 ## V0.5 主线切换与字段权限勘误（2026-11-25，用户确认）
