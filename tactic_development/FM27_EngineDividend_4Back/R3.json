@@ -42,7 +42,7 @@
       },
       "out": {
         "pos": "GK",
-        "role": "OPGoalkeeper",
+        "role": "Goalkeeper",
         "duty": "S",
         "pi": []
       }
@@ -73,7 +73,7 @@
       },
       "out": {
         "pos": "DR",
-        "role": "OPHoldingFullBack",
+        "role": "HoldingFullBack",
         "duty": "D",
         "pi": [
           [
@@ -101,7 +101,7 @@
       },
       "out": {
         "pos": "DCR",
-        "role": "OPCoveringCentreBack",
+        "role": "CoveringCentreBack",
         "duty": "D",
         "pi": [
           [
@@ -129,7 +129,7 @@
       },
       "out": {
         "pos": "DCL",
-        "role": "OPCentreBack",
+        "role": "CentreBack",
         "duty": "D",
         "pi": [
           [
@@ -161,7 +161,7 @@
       },
       "out": {
         "pos": "DL",
-        "role": "OPHoldingFullBack",
+        "role": "HoldingFullBack",
         "duty": "D",
         "pi": [
           [
@@ -189,7 +189,7 @@
       },
       "out": {
         "pos": "DC",
-        "role": "OPCoveringCentreBack",
+        "role": "CoveringCentreBack",
         "duty": "D",
         "pi": [
           [
@@ -217,7 +217,7 @@
       },
       "out": {
         "pos": "DML",
-        "role": "OPWideCoverDefensiveMidfielder",
+        "role": "WideCoverDefensiveMidfielder",
         "duty": "D",
         "pi": [
           [
@@ -245,7 +245,7 @@
       },
       "out": {
         "pos": "AML",
-        "role": "OPTrackingWinger",
+        "role": "TrackingWinger",
         "duty": "D",
         "pi": [
           [
@@ -273,7 +273,7 @@
       },
       "out": {
         "pos": "DMR",
-        "role": "OPDroppingDefensiveMidfielder",
+        "role": "DroppingDefensiveMidfielder",
         "duty": "D",
         "pi": [
           [
@@ -317,7 +317,7 @@
       },
       "out": {
         "pos": "AMR",
-        "role": "OPTrackingWinger",
+        "role": "TrackingWinger",
         "duty": "D",
         "pi": [
           [
@@ -345,7 +345,7 @@
       },
       "out": {
         "pos": "AMC",
-        "role": "OPAttackingMidfielder",
+        "role": "AttackingMidfielder",
         "duty": "S",
         "pi": [
           [
