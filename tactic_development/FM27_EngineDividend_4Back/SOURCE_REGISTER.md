@@ -18,7 +18,7 @@
 | V1.6 | 45744550318 | [分析](V1.6_SEASON_REPORT_ANALYSIS_45744550318.md) | [Exporter Run 45744550318](https://github.com/eslaulau/FM27-Exporter/tree/main/season-reports/1/45744550318) |
 | V1.7 | 45748944770 | [赛季分析](V1.7_SEASON_REPORT_ANALYSIS_45748944770.md)；[设计审计](V1.7_DESIGN_AND_AUDIT.md) | [Exporter Run 45748944770](https://github.com/eslaulau/FM27-Exporter/tree/main/season-reports/1/45748944770) |
 | V1.8 | 45753659141 | [赛季分析](V1.8_SEASON_REPORT_ANALYSIS_45753659141.md)；[设计审计](V1.8_DESIGN_AND_AUDIT.md) | [Exporter Run 45753659141](https://github.com/eslaulau/FM27-Exporter/tree/main/season-reports/1/45753659141) |
-| 2.2 | 45794923641 | [D5复盘](2.2_D5_SEASON_REVIEW_20261126.md) | [Exporter Run 45794923641](https://github.com/eslaulau/FM27-Exporter/tree/main/season-reports/1/45794923641)（用户确认本赛季使用2.2；Exporter不含战术配置，身份映射来自用户声明） |
+| 2.2 | 45794923641 | [D5复盘](2.2_D5_SEASON_REVIEW_20261126.md) | [Exporter Run 45794923641](https://github.com/eslaulau/FM27-Exporter/tree/main/season-reports/1/45794923641)（用户确认本赛季使用2.2；Exporter不含战术配置，身份映射来自用户声明） |\n| 2.5 | 未进行 | D5尚未执行；D3构建报告：[builds/2.5.report.json](builds/2.5.report.json) | 无Exporter赛季来源；D4导入与D5完整38场验证待执行 |
 
 ## 来源完整性规则
 
@@ -91,3 +91,10 @@
 - 从V0.5重生，父SHA `e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257`；FMF 4,528 bytes，SHA-256 `ebceb7d4da76b386007f124dfb1ca0b917fdcbb68b549debd274c4b74d45b5aa`。
 - 配方SHA-256 `eb6523f2b55f7e2ee6175ecb59f2366e76103d4e44e8a25bcb754b5a97f9fb8c`；D3八项二进制检查全部通过。D4/D5尚未完成。
 - 2.3为Whipped Crosses × Back Post单变量实验；D5结果不得从2.2历史报告推断。
+
+
+## 2.5 构建身份（非赛季数据来源）
+- D3构建：GitHub Actions [Run 45808599286](https://github.com/eslaulau/fm-ta/actions/runs/45808599286)，Artifact ID `15109429118`。
+- 父版本：V0.5；父FMF SHA-256 `e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257`。
+- FMF SHA-256 `ead1701ff6de352494521730ac5bcf51ac3a3b37d5d93919b3fb40dc45b31d25`；4,552 bytes；D3 8/8独立回读通过。
+- 目前没有2.5赛季报告或Exporter Run；不得将构建Run误登记为D5数据来源。
