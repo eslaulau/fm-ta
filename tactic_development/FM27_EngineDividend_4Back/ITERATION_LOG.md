@@ -1181,3 +1181,13 @@ V1.1与V1.2英超38场有相同的主客场对手配对，但只有27场日期�
 - FMF 4,616 bytes；SHA-256 1cbdd6142fd40a60b1073915e78a3a9956f29c2a324383c8dd73213bb2457039；same-run report SHA-256 51eaa1a30dc0d6c60f5e5292ed5e421cf0465b6ba7c94a2a35a0e3f848255955。
 - D1原生catalog权限预检通过；D2 11槽/22阶段、IP四后场通过；D3 8/8离线二进制回读通过。
 - D3状态 offline_binary_roundtrip_verified_not_game_import_verified；game_interactive_import=false、match_engine=false。D4游戏导入待用户确认；D5待完整38场。
+
+
+## 2026-11-26｜R3 D5 → R4
+
+- R3赛季报告：Exporter Run 45850910254；38场英超19胜9平10负、66分、PPG1.737、xG65.00、xGA46.18。109分与xG100双门槛均FAIL。
+- 19场非胜场场均xG1.21、射门9.84；胜场场均xG2.21、射门13.95。R3的主要短板是低产比赛中缺少射门/机会，不应只改终结。
+- 位置数据支持保留前场四人结构：ST19.73xG、AMC15.35、AML13.03、AMR3.88；AMR19助攻，继续作为供给点。DR位置0.94xG/4助，提升为WingBack Attack。
+- R4设计：IP 4-2-3-1/OOP无锋5-2-3；OOP三出口替代TrackingWinger；DMR IP BoxToBox Support/OOP WideCover DM；Pass Into Space改Pass To Feet；Hit Early Crosses改Work Ball Into Box；AMC移除Shoot Less Often。
+- R4严格从V0.5重生；当前状态为设计候选，D0-D3构建尚未执行，D4/D5待验证。
+- 详细复盘：R3_D5_SEASON_REVIEW_45850910254.md。
