@@ -4,7 +4,7 @@
 > - 最近完成D5：V1.8（72分）；历史最高积分：V1.6（89分）。
 > - **当前最新构建候选：2.2**，从V0.5原生FMF重生；IP菱形4-1-2-1-2，OOP 5-2-3；D1-D3已通过，D4游戏导入和D5完整赛季待验证。
 > - 2.2的11槽位置/角色/职责与metaFM公开菱形样本逐项对应；显式PI/TI和本队效果仍待验证。不得称为已达标或实战升级。
-> - [2.2设计审计](2.2_DESIGN_AND_AUDIT.md) · [配方](2.2.json) · [构建Run](https://github.com/eslaulau/fm-ta/actions/runs/45789108253)。
+> - [2.2设计审计](2.2_DESIGN_AND_AUDIT.md) · [配方](2.2.json) · [复核构建Run](https://github.com/eslaulau/fm-ta/actions/runs/45789543029)。
 > - 在2.2完成D4/D5前，不自动生成2.3。V1.9 R2和V2.1只作为历史参考，不自动继承。
 
 ---
