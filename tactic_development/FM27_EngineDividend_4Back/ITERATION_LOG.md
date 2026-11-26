@@ -1094,3 +1094,24 @@ V1.1与V1.2英超38场有相同的主客场对手配对，但只有27场日期�
 - FMF：4,504 bytes，SHA-256 `5bce6f33f70ec9aa8627e18cc866b51f5cd79b99e2e52ba667087b4e142e92bc`；same-run report：11,700 bytes，SHA-256 `b17203dd4f0557504a15b685d70a4efdfaf613c3d65fded43c0b4797ed1866bf`。
 - D3 8/8 检查通过；22/22 阶段回读一致；IP 四后场 DL/DCL/DCR/DR；AML 为内锋（进攻），短传、内切、自由跑位；TI 和原生格式字段不变。实际导入与 match engine 检查均未执行，故 D4/D5 pending。
 - 机器构建报告：[V1.4_BUILD_REPORT.json](V1.4_BUILD_REPORT.json)。
+
+
+---
+
+## V1.4 正式赛季报告复盘｜Exporter Run 45727738275（2026-11-26）
+
+- 用户确认该报告使用 V1.4 / Run148。存档 SHA-256：`6595f55fcf7cc721ad3cab5b90a645f2a43703d6222bc475725eae96319cb3d5`；Exporter 1.5.0；FM27 build `27.1.1+2511875`（fmsave 0.14.3 未登记，借用 schema-6，partial/unverified）。
+- 正式比赛62场，报告62/62；球队/球员明细对账1,178/1,178；出场973次，身份识别910次、63次未识别；球队比分190球、球员原始记录187球，3球未归属。
+- 英超：27胜2平9负、101:53、83分；xG92.62/xGA43.46；绝佳机会100/39。相较V1.3：进球+18、xG+12.08、我方绝佳机会+35，但失球+23、xGA+9.19、对手绝佳机会+12、积分-5。
+- 主场17胜0平2负、56:24、xG49.88/xGA20.18；客场10胜2平7负、45:29、xG42.74/xGA23.28。客场7败为核心风险。
+- 九场失利并非全部被压制：失利组xG15.61/xGA12.57、我方/对手绝佳机会16/11，既有高xG未转化，也有热刺一战xGA3.19、对手5次绝佳机会。不能归因到单个角色/PI。
+- 四类决策：继承保留IP四后场与AML进攻候选；替换心态4→3、防线标准→较低；新增待验证“较低防线+高位介入线+较多团队逼抢”协同；证据不足包括逐场战术映射缺失、593/973行缺role_code、63次身份未识别、3球未归属及build借用布局。
+- 完整报告：[V1.4_SEASON_REPORT_ANALYSIS_45727738275.md](V1.4_SEASON_REPORT_ANALYSIS_45727738275.md)。
+
+## V1.5 设计｜父版本 V1.4 / Run148
+
+- 父FMF SHA-256：`5bce6f33f70ec9aa8627e18cc866b51f5cd79b99e2e52ba667087b4e142e92bc`；父recipe blob：`23f094b5c370324564a34caa1559672f7939ec74`。
+- 全局调整：心态 `ment=4→3`；TI防线高度 `DEFAULT→LOWER`。保留HIGHER tempo、WIDER attacking width、HIGH_PRESS line of engagement、MORE_OFTEN trigger press。
+- 22/22阶段位置、角色、职责和PI均继承；IP四后场DL/DCL/DCR/DR不变；AML内锋进攻/内切/自由跑位保留以保护进攻产量候选。
+- 子配方：[V1.5.json](V1.5.json)；设计审计：[V1.5_DESIGN_AND_AUDIT.md](V1.5_DESIGN_AND_AUDIT.md)；构建请求：[FM27_EngineDividend_IP4Back_OOP42121_V1.5_20261126.json](../../build_requests/FM27_EngineDividend_IP4Back_OOP42121_V1.5_20261126.json)。
+- 本次Actions将执行catalog预检、原生FMF生成及D3独立回读；D4游戏导入、D5比赛效果仍须实际验证。
