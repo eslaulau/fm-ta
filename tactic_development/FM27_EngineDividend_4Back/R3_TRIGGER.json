@@ -1,0 +1,10 @@
+{
+  "version": "R3",
+  "request": "Run project-gated D0, native preflight, native FMF build and D3 independent readback.",
+  "recipe": "R3.json",
+  "audit": "R3_DESIGN_AND_AUDIT.md",
+  "parent": "V0.5",
+  "parent_sha256": "e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257",
+  "output": "builds/R3.fmf",
+  "report": "builds/R3.report.json"
+}
