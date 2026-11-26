@@ -163,12 +163,7 @@
         "pos": "MC",
         "role": "MidfieldPlaymaker",
         "duty": "S",
-        "pi": [
-          [
-            "PASSING_RISKS",
-            "MORE_RISKY"
-          ]
-        ]
+        "pi": []
       },
       "out": {
         "pos": "DMR",
