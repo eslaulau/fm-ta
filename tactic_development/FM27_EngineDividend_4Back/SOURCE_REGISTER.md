@@ -30,7 +30,7 @@
 ## 版本映射与来源状态补充（2026-11-26）
 - V1.6 / Run162：用户确认对应Exporter Run 45744550318；该Run为V1.6赛季报告来源。
 - V1.7 / Run163：用户确认 [Exporter Run 45748944770](https://github.com/eslaulau/FM27-Exporter/tree/main/season-reports/1/45748944770) 使用V1.7；D5已完成，分析文件为 `V1.7_SEASON_REPORT_ANALYSIS_45748944770.md`。源存档SHA-256 `3af3b8a4d5a51903e2d2a2b6a1ae4e1ee40c8a0caed8fc787b054245ce5bc6a1`；FM27 build `27.1.1+2511875`；数据整体 `partial_or_unverified`，限制见分析文件。
-- V1.8：尚无D5报告；不得把V1.7 Run45748944770误登记为V1.8成绩。
+- V1.8：D5报告已由用户确认，来源为Run45753659141；英超38场21-9-8、98:55、72分。不得把V1.7 Run45748944770误登记为V1.8成绩。
 - 对每个后续版本，先登记用户确认的版本映射；未确认时写“未确认”，不得从文件名或最近一次导出推断。
 
 - V1.8 / Run45753659141：用户确认使用V1.8；英超38场21-9-8、98:55、72分；build 27.1.1+2511875；源存档SHA-256 `6c07ec389a2894a3d2a8829f2618b8dec337c06bb1a2e7af334d4acb798713e0`；数据partial/unverified，详情见V1.8赛季分析。
@@ -65,3 +65,9 @@
 ## 2026-11-26｜V1.9 R2 历史审计纠正
 
 - [V1.9_REDESIGN_R2_HISTORICAL_REAUDIT_REQUIRED.md](V1.9_REDESIGN_R2_HISTORICAL_REAUDIT_REQUIRED.md)：记录V0.5–V1.8历史总账复核缺口、已发现的版本转折和待补工作。该文件是本轮D0质量纠正依据。
+
+
+## 2026-11-26｜V0.5–V1.8 全历史D0复核完成
+- 已逐一核对14份赛季分析/重分析及其用户确认版本映射；详细数据质量、指标、配置变化和R2历史映射见唯一权威总账 `TACTIC_INSTRUCTION_DECISION_LEDGER.md` 的“D0全历史重生式复核”章节。
+- 本次确认：V1.3为综合攻守参照；V1.6为最高积分参照；V1.2/V1.3/V1.7的OOP四后卫+双后腰分层保护有重复正向机会质量观察；V1.1/V1.8的两套具体OOP 5-2-3均需作为高风险历史样本。
+- 报告质量边界仍按各版分析文件执行；多数build/schema并非上游完整认证，且无同seed受控A/B，不得据此声称单项因果。
