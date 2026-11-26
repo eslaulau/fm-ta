@@ -1,0 +1,1993 @@
+{
+  "schema": "fm27-native-tactic-snapshot",
+  "schema_version": "1.0.0",
+  "identity": {
+    "name": "V21_Leaderboard_TeamInstructions",
+    "tactic_title": "V21",
+    "source_filename": "V21_Leaderboard_TeamInstructions(1).fmf",
+    "source_size_bytes": 4214,
+    "source_sha256": "e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257"
+  },
+  "lineage": {
+    "parent_source_file": "V21.fmf",
+    "parent_source_sha256": "0d4d1b2d7b0a5b08dbcfcf903cad26c54490f8b3aa8fe3cf84d7ea19a691f669",
+    "parent_source_size_bytes": 1255,
+    "derivation": "team-instruction-vector-only patch of V21.fmf; all 11 IP/OOP player-phase pairs were reported byte-identical to the source before/after this patch",
+    "prior_roundtrip_report": "V21_Leaderboard_TeamInstructions.report.json",
+    "prior_report_output_sha256": "e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257",
+    "reported_ti_delta": {
+      "before_bits": [
+        62
+      ],
+      "after_bits": [
+        2,
+        5,
+        7,
+        11,
+        13,
+        16,
+        28,
+        35,
+        44,
+        46,
+        53,
+        54,
+        59,
+        61,
+        65,
+        69,
+        71,
+        72,
+        79,
+        83
+      ],
+      "player_phase_pairs": 11,
+      "tac_bytes_outside_12_byte_ti_vector_byte_identical": true,
+      "aom_plaintext_byte_identical": true,
+      "image_plaintext_byte_identical": true
+    },
+    "provenance_note": "Lineage and byte-preservation claims are carried from the prior native patch report; the uploaded target file itself was independently opened and hashed in this run."
+  },
+  "tactical_metadata": {
+    "source_major": 27,
+    "mentality": {
+      "native_value": 4,
+      "header_raw_hex": "040204070203"
+    },
+    "style": {
+      "native_string": "",
+      "native_fourcc_bytes_hex": "4c4c554e",
+      "fourcc_ascii_bytes": "LLUN",
+      "reverse_ascii_candidate": "NULL",
+      "resolution": "unresolved; preserve raw values and do not infer a preset style"
+    },
+    "header_raw_hex": "040204070203"
+  },
+  "formations": {
+    "in_possession_positions": [
+      "GK",
+      "DR",
+      "DCR",
+      "DCL",
+      "DL",
+      "MCR",
+      "MCL",
+      "AMR",
+      "AML",
+      "AMC",
+      "ST"
+    ],
+    "out_of_possession_positions": [
+      "GK",
+      "DR",
+      "DCR",
+      "DCL",
+      "DL",
+      "DMR",
+      "DML",
+      "MR",
+      "ML",
+      "MC",
+      "AMC"
+    ],
+    "shape_label": "not asserted; exact native slot positions are provided above",
+    "position_coordinates_from_catalog": [
+      {
+        "position": "GK",
+        "x": 50,
+        "y": 92,
+        "native_mask": 1
+      },
+      {
+        "position": "DR",
+        "x": 86,
+        "y": 76,
+        "native_mask": 4
+      },
+      {
+        "position": "DCR",
+        "x": 67,
+        "y": 78,
+        "native_mask": 2097168
+      },
+      {
+        "position": "DCL",
+        "x": 33,
+        "y": 78,
+        "native_mask": 1048592
+      },
+      {
+        "position": "DL",
+        "x": 14,
+        "y": 76,
+        "native_mask": 8
+      },
+      {
+        "position": "MCR",
+        "x": 67,
+        "y": 45,
+        "native_mask": 2098176
+      },
+      {
+        "position": "MCL",
+        "x": 33,
+        "y": 45,
+        "native_mask": 1049600
+      },
+      {
+        "position": "AMR",
+        "x": 88,
+        "y": 28,
+        "native_mask": 2048
+      },
+      {
+        "position": "AML",
+        "x": 12,
+        "y": 28,
+        "native_mask": 4096
+      },
+      {
+        "position": "AMC",
+        "x": 50,
+        "y": 28,
+        "native_mask": 8192
+      },
+      {
+        "position": "ST",
+        "x": 50,
+        "y": 12,
+        "native_mask": 16384
+      },
+      {
+        "position": "DMR",
+        "x": 67,
+        "y": 61,
+        "native_mask": 2097280
+      },
+      {
+        "position": "DML",
+        "x": 33,
+        "y": 61,
+        "native_mask": 1048704
+      },
+      {
+        "position": "MR",
+        "x": 89,
+        "y": 45,
+        "native_mask": 256
+      },
+      {
+        "position": "ML",
+        "x": 11,
+        "y": 45,
+        "native_mask": 512
+      },
+      {
+        "position": "MC",
+        "x": 50,
+        "y": 45,
+        "native_mask": 1024
+      }
+    ]
+  },
+  "team_instructions": {
+    "native_vector_bytes": 12,
+    "native_vector_hex": "a428011008506028a2810800",
+    "selected_count": 20,
+    "selected_bits": [
+      2,
+      5,
+      7,
+      11,
+      13,
+      16,
+      28,
+      35,
+      44,
+      46,
+      53,
+      54,
+      59,
+      61,
+      65,
+      69,
+      71,
+      72,
+      79,
+      83
+    ],
+    "selected": [
+      {
+        "native_bit": 2,
+        "group": "传球方式",
+        "option": "直传"
+      },
+      {
+        "native_bit": 5,
+        "group": "接球方式",
+        "option": "传入空当"
+      },
+      {
+        "native_bit": 7,
+        "group": "后场组织",
+        "option": "通过传递破解逼抢"
+      },
+      {
+        "native_bit": 11,
+        "group": "传中方式",
+        "option": "弧线传中"
+      },
+      {
+        "native_bit": 13,
+        "group": "盘带",
+        "option": "更多盘带突破"
+      },
+      {
+        "native_bit": 16,
+        "group": "远射",
+        "option": "减少远射"
+      },
+      {
+        "native_bit": 28,
+        "group": "肋部套上",
+        "option": "两翼内套"
+      },
+      {
+        "native_bit": 35,
+        "group": "门将出球目标",
+        "option": "中后卫"
+      },
+      {
+        "native_bit": 44,
+        "group": "球门球",
+        "option": "短传"
+      },
+      {
+        "native_bit": 46,
+        "group": "比赛节奏",
+        "option": "极高"
+      },
+      {
+        "native_bit": 53,
+        "group": "进攻宽度",
+        "option": "极窄"
+      },
+      {
+        "native_bit": 54,
+        "group": "得球后",
+        "option": "立刻反击"
+      },
+      {
+        "native_bit": 59,
+        "group": "防线高度",
+        "option": "极低"
+      },
+      {
+        "native_bit": 61,
+        "group": "防守介入线",
+        "option": "高位逼抢"
+      },
+      {
+        "native_bit": 65,
+        "group": "逼抢频率",
+        "option": "极多"
+      },
+      {
+        "native_bit": 69,
+        "group": "阻止门将短传",
+        "option": "是"
+      },
+      {
+        "native_bit": 71,
+        "group": "丢球后",
+        "option": "重新组织防守"
+      },
+      {
+        "native_bit": 72,
+        "group": "铲抢",
+        "option": "凶狠铲抢"
+      },
+      {
+        "native_bit": 79,
+        "group": "拖延时间",
+        "option": "有时"
+      },
+      {
+        "native_bit": 83,
+        "group": "防守传中",
+        "option": "允许传中"
+      }
+    ]
+  },
+  "players": [
+    {
+      "slot": 0,
+      "phases": {
+        "in": {
+          "phase_name": "有球",
+          "position": "GK",
+          "position_native_mask": 1,
+          "role_id": "BallPlayingGoalkeeper",
+          "role_label_zh": "出球门将",
+          "native_role_flag": 4096,
+          "duty": {
+            "native_flag": 4194304,
+            "code": "S",
+            "label_zh": "策应"
+          },
+          "personal_instructions": [
+            {
+              "native_option_id": 1,
+              "group": "传球距离",
+              "option": "短传"
+            }
+          ],
+          "personal_instruction_mask_hex": "0x2",
+          "active_role_cache_value": 0,
+          "raw_block": {
+            "selector": 1,
+            "selector_hex": "0x1",
+            "flag": 1,
+            "combined_role_duty_mask": 4198400,
+            "combined_role_duty_mask_hex": "0x401000",
+            "role_cache_entries": [
+              {
+                "role_flag": 1,
+                "role_flag_hex": "0x1",
+                "pi_mask": 0,
+                "pi_mask_hex": "0x0",
+                "value": 0
+              },
+              {
+                "role_flag": 4096,
+                "role_flag_hex": "0x1000",
+                "pi_mask": 2,
+                "pi_mask_hex": "0x2",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "out": {
+          "phase_name": "无球",
+          "position": "GK",
+          "position_native_mask": 1,
+          "role_id": "OPSweeperKeeper",
+          "role_label_zh": "清道夫门将",
+          "native_role_flag": 2,
+          "duty": {
+            "native_flag": 8388608,
+            "code": "A",
+            "label_zh": "进攻"
+          },
+          "personal_instructions": [
+            {
+              "native_option_id": 32,
+              "group": "铲抢",
+              "option": "谨慎铲抢"
+            }
+          ],
+          "personal_instruction_mask_hex": "0x100000000",
+          "active_role_cache_value": 0,
+          "raw_block": {
+            "selector": 1,
+            "selector_hex": "0x1",
+            "flag": 1,
+            "combined_role_duty_mask": 8388610,
+            "combined_role_duty_mask_hex": "0x800002",
+            "role_cache_entries": [
+              {
+                "role_flag": 1,
+                "role_flag_hex": "0x1",
+                "pi_mask": 0,
+                "pi_mask_hex": "0x0",
+                "value": 0
+              },
+              {
+                "role_flag": 2,
+                "role_flag_hex": "0x2",
+                "pi_mask": 4294967296,
+                "pi_mask_hex": "0x100000000",
+                "value": 0
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "slot": 1,
+      "phases": {
+        "in": {
+          "phase_name": "有球",
+          "position": "DR",
+          "position_native_mask": 4,
+          "role_id": "WingBack",
+          "role_label_zh": "翼卫",
+          "native_role_flag": 8,
+          "duty": {
+            "native_flag": 4194304,
+            "code": "S",
+            "label_zh": "策应"
+          },
+          "personal_instructions": [
+            {
+              "native_option_id": 25,
+              "group": "进攻站位",
+              "option": "拉开宽度"
+            }
+          ],
+          "personal_instruction_mask_hex": "0x2000000",
+          "active_role_cache_value": 0,
+          "raw_block": {
+            "selector": 4,
+            "selector_hex": "0x4",
+            "flag": 1,
+            "combined_role_duty_mask": 4194312,
+            "combined_role_duty_mask_hex": "0x400008",
+            "role_cache_entries": [
+              {
+                "role_flag": 4,
+                "role_flag_hex": "0x4",
+                "pi_mask": 0,
+                "pi_mask_hex": "0x0",
+                "value": 0
+              },
+              {
+                "role_flag": 8,
+                "role_flag_hex": "0x8",
+                "pi_mask": 33554432,
+                "pi_mask_hex": "0x2000000",
+                "value": 0
+              },
+              {
+                "role_flag": 274877906944,
+                "role_flag_hex": "0x4000000000",
+                "pi_mask": 0,
+                "pi_mask_hex": "0x0",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "out": {
+          "phase_name": "无球",
+          "position": "DR",
+          "position_native_mask": 4,
+          "role_id": "OPPressingFullBack",
+          "role_label_zh": "逼抢边后卫",
+          "native_role_flag": 1024,
+          "duty": {
+            "native_flag": 4194304,
+            "code": "S",
+            "label_zh": "策应"
+          },
+          "personal_instructions": [
+            {
+              "native_option_id": 31,
+              "group": "铲抢",
+              "option": "凶狠铲抢"
+            }
+          ],
+          "personal_instruction_mask_hex": "0x80000000",
+          "active_role_cache_value": 0,
+          "raw_block": {
+            "selector": 4,
+            "selector_hex": "0x4",
+            "flag": 1,
+            "combined_role_duty_mask": 4195328,
+            "combined_role_duty_mask_hex": "0x400400",
+            "role_cache_entries": [
+              {
+                "role_flag": 512,
+                "role_flag_hex": "0x200",
+                "pi_mask": 0,
+                "pi_mask_hex": "0x0",
+                "value": 0
+              },
+              {
+                "role_flag": 1024,
+                "role_flag_hex": "0x400",
+                "pi_mask": 2147483648,
+                "pi_mask_hex": "0x80000000",
+                "value": 0
+              },
+              {
+                "role_flag": 4096,
+                "role_flag_hex": "0x1000",
+                "pi_mask": 0,
+                "pi_mask_hex": "0x0",
+                "value": 0
+              },
+              {
+                "role_flag": 8192,
+                "role_flag_hex": "0x2000",
+                "pi_mask": 0,
+                "pi_mask_hex": "0x0",
+                "value": 0
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "slot": 2,
+      "phases": {
+        "in": {
+          "phase_name": "有球",
+          "position": "DCR",
+          "position_native_mask": 2097168,
+          "role_id": "BallPlayingCentreBack",
+          "role_label_zh": "出球中卫",
+          "native_role_flag": 16777216,
+          "duty": {
+            "native_flag": 2097152,
+            "code": "D",
+            "label_zh": "防守"
+          },
+          "personal_instructions": [
+            {
+              "native_option_id": 1,
+              "group": "传球距离",
+              "option": "短传"
+            }
+          ],
+          "personal_instruction_mask_hex": "0x2",
+          "active_role_cache_value": 0,
+          "raw_block": {
+            "selector": 2097168,
+            "selector_hex": "0x200010",
+            "flag": 1,
+            "combined_role_duty_mask": 18874368,
+            "combined_role_duty_mask_hex": "0x1200000",
+            "role_cache_entries": [
+              {
+                "role_flag": 2,
+                "role_flag_hex": "0x2",
+                "pi_mask": 0,
+                "pi_mask_hex": "0x0",
+                "value": 0
+              },
+              {
+                "role_flag": 16777216,
+                "role_flag_hex": "0x1000000",
+                "pi_mask": 2,
+                "pi_mask_hex": "0x2",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "out": {
+          "phase_name": "无球",
+          "position": "DCR",
+          "position_native_mask": 2097168,
+          "role_id": "OPCoveringCentreBack",
+          "role_label_zh": "补位中卫",
+          "native_role_flag": 32,
+          "duty": {
+            "native_flag": 2097152,
+            "code": "D",
+            "label_zh": "防守"
+          },
+          "personal_instructions": [
+            {
+              "native_option_id": 31,
+              "group": "铲抢",
+              "option": "凶狠铲抢"
+            }
+          ],
+          "personal_instruction_mask_hex": "0x80000000",
+          "active_role_cache_value": 0,
+          "raw_block": {
+            "selector": 2097168,
+            "selector_hex": "0x200010",
+            "flag": 1,
+            "combined_role_duty_mask": 2097184,
+            "combined_role_duty_mask_hex": "0x200020",
+            "role_cache_entries": [
+              {
+                "role_flag": 8,
+                "role_flag_hex": "0x8",
+                "pi_mask": 0,
+                "pi_mask_hex": "0x0",
+                "value": 0
+              },
+              {
+                "role_flag": 32,
+                "role_flag_hex": "0x20",
+                "pi_mask": 2147483648,
+                "pi_mask_hex": "0x80000000",
+                "value": 0
+              },
+              {
+                "role_flag": 64,
+                "role_flag_hex": "0x40",
+                "pi_mask": 0,
+                "pi_mask_hex": "0x0",
+                "value": 0
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "slot": 3,
+      "phases": {
+        "in": {
+          "phase_name": "有球",
+          "position": "DCL",
+          "position_native_mask": 1048592,
+          "role_id": "CentreBack",
+          "role_label_zh": "中后卫",
+          "native_role_flag": 2,
+          "duty": {
+            "native_flag": 2097152,
+            "code": "D",
+            "label_zh": "防守"
+          },
+          "personal_instructions": [
+            {
+              "native_option_id": 1,
+              "group": "传球距离",
+              "option": "短传"
+            }
+          ],
+          "personal_instruction_mask_hex": "0x2",
+          "active_role_cache_value": 0,
+          "raw_block": {
+            "selector": 1048592,
+            "selector_hex": "0x100010",
+            "flag": 1,
+            "combined_role_duty_mask": 2097154,
+            "combined_role_duty_mask_hex": "0x200002",
+            "role_cache_entries": [
+              {
+                "role_flag": 2,
+                "role_flag_hex": "0x2",
+                "pi_mask": 2,
+                "pi_mask_hex": "0x2",
+                "value": 0
+              },
+              {
+                "role_flag": 16777216,
+                "role_flag_hex": "0x1000000",
+                "pi_mask": 0,
+                "pi_mask_hex": "0x0",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "out": {
+          "phase_name": "无球",
+          "position": "DCL",
+          "position_native_mask": 1048592,
+          "role_id": "OPCentreBack",
+          "role_label_zh": "中后卫",
+          "native_role_flag": 8,
+          "duty": {
+            "native_flag": 2097152,
+            "code": "D",
+            "label_zh": "防守"
+          },
+          "personal_instructions": [
+            {
+              "native_option_id": 30,
+              "group": "逼抢",
+              "option": "减少逼抢"
+            },
+            {
+              "native_option_id": 31,
+              "group": "铲抢",
+              "option": "凶狠铲抢"
+            }
+          ],
+          "personal_instruction_mask_hex": "0xc0000000",
+          "active_role_cache_value": 0,
+          "raw_block": {
+            "selector": 1048592,
+            "selector_hex": "0x100010",
+            "flag": 1,
+            "combined_role_duty_mask": 2097160,
+            "combined_role_duty_mask_hex": "0x200008",
+            "role_cache_entries": [
+              {
+                "role_flag": 8,
+                "role_flag_hex": "0x8",
+                "pi_mask": 3221225472,
+                "pi_mask_hex": "0xc0000000",
+                "value": 0
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "slot": 4,
+      "phases": {
+        "in": {
+          "phase_name": "有球",
+          "position": "DL",
+          "position_native_mask": 8,
+          "role_id": "FullBack",
+          "role_label_zh": "边后卫",
+          "native_role_flag": 4,
+          "duty": {
+            "native_flag": 4194304,
+            "code": "S",
+            "label_zh": "策应"
+          },
+          "personal_instructions": [
+            {
+              "native_option_id": 25,
+              "group": "进攻站位",
+              "option": "拉开宽度"
+            }
+          ],
+          "personal_instruction_mask_hex": "0x2000000",
+          "active_role_cache_value": 0,
+          "raw_block": {
+            "selector": 8,
+            "selector_hex": "0x8",
+            "flag": 1,
+            "combined_role_duty_mask": 4194308,
+            "combined_role_duty_mask_hex": "0x400004",
+            "role_cache_entries": [
+              {
+                "role_flag": 4,
+                "role_flag_hex": "0x4",
+                "pi_mask": 33554432,
+                "pi_mask_hex": "0x2000000",
+                "value": 0
+              },
+              {
+                "role_flag": 8,
+                "role_flag_hex": "0x8",
+                "pi_mask": 0,
+                "pi_mask_hex": "0x0",
+                "value": 0
+              },
+              {
+                "role_flag": 274877906944,
+                "role_flag_hex": "0x4000000000",
+                "pi_mask": 0,
+                "pi_mask_hex": "0x0",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "out": {
+          "phase_name": "无球",
+          "position": "DL",
+          "position_native_mask": 8,
+          "role_id": "OPPressingFullBack",
+          "role_label_zh": "逼抢边后卫",
+          "native_role_flag": 1024,
+          "duty": {
+            "native_flag": 4194304,
+            "code": "S",
+            "label_zh": "策应"
+          },
+          "personal_instructions": [
+            {
+              "native_option_id": 31,
+              "group": "铲抢",
+              "option": "凶狠铲抢"
+            }
+          ],
+          "personal_instruction_mask_hex": "0x80000000",
+          "active_role_cache_value": 0,
+          "raw_block": {
+            "selector": 8,
+            "selector_hex": "0x8",
+            "flag": 1,
+            "combined_role_duty_mask": 4195328,
+            "combined_role_duty_mask_hex": "0x400400",
+            "role_cache_entries": [
+              {
+                "role_flag": 8,
+                "role_flag_hex": "0x8",
+                "pi_mask": 0,
+                "pi_mask_hex": "0x0",
+                "value": 0
+              },
+              {
+                "role_flag": 16,
+                "role_flag_hex": "0x10",
+                "pi_mask": 0,
+                "pi_mask_hex": "0x0",
+                "value": 0
+              },
+              {
+                "role_flag": 64,
+                "role_flag_hex": "0x40",
+                "pi_mask": 0,
+                "pi_mask_hex": "0x0",
+                "value": 0
+              },
+              {
+                "role_flag": 512,
+                "role_flag_hex": "0x200",
+                "pi_mask": 0,
+                "pi_mask_hex": "0x0",
+                "value": 0
+              },
+              {
+                "role_flag": 1024,
+                "role_flag_hex": "0x400",
+                "pi_mask": 2147483648,
+                "pi_mask_hex": "0x80000000",
+                "value": 0
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "slot": 5,
+      "phases": {
+        "in": {
+          "phase_name": "有球",
+          "position": "MCR",
+          "position_native_mask": 2098176,
+          "role_id": "ChannelMidfielder",
+          "role_label_zh": "肋部中场",
+          "native_role_flag": 72057594037927940,
+          "duty": {
+            "native_flag": 8388608,
+            "code": "A",
+            "label_zh": "进攻"
+          },
+          "personal_instructions": [
+            {
+              "native_option_id": 4,
+              "group": "传球风险",
+              "option": "减少冒险传球"
+            },
+            {
+              "native_option_id": 22,
+              "group": "前插",
+              "option": "更多前插"
+            }
+          ],
+          "personal_instruction_mask_hex": "0x400010",
+          "active_role_cache_value": 0,
+          "raw_block": {
+            "selector": 2098176,
+            "selector_hex": "0x200400",
+            "flag": 1,
+            "combined_role_duty_mask": 72057594046316540,
+            "combined_role_duty_mask_hex": "0x100000000800000",
+            "role_cache_entries": [
+              {
+                "role_flag": 16,
+                "role_flag_hex": "0x10",
+                "pi_mask": 0,
+                "pi_mask_hex": "0x0",
+                "value": 0
+              },
+              {
+                "role_flag": 32,
+                "role_flag_hex": "0x20",
+                "pi_mask": 4194320,
+                "pi_mask_hex": "0x400010",
+                "value": 0
+              },
+              {
+                "role_flag": 512,
+                "role_flag_hex": "0x200",
+                "pi_mask": 4194320,
+                "pi_mask_hex": "0x400010",
+                "value": 0
+              },
+              {
+                "role_flag": 32768,
+                "role_flag_hex": "0x8000",
+                "pi_mask": 0,
+                "pi_mask_hex": "0x0",
+                "value": 0
+              },
+              {
+                "role_flag": 131072,
+                "role_flag_hex": "0x20000",
+                "pi_mask": 4194320,
+                "pi_mask_hex": "0x400010",
+                "value": 0
+              },
+              {
+                "role_flag": 268435456,
+                "role_flag_hex": "0x10000000",
+                "pi_mask": 0,
+                "pi_mask_hex": "0x0",
+                "value": 0
+              },
+              {
+                "role_flag": 8589934592,
+                "role_flag_hex": "0x200000000",
+                "pi_mask": 0,
+                "pi_mask_hex": "0x0",
+                "value": 0
+              },
+              {
+                "role_flag": 281474976710656,
+                "role_flag_hex": "0x1000000000000",
+                "pi_mask": 4194320,
+                "pi_mask_hex": "0x400010",
+                "value": 0
+              },
+              {
+                "role_flag": 72057594037927940,
+                "role_flag_hex": "0x100000000000000",
+                "pi_mask": 4194320,
+                "pi_mask_hex": "0x400010",
+                "value": 0
+              },
+              {
+                "role_flag": 144115188075855870,
+                "role_flag_hex": "0x200000000000000",
+                "pi_mask": 4194320,
+                "pi_mask_hex": "0x400010",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "out": {
+          "phase_name": "无球",
+          "position": "DMR",
+          "position_native_mask": 2097280,
+          "role_id": "OPDroppingDefensiveMidfielder",
+          "role_label_zh": "回撤后腰",
+          "native_role_flag": 65536,
+          "duty": {
+            "native_flag": 2097152,
+            "code": "D",
+            "label_zh": "防守"
+          },
+          "personal_instructions": [
+            {
+              "native_option_id": 29,
+              "group": "逼抢",
+              "option": "更多逼抢"
+            },
+            {
+              "native_option_id": 31,
+              "group": "铲抢",
+              "option": "凶狠铲抢"
+            },
+            {
+              "native_option_id": 35,
+              "group": "指定盯防",
+              "option": "盯防指定位置",
+              "target_position_native_mask": 16384,
+              "target_position_id": "ST"
+            }
+          ],
+          "personal_instruction_mask_hex": "0x8a0000000",
+          "active_role_cache_value": 16384,
+          "raw_block": {
+            "selector": 2097280,
+            "selector_hex": "0x200080",
+            "flag": 1,
+            "combined_role_duty_mask": 2162688,
+            "combined_role_duty_mask_hex": "0x210000",
+            "role_cache_entries": [
+              {
+                "role_flag": 32768,
+                "role_flag_hex": "0x8000",
+                "pi_mask": 37044092928,
+                "pi_mask_hex": "0x8a0000000",
+                "value": 16384
+              },
+              {
+                "role_flag": 65536,
+                "role_flag_hex": "0x10000",
+                "pi_mask": 37044092928,
+                "pi_mask_hex": "0x8a0000000",
+                "value": 16384
+              },
+              {
+                "role_flag": 131072,
+                "role_flag_hex": "0x20000",
+                "pi_mask": 37044092928,
+                "pi_mask_hex": "0x8a0000000",
+                "value": 16384
+              },
+              {
+                "role_flag": 262144,
+                "role_flag_hex": "0x40000",
+                "pi_mask": 45634027520,
+                "pi_mask_hex": "0xaa0000000",
+                "value": 16384
+              },
+              {
+                "role_flag": 524288,
+                "role_flag_hex": "0x80000",
+                "pi_mask": 37044092928,
+                "pi_mask_hex": "0x8a0000000",
+                "value": 16384
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "slot": 6,
+      "phases": {
+        "in": {
+          "phase_name": "有球",
+          "position": "MCL",
+          "position_native_mask": 1049600,
+          "role_id": "ChannelMidfielder",
+          "role_label_zh": "肋部中场",
+          "native_role_flag": 72057594037927940,
+          "duty": {
+            "native_flag": 8388608,
+            "code": "A",
+            "label_zh": "进攻"
+          },
+          "personal_instructions": [
+            {
+              "native_option_id": 4,
+              "group": "传球风险",
+              "option": "减少冒险传球"
+            },
+            {
+              "native_option_id": 22,
+              "group": "前插",
+              "option": "更多前插"
+            },
+            {
+              "native_option_id": 24,
+              "group": "自由跑位",
+              "option": "自由跑位"
+            }
+          ],
+          "personal_instruction_mask_hex": "0x1400010",
+          "active_role_cache_value": 0,
+          "raw_block": {
+            "selector": 1049600,
+            "selector_hex": "0x100400",
+            "flag": 1,
+            "combined_role_duty_mask": 72057594046316540,
+            "combined_role_duty_mask_hex": "0x100000000800000",
+            "role_cache_entries": [
+              {
+                "role_flag": 32,
+                "role_flag_hex": "0x20",
+                "pi_mask": 20971536,
+                "pi_mask_hex": "0x1400010",
+                "value": 0
+              },
+              {
+                "role_flag": 512,
+                "role_flag_hex": "0x200",
+                "pi_mask": 20971536,
+                "pi_mask_hex": "0x1400010",
+                "value": 0
+              },
+              {
+                "role_flag": 32768,
+                "role_flag_hex": "0x8000",
+                "pi_mask": 0,
+                "pi_mask_hex": "0x0",
+                "value": 0
+              },
+              {
+                "role_flag": 131072,
+                "role_flag_hex": "0x20000",
+                "pi_mask": 20971536,
+                "pi_mask_hex": "0x1400010",
+                "value": 0
+              },
+              {
+                "role_flag": 268435456,
+                "role_flag_hex": "0x10000000",
+                "pi_mask": 0,
+                "pi_mask_hex": "0x0",
+                "value": 0
+              },
+              {
+                "role_flag": 70368744177664,
+                "role_flag_hex": "0x400000000000",
+                "pi_mask": 0,
+                "pi_mask_hex": "0x0",
+                "value": 0
+              },
+              {
+                "role_flag": 140737488355328,
+                "role_flag_hex": "0x800000000000",
+                "pi_mask": 0,
+                "pi_mask_hex": "0x0",
+                "value": 0
+              },
+              {
+                "role_flag": 281474976710656,
+                "role_flag_hex": "0x1000000000000",
+                "pi_mask": 20971536,
+                "pi_mask_hex": "0x1400010",
+                "value": 0
+              },
+              {
+                "role_flag": 1125899906842624,
+                "role_flag_hex": "0x4000000000000",
+                "pi_mask": 0,
+                "pi_mask_hex": "0x0",
+                "value": 0
+              },
+              {
+                "role_flag": 72057594037927940,
+                "role_flag_hex": "0x100000000000000",
+                "pi_mask": 20971536,
+                "pi_mask_hex": "0x1400010",
+                "value": 0
+              },
+              {
+                "role_flag": 144115188075855870,
+                "role_flag_hex": "0x200000000000000",
+                "pi_mask": 20971538,
+                "pi_mask_hex": "0x1400012",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "out": {
+          "phase_name": "无球",
+          "position": "DML",
+          "position_native_mask": 1048704,
+          "role_id": "OPDefensiveMidfielder",
+          "role_label_zh": "防守中场",
+          "native_role_flag": 32768,
+          "duty": {
+            "native_flag": 2097152,
+            "code": "D",
+            "label_zh": "防守"
+          },
+          "personal_instructions": [
+            {
+              "native_option_id": 29,
+              "group": "逼抢",
+              "option": "更多逼抢"
+            },
+            {
+              "native_option_id": 31,
+              "group": "铲抢",
+              "option": "凶狠铲抢"
+            }
+          ],
+          "personal_instruction_mask_hex": "0xa0000000",
+          "active_role_cache_value": 0,
+          "raw_block": {
+            "selector": 1048704,
+            "selector_hex": "0x100080",
+            "flag": 1,
+            "combined_role_duty_mask": 2129920,
+            "combined_role_duty_mask_hex": "0x208000",
+            "role_cache_entries": [
+              {
+                "role_flag": 32768,
+                "role_flag_hex": "0x8000",
+                "pi_mask": 2684354560,
+                "pi_mask_hex": "0xa0000000",
+                "value": 0
+              },
+              {
+                "role_flag": 131072,
+                "role_flag_hex": "0x20000",
+                "pi_mask": 0,
+                "pi_mask_hex": "0x0",
+                "value": 0
+              },
+              {
+                "role_flag": 1048576,
+                "role_flag_hex": "0x100000",
+                "pi_mask": 0,
+                "pi_mask_hex": "0x0",
+                "value": 0
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "slot": 7,
+      "phases": {
+        "in": {
+          "phase_name": "有球",
+          "position": "AMR",
+          "position_native_mask": 2048,
+          "role_id": "PlaymakingWinger",
+          "role_label_zh": "组织型边锋",
+          "native_role_flag": 8796093022208,
+          "duty": {
+            "native_flag": 4194304,
+            "code": "S",
+            "label_zh": "策应"
+          },
+          "personal_instructions": [],
+          "personal_instruction_mask_hex": "0x0",
+          "active_role_cache_value": 0,
+          "raw_block": {
+            "selector": 2048,
+            "selector_hex": "0x800",
+            "flag": 1,
+            "combined_role_duty_mask": 8796097216512,
+            "combined_role_duty_mask_hex": "0x80000400000",
+            "role_cache_entries": [
+              {
+                "role_flag": 128,
+                "role_flag_hex": "0x80",
+                "pi_mask": 32768,
+                "pi_mask_hex": "0x8000",
+                "value": 0
+              },
+              {
+                "role_flag": 512,
+                "role_flag_hex": "0x200",
+                "pi_mask": 0,
+                "pi_mask_hex": "0x0",
+                "value": 0
+              },
+              {
+                "role_flag": 65536,
+                "role_flag_hex": "0x10000",
+                "pi_mask": 0,
+                "pi_mask_hex": "0x0",
+                "value": 0
+              },
+              {
+                "role_flag": 134217728,
+                "role_flag_hex": "0x8000000",
+                "pi_mask": 0,
+                "pi_mask_hex": "0x0",
+                "value": 0
+              },
+              {
+                "role_flag": 8796093022208,
+                "role_flag_hex": "0x80000000000",
+                "pi_mask": 0,
+                "pi_mask_hex": "0x0",
+                "value": 0
+              },
+              {
+                "role_flag": 140737488355328,
+                "role_flag_hex": "0x800000000000",
+                "pi_mask": 0,
+                "pi_mask_hex": "0x0",
+                "value": 0
+              },
+              {
+                "role_flag": 562949953421312,
+                "role_flag_hex": "0x2000000000000",
+                "pi_mask": 0,
+                "pi_mask_hex": "0x0",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "out": {
+          "phase_name": "无球",
+          "position": "MR",
+          "position_native_mask": 256,
+          "role_id": "OPTrackingWideMidfielder",
+          "role_label_zh": "回防边前卫",
+          "native_role_flag": 68719476736,
+          "duty": {
+            "native_flag": 2097152,
+            "code": "D",
+            "label_zh": "防守"
+          },
+          "personal_instructions": [
+            {
+              "native_option_id": 29,
+              "group": "逼抢",
+              "option": "更多逼抢"
+            },
+            {
+              "native_option_id": 31,
+              "group": "铲抢",
+              "option": "凶狠铲抢"
+            }
+          ],
+          "personal_instruction_mask_hex": "0xa0000000",
+          "active_role_cache_value": 0,
+          "raw_block": {
+            "selector": 256,
+            "selector_hex": "0x100",
+            "flag": 1,
+            "combined_role_duty_mask": 68721573888,
+            "combined_role_duty_mask_hex": "0x1000200000",
+            "role_cache_entries": [
+              {
+                "role_flag": 1048576,
+                "role_flag_hex": "0x100000",
+                "pi_mask": 0,
+                "pi_mask_hex": "0x0",
+                "value": 0
+              },
+              {
+                "role_flag": 134217728,
+                "role_flag_hex": "0x8000000",
+                "pi_mask": 0,
+                "pi_mask_hex": "0x0",
+                "value": 0
+              },
+              {
+                "role_flag": 34359738368,
+                "role_flag_hex": "0x800000000",
+                "pi_mask": 0,
+                "pi_mask_hex": "0x0",
+                "value": 0
+              },
+              {
+                "role_flag": 68719476736,
+                "role_flag_hex": "0x1000000000",
+                "pi_mask": 2684354560,
+                "pi_mask_hex": "0xa0000000",
+                "value": 0
+              },
+              {
+                "role_flag": 274877906944,
+                "role_flag_hex": "0x4000000000",
+                "pi_mask": 0,
+                "pi_mask_hex": "0x0",
+                "value": 0
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "slot": 8,
+      "phases": {
+        "in": {
+          "phase_name": "有球",
+          "position": "AML",
+          "position_native_mask": 4096,
+          "role_id": "PlaymakingWinger",
+          "role_label_zh": "组织型边锋",
+          "native_role_flag": 8796093022208,
+          "duty": {
+            "native_flag": 4194304,
+            "code": "S",
+            "label_zh": "策应"
+          },
+          "personal_instructions": [],
+          "personal_instruction_mask_hex": "0x0",
+          "active_role_cache_value": 0,
+          "raw_block": {
+            "selector": 4096,
+            "selector_hex": "0x1000",
+            "flag": 1,
+            "combined_role_duty_mask": 8796097216512,
+            "combined_role_duty_mask_hex": "0x80000400000",
+            "role_cache_entries": [
+              {
+                "role_flag": 128,
+                "role_flag_hex": "0x80",
+                "pi_mask": 32768,
+                "pi_mask_hex": "0x8000",
+                "value": 0
+              },
+              {
+                "role_flag": 131072,
+                "role_flag_hex": "0x20000",
+                "pi_mask": 0,
+                "pi_mask_hex": "0x0",
+                "value": 0
+              },
+              {
+                "role_flag": 134217728,
+                "role_flag_hex": "0x8000000",
+                "pi_mask": 0,
+                "pi_mask_hex": "0x0",
+                "value": 0
+              },
+              {
+                "role_flag": 8796093022208,
+                "role_flag_hex": "0x80000000000",
+                "pi_mask": 0,
+                "pi_mask_hex": "0x0",
+                "value": 0
+              },
+              {
+                "role_flag": 562949953421312,
+                "role_flag_hex": "0x2000000000000",
+                "pi_mask": 0,
+                "pi_mask_hex": "0x0",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "out": {
+          "phase_name": "无球",
+          "position": "ML",
+          "position_native_mask": 512,
+          "role_id": "OPTrackingWideMidfielder",
+          "role_label_zh": "回防边前卫",
+          "native_role_flag": 68719476736,
+          "duty": {
+            "native_flag": 2097152,
+            "code": "D",
+            "label_zh": "防守"
+          },
+          "personal_instructions": [
+            {
+              "native_option_id": 29,
+              "group": "逼抢",
+              "option": "更多逼抢"
+            },
+            {
+              "native_option_id": 31,
+              "group": "铲抢",
+              "option": "凶狠铲抢"
+            }
+          ],
+          "personal_instruction_mask_hex": "0xa0000000",
+          "active_role_cache_value": 0,
+          "raw_block": {
+            "selector": 512,
+            "selector_hex": "0x200",
+            "flag": 1,
+            "combined_role_duty_mask": 68721573888,
+            "combined_role_duty_mask_hex": "0x1000200000",
+            "role_cache_entries": [
+              {
+                "role_flag": 4096,
+                "role_flag_hex": "0x1000",
+                "pi_mask": 0,
+                "pi_mask_hex": "0x0",
+                "value": 0
+              },
+              {
+                "role_flag": 8192,
+                "role_flag_hex": "0x2000",
+                "pi_mask": 0,
+                "pi_mask_hex": "0x0",
+                "value": 0
+              },
+              {
+                "role_flag": 34359738368,
+                "role_flag_hex": "0x800000000",
+                "pi_mask": 0,
+                "pi_mask_hex": "0x0",
+                "value": 0
+              },
+              {
+                "role_flag": 68719476736,
+                "role_flag_hex": "0x1000000000",
+                "pi_mask": 2684354560,
+                "pi_mask_hex": "0xa0000000",
+                "value": 0
+              },
+              {
+                "role_flag": 274877906944,
+                "role_flag_hex": "0x4000000000",
+                "pi_mask": 0,
+                "pi_mask_hex": "0x0",
+                "value": 0
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "slot": 9,
+      "phases": {
+        "in": {
+          "phase_name": "有球",
+          "position": "AMC",
+          "position_native_mask": 8192,
+          "role_id": "ChannelMidfielder",
+          "role_label_zh": "肋部中场",
+          "native_role_flag": 72057594037927940,
+          "duty": {
+            "native_flag": 8388608,
+            "code": "A",
+            "label_zh": "进攻"
+          },
+          "personal_instructions": [
+            {
+              "native_option_id": 4,
+              "group": "传球风险",
+              "option": "减少冒险传球"
+            },
+            {
+              "native_option_id": 22,
+              "group": "前插",
+              "option": "更多前插"
+            },
+            {
+              "native_option_id": 24,
+              "group": "自由跑位",
+              "option": "自由跑位"
+            }
+          ],
+          "personal_instruction_mask_hex": "0x1400010",
+          "active_role_cache_value": 0,
+          "raw_block": {
+            "selector": 8192,
+            "selector_hex": "0x2000",
+            "flag": 1,
+            "combined_role_duty_mask": 72057594046316540,
+            "combined_role_duty_mask_hex": "0x100000000800000",
+            "role_cache_entries": [
+              {
+                "role_flag": 128,
+                "role_flag_hex": "0x80",
+                "pi_mask": 0,
+                "pi_mask_hex": "0x0",
+                "value": 0
+              },
+              {
+                "role_flag": 512,
+                "role_flag_hex": "0x200",
+                "pi_mask": 68740448272,
+                "pi_mask_hex": "0x1001400010",
+                "value": 0
+              },
+              {
+                "role_flag": 1024,
+                "role_flag_hex": "0x400",
+                "pi_mask": 0,
+                "pi_mask_hex": "0x0",
+                "value": 0
+              },
+              {
+                "role_flag": 131072,
+                "role_flag_hex": "0x20000",
+                "pi_mask": 20971536,
+                "pi_mask_hex": "0x1400010",
+                "value": 0
+              },
+              {
+                "role_flag": 134217728,
+                "role_flag_hex": "0x8000000",
+                "pi_mask": 0,
+                "pi_mask_hex": "0x0",
+                "value": 0
+              },
+              {
+                "role_flag": 2147483648,
+                "role_flag_hex": "0x80000000",
+                "pi_mask": 0,
+                "pi_mask_hex": "0x0",
+                "value": 0
+              },
+              {
+                "role_flag": 4294967296,
+                "role_flag_hex": "0x100000000",
+                "pi_mask": 20971536,
+                "pi_mask_hex": "0x1400010",
+                "value": 0
+              },
+              {
+                "role_flag": 2199023255552,
+                "role_flag_hex": "0x20000000000",
+                "pi_mask": 20971536,
+                "pi_mask_hex": "0x1400010",
+                "value": 0
+              },
+              {
+                "role_flag": 72057594037927940,
+                "role_flag_hex": "0x100000000000000",
+                "pi_mask": 20971536,
+                "pi_mask_hex": "0x1400010",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "out": {
+          "phase_name": "无球",
+          "position": "MC",
+          "position_native_mask": 1024,
+          "role_id": "OPCentralMidfielder",
+          "role_label_zh": "中前卫",
+          "native_role_flag": 1048576,
+          "duty": {
+            "native_flag": 4194304,
+            "code": "S",
+            "label_zh": "策应"
+          },
+          "personal_instructions": [
+            {
+              "native_option_id": 29,
+              "group": "逼抢",
+              "option": "更多逼抢"
+            },
+            {
+              "native_option_id": 31,
+              "group": "铲抢",
+              "option": "凶狠铲抢"
+            }
+          ],
+          "personal_instruction_mask_hex": "0xa0000000",
+          "active_role_cache_value": 0,
+          "raw_block": {
+            "selector": 1024,
+            "selector_hex": "0x400",
+            "flag": 1,
+            "combined_role_duty_mask": 5242880,
+            "combined_role_duty_mask_hex": "0x500000",
+            "role_cache_entries": [
+              {
+                "role_flag": 1048576,
+                "role_flag_hex": "0x100000",
+                "pi_mask": 2684354560,
+                "pi_mask_hex": "0xa0000000",
+                "value": 0
+              },
+              {
+                "role_flag": 134217728,
+                "role_flag_hex": "0x8000000",
+                "pi_mask": 2684354560,
+                "pi_mask_hex": "0xa0000000",
+                "value": 0
+              },
+              {
+                "role_flag": 268435456,
+                "role_flag_hex": "0x10000000",
+                "pi_mask": 2684354560,
+                "pi_mask_hex": "0xa0000000",
+                "value": 0
+              },
+              {
+                "role_flag": 536870912,
+                "role_flag_hex": "0x20000000",
+                "pi_mask": 2684354560,
+                "pi_mask_hex": "0xa0000000",
+                "value": 0
+              },
+              {
+                "role_flag": 1073741824,
+                "role_flag_hex": "0x40000000",
+                "pi_mask": 0,
+                "pi_mask_hex": "0x0",
+                "value": 0
+              },
+              {
+                "role_flag": 2147483648,
+                "role_flag_hex": "0x80000000",
+                "pi_mask": 2684354560,
+                "pi_mask_hex": "0xa0000000",
+                "value": 0
+              },
+              {
+                "role_flag": 4398046511104,
+                "role_flag_hex": "0x40000000000",
+                "pi_mask": 0,
+                "pi_mask_hex": "0x0",
+                "value": 0
+              },
+              {
+                "role_flag": 8796093022208,
+                "role_flag_hex": "0x80000000000",
+                "pi_mask": 0,
+                "pi_mask_hex": "0x0",
+                "value": 0
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "slot": 10,
+      "phases": {
+        "in": {
+          "phase_name": "有球",
+          "position": "ST",
+          "position_native_mask": 16384,
+          "role_id": "ChannelForward",
+          "role_label_zh": "拉边前锋",
+          "native_role_flag": 2147483648,
+          "duty": {
+            "native_flag": 8388608,
+            "code": "A",
+            "label_zh": "进攻"
+          },
+          "personal_instructions": [
+            {
+              "native_option_id": 18,
+              "group": "射门",
+              "option": "更多射门"
+            },
+            {
+              "native_option_id": 22,
+              "group": "前插",
+              "option": "更多前插"
+            },
+            {
+              "native_option_id": 39,
+              "group": "禁区进攻方向",
+              "option": "前点"
+            }
+          ],
+          "personal_instruction_mask_hex": "0x8000440000",
+          "active_role_cache_value": 0,
+          "raw_block": {
+            "selector": 16384,
+            "selector_hex": "0x4000",
+            "flag": 1,
+            "combined_role_duty_mask": 2155872256,
+            "combined_role_duty_mask_hex": "0x80800000",
+            "role_cache_entries": [
+              {
+                "role_flag": 1024,
+                "role_flag_hex": "0x400",
+                "pi_mask": 549760270336,
+                "pi_mask_hex": "0x8000440000",
+                "value": 0
+              },
+              {
+                "role_flag": 2048,
+                "role_flag_hex": "0x800",
+                "pi_mask": 2748783525888,
+                "pi_mask_hex": "0x28000440000",
+                "value": 0
+              },
+              {
+                "role_flag": 262144,
+                "role_flag_hex": "0x40000",
+                "pi_mask": 549760270336,
+                "pi_mask_hex": "0x8000440000",
+                "value": 0
+              },
+              {
+                "role_flag": 524288,
+                "role_flag_hex": "0x80000",
+                "pi_mask": 549760270336,
+                "pi_mask_hex": "0x8000440000",
+                "value": 0
+              },
+              {
+                "role_flag": 2147483648,
+                "role_flag_hex": "0x80000000",
+                "pi_mask": 549760270336,
+                "pi_mask_hex": "0x8000440000",
+                "value": 0
+              },
+              {
+                "role_flag": 1099511627776,
+                "role_flag_hex": "0x10000000000",
+                "pi_mask": 549760270336,
+                "pi_mask_hex": "0x8000440000",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "out": {
+          "phase_name": "无球",
+          "position": "AMC",
+          "position_native_mask": 8192,
+          "role_id": "OPAttackingMidfielder",
+          "role_label_zh": "前腰",
+          "native_role_flag": 1073741824,
+          "duty": {
+            "native_flag": 4194304,
+            "code": "S",
+            "label_zh": "策应"
+          },
+          "personal_instructions": [
+            {
+              "native_option_id": 29,
+              "group": "逼抢",
+              "option": "更多逼抢"
+            },
+            {
+              "native_option_id": 31,
+              "group": "铲抢",
+              "option": "凶狠铲抢"
+            }
+          ],
+          "personal_instruction_mask_hex": "0xa0000000",
+          "active_role_cache_value": 0,
+          "raw_block": {
+            "selector": 8192,
+            "selector_hex": "0x2000",
+            "flag": 1,
+            "combined_role_duty_mask": 1077936128,
+            "combined_role_duty_mask_hex": "0x40400000",
+            "role_cache_entries": [
+              {
+                "role_flag": 1073741824,
+                "role_flag_hex": "0x40000000",
+                "pi_mask": 2684354560,
+                "pi_mask_hex": "0xa0000000",
+                "value": 0
+              },
+              {
+                "role_flag": 2147483648,
+                "role_flag_hex": "0x80000000",
+                "pi_mask": 2684354560,
+                "pi_mask_hex": "0xa0000000",
+                "value": 0
+              },
+              {
+                "role_flag": 4294967296,
+                "role_flag_hex": "0x100000000",
+                "pi_mask": 2684354560,
+                "pi_mask_hex": "0xa0000000",
+                "value": 0
+              },
+              {
+                "role_flag": 8589934592,
+                "role_flag_hex": "0x200000000",
+                "pi_mask": 2684354560,
+                "pi_mask_hex": "0xa0000000",
+                "value": 0
+              },
+              {
+                "role_flag": 4398046511104,
+                "role_flag_hex": "0x40000000000",
+                "pi_mask": 0,
+                "pi_mask_hex": "0x0",
+                "value": 0
+              },
+              {
+                "role_flag": 8796093022208,
+                "role_flag_hex": "0x80000000000",
+                "pi_mask": 2684354560,
+                "pi_mask_hex": "0xa0000000",
+                "value": 0
+              }
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "native_preservation": {
+    "source_fmf_base64": "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",
+    "outer_header": {
+      "magic_hex": "02016166652e080000",
+      "outer_size": 3977,
+      "second_field": 17,
+      "revision": 3,
+      "toc_offset": 3986,
+      "toc_sha256": "38fdc24adba9b00b1561555205e98958b519e8f2b126ef68771e2641c8b97e6c",
+      "toc_base64": "AwAAAFYyMQIAAAAFAAAAaW1hZ2UEAAAALmltZ4AAAAAAAAAAPwAAAAAAAAAKAAAAAAAAAAAJbojx////AAluiPH///8DAAAAVjIxBAAAAC50YWO/AAAAAAAAALkOAAAAAAAAgQ4AAAAAAAAACW6I8f///wAJbojx////AQAAAAUAAABfZGF0YQEAAAAHAAAAZGV0YWlscwQAAAAuYW9tAAAAAAAAAACAAAAAAAAAAFoAAAAAAAAAAAluiPH///8ACW6I8f///wAAAAA="
+    },
+    "root_title": "V21",
+    "root_entry_count": 2,
+    "directory_count": 1,
+    "directories": [
+      {
+        "name": "_data",
+        "entry_exts": [
+          ".aom"
+        ]
+      }
+    ],
+    "members": {
+      ".img": {
+        "name": "image",
+        "ext": ".img",
+        "offset": 128,
+        "stored_size": 63,
+        "raw_size": 10,
+        "t1": -62135596800,
+        "t2": -62135596800,
+        "folder": null,
+        "envelope_sha256": "c27068e39b3b6920e7d7da20707148ae4561d2e2ff1e5abe340fbd2873d3b125",
+        "plaintext_sha256": "96eeff563b3135e3f77964e8c062328fd207c8bc9e754fc423abaf83eb3f1490",
+        "plaintext_base64": "AQAAAAAAAAAAAA==",
+        "envelope_base64": "EAAAABAAAACCrfUM1HhMCgnxDYyfd0vLmDruCFfSk7VMjxMplvbnjmUQ83nbf163Za9YLIvlx/wxpFrOrm+3"
+      },
+      ".tac": {
+        "name": "V21",
+        "ext": ".tac",
+        "offset": 191,
+        "stored_size": 3769,
+        "raw_size": 3713,
+        "t1": -62135596800,
+        "t2": -62135596800,
+        "folder": null,
+        "envelope_sha256": "b6ae05bfdcb0faf4c020a7acb9ac61afe65ed29bc17ea65fe8e1b0c05ed3b960",
+        "plaintext_sha256": "06dad077b9ed29b7fd35c601a1a70f4ec2b24bd4be0fda953c197013543db4d6",
+        "plaintext_base64": "AwFjYXQuIgAiRAAbAAEAAgMAAABWMjEAAAAAAAAAAAAAAAAEAgQHAgOkKAEQCFBgKKKBCAD/AAAAAExMVU5EAAIBAAAAAAEBAgAAAAEAAAAAAAAAAgICAAAAAAAAAAD/AAAAAAAQAAAAAAAAAgICAgAAAAAAAAD/AAAAAAAAAAAAEEAAAAAAAEQAAgEAAAAAAQECAAAAAQAAAAAAAAACAgIAAAAAAAAAAP8AAAAAAgAAAAAAAAACAgIAAAAAAQAAAP8AAAAAAAAAAAIAgAAAAAAAAEQAAgQAAAAAAQEDAAAABAAAAAAAAAACAgIAAAAAAAAAAP8AAAAACAAAAAAAAAACAgIAAAACAAAAAP8AAAAAAAAAAEAAAAACAgIAAAAAAAAAAP8AAAAAAAAAAAgAQAAAAAAARAACBAAAAAABAQQAAAAAAgAAAAAAAAICAgAAAAAAAAAA/wAAAAAABAAAAAAAAAICAgAAAIAAAAAA/wAAAAAAEAAAAAAAAAICAgAAAAAAAAAA/wAAAAAAIAAAAAAAAAICAgAAAAAAAAAA/wAAAAAAAAAAAARAAAAAAAABRAACEAAgAAABAQIAAAACAAAAAAAAAAICAgAAAAAAAAAA/wAAAAAAAAABAAAAAAICAgIAAAAAAAAA/wAAAAAAAAAAAAAgAQAAAABEAAIQACAAAAEBAwAAAAgAAAAAAAAAAgICAAAAAAAAAAD/AAAAACAAAAAAAAAAAgICAAAAgAAAAAD/AAAAAEAAAAAAAAAAAgICAAAAAAAAAAD/AAAAAAAAAAAgACAAAAAAAAJEAAIQABAAAAEBAgAAAAIAAAAAAAAAAgICAgAAAAAAAAD/AAAAAAAAAAEAAAAAAgICAAAAAAAAAAD/AAAAAAAAAAACACAAAAAAAEQAAhAAEAAAAQEBAAAACAAAAAAAAAACAgIAAADAAAAAAP8AAAAAAAAAAAgAIAAAAAAAA0QAAggAAAAAAQEDAAAABAAAAAAAAAACAgIAAAACAAAAAP8AAAAACAAAAAAAAAACAgIAAAAAAAAAAP8AAAAAAAAAAEAAAAACAgIAAAAAAAAAAP8AAAAAAAAAAAQAQAAAAAAARAACCAAAAAABAQUAAAAIAAAAAAAAAAICAgAAAAAAAAAA/wAAAAAQAAAAAAAAAAICAgAAAAAAAAAA/wAAAABAAAAAAAAAAAICAgAAAAAAAAAA/wAAAAAAAgAAAAAAAAICAgAAAAAAAAAA/wAAAAAABAAAAAAAAAICAgAAAIAAAAAA/wAAAAAAAAAAAARAAAAAAAAERAACAAQgAAABAQoAAAAQAAAAAAAAAAICAgAAAAAAAAAA/wAAAAAgAAAAAAAAAAICAhAAQAAAAAAA/wAAAAAAAgAAAAAAAAICAhAAQAAAAAAA/wAAAAAAgAAAAAAAAAICAgAAAAAAAAAA/wAAAAAAAAIAAAAAAAICAhAAQAAAAAAA/wAAAAAAAAAQAAAAAAICAgAAAAAAAAAA/wAAAAAAAAAAAgAAAAICAgAAAAAAAAAA/wAAAAAAAAAAAAABAAICAhAAQAAAAAAA/wAAAAAAAAAAAAAAAQICAhAAQAAAAAAA/wAAAAAAAAAAAAAAAgICAhAAQAAAAAAA/wAAAAAAAAAAAACAAAAAAAFEAAKAACAAAAEBBQAAAACAAAAAAAAAAgICAAAAoAgAAAD/AEAAAAAAAQAAAAAAAgICAAAAoAgAAAD/AEAAAAAAAgAAAAAAAgICAAAAoAgAAAD/AEAAAAAABAAAAAAAAgICAAAAoAoAAAD/AEAAAAAACAAAAAAAAgICAAAAoAgAAAD/AEAAAAAAAAAAACEAAAAAAAVEAAIABBAAAAEBCwAAACAAAAAAAAAAAgICEABAAQAAAAD/AAAAAAACAAAAAAAAAgICEABAAQAAAAD/AAAAAACAAAAAAAAAAgICAAAAAAAAAAD/AAAAAAAAAgAAAAAAAgICEABAAQAAAAD/AAAAAAAAABAAAAAAAgICAAAAAAAAAAD/AAAAAAAAAAAAQAAAAgICAAAAAAAAAAD/AAAAAAAAAAAAgAAAAgICAAAAAAAAAAD/AAAAAAAAAAAAAAEAAgICEABAAQAAAAD/AAAAAAAAAAAAAAQAAgICAAAAAAAAAAD/AAAAAAAAAAAAAAABAgICEABAAQAAAAD/AAAAAAAAAAAAAAACAgICEgBAAQAAAAD/AAAAAAAAAAAAAIAAAAAAAUQAAoAAEAAAAQEDAAAAAIAAAAAAAAACAgIAAACgAAAAAP8AAAAAAAACAAAAAAACAgIAAAAAAAAAAP8AAAAAAAAQAAAAAAACAgIAAAAAAAAAAP8AAAAAAAAAAACAIAAAAAAABkQAAgAIAAAAAQEHAAAAgAAAAAAAAAACAgIAgAAAAAAAAP8AAAAAAAIAAAAAAAACAgIAAAAAAAAAAP8AAAAAAAABAAAAAAACAgIAAAAAAAAAAP8AAAAAAAAACAAAAAACAgIAAAAAAAAAAP8AAAAAAAAAAAAIAAACAgIAAAAAAAAAAP8AAAAAAAAAAACAAAACAgIAAAAAAAAAAP8AAAAAAAAAAAAAAgACAgIAAAAAAAAAAP8AAAAAAAAAAAAAQAAACAAARAACAAEAAAABAQUAAAAAABAAAAAAAAICAgAAAAAAAAAA/wAAAAAAAAAIAAAAAAICAgAAAAAAAAAA/wAAAAAAAAAACAAAAAICAgAAAAAAAAAA/wAAAAAAAAAAEAAAAAICAgAAAKAAAAAA/wAAAAAAAAAAQAAAAAICAgAAAAAAAAAA/wAAAAAAAAAAAAAgABAAAAAHRAACABAAAAABAQUAAACAAAAAAAAAAAICAgCAAAAAAAAA/wAAAAAAAAIAAAAAAAICAgAAAAAAAAAA/wAAAAAAAAAIAAAAAAICAgAAAAAAAAAA/wAAAAAAAAAAAAgAAAICAgAAAAAAAAAA/wAAAAAAAAAAAAACAAICAgAAAAAAAAAA/wAAAAAAAAAAAABAAAAIAABEAAIAAgAAAAEBBQAAAAAQAAAAAAAAAgICAAAAAAAAAAD/AAAAAAAgAAAAAAAAAgICAAAAAAAAAAD/AAAAAAAAAAAIAAAAAgICAAAAAAAAAAD/AAAAAAAAAAAQAAAAAgICAAAAoAAAAAD/AAAAAAAAAABAAAAAAgICAAAAAAAAAAD/AAAAAAAAAAAAACAAEAAAAAhEAAIAIAAAAAEBCQAAAIAAAAAAAAAAAgICAAAAAAAAAAD/AAAAAAACAAAAAAAAAgICEABAARAAAAD/AAAAAAAEAAAAAAAAAgICAAAAAAAAAAD/AAAAAAAAAgAAAAAAAgICEABAAQAAAAD/AAAAAAAAAAgAAAAAAgICAAAAAAAAAAD/AAAAAAAAAIAAAAAAAgICAAAAAAAAAAD/AAAAAAAAAAABAAAAAgICEABAAQAAAAD/AAAAAAAAAAAAAgAAAgICEABAAQAAAAD/AAAAAAAAAAAAAAABAgICEABAAQAAAAD/AAAAAAAAAAAAAIAAAAAAAUQAAgAEAAAAAQEIAAAAAAAQAAAAAAACAgIAAACgAAAAAP8AAAAAAAAACAAAAAACAgIAAACgAAAAAP8AAAAAAAAAEAAAAAACAgIAAACgAAAAAP8AAAAAAAAAIAAAAAACAgIAAACgAAAAAP8AAAAAAAAAQAAAAAACAgIAAAAAAAAAAP8AAAAAAAAAgAAAAAACAgIAAACgAAAAAP8AAAAAAAAAAAAEAAACAgIAAAAAAAAAAP8AAAAAAAAAAAAIAAACAgIAAAAAAAAAAP8AAAAAAAAAAAAAUAAAAAAACUQAAgBAAAAAAQEGAAAAAAQAAAAAAAACAgIAAEQAgAAAAP8AAAAAAAgAAAAAAAACAgIAAEQAgAIAAP8AAAAAAAAEAAAAAAACAgIAAEQAgAAAAP8AAAAAAAAIAAAAAAACAgIAAEQAgAAAAP8AAAAAAAAAgAAAAAACAgIAAEQAgAAAAP8AAAAAAAAAAAABAAACAgIAAEQAgAAAAP8AAAAAAAAAAAAAgIAAAAAARAACACAAAAABAQYAAAAAAABAAAAAAAICAgAAAKAAAAAA/wAAAAAAAACAAAAAAAICAgAAAKAAAAAA/wAAAAAAAAAAAQAAAAICAgAAAKAAAAAA/wAAAAAAAAAAAgAAAAICAgAAAKAAAAAA/wAAAAAAAAAAAAQAAAICAgAAAAAAAAAA/wAAAAAAAAAAAAgAAAICAgAAAKAAAAAA/wAAAAAAAAAAAABAQAAAAAAKARYAAADeBQAAAAAAAPkXAAAAAAAAAhgAAAAAAAB2GAAAAAAAAPwaAAAAAAAACR8AAAAAAABkIwAAAAAAAAwlAAAAAAAAFCsAAAAAAACRLQAAAAAAANkvAAAAAAAAKzEAAAAAAABSMgAAAAAAAC40AAAAAAAAFDYAAAAAAAAwOQAAAAAAAARaAAAAAAAAb1oAAAAAAAAkXwAAAAAAAExoAAAAAAAACXAAAAAAAAD/////AAAAAAAAAAADAAAAAAAAAAAAAAAABBAACAAAAAEAFQgAAAEAehEAAAEAphQAAAEAYiEAAAEAmyMAAAEAuSUAAAEAYioAAAEAJF8AAAAEIAAIAAAAAQAVCAAAAQB6EQAAAQCmFAAAAQBiIQAAAQCbIwAAAQC5JQAAAQBiKgAAAQAkXwAAAQAAAEkyShAIYAEAChIEFBJJUUoQCIgBAAUNBBQNmSRJEAhgAQACCAQUBhkpSRAIYAEAAggEFAgZJVIQCIgBAAIIBBQDmShJIAhgAQACCAQUAxkxSQgIYAEABQ0EFA9JUkkQCFABAAoUCBQSSVJkEAiIAQAKFAgUECpRSiAIYAEABREIFA0pUUoQCGACAAoUCBQQSUBTIg0FFA8IDAoIDwIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=",
+        "envelope_base64": "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"
+      },
+      ".aom": {
+        "name": "details",
+        "ext": ".aom",
+        "offset": 0,
+        "stored_size": 128,
+        "raw_size": 90,
+        "t1": -62135596800,
+        "t2": -62135596800,
+        "folder": "_data",
+        "envelope_sha256": "357aa0fb30cf1b42c28eb45839aa2fa37c879d684ac7cd023cb728d2d9be99aa",
+        "plaintext_sha256": "57beab85199254faa69de056a8397009a61adcb06997b323336f12d40a9b6c0f",
+        "plaintext_base64": "AwFtb2EuBAAUAAAAVEFDVElDU19UWVBFX0hBTkRMRVIDAAAAVjIxAAAAAAAAAAAAAP////////////////////8IAAAAQXJ0aWZhY3QBAAEAArpWAAABABAB",
+        "envelope_base64": "EAAAABAAAADgzyqD77oqAwrhun5Rc/mwCfAoGEreGcjPr+oOfpkZPSevTNlfILV+bPLnaQNlKAIPfOSa8byWexkB66tUJNPO0fgXkEdR3S7wFfiqy7Jcrk6bRHohVnB9bX4DzsJ4uYw6vphLp6e0q7IkCgdGU4fe5ZrwEXyH2yM="
+      }
+    },
+    "tac": {
+      "plaintext_sha256": "06dad077b9ed29b7fd35c601a1a70f4ec2b24bd4be0fda953c197013543db4d6",
+      "plaintext_size_bytes": 3713,
+      "base64": "AwFjYXQuIgAiRAAbAAEAAgMAAABWMjEAAAAAAAAAAAAAAAAEAgQHAgOkKAEQCFBgKKKBCAD/AAAAAExMVU5EAAIBAAAAAAEBAgAAAAEAAAAAAAAAAgICAAAAAAAAAAD/AAAAAAAQAAAAAAAAAgICAgAAAAAAAAD/AAAAAAAAAAAAEEAAAAAAAEQAAgEAAAAAAQECAAAAAQAAAAAAAAACAgIAAAAAAAAAAP8AAAAAAgAAAAAAAAACAgIAAAAAAQAAAP8AAAAAAAAAAAIAgAAAAAAAAEQAAgQAAAAAAQEDAAAABAAAAAAAAAACAgIAAAAAAAAAAP8AAAAACAAAAAAAAAACAgIAAAACAAAAAP8AAAAAAAAAAEAAAAACAgIAAAAAAAAAAP8AAAAAAAAAAAgAQAAAAAAARAACBAAAAAABAQQAAAAAAgAAAAAAAAICAgAAAAAAAAAA/wAAAAAABAAAAAAAAAICAgAAAIAAAAAA/wAAAAAAEAAAAAAAAAICAgAAAAAAAAAA/wAAAAAAIAAAAAAAAAICAgAAAAAAAAAA/wAAAAAAAAAAAARAAAAAAAABRAACEAAgAAABAQIAAAACAAAAAAAAAAICAgAAAAAAAAAA/wAAAAAAAAABAAAAAAICAgIAAAAAAAAA/wAAAAAAAAAAAAAgAQAAAABEAAIQACAAAAEBAwAAAAgAAAAAAAAAAgICAAAAAAAAAAD/AAAAACAAAAAAAAAAAgICAAAAgAAAAAD/AAAAAEAAAAAAAAAAAgICAAAAAAAAAAD/AAAAAAAAAAAgACAAAAAAAAJEAAIQABAAAAEBAgAAAAIAAAAAAAAAAgICAgAAAAAAAAD/AAAAAAAAAAEAAAAAAgICAAAAAAAAAAD/AAAAAAAAAAACACAAAAAAAEQAAhAAEAAAAQEBAAAACAAAAAAAAAACAgIAAADAAAAAAP8AAAAAAAAAAAgAIAAAAAAAA0QAAggAAAAAAQEDAAAABAAAAAAAAAACAgIAAAACAAAAAP8AAAAACAAAAAAAAAACAgIAAAAAAAAAAP8AAAAAAAAAAEAAAAACAgIAAAAAAAAAAP8AAAAAAAAAAAQAQAAAAAAARAACCAAAAAABAQUAAAAIAAAAAAAAAAICAgAAAAAAAAAA/wAAAAAQAAAAAAAAAAICAgAAAAAAAAAA/wAAAABAAAAAAAAAAAICAgAAAAAAAAAA/wAAAAAAAgAAAAAAAAICAgAAAAAAAAAA/wAAAAAABAAAAAAAAAICAgAAAIAAAAAA/wAAAAAAAAAAAARAAAAAAAAERAACAAQgAAABAQoAAAAQAAAAAAAAAAICAgAAAAAAAAAA/wAAAAAgAAAAAAAAAAICAhAAQAAAAAAA/wAAAAAAAgAAAAAAAAICAhAAQAAAAAAA/wAAAAAAgAAAAAAAAAICAgAAAAAAAAAA/wAAAAAAAAIAAAAAAAICAhAAQAAAAAAA/wAAAAAAAAAQAAAAAAICAgAAAAAAAAAA/wAAAAAAAAAAAgAAAAICAgAAAAAAAAAA/wAAAAAAAAAAAAABAAICAhAAQAAAAAAA/wAAAAAAAAAAAAAAAQICAhAAQAAAAAAA/wAAAAAAAAAAAAAAAgICAhAAQAAAAAAA/wAAAAAAAAAAAACAAAAAAAFEAAKAACAAAAEBBQAAAACAAAAAAAAAAgICAAAAoAgAAAD/AEAAAAAAAQAAAAAAAgICAAAAoAgAAAD/AEAAAAAAAgAAAAAAAgICAAAAoAgAAAD/AEAAAAAABAAAAAAAAgICAAAAoAoAAAD/AEAAAAAACAAAAAAAAgICAAAAoAgAAAD/AEAAAAAAAAAAACEAAAAAAAVEAAIABBAAAAEBCwAAACAAAAAAAAAAAgICEABAAQAAAAD/AAAAAAACAAAAAAAAAgICEABAAQAAAAD/AAAAAACAAAAAAAAAAgICAAAAAAAAAAD/AAAAAAAAAgAAAAAAAgICEABAAQAAAAD/AAAAAAAAABAAAAAAAgICAAAAAAAAAAD/AAAAAAAAAAAAQAAAAgICAAAAAAAAAAD/AAAAAAAAAAAAgAAAAgICAAAAAAAAAAD/AAAAAAAAAAAAAAEAAgICEABAAQAAAAD/AAAAAAAAAAAAAAQAAgICAAAAAAAAAAD/AAAAAAAAAAAAAAABAgICEABAAQAAAAD/AAAAAAAAAAAAAAACAgICEgBAAQAAAAD/AAAAAAAAAAAAAIAAAAAAAUQAAoAAEAAAAQEDAAAAAIAAAAAAAAACAgIAAACgAAAAAP8AAAAAAAACAAAAAAACAgIAAAAAAAAAAP8AAAAAAAAQAAAAAAACAgIAAAAAAAAAAP8AAAAAAAAAAACAIAAAAAAABkQAAgAIAAAAAQEHAAAAgAAAAAAAAAACAgIAgAAAAAAAAP8AAAAAAAIAAAAAAAACAgIAAAAAAAAAAP8AAAAAAAABAAAAAAACAgIAAAAAAAAAAP8AAAAAAAAACAAAAAACAgIAAAAAAAAAAP8AAAAAAAAAAAAIAAACAgIAAAAAAAAAAP8AAAAAAAAAAACAAAACAgIAAAAAAAAAAP8AAAAAAAAAAAAAAgACAgIAAAAAAAAAAP8AAAAAAAAAAAAAQAAACAAARAACAAEAAAABAQUAAAAAABAAAAAAAAICAgAAAAAAAAAA/wAAAAAAAAAIAAAAAAICAgAAAAAAAAAA/wAAAAAAAAAACAAAAAICAgAAAAAAAAAA/wAAAAAAAAAAEAAAAAICAgAAAKAAAAAA/wAAAAAAAAAAQAAAAAICAgAAAAAAAAAA/wAAAAAAAAAAAAAgABAAAAAHRAACABAAAAABAQUAAACAAAAAAAAAAAICAgCAAAAAAAAA/wAAAAAAAAIAAAAAAAICAgAAAAAAAAAA/wAAAAAAAAAIAAAAAAICAgAAAAAAAAAA/wAAAAAAAAAAAAgAAAICAgAAAAAAAAAA/wAAAAAAAAAAAAACAAICAgAAAAAAAAAA/wAAAAAAAAAAAABAAAAIAABEAAIAAgAAAAEBBQAAAAAQAAAAAAAAAgICAAAAAAAAAAD/AAAAAAAgAAAAAAAAAgICAAAAAAAAAAD/AAAAAAAAAAAIAAAAAgICAAAAAAAAAAD/AAAAAAAAAAAQAAAAAgICAAAAoAAAAAD/AAAAAAAAAABAAAAAAgICAAAAAAAAAAD/AAAAAAAAAAAAACAAEAAAAAhEAAIAIAAAAAEBCQAAAIAAAAAAAAAAAgICAAAAAAAAAAD/AAAAAAACAAAAAAAAAgICEABAARAAAAD/AAAAAAAEAAAAAAAAAgICAAAAAAAAAAD/AAAAAAAAAgAAAAAAAgICEABAAQAAAAD/AAAAAAAAAAgAAAAAAgICAAAAAAAAAAD/AAAAAAAAAIAAAAAAAgICAAAAAAAAAAD/AAAAAAAAAAABAAAAAgICEABAAQAAAAD/AAAAAAAAAAAAAgAAAgICEABAAQAAAAD/AAAAAAAAAAAAAAABAgICEABAAQAAAAD/AAAAAAAAAAAAAIAAAAAAAUQAAgAEAAAAAQEIAAAAAAAQAAAAAAACAgIAAACgAAAAAP8AAAAAAAAACAAAAAACAgIAAACgAAAAAP8AAAAAAAAAEAAAAAACAgIAAACgAAAAAP8AAAAAAAAAIAAAAAACAgIAAACgAAAAAP8AAAAAAAAAQAAAAAACAgIAAAAAAAAAAP8AAAAAAAAAgAAAAAACAgIAAACgAAAAAP8AAAAAAAAAAAAEAAACAgIAAAAAAAAAAP8AAAAAAAAAAAAIAAACAgIAAAAAAAAAAP8AAAAAAAAAAAAAUAAAAAAACUQAAgBAAAAAAQEGAAAAAAQAAAAAAAACAgIAAEQAgAAAAP8AAAAAAAgAAAAAAAACAgIAAEQAgAIAAP8AAAAAAAAEAAAAAAACAgIAAEQAgAAAAP8AAAAAAAAIAAAAAAACAgIAAEQAgAAAAP8AAAAAAAAAgAAAAAACAgIAAEQAgAAAAP8AAAAAAAAAAAABAAACAgIAAEQAgAAAAP8AAAAAAAAAAAAAgIAAAAAARAACACAAAAABAQYAAAAAAABAAAAAAAICAgAAAKAAAAAA/wAAAAAAAACAAAAAAAICAgAAAKAAAAAA/wAAAAAAAAAAAQAAAAICAgAAAKAAAAAA/wAAAAAAAAAAAgAAAAICAgAAAKAAAAAA/wAAAAAAAAAAAAQAAAICAgAAAAAAAAAA/wAAAAAAAAAAAAgAAAICAgAAAKAAAAAA/wAAAAAAAAAAAABAQAAAAAAKARYAAADeBQAAAAAAAPkXAAAAAAAAAhgAAAAAAAB2GAAAAAAAAPwaAAAAAAAACR8AAAAAAABkIwAAAAAAAAwlAAAAAAAAFCsAAAAAAACRLQAAAAAAANkvAAAAAAAAKzEAAAAAAABSMgAAAAAAAC40AAAAAAAAFDYAAAAAAAAwOQAAAAAAAARaAAAAAAAAb1oAAAAAAAAkXwAAAAAAAExoAAAAAAAACXAAAAAAAAD/////AAAAAAAAAAADAAAAAAAAAAAAAAAABBAACAAAAAEAFQgAAAEAehEAAAEAphQAAAEAYiEAAAEAmyMAAAEAuSUAAAEAYioAAAEAJF8AAAAEIAAIAAAAAQAVCAAAAQB6EQAAAQCmFAAAAQBiIQAAAQCbIwAAAQC5JQAAAQBiKgAAAQAkXwAAAQAAAEkyShAIYAEAChIEFBJJUUoQCIgBAAUNBBQNmSRJEAhgAQACCAQUBhkpSRAIYAEAAggEFAgZJVIQCIgBAAIIBBQDmShJIAhgAQACCAQUAxkxSQgIYAEABQ0EFA9JUkkQCFABAAoUCBQSSVJkEAiIAQAKFAgUECpRSiAIYAEABREIFA0pUUoQCGACAAoUCBQQSUBTIg0FFA8IDAoIDwIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=",
+      "header_raw_hex": "040204070203",
+      "packed_team_instruction_vector_hex": "a428011008506028a2810800",
+      "style_string": "",
+      "style_code_hex": "4c4c554e",
+      "pair_count": 11,
+      "suffix_after_phase_pairs_size_bytes": 500,
+      "suffix_after_phase_pairs_sha256": "80866b6f8605aa239b921054ff374f2e35c889e59bccab739b70ff53898bae44",
+      "suffix_after_phase_pairs_base64": "ARYAAADeBQAAAAAAAPkXAAAAAAAAAhgAAAAAAAB2GAAAAAAAAPwaAAAAAAAACR8AAAAAAABkIwAAAAAAAAwlAAAAAAAAFCsAAAAAAACRLQAAAAAAANkvAAAAAAAAKzEAAAAAAABSMgAAAAAAAC40AAAAAAAAFDYAAAAAAAAwOQAAAAAAAARaAAAAAAAAb1oAAAAAAAAkXwAAAAAAAExoAAAAAAAACXAAAAAAAAD/////AAAAAAAAAAADAAAAAAAAAAAAAAAABBAACAAAAAEAFQgAAAEAehEAAAEAphQAAAEAYiEAAAEAmyMAAAEAuSUAAAEAYioAAAEAJF8AAAAEIAAIAAAAAQAVCAAAAQB6EQAAAQCmFAAAAQBiIQAAAQCbIwAAAQC5JQAAAQBiKgAAAQAkXwAAAQAAAEkyShAIYAEAChIEFBJJUUoQCIgBAAUNBBQNmSRJEAhgAQACCAQUBhkpSRAIYAEAAggEFAgZJVIQCIgBAAIIBBQDmShJIAhgAQACCAQUAxkxSQgIYAEABQ0EFA9JUkkQCFABAAoUCBQSSVJkEAiIAQAKFAgUECpRSiAIYAEABREIFA0pUUoQCGACAAoUCBQQSUBTIg0FFA8IDAoIDwIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
+    }
+  },
+  "development": {
+    "canonical_source_of_truth": "native_preservation.members[\".tac\"].plaintext_base64 + players[].phases[].raw_block + team_instructions.native_vector_hex",
+    "editing_contract": "Treat this snapshot as a lossless native-source record. Change semantic fields, then encode back into the corresponding native selector/role/duty/PI/TI bits. Preserve unmodified raw cache entries, footer, AOM, IMG, and archive metadata.",
+    "direct_input_to_current_FM27GEN1_generator": false,
+    "generator_blockers": [
+      "the source style string is empty and native style code is unresolved (raw 4c4c554e); current generator requires a registered named style/template",
+      "current generator takes a structured recipe and a registered style template; it does not yet accept this lossless source-snapshot schema as an input"
+    ],
+    "recommended_next_implementation": "Add source-snapshot import mode that uses the embedded source FMF as the template, changes only selected fields, preserves opaque/unmodified role-cache entries, and performs binary read-after-write validation."
+  },
+  "catalog_provenance": {
+    "repository": "eslaulau/fm-ta",
+    "file": "04_离线原生FMF生成器/catalog.json",
+    "url": "https://github.com/eslaulau/fm-ta/blob/main/04_%E7%A6%BB%E7%BA%BF%E5%8E%9F%E7%94%9FFMF%E7%94%9F%E6%88%90%E5%99%A8/catalog.json",
+    "blob_sha": "b5a292676f2398849b241054f49575ab96c1dba9",
+    "generator_url": "https://github.com/eslaulau/fm-ta/blob/main/04_%E7%A6%BB%E7%BA%BF%E5%8E%9F%E7%94%9FFMF%E7%94%9F%E6%88%90%E5%99%A8/FM27GEN1_Offline_FMF_Generator.py",
+    "generator_blob_sha": "9ae38b18aa8dc0e8ee3080c053c02a83955f9322"
+  },
+  "validation": {
+    "uploaded_fmf_opened": true,
+    "outer_archive_toc_decompressed": true,
+    "all_members_decrypted_and_decompressed": true,
+    "tac_major_27": true,
+    "tac_title_matches_identity": true,
+    "eleven_slot_pairs": true,
+    "each_phase_has_active_role_cache_entry": true,
+    "team_instruction_vector_read": true,
+    "source_sha256_verified": "e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257",
+    "note": "Structural decode verified. FM27 in-game import and match-engine performance were not tested in this run.",
+    "22_role_position_pairs_resolved": true,
+    "22_duty_flags_mapped": true,
+    "all_active_pi_bits_decoded": true,
+    "all_active_pi_options_catalog_permission_editable": true,
+    "source_fmf_embedded_for_lossless_future_reparse": true,
+    "opaque_suffix_preserved_after_phase_pairs": true,
+    "active_personal_instruction_count": 35,
+    "catalog_position_coordinates_included": true
+  }
+}
