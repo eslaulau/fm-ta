@@ -1,7 +1,7 @@
 {
   "version": "2.0",
   "action": "project_gated_build",
-  "revision": "oop-role-canonicalization",
+  "revision": "canonical-oop-role-correction",
   "parent": "V0.5",
   "parent_sha256": "e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257"
 }
