@@ -116,7 +116,7 @@ py -3.12 tactic_development\FM27_EngineDividend_4Back\build_project_tactic.py `
 设计审计中的父 FMF 和 recipe SHA-256 必须与实际文件一致。可用以下命令读取哈希，再填写审计文件：
 
 ```powershell
-Get-FileHash .\D:\<父版本>.fmf -Algorithm SHA256
+Get-FileHash 'D:\<父版本>.fmf' -Algorithm SHA256
 Get-FileHash .\tactic_development\FM27_EngineDividend_4Back\<本轮配方>.json -Algorithm SHA256
 ```
 
