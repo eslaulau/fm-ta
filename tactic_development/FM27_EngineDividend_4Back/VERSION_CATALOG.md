@@ -4,6 +4,8 @@
 
 ## 当前状态
 
+> 2026-11-26：跨版本总账已进行结构修复。每轮战术迭代/赛季复盘必须同步更新 `TACTIC_INSTRUCTION_DECISION_LEDGER.md`、`ITERATION_LOG.md`、本目录与 `SOURCE_REGISTER.md`，并逐个GitHub read-back。详细门禁见 `ANALYSIS_AND_ITERATION_RULES.md` 第七节。
+
 - **当前开发版本：V1.7 / Build Run163（D0–D3完成；D4/D5待验证）**
 - **最近完成阶段：V1.7 D3原生FMF生成与独立回读；8/8通过**
 - **仍待验证：D4 游戏内导入；D5 比赛/赛季表现**
