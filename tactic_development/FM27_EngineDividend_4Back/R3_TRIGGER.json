@@ -7,6 +7,6 @@
   "parent_sha256": "e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257",
   "output": "builds/R3.fmf",
   "report": "builds/R3.report.json",
-  "attempt": 4,
-  "note": "Re-run after native preflight phase-relative OOP role token correction"
+  "attempt": 5,
+  "note": "Final D0-D3 reproducibility run after recording verified D3 status in policy, ledger and audit"
 }
