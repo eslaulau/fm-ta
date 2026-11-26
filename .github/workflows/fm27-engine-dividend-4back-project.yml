@@ -1,0 +1,60 @@
+name: FM27 EngineDividend 4Back Project Build
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "tactic_development/FM27_EngineDividend_4Back/2.0_BUILD_REQUEST.json"
+
+permissions:
+  contents: read
+
+jobs:
+  build-v05-reset-tactic:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout project
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+          cache-dependency-path: "04_离线原生FMF生成器/requirements.txt"
+
+      - name: Install native generator dependencies
+        run: python -m pip install -r "04_离线原生FMF生成器/requirements.txt"
+
+      - name: Restore and verify exact V0.5 baseline
+        run: |
+          python "tactic_development/FM27_EngineDividend_4Back/materialize_v05_baseline.py"
+          python - <<'PY'
+          import hashlib
+          from pathlib import Path
+          p = Path("tactic_development/FM27_EngineDividend_4Back/builds/V0.5.fmf")
+          expected = "e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257"
+          actual = hashlib.sha256(p.read_bytes()).hexdigest()
+          if actual != expected:
+              raise SystemExit(f"V0.5 SHA mismatch: {actual}")
+          print(f"PASS V0.5: {p.stat().st_size} bytes / {actual}")
+          PY
+
+      - name: Run project gate, native permission preflight, build and D3 readback
+        run: |
+          python "tactic_development/FM27_EngineDividend_4Back/build_project_tactic.py" \
+            --recipe "tactic_development/FM27_EngineDividend_4Back/2.0.json" \
+            --audit "tactic_development/FM27_EngineDividend_4Back/2.0_DESIGN_AND_AUDIT.md" \
+            --parent-fmf "tactic_development/FM27_EngineDividend_4Back/builds/V0.5.fmf" \
+            --output "tactic_development/FM27_EngineDividend_4Back/builds/FM27_EngineDividend_4Back_2.0.fmf" \
+            --report "tactic_development/FM27_EngineDividend_4Back/builds/FM27_EngineDividend_4Back_2.0.report.json"
+
+      - name: Upload the single FMF and same-run report
+        uses: actions/upload-artifact@v4
+        with:
+          name: FM27_EngineDividend_4Back_2.0
+          path: |
+            tactic_development/FM27_EngineDividend_4Back/builds/FM27_EngineDividend_4Back_2.0.fmf
+            tactic_development/FM27_EngineDividend_4Back/builds/FM27_EngineDividend_4Back_2.0.report.json
+          if-no-files-found: error
+          retention-days: 30
