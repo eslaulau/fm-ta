@@ -78,7 +78,7 @@
     "status": "FAIL",
     "points_short_of_target": 25,
     "review_file": "2.2_D5_SEASON_REVIEW_20261126.md",
-    "next_step": "2.2 attacking-mechanism audit; do not generate 2.3 before audit completion",
+    "next_step": "2.3 D3 build complete; confirm D4 in FM27, run paired same-seed comparison against 2.2, continue the remaining 2.2 attacking mechanism audit; do not infer D5 performance before testing.",
     "data_caveats": [
       "Exporter does not export or infer tactic configurations; mapping is user-declared.",
       "Player identity coverage is partial (90.07%).",
