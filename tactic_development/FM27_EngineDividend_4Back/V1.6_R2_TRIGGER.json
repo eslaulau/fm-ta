@@ -1,0 +1,8 @@
+{
+  "version": "V1.6_R2",
+  "source_report": "FM27-Exporter/season-reports/1/45835614056",
+  "recipe": "V1.6_R2.json",
+  "audit": "V1.6_R2_DESIGN_AND_AUDIT.md",
+  "baseline": "V0.5",
+  "reason": "R1 season review: improve central chance creation and away points while preserving the improved OOP framework"
+}
