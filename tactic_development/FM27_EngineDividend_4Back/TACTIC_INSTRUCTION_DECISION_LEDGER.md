@@ -138,7 +138,9 @@
 
 ### D0–D3状态
 - D0：V1.7 D5报告分析、外部结构搜索、V1.8设计完成。
-- D1：catalog-backed位置/角色/职责/PI前置校验通过。\n- D2：11槽/22阶段检查通过；IP四后场DL/DCL/DCR/DR、OOP五后卫WBL/DCL/DC/DCR/WBR及双后腰/前场三人结构回读一致。\n- D3：Run164通过，8/8检查全true；FMF 4,616 bytes，SHA-256 `51e94c684c66ce016950d93f2619a40086820e7a9dcf792b7251d4ac67fa4e72`；same-run report SHA-256 `75c59445c84690170175a14c7bd62e16f16d9159803a9061b25456d1ab3bb7d8`；[Actions Run164](https://github.com/eslaulau/fm-ta/actions/runs/45750563671)；[构建摘要](V1.8_BUILD_REPORT_SUMMARY.json)。D3不代表游戏导入或比赛实测。
+- D1：catalog-backed位置/角色/职责/PI前置校验通过。
+- D2：11槽/22阶段检查通过；IP四后场DL/DCL/DCR/DR、OOP五后卫WBL/DCL/DC/DCR/WBR及双后腰/前场三人结构回读一致。
+- D3：Run164通过，8/8检查全true；FMF 4,616 bytes，SHA-256 `51e94c684c66ce016950d93f2619a40086820e7a9dcf792b7251d4ac67fa4e72`；same-run report SHA-256 `75c59445c84690170175a14c7bd62e16f16d9159803a9061b25456d1ab3bb7d8`；[Actions Run164](https://github.com/eslaulau/fm-ta/actions/runs/45750563671)；[构建摘要](V1.8_BUILD_REPORT_SUMMARY.json)。D3不代表游戏导入或比赛实测。
 - D4：游戏内导入逐项验收待完成。
 - D5：V1.8正式比赛/赛季报告待完成。
 
