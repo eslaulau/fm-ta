@@ -56,7 +56,7 @@
       "必要防守诊断：仅判断防守问题是否实际限制积分或进攻发挥，不作为独立优化终点"
     ],
     "defense_policy": "不得仅因xGA较高或防守排名较差而淘汰高进球结构；允许接受更高失球以换取更高且可重复的进球产出，但必须以最终积分验证。",
-    "mandatory_2_2_review": "先建立进攻画像并筛选进球最多/最少的比赛，再逐场分析平局与失利，之后诊断防守代价；无证据不得生成2.3。"
+    "mandatory_2_2_review": "2.3已由用户实测数个回合全败并正式放弃；不再安排追加测试。重启V1.6高要求升级计划，下一轮从V0.5原生FMF重生，并同时执行PPG≥2.85及38场xG≥100双门槛。"
   },
   "latest_d5_result": {
     "version": "2.2",
@@ -79,7 +79,7 @@
     "status": "FAIL",
     "points_short_of_target": 25,
     "review_file": "2.2_D5_SEASON_REVIEW_20261126.md",
-    "next_step": "2.3 D3 build complete; confirm D4 in FM27, run paired same-seed comparison against 2.2, continue the remaining 2.2 attacking mechanism audit; do not infer D5 performance before testing.",
+    "next_step": "2.3已正式放弃；重启V1.6高要求升级计划，按V0.5固定重生规则进行历史复盘与唯一整体方案设计。新D5必须同时达到109分和38场xG≥100。",
     "data_caveats": [
       "Exporter does not export or infer tactic configurations; mapping is user-declared.",
       "Player identity coverage is partial (90.07%).",
