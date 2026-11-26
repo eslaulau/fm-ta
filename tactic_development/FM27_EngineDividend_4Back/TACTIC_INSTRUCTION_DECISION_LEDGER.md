@@ -1955,3 +1955,36 @@ D5至少完成38场英超后，以V1.8为直接父版基线，同时对照V1.7�
 - 不使用犯规、黄牌、红牌评价战术或任何 PI。
 
 **最终状态：D0历史审查通过；R2 D1–D3技术事实继续有效；D4待游戏内核验；D5待完整赛季。R2不得提前标记为已验证升级。**
+
+
+---
+
+## V2.0｜V0.5重生式设计与D3配置快照（2026-11-26）
+
+**身份：** 2.0父版本固定为V0.5原始FMF（SHA-256 `e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257`）。V1.0–V1.9及R2均仅为历史证据来源，不作为父版。
+
+**设计错位主线：**
+- OOP团队：高位遭遇线（native bit 61）+ 极低防线（bit 59）+ 团队逼抢更多（bit 66，非极多bit 65）+ 丢球后重新组织防守（bit 71）。
+- 分层个人压迫：DCR/DCL较少主动逼抢；边后卫、DMR、MR/ML、MC、AMC较多主动逼抢；DML使用压迫型后腰角色。凶狠铲抢按原生权限写入。
+- IP不对称：DL内收型边后卫防守；DR攻击型翼卫；MCR保持位置、MCL自由前插；AMR组织型边锋、AML内锋、AMC进攻型组织核心、ST射手攻击后点。
+- 进攻TI：较高节奏bit 47、较宽宽度bit 51；保留V0.5其他未覆盖TI与opaque字段。
+
+**2.0 22阶段配置：**
+
+| 槽位 | IP位置 / 角色 / 职责 | OOP位置 / 角色 / 职责 |
+|---|---|---|
+| 1 | GK / BallPlayingGoalkeeper / S | GK / SweeperKeeper / A |
+| 2 | DR / WingBack / A | DR / PressingFullBack / S |
+| 3 | DCR / BallPlayingCentreBack / D | DCR / CoveringCentreBack / D |
+| 4 | DCL / CentreBack / D | DCL / CentreBack / D |
+| 5 | DL / InsideFullBack / D | DL / PressingFullBack / S |
+| 6 | MCR / CentralMidfielder / S | DMR / WideCoverDefensiveMidfielder / D |
+| 7 | MCL / ChannelMidfielder / A | DML / PressingDefensiveMidfielder / D |
+| 8 | AMR / PlaymakingWinger / S | MR / TrackingWideMidfielder / D |
+| 9 | AML / InsideForward / A | ML / TrackingWideMidfielder / D |
+| 10 | AMC / AdvancedPlaymaker / A | MC / CentralMidfielder / S |
+| 11 | ST / Poacher / A | AMC / AttackingMidfielder / S |
+
+**D3验收：** Actions Run `45781102266`，artifact `15097803849`；FMF 4,360 bytes，SHA-256 `80d3a98349eca59affb3d28057cc54550022b1e1e55942d2ce5f1f0920c54bb0`；same-run报告SHA-256 `d7a64ac249f12eec596839dc6ccb4b8ab2f2dc5f26b91d7e1f4a6be0eadd18d2`；8/8独立回读检查通过，22/22阶段精确回读，V0.5模板SHA一致。D4游戏内导入和D5赛季效果未验证。
+
+**证据等级：** 上述是2.0实际序列化配置与构建事实；关于高位压迫与防线纵深模块独立、对手AI出球变化及PPG收益，仍是待验证假设。下一份赛季报告需检查PPG、胜平负、xG/xGA、双方绝佳机会、禁区内射门、主客场差异与平局/失利案例。
