@@ -94,3 +94,8 @@
 4. 原始 Exporter 数据仍以 FM27-Exporter 仓库为原始来源；本项目保存完整分析和永久来源 URL/Run ID，不伪造“原始数据已镜像”。如果用户要求离线完整归档，再把原始报告快照导入本目录的 `source_snapshots/`。
 5. 不覆盖历史版本、不把草案混为正式版本；撤销/取代的内容保留并明确标注。
 6. 每次提交后回读目录、校验链接与 SHA；总目录必须同步更新。
+
+ 
+## 赛季诊断与升级决策追踪（强制）
+
+每个版本条目必须链接本轮赛季分析和 `Vx.y_SEASON_TO_TACTIC_TRACEABILITY_<run>.md`。版本摘要需列出主要ISS/EXP编号、四类决策、收益—代价目标、下一轮D5验证清单及D0–D5状态。新报告到来后，先回看父版本条目中的全部D5目标，再建立本轮问题编号；不得只比较上一版本的总积分。追踪表模板：[SEASON_TO_TACTIC_TRACEABILITY_TEMPLATE.md](SEASON_TO_TACTIC_TRACEABILITY_TEMPLATE.md)。
