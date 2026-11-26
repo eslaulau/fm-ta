@@ -1,0 +1,8 @@
+{
+  "version": "2.5",
+  "recipe": "tactic_development/FM27_EngineDividend_4Back/2.5.json",
+  "audit": "tactic_development/FM27_EngineDividend_4Back/2.5_DESIGN_AND_AUDIT.md",
+  "parent_version": "V0.5",
+  "parent_sha256": "e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257",
+  "trigger_reason": "Run project gate and D1-D3 native FMF build for the 2.5 reset-based iteration."
+}
