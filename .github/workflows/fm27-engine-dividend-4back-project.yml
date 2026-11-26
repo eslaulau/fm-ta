@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
     paths:
-      - "tactic_development/FM27_EngineDividend_4Back/2.0_BUILD_REQUEST.json"
+      - "tactic_development/FM27_EngineDividend_4Back/2.0_TRIGGER.json"
 
 permissions:
   contents: read
