@@ -22,8 +22,8 @@
 
 > 2026-11-26：研发规则已修订：IP仅要求DL/DCL/DCR/DR四个后场位置，不固定任何IP阵型；OOP完全开放；每轮只设计和构建一个完整方案。每轮战术迭代/赛季复盘必须同步更新 `TACTIC_INSTRUCTION_DECISION_LEDGER.md`、`ITERATION_LOG.md`、本目录与 `SOURCE_REGISTER.md`，并逐个GitHub read-back。详细门禁见 `ANALYSIS_AND_ITERATION_RULES.md` 第七节。
 
-- **最近完成D5的历史研发基准：V1.8（Exporter Run45753659141）**。
-- **当前研发状态：2.2为最新D3构建候选，D4/D5待验证。** 最近完成D5仍为V1.8；V1.9 R1/R2、V2.0、V2.1均未完成D4/D5。V0.5是每轮固定重生参照，所有后续版本均不因版本号较新自动成为父版。
+- **最近完成D5：2.2（84分，未达标）；历史最高积分仍为V1.6（89分）。**
+- **当前研发状态：2.2已完成D5并判定FAIL，进入失败归因与进攻机制专项审计；2.3尚未批准生成。** V0.5是每轮固定重生参照，所有后续版本均不因版本号较新自动成为父版。
 
 - **历史V1.9 Run165：** 完整复用V1.7配方的OOP回退实验，保留原构建身份，不认定为正式性能升级。
 - **历史V1.9重新设计版R1（Run167）：** IP 4-3-3 DM、OOP 4-1-4-1；D3通过但D4/D5未验证。当前27.1.1外部证据复核后由R2替代为当前研发候选；不将R1标记为比赛失败。
@@ -146,4 +146,7 @@
 - GitHub Actions：首次构建[Run 45789108253](https://github.com/eslaulau/fm-ta/actions/runs/45789108253)；审计哈希复核[Run 45789543029](https://github.com/eslaulau/fm-ta/actions/runs/45789543029)；最新Artifact ID 15101682456。
 - FMF：4,528 bytes；SHA-256 7feba49ad389125b64690ce00feaf01717f70ae80cb5854eec614e41fc058a34；same-run report SHA-256 ab436693df94409860b0ca4d6eb57ec79ca3b3ba6d643fdea72c5112ab6ed7e8。
 - 方案：IP 4-1-2-1-2 Diamond，OOP 5-2-3；11槽位置/角色/职责与metaFM公开菱形样本逐项对应；五名球员跨位。
-- D1-D3：原生权限预检通过；11槽/22阶段通过；8/8独立二进制回读通过。D4游戏导入待核验；D5完整38场待验证。**不宣称已达到PPG≥2.85。**
+- D1-D3：原生权限预检通过；11槽/22阶段通过；8/8独立二进制回读通过。
+- D4：用户声明本赛季使用2.2；Exporter不导出战术配置，不能独立核验战术身份。
+- D5：[完整38场复盘](2.2_D5_SEASON_REVIEW_20261126.md)；26胜6平6负，84分，87:40，xG81.83，98次绝佳机会；**性能FAIL，未达到109分**。原始报告：[Exporter Run45794923641](https://github.com/eslaulau/FM27-Exporter/tree/main/season-reports/1/45794923641)。
+- 决策：2.2保留为失败基准；2.3暂停，先完成进攻机制专项审计。
