@@ -1331,3 +1331,35 @@ V1.1与V1.2英超38场有相同的主客场对手配对，但只有27场日期�
 ## 后续每轮迭代日志的强制追踪字段（2026-11-26新增）
 
 从下一轮开始，每轮日志必须链接对应赛季分析和追踪矩阵，并包含：ISS/EXP编号、历史多维基准、输球/平局模式、四类决策、父版→子版配置变化、收益—代价、下一轮D5验证目标及失败条件。新报告到来时，必须先回顾上一轮全部目标并标记达成/部分达成/未达成/无法判定，再记录本轮新诊断。旧历史条目不追溯伪造缺失字段；本规则从新增轮次生效。模板：[SEASON_TO_TACTIC_TRACEABILITY_TEMPLATE.md](SEASON_TO_TACTIC_TRACEABILITY_TEMPLATE.md)。
+
+
+---
+
+## V1.9 重新执行版 R2｜V1.8 D5 → 菱形四后卫 / OOP 5-2-3（2026-11-26）
+
+### 1. 赛季入口与历史诊断
+- 用户确认V1.8 / Exporter Run45753659141作为本轮入口；英超38场：21-9-8、98:55、72分；xG88.87/xGA59.67；绝佳机会96/50；客场xGA33.79。
+- 完整D0诊断、历史多维基准、输球/平局、数据质量、替代解释和问题编号见 [V1.9_REDESIGN_R2_SEASON_TO_TACTIC_TRACEABILITY_45753659141.md](V1.9_REDESIGN_R2_SEASON_TO_TACTIC_TRACEABILITY_45753659141.md)。
+- 历史对照：V1.6积分基准89分；V1.3防守机会质量基准xGA34.27/对手绝佳机会27；V1.8进攻产量基准xG88.87/我方绝佳机会96；V1.7客场xGA23.94。不同存档不是同seed A/B。
+- 当前27.1.1外部证据复核后，旧R1 Run167的IP4-3-3 DM / OOP4-1-4-1不再作为主线；保留R1历史记录，不覆盖、不宣称比赛失败。
+
+### 2. 唯一方案与四类决策
+- 唯一新方案：IP 4-1-2-1-2 Diamond / OOP 5-2-3；IP四后场严格DL/DCL/DCR/DR。
+- OOP五人换位：DMC→DC；MCR/MCL→DMR/DML；STR/STL→AMR/AML。DR/DL改为留守边后卫，不重复V1.8旧版高位逼抢翼卫；DCR/DCL少主动逼抢，中央DC、双后腰和前场三人分层积极压迫。
+- **继承保留：** IP四后场硬约束、心态4、较高节奏/较宽进攻意图、翼卫宽度与后点供给候选、DCL/DCR保护空间。
+- **替换淘汰：** 旧R1 4-3-3 DM/4-1-4-1主线；V1.8旧OOP翼卫高压+补位边中卫+MCR单独下沉结构。
+- **新增待验证：** 菱形IP、双翼卫支撑宽度、DMC落三中卫、双中场回双后腰、双前锋回撤边锋；较低防线+高介入线+分层个人逼抢。
+- **证据不足：** 本队跨位置熟悉度、外部隐藏PI、球员个体角色/PI因果、赛季效果。
+
+### 3. D1-D3构建交付
+- Recipe：[V1.9_REDESIGN_R2.json](V1.9_REDESIGN_R2.json)；build request：[V1.9_REDESIGN_R2_BUILD_REQUEST.json](V1.9_REDESIGN_R2_BUILD_REQUEST.json)；设计审计：[V1.9_REDESIGN_R2_DESIGN_AND_AUDIT.md](V1.9_REDESIGN_R2_DESIGN_AND_AUDIT.md)。
+- [FM27 Tactic Build Run169](https://github.com/eslaulau/fm-ta/actions/runs/45760556137) success；artifact ID `15089946643`。
+- FMF 4,688 bytes；SHA-256 `b199063dec9f8745d692ba2abcb78664bdbaa41184d8ea03455afaf6fefea4a5`。
+- same-run report SHA-256 `3d72fd1365ab27beedc5f97e7adea34a22bd40432a5fdff40aa8243812a69d62`；artifact ZIP SHA-256 `79ee002b82e3a9e7a27ead21e20c092cddcaae533cf24f0d9c291895346a3a09`。
+- D1/D2/D3通过；8/8独立回读检查通过；22/22阶段精确回读。首次PI权限预检发现CentreForward不提供ATTACK_BOX_SIDE=FAR_POST，已移除该PI后重新构建；没有绕过预检。
+- D3状态 `offline_binary_roundtrip_verified_not_game_import_verified`。D4待用户游戏内导入与五名换位球员熟悉度核验；D5待至少38场英超赛季报告。
+
+### 4. 下一轮D5验收目标
+- 积分≥82；xGA≤44.13；对手绝佳机会≤30；我方xG≥80；我方绝佳机会≥80；客场xGA≤23.94；主场xGA≤20.14；失球≤40。
+- 犯规、黄牌、红牌不进入战术评价。
+- 新报告到来先回看以上目标，再继续下一轮完整闭环。
