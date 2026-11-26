@@ -1152,3 +1152,22 @@ V1.1与V1.2英超38场有相同的主客场对手配对，但只有27场日期�
 ### 归档约定
 - 本版本所有文件统一位于本目录；构建请求已由仓库根目录`build_requests/`迁入`V1.5_BUILD_REQUEST.json`。
 - 后续版本沿用同一目录和`Vx.y_<TYPE>`命名，版本总览统一维护在[VERSION_CATALOG.md](VERSION_CATALOG.md)，Exporter原始来源统一维护在[SOURCE_REGISTER.md](SOURCE_REGISTER.md)。
+
+
+---
+
+## V1.5 正式赛季复盘｜Exporter Run 45734426186（用户确认使用 V1.5）
+
+- 原始来源：[Exporter Run 45734426186](https://github.com/eslaulau/FM27-Exporter/tree/main/season-reports/1/45734426186)；存档SHA-256 `415e4a637668c1188ea0ddfa00663528d3a25d07ba3a11b42fcd332a83f0703d`；FM27 build 27.1.1+2511875。
+- 英超38场：25胜3平10负、95:48、78分、65.8%；xG77.29/xGA40.51；绝佳机会87/40。
+- 主场15胜1平3负，54:16，xGA15.83，对手绝佳机会15；客场10胜2平7负，41:32，xGA24.68，对手绝佳机会25。
+- V1.5相较V1.4：少失5球、xGA低2.95，但少进6球、xG低15.33、少5分；客场xGA及对手绝佳机会反而上升。V1.3仍是88分、4负的历史综合基准。
+- 数据覆盖65/65正式赛事报告，球队统计对账1235/1235；身份995/1018（97.74%）；6球未归属；位置码10/10、role_code 11/11目录解码，但角色码只覆盖部分滚动球员历史，不能完整归因角色/PI。
+- 完整D5分析：[V1.5_SEASON_REPORT_ANALYSIS_45734426186.md](V1.5_SEASON_REPORT_ANALYSIS_45734426186.md)。
+
+## V1.6 设计迭代｜父版 V1.5
+
+- 恢复心态 ment=4、标准防线，撤销V1.5的谨慎心态/较低防线组合；保留V1.4/V1.5的AML内锋进攻结构。
+- OOP DMR与DML Trigger Press均改为MORE_OFTEN；DCR/DCL仍LESS_OFTEN，测试双后腰积极压迫、双中卫保护。
+- 11槽/22阶段位置角色职责不变；有球四后场DL/DCL/DCR/DR保持。
+- 四类决策、完整父子差异与风险见 [V1.6_DESIGN_AND_AUDIT.md](V1.6_DESIGN_AND_AUDIT.md)。
