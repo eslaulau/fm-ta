@@ -13,7 +13,7 @@
 ## 每轮开始前必须重新读取
 
 1. `UPGRADE_GATE.md`、`ANALYSIS_AND_ITERATION_RULES.md`、`AGENTS.md`。
-2. `TACTIC_INSTRUCTION_DECISION_LEDGER.md`、`VERSION_CATALOG.md`、`SOURCE_REGISTER.md)、`ITERATION_LOG.md`。
+2. `TACTIC_INSTRUCTION_DECISION_LEDGER.md`、`VERSION_CATALOG.md`、`SOURCE_REGISTER.md`、`ITERATION_LOG.md`。
 3. 唯一父版本的完整recipe、原生FMF、build request/build report、设计审计。
 4. 本轮用户报告的原始内容、最近D5分析、历史上关键的最佳/最差赛季分析。
 5. 完整引擎红利资料库索引及相关研究；`EXTERNAL_ENGINE_BENCHMARK.md`和当前FM27 build的FM-Arena、FMAX、metaFM、爆棚/社区实测。
@@ -31,7 +31,7 @@
 - **数据边界：** 不猜测缺失数据；球员/位置/角色归因必须满足身份和字段映射质量要求。不得用犯规、黄牌、红牌评价战术。
 - **外部研究：** 记录URL、日期、build、样本量、协议、结构和局限；不同测试协议不合并。三后卫/五后卫排名仅用于提取机制，不能冒充本项目IP四后卫成品证据。
 - **构建状态：** D3离线构建回读不等于D4游戏内导入，也不等于D5赛季有效。
-- **归档：** 每轮同步更新 `TACTIC_INSTRUCTION_DECISION_LEDGER.md`、`ITERATION_LOG.md`、`VERSION_CATALOG.md`、`SOURCE_REGISTER.md) 和本轮分析/审计/构建文件；保留所有历史。
+- **归档：** 每轮同步更新 `TACTIC_INSTRUCTION_DECISION_LEDGER.md`、`ITERATION_LOG.md`、`VERSION_CATALOG.md`、`SOURCE_REGISTER.md` 和本轮分析/审计/构建文件；保留所有历史。
 - **回读：** 每次写入后逐个重新读取GitHub文件，核对内容和哈希。read-back未完成不得声称写入成功。
 
 ## D0–D5状态定义
