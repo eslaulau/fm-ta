@@ -89,7 +89,7 @@ class TacticRecipeInputResolverTests(unittest.TestCase):
             )
         secret = self.root / "secret.json"
         secret.write_text("{}", encoding="utf-8")
-        with self.assertRaisesRegex(ValueError, "directly inside an approved recipe directory"):
+        with self.assertRaisesRegex(ValueError, "directly inside build_requests"):
             resolver.resolve_recipe_input(
                 event_name="workflow_dispatch",
                 event_data={},
