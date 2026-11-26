@@ -61,11 +61,17 @@ class ProjectGateTests(unittest.TestCase):
         self.recipe.write_bytes(raw)
         parent_sha = hashlib.sha256(self.parent.read_bytes()).hexdigest()
         recipe_sha = hashlib.sha256(raw).hexdigest()
+        rules_sha = hashlib.sha256(gate.RULES.read_bytes()).hexdigest()
+        ledger_sha = hashlib.sha256(gate.LEDGER.read_bytes()).hexdigest()
+        policy_sha = hashlib.sha256(gate.POLICY.read_bytes()).hexdigest()
         self.audit.write_text(
             "项目最高目标：PPG ≥ 2.85\n"
             "父版本：V1.8\n"
             f"父 FMF SHA-256：{parent_sha}\n"
             f"本轮配方 SHA-256：{recipe_sha}\n"
+            f"项目规则 SHA-256：{rules_sha}\n"
+            f"决策总账 SHA-256：{ledger_sha}\n"
+            f"PPG 策略 SHA-256：{policy_sha}\n"
             "### 继承保留\n- 防线结构：保留父版本四后卫基础\n"
             "### 替换淘汰\n- 逼抢设置：调整以改善积分\n"
             "### 新增待验证\n- 新跑位：预期提高PPG收益\n"
@@ -99,6 +105,10 @@ class ProjectGateTests(unittest.TestCase):
     def test_wrong_parent_fmf_is_rejected(self):
         self.parent.write_bytes(b"different parent FMF")
         self.assertTrue(any("Parent FMF SHA-256 mismatch" in e for e in self.validate()))
+
+    def test_stale_project_ledger_is_rejected(self):
+        gate.LEDGER.write_text("changed ledger", encoding="utf-8")
+        self.assertTrue(any("Stale design audit" in e for e in self.validate()))
 
     def test_missing_decision_class_is_rejected(self):
         self.audit.write_text(
