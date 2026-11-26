@@ -112,3 +112,16 @@
 - FMF：4,360 bytes；SHA-256 `80d3a98349eca59affb3d28057cc54550022b1e1e55942d2ce5f1f0920c54bb0`；same-run报告SHA-256 `d7a64ac249f12eec596839dc6ccb4b8ab2f2dc5f26b91d7e1f4a6be0eadd18d2`。
 - D1 catalog-backed角色/职责/PI权限预检通过；D2 11槽/22阶段及IP四后场约束通过；D3原生FMF构建与8/8独立回读通过。
 - D4游戏内导入/显示待用户确认；D5完整赛季效果待验证。**本版不宣称已达到PPG≥2.85。**
+
+
+---
+
+## V2.1｜历史成功改动综合重构｜D1-D3完成（2026-11-26）
+
+- 父版本/重生基准：V0.5；FMF SHA-256 `e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257`。
+- 配方：[2.1.json](2.1.json)；设计审计：[2.1_DESIGN_AND_AUDIT.md](2.1_DESIGN_AND_AUDIT.md)；构建摘要：[2.1_BUILD_REPORT_SUMMARY.json](2.1_BUILD_REPORT_SUMMARY.json)。
+- GitHub Actions：[Run 45784291686](https://github.com/eslaulau/fm-ta/actions/runs/45784291686)；artifact ID `15099985865`；artifact ZIP SHA-256 `d9b974634d291685fd9f831386e7b45790bd264d51b2765b03cef6b0dd4abe0`。
+- FMF：4,432 bytes；SHA-256 `497afc117defebde99b3cb8433f3e21fee159eeea5f97e5a5aa98130103cc22d`；same-run report SHA-256 `9d22ef9120bad01c2f65fd9a08235dc8072411af0f283ad0b640405bde8975d2`。
+- 方案来源：V1.6进攻骨架 + V1.7 OOP单屏障/宽幅覆盖保护 + V0.5深防线/高位遭遇线错位实验。不是从V1.7或V2.0继承FMF。
+- D1 catalog角色/职责/PI预检通过；D2 11槽/22阶段及IP四后场通过；D3 8/8独立二进制回读通过。
+- D4游戏内导入/显示待用户确认；D5完整赛季效果待验证。**本版不宣称已达到PPG≥2.85。**
