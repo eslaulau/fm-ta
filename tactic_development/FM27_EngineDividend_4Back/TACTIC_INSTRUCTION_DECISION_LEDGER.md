@@ -817,7 +817,7 @@ V0.9 ST-only Run3 是已取代草案，不属于正式版本主线。V0.5 是 V2
 - **新增待验证：** V1.9回归V1.7 OOP 4-2-1-2-1结构，保持V1.8 IP及共享TI/心态不变，检验防守机会是否回落。
 - **证据不足：** 非同seed受控A/B；缺少逐场战术槽位映射；不将球员赛季数据归因至具体OOP角色或PI。
 
-## V1.9 D0 设计决策
+## V1.9旧实验（Run165）D0 设计决策
 
 - 父版V1.8 FMF SHA-256：`51e94c684c66ce016950d93f2619a40086820e7a9dcf792b7251d4ac67fa4e72`；OOP结构参照V1.7 FMF SHA-256：`42a7038c4fe89667d0f1f7c7ff1ff74f31633f52f570d0f8b4d4d9c774ee46ab`。
 - 子配方：[V1.9.json](V1.9.json)；设计审计：[V1.9_DESIGN_AND_AUDIT.md](V1.9_DESIGN_AND_AUDIT.md)。
@@ -828,7 +828,7 @@ V0.9 ST-only Run3 是已取代草案，不属于正式版本主线。V0.5 是 V2
 - D0完成；D1-D3待构建工作流；D4/D5待验证。
 
 
-### V1.9 D1–D3 构建身份（Run165）
+### V1.9旧实验（Run165）D1–D3构建身份
 - recipe/build request blob SHA：`c05f8d0b8b99050175050c3686d7e0e0f2472817`；build request commit `83539cd1c4992cf61ac7be1e9adc78054484b904`。
 - Actions：[Run165](https://github.com/eslaulau/fm-ta/actions/runs/45754396168)；run ID `45754396168`；artifact ID `15086209218`。
 - FMF：4,552 bytes；SHA-256 `57446c3d4e4cb3cd957840a436843f8b87fcb2d119bc223e2136d9512f1af8e7`；same-run report SHA-256 `91438ae6978a2789d91b2942a17d52d7c1ac5726d5069e9073bfd8f721cdb93c`；artifact ZIP SHA-256 `ab65cf6d881e24b75e804728e060a7c5d67e67abf7b7e0b6c7eb01dd8faa28d7`。
