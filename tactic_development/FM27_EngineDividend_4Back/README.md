@@ -2,8 +2,8 @@
 >
 > - 唯一最高目标：联赛 PPG ≥ 2.85（38 场至少 109 分）。项目规则只在本目录生效。
 > - 正式规则：[PROJECT_RULES.md](PROJECT_RULES.md)；机器策略：[PPG_TARGET_POLICY.json](PPG_TARGET_POLICY.json)。
-> - 项目专属构建入口：[build_project_tactic.py](build_project_tactic.py) 是每轮正式迭代唯一允许的构建入口：必须提供真实父 FMF，核验父 FMF、本轮 recipe、当前项目规则、决策总账和 PPG 策略的 SHA-256，再运行 [validate_project_iteration.py](validate_project_iteration.py)。任何规则/总账变更都会使旧审计失效；审计失败不会调用 FM-TA 通用预检或生成器。
-> - 配方、审计文件和生成输出均限定在项目目录；项目自动化测试见 [test_project_iteration_gate.py](test_project_iteration_gate.py)。
+> - 项目审计是强制门禁，构建执行通道不设单一限制：[build_project_tactic.py](build_project_tactic.py) 是标准入口；若当前执行环境不能调用它，可先运行同一 [validate_project_iteration.py](validate_project_iteration.py)，再用本仓库离线原生生成器完成权限校验、FMF生成与独立回读。不得因 GitHub/聊天接口不能远程执行 Python 而停止迭代。具体执行政策见 [GENERATION_EXECUTION_POLICY.md](GENERATION_EXECUTION_POLICY.md)。审计失败绝不生成。
+> - 配方、审计文件和生成输出均限定在项目目录；项目自动化测试见 [test_project_iteration_gate.py](test_project_iteration_gate.py)。FMF生成可由本地工作区/附件工作区/合规runner执行，执行通道不能代替或绕过项目审计。
 > - 每轮设计审计使用 [ITERATION_DESIGN_AUDIT_TEMPLATE.md](ITERATION_DESIGN_AUDIT_TEMPLATE.md)；项目规则与执行命令见 [PROJECT_RULES.md](PROJECT_RULES.md)。
 > - FM-TA 仅作为 FMF 工具。本次及后续不得修改其通用导出器、生成器规则或通用工作流来承载本项目规则。
 > - 历史版本成绩保持原样；不追溯改写旧赛季为 PPG 2.85 目标下的成绩。
@@ -170,3 +170,8 @@ V0.5 是本项目唯一原始战术基准，来源为 V21 原生快照，不继�
 - [配方](V1.9_REDESIGN_R2.json) · [构建请求](V1.9_REDESIGN_R2_BUILD_REQUEST.json) · [设计审计](V1.9_REDESIGN_R2_DESIGN_AND_AUDIT.md) · [赛季追踪矩阵](V1.9_REDESIGN_R2_SEASON_TO_TACTIC_TRACEABILITY_45753659141.md) · [D3构建摘要](V1.9_REDESIGN_R2_BUILD_REPORT_SUMMARY.json)。
 - [GitHub Actions Run169](https://github.com/eslaulau/fm-ta/actions/runs/45760556137)：D1-D3技术检查通过，8/8检查、22/22阶段精确回读；D0历史复核现已完成；R2可进入D4游戏内核验，但尚非已验证升级。详见[历史复核记录](V1.9_REDESIGN_R2_HISTORICAL_REAUDIT_REQUIRED.md)及唯一权威总账。FMF SHA-256 `b199063dec9f8745d692ba2abcb78664bdbaa41184d8ea03455afaf6fefea4a5`。
 - D4游戏内导入和D5赛季表现尚未验证。Run167保留为历史R1，不覆盖、不宣称比赛失败。
+
+
+## 构建执行原则（2026-11-26 修订）
+
+项目门禁严格，但不把某一种工具调用方式当作唯一生成通道。助手不得再以“GitHub 工具只能读取/写入、不能执行项目脚本”作为停止迭代的理由。必须继续使用当前可用的工作区或离线原生生成器完成构建；离线路径仍先运行项目审计，再进行原生权限检查、FMF生成和独立回读。只有真实输入缺失或所有执行路径均出现可复现错误时，才报告具体阻断。详见 [GENERATION_EXECUTION_POLICY.md](GENERATION_EXECUTION_POLICY.md)。
