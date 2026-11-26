@@ -542,7 +542,7 @@ V0.9 ST-only Run3 是已取代草案，不属于正式版本主线。V0.5 是 V2
 - **证据不足：** 不能把V1.5的进攻回落单独归因于心态/防线；不能把球员数据归因到完整角色/PI；V1.6双后腰压迫尚无D5证据。
 - 完整分析：[V1.5_SEASON_REPORT_ANALYSIS_45734426186.md](V1.5_SEASON_REPORT_ANALYSIS_45734426186.md)。
 
-## 7.5 最近一次迭代：V1.6（父版V1.5 / Run149；D0–D3已完成，D4/D5待验证）
+## 7.5 历史迭代记录：V1.6（父版V1.5 / Run149；D0–D3已完成）
 
 **父版本：** V1.5 / Run149；父 FMF SHA-256 `c4d68446a7da3e4857bc12dc1a2a9fa2b0c34341ec9653c77b08ce2ccb951711`；父 recipe blob SHA `73b03b8c81b5c14139f88063b0eab9325d16a1a6`。
 
@@ -579,3 +579,48 @@ V0.9 ST-only Run3 是已取代草案，不属于正式版本主线。V0.5 是 V2
 - FMF 4,480 bytes；SHA-256 `e67a5d218c18d3e5f7862889ab04248f8ced1f8c67a7bddb2d232b72d293748d`；same-run report SHA-256 `2f9aa4cf6db35aa4cf981187293655337fca75ca4e9928e524cbced6e57587f1`。
 - D3 8/8通过，22/22阶段精确回读；IP四后场DL/DCL/DCR/DR；心态4；DML为原生逼抢后腰角色。
 - D4：待用户在FM27内导入核对；D5：待使用V1.6后的赛季报告。
+
+
+---
+
+## 7.6 V1.6 / Run162 正式 D5 复盘与 V1.7 迭代
+
+### V1.6 D5｜Exporter Run 45744550318
+- 用户确认使用V1.6；原始来源：[Exporter Run45744550318](https://github.com/eslaulau/FM27-Exporter/tree/main/season-reports/1/45744550318)；源存档SHA-256 `c91d8caa2e9a9030c784efb6b627a06d1098ac71ff48887843a68cd5386a8c75`。
+- 英超38场：**28胜5平5负、87:37、89分、73.7%**；xG75.54/xGA46.33；我方/对手绝佳机会63/40。
+- 主场17-1-1、49:10、xGA19.78、对手绝佳机会18；客场11-4-4、38:27、xGA26.55、对手绝佳机会22。
+- V1.6刷新历史胜率/积分，但xGA高、对手绝佳机会40；实际失球比xGA低9.33、进球比xG高11.46，存在结果转化偏差，不能仅凭比分认定防守底层稳定。
+- 数据质量：正式比赛65/65报告、球队对账1235/1235；球员身份967/1021（94.71%）；1球未归属；位置语义10/10通过；role_code缺失647/967行；build 27.1.1+2511875未上游注册，借用schema-6布局，partial/unverified。
+- 完整分析：[V1.6_SEASON_REPORT_ANALYSIS_45744550318.md](V1.6_SEASON_REPORT_ANALYSIS_45744550318.md)。
+
+### 四类决策（V1.6 → V1.7）
+
+**继承保留**
+- IP全部11槽角色/职责/PI；IP四后场DL/DCL/DCR/DR。
+- 心态4；HIGHER tempo、WIDER width、DEFAULT defensive line、MORE_OFTEN team trigger press。
+- OOP除DML角色、DMR Trigger Press以外全部位置/角色/职责/PI；尤其DCR/DCL Less Often、DL/MR/ML积极压迫。
+- DMR Tackle Harder保留；AML内锋进攻/内切/自由跑位保留。
+- 保留项均为结构性暂留，不等于单项性能已准入。
+
+**替换淘汰**
+- OOP DML：PressingDefensiveMidfielder → ScreeningDefensiveMidfielder。
+- OOP DMR：Trigger Press MORE_OFTEN → LESS_OFTEN。
+- 这是回调V1.6双后腰同时积极压迫，不宣称积极逼抢在其他位置/情境普遍无效。
+
+**新增待验证**
+- OOP单屏障后腰+边路覆盖后腰Less Often的分层保护组合；监控客场xGA、对手绝佳机会、射门/射正及我方xG/绝佳机会/积分。
+- 保留V1.6进攻骨架，避免同时改变攻击结构和防守结构。
+
+**证据不足**
+- 不同存档/阵容/赛程状态，不是同seed A/B；无逐场PI/角色映射。
+- role_code缺失647行；身份覆盖94.71%；1球未归属。
+- fmsave目标build未上游登记，schema-6借用布局。
+- 不用犯规、黄牌、红牌评价战术。
+
+### V1.7 D0–D3状态
+- D0：V1.6赛季复盘与V1.7设计完成。
+- D1：正式Actions catalog权限预检待执行/确认。
+- D2：11槽/22阶段完整父子差异完成；IP四后场保持。
+- D3：Build Run163进行中；尚未回读FMF，未完成前不宣称通过。
+- D4：待游戏内导入。
+- D5：待V1.7赛季报告。
