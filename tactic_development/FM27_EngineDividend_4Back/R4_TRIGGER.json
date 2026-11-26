@@ -1,0 +1,12 @@
+{
+  "version": "R4",
+  "request": "Run project-gated D0, native preflight, native FMF build and D3 independent readback for the R3 D5-driven R4 iteration.",
+  "recipe": "R4.json",
+  "audit": "R4_DESIGN_AND_AUDIT.md",
+  "parent": "V0.5",
+  "parent_sha256": "e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257",
+  "output": "builds/R4.fmf",
+  "report": "builds/R4.report.json",
+  "attempt": 1,
+  "note": "R4 uses R3 D5 data as evidence but resets from immutable V0.5 native FMF; do not use R3.fmf as parent."
+}
