@@ -1,0 +1,92 @@
+{
+  "version": "V1.5",
+  "parent_version": "V1.4",
+  "parent_fmf_sha256": "5bce6f33f70ec9aa8627e18cc866b51f5cd79b99e2e52ba667087b4e142e92bc",
+  "github_actions": {
+    "workflow": "FM27 Tactic Build",
+    "run_id": 45729221041,
+    "run_number": 149,
+    "url": "https://github.com/eslaulau/fm-ta/actions/runs/45729221041",
+    "conclusion": "success",
+    "job": "Build native FM27 FMF",
+    "all_steps_success": true,
+    "artifact_id": 15076425618,
+    "artifact_name": "FM27_FM27_EngineDividend_IP4Back_OOP42121_V1.5_20261126_run149",
+    "artifact_zip_bytes": 6995,
+    "artifact_zip_sha256": "87fb9d07f34214fb60cb945c4bf07613f740d17d4ac612d08164775b4a290be4"
+  },
+  "recipe": {
+    "path": "tactic_development/FM27_EngineDividend_4Back/V1.5.json",
+    "name": "FM27_EngineDividend_IP4Back_OOP42121_V1.5",
+    "mentality": 3,
+    "team_instructions": {
+      "TEMPO": "HIGHER",
+      "ATTACKING_WIDTH": "WIDER",
+      "DEFENSIVE_LINE": "LOWER",
+      "TRIGGER_PRESS": "MORE_OFTEN"
+    }
+  },
+  "fmf": {
+    "filename": "FM27_EngineDividend_IP4Back_OOP42121_V1.5_20261126_run149.fmf",
+    "bytes": 4504,
+    "sha256": "c4d68446a7da3e4857bc12dc1a2a9fa2b0c34341ec9653c77b08ce2ccb951711"
+  },
+  "same_run_report": {
+    "filename": "FM27_EngineDividend_IP4Back_OOP42121_V1.5_20261126_run149.report.json",
+    "bytes": 11708,
+    "sha256": "b8a9c32e82c84eee2847c3328c25e4d569aedad4c64191cd4debe34be587a07f"
+  },
+  "d3": {
+    "status": "offline_binary_roundtrip_verified_not_game_import_verified",
+    "checks": {
+      "fmf_outer_roundtrip": true,
+      "all_member_decrypt_and_zstd_checksums": true,
+      "tac_full_parse": true,
+      "eleven_ip_oop_pairs": true,
+      "twenty_two_positions_roles_pi_readback_exact": true,
+      "pi_permissions_checked_against_catalog": true,
+      "team_instruction_vector_readback": true,
+      "native_style_string_and_code_readback": true
+    },
+    "designed_phases": 22,
+    "readback_phases": 22,
+    "ip_back_four": [
+      "DL",
+      "DCL",
+      "DCR",
+      "DR"
+    ],
+    "aml": {
+      "position": "AML",
+      "role": "InsideForward",
+      "duty": "Attack",
+      "pi_mask": "0x1010002"
+    },
+    "mentality": 3,
+    "team_instruction_bits": [
+      2,
+      5,
+      7,
+      11,
+      13,
+      16,
+      28,
+      35,
+      44,
+      47,
+      51,
+      54,
+      58,
+      61,
+      66,
+      69,
+      71,
+      72,
+      79,
+      83
+    ],
+    "game_interactive_import": false,
+    "match_engine": false
+  },
+  "note": "D3 native binary roundtrip and independent readback passed. This does not prove game import, in-game display, or match-engine performance. D4 and D5 remain pending."
+}
