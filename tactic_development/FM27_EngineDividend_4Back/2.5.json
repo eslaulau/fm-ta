@@ -92,16 +92,7 @@
         "pos": "DCR",
         "role": "CentreBack",
         "duty": "D",
-        "pi": [
-          [
-            "TRIGGER_PRESS",
-            "LESS_OFTEN"
-          ],
-          [
-            "TACKLING",
-            "GET_STUCK_IN"
-          ]
-        ]
+        "pi": []
       }
     },
     {
@@ -120,16 +111,7 @@
         "pos": "DCL",
         "role": "CoveringCentreBack",
         "duty": "D",
-        "pi": [
-          [
-            "TRIGGER_PRESS",
-            "LESS_OFTEN"
-          ],
-          [
-            "TACKLING",
-            "GET_STUCK_IN"
-          ]
-        ]
+        "pi": []
       }
     },
     {
@@ -148,16 +130,7 @@
         "pos": "DL",
         "role": "PressingFullBack",
         "duty": "S",
-        "pi": [
-          [
-            "TRIGGER_PRESS",
-            "MORE_OFTEN"
-          ],
-          [
-            "TACKLING",
-            "GET_STUCK_IN"
-          ]
-        ]
+        "pi": []
       }
     },
     {
@@ -169,10 +142,6 @@
           [
             "PASSING_RISKS",
             "TAKE_FEWER_RISKS"
-          ],
-          [
-            "FORWARD_RUNS",
-            "KEEP_POSITION"
           ]
         ]
       },
@@ -203,16 +172,7 @@
         "pos": "DMR",
         "role": "WideCoverDefensiveMidfielder",
         "duty": "D",
-        "pi": [
-          [
-            "TRIGGER_PRESS",
-            "LESS_OFTEN"
-          ],
-          [
-            "TACKLING",
-            "GET_STUCK_IN"
-          ]
-        ]
+        "pi": []
       }
     },
     {
@@ -258,16 +218,7 @@
         "pos": "MR",
         "role": "TrackingWideMidfielder",
         "duty": "D",
-        "pi": [
-          [
-            "TRIGGER_PRESS",
-            "MORE_OFTEN"
-          ],
-          [
-            "TACKLING",
-            "GET_STUCK_IN"
-          ]
-        ]
+        "pi": []
       }
     },
     {
@@ -279,10 +230,6 @@
           [
             "SHOOTING",
             "SHOOT_MORE_OFTEN"
-          ],
-          [
-            "ATTACK_BOX_SIDE",
-            "FAR_POST"
           ]
         ]
       },
@@ -290,16 +237,7 @@
         "pos": "ML",
         "role": "TrackingWideMidfielder",
         "duty": "D",
-        "pi": [
-          [
-            "TRIGGER_PRESS",
-            "MORE_OFTEN"
-          ],
-          [
-            "TACKLING",
-            "GET_STUCK_IN"
-          ]
-        ]
+        "pi": []
       }
     },
     {
@@ -313,12 +251,7 @@
         "pos": "AMC",
         "role": "SplittingOutletAttackingMidfielder",
         "duty": "A",
-        "pi": [
-          [
-            "TRIGGER_PRESS",
-            "MORE_OFTEN"
-          ]
-        ]
+        "pi": []
       }
     }
   ]
