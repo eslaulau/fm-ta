@@ -16,7 +16,7 @@ class ProjectGateTests(unittest.TestCase):
         self.tmp = tempfile.TemporaryDirectory()
         self.addCleanup(self.tmp.cleanup)
         self.root = Path(self.tmp.name)
-        self.old_paths = (gate.PROJECT_DIR, gate.POLICY, gate.RULES, gate.LEDGER)
+        self.old_paths = (gate.PROJECT_DIR, gate.POLICY, gate.RULES, gate.LEDGER, gate.V05_BASELINE_SHA256)
         gate.PROJECT_DIR = self.root
         gate.POLICY = self.root / "PPG_TARGET_POLICY.json"
         gate.RULES = self.root / "PROJECT_RULES.md"
@@ -33,6 +33,7 @@ class ProjectGateTests(unittest.TestCase):
         self.audit = self.root / "design_audit.md"
         self.parent = self.root / "parent.fmf"
         self.parent.write_bytes(b"exact parent FMF bytes")
+        gate.V05_BASELINE_SHA256 = hashlib.sha256(self.parent.read_bytes()).hexdigest()
         self.valid_recipe = {
             "v": 1,
             "name": "gate-test",
@@ -54,7 +55,7 @@ class ProjectGateTests(unittest.TestCase):
         self.write_recipe_and_audit()
 
     def restore_gate_paths(self):
-        gate.PROJECT_DIR, gate.POLICY, gate.RULES, gate.LEDGER = self.old_paths
+        gate.PROJECT_DIR, gate.POLICY, gate.RULES, gate.LEDGER, gate.V05_BASELINE_SHA256 = self.old_paths
 
     def write_recipe_and_audit(self):
         raw = json.dumps(self.valid_recipe, ensure_ascii=False, indent=2).encode()
