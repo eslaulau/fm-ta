@@ -95,7 +95,7 @@
 
 
 ## 2.5 构建身份（非赛季数据来源）
-- D3构建：GitHub Actions [Run 45808599286](https://github.com/eslaulau/fm-ta/actions/runs/45808599286)，Artifact ID `15109429118`。
+- D3构建：GitHub Actions [Run 45809444848](https://github.com/eslaulau/fm-ta/actions/runs/45809444848)，Artifact ID `15112455227`。
 - 父版本：V0.5；父FMF SHA-256 `e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257`。
 - FMF SHA-256 `ead1701ff6de352494521730ac5bcf51ac3a3b37d5d93919b3fb40dc45b31d25`；4,552 bytes；D3 8/8独立回读通过。
 - 目前没有2.5赛季报告或Exporter Run；不得将构建Run误登记为D5数据来源。
