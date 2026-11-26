@@ -108,3 +108,19 @@
 - 父版本V0.5；父FMF SHA-256 e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257；配方SHA-256 675a6e5122d741c77183ad4f1d92081244600587663e12e8252b7fa7f4404b9c。
 - FMF SHA-256 1cbdd6142fd40a60b1073915e78a3a9956f29c2a324383c8dd73213bb2457039；4,616 bytes；报告SHA-256 51eaa1a30dc0d6c60f5e5292ed5e421cf0465b6ba7c94a2a35a0e3f848255955。
 - D3 8/8离线回读通过；D4游戏内导入未验证；D5无Exporter赛季来源。不得将构建Run登记为赛季结果。
+
+
+---
+
+## R3｜设计与构建来源登记（2026-11-26）
+
+| 来源类别 | 资料 | 用途 / 证据边界 |
+|---|---|---|
+| 用户指定的引擎机制假设 | [ENGINE_DIVIDEND_PRIORITY_INDICATORS_27.1.1.md](ENGINE_DIVIDEND_PRIORITY_INDICATORS_27.1.1.md) | 五组高优先级研究方向；用户提供，尚未附可独立复核的外部原始样本；均标记为待验证假设 |
+| 项目配方 | [R3.json](R3.json) | 唯一R3配置源；从V0.5原生FMF重生 |
+| 设计审计 | [R3_DESIGN_AND_AUDIT.md](R3_DESIGN_AND_AUDIT.md) | 11槽/22阶段、四类决策、22槽位置矩阵、引擎错位与D5标准 |
+| D3构建报告 | [R3.report.json](builds/R3.report.json) | 原生FMF独立回读报告；不是比赛报告，不证明D4/D5 |
+| GitHub Actions D3 | [Run 45845663863](https://github.com/eslaulau/fm-ta/actions/runs/45845663863) | D0项目门禁、D1原生预检、D2结构检查、D3构建与独立回读均成功 |
+| D3构建Artifact | Artifact ID `15131511605` | FMF 4,676 bytes；SHA-256 `449fb1a76ca8967ccfd674e59c8dd007d40def9da8aafaf8f23edf10c8d3fa4e` |
+
+**R3当前没有Exporter赛季报告。** D4游戏内导入和D5完整38场英超报告待用户测试后登记；在此之前不得登记R3为实战有效版本。
