@@ -87,7 +87,7 @@
 - 本项目规则、PPG 目标、历史台账、生成前审计及项目专属构建入口全部位于 `tactic_development/FM27_EngineDividend_4Back/`。
 - FM-TA 通用导出器/生成器只负责读取合法 recipe、原生权限预检、FMF 格式生成和回读；它不决定本项目战术目标、阵型、角色或迭代方向。
 - 不修改 FM-TA 通用生成器、导出器、通用工作流或全仓库规则来承载本项目要求。
-- 本项目每次正式迭代必须通过 [build_project_tactic.py](build_project_tactic.py)；它强制执行 [validate_project_iteration.py](validate_project_iteration.py)，并要求提供真实父 FMF 文件，核对父 FMF、当前项目规则、决策总账、PPG 策略和本轮 recipe 的 SHA-256；规则或总账更新后，旧审计自动失效。配方与审计文件必须位于本项目目录，构建输出也归档在本项目目录。禁止把直接调用通用 FM-TA 命令视为完成项目迭代。每轮设计审计从 [ITERATION_DESIGN_AUDIT_TEMPLATE.md](ITERATION_DESIGN_AUDIT_TEMPLATE.md) 创建。
+- 每次正式迭代必须先通过 [validate_project_iteration.py](validate_project_iteration.py) 的项目审计；审计必须提供真实父 FMF，核对父 FMF、当前项目规则、决策总账、PPG 策略和本轮 recipe 的 SHA-256。规则或总账更新后，旧审计自动失效。配方、审计和构建输出归档在本项目目录。标准构建入口是 [build_project_tactic.py](build_project_tactic.py)，但**构建执行通道不是项目门禁**：本地 Python、可用的执行环境、符合要求的自动化 runner，或项目专属离线生成器均可执行；只要先通过同一项目审计，再完成原生权限校验、FMF 生成和独立回读，就属于合规 D3。不得因某个聊天/GitHub 接口只能读写仓库、不能远程执行 Python，而停止设计或把它描述为项目阻断。不得使用绕过项目审计的通用工作流。每轮设计审计从 [ITERATION_DESIGN_AUDIT_TEMPLATE.md](ITERATION_DESIGN_AUDIT_TEMPLATE.md) 创建。
 - 其他项目使用 FM-TA 时不继承本项目 PPG 目标或规则。
 
 ## 8. 权威文件与冲突处理
@@ -128,7 +128,7 @@ Get-FileHash .\tactic_development\FM27_EngineDividend_4Back\<本轮配方>.json 
 py -3.12 -m unittest discover -s tactic_development\FM27_EngineDividend_4Back -p test_project_iteration_gate.py
 ```
 
-项目专属入口是本项目正式迭代的唯一有效构建流程。直接调用 FM-TA 通用生成器即使成功生成 FMF，也不构成本项目完成一次合规迭代。
+项目审计是本项目正式迭代的唯一强制门禁；构建执行器可以有多个合规实现。直接调用 FM-TA 通用生成器而未先通过项目审计，即使成功生成 FMF，也不构成本项目完成一次合规迭代。通过项目审计后，可由项目专属入口或 [GENERATION_EXECUTION_POLICY.md](GENERATION_EXECUTION_POLICY.md) 规定的离线原生生成路径完成 D3。
 
 
 
@@ -152,3 +152,17 @@ py -3.12 -m unittest discover -s tactic_development\FM27_EngineDividend_4Back -p
 8. IP 唯一硬约束仍是 DL、DCL、DCR、DR 四个后场位置槽各一次；这只约束位置槽，不约束四名球员的实际跑动、角色行为或进攻参与方式。OOP 完全开放。
 
 **违反本节：本轮设计审计不通过，不得生成 recipe/FMF。**
+
+
+## 10. 构建执行通道不得成为研发阻断（2026-11-26 修订）
+
+**强制原则：严格门禁约束设计与生成顺序，不限制合规生成方式。不得把工具接口的执行能力误写成项目规则。**
+
+- GitHub API/聊天连接器是否能直接执行 Python、是否能 dispatch 某个 workflow，是当前执行环境的能力信息，不是战术设计失败、项目审计失败或 FMF 技术失败。
+- 助手不得再以“当前 GitHub 工具只能读写仓库，不能执行项目脚本”作为停止正式迭代、拒绝生成或要求用户重新提供资料的理由。应继续寻找当前可用的本地执行、附件工作区、项目专属 runner 或离线生成方式。
+- 标准路径：先运行项目审计，再运行原生 catalog/preflight，再由项目构建入口生成并独立回读。
+- 离线路径：当标准入口在当前执行环境不可调用时，仍必须先运行同一份 `validate_project_iteration.py`；通过后，调用 `04_离线原生FMF生成器/FM27GEN1_Offline_FMF_Generator.py`（或其 `build_fmf_from_recipe` API），传入本轮 recipe、catalog、输出和 report。该原生生成器必须完成角色/职责/PI权限、11槽/22阶段、FMF 二进制回读；有可用的通用 preflight 时仍应先执行。离线路径不是跳过审计的旁路，而是同一门禁后的等价执行器。
+- 任何执行器都不得修改或弱化本轮设计、不得静默删改 PI/TI、不得覆盖历史产物。若生成器拒绝配置，必须返回具体原生权限/格式错误，再修正设计或映射；不得因现实足球理论而回退设计。
+- 通用 Actions 若未执行本项目审计，不得用于本项目正式构建。不得为解决执行器问题而修改 FM-TA 通用生成器、通用工作流或仓库全局规则；本项目的规则与辅助脚本只放在本目录。
+- 只有在所有可用执行通道均实际不可用，或缺少生成所必需的真实文件/原生字段时，才可报告具体阻断。报告必须说明已尝试的执行路径、精确错误、已完成阶段和唯一恢复动作；不能把接口能力限制包装成战术/项目限制。
+- D3 仍必须以真实生成的 FMF、同次 report、独立回读结果和 SHA-256 为依据。没有真实产物不得宣称生成成功。
