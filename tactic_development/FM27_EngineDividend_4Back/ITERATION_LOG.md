@@ -1045,7 +1045,7 @@ V1.1与V1.2英超38场有相同的主客场对手配对，但只有27场日期�
 - 设计审计：2.2_DESIGN_AND_AUDIT.md；配方：2.2.json。
 
 ### D1-D3构建结果
-- GitHub Actions Run：https://github.com/eslaulau/fm-ta/actions/runs/45789108253；Artifact ID 15101073066。
+- GitHub Actions首次构建Run：https://github.com/eslaulau/fm-ta/actions/runs/45789108253；审计哈希复核Run：https://github.com/eslaulau/fm-ta/actions/runs/45789543029；最新Artifact ID 15101682456。
 - 状态：offline_binary_roundtrip_verified_not_game_import_verified。
 - FMF：4,528 bytes；SHA-256 7feba49ad389125b64690ce00feaf01717f70ae80cb5854eec614e41fc058a34。
 - 同次报告：12,666 bytes；SHA-256 ab436693df94409860b0ca4d6eb57ec79ca3b3ba6d643fdea72c5112ab6ed7e8。
