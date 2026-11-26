@@ -66,7 +66,11 @@ class ProjectGateTests(unittest.TestCase):
             "父版本：V1.8\n"
             f"父 FMF SHA-256：{parent_sha}\n"
             f"本轮配方 SHA-256：{recipe_sha}\n"
-            "### 继承保留\n### 替换淘汰\n### 新增待验证\n### 证据不足\n"
+            "### 继承保留\n- 防线结构：保留父版本四后卫基础\n"
+            "### 替换淘汰\n- 逼抢设置：调整以改善积分\n"
+            "### 新增待验证\n- 新跑位：预期提高PPG收益\n"
+            "### 证据不足\n- 主客场差异：样本不足暂不定论\n"
+            "本轮 PPG 收益路径：改善终结机会以提高积分\n"
             "D5 验证指标：PPG、胜平负、xG、xGA\n"
             "风险：样本量不足\n审计结论： PASS\n",
             encoding="utf-8",
