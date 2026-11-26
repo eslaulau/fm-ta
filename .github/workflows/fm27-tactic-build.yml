@@ -7,11 +7,12 @@ on:
     paths:
       - "build_requests/*.json"
       - "build_requests/*.txt"
+      - "tactic_development/FM27_EngineDividend_4Back/*_BUILD_REQUEST.json"
   # A manual run can use a repository path OR paste raw tactic JSON directly.
   workflow_dispatch:
     inputs:
       recipe_path:
-        description: "Existing recipe path under build_requests/ (JSON or legacy GEN1 TXT)"
+        description: "Existing recipe path under build_requests/ or the EngineDividend 4Back project folder"
         required: false
         type: string
       recipe_json:
