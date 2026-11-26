@@ -111,7 +111,7 @@
   },
   "active_iteration": {
     "version": "R3",
-    "status": "D0_design_ready_D1_D3_build_pending",
+    "status": "D3_native_fmf_build_and_independent_readback_passed_D4_D5_pending",
     "parent_version": "V0.5",
     "parent_fmf_sha256": "e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257",
     "ip_shape": "4-2-3-1",
@@ -131,11 +131,17 @@
     },
     "performance_claim": "not_verified_until_D5",
     "build": {
-      "project_gate": "pending",
-      "native_preflight": "pending",
-      "fmf": "pending",
+      "project_gate": "passed",
+      "native_preflight": "passed",
+      "structure": "passed",
+      "fmf": "passed",
       "game_interactive_import": false,
-      "match_engine": false
+      "match_engine": false,
+      "github_actions_run_id": 45845663863,
+      "artifact_id": 15131511605,
+      "fmf_bytes": 4676,
+      "fmf_sha256": "449fb1a76ca8967ccfd674e59c8dd007d40def9da8aafaf8f23edf10c8d3fa4e",
+      "report": "builds/R3.report.json"
     }
   },
   "retired_iteration_decisions": [
@@ -151,6 +157,7 @@
     "restart": "R3从V0.5原生FMF重生；不继承R2的FMF或配置",
     "structure": "IP 4-2-3-1 / OOP strikerless 5-2-3",
     "double_gate": "38场至少109分且全队xG至少100",
-    "note": "R3当前只是设计/构建候选；只有D4导入和D5赛季报告可验证实战表现"
+    "note": "R3当前只是设计/构建候选；只有D4导入和D5赛季报告可验证实战表现",
+    "build_status": "D0-D3全部通过；D4游戏内导入和D5完整38场赛季报告仍待完成"
   }
 }
