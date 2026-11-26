@@ -89,6 +89,7 @@ def main() -> int:
         if spec is None or spec.loader is None:
             raise RuntimeError("Could not load the native FMF generator module.")
         module = importlib.util.module_from_spec(spec)
+        sys.modules[spec.name] = module
         spec.loader.exec_module(module)
 
         recipe = json.loads(recipe_path.read_text(encoding="utf-8"))
