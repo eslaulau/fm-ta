@@ -87,7 +87,7 @@
 - 本项目规则、PPG 目标、历史台账、生成前审计及项目专属构建入口全部位于 `tactic_development/FM27_EngineDividend_4Back/`。
 - FM-TA 通用导出器/生成器只负责读取合法 recipe、原生权限预检、FMF 格式生成和回读；它不决定本项目战术目标、阵型、角色或迭代方向。
 - 不修改 FM-TA 通用生成器、导出器、通用工作流或全仓库规则来承载本项目要求。
-- 本项目必须通过 [build_project_tactic.py](build_project_tactic.py) 进行项目战术构建；禁止把通用 FM-TA 生成命令视为已执行本项目审计。每轮设计审计从 [ITERATION_DESIGN_AUDIT_TEMPLATE.md](ITERATION_DESIGN_AUDIT_TEMPLATE.md) 创建，并填写完整父版身份、SHA-256、PPG路径和四类决策。
+- 本项目每次正式迭代必须通过 [build_project_tactic.py](build_project_tactic.py)；它强制执行 [validate_project_iteration.py](validate_project_iteration.py)，并要求提供真实父 FMF 文件、核对父 FMF SHA-256 和本轮 recipe SHA-256。配方与审计文件必须位于本项目目录，构建输出也归档在本项目目录。禁止把直接调用通用 FM-TA 命令视为完成项目迭代。每轮设计审计从 [ITERATION_DESIGN_AUDIT_TEMPLATE.md](ITERATION_DESIGN_AUDIT_TEMPLATE.md) 创建。
 - 其他项目使用 FM-TA 时不继承本项目 PPG 目标或规则。
 
 ## 8. 权威文件与冲突处理
@@ -112,4 +112,4 @@ py -3.12 tactic_development\FM27_EngineDividend_4Back\build_project_tactic.py `
   --report .\artifacts\<本轮版本>.report.json
 ```
 
-该命令的执行顺序固定为：项目 PPG/历史规则审计 → FM-TA 通用 catalog 权限预检 → FM-TA 原生 FMF 生成。项目审计失败即退出，不调用后两步。输出文件已存在时拒绝覆盖。
+该命令的执行顺序固定为：校验父 FMF 与配方 SHA-256 → 项目 PPG/历史规则审计 → FM-TA 通用 catalog 权限预检 → FM-TA 原生 FMF 生成。审计失败即退出，不调用后两步；配方、审计和输出必须在项目目录内，输出已存在时拒绝覆盖。测试命令：`py -3.12 -m unittest discover -s tactic_development\\FM27_EngineDividend_4Back -p test_project_iteration_gate.py`。
