@@ -26,7 +26,7 @@ class ProjectGateTests(unittest.TestCase):
             "primary_objective": "PPG >= 2.85",
             "hard_constraints": {"ip_back_four_positions": ["DL", "DCL", "DCR", "DR"]},
         }), encoding="utf-8")
-        gate.RULES.write_text("PPG ≥ 2.85", encoding="utf-8")
+        gate.RULES.write_text("PPG ≥ 2.85\n不以现实足球理论作为否决依据；强制引擎行为错位设计。", encoding="utf-8")
         gate.LEDGER.write_text("PPG 2.85", encoding="utf-8")
         self.addCleanup(self.restore_gate_paths)
         self.recipe = self.root / "candidate.json"
@@ -78,7 +78,19 @@ class ProjectGateTests(unittest.TestCase):
             "### 证据不足\n- 主客场差异：样本不足暂不定论\n"
             "本轮 PPG 收益路径：改善终结机会以提高积分\n"
             "D5 验证指标：PPG、胜平负、xG、xGA\n"
-            "风险：样本量不足\n审计结论： PASS\n",
+            "风险：样本量不足\n"
+            "现实足球理论不是战术筛选/否决标准。\n"
+            "## 7. 强制审计：引擎行为错位设计\n"
+            "- 错位类型：角色与PI冲突\n"
+            "- 错位配置：IP DL 内收边后卫 + 拉开宽度\n"
+            "- 角色/指令默认行为与显式行为：内收与拉宽冲突\n"
+            "- FM27引擎预期执行行为：待验证的宽度/内收双重行为\n"
+            "- 对手AI可能：可能出现盯防错配（假设）\n"
+            "- 预期创造的空间：边肋空间\n"
+            "- 对PPG：提升进攻出口和胜率\n"
+            "- 可能副作用：转换防守暴露\n"
+            "- D5量化验证指标：PPG、xGA、对手大机会\n"
+            "审计结论： PASS\n",
             encoding="utf-8",
         )
 
