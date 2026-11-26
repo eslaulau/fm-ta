@@ -11,7 +11,7 @@
 > 2026-11-26：研发规则已修订：IP仅要求DL/DCL/DCR/DR四个后场位置，不固定任何IP阵型；OOP完全开放；每轮只设计和构建一个完整方案。每轮战术迭代/赛季复盘必须同步更新 `TACTIC_INSTRUCTION_DECISION_LEDGER.md`、`ITERATION_LOG.md`、本目录与 `SOURCE_REGISTER.md`，并逐个GitHub read-back。详细门禁见 `ANALYSIS_AND_ITERATION_RULES.md` 第七节。
 
 - **最近完成D5的研发基准：V1.8（Exporter Run45753659141）**
-- **当前研发候选：V1.9重新执行版R2**，父版本V1.8；IP 4-1-2-1-2 Diamond、OOP 5-2-3；D0历史总账审计未验收；D1-D3技术构建通过（Run169，8/8独立回读、22/22阶段）；D4/D5暂缓。
+- **当前研发候选：V1.9重新执行版R2**，父版本V1.8；IP 4-1-2-1-2 Diamond、OOP 5-2-3；D0历史总账复核已完成；D1-D3技术构建通过（Run169，8/8独立回读、22/22阶段）；可进入D4游戏内核验，D5待至少38场英超。R2仍为高风险待验证候选，不是已验证升级。
 - **历史V1.9 Run165：** 完整复用V1.7配方的OOP回退实验，保留原构建身份，不认定为正式性能升级。
 - **历史V1.9重新设计版R1（Run167）：** IP 4-3-3 DM、OOP 4-1-4-1；D3通过但D4/D5未验证。当前27.1.1外部证据复核后由R2替代为当前研发候选；不将R1标记为比赛失败。
 - **最高完整英超胜率：73.7%（V1.6，28胜5平5负、89分）**；V1.3仍是失球最少（30球）和4负的防守基准。
@@ -42,14 +42,14 @@
 | V1.7 | 38 | 25-7-6 | 65.8% | 79:36 | 82 | 完整赛季；Exporter Run45748944770；数据partial/unverified |
 | V1.8 | 38 | 21-9-8 | 55.3% | 98:55 | 72 | 完整38场；Run45753659141；partial/unverified |
 | V1.9（Run165旧实验） | V1.8载体 / V1.7配方 | OOP回退至V1.7的4-2-1-2-1；整套配置复用 | — | — | — | 构建回读完成；非正式性能升级；D4/D5待验证 |
-| V1.9重新设计版R1（Run167） | V1.8 | IP 4-3-3 DM / OOP 4-1-4-1 | — | [Run167摘要](V1.9_REDESIGN_BUILD_REPORT_SUMMARY.json) | [R1设计审计](V1.9_REDESIGN_DESIGN_AND_AUDIT.md) | D1-D3技术构建通过；8/8回读、22/22阶段；历史总账审计未验收；已由R2替代为当前候选 |
-| **V1.9重新执行版R2（Run169）** | **V1.8** | **IP 4-1-2-1-2 Diamond / OOP 5-2-3；DMC→DC、双MC→双DM、双ST→AMR/AML** | **待实测** | [R2构建摘要](V1.9_REDESIGN_R2_BUILD_REPORT_SUMMARY.json) · [Run169](https://github.com/eslaulau/fm-ta/actions/runs/45760556137) | [R2设计审计](V1.9_REDESIGN_R2_DESIGN_AND_AUDIT.md) · [赛季追踪矩阵](V1.9_REDESIGN_R2_SEASON_TO_TACTIC_TRACEABILITY_45753659141.md) | D0未验收；D1-D3技术通过；8/8回读、22/22阶段；FMF 4,688 bytes；SHA-256 `b199063dec9f8745d692ba2abcb78664bdbaa41184d8ea03455afaf6fefea4a5`；D4/D5待验证 |
+| V1.9重新设计版R1（Run167） | V1.8 | IP 4-3-3 DM / OOP 4-1-4-1 | — | [Run167摘要](V1.9_REDESIGN_BUILD_REPORT_SUMMARY.json) | [R1设计审计](V1.9_REDESIGN_DESIGN_AND_AUDIT.md) | D1-D3技术构建通过；8/8回读、22/22阶段；历史复核现已完成；已由R2替代为当前候选 |
+| **V1.9重新执行版R2（Run169）** | **V1.8** | **IP 4-1-2-1-2 Diamond / OOP 5-2-3；DMC→DC、双MC→双DM、双ST→AMR/AML** | **待实测** | [R2构建摘要](V1.9_REDESIGN_R2_BUILD_REPORT_SUMMARY.json) · [Run169](https://github.com/eslaulau/fm-ta/actions/runs/45760556137) | [R2设计审计](V1.9_REDESIGN_R2_DESIGN_AND_AUDIT.md) · [赛季追踪矩阵](V1.9_REDESIGN_R2_SEASON_TO_TACTIC_TRACEABILITY_45753659141.md) | D0历史复核完成；D1-D3技术通过；8/8回读、22/22阶段；D4待游戏内核验、D5待完整赛季；FMF 4,688 bytes；SHA-256 `b199063dec9f8745d692ba2abcb78664bdbaa41184d8ea03455afaf6fefea4a5`；D4/D5待验证 |
 
 **口径提醒**
 - V0.5 起各正式基准赛季按各自报告的英超赛季口径记录；杯赛/欧战场次不混入该表。
 - V0.6 的 20-8-10、83:49、68分；V0.7 的 15-8-15、70:58、53分，来自跨版本决策台账及相应版本审计。
 - 版本来自不同存档/阵容/赛季状态，结果是描述性历史比较，不是同随机种子受控 A/B。
-- V1.5已完成38场英超D5：25-3-10、78分、65.8%；V1.6已完成38场英超D5：28-5-5、89分、73.7%；V1.7由V1.6 D5触发，Build Run163已成功；D5已由Run45748944770完成，D4未单独逐项验收。V1.8由V1.7 D5触发；D3 Run164通过，D4由用户提供截图解析的位置/角色表确认IP四后卫及OOP无锋5-2-3，D5由Run45753659141完成（21-9-8、72分）。V1.9 Run165为旧回退实验；V1.9 R1 Run167保留为历史D3候选；V1.9 R2 Run169以V1.8为唯一战术父版本，D0历史审计未验收、D1-D3技术通过，D4/D5暂缓。
+- V1.5已完成38场英超D5：25-3-10、78分、65.8%；V1.6已完成38场英超D5：28-5-5、89分、73.7%；V1.7由V1.6 D5触发，Build Run163已成功；D5已由Run45748944770完成，D4未单独逐项验收。V1.8由V1.7 D5触发；D3 Run164通过，D4由用户提供截图解析的位置/角色表确认IP四后卫及OOP无锋5-2-3，D5由Run45753659141完成（21-9-8、72分）。V1.9 Run165为旧回退实验；V1.9 R1 Run167保留为历史D3候选；V1.9 R2 Run169以V1.8为唯一战术父版本，D0历史复核完成、D1-D3技术通过；D4待游戏内核验、D5待完整赛季。
 
 ## 版本文件清单
 
@@ -73,7 +73,7 @@
 | V1.8 | [JSON](V1.8.json) | [JSON](V1.8_BUILD_REQUEST.json) | [设计审计](V1.8_DESIGN_AND_AUDIT.md) | [D3构建摘要](V1.8_BUILD_REPORT_SUMMARY.json) · [Run164](https://github.com/eslaulau/fm-ta/actions/runs/45750563671) | [D5分析](V1.8_SEASON_REPORT_ANALYSIS_45753659141.md) · Run45753659141 | [Run164 artifact](https://github.com/eslaulau/fm-ta/actions/runs/45750563671) · 4,616 bytes · SHA-256 `51e94c684c66ce016950d93f2619a40086820e7a9dcf792b7251d4ac67fa4e72` |
 | V1.9旧实验（Run165） | [JSON](V1.9.json) | [JSON](V1.9_BUILD_REQUEST.json) | [旧审计](V1.9_DESIGN_AND_AUDIT.md) | [旧摘要](V1.9_BUILD_REPORT_SUMMARY.json) · [Run165](https://github.com/eslaulau/fm-ta/actions/runs/45754396168) | D4/D5待验证；非正式性能升级 | [Run165 artifact](https://github.com/eslaulau/fm-ta/actions/runs/45754396168) · 4,552 bytes · SHA-256 `57446c3d4e4cb3cd957840a436843f8b87fcb2d119bc223e2136d9512f1af8e7` |
 | V1.9重新设计版（Run167） | [配方](V1.9_REDESIGN.json) | [构建请求](V1.9_REDESIGN_BUILD_REQUEST.json) | [整体审计](V1.9_REDESIGN_DESIGN_AND_AUDIT.md) | [Run167摘要](V1.9_REDESIGN_BUILD_REPORT_SUMMARY.json) · [Run167](https://github.com/eslaulau/fm-ta/actions/runs/45756670647) | D4/D5待验证 | [Run167 artifact](https://github.com/eslaulau/fm-ta/actions/runs/45756670647) · 4,688 bytes · SHA-256 `4b948f9dfeccddc8ae93e225a085a6d1f5b74e9ecd723670a68a7a1b032c4f85` |
-| V1.9重新执行版R2（Run169） | [配方](V1.9_REDESIGN_R2.json) | [构建请求](V1.9_REDESIGN_R2_BUILD_REQUEST.json) | [整体审计](V1.9_REDESIGN_R2_DESIGN_AND_AUDIT.md) · [赛季追踪](V1.9_REDESIGN_R2_SEASON_TO_TACTIC_TRACEABILITY_45753659141.md) | [Run169摘要](V1.9_REDESIGN_R2_BUILD_REPORT_SUMMARY.json) · [Run169](https://github.com/eslaulau/fm-ta/actions/runs/45760556137) | 基于V1.8 D5；D0历史复核待补；D4/D5暂缓 | [Run169 artifact](https://github.com/eslaulau/fm-ta/actions/runs/45760556137) · 4,688 bytes · SHA-256 `b199063dec9f8745d692ba2abcb78664bdbaa41184d8ea03455afaf6fefea4a5` |
+| V1.9重新执行版R2（Run169） | [配方](V1.9_REDESIGN_R2.json) | [构建请求](V1.9_REDESIGN_R2_BUILD_REQUEST.json) | [整体审计](V1.9_REDESIGN_R2_DESIGN_AND_AUDIT.md) · [赛季追踪](V1.9_REDESIGN_R2_SEASON_TO_TACTIC_TRACEABILITY_45753659141.md) | [Run169摘要](V1.9_REDESIGN_R2_BUILD_REPORT_SUMMARY.json) · [Run169](https://github.com/eslaulau/fm-ta/actions/runs/45760556137) | 基于V1.8 D5；D0历史复核完成；可进入D4；D5待至少38场英超 | [Run169 artifact](https://github.com/eslaulau/fm-ta/actions/runs/45760556137) · 4,688 bytes · SHA-256 `b199063dec9f8745d692ba2abcb78664bdbaa41184d8ea03455afaf6fefea4a5` |
 
 ## 唯一研发入口与规则
 
