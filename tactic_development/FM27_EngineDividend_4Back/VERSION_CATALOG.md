@@ -46,7 +46,7 @@
 | 版本 | 配方 | 构建请求 | 设计/审计 | 构建报告 | 赛季分析/复核 | FMF |
 |---|---|---|---|---|---|---|
 | V0.1 | [JSON](V0.1.json) | [JSON](V0.1_BUILD_REQUEST.json) | 见 [README 历史记录](README.md) | 未单独归档 | README/迭代日志历史记录 | 未归档 |
-| V0.2 | 配方未单独归档 | [JSON](V0.2_BUILD_REQUEST.json) | 见 [README 历史记录](README.md) | 未单独归档 | [迭代日志](ITERATION_LOG.md) | Actions 历史 |
+| V0.2 | [JSON](V0.2.json) | [JSON](V0.2_BUILD_REQUEST.json) | 见 [README 历史记录](README.md) | 未单独归档 | [迭代日志](ITERATION_LOG.md) | Actions 历史 |
 | V0.3 | [JSON](V0.3.json) | [JSON](V0.3_BUILD_REQUEST.json) | 见 [README 历史记录](README.md) | 未单独归档 | [迭代日志](ITERATION_LOG.md) | Actions 历史 |
 | V0.4 | [JSON](V0.4.json) | [JSON](V0.4_BUILD_REQUEST.json) | [角色/PI审计](V0.4_ROLE_PI_AUDIT.md) | 未单独归档 | [赛季分析](V0.4_SEASON_REPORT_ANALYSIS_45399643857.md) | Actions 历史 |
 | V0.5 | 基准见 [BASELINE](V0.5_BASELINE.md) | 未单独归档 | [角色/PI审计](V0.5_ROLE_PI_AUDIT_45540803100.md) | 未单独归档 | [赛季分析](V0.5_SEASON_REPORT_ANALYSIS_45540803100.md) | 基准 FMF 哈希见 BASELINE |
