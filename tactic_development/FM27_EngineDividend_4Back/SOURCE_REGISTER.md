@@ -127,4 +127,7 @@
 
 
 | R3 | 45850910254 | [D5复盘](R3_D5_SEASON_REVIEW_45850910254.md) | [Exporter Run 45850910254](https://github.com/eslaulau/FM27-Exporter/tree/main/season-reports/1/45850910254) |
-| R4 | 待生成 | 待补D3构建报告及D5赛季报告 | 以R3 D5复盘为设计证据，父FMF严格使用V0.5 |
+| R4 | D3 workflow 45854019401 | [设计审计](R4_DESIGN_AND_AUDIT.md)；[构建报告](builds/R4.report.json) | [R4 D3 Workflow](https://github.com/eslaulau/fm-ta/actions/runs/45854019401)；D5待补Exporter赛季报告 |
+
+
+| R4 | D3 workflow 45854019401 | [设计审计](R4_DESIGN_AND_AUDIT.md)；[构建报告](builds/R4.report.json) | [R4 D3 Workflow](https://github.com/eslaulau/fm-ta/actions/runs/45854019401)；D5待补Exporter赛季报告 |
