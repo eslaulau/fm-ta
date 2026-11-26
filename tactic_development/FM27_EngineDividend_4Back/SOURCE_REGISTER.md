@@ -54,3 +54,13 @@
 每个新Run在对应登记项或分析文件中，必须保留可用于复核的：用户确认战术版本映射、赛事/比赛数、球队与球员统计覆盖、身份匹配率、统计对账、位置/角色映射状态、FM27 build、Exporter版本、存档SHA、schema/兼容性状态和未解析字段。分析使用的分组、指标定义、样本数及限制必须能回溯到原始Run。每轮追踪矩阵链接：[SEASON_TO_TACTIC_TRACEABILITY_TEMPLATE.md](SEASON_TO_TACTIC_TRACEABILITY_TEMPLATE.md)。
 
 来源登记只负责记录来源与数据质量，不把Exporter字段自动解释为战术因果；缺少逐场槽位映射时必须明确限制角色/PI归因。
+
+ 
+## 2026-11-26｜V1.9 R2 外部机制与赛季输入登记
+
+- 本轮赛季输入：Exporter Run45753659141，用户确认V1.8；源存档SHA-256 `6c07ec389a2894a3d2a8829f2618b8dec337c06bb1a2e7af334d4acb798713e0`；FM27 build `27.1.1+2511875`；Exporter 1.5.0；数据质量partial/unverified，详见V1.8分析和R2追踪矩阵。
+- metaFM 27.1.1“442菱形中场”：https://metafm.net/zh/tactics/442-0c7c98；阵型分类：https://metafm.net/formations/4-1-2-1-2-diamond；总榜：https://metafm.net/zh/leaderboard。公开样本2,240场、综合1.949 PPG、xG2.28、xGA1.43；公开IP/OOP角色结构；页面部分PI/TI隐藏；外部测试球员所有非门将位置熟练度20。证据等级：当前build结构候选，非本队因果证据。
+- FM-Arena 27.1.1聚合榜：https://fm-arena.com/tactic-testing/aggregators/13/；timmerl 4-1-2-1-2 v3有1,350场，73/114分、xGF74、xGA50。独立协议，不与metaFM合并。
+- FMAX 27.1.1：https://getfmax.com/en/lab/；出现4-1-2-1-2/菱形变体，作为阵型家族交叉参考，不能与其他平台分数混排。
+- PlayGM社区：https://playgm.cc/forum.php?mod=viewthread&tid=986807；2026-11-18“442边翼卫 菱形中场v2.fmf”社区分享，证据等级为用户案例/定性线索。
+- 旧V1.9 Run167采用4-3-3 DM / 4-1-4-1；当前27.1.1 4-3-3 DM分类样本较弱，4-1-4-1无当前build足量样本。R2将其标记为历史D3候选，不删除、不宣称D5失败。
