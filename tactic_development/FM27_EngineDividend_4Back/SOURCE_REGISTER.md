@@ -99,3 +99,10 @@
 - 父版本：V0.5；父FMF SHA-256 `e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257`。
 - FMF SHA-256 `ead1701ff6de352494521730ac5bcf51ac3a3b37d5d93919b3fb40dc45b31d25`；4,552 bytes；D3 8/8独立回读通过。
 - 目前没有2.5赛季报告或Exporter Run；不得将构建Run误登记为D5数据来源。
+
+
+## 2.6构建身份（非赛季数据来源）
+- GitHub Actions [Run 45824386052](https://github.com/eslaulau/fm-ta/actions/runs/45824386052)，Artifact ID 15119676222，Artifact ZIP SHA-256 a84d03a5491f5728f646f91b1c69ffe877ddcd623c68e1f6860624d610907dba。
+- 父版本V0.5；父FMF SHA-256 e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257；配方SHA-256 675a6e5122d741c77183ad4f1d92081244600587663e12e8252b7fa7f4404b9c。
+- FMF SHA-256 1cbdd6142fd40a60b1073915e78a3a9956f29c2a324383c8dd73213bb2457039；4,616 bytes；报告SHA-256 51eaa1a30dc0d6c60f5e5292ed5e421cf0465b6ba7c94a2a35a0e3f848255955。
+- D3 8/8离线回读通过；D4游戏内导入未验证；D5无Exporter赛季来源。不得将构建Run登记为赛季结果。
