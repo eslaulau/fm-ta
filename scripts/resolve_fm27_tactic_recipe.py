@@ -15,6 +15,26 @@ def safe_stem(value: Any) -> str:
     return stem or "FM27_Tactic"
 
 
+def _allowed_recipe_dirs(repo_root: Path) -> set[Path]:
+    return {
+        (repo_root / "build_requests").resolve(),
+        (repo_root / "tactic_development" / "FM27_EngineDividend_4Back").resolve(),
+    }
+
+
+def _is_allowed_recipe_path(path: str) -> bool:
+    normalized = path.strip().replace("\\", "/").removeprefix("./")
+    if Path(normalized).suffix.lower() not in {".json", ".txt"}:
+        return False
+    return (
+        normalized.startswith("build_requests/")
+        or (
+            normalized.startswith("tactic_development/FM27_EngineDividend_4Back/")
+            and normalized.count("/") == 2
+        )
+    )
+
+
 def _existing_recipe_path(raw_path: str, repo_root: Path) -> Path:
     if not raw_path:
         raise ValueError("recipe_path is empty")
@@ -22,9 +42,11 @@ def _existing_recipe_path(raw_path: str, repo_root: Path) -> Path:
     if raw.is_absolute():
         raise ValueError("recipe_path must be repository-relative")
     recipe = (repo_root / raw).resolve()
-    build_dir = (repo_root / "build_requests").resolve()
-    if recipe.parent != build_dir:
-        raise ValueError("recipe_path must point directly inside build_requests/")
+    if recipe.parent not in _allowed_recipe_dirs(repo_root):
+        raise ValueError(
+            "recipe_path must point directly inside build_requests/ or "
+            "tactic_development/FM27_EngineDividend_4Back/"
+        )
     if recipe.suffix.lower() not in {".json", ".txt"}:
         raise ValueError("recipe_path must end in .json or .txt")
     if not recipe.is_file():
@@ -99,8 +121,7 @@ def resolve_recipe_input(
         recipes = sorted({
             item.strip()
             for item in (changed_files or [])
-            if item.strip().startswith("build_requests/")
-            and Path(item.strip()).suffix.lower() in {".json", ".txt"}
+            if _is_allowed_recipe_path(item.strip())
         })
         if not recipes:
             # Deletion-only pushes and unrelated pushes must be clean no-ops.
@@ -112,7 +133,7 @@ def resolve_recipe_input(
             }
         if len(recipes) != 1:
             raise ValueError(
-                "Each push build must target exactly one JSON or legacy GEN1 TXT under build_requests/. "
+                "Each push build must target exactly one JSON or legacy GEN1 TXT in an approved recipe directory. "
                 f"Detected: {recipes}"
             )
         recipe = _existing_recipe_path(recipes[0], repo_root)
@@ -150,7 +171,7 @@ def _changed_files_from_push(event_data: dict[str, Any]) -> list[str]:
     }
     recipe_paths = sorted(
         path for path in normalized
-        if path.startswith("build_requests/") and Path(path).suffix.lower() in {".json", ".txt"}
+        if _is_allowed_recipe_path(path)
     )
     if recipe_paths:
         return recipe_paths
@@ -161,11 +182,11 @@ def _changed_files_from_push(event_data: dict[str, Any]) -> list[str]:
     if before and after and set(before) != {"0"}:
         commands.append([
             "git", "diff", "--name-only", "--diff-filter=AM",
-            before, after, "--", "build_requests/",
+            before, after, "--", "build_requests/", "tactic_development/FM27_EngineDividend_4Back/",
         ])
     commands.extend([
-        ["git", "diff", "--name-only", "--diff-filter=AM", "HEAD^", "HEAD", "--", "build_requests/"],
-        ["git", "show", "--format=", "--name-only", "HEAD", "--", "build_requests/"],
+        ["git", "diff", "--name-only", "--diff-filter=AM", "HEAD^", "HEAD", "--", "build_requests/", "tactic_development/FM27_EngineDividend_4Back/"],
+        ["git", "show", "--format=", "--name-only", "HEAD", "--", "build_requests/", "tactic_development/FM27_EngineDividend_4Back/"],
     ])
     for command in commands:
         result = subprocess.run(command, check=False, capture_output=True, text=True)
@@ -174,7 +195,7 @@ def _changed_files_from_push(event_data: dict[str, Any]) -> list[str]:
             if paths:
                 recipe_paths = sorted(
                     path for path in paths
-                    if path.startswith("build_requests/") and Path(path).suffix.lower() in {".json", ".txt"}
+                    if _is_allowed_recipe_path(path)
                 )
                 if recipe_paths:
                     return recipe_paths
@@ -184,14 +205,20 @@ def _changed_files_from_push(event_data: dict[str, Any]) -> list[str]:
     # single request whose filename is explicitly identified by the commit
     # message; never guess from file timestamps or choose an old recipe.
     commit_message = str((event_data.get("head_commit") or {}).get("message") or "")
-    build_dir = Path.cwd() / "build_requests"
+    build_dirs = [
+        Path.cwd() / "build_requests",
+        Path.cwd() / "tactic_development" / "FM27_EngineDividend_4Back",
+    ]
     message_matches = []
-    if build_dir.is_dir():
-        for candidate in sorted(build_dir.iterdir()):
-            if candidate.is_file() and candidate.suffix.lower() in {".json", ".txt"}:
-                relative = candidate.relative_to(Path.cwd()).as_posix()
-                if relative in commit_message or candidate.stem in commit_message:
-                    message_matches.append(relative)
+    for build_dir in build_dirs:
+        if build_dir.is_dir():
+            for candidate in sorted(build_dir.iterdir()):
+                if candidate.is_file() and candidate.suffix.lower() in {".json", ".txt"}:
+                    relative = candidate.relative_to(Path.cwd()).as_posix()
+                    if _is_allowed_recipe_path(relative) and (
+                        relative in commit_message or candidate.stem in commit_message
+                    ):
+                        message_matches.append(relative)
     if len(message_matches) == 1:
         return message_matches
 
