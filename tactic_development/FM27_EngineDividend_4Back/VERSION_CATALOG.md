@@ -10,8 +10,9 @@
 
 > 2026-11-26：研发规则已修订：IP仅要求DL/DCL/DCR/DR四个后场位置，不固定任何IP阵型；OOP完全开放；每轮只设计和构建一个完整方案。每轮战术迭代/赛季复盘必须同步更新 `TACTIC_INSTRUCTION_DECISION_LEDGER.md`、`ITERATION_LOG.md`、本目录与 `SOURCE_REGISTER.md`，并逐个GitHub read-back。详细门禁见 `ANALYSIS_AND_ITERATION_RULES.md` 第七节。
 
-- **最近完成D5的研发基准：V1.8（Exporter Run45753659141）**
-- **当前研发候选：V1.9重新执行版R2**，父版本V1.8；IP 4-1-2-1-2 Diamond、OOP 5-2-3；D0历史总账复核已完成；D1-D3技术构建通过（Run169，8/8独立回读、22/22阶段）；可进入D4游戏内核验，D5待至少38场英超。R2仍为高风险待验证候选，不是已验证升级。
+- **最近完成D5的历史研发基准：V1.8（Exporter Run45753659141）**。
+- **当前正式构建候选：2.0**，每轮从V0.5重生；IP四后场槽DL/DCL/DCR/DR；D3原生FMF构建与独立回读通过（Run45781102266，8/8检查、22/22阶段）；D4游戏内导入待确认，D5待完整赛季报告。
+- V1.9 R2保留为历史实验/证据来源，不作为2.0父版本；2.0唯一父基准为V0.5原始FMF SHA `e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257`。
 - **历史V1.9 Run165：** 完整复用V1.7配方的OOP回退实验，保留原构建身份，不认定为正式性能升级。
 - **历史V1.9重新设计版R1（Run167）：** IP 4-3-3 DM、OOP 4-1-4-1；D3通过但D4/D5未验证。当前27.1.1外部证据复核后由R2替代为当前研发候选；不将R1标记为比赛失败。
 - **最高完整英超胜率：73.7%（V1.6，28胜5平5负、89分）**；V1.3仍是失球最少（30球）和4负的防守基准。
@@ -99,3 +100,15 @@
 ## 赛季诊断与升级决策追踪（强制）
 
 每个版本条目必须链接本轮赛季分析和 `Vx.y_SEASON_TO_TACTIC_TRACEABILITY_<run>.md`。版本摘要需列出主要ISS/EXP编号、四类决策、收益—代价目标、下一轮D5验证清单及D0–D5状态。新报告到来后，先回看父版本条目中的全部D5目标，再建立本轮问题编号；不得只比较上一版本的总积分。追踪表模板：[SEASON_TO_TACTIC_TRACEABILITY_TEMPLATE.md](SEASON_TO_TACTIC_TRACEABILITY_TEMPLATE.md)。
+
+
+---
+
+## V2.0｜D1-D3 原生构建完成（2026-11-26）
+
+- 父版本/重生基准：V0.5；原始FMF SHA-256 `e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257`。
+- 配方：[2.0.json](2.0.json)；设计审计：[2.0_DESIGN_AND_AUDIT.md](2.0_DESIGN_AND_AUDIT.md)；构建报告摘要：[2.0_BUILD_REPORT_SUMMARY.json](2.0_BUILD_REPORT_SUMMARY.json)。
+- GitHub Actions：[Run 45781102266](https://github.com/eslaulau/fm-ta/actions/runs/45781102266)；artifact ID `15097803849`；artifact ZIP SHA-256 `1e744bf20a3ee2ca86c834a3795bc1ed915c55acb9251d922b6c4c7cd13edc3a`。
+- FMF：4,360 bytes；SHA-256 `80d3a98349eca59affb3d28057cc54550022b1e1e55942d2ce5f1f0920c54bb0`；same-run报告SHA-256 `d7a64ac249f12eec596839dc6ccb4b8ab2f2dc5f26b91d7e1f4a6be0eadd18d2`。
+- D1 catalog-backed角色/职责/PI权限预检通过；D2 11槽/22阶段及IP四后场约束通过；D3原生FMF构建与8/8独立回读通过。
+- D4游戏内导入/显示待用户确认；D5完整赛季效果待验证。**本版不宣称已达到PPG≥2.85。**
