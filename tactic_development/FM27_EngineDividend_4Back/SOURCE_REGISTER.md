@@ -18,7 +18,7 @@
 | V1.2 | 45635282210 | [分析](V1.2_SEASON_REPORT_ANALYSIS_45635282210.md) | [Exporter Run 45635282210](https://github.com/eslaulau/FM27-Exporter) |
 | V1.3 | 45644106773 | [分析](V1.3_SEASON_REPORT_ANALYSIS_45644106773.md) | [Exporter Run 45644106773](https://github.com/eslaulau/FM27-Exporter) |
 | V1.4 | 45727738275 | [分析](V1.4_SEASON_REPORT_ANALYSIS_45727738275.md) | [Exporter Run 45727738275](https://github.com/eslaulau/FM27-Exporter/tree/main/season-reports/1/45727738275) |
-| V1.5 | 45734426186 | [分析](V1.5_SEASON_REPORT_ANALYSIS_45734426186.md) | [Exporter Run 45734426186](https://github.com/eslaulau/FM27-Exporter/tree/main/season-reports/1/45734426186) |
+| V1.5 | 45734426186 | [分析](V1.5_SEASON_REPORT_ANALYSIS_45734426186.md) | [Exporter Run 45734426186](https://github.com/eslaulau/FM27-Exporter/tree/main/season-reports/1/45734426186) |\n| V1.6 | 45744550318 | [分析](V1.6_SEASON_REPORT_ANALYSIS_45744550318.md) | [Exporter Run 45744550318](https://github.com/eslaulau/FM27-Exporter/tree/main/season-reports/1/45744550318) |
 
 ## 来源完整性规则
 
