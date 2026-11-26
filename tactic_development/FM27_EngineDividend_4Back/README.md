@@ -1,5 +1,15 @@
 # FM27 引擎红利四后卫
 
+## 项目统一入口（当前 V1.5 / Run149）
+
+- **唯一版本总目录：** [VERSION_CATALOG.md](VERSION_CATALOG.md)（所有版本成绩、配方、构建请求、设计审计、构建报告、FMF 与赛季分析索引）。
+- **原始数据来源：** [SOURCE_REGISTER.md](SOURCE_REGISTER.md)（Exporter Run ID、原始报告 URL、版本映射及缺失来源登记）。
+- **当前版本：** [V1.5 配方](V1.5.json) · [V1.5 构建请求](V1.5_BUILD_REQUEST.json) · [设计审计](V1.5_DESIGN_AND_AUDIT.md) · [构建报告](V1.5_BUILD_REPORT.json)。D3 已通过；D4 游戏内导入、D5 实战表现待验证。
+- **历代最佳：** 完整英超胜率最高为 V1.0、V1.3、V1.4 并列 71.1%；V1.3 以 88 分和仅 4 场失利作为综合基准。
+- **唯一历史主线：** [ITERATION_LOG.md](ITERATION_LOG.md)；**逐项指令沿革：** [TACTIC_INSTRUCTION_DECISION_LEDGER.md](TACTIC_INSTRUCTION_DECISION_LEDGER.md)。
+- **归档约束：** 此后本项目的版本文件全部放在当前目录；不再放进仓库根目录的通用 `build_requests/`。
+
+
 本目录维护一个持续进行的数据驱动战术研发项目，而非只负责输出一个 FMF 文件。正式循环是：先读取跨版本指令决策台账和唯一父版本 → 读取用户确认的赛季报告 → 数据质量审计与整体诊断 → 对每项角色/职责/PI/TI 判定继承、暂留、替换或待验证 → 外部引擎机制交叉研究 → IP/OOP 协同设计 → D3 原生 FMF 构建 → D4 游戏内导入/显示确认 → D5 比赛/赛季效果复盘 → 回写决策台账并进入下一轮。
 
 ## 当前项目文件
@@ -138,7 +148,7 @@ DL、DCL、DCR、DR、DML、DMR 的 OOP `TACKLING` 由 `GET_STUCK_IN` 改为 `EA
 
 ## V0.3 单变量实验（2026-11-24）
 - [V0.3 配方](V0.3.json)：以 V0.2 为父版本，仅将 DML 无球 `TRIGGER_PRESS` 从 `LESS_OFTEN` 改为 `MORE_OFTEN`。
-- [V0.3 构建请求](../../build_requests/FM27_EngineDividend_4Back_V0.3_20261124.json)。
+- [V0.3 构建请求](V0.3_BUILD_REQUEST.json)。
 - 本轮不是宣称已验证的性能升级，而是依据 V0.2 防守机会质量风险及外部四后卫 DM 压迫候选，设计的单变量实验。其余配置全部保持不变。
 - 实测要求：至少 8–10 场同口径球队详细统计，记录实际 FM27 build；以对手 xG/绝佳机会/射门和我方 xG/绝佳机会为主，不分析犯规、黄牌、红牌。
 - 当前外部研究快照与证据分级见 [EXTERNAL_ENGINE_BENCHMARK.md](EXTERNAL_ENGINE_BENCHMARK.md)；完整决策见 [ITERATION_LOG.md](ITERATION_LOG.md)。
