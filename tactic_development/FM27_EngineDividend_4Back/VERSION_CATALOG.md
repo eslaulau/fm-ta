@@ -216,3 +216,9 @@
 - FMF 4,616 bytes；SHA-256 1cbdd6142fd40a60b1073915e78a3a9956f29c2a324383c8dd73213bb2457039；同次构建报告SHA-256 51eaa1a30dc0d6c60f5e5292ed5e421cf0465b6ba7c94a2a35a0e3f848255955；recipe SHA-256 675a6e5122d741c77183ad4f1d92081244600587663e12e8252b7fa7f4404b9c。
 - D1 catalog角色/职责/PI权限预检通过；D2 11槽/22阶段及IP四后场通过；D3 8/8独立二进制回读通过。game_interactive_import=false、match_engine=false。
 - D4：待用户在FM27导入并核对中文显示、IP/OOP阵型、位置熟悉度；D5：待完整38场赛季报告。未宣称109分或xG100达标。
+
+
+## R3 D5 与 R4 当前状态（2026-11-26）
+
+- **R3：D5 FAIL。** Exporter Run 45850910254 的38场英超结果为66分、PPG1.737、xG65.00、xGA46.18；未达到109分与xG100双门槛。详细分析见 [R3 D5复盘](R3_D5_SEASON_REVIEW_45850910254.md)。R3保留为历史实验，不再标记为达标候选。
+- **R4：唯一下一轮设计候选。** IP 4-2-3-1 / OOP strikerless 5-2-3，四后场约束不变；根据R3位置/球队数据调整右翼卫职责、DMR跨阶段角色、OOP前场三出口和两项球队进攻指令。严格以V0.5原生FMF重生；D0-D3待构建，D4/D5未验证。
