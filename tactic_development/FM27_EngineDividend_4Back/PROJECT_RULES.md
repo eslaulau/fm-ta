@@ -87,7 +87,7 @@
 - 本项目规则、PPG 目标、历史台账、生成前审计及项目专属构建入口全部位于 `tactic_development/FM27_EngineDividend_4Back/`。
 - FM-TA 通用导出器/生成器只负责读取合法 recipe、原生权限预检、FMF 格式生成和回读；它不决定本项目战术目标、阵型、角色或迭代方向。
 - 不修改 FM-TA 通用生成器、导出器、通用工作流或全仓库规则来承载本项目要求。
-- 本项目必须通过 [build_project_tactic.py](build_project_tactic.py) 进行项目战术构建；禁止把通用 FM-TA 生成命令视为已执行本项目审计。
+- 本项目必须通过 [build_project_tactic.py](build_project_tactic.py) 进行项目战术构建；禁止把通用 FM-TA 生成命令视为已执行本项目审计。每轮设计审计从 [ITERATION_DESIGN_AUDIT_TEMPLATE.md](ITERATION_DESIGN_AUDIT_TEMPLATE.md) 创建，并填写完整父版身份、SHA-256、PPG路径和四类决策。
 - 其他项目使用 FM-TA 时不继承本项目 PPG 目标或规则。
 
 ## 8. 权威文件与冲突处理
@@ -99,3 +99,17 @@
 - [ANALYSIS_AND_ITERATION_RULES.md](ANALYSIS_AND_ITERATION_RULES.md)：战术分析与迭代方法。
 - [build_project_tactic.py](build_project_tactic.py)：项目生成入口；调用项目审计后再调用 FM-TA 通用技术工具。
 - 如旧文档中的目标或表述与本文件冲突，以本文件为准；历史数据记录保持原样，不追溯改写为新目标下的历史结果。
+
+## 9. 项目专属构建命令
+
+在仓库根目录运行（PowerShell / Python 3.12）：
+
+```powershell
+py -3.12 tactic_development\FM27_EngineDividend_4Back\build_project_tactic.py `
+  --recipe tactic_development\FM27_EngineDividend_4Back\<本轮配方>.json `
+  --audit tactic_development\FM27_EngineDividend_4Back\<本轮设计审计>.md `
+  --output .\artifacts\<本轮版本>.fmf `
+  --report .\artifacts\<本轮版本>.report.json
+```
+
+该命令的执行顺序固定为：项目 PPG/历史规则审计 → FM-TA 通用 catalog 权限预检 → FM-TA 原生 FMF 生成。项目审计失败即退出，不调用后两步。输出文件已存在时拒绝覆盖。
