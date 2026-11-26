@@ -103,6 +103,13 @@ class ProjectGateTests(unittest.TestCase):
     def test_valid_project_iteration_passes(self):
         self.assertEqual(self.validate(), [])
 
+    def test_latest_version_cannot_become_parent(self):
+        self.audit.write_text(
+            self.audit.read_text(encoding="utf-8").replace("父版本：V0.5", "父版本：V1.8"),
+            encoding="utf-8",
+        )
+        self.assertTrue(any("父版本：V0.5" in e for e in self.validate()))
+
     def test_ip_back_four_is_mandatory(self):
         self.valid_recipe["p"][4]["in"]["pos"] = "DMC"
         self.write_recipe_and_audit()
