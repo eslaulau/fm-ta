@@ -530,7 +530,7 @@ V0.9 ST-only Run3 是已取代草案，不属于正式版本主线。V0.5 是 V2
 - 数据质量：65/65正式比赛球队/球员报告齐全；球队统计对账1235/1235；球员出场1018，识别995（97.74%），23未识别；6球未归属；位置10/10、role_code 11/11目录映射成功，但英超585条已识别球员报告行仅160条有可验证IP角色码，不包含完整职责/PI/OOP映射；build仍partial/unverified。
 - **继承保留：** IP四后场DL/DCL/DCR/DR；V1.4/V1.5进攻骨架与AML内锋组合；高位介入线、较高节奏、较宽进攻宽度、团队较多逼抢；DCR/DCL较少逼抢。
 - **替换淘汰：** V1.5 ment=3→V1.6 ment=4；防线LOWER→DEFAULT；OOP DMR Trigger Press LESS_OFTEN→MORE_OFTEN。
-- **新增待验证：** OOP DMR边路补位后腰与DML屏障后腰均Trigger Press MORE_OFTEN，形成双后腰积极压迫、双中卫保护的分层方案。
+- **新增待验证：** OOP DMR边路补位后腰Trigger Press MORE_OFTEN；DML改用原生固定More Often的逼抢后腰角色，形成双后腰积极压迫、双中卫保护的分层方案。
 - **证据不足：** 不能把V1.5的进攻回落单独归因于心态/防线；不能把球员数据归因到完整角色/PI；V1.6双后腰压迫尚无D5证据。
 - 完整分析：[V1.5_SEASON_REPORT_ANALYSIS_45734426186.md](V1.5_SEASON_REPORT_ANALYSIS_45734426186.md)。
 
@@ -552,7 +552,7 @@ V0.9 ST-only Run3 是已取代草案，不属于正式版本主线。V0.5 是 V2
 - OOP DMR Trigger Press LESS_OFTEN → MORE_OFTEN。
 
 **新增待验证**
-- OOP DMR边路补位后腰与DML屏障后腰均Trigger Press MORE_OFTEN；观察客场xGA、对手绝佳机会、球权恢复和进攻端是否恢复。
+- OOP DMR边路补位后腰Trigger Press MORE_OFTEN；DML由屏障后腰改为原生固定More Often的逼抢后腰。观察客场xGA、对手绝佳机会、球权恢复和进攻端是否恢复。
 - 本轮没有改动双中卫的LESS_OFTEN，也没有给DML增加Tackle Harder。
 
 **证据不足**
