@@ -1,3 +1,13 @@
+> **2026-11-26｜项目最高目标与规则执行入口更新**
+>
+> - 唯一最高目标：联赛 PPG ≥ 2.85（38 场至少 109 分）。项目规则只在本目录生效。
+> - 正式规则：[PROJECT_RULES.md](PROJECT_RULES.md)；机器策略：[PPG_TARGET_POLICY.json](PPG_TARGET_POLICY.json)。
+> - 项目专属构建入口：[build_project_tactic.py](build_project_tactic.py)。它先运行 [validate_project_iteration.py](validate_project_iteration.py)；只有项目审计通过才调用 FM-TA 通用原生预检与生成器。
+> - FM-TA 仅作为 FMF 工具。本次及后续不得修改其通用导出器、生成器规则或通用工作流来承载本项目规则。
+> - 历史版本成绩保持原样；不追溯改写旧赛季为 PPG 2.85 目标下的成绩。
+
+---
+
 # FM27 引擎红利四后卫
 
 - **连续研发闭环（最高执行入口）：** [UPGRADE_GATE.md](UPGRADE_GATE.md)。用户提交赛季报告即默认启动完整分析、历史总账联动、引擎红利研究、唯一整体战术升级和FMF交付，不再把分析与升级拆开。
