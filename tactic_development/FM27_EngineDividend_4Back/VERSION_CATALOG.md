@@ -150,3 +150,4 @@
 - D4：用户声明本赛季使用2.2；Exporter不导出战术配置，不能独立核验战术身份。
 - D5：[完整38场复盘](2.2_D5_SEASON_REVIEW_20261126.md)；26胜6平6负，84分，87:40，xG81.83，98次绝佳机会；**性能FAIL，未达到109分**。原始报告：[Exporter Run45794923641](https://github.com/eslaulau/FM27-Exporter/tree/main/season-reports/1/45794923641)。
 - 决策：2.2保留为失败基准；2.3暂停，先完成进攻机制专项审计。
+- 第一轮进攻机制审计：[2.2_ATTACKING_MECHANISM_AUDIT_20261126.md](2.2_ATTACKING_MECHANISM_AUDIT_20261126.md)；已定位传中效率和进入前场后的机会质量为优先核查方向，仍属待验证假设。
