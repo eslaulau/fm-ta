@@ -1201,3 +1201,10 @@ V1.1与V1.2英超38场有相同的主客场对手配对，但只有27场日期�
 - 目标是恢复单一中路屏障+边路覆盖后腰的分层保护，优先降低客场xGA和对手绝佳机会；V1.6高胜率不能证明双后腰双积极压迫已最优。
 - 完整差异：[V1.7_DESIGN_AND_AUDIT.md](V1.7_DESIGN_AND_AUDIT.md)；配方：[V1.7.json](V1.7.json)；构建请求：[V1.7_BUILD_REQUEST.json](V1.7_BUILD_REQUEST.json)。
 - Build Run163：[Actions](https://github.com/eslaulau/fm-ta/actions/runs/45745327285)，当前进行中；D3尚未完成。
+
+
+## V1.7 D3 原生构建｜Run163
+- Actions Run163成功；Artifact ID 15082962594；artifact ZIP SHA-256 `1cf454b3af8bc5085232eb64d44a5f155c633deeae9561145ba8a8c7a1d0a845`。
+- FMF 4,504 bytes；SHA-256 `42a7038c4fe89667d0f1f7c7ff1ff74f31633f52f570d0f8b4d4d9c774ee46ab`；same-run report SHA-256 `07adf1cf6ae838262b8de9165ca710fbb1432ddf44c0a19c704a1af262009b4c`。
+- D3 8/8检查通过，22/22阶段精确回读；IP四后场DL/DCL/DCR/DR；心态4；OOP DML屏障后腰、DMR边路补位后腰Less Often。
+- D4：待用户在FM27内导入核对；D5：待使用V1.7后的正式比赛/赛季报告。
