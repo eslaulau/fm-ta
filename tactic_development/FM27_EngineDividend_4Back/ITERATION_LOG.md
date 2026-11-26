@@ -1171,3 +1171,12 @@ V1.1与V1.2英超38场有相同的主客场对手配对，但只有27场日期�
 - OOP DMR边路补位后腰改Trigger Press MORE_OFTEN；DML从屏障后腰改为原生固定More Often的逼抢后腰；DCR/DCL仍LESS_OFTEN，测试双后腰积极压迫、双中卫保护。
 - 11槽/22阶段位置角色职责不变；有球四后场DL/DCL/DCR/DR保持。
 - 四类决策、完整父子差异与风险见 [V1.6_DESIGN_AND_AUDIT.md](V1.6_DESIGN_AND_AUDIT.md)。
+
+
+## V1.6 D3 构建交付｜Run162
+
+- [FM27 Tactic Build Run162](https://github.com/eslaulau/fm-ta/actions/runs/45737442923) 成功；preflight、生成、D3回读和artifact上传全部通过。
+- FMF 4,480 bytes，SHA-256 `e67a5d218c18d3e5f7862889ab04248f8ced1f8c67a7bddb2d232b72d293748d`。
+- same-run report SHA-256 `2f9aa4cf6db35aa4cf981187293655337fca75ca4e9928e524cbced6e57587f1`；artifact ID `15080120509`。
+- 8/8 D3检查通过，22/22阶段精确回读；游戏内导入和比赛引擎未测试。
+- 完整机器报告：[V1.6_BUILD_REPORT.json](V1.6_BUILD_REPORT.json)。
