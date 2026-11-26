@@ -187,7 +187,7 @@
 ## 2.5｜IP菱形四后卫 + OOP 4-2-1-2-1｜D1-D3完成（2026-11-26）
 
 - 父版本/重生基准：V0.5；父FMF SHA-256 `e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257`。2.2、2.4仅作为历史证据，不是父版。
-- 配方：[2.5.json](2.5.json)；设计审计：[2.5_DESIGN_AND_AUDIT.md](2.5_DESIGN_AND_AUDIT.md)；机器回读报告：[builds/2.5.report.json](builds/2.5.report.json)。
+- 配方：[2.5.json](2.5.json)；设计审计：[2.5_DESIGN_AND_AUDIT.md](2.5_DESIGN_AND_AUDIT.md)；[FMF文件](builds/2.5.fmf)；机器回读报告：[builds/2.5.report.json](builds/2.5.report.json)。
 - GitHub Actions项目专用门禁：[Run 45808599286](https://github.com/eslaulau/fm-ta/actions/runs/45808599286)；Artifact ID `15109429118`；Artifact ZIP SHA-256 `f37b5efee580d0511aad166ab6c92c97e70198851393b3682601f48b59a805fa`。
 - FMF：4,552 bytes；SHA-256 `ead1701ff6de352494521730ac5bcf51ac3a3b37d5d93919b3fb40dc45b31d25`；构建报告SHA-256 `18060a62b01d2465570d6a02d6ac2b3835c4a0345c4f4d938e3b513da59318f7`；recipe SHA-256 `132e463277680319532bc668530d6277300509f5fde33ca86a05aa8541508ccd`。
 - IP：4-1-2-1-2 Diamond，严格DL/DCL/DCR/DR四后场；OOP：4-2-1-2-1。单侧DR翼卫进攻、DL内收边后卫防守；一攻一策应中场；前场组织核心策应；抢点前锋进攻+拖后前锋策应。
