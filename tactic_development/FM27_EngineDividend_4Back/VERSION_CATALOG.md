@@ -151,3 +151,11 @@
 - D5：[完整38场复盘](2.2_D5_SEASON_REVIEW_20261126.md)；26胜6平6负，84分，87:40，xG81.83，98次绝佳机会；**性能FAIL，未达到109分**。原始报告：[Exporter Run45794923641](https://github.com/eslaulau/FM27-Exporter/tree/main/season-reports/1/45794923641)。
 - 决策：2.2保留为失败基准；2.3暂停，先完成进攻机制专项审计。
 - 第一轮进攻机制审计：[2.2_ATTACKING_MECHANISM_AUDIT_20261126.md](2.2_ATTACKING_MECHANISM_AUDIT_20261126.md)；已定位传中效率和进入前场后的机会质量为优先核查方向，仍属待验证假设。
+
+
+## 2.3｜抽击传中单变量候选（2026-11-26）
+- 从V0.5原生FMF重生；2.2仅作为假设来源，不是父版。
+- 唯一变量：团队传中方式 LOW_CROSSES → WHIPPED_CROSSES；两侧翼卫后点目标及其余配方配置保持不变。
+- D1-D3：GitHub Actions [Run 45801670338](https://github.com/eslaulau/fm-ta/actions/runs/45801670338) 成功；原生预检、11槽/22阶段、PI权限和8/8二进制回读通过。
+- FMF 4,528 bytes；SHA-256 `ebceb7d4da76b386007f124dfb1ca0b917fdcbb68b549debd274c4b74d45b5aa`；Artifact `15107846123`。
+- D4待游戏内导入；D5未测试。2.3不是达标版本，不宣称PPG改善。配方与审计见[2.3.json](2.3.json)及[2.3_DESIGN_AND_AUDIT.md](2.3_DESIGN_AND_AUDIT.md)。
