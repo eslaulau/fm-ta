@@ -16,6 +16,19 @@ class ProjectGateTests(unittest.TestCase):
         self.tmp = tempfile.TemporaryDirectory()
         self.addCleanup(self.tmp.cleanup)
         self.root = Path(self.tmp.name)
+        self.old_paths = (gate.PROJECT_DIR, gate.POLICY, gate.RULES, gate.LEDGER)
+        gate.PROJECT_DIR = self.root
+        gate.POLICY = self.root / "PPG_TARGET_POLICY.json"
+        gate.RULES = self.root / "PROJECT_RULES.md"
+        gate.LEDGER = self.root / "TACTIC_INSTRUCTION_DECISION_LEDGER.md"
+        gate.POLICY.write_text(json.dumps({
+            "target_ppg": 2.85,
+            "primary_objective": "PPG >= 2.85",
+            "hard_constraints": {"ip_back_four_positions": ["DL", "DCL", "DCR", "DR"]},
+        }), encoding="utf-8")
+        gate.RULES.write_text("PPG ≥ 2.85", encoding="utf-8")
+        gate.LEDGER.write_text("PPG 2.85", encoding="utf-8")
+        self.addCleanup(self.restore_gate_paths)
         self.recipe = self.root / "candidate.json"
         self.audit = self.root / "design_audit.md"
         self.parent = self.root / "parent.fmf"
@@ -39,6 +52,9 @@ class ProjectGateTests(unittest.TestCase):
                 "out": {"pos": oop, "role": "Role", "duty": "D", "pi": []},
             })
         self.write_recipe_and_audit()
+
+    def restore_gate_paths(self):
+        gate.PROJECT_DIR, gate.POLICY, gate.RULES, gate.LEDGER = self.old_paths
 
     def write_recipe_and_audit(self):
         raw = json.dumps(self.valid_recipe, ensure_ascii=False, indent=2).encode()
