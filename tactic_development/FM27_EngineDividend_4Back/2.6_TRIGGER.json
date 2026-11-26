@@ -4,6 +4,6 @@
   "audit": "tactic_development/FM27_EngineDividend_4Back/2.6_DESIGN_AND_AUDIT.md",
   "parent_version": "V0.5",
   "parent_sha256": "e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257",
-  "trigger_reason": "Re-run project gate after synchronizing authoritative policy to D3-complete/D4-D5-pending and appending the D3 result to the decision ledger; refresh exact hash pins.",
-  "revision": 9
+  "trigger_reason": "Final audit pin refresh for the post-D3 authoritative decision ledger and PPG policy; rerun full D0-D3 gate/build to keep all archived hashes synchronized.",
+  "revision": 10
 }
