@@ -619,8 +619,8 @@ V0.9 ST-only Run3 是已取代草案，不属于正式版本主线。V0.5 是 V2
 
 ### V1.7 D0–D3状态
 - D0：V1.6赛季复盘与V1.7设计完成。
-- D1：正式Actions catalog权限预检待执行/确认。
+- D1：Run163原生catalog权限预检通过。
 - D2：11槽/22阶段完整父子差异完成；IP四后场保持。
-- D3：Build Run163进行中；尚未回读FMF，未完成前不宣称通过。
+- D3：Run163成功；8/8检查通过，22/22阶段精确回读；FMF SHA-256 `42a7038c4fe89667d0f1f7c7ff1ff74f31633f52f570d0f8b4d4d9c774ee46ab`；same-run report SHA-256 `07adf1cf6ae838262b8de9165ca710fbb1432ddf44c0a19c704a1af262009b4c`。
 - D4：待游戏内导入。
 - D5：待V1.7赛季报告。
