@@ -7,6 +7,6 @@
   "parent_sha256": "e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257",
   "output": "builds/R4.fmf",
   "report": "builds/R4.report.json",
-  "attempt": 2,
-  "note": "Retry after pinning exact SHA-256 inputs and correcting mandatory audit section labels."
+  "attempt": 3,
+  "note": "Final reproducibility run after R4 D3 status was recorded in the decision ledger and the audit ledger hash was refreshed."
 }
