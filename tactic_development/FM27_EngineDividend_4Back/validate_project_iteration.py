@@ -80,7 +80,7 @@ def validate(recipe_path: Path, audit_path: Path, parent_fmf: Path) -> list[str]
         errors.append("Design audit must explicitly state the PPG 2.85 objective.")
     for decision in DECISIONS:
         section = re.search(
-            rf"(?ms)^###\s*{re.escape(decision)}\s*$\\n(.*?)(?=^###\\s|^##\\s|\\Z)",
+            rf"(?ms)^###\s*{re.escape(decision)}\s*$\n(.*?)(?=^###\s|^##\s|\Z)",
             audit,
         )
         if not section:
