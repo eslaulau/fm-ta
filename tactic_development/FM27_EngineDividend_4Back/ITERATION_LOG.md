@@ -1259,3 +1259,19 @@ V1.1与V1.2英超38场有相同的主客场对手配对，但只有27场日期�
 - Same-run report：12,605 bytes；SHA-256 `75c59445c84690170175a14c7bd62e16f16d9159803a9061b25456d1ab3bb7d8`；artifact ZIP SHA-256 `5e073f32f66c8cbf91ed6f75b23eda2a358f9aa5653f5a89e7eb59180b4e96d8`。
 - 构建摘要：[V1.8_BUILD_REPORT_SUMMARY.json](V1.8_BUILD_REPORT_SUMMARY.json)。
 - 状态 `offline_binary_roundtrip_verified_not_game_import_verified`；D4游戏内导入与D5比赛/赛季表现仍未验证。
+
+
+## V1.8 D5 赛季复盘｜Exporter Run 45753659141（2026-11-26）
+
+- 用户确认Run45753659141使用V1.8；原始报告：[Exporter Run 45753659141](https://github.com/eslaulau/FM27-Exporter/tree/main/season-reports/1/45753659141)；分析：[V1.8_SEASON_REPORT_ANALYSIS_45753659141.md](V1.8_SEASON_REPORT_ANALYSIS_45753659141.md)。
+- 存档SHA-256 `6c07ec389a2894a3d2a8829f2618b8dec337c06bb1a2e7af334d4acb798713e0`；FM27 build `27.1.1+2511875`；正式比赛65场，英超38场。
+- 英超21胜9平8负、98:55、72分；xG约88.92、xGA约59.66；我方/对手绝佳机会96/50。相较V1.7（25-7-6、79:36、82分、xG74.29、xGA44.13、绝佳机会72/30），V1.8攻击产量提高，但防守机会控制恶化，净胜球仍同为+43。
+- 数据质量：球队/球员报告65/65；球队统计对账1,235/1,235；球员身份958/1,021（93.83%）；进球对账65/65；build未被fmsave 0.14.3登记，借用schema-6，partial/unverified。
+- 四类决策：继承IP四后场及全部IP配置；替换OOP 5-2-3整组结构；新增V1.9 OOP回退复测；证据不足项包括非同seed比较、缺少逐场战术槽位映射及未登记build的解析风险。
+
+## V1.9 D0 结构回退复测设计（2026-11-26）
+
+- 父版V1.8 FMF SHA-256 `51e94c684c66ce016950d93f2619a40086820e7a9dcf792b7251d4ac67fa4e72`；OOP结构参考V1.7 FMF SHA-256 `42a7038c4fe89667d0f1f7c7ff1ff74f31633f52f570d0f8b4d4d9c774ee46ab`。
+- 配方：[V1.9.json](V1.9.json)；审计：[V1.9_DESIGN_AND_AUDIT.md](V1.9_DESIGN_AND_AUDIT.md)。IP 11槽与共享TI/心态保持不变，OOP完整回退V1.7的4-2-1-2-1。
+- 四类决策：继承IP/共享设置（结构性暂留、单项未准入）；替换V1.8 OOP五后卫翼卫/三中卫/前场三人组合；新增OOP结构回退复测；证据不足为无同seed A/B、无逐场槽位映射和数据解析风险。
+- D0完成；D1-D3待构建；D4/D5待验证。
