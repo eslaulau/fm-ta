@@ -2220,6 +2220,6 @@ D5至少完成38场英超后，以V1.8为直接父版基线，同时对照V1.7�
 - 项目门禁、V0.5固定父SHA、recipe SHA、11槽和IP四后场审计通过。
 - 原生catalog预检：22阶段；角色位置兼容；配置PI权限检查通过；15项PI override bits序列化。
 - D3独立回读：FMF外层roundtrip、全部成员解密/Zstandard校验、TAC完整解析、11个IP/OOP配对、22阶段位置/角色/PI精确回读、TI向量、style string/FourCC均通过（8/8）。
-- OOP角色的个人Trigger Press/凶狠铲抢PI不在当前catalog对应权限表内，因此本版没有写入；OOP压迫差异由角色默认行为和共享团队逼抢TI提供。Poacher的后点PI不被该角色允许，已移除；DMC保持位置属于默认固定行为，不重复写入PI。
+- 当前FM-TA 27.1.1 catalog的角色PI权限向量长度均为43；PI_MAP将个人Trigger Press More/Less映射到66/67、Tackling Get Stuck In映射到72，超出向量范围，因此生成器无法在任何IP/OOP角色上序列化这三项个人PI。该结论仅限当前catalog/serializer，不代表FM27游戏UI绝对不提供这些选项。团队TI“较多逼抢”仍已编码；GK谨慎铲抢PI在当前角色权限范围内保留。Poacher后点PI不被该角色允许，已移除；DMC保持位置属于默认固定行为，不重复写入PI。
 - 2.4形状复核：其JSON的IP位置集合实际是4-2-3-1（GK+四后卫+双中场+双边锋+AMC+ST），旧审计把它称作4-1-2-1-2属于标签错误；2.5没有继承2.4二进制。
 - 当前D3报告明确 `game_interactive_import=false`、`match_engine=false`。D4游戏内导入/显示/熟悉度未验证；D5无38场结果，不能宣称战术升级或达到PPG≥2.85。
