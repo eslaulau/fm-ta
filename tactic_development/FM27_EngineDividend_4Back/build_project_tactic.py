@@ -119,7 +119,8 @@ def main() -> int:
     report_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_bytes(output)
     report["output"] = str(output_path)
-    report["project_version"] = "2.0"
+    report["project_version"] = recipe.get("name", "unknown").rsplit("_", 1)[-1]
+    report["project_recipe_sha256"] = hashlib.sha256(recipe_path.read_bytes()).hexdigest()
     report["project_parent_version"] = "V0.5"
     report["project_parent_sha256"] = parent_sha
     report["project_style_registry_overlay"] = "temporary project-local V0.5 carrier; shared FM-TA registry unchanged"
