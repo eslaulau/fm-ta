@@ -1144,6 +1144,8 @@ V1.1与V1.2英超38场有相同的主客场对手配对，但只有27场日期�
 
 ### D1-D3构建结果
 - Run 45824386052；Artifact 15119676222；Artifact ZIP SHA-256 a84d03a5491f5728f646f91b1c69ffe877ddcd623c68e1f6860624d610907dba。
+
+- 最终哈希同步复核Run 45824948252；Artifact 15118729342；ZIP SHA-256 9337d4aa33302dd209bf0bc28df3b54fda13c44a35e0fda393a78819ccddd06b；FMF与报告字节级一致，项目门禁再次通过。
 - FMF 4,616 bytes；SHA-256 1cbdd6142fd40a60b1073915e78a3a9956f29c2a324383c8dd73213bb2457039；same-run report SHA-256 51eaa1a30dc0d6c60f5e5292ed5e421cf0465b6ba7c94a2a35a0e3f848255955。
 - D1原生catalog权限预检通过；D2 11槽/22阶段、IP四后场通过；D3 8/8离线二进制回读通过。
 - D3状态 offline_binary_roundtrip_verified_not_game_import_verified；game_interactive_import=false、match_engine=false。D4游戏导入待用户确认；D5待完整38场。
