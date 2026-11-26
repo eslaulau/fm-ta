@@ -38,4 +38,12 @@
 - 对每个后续版本，先登记用户确认的版本映射；未确认时写“未确认”，不得从文件名或最近一次导出推断。
 
 - V1.8 / Run45753659141：用户确认使用V1.8；英超38场21-9-8、98:55、72分；build 27.1.1+2511875；源存档SHA-256 `6c07ec389a2894a3d2a8829f2618b8dec337c06bb1a2e7af334d4acb798713e0`；数据partial/unverified，详情见V1.8赛季分析。
-- V1.9：由V1.8 D5触发，当前结构回退至V1.7 OOP 4-2-1-2-1，D0完成，等待D1–D3构建。
+- V1.9重新设计版：唯一父版本V1.8；recipe `V1.9_REDESIGN.json`；IP 4-3-3 DM / OOP 4-1-4-1；D0完成，D1-D3待构建。V1.9 Run165单独保留为旧回退实验，不登记为本版。
+
+
+## V1.9重新设计版｜外部引擎来源（2026-11-26）
+- metaFM 27.1.1总榜：https://metafm.net/leaderboard（72套、164,080场；同一AI game plans/相同球员，四种强弱条件综合PPG）。
+- metaFM 4-3-3 DM分类：https://metafm.net/formations/4-3-3-dm（6套、13,440场；领先样本1.882 PPG，IP 4-3-3 DM / OOP 5-2-3）。仅作为IP结构参考，不迁移其OOP或成绩。
+- metaFM 4-1-2-1-2 Diamond分类：https://metafm.net/formations/4-1-2-1-2-diamond（5套、11,200场；领先样本1.949 PPG；协议同上）。记录为未选择的结构参考，不代表无效。
+- metaFM 4-1-4-1分类：https://metafm.net/formations/4-1-4-1（27.1.1尚无样本，页面展示的是27.1.0单个560场样本）；OOP 4-1-4-1因此标记为本队待验证假设，不作为外部已证实META。
+- FM-Arena 27.1.1测试页：https://fm-arena.com/tactic-testing/（62套、83,700场；与metaFM协议不同，不合并样本）。
