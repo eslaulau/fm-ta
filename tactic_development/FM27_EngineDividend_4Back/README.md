@@ -24,7 +24,7 @@
 
 - **连续研发闭环（最高执行入口）：** [UPGRADE_GATE.md](UPGRADE_GATE.md)。用户提交赛季报告即默认启动完整分析、历史总账联动、引擎红利研究、唯一整体战术升级和FMF交付，不再把分析与升级拆开。
 
-## 项目统一入口（原始战术 V0.5｜当前候选 V1.9 R2）
+## 项目统一入口（原始战术 V0.5｜当前状态：整改中）
 
 - **研发规则（最高优先级）：** IP唯一硬约束为后场DL/DCL/DCR/DR四个位置槽，不固定4-2-3-1或任何IP数字阵型；其余IP位置与全部OOP结构完全开放。每轮只设计、输出、构建一个完整方案，不提供多套候选战术，不把局部单变量调整当作默认升级。详见 [正式研发规则](ANALYSIS_AND_ITERATION_RULES.md)。
 - **唯一版本总目录：** [VERSION_CATALOG.md](VERSION_CATALOG.md)（所有版本成绩、配方、构建请求、设计审计、构建报告、FMF 与赛季分析索引）。
@@ -34,7 +34,8 @@
 
 - **原始数据来源：** [SOURCE_REGISTER.md](SOURCE_REGISTER.md)（Exporter Run ID、原始报告 URL、版本映射及缺失来源登记）。
 - **原始战术：** [V0.5 原生基准](V0.5_BASELINE.md)，来源为 V21 原生快照；本项目全部历史追踪从 V0.5 开始。
-- **当前候选：** [V1.9 R2 配方](V1.9_REDESIGN_R2.json) · [设计审计](V1.9_REDESIGN_R2_DESIGN_AND_AUDIT.md) · [历史总账复核纠正记录](V1.9_REDESIGN_R2_HISTORICAL_REAUDIT_REQUIRED.md) · [Run169构建](https://github.com/eslaulau/fm-ta/actions/runs/45760556137)。D0历史总账复核现已完成，D1-D3技术构建通过；R2可进入D4游戏内核验，D5仍待完整赛季。R2仍是高风险待验证候选，不是已验证升级。V1.8仍是最近完成D5的研发基准。V1.8 D5分析见 [赛季报告](V1.8_SEASON_REPORT_ANALYSIS_45753659141.md)；V1.8联赛21-9-8、72分，防守机会指标未达标。
+- **历史未验证候选：** V1.9 R1/R2、V2.0、V2.1均有D1-D3构建记录，但未完成D4/D5；仅作历史实验与技术产物，不作为当前有效战术或性能升级。V1.8仍是最近完成D5的基准。详见 [整改总规划](PROJECT_REMEDIATION_PLAN.md)。
+
 - **历代最佳：** V1.6以28胜5平5负、89分、73.7%胜率刷新完整英超赛季纪录；V1.3仍是失球最少（30）且仅4负的防守基准。
 - **辅助版本执行记录：** [ITERATION_LOG.md](ITERATION_LOG.md)；**唯一权威决策与完整历史配置总账：** [TACTIC_INSTRUCTION_DECISION_LEDGER.md](TACTIC_INSTRUCTION_DECISION_LEDGER.md)。
 - **归档约束：** 此后本项目的版本文件全部放在当前目录；不再放进仓库根目录的通用 `build_requests/`。
