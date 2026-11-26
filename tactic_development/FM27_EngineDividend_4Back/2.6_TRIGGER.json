@@ -4,6 +4,6 @@
   "audit": "tactic_development/FM27_EngineDividend_4Back/2.6_DESIGN_AND_AUDIT.md",
   "parent_version": "V0.5",
   "parent_sha256": "e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257",
-  "trigger_reason": "Re-run after updating the recipe hash pin for the simplified playmaker role; proceed to native preflight and FMF build.",
-  "revision": 6
+  "trigger_reason": "Normalize the recipe name suffix so the D3 report identifies project_version 2.6; refresh the recipe hash pin.",
+  "revision": 7
 }
