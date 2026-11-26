@@ -4,8 +4,8 @@
 
 ## 当前状态
 
-- **当前开发版本：V1.6（父版 V1.5 / Run149；D0–D2完成，D3构建待验收）**
-- **最近完成阶段：V1.6 D0–D2分析与设计；D3原生FMF构建待执行**
+- **当前开发版本：V1.6 / Run162（D0–D3完成；D4/D5待验证）**
+- **最近完成阶段：D3原生FMF生成与独立回读；8/8通过**
 - **仍待验证：D4 游戏内导入；D5 比赛/赛季表现**
 - **最高完整英超胜率：71.1%**，由 V1.0、V1.3、V1.4 并列；其中 V1.3 以 88 分、4 负为综合最佳历史基准。
 - 版本比较必须使用英超联赛口径。非完整 38 场样本单独标记，不与完整赛季胜率排名混用。
@@ -60,7 +60,7 @@
 | V1.3 | [JSON](V1.3.json) | [JSON](V1.3_BUILD_REQUEST.json) | [设计审计](V1.3_DESIGN_AND_AUDIT.md) | [报告](V1.3_BUILD_REPORT.json) | [赛季分析](V1.3_SEASON_REPORT_ANALYSIS_45644106773.md) | Actions 历史 |
 | V1.4 | [JSON](V1.4.json) | [JSON](V1.4_BUILD_REQUEST.json) | [设计审计](V1.4_DESIGN_AND_AUDIT.md) | [报告](V1.4_BUILD_REPORT.json) | [赛季分析](V1.4_SEASON_REPORT_ANALYSIS_45727738275.md) | Actions 历史 |
 | V1.5 | [JSON](V1.5.json) | [JSON](V1.5_BUILD_REQUEST.json) | [设计审计](V1.5_DESIGN_AND_AUDIT.md) | [报告](V1.5_BUILD_REPORT.json) | [赛季分析](V1.5_SEASON_REPORT_ANALYSIS_45734426186.md) | Actions Run149 artifact |
-| V1.6 | [JSON](V1.6.json) | [JSON](V1.6_BUILD_REQUEST.json) | [设计审计](V1.6_DESIGN_AND_AUDIT.md) | D3待构建 | D5待提供 | 待构建 |
+| V1.6 | [JSON](V1.6.json) | [JSON](V1.6_BUILD_REQUEST.json) | [设计审计](V1.6_DESIGN_AND_AUDIT.md) | [构建报告](V1.6_BUILD_REPORT.json) | D5待提供 | Run162 FMF 4,480 bytes |
 
 ## 唯一研发入口与规则
 
