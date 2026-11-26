@@ -189,14 +189,9 @@
       },
       "out": {
         "pos": "DML",
-        "role": "ScreeningDefensiveMidfielder",
+        "role": "PressingDefensiveMidfielder",
         "duty": "D",
-        "pi": [
-          [
-            "TRIGGER_PRESS",
-            "MORE_OFTEN"
-          ]
-        ]
+        "pi": []
       }
     },
     {
