@@ -3,5 +3,5 @@
   "recipe": "2.4.json",
   "audit": "2.4_DESIGN_AND_AUDIT.md",
   "parent": "V0.5",
-  "rebuild": 2
+  "rebuild": 3
 }
