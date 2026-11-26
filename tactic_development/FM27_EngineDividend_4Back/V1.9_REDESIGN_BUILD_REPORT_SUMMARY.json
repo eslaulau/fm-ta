@@ -70,5 +70,7 @@
     "D3 native FMF build and all 8 required independent readback checks passed.",
     "The first Run166 preflight failed because OOP recipe labels incorrectly included OP prefixes; corrected labels and reran as Run167. Run166 produced no FMF and is not the final build.",
     "Game import and match performance have not been tested."
-  ]
+  ],
+  "build_request_commit": "8eddf01d5e277c5b4c59523d59e289e7f7270dec",
+  "build_commit": "8eddf01d5e277c5b4c59523d59e289e7f7270dec"
 }
