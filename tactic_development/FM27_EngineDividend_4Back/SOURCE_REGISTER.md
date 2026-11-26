@@ -85,3 +85,9 @@
 
 
 - 2.2 / Run45794923641：用户确认38场英超使用2.2；38/38场、26胜6平6负、84分、87:40；D5性能FAIL。FM27 build 27.1.1+2511875；Exporter v1.5.0；源存档SHA-256 `ed659d74cdfefa0136d6559697797051f430e0684a2f9c7ef8aa4f6541131963`；导出时间2026-11-26T09:46:58Z。战术配置未由Exporter导出，2.2映射来自用户声明。详细复盘见 `2.2_D5_SEASON_REVIEW_20261126.md`。
+
+## 2.3构建来源与验证｜2026-11-26
+- [GitHub Actions Run 45801670338](https://github.com/eslaulau/fm-ta/actions/runs/45801670338)，Artifact ID `15107846123`，名称 `FM27_EngineDividend_4Back_2.3`。
+- 从V0.5重生，父SHA `e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257`；FMF 4,528 bytes，SHA-256 `ebceb7d4da76b386007f124dfb1ca0b917fdcbb68b549debd274c4b74d45b5aa`。
+- 配方SHA-256 `eb6523f2b55f7e2ee6175ecb59f2366e76103d4e44e8a25bcb754b5a97f9fb8c`；D3八项二进制检查全部通过。D4/D5尚未完成。
+- 2.3为Whipped Crosses × Back Post单变量实验；D5结果不得从2.2历史报告推断。
