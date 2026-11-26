@@ -5,12 +5,12 @@
 | 战术版本 | Exporter Run | 本地分析文件 | 原始来源 |
 |---|---:|---|---|
 | V0.1 | 未在当前归档中定位 | README 历史记录 | 待补录，不猜测 URL |
-| V0.2 | 45381925241 | ITERATION_LOG.md | [Exporter 报告目录](https://github.com/eslaulau/FM27-Exporter)（原始路径需从历史记录补齐） |
-| V0.3 | 45391011796 | ITERATION_LOG.md | [Exporter 报告目录](https://github.com/eslaulau/FM27-Exporter)（原始路径需从历史记录补齐） |
-| V0.4 | 45399643857 | [分析](V0.4_SEASON_REPORT_ANALYSIS_45399643857.md) | [Exporter Run 45399643857](https://github.com/eslaulau/FM27-Exporter) |
-| V0.5 | 45540803100 | [分析](V0.5_SEASON_REPORT_ANALYSIS_45540803100.md) | [Exporter 仓库](https://github.com/eslaulau/FM27-Exporter) |
-| V0.6 | 45554864463 | [复核](V0.6_REANALYSIS_45554864463.md) | [Exporter 仓库](https://github.com/eslaulau/FM27-Exporter) |
-| V0.7 | 45564413834 | [复核](V0.7_REANALYSIS_45564413834.md) | [Exporter 仓库](https://github.com/eslaulau/FM27-Exporter) |
+| V0.2 | 45381925241 | ITERATION_LOG.md | [Exporter Run 45381925241](https://github.com/eslaulau/FM27-Exporter/tree/main/season-reports/FM27_EngineDividend_4Back_V0.2/45381925241) |
+| V0.3 | 45391011796 | ITERATION_LOG.md | [Exporter Run 45391011796](https://github.com/eslaulau/FM27-Exporter/tree/main/season-reports/FM27_EngineDividend_4Back_V0.3_20261124_run136/45391011796) |
+| V0.4 | 45399643857 | [分析](V0.4_SEASON_REPORT_ANALYSIS_45399643857.md) | [Exporter Run 45399643857](https://github.com/eslaulau/FM27-Exporter/tree/main/season-reports/FM27_EngineDividend_4Back_V0.4_20261124_run139/45399643857) |
+| V0.5 | 45540803100 | [分析](V0.5_SEASON_REPORT_ANALYSIS_45540803100.md) | [Exporter Run 45540803100](https://github.com/eslaulau/FM27-Exporter/tree/main/season-reports/V0.5/45540803100) |
+| V0.6 | 45554864463 | [复核](V0.6_REANALYSIS_45554864463.md) | [Exporter Run 45554864463](https://github.com/eslaulau/FM27-Exporter/tree/main/season-reports/V0.6/45554864463) |
+| V0.7 | 45564413834 | [复核](V0.7_REANALYSIS_45564413834.md) | [Exporter Run 45564413834](https://github.com/eslaulau/FM27-Exporter/tree/main/season-reports/V0.7/45564413834) |
 | V0.8 | 45570292427 | [分析](V0.8_SEASON_REPORT_ANALYSIS_45570292427.md) | [Exporter Run 45570292427](https://github.com/eslaulau/FM27-Exporter) |
 | V0.9 | 45584292488 | [分析](V0.9_SEASON_REPORT_ANALYSIS_45584292488.md) | [Exporter Run 45584292488](https://github.com/eslaulau/FM27-Exporter) |
 | V1.0 | 45602694823 | [分析](V1.0_SEASON_REPORT_ANALYSIS_45602694823.md) | [Exporter Run 45602694823](https://github.com/eslaulau/FM27-Exporter) |
