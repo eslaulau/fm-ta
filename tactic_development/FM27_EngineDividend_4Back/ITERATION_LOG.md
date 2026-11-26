@@ -1115,3 +1115,11 @@ V1.1与V1.2英超38场有相同的主客场对手配对，但只有27场日期�
 - 22/22阶段位置、角色、职责和PI均继承；IP四后场DL/DCL/DCR/DR不变；AML内锋进攻/内切/自由跑位保留以保护进攻产量候选。
 - 子配方：[V1.5.json](V1.5.json)；设计审计：[V1.5_DESIGN_AND_AUDIT.md](V1.5_DESIGN_AND_AUDIT.md)；构建请求：[FM27_EngineDividend_IP4Back_OOP42121_V1.5_20261126.json](../../build_requests/FM27_EngineDividend_IP4Back_OOP42121_V1.5_20261126.json)。
 - 本次Actions将执行catalog预检、原生FMF生成及D3独立回读；D4游戏导入、D5比赛效果仍须实际验证。
+
+
+### V1.5 Run149｜D3 构建结果
+
+- [FM27 Tactic Build Run149](https://github.com/eslaulau/fm-ta/actions/runs/45729221041)，success；Artifact ID `15076425618`；ZIP SHA-256 `87fb9d07f34214fb60cb945c4bf07613f740d17d4ac612d08164775b4a290be4`。
+- FMF 4,504 bytes，SHA-256 `c4d68446a7da3e4857bc12dc1a2a9fa2b0c34341ec9653c77b08ce2ccb951711`；same-run report 11,708 bytes，SHA-256 `b8a9c32e82c84eee2847c3328c25e4d569aedad4c64191cd4debe34be587a07f`。
+- D3 8/8 通过；22/22 阶段回读一致；IP后场DL/DCL/DCR/DR；心态3；防线高度较低；TI bits新增58。D4游戏导入、D5比赛引擎均未验证。
+- [V1.5_BUILD_REPORT.json](V1.5_BUILD_REPORT.json)。
