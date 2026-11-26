@@ -5,7 +5,7 @@
 - **研发规则（最高优先级）：** IP唯一硬约束为后场DL/DCL/DCR/DR四个位置槽，不固定4-2-3-1或任何IP数字阵型；其余IP位置与全部OOP结构完全开放。每轮只设计、输出、构建一个完整方案，不提供多套候选战术，不把局部单变量调整当作默认升级。详见 [正式研发规则](ANALYSIS_AND_ITERATION_RULES.md)。
 - **唯一版本总目录：** [VERSION_CATALOG.md](VERSION_CATALOG.md)（所有版本成绩、配方、构建请求、设计审计、构建报告、FMF 与赛季分析索引）。
 - **原始数据来源：** [SOURCE_REGISTER.md](SOURCE_REGISTER.md)（Exporter Run ID、原始报告 URL、版本映射及缺失来源登记）。
-- **当前正式研发版本：** [V1.9重新设计配方](V1.9_REDESIGN.json) · [完整设计审计](V1.9_REDESIGN_DESIGN_AND_AUDIT.md)；IP 4-3-3 DM / OOP 4-1-4-1。D0已完成，D1-D3待构建与回读，D4/D5待验证。旧V1.9 Run165保留为V1.7配方回退实验，不视为正式升级。V1.8仍是最近完成D5的研发基准。V1.8 D5分析见 [赛季报告](V1.8_SEASON_REPORT_ANALYSIS_45753659141.md)；V1.8联赛21-9-8、72分，防守机会指标未达标。
+- **当前正式研发版本：** [V1.9重新设计配方](V1.9_REDESIGN.json) · [完整设计审计](V1.9_REDESIGN_DESIGN_AND_AUDIT.md) · [Run167构建摘要](V1.9_REDESIGN_BUILD_REPORT_SUMMARY.json) · [Build Run167](https://github.com/eslaulau/fm-ta/actions/runs/45756670647)。IP 4-3-3 DM / OOP 4-1-4-1；D0-D3通过（8/8独立回读、22/22阶段）；D4游戏导入和D5赛季表现待验证。旧V1.9 Run165保留为V1.7配方回退实验，不视为正式升级。V1.8仍是最近完成D5的研发基准。V1.8 D5分析见 [赛季报告](V1.8_SEASON_REPORT_ANALYSIS_45753659141.md)；V1.8联赛21-9-8、72分，防守机会指标未达标。
 - **历代最佳：** V1.6以28胜5平5负、89分、73.7%胜率刷新完整英超赛季纪录；V1.3仍是失球最少（30）且仅4负的防守基准。
 - **唯一历史主线：** [ITERATION_LOG.md](ITERATION_LOG.md)；**逐项指令沿革：** [TACTIC_INSTRUCTION_DECISION_LEDGER.md](TACTIC_INSTRUCTION_DECISION_LEDGER.md)。
 - **归档约束：** 此后本项目的版本文件全部放在当前目录；不再放进仓库根目录的通用 `build_requests/`。
