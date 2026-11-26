@@ -102,14 +102,30 @@
 
 ## 9. 项目专属构建命令
 
-在仓库根目录运行（PowerShell / Python 3.12）：
+在仓库根目录运行（PowerShell / Python 3.12）。先把父版本 FMF 的真实路径填入 `--parent-fmf`：
 
 ```powershell
 py -3.12 tactic_development\FM27_EngineDividend_4Back\build_project_tactic.py `
   --recipe tactic_development\FM27_EngineDividend_4Back\<本轮配方>.json `
   --audit tactic_development\FM27_EngineDividend_4Back\<本轮设计审计>.md `
-  --output .\artifacts\<本轮版本>.fmf `
-  --report .\artifacts\<本轮版本>.report.json
+  --parent-fmf D:\<父版本>.fmf `
+  --output tactic_development\FM27_EngineDividend_4Back\builds\<本轮版本>.fmf `
+  --report tactic_development\FM27_EngineDividend_4Back\builds\<本轮版本>.report.json
 ```
 
-该命令的执行顺序固定为：校验父 FMF 与配方 SHA-256 → 项目 PPG/历史规则审计 → FM-TA 通用 catalog 权限预检 → FM-TA 原生 FMF 生成。审计失败即退出，不调用后两步；配方、审计和输出必须在项目目录内，输出已存在时拒绝覆盖。测试命令：`py -3.12 -m unittest discover -s tactic_development\\FM27_EngineDividend_4Back -p test_project_iteration_gate.py`。
+设计审计中的父 FMF 和 recipe SHA-256 必须与实际文件一致。可用以下命令读取哈希，再填写审计文件：
+
+```powershell
+Get-FileHash .\D:\<父版本>.fmf -Algorithm SHA256
+Get-FileHash .\tactic_development\FM27_EngineDividend_4Back\<本轮配方>.json -Algorithm SHA256
+```
+
+执行顺序固定为：校验父 FMF 与配方 SHA-256 → 项目 PPG/历史规则审计 → FM-TA 通用 catalog 权限预检 → FM-TA 原生 FMF 生成。项目审计失败即退出，不调用后两步；配方、审计和输出必须在项目目录内，输出已存在时拒绝覆盖。
+
+运行项目门禁回归测试：
+
+```powershell
+py -3.12 -m unittest discover -s tactic_development\FM27_EngineDividend_4Back -p test_project_iteration_gate.py
+```
+
+项目专属入口是本项目正式迭代的唯一有效构建流程。直接调用 FM-TA 通用生成器即使成功生成 FMF，也不构成本项目完成一次合规迭代。
