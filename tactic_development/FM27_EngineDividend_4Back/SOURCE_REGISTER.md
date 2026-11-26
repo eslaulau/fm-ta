@@ -21,7 +21,6 @@
 | V1.5 | 45734426186 | [分析](V1.5_SEASON_REPORT_ANALYSIS_45734426186.md) | [Exporter Run 45734426186](https://github.com/eslaulau/FM27-Exporter/tree/main/season-reports/1/45734426186) |
 | V1.6 | 45744550318 | [分析](V1.6_SEASON_REPORT_ANALYSIS_45744550318.md) | [Exporter Run 45744550318](https://github.com/eslaulau/FM27-Exporter/tree/main/season-reports/1/45744550318) |
 | V1.7 | 45748944770 | [赛季分析](V1.7_SEASON_REPORT_ANALYSIS_45748944770.md)；[设计审计](V1.7_DESIGN_AND_AUDIT.md) | [Exporter Run 45748944770](https://github.com/eslaulau/FM27-Exporter/tree/main/season-reports/1/45748944770) |
-
 | V1.8 | —（D5待实测） | [设计审计](V1.8_DESIGN_AND_AUDIT.md) | 不适用；V1.8当前为D0–D3构建阶段，尚无赛季报告 |
 
 ## 来源完整性规则
