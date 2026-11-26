@@ -79,8 +79,24 @@ def validate(recipe_path: Path, audit_path: Path, parent_fmf: Path) -> list[str]
     if "PPG ≥ 2.85" not in audit and "PPG >= 2.85" not in audit:
         errors.append("Design audit must explicitly state the PPG 2.85 objective.")
     for decision in DECISIONS:
-        if not re.search(rf"(?m)^###\s*{re.escape(decision)}\s*$", audit):
+        section = re.search(
+            rf"(?ms)^###\s*{re.escape(decision)}\s*$\\n(.*?)(?=^###\\s|^##\\s|\\Z)",
+            audit,
+        )
+        if not section:
             errors.append(f"Design audit must contain a dedicated '{decision}' section.")
+        else:
+            payload_lines = [
+                line.strip() for line in section.group(1).splitlines()
+                if line.strip()
+                and not line.strip().startswith("- [")
+                and not (line.strip().startswith("- ") and line.strip().endswith(("：", ":")))
+            ]
+            if not payload_lines:
+                errors.append(f"Design audit section '{decision}' is empty; add evidence-backed decisions.")
+
+    if not any("PPG" in line and any(word in line for word in ("提高", "收益", "积分")) for line in audit.splitlines()):
+        errors.append("Design audit must state an explicit PPG/points improvement path.")
 
     parent_version = one_line_value(audit, "父版本")
     if not parent_version or not re.fullmatch(r"V\d+(?:\.\d+)?(?:[-_A-Za-z0-9.]*)?", parent_version):
