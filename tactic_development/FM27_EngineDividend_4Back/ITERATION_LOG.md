@@ -1314,3 +1314,15 @@ V1.1与V1.2英超38场有相同的主客场对手配对，但只有27场日期�
 - **外部参照：** metaFM 27.1.1 4-3-3 DM类别领先样本1.882 PPG（2,240场，IP 4-3-3 DM/OOP 5-2-3）；仅支持IP结构研究方向。metaFM 4-1-4-1当前无27.1.1有效样本，本版OOP 4-1-4-1是本队结构假设，不宣称外部验证。FM-Arena与metaFM测试协议不合并。
 - **四类决策、完整22阶段配置、目标指标与风险：** 见 [V1.9重新设计审计](V1.9_REDESIGN_DESIGN_AND_AUDIT.md)。
 - **D阶段：** D0完成；D1 catalog-backed角色/职责/PI权限预检待执行；D2 11槽/22阶段结构检查待执行；D3原生FMF生成与独立回读待执行；D4/D5待验证。
+
+
+### V1.9重新设计版｜D1-D3构建完成（Run167）
+
+- D1 catalog-backed角色、职责、PI权限预检：通过。
+- D2 11槽/22阶段结构检查：通过；IP后场四槽为DL/DCL/DCR/DR；OOP 4-1-4-1。
+- D3 原生FMF生成与8/8独立回读：通过。
+- GitHub Actions：[Run167](https://github.com/eslaulau/fm-ta/actions/runs/45756670647)，artifact ID `15088380920`，artifact SHA-256 `56fa213cb581f84db5c243e685d164bc8f05422e0bd69c32aca9b7f97bdd61cb`。
+- FMF：4,688 bytes；SHA-256 `4b948f9dfeccddc8ae93e225a085a6d1f5b74e9ecd723670a68a7a1b032c4f85`。
+- 同次报告：12,183 bytes；SHA-256 `a43fa446f7b4cddfff2a49c8bc146460508e46f2b62233be875f3690ed6ffd8b`。
+- Run166首次预检因OOP角色标签误带OP前缀失败，未生成FMF；修正后Run167全项通过。
+- 构建状态：`offline_binary_roundtrip_verified_not_game_import_verified`；游戏内导入和比赛效果仍未验证。
