@@ -1168,6 +1168,6 @@ V1.1与V1.2英超38场有相同的主客场对手配对，但只有27场日期�
 ## V1.6 设计迭代｜父版 V1.5
 
 - 恢复心态 ment=4、标准防线，撤销V1.5的谨慎心态/较低防线组合；保留V1.4/V1.5的AML内锋进攻结构。
-- OOP DMR与DML Trigger Press均改为MORE_OFTEN；DCR/DCL仍LESS_OFTEN，测试双后腰积极压迫、双中卫保护。
+- OOP DMR边路补位后腰改Trigger Press MORE_OFTEN；DML从屏障后腰改为原生固定More Often的逼抢后腰；DCR/DCL仍LESS_OFTEN，测试双后腰积极压迫、双中卫保护。
 - 11槽/22阶段位置角色职责不变；有球四后场DL/DCL/DCR/DR保持。
 - 四类决策、完整父子差异与风险见 [V1.6_DESIGN_AND_AUDIT.md](V1.6_DESIGN_AND_AUDIT.md)。
