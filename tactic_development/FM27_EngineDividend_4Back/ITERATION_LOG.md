@@ -1287,3 +1287,15 @@ V1.1与V1.2英超38场有相同的主客场对手配对，但只有27场日期�
 - Same-run report：11,678 bytes；SHA-256 `91438ae6978a2789d91b2942a17d52d7c1ac5726d5069e9073bfd8f721cdb93c`；artifact ZIP SHA-256 `ab65cf6d881e24b75e804728e060a7c5d67e67abf7b7e0b6c7eb01dd8faa28d7`。
 - 构建摘要：[V1.9_BUILD_REPORT_SUMMARY.json](V1.9_BUILD_REPORT_SUMMARY.json)。
 - 状态 `offline_binary_roundtrip_verified_not_game_import_verified`；D4游戏内导入与D5比赛/赛季表现仍待验证。
+
+
+---
+
+## 2026-11-26｜研发规则纠偏（最高优先级）
+
+- 用户明确：IP阶段只要求后场四个位置为DL、DCL、DCR、DR；不要求固定4-2-3-1，也不要求任何其他固定数字阵型。IP其余七个位置槽位及结构完全开放。
+- OOP阶段完全开放，不要求维持四后卫，也不要求与IP同阵型。
+- 每轮只设计、输出、构建一个完整战术方案。研究可覆盖多种机制，但不向用户提供多套战术候选，也不并行构建多套FMF。
+- 迭代方式改为整体诊断、整体设计、整体验证；允许协同修改多个位置/角色/职责/PI/TI/心态。局部单变量测试只作为解决明确因果疑问的专项工具，不是默认升级流程。
+- V1.9 Run165实质复用V1.7整套配方，重新定性为OOP结构回退实验，不认定为正式性能升级；保留原始构建与哈希，不覆盖历史。
+- 本次同步修订：ANALYSIS_AND_ITERATION_RULES.md、AGENTS.md、README.md、VERSION_CATALOG.md、TACTIC_INSTRUCTION_DECISION_LEDGER.md。
