@@ -7,7 +7,7 @@
 > - IP：4-1-2-1-2 Diamond，四后场槽严格为DL/DCL/DCR/DR；OOP：5-2-3。五名球员跨位置转换：DMC→DC、MCR/MCL→DMR/DML、STR/STL→AMR/AML。
 > - 历史V1.9 Run165仍是V1.7配方回退实验；历史R1 Run167为IP 4-3-3 DM / OOP 4-1-4-1。二者均保留原配方、哈希和构建记录，不覆盖；R1因当前27.1.1外部证据更新而被R2取代为当前研发候选，不宣称R1比赛失败。
 > - Run169：[Actions](https://github.com/eslaulau/fm-ta/actions/runs/45760556137)，artifact ID `15089946643`；D1/D2/D3全部通过；8/8独立回读、22/22阶段精确回读。FMF 4,688 bytes，SHA-256 `b199063dec9f8745d692ba2abcb78664bdbaa41184d8ea03455afaf6fefea4a5`；same-run report SHA-256 `3d72fd1365ab27beedc5f97e7adea34a22bd40432a5fdff40aa8243812a69d62`；artifact ZIP SHA-256 `79ee002b82e3a9e7a27ead21e20c092cddcaae533cf24f0d9c291895346a3a09`。
-> - 机器摘要：[V1.9_REDESIGN_R2_BUILD_REPORT_SUMMARY.json](V1.9_REDESIGN_R2_BUILD_REPORT_SUMMARY.json)。D3状态 `offline_binary_roundtrip_verified_not_game_import_verified`；D4游戏内导入未验证，D5比赛效果未验证。
+> - 机器摘要：[V1.9_REDESIGN_R2_BUILD_REPORT_SUMMARY.json](V1.9_REDESIGN_R2_BUILD_REPORT_SUMMARY.json)。D3状态 `offline_binary_roundtrip_verified_not_game_import_verified`；D0历史总账审计未验收（详见[V1.9 R2历史复核纠正记录](V1.9_REDESIGN_R2_HISTORICAL_REAUDIT_REQUIRED.md)）；D4/D5暂缓，待D0补齐后再安排。
 >
 > ---
 > **2026-11-26 当前权威规则与版本定性修订**
@@ -873,3 +873,11 @@ V0.9 ST-only Run3 是已取代草案，不属于正式版本主线。V0.5 是 V2
 - **替换淘汰：** R1的IP4-3-3 DM/OOP4-1-4-1当前不再作为主线；V1.8旧版OOP高位逼抢翼卫+补位边中卫+MCR单独回撤结构不再沿用。
 - **新增待验证：** IP菱形四后卫/OOP5-2-3及五人换位、边后卫留守、DMC回撤、双中场双后腰、双前锋回撤为边锋。
 - **证据不足：** 本队跨位置熟悉度、外部隐藏PI、球员个人角色/PI因果、任何比赛效果；D4/D5未完成。
+
+
+## V1.9 R2 纠正状态｜历史总账审计未验收（2026-11-26）
+
+- R2的Run169离线构建和8/8回读、22/22阶段结果仍然有效；不删除、不覆盖FMF或历史构建。
+- R2的D0此前被过早标记完成。虽然存在V1.0–V1.8汇总表，但逐版本配方/22阶段沿革、历史输球和平局横向复核及配置决策链未完整完成。
+- 因此R2暂时只是“已构建、历史审计待补”候选；不得把D1-D3技术通过写成完整研发闭环。D4/D5正式验证暂缓。
+- 纠正详情：[V1.9_REDESIGN_R2_HISTORICAL_REAUDIT_REQUIRED.md](V1.9_REDESIGN_R2_HISTORICAL_REAUDIT_REQUIRED.md)。
