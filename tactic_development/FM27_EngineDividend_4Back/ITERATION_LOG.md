@@ -1326,3 +1326,8 @@ V1.1与V1.2英超38场有相同的主客场对手配对，但只有27场日期�
 - 同次报告：12,183 bytes；SHA-256 `a43fa446f7b4cddfff2a49c8bc146460508e46f2b62233be875f3690ed6ffd8b`。
 - Run166首次预检因OOP角色标签误带OP前缀失败，未生成FMF；修正后Run167全项通过。
 - 构建状态：`offline_binary_roundtrip_verified_not_game_import_verified`；游戏内导入和比赛效果仍未验证。
+
+ 
+## 后续每轮迭代日志的强制追踪字段（2026-11-26新增）
+
+从下一轮开始，每轮日志必须链接对应赛季分析和追踪矩阵，并包含：ISS/EXP编号、历史多维基准、输球/平局模式、四类决策、父版→子版配置变化、收益—代价、下一轮D5验证目标及失败条件。新报告到来时，必须先回顾上一轮全部目标并标记达成/部分达成/未达成/无法判定，再记录本轮新诊断。旧历史条目不追溯伪造缺失字段；本规则从新增轮次生效。模板：[SEASON_TO_TACTIC_TRACEABILITY_TEMPLATE.md](SEASON_TO_TACTIC_TRACEABILITY_TEMPLATE.md)。
