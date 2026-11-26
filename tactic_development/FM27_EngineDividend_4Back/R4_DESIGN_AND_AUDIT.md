@@ -181,7 +181,7 @@ PPG 策略 SHA-256：3e0bb63315a72569016cae00fd30e276a5146dbb0977277b412d27496f1
 - [x] 位置绩效矩阵覆盖IP/OOP 22槽，并标注证据等级。
 - [x] 四类决策、低效淘汰清单、引擎错位设计、风险和D5指标齐全。
 - [x] 原生目录PI权限已预检：Outlet前场角色允许Tackle Harder与Trigger Press More Often；HoldingFullBack/CoveringCentreBack不强写固定关闭的More Often。
-- [x] D0-D3项目门禁与原生构建通过（Workflow Run 45854019401；8/8独立回读通过；FMF SHA-256 8fbe0bddac5e7645a42715e378a8d5dd67400dc9e0f1b7be3ea7c2427febf899）。
+- [x] D0-D3项目门禁与原生构建通过（Run 45854019401；审计哈希刷新后的最终复现 Run 45854255851 亦通过；8/8独立回读；FMF SHA-256 8fbe0bddac5e7645a42715e378a8d5dd67400dc9e0f1b7be3ea7c2427febf899）。
 - [ ] D4游戏内导入待用户确认。
 - [ ] D5完整38场赛季报告待补。
 
