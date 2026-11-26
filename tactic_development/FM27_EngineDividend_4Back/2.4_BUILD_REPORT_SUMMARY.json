@@ -1,0 +1,32 @@
+{
+  "version": "2.4",
+  "name": "FM27_EngineDividend_4Back_2.4_HistoricalStrengthsFusion",
+  "status": "D3_PASS_D4_PENDING_D5_PENDING",
+  "created_at": "2026-11-26",
+  "parent_version": "V0.5",
+  "parent_sha256": "e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257",
+  "recipe": "2.4.json",
+  "recipe_sha256": "46265fe00676d6c409f9d216520874948e43623607adedb2cc3f1db7a9360e74",
+  "fmf_file": "FM27_EngineDividend_4Back_2.4.fmf",
+  "fmf_bytes": 4536,
+  "fmf_sha256": "50bbec5beb21f528c0504abde8f37575b21dbb4b85b506f4ae125cfe8fa9ce77",
+  "report_file": "FM27_EngineDividend_4Back_2.4.report.json",
+  "report_sha256": "ab760959eb58eca3e5c93d6f753a7c462741f2eb540c7bde14ce6eed3ca050c9",
+  "workflow_run_id": 45803243163,
+  "workflow_run_url": "https://github.com/eslaulau/fm-ta/actions/runs/45803243163",
+  "artifact_id": 15108511626,
+  "artifact_name": "FM27_EngineDividend_4Back_2.4",
+  "design": "IP copied from V1.8; OOP copied from V1.3; assembled as complete 11-slot/22-phase hybrid and rebuilt from V0.5",
+  "checks": {
+    "fmf_outer_roundtrip": true,
+    "all_member_decrypt_and_zstd_checksums": true,
+    "tac_full_parse": true,
+    "eleven_ip_oop_pairs": true,
+    "twenty_two_positions_roles_pi_readback_exact": true,
+    "pi_permissions_checked_against_catalog": true,
+    "team_instruction_vector_readback": true,
+    "native_style_string_and_code_readback": true
+  },
+  "game_interactive_import": false,
+  "match_engine": false
+}
