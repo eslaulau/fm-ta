@@ -41,7 +41,7 @@ class ProjectGateTests(unittest.TestCase):
                 "allowed_modifications": gate.ALLOWED_MODIFICATIONS,
             },
         }), encoding="utf-8")
-        gate.RULES.write_text("PPG ≥ 2.85\nxG≥100\nIP阵型只允许三种；红框TI固定。\n不以现实足球理论作为否决依据；强制引擎行为错位设计。\n每轮从 V0.5 重生；最高优先级。", encoding="utf-8")
+        gate.RULES.write_text("PPG ≥ 2.85\nxG≥100\nIP阵型只允许三种；红框TI固定。\n内部历史战术总账为唯一参考。", encoding="utf-8")
         gate.LEDGER.write_text("PPG 2.85 xG≥100", encoding="utf-8")
         self.addCleanup(self.restore_gate_paths)
         self.recipe = self.root / "candidate.json"
@@ -93,8 +93,7 @@ class ProjectGateTests(unittest.TestCase):
         )
         self.audit.write_text(
             "版本：gate-test\n项目最高目标：PPG ≥ 2.85；38场xG≥100\n"
-            "父版本：V0.5\n重生基准：V0.5\n"
-            f"重生基准 FMF SHA-256：{gate.V05_BASELINE_SHA256}\n"
+            "父版本：V1.3\n"
             f"父 FMF SHA-256：{parent_sha}\n本轮配方 SHA-256：{recipe_sha}\n"
             f"项目规则 SHA-256：{rules_sha}\n决策总账 SHA-256：{ledger_sha}\n"
             f"PPG 策略 SHA-256：{policy_sha}\n固定战术边界 SHA-256：{fixed_sha}\n位置绩效标准 SHA-256：{standard_sha}\n"
@@ -193,12 +192,12 @@ class ProjectGateTests(unittest.TestCase):
         self.write_recipe_and_audit()
         self.assertTrue(any("only position, role, duty and PI are authorized fields" in e for e in self.validate()))
 
-    def test_latest_version_cannot_become_parent(self):
+    def test_historical_tactic_can_be_parent(self):
         self.audit.write_text(
-            self.audit.read_text(encoding="utf-8").replace("父版本：V0.5", "父版本：V1.8"),
+            self.audit.read_text(encoding="utf-8").replace("父版本：V1.3", "父版本：V1.8"),
             encoding="utf-8",
         )
-        self.assertTrue(any("父版本：V0.5" in e for e in self.validate()))
+        self.assertEqual(self.validate(), [])
 
     def test_ip_back_four_is_mandatory(self):
         self.valid_recipe["p"][4]["in"]["pos"] = "DMC"
