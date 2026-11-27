@@ -6,7 +6,6 @@
 - 每轮从总账中选择实际父版本或多个组件参考，记录父版本及父FMF SHA；按当前固定边界筛除不合规设置。
 - 当前边界：IP只允许4-2-3-1/4-3-3/4-1-2-3；OOP位置映射固定；心态4；红框15项TI固定；角色/职责、PI和非红框TI可调整。
 - V0.5仍可作为原生FMF序列化技术载体，但不再代表战术配置必须从V0.5重建。
-- 不使用外部战术网站、榜单、论坛或外部引擎资料；外部参考资料已从本项目目录移除。
 - 没有D5证据的历史版本不补造成绩；D3构建成功不代表游戏内导入或赛季表现成功。
 - 唯一历史总账：[TACTIC_INSTRUCTION_DECISION_LEDGER.md](TACTIC_INSTRUCTION_DECISION_LEDGER.md)。
 
@@ -36,7 +35,6 @@
 > - 唯一目标：IP有球阶段DL/DCL/DCR/DR各一次，完整英超38场至少109分（PPG≥2.85）。
 > - 最近完成D5：2.2（84分，FAIL）；历史最高：V1.6（89分）。
 > - 历史最新D3候选曾为2.5；现由R3作为当前唯一主线，R3已通过D0-D3，D4/D5待验。
-> - 2.2从V0.5原生FMF重生，IP 4-1-2-1-2 Diamond，OOP 5-2-3；11槽位置/角色/职责与metaFM公开菱形样本逐项对应。它是待验证候选，不是实战升级，也没有证明达到PPG 2.85。
 > - V1.9 R2、V2.1保留为历史结构/技术参考；不得自动继承。2.3仍是抽击传中单变量历史候选；2.4是V1.8 IP × V1.3 OOP历史融合候选；2.5保留为历史候选；当前唯一主线为从V0.5重生的R3 IP 4-2-3-1 / OOP无锋5-2-3。
 > - 2.2首次构建Run：[45789108253](https://github.com/eslaulau/fm-ta/actions/runs/45789108253)；审计哈希更新后复核Run：[45789543029](https://github.com/eslaulau/fm-ta/actions/runs/45789543029)，Artifact ID `15101682456`；FMF 4,528 bytes；SHA-256 `7feba49ad389125b64690ce00feaf01717f70ae80cb5854eec614e41fc058a34`。
 
@@ -51,7 +49,6 @@
 
 ## 历史状态快照（2026-11-26，后续R4 D5与R5追加）
 
-> 2026-11-26：研发规则已修订：IP仅要求DL/DCL/DCR/DR四个后场位置，不固定任何IP阵型；OOP完全开放；每轮只设计和构建一个完整方案。每轮战术迭代/赛季复盘必须同步更新 `TACTIC_INSTRUCTION_DECISION_LEDGER.md`、`ITERATION_LOG.md`、本目录与 `SOURCE_REGISTER.md`，并逐个GitHub read-back。详细门禁见 `ANALYSIS_AND_ITERATION_RULES.md` 第七节。
 
 - **最近完成D5：2.2（84分，未达标）；历史最高积分仍为V1.6（89分）。**
 - **当前研发状态：R3已完成D0-D3，等待D4游戏内导入及D5完整38场赛季验证；2.2已完成D5并判定FAIL。** V0.5是每轮固定重生参照，所有后续版本均不因版本号较新自动成为父版。
@@ -126,9 +123,7 @@
 - [跨版本指令决策台账](TACTIC_INSTRUCTION_DECISION_LEDGER.md)
 - [分析与迭代规则](ANALYSIS_AND_ITERATION_RULES.md)
 - 当前战术升级按四层执行：结构搜索与空间协同 → 角色/职责引擎协同 → PI/TI/OI服务结构；详见正式规则第3.1–3.6节。
-- [外部引擎基准](EXTERNAL_ENGINE_BENCHMARK.md)
 - [角色/PI审计模板](ROLE_PI_AUDIT_TEMPLATE.md)
-- [原始报告来源登记](SOURCE_REGISTER.md)
 
 ## 归档规则（强制）
 
@@ -176,7 +171,6 @@
 - 配方：[2.2.json](2.2.json)；设计审计：[2.2_DESIGN_AND_AUDIT.md](2.2_DESIGN_AND_AUDIT.md)；触发：[2.2_TRIGGER.json](2.2_TRIGGER.json)。
 - GitHub Actions：首次构建[Run 45789108253](https://github.com/eslaulau/fm-ta/actions/runs/45789108253)；审计哈希复核[Run 45789543029](https://github.com/eslaulau/fm-ta/actions/runs/45789543029)；最新Artifact ID 15101682456。
 - FMF：4,528 bytes；SHA-256 7feba49ad389125b64690ce00feaf01717f70ae80cb5854eec614e41fc058a34；same-run report SHA-256 ab436693df94409860b0ca4d6eb57ec79ca3b3ba6d643fdea72c5112ab6ed7e8。
-- 方案：IP 4-1-2-1-2 Diamond，OOP 5-2-3；11槽位置/角色/职责与metaFM公开菱形样本逐项对应；五名球员跨位。
 - D1-D3：原生权限预检通过；11槽/22阶段通过；8/8独立二进制回读通过。
 - D4：用户声明本赛季使用2.2；Exporter不导出战术配置，不能独立核验战术身份。
 - D5：[完整38场复盘](2.2_D5_SEASON_REVIEW_20261126.md)；26胜6平6负，84分，87:40，xG81.83，98次绝佳机会；**性能FAIL，未达到109分**。原始报告：[Exporter Run45794923641](https://github.com/eslaulau/FM27-Exporter/tree/main/season-reports/1/45794923641)。
@@ -292,7 +286,6 @@
 - 配方：[R5.2.json](R5.2.json)；设计审计：[R5.2_DESIGN_AND_AUDIT.md](R5.2_DESIGN_AND_AUDIT.md)；机器清单/哈希刷新：[prepare_R5_2_audit.py](prepare_R5_2_audit.py)。
 - IP：4-1-2-3 DM Wide。IP 四后场严格为 DL/DCL/DCR/DR；DCL AdvancedCentreBack A、DL InsideFullBack D、DR PlaymakingWingBack S；双肋部攻击者、双边锋和中锋。
 - OOP：5-2-3。IP DMC 转 DC 构成第五后卫；MCL/MCR 转 DML/DMR；ST 转 AMC，AML/AMR保持两翼。
-- 外部引擎资料只用于提出迁移假设，不继承外部战术的PPG/xG成绩。所有22个阶段配置均为新增待验证/U。
 - D0 PASS：项目规则、四类决策、22项机器manifest与recipe精确匹配、V0.5父SHA通过。
 - D1 PASS：当前原生catalog位置/角色/职责/PI权限预检通过；DCL采用四后卫兼容AdvancedCentreBack A；D3回读验证8/8。
 - D2 PASS：IP 11槽、OOP 11槽，DL/DCL/DCR/DR各一次；全部22阶段位置/角色/PI配置完整。
@@ -303,3 +296,6 @@
 - D5 双门槛：同一38场联赛至少109分且全队xG至少100，两项同时通过。
 - 本次拒绝记录：R5.1 IP 4-1-2-1-2 Diamond / OOP 4-3-1-2 已由用户拒绝；保留其D3技术历史，不作为候选、不安排追加测试。
 
+
+
+> 后续版本比较只引用内部历史总账，不再维护外部战术来源目录。
