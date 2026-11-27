@@ -203,17 +203,17 @@ D3不等于D4，D4不等于D5。没有真实产物、同次构建报告、独立
 
 
 
-### 4.3 R5（D0审计材料已准备；项目门禁与D1-D3尚未执行）
+### 4.2 R5（D0审计材料已准备；项目门禁与D1-D3尚未执行）
 
 - 版本：R5；父版本/重生基准固定V0.5，父FMF SHA-256 `e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257`。
-- 配方：[R5.json](R5.json)，SHA-256 `090cfdf5317668cdabe117ed209e8092cb4ca8f67d12a4148215ffde73e42864`；设计审计：[R5_DESIGN_AND_AUDIT.md](R5_DESIGN_AND_AUDIT.md)，SHA-256 `b22221291760168365522f9973a92029aa3ce389b0c60bec5b3a65d06951f857`；追踪矩阵：[R5_SEASON_TO_TACTIC_TRACEABILITY.md](R5_SEASON_TO_TACTIC_TRACEABILITY.md)，SHA-256 `7f5941e1d9b66f631e507fe8f89c4cad4a3e8cc859175af49690e973f67e6922`。
+- 配方：[R5.json](R5.json)，SHA-256 `090cfdf5317668cdabe117ed209e8092cb4ca8f67d12a4148215ffde73e42864`；设计审计：[R5_DESIGN_AND_AUDIT.md](R5_DESIGN_AND_AUDIT.md)，SHA-256 `6ffe83186a713588b292be73bff601f9dd5cac39cfe84d1b37156299884e5ec8`；追踪矩阵：[R5_SEASON_TO_TACTIC_TRACEABILITY.md](R5_SEASON_TO_TACTIC_TRACEABILITY.md)，SHA-256 `7f5941e1d9b66f631e507fe8f89c4cad4a3e8cc859175af49690e973f67e6922`。
 - 唯一主线：IP 4-2-3-1 / OOP 5-2-3无锋三出口。按R4 D5的最新PPG整改项，保留OOP三出口候选，恢复Pass Into Space与Hit Early Crosses，DR WingBack Attack回Support，DMR BoxToBox Support回DefensiveMidfielder Defend；另重做OOP左右边后卫与三中卫的压迫分层。
 - 设计取舍：本轮没有采用ARCHITECTURE_REVIEW中的菱形IP优先结构，因为当前PPG策略对R4 D5给出了更具体的四项整改项；这不代表4-2-3-1外部排名更好。菱形结构仍保留为后续研究，不与本轮混合。
 - 静态审计：11槽、IP四后场、OOP位置唯一性、22槽位审计行、四类决策、引擎错位字段及哈希字段共16项静态核对通过；这不是Python项目验证器结果。
 - D0项目验证器尚未执行；D1原生预检、D2构建结构检查、D3 FMF和独立回读均待本地标准构建通道。当前没有R5.fmf或R5.report.json。
 - D4游戏内导入与角色/职责/PI/TI/熟悉度确认未开始；D5完整38场英超未开始。R5不宣称有效或达到109分/100 xG。
 
-### 4.2 其他重要版本状态
+### 4.3 其他重要版本状态
 
 - 2.2：完整D5，84分/81.83 xG，FAIL；复盘见[2.2_D5_SEASON_REVIEW_20261126.md](2.2_D5_SEASON_REVIEW_20261126.md)。
 - 2.3：用户实测数个回合全部失败，正式放弃。
@@ -314,7 +314,7 @@ D3不等于D4，D4不等于D5。没有真实产物、同次构建报告、独立
 - V1.6分支：另有 `V1.6_R1.*`、`V1.6_R2.*`，均需按其状态读取，不得混作V1.6正式赛季版本。
 - V1.9重设计分支：`V1.9_REDESIGN.*)、`V1.9_REDESIGN_R2.*)及对应历史重审/traceability文件。
 - 2.x：读取 `2.x.json`、`2.x_DESIGN_AND_AUDIT.md`、`2.x_TRIGGER.json`、`2.x_BUILD_REPORT_SUMMARY.json`（若存在）、`builds/2.x.report.json`（若存在）、对应FMF/Actions artifact（若存在）、D4/D5报告（若存在）。
-- R3/R4：读取 `R3.json`/`R4.json`、对应 `*_DESIGN_AND_AUDIT.md`、`*_TRIGGER.json`、完整D5复盘及对应build report/FMF。\n- R5：读取 `R5.json`、`R5_DESIGN_AND_AUDIT.md`、`R5_SEASON_TO_TACTIC_TRACEABILITY.md`、D0-D3报告/FM F（生成后）及后续D4/D5结果。
+- R3/R4：读取 `R3.json`/`R4.json`、对应 `*_DESIGN_AND_AUDIT.md`、`*_TRIGGER.json`、完整D5复盘及对应build report/FMF。\n- R5：读取 `R5.json`、`R5_DESIGN_AND_AUDIT.md`、`R5_SEASON_TO_TACTIC_TRACEABILITY.md`、D0-D3报告/F​​MF（生成后）及后续D4/D5结果。
 - 当前目录中的构建脚本：[materialize_v05_baseline.py](materialize_v05_baseline.py)、[validate_project_iteration.py](validate_project_iteration.py)、[build_project_tactic.py](build_project_tactic.py)、[test_project_iteration_gate.py](test_project_iteration_gate.py)。
 - 构建产物目录：[builds/](builds/)。
 
