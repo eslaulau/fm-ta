@@ -4,6 +4,6 @@
   "parent": "V0.5",
   "parent_sha256": "e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257",
   "design": "IP 4-1-2-3 DM Wide / OOP 5-2-3",
-  "revision": "2026-11-27T16:32:00+09:00",
-  "notes": "Retrigger after applying exact project-validator audit heading and PPG target syntax. Native PI permission corrections retained."
+  "revision": "2026-11-27T16:36:00+09:00",
+  "notes": "Retrigger after restoring explicit IP/OOP duty column in the 22-row performance audit table; native PI fixes and exact gate syntax retained."
 }
