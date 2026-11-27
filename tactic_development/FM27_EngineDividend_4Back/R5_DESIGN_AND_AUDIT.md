@@ -11,7 +11,7 @@
 重生基准 FMF SHA-256：e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257  
 父 FMF SHA-256：e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257  
 本轮配方 SHA-256：1990f40739388ed9370431532b3d898a8d414956427f7b0aebe8e434313f8b5c  
-项目规则 SHA-256：3f5b03ed932aab6dd3dd7fb119946af6401cb964c7df127e9762c5b615b8aec3  
+项目规则 SHA-256：12b1adbe4ab801e0aed746ef593ceaa4366092467111217d949384eb167ccf05  
 决策总账 SHA-256：cc2816c25148f0494a9923269fbc793663c3e3d0e616358c16beea75e2791a3f  
 PPG 策略 SHA-256：e3904a61aaf71e508fdd33d15705fd9613b0d8b6b8bdb5f97fe497743aac2605  
 位置绩效标准 SHA-256：d79a62508aa31490a62c4c63524aa91146b953fd2eb82252e8501312e07838f1
@@ -166,6 +166,8 @@ metaFM高排名样本的IP三后卫是结构依赖，不能进入R5；可迁移�
 - **防守TI：** High Press、Much Lower Defensive Line、Drop Off More、Trigger Press More Often、Counter Press、Trap Outside、Stop Crosses。
 - **个人PI：** IP后场短传/少冒险；DR与AMR拉开宽度、后点目标、少射门；ST远门柱；OOP后线五人+双后腰七人Tackle Harder；Trigger Press按角色原生权限与分层配置。角色默认GameID文本未知，不对其内容作推断。
 - **与R4的关键差异：** 恢复Pass Into Space与Hit Early Crosses；DR职责回到Support；DMR由BoxToBox Support回到DefensiveMidfielder Defend；OOP右侧PressingFullBack与左侧HoldingFullBack非对称；两侧中卫Covering、额外DC Stopping；R5仍从V0.5重建，不复制R4二进制。
+
+现实足球理论不是战术筛选/否决标准；现实足球合理性不得作为否决 R5 引擎实验的理由，只有项目硬约束、原生权限和可复核数据可以否决。
 
 ## 7. 强制审计：引擎行为错位设计
 
