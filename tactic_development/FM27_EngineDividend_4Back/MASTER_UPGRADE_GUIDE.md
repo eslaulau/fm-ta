@@ -274,7 +274,7 @@ D3不等于D4，D4不等于D5。没有真实产物、同次构建报告、独立
 ### 6.3 引擎行为与原生指令研究（涉及机制时必读）
 
 - [ENGINE_DIVIDEND_PRIORITY_INDICATORS_27.1.1.md](ENGINE_DIVIDEND_PRIORITY_INDICATORS_27.1.1.md)：用户指定的当前build优先研究指标。
-- [EXTERNAL_ENGINE_BENCHMARK.md](EXTERNAL_ENGINE_BENCHMARK.md)：外部引擎测试/榜单资料及其适用边界。
+- [EXTERNAL_ENGINE_BENCHMARK.md](EXTERNAL_ENGINE_BENCHMARK.md)：**唯一指定外部研究来源库**，列出FM-Arena、MetaFM/FM-Base、SI官方论坛、Sortitoutsi、Reddit、FM Scout、Ludens Media、PlayGM及跨阵型机制迁移规则。
 - [TACTICAL_RESEARCH_DECISIONS_20261126.md](TACTICAL_RESEARCH_DECISIONS_20261126.md)：2026-11-26位置级战术研究结论与待测方向。
 - [INSTRUCTION_EFFECTIVENESS_AUDIT_20261126.md](INSTRUCTION_EFFECTIVENESS_AUDIT_20261126.md)：指令有效性专项审查。
 - [ROLE_DEFAULT_BEHAVIOR_AND_MAPPING_RECHECK_20261126.md](ROLE_DEFAULT_BEHAVIOR_AND_MAPPING_RECHECK_20261126.md)：角色默认行为GameID、PI/TI映射和当前证据缺口。
@@ -309,7 +309,7 @@ D3不等于D4，D4不等于D5。没有真实产物、同次构建报告、独立
 ### 6.6 外部赛季报告与原始数据来源
 
 - FM27-Exporter赛季报告必须从对应D5复盘文件中的原始Run/URL读取；项目复盘保留来源链接、run ID和数据覆盖说明。
-- metaFM榜单/阵型分类及其他外部机制来源以 [SOURCE_REGISTER.md](SOURCE_REGISTER.md) 和 [EXTERNAL_ENGINE_BENCHMARK.md](EXTERNAL_ENGINE_BENCHMARK.md) 登记为准。
+- 外部研究只以 [EXTERNAL_ENGINE_BENCHMARK.md](EXTERNAL_ENGINE_BENCHMARK.md) 列出的指定来源为当前检索目录；每条外部证据、机制拆解和跨阵型迁移判定须按该文件字段登记。SOURCE_REGISTER.md仅负责赛季原始数据和版本映射来源。
 - 外部数据只能提出假设或提供对照，不得替代用户本队38场D5。
 
 ---
