@@ -1,12 +1,15 @@
 # FM27 引擎红利四后卫｜版本总目录
 
-## 当前权威状态｜2026-11-27 固定边界生效
+## 当前研发方式｜2026-11-27
 
-- **当前没有符合最新规则的候选战术，也没有通过D5双门槛的战术。** 研发规则已由用户收紧：IP仅4-2-3-1、4-3-3、4-1-2-3三种固定11槽布局；OOP位置映射锁定V0.5；心态固定4；红框15项TI固定；只允许调整角色/职责、PI和非红框TI。
-- 权威规则：[TACTIC_FIXED_CONSTRAINTS.md](TACTIC_FIXED_CONSTRAINTS.md)；D0机器门禁：[validate_project_iteration.py](validate_project_iteration.py)；全面审查：[RULESET_AUDIT_20261127.md](RULESET_AUDIT_20261127.md)。
-- R5.3和R6均撤销当前候选资格；历史D0-D3技术成功只作为旧规则下的构建记录，均不得进入D4/D5。R5.3为公开来源结构改编，R6为旧范围4-2-2-2设计。
-- 最近完整D5仍为R4：46分、PPG1.211、xG58.86、xGA61.02；没有版本达到109分与xG100双门槛。
-- 固定重生基准：V0.5原始FMF SHA-256 `e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257`。
+- **不强制从V0.5重新生成。** V0.5–V1.9、2.0–2.6、R3–R6及各分支全部作为内部历史战术参考，完整配方统一链接到 [TACTIC_INSTRUCTION_DECISION_LEDGER.md](TACTIC_INSTRUCTION_DECISION_LEDGER.md)。
+- 每轮从总账中选择实际父版本或多个组件参考，记录父版本及父FMF SHA；按当前固定边界筛除不合规设置。
+- 当前边界：IP只允许4-2-3-1/4-3-3/4-1-2-3；OOP位置映射固定；心态4；红框15项TI固定；角色/职责、PI和非红框TI可调整。
+- V0.5仍可作为原生FMF序列化技术载体，但不再代表战术配置必须从V0.5重建。
+- 不使用外部战术网站、榜单、论坛或外部引擎资料；外部参考资料已从本项目目录移除。
+- 没有D5证据的历史版本不补造成绩；D3构建成功不代表游戏内导入或赛季表现成功。
+- 唯一历史总账：[TACTIC_INSTRUCTION_DECISION_LEDGER.md](TACTIC_INSTRUCTION_DECISION_LEDGER.md)。
+
 
 ### 历史构建记录｜R5.3 D0-D3（2026-11-27；已撤销候选资格）
 - GitHub Actions [Run 45938668343](https://github.com/eslaulau/fm-ta/actions/runs/45938668343)，结论success；Artifact ID `15171239855`，名称 `FM27-EngineDividend-4Back-R5.3-D3`，ZIP SHA-256 `8bcaa8c480f7a1c26d95ca006a7f4796bdb90e5dba1824a6b3745f2c87820de6`。
