@@ -4,6 +4,6 @@
   "parent": "V0.5",
   "parent_sha256": "e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257",
   "design": "IP 4-1-2-3 DM Wide / OOP 5-2-3",
-  "revision": "2026-11-27T16:42:00+09:00",
-  "notes": "Re-trigger after replacing the back-three-only OverlappingCentreBack with four-back-compatible AdvancedCentreBack Attack and synchronizing audit/manifest rationale."
+  "revision": "2026-11-27T16:55:00+09:00",
+  "notes": "Final reproducibility run after syncing policy, decision ledger, master guide, version catalog, audit status, and expanded artifact contents (FMF + report + recipe + generated audit)."
 }
