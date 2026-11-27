@@ -61,6 +61,7 @@
 6. recipe根字段、base字段、槽位字段和阶段字段均有严格允许列表，拒绝额外配置字段。
 7. R5.3和R6列入 `blocked_versions`，禁止旧版本重新作为当前候选。
 8. D0审计还核对固定边界文档、项目规则、决策总账、PPG策略和位置绩效标准的SHA-256。
+9. 全部项目构建工作流（2.6、R3/R4、R5/R5.1/R5.2/R5.3/R6、V1.6-R1/R2、通用项目入口）统一调用 `build_project_tactic.py`，由同一D0门禁先行校验；未发现可绕过项目D0的正式FMF生成工作流。
 
 ## 4. 文档与项目文件更新
 
@@ -88,9 +89,9 @@
 
 **状态：通过**
 
-- GitHub Actions： [Project Gate Regression Run 45947666335](https://github.com/eslaulau/fm-ta/actions/runs/45947666335)
-- 运行结果：**25 tests passed**
-- 覆盖项包括：允许阵型白名单与精确位置布局、IP四后场、OOP位置锁定、心态4、15项红框TI、29项TI显式覆盖、14项非红框TI可调整、禁止历史淘汰配置复活、禁止额外recipe字段、22阶段机器决策清单和V0.5父文件SHA。
+- GitHub Actions： [Project Gate Regression Run 45947948722](https://github.com/eslaulau/fm-ta/actions/runs/45947948722)
+- 运行结果：**28 tests passed**
+- 覆盖项包括：4-2-3-1/4-3-3/4-1-2-3三种布局正向通过、其他阵型拒绝、IP四后场、OOP位置锁定、心态4、15项红框TI、29项TI显式覆盖、14项非红框TI可调整、角色/职责/PI可调整、禁止历史淘汰配置复活、禁止额外recipe字段、22阶段机器决策清单和V0.5父文件SHA。
 
 ## 7. 当前项目状态
 
