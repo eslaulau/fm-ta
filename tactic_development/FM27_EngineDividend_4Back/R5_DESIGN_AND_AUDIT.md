@@ -83,9 +83,11 @@ R4相对R3：积分-20、进球-13、失球+20、xG-6.14、xGA+14.84、射门-44
 - V1.7→V1.8：OOP改无锋5-2-3后xG+14.58、进球+19，但xGA+15.54、对手绝佳机会+20、积分-10。OOP 5-2-3不能只看进攻增益。
 - R4采用OOP 5-2-3三出口，但整季46分、xG58.86。R5保留三出口是PPG策略明确指定的下一轮实验方向，不代表R4三出口已被证明有效；本轮通过更改前场压迫层级、边后卫角色和IP供给指令重新验证。
 - R3→R4的传球接应由Pass Into Space改Pass To Feet，进攻耐心由Hit Early Crosses改Work Ball Into Box；同时射门减少44次、xG下降6.14、传中成功率下降3.4个百分点。它们共同构成需要回退的配置簇，不能单项归因。
-- R4 DR WingBack Attack改为Support、DMR BoxToBox Support改为DefensiveMidfielder Defend，是PPG_TARGET_POLICY明确提出的下一轮方向；位置级统计不能证明单项因果，但DR位置只有1.18 xG/3助攻，DMC合并位置7.70 xG，未提供支持继续加大DR攻击或DMR前插的正向证据。
+- R4 DR WingBack Attack改为Support、DMR BoxToBox Support改为DefensiveMidfielder Defend，是PPG_TARGET_POLICY明确提出的下一轮方向；位置级统计不能证明单项因果，但DR位置只有1.18 xG/3助攻，DMC合并位置7.70 xG，未提供支持继续加大DR攻击或DMR前插的正向证据。R4的Invite Crosses与xGA61.02并存，且27.1.1社区讨论对CPU传中威胁提出风险警示，因此R5改用Stop Crosses；这是风险控制假设，不是已证明的因果。
 
-**为何本轮没有采用菱形IP：** ARCHITECTURE_REVIEW_20261126.md将4-1-2-1-2菱形列为外部样本优先结构；但R4 D5复盘及当前PPG_TARGET_POLICY给出的最近、最具体整改项是保留R4 OOP三出口、恢复Pass Into Space/Hit Early Crosses、DR WingBack Attack回Support、DMR BoxToBox Support回DefensiveMidfielder Defend。R5按这组最新本队D5问题建立单一验证主线，因此保留4-2-3-1槽位映射；这不代表4-2-3-1在外部优于菱形。菱形仍是后续结构研究候选，不在本轮同时混入，避免改变多个结构变量后无法解释结果。\n\n## 4. 外部引擎研究与跨阵型迁移
+**为何本轮没有采用菱形IP：** ARCHITECTURE_REVIEW_20261126.md将4-1-2-1-2菱形列为外部样本优先结构；但R4 D5复盘及当前PPG_TARGET_POLICY给出的最近、最具体整改项是保留R4 OOP三出口、恢复Pass Into Space/Hit Early Crosses、DR WingBack Attack回Support、DMR BoxToBox Support回DefensiveMidfielder Defend。R5按这组最新本队D5问题建立单一验证主线，因此保留4-2-3-1槽位映射；这不代表4-2-3-1在外部优于菱形。菱形仍是后续结构研究候选，不在本轮同时混入，避免改变多个结构变量后无法解释结果。
+
+## 4. 外部引擎研究与跨阵型迁移
 
 本轮外部来源以27.1.1当前可见资料为主；不同平台测试协议不合并，外部PPG不换算成本队38场赛季预期。
 
@@ -100,7 +102,9 @@ R4相对R3：积分-20、进球-13、失球+20、xG-6.14、xGA+14.84、射门-44
 | Ludens Media | 本轮未找到可复核的FM27.1.1同类引擎样本 | 证据不足 | 未取得可核验的build/样本 |
 | PlayGM/爆棚 | 27.1.1 Juventus 3-4-2-1：同一存档432场，289胜90平53负，2.22 PPG；左翼卫更靠前、Channel Forward向中路两侧空当跑、右前腰回撤、中锋留中路接反击 | 角色/阶段转换可重构迁移；3-4-2-1整体结构依赖 | 单一存档社区测试，主客场差异明显（主2.55、客1.88） |
 
-本轮补充的可读战术配置：Sortitoutsi的XPOS META 4-2-3-1提供IP四后场、早传空当和压迫PI参考；其OOP 4-4-1-1不迁移。FM Scout的Asymmetric Block虽以4-2-3-1起始，但IP转为3-2-5，违反四后场硬约束，整体排除。PlayGM 3421仅迁移Channel Forward与前腰回撤/出口机制。Reddit的跨用户观察只作风险提示。\n\n主要来源URL：
+本轮补充的可读战术配置：Sortitoutsi的XPOS META 4-2-3-1提供IP四后场、早传空当和压迫PI参考；其OOP 4-4-1-1不迁移。FM Scout的Asymmetric Block虽以4-2-3-1起始，但IP转为3-2-5，违反四后场硬约束，整体排除。PlayGM 3421仅迁移Channel Forward与前腰回撤/出口机制。Reddit的跨用户观察只作风险提示。
+
+主要来源URL：
 - FM-Arena：https://fm-arena.com/
 - MetaFM leaderboard：https://metafm.net/leaderboard
 - SI官方战术讨论：https://community.sigames.com/forums/forum/19-tactics-training-strategies-discussion/
@@ -123,7 +127,7 @@ metaFM高排名样本的IP三后卫是结构依赖，不能进入R5；可迁移�
 - **固定结构：** IP四后场位置槽DL/DCL/DCR/DR各一次；R5从V0.5原生FMF重生，V0.5仅作为原生格式/父文件载体，不继承R4 FMF。
 - **结构性候选：** 保留R4 OOP三出口角色：AML InsideOutletWinger、AMR WideOutletWinger、AMC CentralOutletAttackingMidfielder；保留为待验证候选，不是已准入。
 - **攻击候选：** IP InsideForward A、FreeRole A、Winger S、TargetForward A、InsideFullBack D作为R5试验角色；由于R4全队xG58.86低于100，任何IP进攻槽均不得标记准入保留。
-- **机制候选：** 高位遭遇线、后撤防线、Pass Into Space、Hit Early Crosses、高球/后点目标、Tackle Harder及分层Trigger Press，均按用户指定优先指标和当前原生权限作为待验证组合。
+- **机制候选：** 高位遭遇线、后撤防线、Pass Into Space、Hit Early Crosses、高球/后点目标、后线+双后腰选择性Tackle Harder及分层Trigger Press，均作为待验证组合。R4的Invite Crosses因高xGA风险不再复用。
 
 ### 替换淘汰
 
@@ -159,7 +163,7 @@ metaFM高排名样本的IP三后卫是结构依赖，不能进入R5；可迁移�
 - **OOP：5-2-3无锋三出口。** DR PressingFullBack Defend、DCR/DCL CoveringCentreBack Defend、DL HoldingFullBack Defend、DC StoppingCentreBack Defend；DML WideCoverDefensiveMidfielder Defend、DMR DroppingDefensiveMidfielder Defend；AML InsideOutletWinger Attack、AMR WideOutletWinger Attack、AMC CentralOutletAttackingMidfielder Attack。
 - **心态：Positive（recipe ment=5）**，沿用R4心态值；本轮不把心态变化与进攻指令变化混在一起。
 - **进攻TI：** More Direct、Much Higher Tempo、Wider、Counter Attack、Bypass Press、Long Goal Kicks、Target Forward distribution、Pass Into Space、Hit Early Crosses、High Crosses、Encourage Dribbling、Discourage Long Shots。
-- **防守TI：** High Press、Much Lower Defensive Line、Drop Off More、Trigger Press More Often、Counter Press、Trap Outside、Invite Crosses。
+- **防守TI：** High Press、Much Lower Defensive Line、Drop Off More、Trigger Press More Often、Counter Press、Trap Outside、Stop Crosses。
 - **个人PI：** IP后场短传/少冒险；DR与AMR拉开宽度、后点目标、少射门；ST远门柱；OOP后线五人+双后腰七人Tackle Harder；Trigger Press按角色原生权限与分层配置。角色默认GameID文本未知，不对其内容作推断。
 - **与R4的关键差异：** 恢复Pass Into Space与Hit Early Crosses；DR职责回到Support；DMR由BoxToBox Support回到DefensiveMidfielder Defend；OOP右侧PressingFullBack与左侧HoldingFullBack非对称；两侧中卫Covering、额外DC Stopping；R5仍从V0.5重建，不复制R4二进制。
 
@@ -169,17 +173,17 @@ metaFM高排名样本的IP三后卫是结构依赖，不能进入R5；可迁移�
 - 错位配置：IP四后场DL/DCL/DCR/DR；DR WingBack Support→OOP PressingFullBack；DL InsideFullBack→OOP HoldingFullBack；DML→DC StoppingCentreBack；DCR/DCL→CoveringCentreBack；DMR→DML WideCover DM；AMC FreeRole→DMR Dropping DM；AML/AMR/ST→AML/AMR/AMC三出口。
 - 角色/指令默认行为：当前原生catalog显示PressingFullBack的Trigger Press More Often为角色固定项，HoldingFullBack与CoveringCentreBack的Trigger Press Less Often为角色固定项，StoppingCentreBack的Trigger Press More Often为角色固定项；WideCover DM、Dropping DM和三种Outlet角色允许显式More Often。角色默认GameID的可读文本尚缺，故不把这些固定项扩写成未经核实的跑动/盯人规则。
 - FM27引擎预期执行行为：团队高位遭遇线与团队More Often触发主动逼抢；角色固定项让右后卫/额外DC更主动、左右保护中卫与左侧HoldingFullBack更少离位；双后腰和前场出口承担更积极的压迫；这些是由原生权限结构提出的行为假设，必须通过游戏内与D5验证。
-- 对手AI可能：被迫向边路或更早长传，尝试绕过高位第一线；若压迫被一脚传球破解，可能攻击高位遭遇线与Much Lower后防线之间的区域；面对Invite Crosses可能增加传中，或转向禁区前沿二次球。
+- 对手AI可能：被迫向边路或更早长传，尝试绕过高位第一线；若压迫被一脚传球破解，可能攻击高位遭遇线与Much Lower后防线之间的区域；面对Stop Crosses可能改为内切/肋部渗透，或增加禁区前沿二次球。
 - 预期创造的空间：右侧PressingFullBack前顶时，右侧外线由前场出口与中场覆盖接管；左侧HoldingFullBack留守形成不对称rest-defence；三中卫中两侧Covering保护肋部，中央Stopping角色承担主动接触；前场三出口在夺回球权后拉开对手后场。
 - 对PPG的收益路径：恢复R4丢失的射门量与传中完成数，争取把R4非胜场1.33-1.34场均xG提升到更接近胜场2.01；更多早传/空当传球和三出口反击提高低产比赛破门概率，减少平局并转化为胜场；最终以109分验收，不以进球/xG单项替代积分。
-- 可能副作用：Much Lower防线可能让对手在禁区前沿控球；High Press与深防线间距可能被利用；Invite Crosses可能增加传中与二点球；PressingFullBack前顶会留下右侧身后；两名Covering中卫过度保护可能让中央DC承担过多上抢；高节奏+直传+早传可能增加失误/越位；三出口若未回防可能造成中场人数不足。
+- 可能副作用：Much Lower防线可能让对手在禁区前沿控球；High Press与深防线间距可能被利用；Stop Crosses可能降低对手传中，但可能让对手转向内切/肋部渗透；PressingFullBack前顶会留下右侧身后；两名Covering中卫过度保护可能让中央DC承担过多上抢；高节奏+直传+早传可能增加失误/越位；三出口若未回防可能造成中场人数不足。
 - D5量化验证指标：完整38场积分≥109且全队xG≥100；同时记录射门、射正、xG/射门、绝佳机会、传中尝试/完成率、越位、非胜场xG/射门、主客场PPG/xGA、对手禁区内xG与绝佳机会。任何一项硬门槛未达到即FAIL；过程指标用于定位失败原因，不替代硬门槛。另记录对手传中尝试/完成与由传中产生的xG；纪律数据仅作为副作用观察，不作为战术质量门槛。
 
 ## 8. 收益—代价、风险与失败条件
 
 | 维度 | 预期收益 | 代价/风险 | 量化观察 |
 |---|---|---|---|
-| 进攻产量 | 恢复Pass Into Space与Hit Early Crosses，提高射门/传中完成数 | 早传质量不足、越位/失误增加 | xG、射门、xG/shot、传中完成率、越位 |
+| 进攻产量 | 恢复Pass Into Space与Hit Early Crosses，提高射门/传中完成数 | 早传质量不足、越位/失误增加 | xG、射门、xG/shot、传中完成率、对手传中尝试/完成、传中来源xG、越位 |
 | 前场纵深 | TargetForward与三出口反击增加禁区接应点 | 过度依赖高球、二点球无人接应 | 绝佳机会、禁区内射门、前场触球 |
 | OOP转换 | 5-2-3、双后腰和三中卫形成保护层 | 角色换位熟悉度不足，右侧前顶后身后空间 | 对手xG、绝佳机会、转换后首脚推进 |
 | 压迫 | 右侧/中央主动压迫，左右Covering保护 | 对手一脚转移或中路第三人破解 | 对手前场进入、直塞、禁区前沿射门 |
