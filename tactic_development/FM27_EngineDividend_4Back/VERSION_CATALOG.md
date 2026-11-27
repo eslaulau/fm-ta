@@ -1,10 +1,10 @@
 # FM27 引擎红利四后卫｜版本总目录
 
-## 当前权威状态｜门禁整改完成，待重新设计（2026-11-27）
+## 当前权威状态｜R5.2 全新重设计登记（2026-11-27）
 
-- **当前没有有效战术候选。** R5设计资格已撤销；不得进入D4/D5，不得作为下一版模板。
-- R5历史recipe、原始D0审计、D3 FMF、report、Actions artifact全部保留，仅证明历史文件/技术构建事实，不证明设计合规或比赛有效。
-- 项目策略将R5列入blocked_versions；新的D0门禁已强制要求22项机器决策清单与recipe精确匹配。GitHub Actions回归测试16/16通过：[Run 45927303919](https://github.com/eslaulau/fm-ta/actions/runs/45927303919)。下一轮可开始全新设计，但必须从V0.5原始FMF重生。
+- **当前没有已验证有效战术。** R5及R5.1设计资格均已撤销；R5.2是当前唯一重设计候选，D0-D3待执行，尚不得进入D4/D5。
+- R5与R5.1历史recipe、audit、FMF、report、Actions artifact全部保留；R5.1由用户明确拒绝，不继续D4/D5。历史D3仅证明文件技术结构，不证明比赛有效。
+- 项目策略将R5、R5.1列入blocked_versions；新的D0门禁强制要求22项机器决策清单与recipe精确匹配。GitHub Actions回归测试16/16通过：[Run 45927303919](https://github.com/eslaulau/fm-ta/actions/runs/45927303919)。R5.2从V0.5原始FMF重生；D0-D3须由本项目专用构建工作流执行。
 - 最近完整D5仍为R4：46分、PPG1.211、xG58.86、xGA61.02；未有版本达到109分与xG100双门槛。
 - 固定重生基准：V0.5原始FMF SHA-256 `e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257`。
 
@@ -270,4 +270,18 @@
 - 构建期间门禁曾按规则拒绝不兼容内容：先修正审计标题匹配，再按当前catalog更正OOP角色映射，最后移除ChannelForward不允许的远门柱PI。所有问题均通过修正recipe/审计解决，未跳过或放宽门禁。
 - D4：尚未由用户确认FM27游戏内导入、中文显示、阵型/IP-OOP角色职责及球员位置熟悉度。
 - D5：没有本版Exporter赛季报告；必须由用户确认实际战术映射后完成完整38场联赛。最终仍需同时达到109分与xG100；本轮不宣称实战有效或已达标。
+
+
+---
+
+## R5.2｜IP 4-1-2-3 DM Wide / OOP 5-2-3｜重新设计登记（2026-11-27）
+
+- **当前状态：唯一重设计候选；D0-D3待执行，D4/D5未验证。** 本轮是对用户拒绝R5.1后的新设计，不是对菱形结构进行微调。
+- 父版本/重生基准：V0.5；原生FMF SHA-256 `e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257`。
+- 配方：[R5.2.json](R5.2.json)；设计审计：[R5.2_DESIGN_AND_AUDIT.md](R5.2_DESIGN_AND_AUDIT.md)；机器清单/哈希刷新：[prepare_R5_2_audit.py](prepare_R5_2_audit.py)。
+- IP：4-1-2-3 DM Wide。IP 四后场严格为 DL/DCL/DCR/DR；DCL OverlappingCentreBack A、DL InsideFullBack D、DR PlaymakingWingBack S；双肋部攻击者、双边锋和中锋。
+- OOP：5-2-3。IP DMC 转 DC 构成第五后卫；MCL/MCR 转 DML/DMR；ST 转 AMC，AML/AMR保持两翼。
+- 外部引擎资料只用于提出迁移假设，不继承外部战术的PPG/xG成绩。所有22个阶段配置均为新增待验证/U。
+- D5 双门槛：同一38场联赛至少109分且全队xG至少100，两项同时通过。
+- 本次拒绝记录：R5.1 IP 4-1-2-1-2 Diamond / OOP 4-3-1-2 已由用户拒绝；保留其D3技术历史，不作为候选、不安排追加测试。
 
