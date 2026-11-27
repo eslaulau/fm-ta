@@ -279,7 +279,7 @@
 - **当前状态：唯一重设计候选；D0-D3待执行，D4/D5未验证。** 本轮是对用户拒绝R5.1后的新设计，不是对菱形结构进行微调。
 - 父版本/重生基准：V0.5；原生FMF SHA-256 `e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257`。
 - 配方：[R5.2.json](R5.2.json)；设计审计：[R5.2_DESIGN_AND_AUDIT.md](R5.2_DESIGN_AND_AUDIT.md)；机器清单/哈希刷新：[prepare_R5_2_audit.py](prepare_R5_2_audit.py)。
-- IP：4-1-2-3 DM Wide。IP 四后场严格为 DL/DCL/DCR/DR；DCL OverlappingCentreBack A、DL InsideFullBack D、DR PlaymakingWingBack S；双肋部攻击者、双边锋和中锋。
+- IP：4-1-2-3 DM Wide。IP 四后场严格为 DL/DCL/DCR/DR；DCL AdvancedCentreBack A、DL InsideFullBack D、DR PlaymakingWingBack S；双肋部攻击者、双边锋和中锋。
 - OOP：5-2-3。IP DMC 转 DC 构成第五后卫；MCL/MCR 转 DML/DMR；ST 转 AMC，AML/AMR保持两翼。
 - 外部引擎资料只用于提出迁移假设，不继承外部战术的PPG/xG成绩。所有22个阶段配置均为新增待验证/U。
 - D5 双门槛：同一38场联赛至少109分且全队xG至少100，两项同时通过。
