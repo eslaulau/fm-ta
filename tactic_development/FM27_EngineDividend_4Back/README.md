@@ -31,7 +31,7 @@
 
 - **赛季分析到战术升级追踪模板：** [SEASON_TO_TACTIC_TRACEABILITY_TEMPLATE.md](SEASON_TO_TACTIC_TRACEABILITY_TEMPLATE.md)。每个问题必须贯通赛季数据、历史版本、引擎机制、配置决策、收益代价和下一轮D5验证。
 
-- **原始数据来源：** [SOURCE_REGISTER.md](SOURCE_REGISTER.md)（Exporter Run ID、原始报告 URL、版本映射及缺失来源登记）。
+- **历史数据来源：** 各版本用户确认的Exporter Run和赛季报告链接已直接登记在唯一历史总账中。
 - **原始战术：** [V0.5 原生基准](V0.5_BASELINE.md)，来源为 V21 原生快照；本项目全部历史追踪从 V0.5 开始。
 - **当前构建候选：** 暂无符合2026-11-27固定边界的候选。R6为旧规则下的技术历史，已撤销候选资格；下一版须在三种IP阵型及固定TI/OOP/心态边界内重新生成。历史D5基准仍见版本总目录。
 
@@ -48,7 +48,7 @@
 - ROLE_PI_AUDIT_TEMPLATE.md：审查单轮完整角色/PI/TI 协同、数据归因边界与验收阶段。
 - TACTIC_INSTRUCTION_DECISION_LEDGER.md：跨版本指令决策台账，逐项追踪 IP/OOP 角色、职责、PI、TI、结构组合的版本沿革、证据、保留/替换状态与下一轮验证指标。
 - 阵型级角色约束：边中卫系列与套上中卫只适用于三中卫外侧槽位；生成器 preflight 已增加阵型检查，历史 V0.9/V1.0 的非法角色条目见迭代日志。
-- EXTERNAL_ENGINE_BENCHMARK.md：外部引擎研究与榜单基准，按 IP 结构和 build 区分。
+- 不维护外部战术参考库；禁止引入外部战术/榜单/论坛资料。
 - ITERATION_LOG.md：唯一版本主线、唯一父版本和构建/复盘记录。
 - V0.8_SEASON_REPORT_ANALYSIS_45570292427.md：V0.8 正式赛季报告复核与 V0.9 草案/正式版差异记录。
 - V0.9.json / V0.9_DESIGN_AND_AUDIT.md：正式 V0.9 综合版 recipe 与审查。
@@ -98,14 +98,14 @@ D3 原生构建通过只说明文件能生成并独立回读；D4 游戏内显�
 - 球员逐场报告：876次有效出场中786次识别（89.7%），但位置语义除GK外仅为候选、role_code 未解码，不把球员表现归因到具体战术角色。
 - build 27.1.1 未被 fmsave 0.14.3 upstream 注册；使用借用 schema-6 布局，数据交叉核验良好但整体仍标记 partial/unverified；3个正式比赛进球差异未归属。
 - **版本决策：不创建 V0.6。** 当前没有一条 TI/PI/角色/职责/位置可被数据明确指认成负收益；传中完成率与非胜场转化偏差暂列待研究。V0.5 全部配置保留。
-- 最新 27.1.1 外部基准见 [EXTERNAL_ENGINE_BENCHMARK.md](EXTERNAL_ENGINE_BENCHMARK.md)：当前 metaFM 前12名均为 OOP 五后卫，不能作为真实四后卫成绩基准。
+- 战术研究只使用本项目内部历史配置和用户提供的实测报告。
 - 状态：COMPLETE（报告分析和配置审查完成；不代表 fmsave 目标 build 已 upstream 注册，也不代表外部不同测试协议可以直接比较）。
 
 
 
 ## V0.6 迭代（2026-11-25，V0.5 数据驱动修订）
 
-- 父版本：V0.5 原始 FMF，SHA-256 e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257。
+- 父版本：由本轮从历史总账选择，记录实际父FMF SHA-256。
 - 依据：Exporter run 45540803100 的 38 场联赛统计。全季 1,139 次传中、156 次成功（13.7%）；胜场/平局/失利传中成功率分别为 15.9%/13.0%/9.9%。主/客场 xG 为 2.11/1.72，对手 xG 为 1.02/1.31。
 - 仅改三个 PI：DR WingBack Support 增加传中目标后点；DL FullBack Support 增加传中目标后点；ST ChannelForward Attack 的禁区进攻方向由前点改为后点。
 - 保留全部位置、角色、职责、其他 PI、20 条 TI、心态 4、空白 style string、FourCC 4c4c554e；无球最后防线仍为 DL–DCL–DCR–DR。
@@ -169,7 +169,7 @@ D3 原生构建通过只说明文件能生成并独立回读；D4 游戏内显�
 
 - 核心约束：IP四后场DL/DCL/DCR/DR完全保留；IP 11槽角色、职责、PI均继承V1.7。
 - OOP由4-2-1-2-1改为无锋5-2-3：WBL/DCL/DC/DCR/WBR五后卫、DML/DMR双后腰、AML/AMC/AMR前场三人组。
-- 结构依据：FM27 27.1.1 metaFM高排名样本反复出现OOP 5-2-3；本队V1.7数据也显示客场防守仍有优化空间。外部测试只作候选方向，不等于本队效果保证。
+- 结构依据：FM27 27.1.1 历史版本中出现的OOP结构作为内部对照；本队V1.7数据也显示客场防守仍有优化空间。历史候选仍需本队D5验证。
 - D1–D3： [Run164](https://github.com/eslaulau/fm-ta/actions/runs/45750563671)成功；8/8检查通过，22/22阶段精确回读。
 - FMF：4,616 bytes；SHA-256 `51e94c684c66ce016950d93f2619a40086820e7a9dcf792b7251d4ac67fa4e72`；构建摘要见 [V1.8_BUILD_REPORT_SUMMARY.json](V1.8_BUILD_REPORT_SUMMARY.json)。
 - D3不代表游戏内导入或比赛验证；D4/D5待完成。
