@@ -91,8 +91,12 @@ def validate_decision_manifest(recipe: dict, audit: str, policy: dict) -> list[s
             errors.append(f"{config[0]}/{config[1]} needs a substantive rationale.")
         if item.get("evidence_grade") not in ("A", "B", "C", "U"):
             errors.append(f"{config[0]}/{config[1]} evidence_grade must be A/B/C/U.")
-        if decision == "继承保留" and item.get("evidence_grade") not in ("A", "B"):
-            errors.append(f"{config[0]}/{config[1]} cannot be inherited without A/B admission evidence.")
+        if decision == "继承保留":
+            if item.get("evidence_grade") not in ("A", "B"):
+                errors.append(f"{config[0]}/{config[1]} cannot be inherited without A/B admission evidence.")
+            refs = item.get("evidence_refs")
+            if not isinstance(refs, list) or not refs or any(not isinstance(ref, str) or len(ref.strip()) < 8 for ref in refs):
+                errors.append(f"{config[0]}/{config[1]} inherited retention requires at least one concrete evidence_refs entry.")
         if decision in ("证据不足", "替换淘汰"):
             errors.append(f"{config[0]}/{config[1]} is marked {decision} but still exists in the selected recipe.")
         if decision == "新增待验证":
