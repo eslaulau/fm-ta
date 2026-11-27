@@ -31,7 +31,7 @@ jobs:
         run: rm -f "tactic_development/FM27_EngineDividend_4Back/builds/R5.3.fmf" "tactic_development/FM27_EngineDividend_4Back/builds/R5.3.report.json"
       - name: Generate 22-phase manifest and pin source hashes
         run: python "tactic_development/FM27_EngineDividend_4Back/prepare_R5_3_audit.py"
-      - name: Run project D0 gate, native D1 preflight, D2 structure and D3 build/readback
+      - name: Run native preflight, D2 structure and D3 build/readback
         run: |
           python "tactic_development/FM27_EngineDividend_4Back/build_project_tactic.py" \
             --recipe "tactic_development/FM27_EngineDividend_4Back/R5.3.json" \
