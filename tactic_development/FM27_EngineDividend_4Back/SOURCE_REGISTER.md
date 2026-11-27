@@ -140,3 +140,13 @@
 - 正式比赛60/60详细报告；英超38/38。球队/球员总量核对1,140/1,140；球员原始进球124/124；识别913/932（97.96%），未识别19；英超识别589、未识别3；位置209/209、评分190/190零差异。
 - 角色码解码10类IP角色、309条记录，604条缺失；没有OOP角色/职责/PI/TI逐场映射。角色码只支持有限的IP角色观察。
 - 联赛结果12胜10平16负、46分、52:57、xG58.86、xGA61.02；D5 FAIL。不得把局部交叉核对通过写成上游known_build注册或完整字段语义验证。
+
+## R5设计与输入来源登记｜2026-11-27
+
+- 本轮父文件：V0.5原生FMF，SHA-256 `e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257`；不以R4 FMF作为父文件。
+- R5配方：[R5.json](R5.json)，SHA-256 `090cfdf5317668cdabe117ed209e8092cb4ca8f67d12a4148215ffde73e42864`。
+- D0审计：[R5_DESIGN_AND_AUDIT.md](R5_DESIGN_AND_AUDIT.md)；赛季到配置追踪：[R5_SEASON_TO_TACTIC_TRACEABILITY.md](R5_SEASON_TO_TACTIC_TRACEABILITY.md)。
+- 主要本队数据输入：R4 Exporter Run [45914272197](https://github.com/eslaulau/FM27-Exporter/tree/main/season-reports/1/45914272197)，用户声明该赛季使用R4；Exporter不自动识别战术版本。原始存档SHA-256 `0afc7213468d5da2af8f3137158565432271f42a0eeeeb27d155a5f70831866c`；build 27.1.1+2511875，known_build=false，整体partial/unverified。
+- 外部结构参考：FM-Arena https://fm-arena.com/；MetaFM https://metafm.net/leaderboard；SI论坛 https://community.sigames.com/forums/forum/19-tactics-training-strategies-discussion/；Sortitoutsi https://sortitoutsi.net/；Reddit https://www.reddit.com/r/footballmanagergames/；FM Scout https://www.fmscout.com/；Ludens Media https://www.ludens.com.tw/；PlayGM https://www.playgm.cc/。完整跨阵型研究字段与迁移判定见EXTERNAL_ENGINE_BENCHMARK.md。
+- 当前本机原生权限输入：04_离线原生FMF生成器/catalog.json、FM27GEN1_Offline_FMF_Generator.py、style_template_registry.json；项目门禁与构建脚本：validate_project_iteration.py、build_project_tactic.py、materialize_v05_baseline.py。
+- 当前状态：仅完成设计/静态核对；D0 Python门禁与D1-D3未执行；无R5 FMF/report；D4/D5未验证。
