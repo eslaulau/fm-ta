@@ -23,7 +23,7 @@
 
 - **连续研发闭环（最高执行入口）：** [UPGRADE_GATE.md](UPGRADE_GATE.md)。用户提交赛季报告即默认启动完整分析、历史总账联动、引擎红利研究、唯一整体战术升级和FMF交付，不再把分析与升级拆开。
 
-## 项目统一入口（原始战术 V0.5｜当前状态：整改中）
+## 项目统一入口（内部历史总账继承｜当前规则：D0门禁已取消）
 
 - **研发规则（最高优先级）：** 只允许4-2-3-1、4-3-3、4-1-2-3三种IP阵型；红框15项TI固定；OOP位置映射锁定V0.5；心态固定为4；只调整角色/职责、PI和非红框TI。详见 [固定边界](TACTIC_FIXED_CONSTRAINTS.md) 与 [正式研发规则](ANALYSIS_AND_ITERATION_RULES.md)。
 - **唯一版本总目录：** [VERSION_CATALOG.md](VERSION_CATALOG.md)（所有版本成绩、配方、构建请求、设计审计、构建报告、FMF 与赛季分析索引）。
@@ -43,7 +43,7 @@
 
 ## 当前项目文件
 
-- ANALYSIS_AND_ITERATION_RULES.md：正式研发、数据口径与 D0–D5 规则。
+- ANALYSIS_AND_ITERATION_RULES.md：历史研发分析参考；现行流程以 UPGRADE_GATE.md 为准。
 - ROLE_PI_AUDIT_TEMPLATE.md：审查单轮完整角色/PI/TI 协同、数据归因边界与验收阶段。
 - TACTIC_INSTRUCTION_DECISION_LEDGER.md：跨版本指令决策台账，逐项追踪 IP/OOP 角色、职责、PI、TI、结构组合的版本沿革、证据、保留/替换状态与下一轮验证指标。
 - 阵型级角色约束：边中卫系列与套上中卫只适用于三中卫外侧槽位；生成器 preflight 已增加阵型检查，历史 V0.9/V1.0 的非法角色条目见迭代日志。
@@ -184,7 +184,7 @@ D3 原生构建通过只说明文件能生成并独立回读；D4 游戏内显�
 
 ## 构建执行原则（2026-11-26 修订）
 
-项目门禁严格，但不把某一种工具调用方式当作唯一生成通道。助手不得再以“GitHub 工具只能读取/写入、不能执行项目脚本”作为停止迭代的理由。必须继续使用当前可用的工作区或离线原生生成器完成构建；离线路径仍先运行原生权限预检，再进行原生权限检查、FMF生成和独立回读。只有真实输入缺失或所有执行路径均出现可复现错误时，才报告具体阻断。详见 [GENERATION_EXECUTION_POLICY.md](GENERATION_EXECUTION_POLICY.md)。
+构建流程不设D0项目门禁；必须完成原生权限预检、FMF生成和独立回读。助手不得再以“GitHub 工具只能读取/写入、不能执行项目脚本”作为停止迭代的理由。必须继续使用当前可用的工作区或离线原生生成器完成构建；离线路径仍先运行原生权限预检，再进行原生权限检查、FMF生成和独立回读。只有真实输入缺失或所有执行路径均出现可复现错误时，才报告具体阻断。详见 [GENERATION_EXECUTION_POLICY.md](GENERATION_EXECUTION_POLICY.md)。
 
 
 ## 最高优先级迭代规则：使用内部历史战术总账
@@ -198,6 +198,6 @@ D3 原生构建通过只说明文件能生成并独立回读；D4 游戏内显�
 ## 位置绩效与低效淘汰（强制）
 
 - **[位置与角色高强度绩效审查及低效淘汰标准](POSITION_PERFORMANCE_ELIMINATION_STANDARD.md)**：每轮逐项审查11个IP槽位和11个OOP槽位；明确低效配置必须从下一版移除；证据不足不得伪装成有效保留。
-- 本标准已纳入 [正式研发规则](ANALYSIS_AND_ITERATION_RULES.md)、[角色/PI审查模板](ROLE_PI_AUDIT_TEMPLATE.md)、[赛季追踪模板](SEASON_TO_TACTIC_TRACEABILITY_TEMPLATE.md) 和 [连续研发门禁](UPGRADE_GATE.md)。D0未通过逐槽审查及低效淘汰检查，不得构建。
+- 本标准已纳入 [正式研发规则](ANALYSIS_AND_ITERATION_RULES.md)、[角色/PI审查模板](ROLE_PI_AUDIT_TEMPLATE.md)、[赛季追踪模板](SEASON_TO_TACTIC_TRACEABILITY_TEMPLATE.md) 和 [连续研发门禁](UPGRADE_GATE.md)。逐位置绩效审查用于设计分析，不构成构建门禁。
 
 > **资料边界：** 本项目后续只使用内部历史战术总账和用户提供/确认的实测数据，不搜索、不引用外部战术资料。
