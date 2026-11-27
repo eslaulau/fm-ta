@@ -1,6 +1,30 @@
+## R5.3｜IP 4-1-2-3 Front Five / OOP 5-2-3（2026-11-27）
+
+### 用户决策与主线
+- 用户否决R5.2并要求重新设计；R5.2退出候选，历史FMF/报告保留，不进入本轮D4/D5。
+- R5.3重新从V0.5原生FMF构建，固定父SHA-256：`e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257`。
+- 唯一结构：IP 4-1-2-3 Front Five / OOP 5-2-3；IP后场DL/DCL/DCR/DR各一次。
+
+### 新设计核心
+- IP：两名PlaymakingWingBack S在DL/DR供宽；DCL/DCR BallPlayingCentreBack D；DMC DefensiveMidfielder D；AMCL ChannelMidfielder A；AMCR SecondStriker A；STL/STR ChannelForward A；ST CentreForward A。
+- OOP：PressingFullBack两侧、CentreBack双中卫、DMC转CoveringCentreBack；两名攻击中场转双后腰；三名前锋转AML/AMC/AMR 5-2-3前场线。
+- TI 29/29组显式覆盖。未选择项用DEFAULT清除V0.5可见选项位，禁止空缺后继承。
+- OOP十名外场球员的Tackle Harder仅在当前catalog PI权限允许时使用；逼抢触发按角色槽位分化。
+
+### 外部依据与边界
+- MetaFM 27.1.1 Vanco Hellcat v21：2,240场，PPG1.93、场均xG2.29；采用IP四后卫、双攻击中场/三前锋及OOP 5-2-3。只迁移角色/阶段结构线索，不移植成绩，也不视作达到本项目目标。
+- 本队历史D5样本均未达到109分+xG100双门槛；外部样本与本队不同协议，不合并。
+
+### 阶段状态
+- 配方：R5.3.json；设计审计：R5.3_DESIGN_AND_AUDIT.md；刷新脚本：prepare_R5_3_audit.py。
+- 当前D0-D3待执行；D4/D5未验证。22个阶段槽均为新增待验证/U。
+- D5：同一38场至少109分且团队xG≥100，两项同时通过。
+
+---
+
 # FM27 引擎红利四后卫｜版本迭代记录
 
-## R5.2｜IP 4-1-2-3 DM Wide / OOP 5-2-3（2026-11-27）
+## R5.2｜IP 4-1-2-3 DM Wide / OOP 5-2-3（2026-11-27；后被用户否决）
 
 ### 用户决策与主线
 - 用户明确拒绝R5.1菱形IP整体设计；R5.1封存为历史，不进入D4/D5、不安排追加测试。
