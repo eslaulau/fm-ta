@@ -111,21 +111,16 @@
     }
   },
   "active_iteration": {
-    "version": "R5.2",
-    "status": "D0_D3_PASS_D4_D5_PENDING",
-    "reason": "用户拒绝R5.1菱形方案后全新重设计；R5.2采用IP 4-1-2-3 DM Wide / OOP 5-2-3，D0项目门禁、D1原生角色/职责/PI预检、D2 11槽/22阶段和IP四后场、D3原生FMF独立回读均通过。",
+    "version": "R5.3",
+    "status": "DESIGN_CREATED_D0_D3_PENDING",
+    "reason": "用户否决R5.2后启动完整重设计；R5.3为IP四后场+双前腰三前锋攻击线、OOP 5-2-3，并在recipe中显式指定原生29个TI组，不继承任何可见TI选项。当前尚未执行D0-D3。",
     "parent_version": "V0.5",
     "parent_fmf_sha256": "e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257",
-    "workflow_run_id": 45935606662,
-    "workflow_url": "https://github.com/eslaulau/fm-ta/actions/runs/45935606662",
-    "artifact_id": 15170830371,
-    "artifact_name": "FM27-EngineDividend-4Back-R5.2-D3",
-    "artifact_zip_sha256": "f345b3c6557ea097fad8a4b036ca43d11066b36cbf571b419a22982ed0300d23",
-    "fmf_bytes": 4564,
-    "fmf_sha256": "c47adc36a04d3274a1368c1800bec0c9ac9f8ccaf490b1483a423a106e3c0db5",
-    "report_sha256": "a7bb3d1d0f51ba94e485d10adaf64a3b29d20ab96f132356b8c2a889e0924404",
-    "recipe_sha256": "6f5d29978d6fb0721a9f0b9f7a456d7cde0341ba225044f91c4b331519ae1edd",
-    "next_action": "D4: user imports R5.2 into FM27 and confirms positions, roles, duties, PI/TI displays. D5: user confirms R5.2 was actually used and provides a complete 38-match league report. Both >=109 points (PPG >= 2.85) and team xG >= 100 are required."
+    "recipe": "R5.3.json",
+    "audit": "R5.3_DESIGN_AND_AUDIT.md",
+    "workflow_file": ".github/workflows/fm27-engine-dividend-4back-project-build-r5-3.yml",
+    "d4_d5": "not_verified",
+    "next_action": "运行R5.3专属项目门禁、当前原生catalog角色职责PI预检、11槽/22阶段与IP四后场校验、原生FMF构建和独立回读；D4/D5之后另行核验。"
   },
   "retired_iteration_decisions": [
     {
@@ -147,6 +142,13 @@
       "effective_date": "2026-11-27",
       "reason": "用户明确表示“不行，重新设计”。R5.1的IP 4-1-2-1-2 Diamond / OOP 4-3-1-2不再作为当前主线或默认模板。其D3产物仅保留二进制技术历史，不能解释为战术效果失败或成功。",
       "historical_records": "保留R5.1 recipe、audit、FMF、report、workflow和artifact，不删除；禁止恢复其候选资格。"
+    },
+    {
+      "version": "R5.2",
+      "user_decision": "用户明确否决R5.2当前方案并要求重新设计；R5.2不再作为本轮候选，不建议进入D4/D5。",
+      "effective_date": "2026-11-27",
+      "reason": "用户指出球队指令并未完整重新优化：19个TI组显式覆盖，其余10组沿用V0.5选项。随后用户否决R5.2并要求整套重做。新方案必须从V0.5原生载体重建，完整重设计攻击结构，并显式覆盖所有29组TI。",
+      "historical_records": "保留R5.2 recipe、audit、FMF、report、Actions run与artifact作为历史技术记录；不删除，不再推荐作为实战测试版本。"
     }
   ],
   "status_update_2026_11_26_R3": {
@@ -166,7 +168,8 @@
   },
   "blocked_versions": [
     "R5",
-    "R5.1"
+    "R5.1",
+    "R5.2"
   ],
   "historical_non_admitted_configurations": [
     {
@@ -259,6 +262,18 @@
     "d3": "PASS：原生FMF独立回读8/8，TAC、FMF容器、成员校验、22阶段位置/角色/职责/PI、TI向量及style核验",
     "d4_d5": "待用户游戏内导入和完整38场赛季验证",
     "evidence_limit": "外部MetaFM 27.1.1数据只用于迁移机制假设，不作为本队PPG/xG证据。D3不证明比赛有效。",
-    "gates": "同一完整38场联赛至少109分（PPG>=2.85）且全队xG至少100，两项必须同时通过。"
+    "gates": "同一完整38场联赛至少109分（PPG>=2.85）且全队xG至少100，两项必须同时通过。",
+    "decision_status": "SUPERSEDED_BY_USER_REJECTION",
+    "next_step": "保留为历史技术构建记录；用户已否决R5.2设计，R5.3取代其候选资格。"
+  },
+  "status_update_2026_11_27_R5_3": {
+    "design": "IP 4-1-2-3 Front Five：DL/DCL/DCR/DR四后场、DMC单后腰、AMCL/AMCR双攻击中场、STL/ST/STR三前锋；OOP 5-2-3。",
+    "team_instructions": "全部29个原生TI组逐项写入recipe；默认选项以DEFAULT清除对应V0.5原生bit；不继承任何可见TI选项。Opaque未解码位由原生载体保留。",
+    "parent_version": "V0.5",
+    "parent_fmf_sha256": "e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257",
+    "build_status": "D0_D3_PENDING",
+    "d4_d5": "NOT_VERIFIED",
+    "target": "38场联赛至少109分（PPG>=2.85）且团队xG>=100，两项必须同时通过。",
+    "evidence_limit": "外部MetaFM 27.1.1样本仅支持机制假设，不构成本队D5证据；当前没有R5.3导入或赛季数据。"
   }
 }
