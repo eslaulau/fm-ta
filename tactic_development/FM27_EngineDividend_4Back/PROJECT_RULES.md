@@ -127,12 +127,7 @@
 
 ## 9. 项目专属构建命令
 
-在仓库根目录使用满足项目依赖的Python解释器运行。每轮使用所选历史版本的FMF作为实际父文件，不再要求恢复V0.5作为战术父版；V0.5仅可作为原生格式技术载体。
-```powershell
-py -3.12 tactic_development\\FM27_EngineDividend_4Back\\materialize_v05_baseline.py
-```
-
-随后 `--parent-fmf` 必须指向刚恢复的 `tactic_development\\FM27_EngineDividend_4Back\\builds\\V0.5.fmf`：
+在仓库根目录使用满足项目依赖的Python解释器运行。先从历史总账中选定父版本，确保父FMF文件可用，并计算真实SHA-256。随后 `--parent-fmf` 指向本轮实际选择的历史父版本FMF：
 
 ```powershell
 py -3.12 tactic_development\FM27_EngineDividend_4Back\build_project_tactic.py `
