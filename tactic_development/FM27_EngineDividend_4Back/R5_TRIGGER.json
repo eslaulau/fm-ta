@@ -1,0 +1,12 @@
+{
+  "version": "R5",
+  "request": "Run project-gated D0, native preflight, native FMF build and D3 independent readback for R5.",
+  "recipe": "R5.json",
+  "audit": "R5_DESIGN_AND_AUDIT.md",
+  "parent": "V0.5",
+  "parent_sha256": "e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257",
+  "output": "builds/R5.fmf",
+  "report": "builds/R5.report.json",
+  "attempt": 1,
+  "note": "Execute through the dedicated R5 GitHub Actions workflow. All D0-D3 gates remain mandatory."
+}
