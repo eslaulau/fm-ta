@@ -59,34 +59,35 @@
     "mandatory_2_2_review": "2.3已由用户实测数个回合全败并正式放弃；不再安排追加测试。重启V1.6高要求升级计划，下一轮从V0.5原生FMF重生，并同时执行PPG≥2.85及38场xG≥100双门槛。"
   },
   "latest_d5_result": {
-    "version": "2.2",
-    "report_run_id": "45794923641",
-    "report_url": "https://github.com/eslaulau/FM27-Exporter/tree/main/season-reports/1/45794923641",
-    "tactic_mapping": "user_declared_2.2; exporter_does_not_export_tactics",
+    "version": "R4",
+    "report_run_id": "45914272197",
+    "report_url": "https://github.com/eslaulau/FM27-Exporter/tree/main/season-reports/1/45914272197",
+    "tactic_mapping": "user_declared_R4; exporter_does_not_export_tactics",
     "completed_league_matches": 38,
-    "wins": 26,
-    "draws": 6,
-    "losses": 6,
-    "points": 84,
-    "ppg": 2.210526315789474,
-    "goals_for": 87,
-    "goals_against": 40,
-    "xg": 81.8287603259,
-    "npxg": 80.1628947258,
-    "big_chances": 98,
-    "shots": 492,
-    "shots_on_target": 273,
+    "wins": 12,
+    "draws": 10,
+    "losses": 16,
+    "points": 46,
+    "ppg": 1.2105263157894737,
+    "goals_for": 52,
+    "goals_against": 57,
+    "xg": 58.8575398922,
+    "xga": 61.0235843658,
+    "shots": 408,
+    "shots_on_target": 213,
+    "big_chances": 60,
     "status": "FAIL",
-    "points_short_of_target": 25,
-    "review_file": "2.2_D5_SEASON_REVIEW_20261126.md",
-    "next_step": "2.6已完成D1-D3；下一步D4在FM27内导入并确认IP四后场/角色职责/中文显示/位置熟悉度，然后D5完整38场同时验收109分与xG≥100。",
+    "points_short_of_target": 63,
+    "xg_short_of_target": 41.1424601078,
+    "review_file": "R4_D5_SEASON_REVIEW_45914272197.md",
     "data_caveats": [
-      "Exporter does not export or infer tactic configurations; mapping is user-declared.",
-      "Player identity coverage is partial (90.07%).",
-      "One league team goal is not attributed to a player raw record.",
-      "Role-code semantics are unconfirmed.",
-      "Save build 27.1.1+2511875 is not a registered known_build in fmsave 0.14.3."
-    ]
+      "Exporter does not export or infer tactics; R4 mapping is user-declared.",
+      "Player identity coverage is 97.96% overall (913/932); 19 appearances unresolved; league 589/592.",
+      "FM27 build 27.1.1+2511875 is not registered in fmsave 0.14.3; schema-6 layouts are borrowed; local cross-checks passed but full build semantics remain unverified.",
+      "Role codes decoded for 309/913 identified appearances; 604 role codes missing; no OOP role/PI/TI execution mapping.",
+      "Position codes cannot split DC into DCL/DCR or DMC into DML/DMR."
+    ],
+    "next_step": "R5 from immutable V0.5: retain R4 OOP outlet trio, restore Pass Into Space and Hit Early Crosses, DR WingBack Attack to Support, DMR BoxToBox Support to DefensiveMidfielder Defend; then D0-D3 and D4/D5."
   },
   "minimum_attack_process_gate": {
     "metric": "team_xG",
@@ -110,26 +111,19 @@
     }
   },
   "active_iteration": {
-    "version": "R3",
-    "status": "D3_native_fmf_build_and_independent_readback_passed_D4_D5_pending",
+    "version": "R4",
+    "status": "D3_native_fmf_build_and_independent_readback_passed_D4_user_confirmed_used_in_game_D5_fail",
     "parent_version": "V0.5",
     "parent_fmf_sha256": "e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257",
     "ip_shape": "4-2-3-1",
-    "oop_shape": "5-2-3_strikerless",
-    "design_focus": [
-      "high_engagement_line_plus_much_lower_defensive_line_and_drop_off_more",
-      "OOP_strikerless_5_back",
-      "DM_lock_and_cover",
-      "inside_fullback_to_holding_fullback",
-      "target_forward_and_wingback_crosses",
-      "free_role_phase_mismatch",
-      "individual_get_stuck_in"
-    ],
+    "oop_shape": "5-2-3_strikerless_outlet_trio",
     "d5_gates": {
       "league_points_38_matches": 109,
       "team_xg_38_matches": 100
     },
-    "performance_claim": "not_verified_until_D5",
+    "performance_claim": "D5_FAIL",
+    "d4_user_confirmed_used_in_game": true,
+    "d4_visual_readback_independently_archived": false,
     "build": {
       "project_gate": "passed",
       "native_preflight": "passed",
@@ -137,11 +131,10 @@
       "fmf": "passed",
       "game_interactive_import": false,
       "match_engine": false,
-      "github_actions_run_id": 45845663863,
-      "artifact_id": 15131511605,
+      "github_actions_run_id": 45854255851,
       "fmf_bytes": 4676,
-      "fmf_sha256": "449fb1a76ca8967ccfd674e59c8dd007d40def9da8aafaf8f23edf10c8d3fa4e",
-      "report": "builds/R3.report.json"
+      "fmf_sha256": "8fbe0bddac5e7645a42715e378a8d5dd67400dc9e0f1b7be3ea7c2427febf899",
+      "report": "builds/R4.report.json"
     }
   },
   "retired_iteration_decisions": [
