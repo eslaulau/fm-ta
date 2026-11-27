@@ -91,5 +91,9 @@ D5只有在完整38场同时达到至少100分及至少100个进球时才算达�
 - Recipe：`N7.json`
 - 父版本：N3
 - 父FMF SHA-256：`a28c32350f5923b98a37a428debacc12e1d4d83838248fca9cc919e9d5671dcf`
-- 构建报告及最终FMF SHA：由同一次D3运行生成后补记。
-- D4/D5：待用户实际导入与比赛验证。
+- D3构建run：46024743519（success）；Artifact ID：15210238569；Artifact：`FM27-EngineDividend-4Back-N7-D3`。
+- N7 FMF：4,524 bytes；SHA-256：`7031a546730a86ee09e8d7ca0a85893bc9c3686da9146d94fb7b6d2505fdb8e7`。
+- Recipe SHA-256：`cfcc48d9f457d33a6dcd6a505ccb4618d67314b94fb5e9d5e350fc8e82db1791`。
+- D1-D3：原生预检及结构检查通过；8/8离线独立回读检查为true，22阶段配置精确回读。
+- `game_interactive_import=false`、`match_engine=false`：游戏内导入与比赛引擎未执行，不是已通过。
+- D4/D5：待用户实际导入与完整赛季验证。
