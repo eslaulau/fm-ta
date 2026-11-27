@@ -239,7 +239,7 @@ def validate(recipe_path: Path, audit_path: Path, parent_fmf: Path) -> list[str]
         errors.append("Policy must require explicit coverage of all 29 native team-instruction groups.")
     if "只允许以下三种阵型" not in fixed_constraints_text or "红框团队指令：固定，不得修改" not in fixed_constraints_text:
         errors.append("TACTIC_FIXED_CONSTRAINTS.md is missing the current fixed-scope contract.")
-    if "只允许以下三种阵型" not in rules or "红框" not in rules:
+    if "IP阵型只允许三种" not in rules or "红框" not in rules:
         errors.append("PROJECT_RULES.md does not incorporate the fixed formation and red-box instruction policy.")
 
     if policy.get("target_ppg") != 2.85 or policy.get("primary_objective") != "PPG >= 2.85":
