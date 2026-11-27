@@ -1,15 +1,15 @@
-## 当前权威研发状态｜R5.3（2026-11-27）
+## 当前权威研发状态｜2026-11-27 固定边界生效
 
-- 唯一当前候选：**R5.3**。R5、R5.1、R5.2均撤销候选资格并保留历史；尤其R5.2因TI覆盖不完整被用户否决，不再建议D4/D5。
-- R5.3从固定V0.5原生FMF重生，父SHA-256：`e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257`。
-- IP 4-1-2-3 Front Five，OOP 5-2-3；IP四后场DL/DCL/DCR/DR各一次；进攻前场为AMCL/AMCR双攻击中场及STL/ST/STR三前锋。
-- 全部29组球队指令显式写入recipe；DEFAULT会清除对应V0.5可见选项，不再隐式继承。
-- R5.3的22项阶段配置全部为新增待验证/U；D0-D3已通过Run [45938668343](https://github.com/eslaulau/fm-ta/actions/runs/45938668343)，Artifact `15171239855`，FMF SHA-256 `8372e09648cd065d6f22106bb21a622ced9e7432863bbfcdc13cda333922b824`；D4/D5未验证。
-- 最终D5必须同一完整38场至少109分（PPG≥2.85）且全队xG≥100，目前没有达标版本。
+- 当前没有符合最新边界的候选，也没有D5同时达到109分与全队xG100的战术。
+- IP只允许4-2-3-1、4-3-3、4-1-2-3三种固定布局；OOP位置映射锁定V0.5；心态固定4；红框15项TI固定。
+- 只允许调整球员角色/职责、PI和未红框TI；29组TI必须显式登记。权威边界：[TACTIC_FIXED_CONSTRAINTS.md](TACTIC_FIXED_CONSTRAINTS.md)。
+- R5.3因结构来源改编且不符合新规则，R6因4-2-2-2、OOP位置图、心态和红框TI越界，均已撤销候选资格；保留旧规则下D0-D3记录，不再进入D4/D5。
+- R6历史构建：Run [45945096842](https://github.com/eslaulau/fm-ta/actions/runs/45945096842)，Artifact `15174511500`；FMF SHA-256 `3eec57f892b6da99bed4e319e85b257732ea35f8546f9a79224675366649338b`。D3成功只表示技术文件可回读，不表示其符合现行规则或比赛有效。
+- 每一新版本仍从V0.5原生FMF重生；D5同时要求完整38场至少109分且全队xG至少100。
 
 ---
 
-## R5.3｜全新V0.5重生设计登记（2026-11-27）
+## R5.3历史｜公开来源结构改编（2026-11-27；已撤销候选资格）
 
 ### 设计差异
 - IP改为4-1-2-3 Front Five：GK、四后场、单DMC、AMCL ChannelMidfielder A、AMCR SecondStriker A、STL/STR ChannelForward A、ST CentreForward A。
