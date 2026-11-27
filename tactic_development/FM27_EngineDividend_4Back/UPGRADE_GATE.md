@@ -337,3 +337,16 @@ D0 设计审计必须新增并通过“引擎行为错位”专项检查，才�
 - 最终D5必须同时达到38场至少109分（PPG≥2.85）与全队xG≥100。两项缺一不可。
 - 进攻位置在团队xG未达标时一律不得凭相对表现准入；防守槽位不以xG评价，另按防守贡献合同审查。
 - 2.3用户实测数回合全败，正式放弃，不再要求追加测试。2.5只有D3构建、未有D4/D5，现由2.6新整体方案取代当前候选位置；2.5保留历史，不称为D5失败。
+
+
+## 10. 机器决策一致性门禁（2026-11-27，强制）
+
+D0不再接受只靠审计文字、表格和SHA pin的四类决策。每轮审计必须按 `ITERATION_DESIGN_AUDIT_TEMPLATE.md` 写入22项机器决策清单；`validate_project_iteration.py` 会把每条记录与recipe的IP/OOP阶段配置逐项比对（position、role、duty、PI）。
+
+- “继承保留”要求A/B证据；C/U不能继承。
+- “证据不足”和“替换淘汰”不能出现在当前recipe。
+- “新增待验证”必须有可证伪机制假设、D5指标和失败条件。
+- 历史未准入配置重入时必须明确作为新假设，禁止静默继承。
+- R5已列入策略blocked_versions，任何R5构建请求必须被拒绝。
+- 回归测试：`python -m unittest discover -s tactic_development/FM27_EngineDividend_4Back -p test_project_iteration_gate.py -v`。
+- 独立Actions回归工作流：[fm27-engine-dividend-project-gate-tests.yml](../../.github/workflows/fm27-engine-dividend-project-gate-tests.yml)。
