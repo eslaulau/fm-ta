@@ -91,16 +91,7 @@
         "pos": "DR",
         "role": "HoldingFullBack",
         "duty": "D",
-        "pi": [
-          [
-            "TRIGGER_PRESS",
-            "MORE_OFTEN"
-          ],
-          [
-            "TACKLING",
-            "GET_STUCK_IN"
-          ]
-        ]
+        "pi": []
       }
     },
     {
@@ -191,16 +182,7 @@
         "pos": "DL",
         "role": "HoldingFullBack",
         "duty": "D",
-        "pi": [
-          [
-            "TRIGGER_PRESS",
-            "MORE_OFTEN"
-          ],
-          [
-            "TACKLING",
-            "GET_STUCK_IN"
-          ]
-        ]
+        "pi": []
       }
     },
     {
