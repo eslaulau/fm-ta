@@ -534,7 +534,7 @@
   ],
   "project_version": "N2",
   "project_recipe_sha256": "ab987dbefda0c70a5969df4508faf700e8efda9976b20f640d62b2397c9fc099",
-  "project_parent_version": "UNSPECIFIED",
+  "project_parent_version": "N1",
   "project_parent_sha256": "ee945b19e4134e16f722eef624f9cfa1e1f7584d2157ee1414c5a8c78b595deb",
   "project_style_registry_overlay": "temporary V0.5 native-format serialization carrier only; tactical configuration comes from the selected historical parent recipe and current complete recipe"
 }
