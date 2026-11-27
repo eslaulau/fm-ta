@@ -86,7 +86,7 @@
 
 ## 6. 回归验证
 
-<badge>通过</badge>
+**状态：通过**
 
 - GitHub Actions： [Project Gate Regression Run 45947666335](https://github.com/eslaulau/fm-ta/actions/runs/45947666335)
 - 运行结果：**25 tests passed**
