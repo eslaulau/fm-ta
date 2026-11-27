@@ -1,0 +1,63 @@
+name: FM27 EngineDividend 4Back R5.3 Project Build
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "tactic_development/FM27_EngineDividend_4Back/R5.3_TRIGGER.json"
+
+permissions:
+  contents: write
+
+jobs:
+  build-project-tactic:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+          cache-dependency-path: "04_离线原生FMF生成器/requirements.txt"
+      - name: Install native generator dependencies
+        run: python -m pip install -r "04_离线原生FMF生成器/requirements.txt"
+      - name: Restore immutable V0.5 parent
+        run: python "tactic_development/FM27_EngineDividend_4Back/materialize_v05_baseline.py"
+      - name: Clear previous R5.3 generated outputs
+        run: rm -f "tactic_development/FM27_EngineDividend_4Back/builds/R5.3.fmf" "tactic_development/FM27_EngineDividend_4Back/builds/R5.3.report.json"
+      - name: Generate 22-phase manifest and pin source hashes
+        run: python "tactic_development/FM27_EngineDividend_4Back/prepare_R5_3_audit.py"
+      - name: Run project D0 gate, native D1 preflight, D2 structure and D3 build/readback
+        run: |
+          python "tactic_development/FM27_EngineDividend_4Back/build_project_tactic.py" \
+            --recipe "tactic_development/FM27_EngineDividend_4Back/R5.3.json" \
+            --audit "tactic_development/FM27_EngineDividend_4Back/R5.3_DESIGN_AND_AUDIT.md" \
+            --parent-fmf "tactic_development/FM27_EngineDividend_4Back/builds/V0.5.fmf" \
+            --output "tactic_development/FM27_EngineDividend_4Back/builds/R5.3.fmf" \
+            --report "tactic_development/FM27_EngineDividend_4Back/builds/R5.3.report.json"
+      - name: Upload complete R5.3 D3 archive
+        uses: actions/upload-artifact@v4
+        with:
+          name: FM27-EngineDividend-4Back-R5.3-D3
+          path: |
+            tactic_development/FM27_EngineDividend_4Back/R5.3.json
+            tactic_development/FM27_EngineDividend_4Back/R5.3_DESIGN_AND_AUDIT.md
+            tactic_development/FM27_EngineDividend_4Back/builds/R5.3.fmf
+            tactic_development/FM27_EngineDividend_4Back/builds/R5.3.report.json
+          if-no-files-found: error
+          retention-days: 30
+      - name: Commit pinned audit and D3 build outputs
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "tactic_development/FM27_EngineDividend_4Back/R5.3_DESIGN_AND_AUDIT.md" "tactic_development/FM27_EngineDividend_4Back/builds/R5.3.fmf" "tactic_development/FM27_EngineDividend_4Back/builds/R5.3.report.json"
+          if git diff --cached --quiet; then
+            echo "No changes"
+          else
+            git commit -m "Build FM27 EngineDividend 4Back R5.3 D3"
+            git push
+          fi
