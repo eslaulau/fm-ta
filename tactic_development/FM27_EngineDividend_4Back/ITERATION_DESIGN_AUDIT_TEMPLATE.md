@@ -155,6 +155,7 @@ MACHINE_DECISION_MANIFEST_JSON_START
       "pi": [],
       "decision": "新增待验证",
       "evidence_grade": "U",
+      "evidence_refs": [],
       "rationale": "说明为什么这个配置值得在本轮重新研究。",
       "hypothesis": "说明具体行为错位和可证伪机制。",
       "d5_metric": "说明38场中要观测的量化指标。",
