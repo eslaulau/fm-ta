@@ -144,7 +144,7 @@
 ## R5设计与输入来源登记｜2026-11-27
 
 - 本轮父文件：V0.5原生FMF，SHA-256 `e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257`；不以R4 FMF作为父文件。
-- R5配方：[R5.json](R5.json)，SHA-256 `090cfdf5317668cdabe117ed209e8092cb4ca8f67d12a4148215ffde73e42864`。
+- R5配方：[R5.json](R5.json)，SHA-256 `1990f40739388ed9370431532b3d898a8d414956427f7b0aebe8e434313f8b5c`。
 - D0审计：[R5_DESIGN_AND_AUDIT.md](R5_DESIGN_AND_AUDIT.md)；赛季到配置追踪：[R5_SEASON_TO_TACTIC_TRACEABILITY.md](R5_SEASON_TO_TACTIC_TRACEABILITY.md)。
 - 主要本队数据输入：R4 Exporter Run [45914272197](https://github.com/eslaulau/FM27-Exporter/tree/main/season-reports/1/45914272197)，用户声明该赛季使用R4；Exporter不自动识别战术版本。原始存档SHA-256 `0afc7213468d5da2af8f3137158565432271f42a0eeeeb27d155a5f70831866c`；build 27.1.1+2511875，known_build=false，整体partial/unverified。
 - 外部结构参考：FM-Arena https://fm-arena.com/；MetaFM https://metafm.net/leaderboard；SI论坛 https://community.sigames.com/forums/forum/19-tactics-training-strategies-discussion/；Sortitoutsi https://sortitoutsi.net/；Reddit https://www.reddit.com/r/footballmanagergames/；FM Scout https://www.fmscout.com/；Ludens Media https://www.ludens.com.tw/；PlayGM https://www.playgm.cc/。完整跨阵型研究字段与迁移判定见EXTERNAL_ENGINE_BENCHMARK.md。
