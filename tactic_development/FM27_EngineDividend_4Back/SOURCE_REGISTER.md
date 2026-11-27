@@ -160,3 +160,12 @@
 - FMF大小4,572 bytes；SHA-256 `292e027e5f9b5664bf224e577e176be27f414c3c655fe5a17b292c88e5fbf51a`；同次构建报告SHA-256 `98d0077a64f5ee2bb89eb74286403894ca7b89d019b5a34030c02e2f17c39c5a`。
 - D0项目决策门禁、D1 catalog权限预检、D2 11槽/22阶段/IP四后场、D3 8/8独立二进制回读均通过。
 - FM27 build目标：27.1.1+2511875（以本轮项目catalog/配置快照为准）。本轮没有Exporter/D5来源；D4游戏内导入、D5完整38场赛季尚未确认，不得登记为有效战术或达成109分/xG100。
+
+## R5.2 设计和构建来源登记｜2026-11-27
+- 用户拒绝R5.1菱形整体设计；R5.1仅保留D3技术档案，不进入D4/D5。
+- R5.2固定从V0.5原始FMF重生：SHA-256 `e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257`。
+- 配方：[R5.2.json](R5.2.json)；设计/审计：[R5.2_DESIGN_AND_AUDIT.md](R5.2_DESIGN_AND_AUDIT.md)；审计脚本：[prepare_R5_2_audit.py](prepare_R5_2_audit.py)。
+- 当前原生研究输入：`04_离线原生FMF生成器/catalog.json` 与 `FM27GEN1_Offline_FMF_Generator.py`；外部机制来源见本轮审计及 [EXTERNAL_ENGINE_BENCHMARK.md](EXTERNAL_ENGINE_BENCHMARK.md)。
+- 设计依据：MetaFM 27.1.1公开同协议测试；Trinity 3133（3-4-3 DM→5-2-3）及2-3-2-3宽度/纵深样本。外部结果只作机制线索，不作为本队效果证据。
+- 当前状态：R5.2配方和审计草案登记完成；项目D0-D3待专用工作流运行；D4/D5未验证。
+
