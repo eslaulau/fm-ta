@@ -2,8 +2,8 @@
 
 ## 当前权威状态｜R5（2026-11-27）
 
-- **当前研发版本：R5**；IP 4-2-3-1 / OOP 5-2-3无锋三出口；父版本固定V0.5，父FMF SHA-256 `e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257`。
-- 配方：[R5.json](R5.json)，SHA-256 `090cfdf5317668cdabe117ed209e8092cb4ca8f67d12a4148215ffde73e42864`；设计审计：[R5_DESIGN_AND_AUDIT.md](R5_DESIGN_AND_AUDIT.md)；追踪矩阵：[R5_SEASON_TO_TACTIC_TRACEABILITY.md](R5_SEASON_TO_TACTIC_TRACEABILITY.md)。
+- **当前研发版本：R5**；IP 4-2-3-1 / OOP 5-2-3无锋三出口，Stop Crosses，后线+双后腰选择性Tackle Harder；父版本固定V0.5，父FMF SHA-256 `e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257`。
+- 配方：[R5.json](R5.json)，SHA-256 `1990f40739388ed9370431532b3d898a8d414956427f7b0aebe8e434313f8b5c`；设计审计：[R5_DESIGN_AND_AUDIT.md](R5_DESIGN_AND_AUDIT.md)；追踪矩阵：[R5_SEASON_TO_TACTIC_TRACEABILITY.md](R5_SEASON_TO_TACTIC_TRACEABILITY.md)。
 - D0设计材料与静态字段/哈希核对16/16通过；Python项目门禁尚未执行。D1-D3 pending；当前没有R5 FMF或build report。
 - D4游戏内导入、角色职责/PI/TI显示及熟悉度未验证；D5完整38场未开始。
 - 最近完整D5仍为R4：46分/PPG1.211/xG58.86/xGA61.02，双门槛FAIL。当前没有任何版本通过109分与100 xG。
@@ -252,7 +252,7 @@
 ## R5｜IP 4-2-3-1 / OOP 5-2-3无锋三出口｜D0材料准备（2026-11-27）
 
 - 父版本/重生基准：V0.5；父FMF SHA-256 `e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257`。
-- Recipe SHA-256：`090cfdf5317668cdabe117ed209e8092cb4ca8f67d12a4148215ffde73e42864`。
+- Recipe SHA-256：`1990f40739388ed9370431532b3d898a8d414956427f7b0aebe8e434313f8b5c`。
 - 设计审计与追踪矩阵已归档；静态核对16/16通过；实际项目Python门禁待执行。
 - D1-D3待本地标准构建；无FMF/report；D4/D5未验证。R5不宣称性能收益。
 - 本轮整改依据：R4 D5后恢复Pass Into Space/Hit Early Crosses，DR WingBack A→S，DMR BoxToBox S→DefensiveMidfielder D；保留OOP三出口作为待验证结构候选。
