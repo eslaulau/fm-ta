@@ -245,6 +245,13 @@
   },
   "retired_iteration_decisions": [
     {
+      "version": "R5.3",
+      "user_decision": "用户确认R5.3不是独立原创；之后2026-11-27固定边界又取代旧设计范围，R5.3不再是当前候选。",
+      "effective_date": "2026-11-27",
+      "reason": "R5.3使用4-1-2-3外部来源结构改编，OOP位置映射偏离V0.5、心态为6，且团队指令与红框固定值不一致。保留历史D0-D3技术成功事实，不进入D4/D5。",
+      "historical_records": "保留recipe、设计审计、FMF、report、Actions run和artifact作为历史技术记录；不得作为当前候选。"
+    },
+    {
       "version": "R2",
       "user_decision": "淘汰；不再继续测试，不作为父版本或配置模板",
       "effective_date": "2026-11-26",
@@ -298,7 +305,8 @@
     "R5",
     "R5.1",
     "R5.2",
-    "R6"
+    "R6",
+    "R5.3"
   ],
   "historical_non_admitted_configurations": [
     {
