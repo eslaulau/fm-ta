@@ -93,7 +93,7 @@
     {
       "in": {
         "pos": "DCL",
-        "role": "OverlappingCentreBack",
+        "role": "AdvancedCentreBack",
         "duty": "A",
         "pi": []
       },
