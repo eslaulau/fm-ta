@@ -1,6 +1,6 @@
 {
   "version": "R5",
-  "request": "Run project-gated D0, native preflight, native FMF build and D3 independent readback for R5.",
+  "request": "DO NOT BUILD. R5 is blocked by project policy and retained as a historical D3 artifact only.",
   "recipe": "R5.json",
   "audit": "R5_DESIGN_AND_AUDIT.md",
   "parent": "V0.5",
@@ -8,5 +8,6 @@
   "output": "builds/R5.fmf",
   "report": "builds/R5.report.json",
   "attempt": 2,
-  "note": "Retry after correcting the D0 audit pin and explicit non-realism-veto statement."
+  "note": "Retrospective review revoked design candidacy; this trigger is archived and must not be used to restart R5.",
+  "status": "INVALIDATED"
 }
