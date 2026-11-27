@@ -69,7 +69,7 @@ def main() -> int:
             "source": "Exact original V0.5 FMF bytes restored from the project's embedded native snapshot and independently SHA-256 verified.",
             "offline_fmf_roundtrip": "source identity verified; output will be independently read back",
             "game_import": "not_verified",
-            "note": "This V0.5 carrier is the actual reset baseline for this project iteration, not a V0.8/V0.9 tactical parent."
+            "note": "Technical serialization carrier only. The tactical parent and configuration inheritance are declared by the selected internal historical parent and the complete recipe."
         },
         "inheritance_policy": {
             "phase_configuration": "Complete recipe replacement for all 22 IP/OOP phase configurations",
