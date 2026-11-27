@@ -22,5 +22,7 @@
     "native_team_instruction_groups": 29,
     "explicitly_specified": 29,
     "inherited_visible_groups": 0
-  }
+  },
+  "attempt": 2,
+  "retry_reason": "Retry after fixing exact PPG gate token required by project validator."
 }
