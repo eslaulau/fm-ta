@@ -212,7 +212,7 @@
       },
       "out": {
         "pos": "MCR",
-        "role": "WideCentralMidfielder",
+        "role": "WideCoverCentralMidfielder",
         "duty": "D",
         "pi": [
           [
@@ -240,7 +240,7 @@
       },
       "out": {
         "pos": "AMC",
-        "role": "SplittingOutletAttackingMidfielder",
+        "role": "TrackingAttackingMidfielder",
         "duty": "A",
         "pi": [
           [
