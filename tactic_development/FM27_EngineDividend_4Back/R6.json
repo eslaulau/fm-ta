@@ -1,0 +1,197 @@
+{
+  "v": 1,
+  "name": "FM27_EngineDividend_4Back_IP4222_Box_OOP532_R6",
+  "ment": 6,
+  "base": {
+    "g": "FM27 Native Parent Snapshot (V0.5)",
+    "ip": "4-2-2-2 Box",
+    "oop": "5-3-2"
+  },
+  "ti": {
+    "PASSING_DIRECTNESS": "MORE_DIRECT",
+    "TEMPO": "HIGHER",
+    "ATTACKING_WIDTH": "WIDER",
+    "ATTACKING_TRANSITION": "COUNTER_ATTACK",
+    "CREATIVE_FREEDOM": "DEFAULT",
+    "TIME_WASTING": "DEFAULT",
+    "PLAY_FOR_SET_PIECES": "DEFAULT",
+    "BUILD_UP_STRATEGY": "BYPASS_PRESS",
+    "GOAL_KICKS": "LONG",
+    "GOALKEEPER_DISTRIBUTION": "TARGET_FORWARD",
+    "GK_DISTRIBUTION_(SPEED)": "DISTRIBUTE_QUICKLY",
+    "PROGRESS_THROUGH": "BOTH_FLANKS",
+    "PASS_RECEPTION": "PASS_INTO_SPACE",
+    "SUPPORTING_RUNS": "DEFAULT",
+    "SUPPORTING_RUNS_SECONDARY": "DEFAULT",
+    "GOALKEEPER_ATTACKING_SET_PIECES": "DEFAULT",
+    "PATIENCE": "DEFAULT",
+    "DRIBBLING": "ENCOURAGE",
+    "SHOTS_FROM_DISTANCE": "DISCOURAGE",
+    "CROSSING_STYLE": "LOW_CROSSES",
+    "LINE_OF_ENGAGEMENT": "HIGH_PRESS",
+    "DEFENSIVE_LINE": "LOWER",
+    "DEFENSIVE_LINE_BEHAVIOR": "DROP_OFF_MORE",
+    "TRIGGER_PRESS": "MORE_OFTEN",
+    "DEFENSIVE_TRANSITION": "COUNTER_PRESS",
+    "TACKLING": "DEFAULT",
+    "PRESSING_TRAP": "TRAP_OUTSIDE",
+    "SHORT_GOALKEEPER_DISTRIBUTION": "YES",
+    "CROSS_ENGAGEMENT": "STOP_CROSSES"
+  },
+  "p": [
+    {
+      "in": {
+        "pos": "GK",
+        "role": "Goalkeeper",
+        "duty": "D",
+        "pi": []
+      },
+      "out": {
+        "pos": "GK",
+        "role": "OPSweeperKeeper",
+        "duty": "A",
+        "pi": []
+      }
+    },
+    {
+      "in": {
+        "pos": "DL",
+        "role": "FullBack",
+        "duty": "S",
+        "pi": []
+      },
+      "out": {
+        "pos": "DL",
+        "role": "OPFullBack",
+        "duty": "S",
+        "pi": []
+      }
+    },
+    {
+      "in": {
+        "pos": "DCL",
+        "role": "CentreBack",
+        "duty": "D",
+        "pi": []
+      },
+      "out": {
+        "pos": "DCL",
+        "role": "OPCentreBack",
+        "duty": "D",
+        "pi": []
+      }
+    },
+    {
+      "in": {
+        "pos": "DCR",
+        "role": "BallPlayingCentreBack",
+        "duty": "D",
+        "pi": []
+      },
+      "out": {
+        "pos": "DCR",
+        "role": "OPCentreBack",
+        "duty": "D",
+        "pi": []
+      }
+    },
+    {
+      "in": {
+        "pos": "DR",
+        "role": "WingBack",
+        "duty": "A",
+        "pi": []
+      },
+      "out": {
+        "pos": "DR",
+        "role": "OPPressingFullBack",
+        "duty": "S",
+        "pi": []
+      }
+    },
+    {
+      "in": {
+        "pos": "DML",
+        "role": "DefensiveMidfielder",
+        "duty": "D",
+        "pi": []
+      },
+      "out": {
+        "pos": "DC",
+        "role": "OPCoveringCentreBack",
+        "duty": "D",
+        "pi": []
+      }
+    },
+    {
+      "in": {
+        "pos": "DMR",
+        "role": "DeepLyingPlaymaker",
+        "duty": "S",
+        "pi": []
+      },
+      "out": {
+        "pos": "MC",
+        "role": "OPScreeningCentralMidfielder",
+        "duty": "D",
+        "pi": []
+      }
+    },
+    {
+      "in": {
+        "pos": "AMCL",
+        "role": "AttackingMidfielder",
+        "duty": "S",
+        "pi": []
+      },
+      "out": {
+        "pos": "ML",
+        "role": "OPWideMidfielder",
+        "duty": "S",
+        "pi": []
+      }
+    },
+    {
+      "in": {
+        "pos": "AMCR",
+        "role": "SecondStriker",
+        "duty": "A",
+        "pi": []
+      },
+      "out": {
+        "pos": "MR",
+        "role": "OPWideMidfielder",
+        "duty": "S",
+        "pi": []
+      }
+    },
+    {
+      "in": {
+        "pos": "STL",
+        "role": "DeepLyingForward",
+        "duty": "S",
+        "pi": []
+      },
+      "out": {
+        "pos": "STL",
+        "role": "OPCentreForward",
+        "duty": "A",
+        "pi": []
+      }
+    },
+    {
+      "in": {
+        "pos": "STR",
+        "role": "Poacher",
+        "duty": "A",
+        "pi": []
+      },
+      "out": {
+        "pos": "STR",
+        "role": "OPCentreForward",
+        "duty": "A",
+        "pi": []
+      }
+    }
+  ]
+}
