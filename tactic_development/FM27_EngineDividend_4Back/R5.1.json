@@ -255,12 +255,7 @@
         "pos": "STL",
         "role": "ChannelForward",
         "duty": "A",
-        "pi": [
-          [
-            "ATTACK_BOX_SIDE",
-            "FAR_POST"
-          ]
-        ]
+        "pi": []
       },
       "out": {
         "pos": "STL",
