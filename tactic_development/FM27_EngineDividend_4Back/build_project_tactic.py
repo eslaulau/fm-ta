@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Project-gated FM27 EngineDividend 4Back builder with the exact V0.5 native carrier."""
+"""Project-gated builder using a selected historical tactic parent and the native V0.5 serialization carrier."""
 from __future__ import annotations
 import argparse, hashlib, importlib.util, json, subprocess, sys, tempfile
 from pathlib import Path
@@ -28,7 +28,7 @@ def project_path(path: Path, label: str) -> Path:
     return resolved
 
 def main() -> int:
-    ap = argparse.ArgumentParser(description="V0.5 project gate -> native preflight -> V0.5-carried FMF build/readback")
+    ap = argparse.ArgumentParser(description="Historical tactic parent -> project gate -> native preflight -> FMF build/readback")
     ap.add_argument("--recipe", type=Path, required=True)
     ap.add_argument("--audit", type=Path, required=True)
     ap.add_argument("--parent-fmf", type=Path, required=True)
@@ -45,10 +45,8 @@ def main() -> int:
     if output_path == report_path or output_path.exists() or report_path.exists():
         raise FileExistsError("Refusing to overwrite an existing FMF/report.")
     if not all(p.is_file() for p in (recipe_path, audit_path, parent_fmf, CATALOG, STYLE_REGISTRY, GENERATOR)):
-        raise FileNotFoundError("Recipe, audit, V0.5 parent, catalog, registry or generator is missing.")
+        raise FileNotFoundError("Recipe, audit, selected historical parent FMF, catalog, registry or generator is missing.")
     parent_sha = hashlib.sha256(parent_fmf.read_bytes()).hexdigest()
-    if parent_sha != EXPECTED_V05_SHA:
-        raise ValueError(f"Parent must be the exact V0.5 FMF: {parent_sha}")
 
     # Fail closed before any generic preflight or generator call.
     run([sys.executable, str(VALIDATOR), "--recipe", str(recipe_path), "--audit", str(audit_path), "--parent-fmf", str(parent_fmf)])
@@ -121,9 +119,9 @@ def main() -> int:
     report["output"] = str(output_path)
     report["project_version"] = recipe.get("name", "unknown").rsplit("_", 1)[-1]
     report["project_recipe_sha256"] = hashlib.sha256(recipe_path.read_bytes()).hexdigest()
-    report["project_parent_version"] = "V0.5"
+    report["project_parent_version"] = next((line.split("：", 1)[1].strip() for line in audit_path.read_text(encoding="utf-8").splitlines() if line.startswith("父版本：")), "UNSPECIFIED")
     report["project_parent_sha256"] = parent_sha
-    report["project_style_registry_overlay"] = "temporary project-local V0.5 carrier; shared FM-TA registry unchanged"
+    report["project_style_registry_overlay"] = "temporary V0.5 native-format serialization carrier only; tactical configuration comes from the selected historical parent recipe and current complete recipe"
     report["sha256"] = hashlib.sha256(output).hexdigest()
     report["bytes"] = len(output)
     report_path.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
