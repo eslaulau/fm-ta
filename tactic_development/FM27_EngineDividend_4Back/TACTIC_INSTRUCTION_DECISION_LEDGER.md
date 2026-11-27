@@ -1,11 +1,38 @@
+## 当前权威研发状态｜R5.3（2026-11-27）
+
+- 唯一当前候选：**R5.3**。R5、R5.1、R5.2均撤销候选资格并保留历史；尤其R5.2因TI覆盖不完整被用户否决，不再建议D4/D5。
+- R5.3从固定V0.5原生FMF重生，父SHA-256：`e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257`。
+- IP 4-1-2-3 Front Five，OOP 5-2-3；IP四后场DL/DCL/DCR/DR各一次；进攻前场为AMCL/AMCR双攻击中场及STL/ST/STR三前锋。
+- 全部29组球队指令显式写入recipe；DEFAULT会清除对应V0.5可见选项，不再隐式继承。
+- R5.3的22项阶段配置全部为新增待验证/U；D0-D3待本轮工作流执行，D4/D5未验证。
+- 最终D5必须同一完整38场至少109分（PPG≥2.85）且全队xG≥100，目前没有达标版本。
+
+---
+
+## R5.3｜全新V0.5重生设计登记（2026-11-27）
+
+### 设计差异
+- IP改为4-1-2-3 Front Five：GK、四后场、单DMC、AMCL ChannelMidfielder A、AMCR SecondStriker A、STL/STR ChannelForward A、ST CentreForward A。
+- DL/DR均为PlaymakingWingBack S，DCL/DCR均为BallPlayingCentreBack D；不采用三后卫专用OverlappingCentreBack。
+- OOP 5-2-3：DMC→DC CoveringCentreBack；AMCL/AMCR→DML/DMR DefensiveMidfielder；STL/ST/STR→AML/AMC/AMR。
+- OOP十名外场球员按原生PI权限配置Tackle Harder；中卫降低触发频率、两翼卫/双后腰/前场三人提高触发频率。
+- TI 29/29显式覆盖，默认项清空对应可见bit。
+
+### 构建状态
+- recipe：R5.3.json；audit：R5.3_DESIGN_AND_AUDIT.md；helper：prepare_R5_3_audit.py。
+- 当前D0-D3尚待运行；D4/D5尚未验证。所有22个阶段配置为新增待验证/U。
+- D5双门槛：同一38场至少109分并且团队xG至少100。
+
+---
+
 # 最高优先级：V0.5 固定重生规则（2026-11-26）
 
-## 当前权威研发状态｜R5.2（2026-11-27）
+## 历史状态｜R5.2（2026-11-27，已被用户否决并由R5.3替代）
 
-- 唯一当前重设计候选：**R5.2**；R5与用户拒绝的R5.1均在 `PPG_TARGET_POLICY.json` 的 `blocked_versions` 中封锁。
-- R5.2从V0.5原生FMF重生，父SHA-256：`e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257`；IP 4-1-2-3 DM Wide，OOP 5-2-3；IP后场DL/DCL/DCR/DR各一次。
-- R5.1此前D3记录仅保留技术历史；用户已明确拒绝该菱形设计，不进入D4/D5，也不安排追加测试。R5.2已完成D0-D3并通过原生FMF独立回读；D4/D5仍待用户确认。
-- R5.2的22项阶段配置均为新增待验证/U；没有本队D5位置级准入证据。D4游戏内导入和D5完整38场赛季均未完成。
+- R5.2曾作为候选并完成D0-D3技术构建，但用户随后明确否决其方案：TI仅19/29组显式覆盖，另10组继承V0.5可见选项。R5.2不再作为本轮候选或D4/D5测试版本，历史构建保留。
+- 当前唯一候选为R5.3，IP 4-1-2-3 Front Five / OOP 5-2-3，从固定V0.5原生FMF重新构建；D0-D3待执行。
+- R5、R5.1、R5.2均已撤销当前候选资格；R5.1因用户拒绝菱形结构，R5.2因用户要求全套重做。
+- R5.3全部22项阶段配置为新增待验证/U；所有29组TI显式覆盖，不省略任何可见TI组。
 - 最终D5必须同一38场至少109分（PPG≥2.85）并且全队xG≥100；目前没有同时达标的版本。
 
 ---
