@@ -15,7 +15,7 @@
 
 - 用户拒绝R5.1菱形IP整体设计；R5.1保留技术历史，不再作为候选或D4/D5测试版本。
 - R5.2唯一结构：IP 4-1-2-3 DM Wide / OOP 5-2-3；父版本与重生基准固定为V0.5原始FMF。
-- IP四后场：DL InsideFullBack D、DCL OverlappingCentreBack A、DCR BallPlayingCentreBack D、DR PlaymakingWingBack S。
+- IP四后场：DL InsideFullBack D、DCL AdvancedCentreBack A、DCR BallPlayingCentreBack D、DR PlaymakingWingBack S。
 - 中场与前场：DMC DefensiveMidfielder D；MCL ChannelMidfielder A；MCR AttackingMidfielder A；AML/AMR Winger S；ST CentreForward A。
 - OOP转换：DMC→DC，MCL/MCR→DML/DMR，ST→AMC；形成5-2-3并保留双边前场宽度。
 - PI/TI只按当前27.1.1原生catalog与生成器映射；所有22项均标记新增待验证/U，不继承任何未准入R5.1配置。
