@@ -26,7 +26,7 @@ jobs:
         run: python "tactic_development/FM27_EngineDividend_4Back/materialize_v05_baseline.py"
       - name: Clear prior generated outputs for this version
         run: rm -f "tactic_development/FM27_EngineDividend_4Back/builds/V1.6_R2.fmf" "tactic_development/FM27_EngineDividend_4Back/builds/V1.6_R2.report.json"
-      - name: Run project gate, native preflight, build and independent readback
+      - name: Run native preflight, build and independent readback
         run: |
           python "tactic_development/FM27_EngineDividend_4Back/build_project_tactic.py" \
             --recipe "tactic_development/FM27_EngineDividend_4Back/V1.6_R2.json" \
