@@ -37,6 +37,8 @@ class ProjectGateTests(unittest.TestCase):
                 "fixed_mentality_native_value": gate.V05_MENTALITY_NATIVE_VALUE,
                 "fixed_team_instruction_values": gate.FIXED_TEAM_INSTRUCTIONS,
                 "required_explicit_team_instruction_keys": list(gate.REQUIRED_TEAM_INSTRUCTION_KEYS),
+                "adjustable_non_box_team_instruction_keys": list(gate.ADJUSTABLE_NON_BOX_TEAM_INSTRUCTION_KEYS),
+                "allowed_modifications": gate.ALLOWED_MODIFICATIONS,
             },
         }), encoding="utf-8")
         gate.RULES.write_text("PPG ≥ 2.85\nxG≥100\nIP阵型只允许三种；红框TI固定。\n不以现实足球理论作为否决依据；强制引擎行为错位设计。\n每轮从 V0.5 重生；最高优先级。", encoding="utf-8")
@@ -51,7 +53,7 @@ class ProjectGateTests(unittest.TestCase):
             "v": 1,
             "name": "gate-test",
             "ment": 4,
-            "base": {"g": "native-template", "ip": "4-2-3-1", "oop": "V0.5 locked map"},
+            "base": {"g": "FM27 Native Parent Snapshot (V0.5)", "ip": "4-2-3-1", "oop": "V0.5 locked OOP map"},
             "ti": {key: "DEFAULT" for key in gate.REQUIRED_TEAM_INSTRUCTION_KEYS},
             "p": [],
         }
@@ -155,6 +157,16 @@ class ProjectGateTests(unittest.TestCase):
         self.valid_recipe["ti"]["DRIBBLING"] = "ENCOURAGE"
         self.write_recipe_and_audit()
         self.assertEqual(self.validate(), [])
+
+    def test_unapproved_recipe_root_field_is_rejected(self):
+        self.valid_recipe["formation_override"] = "4-4-2"
+        self.write_recipe_and_audit()
+        self.assertTrue(any("Recipe root may contain only" in e for e in self.validate()))
+
+    def test_unapproved_phase_field_is_rejected(self):
+        self.valid_recipe["p"][0]["in"]["extra_phase_setting"] = True
+        self.write_recipe_and_audit()
+        self.assertTrue(any("only position, role, duty and PI are authorized fields" in e for e in self.validate()))
 
     def test_latest_version_cannot_become_parent(self):
         self.audit.write_text(
