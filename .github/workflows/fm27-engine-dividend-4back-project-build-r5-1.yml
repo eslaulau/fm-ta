@@ -1,5 +1,6 @@
 name: FM27 EngineDividend 4Back R5.1 Project Build
 on:
+  workflow_dispatch:
   push:
     branches: [main]
     paths:
