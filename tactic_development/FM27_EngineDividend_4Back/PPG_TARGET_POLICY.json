@@ -118,7 +118,7 @@
     "ip_shape": "4-2-3-1",
     "oop_shape": "5-2-3_strikerless_outlet_trio",
     "recipe": "R5.json",
-    "recipe_sha256": "090cfdf5317668cdabe117ed209e8092cb4ca8f67d12a4148215ffde73e42864",
+    "recipe_sha256": "1990f40739388ed9370431532b3d898a8d414956427f7b0aebe8e434313f8b5c",
     "d5_gates": {
       "league_points_38_matches": 109,
       "team_xg_38_matches": 100
@@ -133,7 +133,9 @@
       "fmf": "pending",
       "game_interactive_import": false,
       "match_engine": false
-    }
+    },
+    "cross_engagement": "STOP_CROSSES",
+    "tackle_harder_scope": "OOP back five plus two defensive midfielders (7 players); not the three outlet attackers"
   },
   "retired_iteration_decisions": [
     {
@@ -153,8 +155,9 @@
   },
   "status_update_2026_11_27_R5": {
     "user_decision": "按R4 D5 next_step重生R5：保留OOP三出口，恢复Pass Into Space与Hit Early Crosses，DR WingBack Attack→Support，DMR BoxToBox Support→DefensiveMidfielder Defend。",
-    "design": "IP 4-2-3-1 / OOP 5-2-3；从V0.5固定原生FMF重建；角色/PI/TI全部作为待验证配置，D5目标为38场至少109分且xG至少100。",
+    "design": "IP 4-2-3-1 / OOP 5-2-3；从V0.5固定原生FMF重建；恢复Pass Into Space与Hit Early Crosses，DR WingBack Support、DMR DefensiveMidfielder Defend；Stop Crosses替代Invite Crosses；Tackle Harder只给OOP后线五人和双后腰七人，前场三出口只设Trigger Press More Often。D5目标为38场至少109分且xG至少100。",
     "data_limit": "R4 27.1.1+2511875 Exporter数据为partial/unverified；角色码仅309/913可解码，无OOP角色/PI/TI逐场映射。",
-    "next": "D0项目门禁→D1原生权限预检→D2 11槽/22阶段→D3 FMF独立回读；D4/D5等待用户验证。"
+    "next": "D0项目门禁→D1原生权限预检→D2 11槽/22阶段→D3 FMF独立回读；D4/D5等待用户验证。",
+    "rationale": "R4 xGA 61.02且整体D5 FAIL；社区27.1.1讨论对邀请传中的风险提出警示，故本轮不重复Invite Crosses。Sortitoutsi 4-2-3-1样本提示Tackle Harder集中在防守中场并报告前场纪律副作用，故采用防线+双后腰选择性Tackle Harder；纪律数据只作副作用观察，不作为战术质量门槛。"
   }
 }
