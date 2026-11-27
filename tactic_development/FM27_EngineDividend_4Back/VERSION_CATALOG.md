@@ -1,13 +1,12 @@
 # FM27 引擎红利四后卫｜版本总目录
 
-## 当前权威状态｜R5（2026-11-27）
+## 当前权威状态｜门禁整改暂停（2026-11-27）
 
-- **当前研发版本：R5**；IP 4-2-3-1 / OOP 5-2-3无锋三出口，Stop Crosses，后线+双后腰选择性Tackle Harder；父版本固定V0.5，父FMF SHA-256 `e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257`。
-- 配方：[R5.json](R5.json)，SHA-256 `1990f40739388ed9370431532b3d898a8d414956427f7b0aebe8e434313f8b5c`；设计审计：[R5_DESIGN_AND_AUDIT.md](R5_DESIGN_AND_AUDIT.md)；追踪矩阵：[R5_SEASON_TO_TACTIC_TRACEABILITY.md](R5_SEASON_TO_TACTIC_TRACEABILITY.md)。
-- D0设计材料与静态字段/哈希核对16/16通过；Python项目门禁尚未执行。D1-D3 pending；当前没有R5 FMF或build report。
-- D4游戏内导入、角色职责/PI/TI显示及熟悉度未验证；D5完整38场未开始。
-- 最近完整D5仍为R4：46分/PPG1.211/xG58.86/xGA61.02，双门槛FAIL。当前没有任何版本通过109分与100 xG。
-- 最近已记录的技术构建仍为2.6（D1-D3通过，D4/D5未验证）；不得把R5设计文件误报为已构建。
+- **当前没有有效战术候选。** R5设计资格已撤销；不得进入D4/D5，不得作为下一版模板。
+- R5历史recipe、原始D0审计、D3 FMF、report、Actions artifact全部保留，仅证明历史文件/技术构建事实，不证明设计合规或比赛有效。
+- 项目策略将R5列入blocked_versions；门禁回归测试已新增独立工作流。下一轮必须先通过22项机器决策清单与recipe精确匹配，再从V0.5原始FMF重生。
+- 最近完整D5仍为R4：46分、PPG1.211、xG58.86、xGA61.02；未有版本达到109分与xG100双门槛。
+- 固定重生基准：V0.5原始FMF SHA-256 `e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257`。
 
 ---
 
