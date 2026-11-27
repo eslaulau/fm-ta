@@ -1,3 +1,5 @@
+> **历史归档文件，已被现行规则取代。** 本文中的旧门禁、外部研究、V0.5强制重生等计划均不再执行。现行规则以 `PROJECT_RULES.md`、`TACTIC_FIXED_CONSTRAINTS.md`、`UPGRADE_GATE.md` 和 `GENERATION_EXECUTION_POLICY.md` 为准；战术研究只使用项目内部历史资料。
+
 # FM27 引擎红利四后卫｜历史整改总规划（已被2026-11-27新规则取代）
 
 **规划状态：历史治理记录；不再作为当前设计范围或候选选择依据。**  
