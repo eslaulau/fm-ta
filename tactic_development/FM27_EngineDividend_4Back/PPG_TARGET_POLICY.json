@@ -112,11 +112,20 @@
   },
   "active_iteration": {
     "version": "R5.2",
-    "status": "D0_D3_PENDING",
-    "reason": "用户要求重做R5.1；R5.2为全新V0.5重生设计，IP 4-1-2-3 DM Wide / OOP 5-2-3，尚未运行项目D0-D3门禁。",
+    "status": "D0_D3_PASS_D4_D5_PENDING",
+    "reason": "用户拒绝R5.1菱形方案后全新重设计；R5.2采用IP 4-1-2-3 DM Wide / OOP 5-2-3，D0项目门禁、D1原生角色/职责/PI预检、D2 11槽/22阶段和IP四后场、D3原生FMF独立回读均通过。",
     "parent_version": "V0.5",
     "parent_fmf_sha256": "e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257",
-    "next_action": "Run the R5.2 project-only D0 gate, native catalog permission preflight, 11-slot/22-phase checks and D3 independent FMF readback; D4/D5 remain unverified."
+    "workflow_run_id": 45935606662,
+    "workflow_url": "https://github.com/eslaulau/fm-ta/actions/runs/45935606662",
+    "artifact_id": 15170830371,
+    "artifact_name": "FM27-EngineDividend-4Back-R5.2-D3",
+    "artifact_zip_sha256": "f345b3c6557ea097fad8a4b036ca43d11066b36cbf571b419a22982ed0300d23",
+    "fmf_bytes": 4564,
+    "fmf_sha256": "c47adc36a04d3274a1368c1800bec0c9ac9f8ccaf490b1483a423a106e3c0db5",
+    "report_sha256": "a7bb3d1d0f51ba94e485d10adaf64a3b29d20ab96f132356b8c2a889e0924404",
+    "recipe_sha256": "6f5d29978d6fb0721a9f0b9f7a456d7cde0341ba225044f91c4b331519ae1edd",
+    "next_action": "D4: user imports R5.2 into FM27 and confirms positions, roles, duties, PI/TI displays. D5: user confirms R5.2 was actually used and provides a complete 38-match league report. Both >=109 points (PPG >= 2.85) and team xG >= 100 are required."
   },
   "retired_iteration_decisions": [
     {
@@ -232,11 +241,24 @@
     "replacement": "R5.2：IP 4-1-2-3 DM Wide / OOP 5-2-3，从V0.5原始FMF重生。"
   },
   "status_update_2026_11_27_R5_2": {
-    "design": "IP 4-1-2-3 DM Wide / OOP 5-2-3。IP保持DL/DCL/DCR/DR四个后场槽；DCL OverlappingCentreBack A提供前插通道，DL InsideFullBack D内收，DR PlaymakingWingBack S提供外侧宽度，双肋部中场进攻，DMC在OOP转换为第三中卫。",
+    "design": "IP 4-1-2-3 DM Wide / OOP 5-2-3. IP四后场DL/DCL/DCR/DR各一次；DCL AdvancedCentreBack A（四后卫兼容的前压中卫），DL InsideFullBack D内收，DR PlaymakingWingBack S外展；MCL/MCR双肋部攻击；两侧边锋保持宽度；DMC在OOP转换为DC形成五后卫。",
     "parent_version": "V0.5",
     "parent_fmf_sha256": "e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257",
-    "build_status": "D0-D3_PENDING",
-    "evidence_limit": "外部MetaFM 27.1.1测试仅用于迁移机制假设；不能当成本队赛季证据。R5.2尚无D4/D5结果。",
-    "gates": "38场至少109分且同一赛季全队xG至少100，两项必须同时通过。"
+    "build_status": "D0_D3_PASS_D4_D5_PENDING",
+    "workflow_run_id": 45935606662,
+    "workflow_url": "https://github.com/eslaulau/fm-ta/actions/runs/45935606662",
+    "artifact_id": 15170830371,
+    "artifact_sha256": "f345b3c6557ea097fad8a4b036ca43d11066b36cbf571b419a22982ed0300d23",
+    "fmf_bytes": 4564,
+    "fmf_sha256": "c47adc36a04d3274a1368c1800bec0c9ac9f8ccaf490b1483a423a106e3c0db5",
+    "report_sha256": "a7bb3d1d0f51ba94e485d10adaf64a3b29d20ab96f132356b8c2a889e0924404",
+    "recipe_sha256": "6f5d29978d6fb0721a9f0b9f7a456d7cde0341ba225044f91c4b331519ae1edd",
+    "d0": "PASS：V0.5父版、目标、四类决策、11槽/22项机器清单与recipe一致",
+    "d1": "PASS：当前catalog角色/位置/职责/PI权限预检；移除三中卫专用角色",
+    "d2": "PASS：11个IP/OOP槽，22阶段；DL/DCL/DCR/DR在IP各一次",
+    "d3": "PASS：原生FMF独立回读8/8，TAC、FMF容器、成员校验、22阶段位置/角色/职责/PI、TI向量及style核验",
+    "d4_d5": "待用户游戏内导入和完整38场赛季验证",
+    "evidence_limit": "外部MetaFM 27.1.1数据只用于迁移机制假设，不作为本队PPG/xG证据。D3不证明比赛有效。",
+    "gates": "同一完整38场联赛至少109分（PPG>=2.85）且全队xG至少100，两项必须同时通过。"
   }
 }
