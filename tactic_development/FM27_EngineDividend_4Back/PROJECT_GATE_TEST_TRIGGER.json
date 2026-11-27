@@ -1,5 +1,5 @@
 {
   "purpose": "Run regression tests for the project-local D0 gate only; does not build or authorize a tactic.",
   "suite": "test_project_iteration_gate.py",
-  "version": 2
+  "version": 3
 }
