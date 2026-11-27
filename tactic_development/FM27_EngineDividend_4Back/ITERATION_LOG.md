@@ -8,7 +8,7 @@
 - 唯一结构：IP 4-1-2-3 DM Wide / OOP 5-2-3；IP后场DL/DCL/DCR/DR各一次。
 
 ### 新设计核心
-- DCL OverlappingCentreBack Attack作为IP额外的前插通道；DL InsideFullBack Defend内收；DR PlaymakingWingBack Support保持外侧宽度。
+- DCL AdvancedCentreBack Attack作为IP从后场进入中场线的前压通道；DL InsideFullBack Defend内收；DR PlaymakingWingBack Support保持外侧宽度。
 - MCL ChannelMidfielder Attack 与 MCR AttackingMidfielder Attack双肋部前插；AML/AMR Winger Support拉宽；ST CentreForward Attack承担纵深与终结。
 - OOP将DMC转DC形成五后卫，双中场转双后腰，前场形成AML/AMC/AMR 5-2-3。
 - 高位逼抢+较低防线、直传快节奏、两翼推进/尽早传中、传入空当；所有组合都只是待验证机制假设。
@@ -468,18 +468,18 @@ ST位置12球对19.63 xG，非胜场进球转化明显偏低；已解码的联�
 
 ## 阵型级角色条件纠错｜2026-11-25
 
-用户指出：**边中卫只适用于三后卫/三中卫体系。** 经 FM27 角色资料核实，边中卫（有球 `WideCentreBack`、无球 `OPWideCentreBack`）及其无球补位/上抢变体，只能用于三中卫体系的外侧中卫（DCL/DCR）；有球 `OverlappingCentreBack`（套上中卫）也要求三中卫外侧位置。单个位置权限目录虽把这些角色列在 DCL/DCR 下，但不代表四后卫形状可以使用。
+用户指出：**边中卫只适用于三后卫/三中卫体系。** 经 FM27 角色资料核实，边中卫（有球 `WideCentreBack`、无球 `OPWideCentreBack`）及其无球补位/上抢变体，只能用于三中卫体系的外侧中卫（DCL/DCR）；有球 `AdvancedCentreBack`（前压中卫）也要求三中卫外侧位置。单个位置权限目录虽把这些角色列在 DCL/DCR 下，但不代表四后卫形状可以使用。
 
 ### 研发影响
 
 - 本项目 IP 四后场是 DL、DCL、DCR、DR，只含两个中卫槽位。V0.9 的 DCL `WideCentreBack`、V1.0 继承的 DCL `WideCentreBack` 均为阵型级无效配置；原 Run 142 / Run 144 的二进制读回通过，仅证明角色位被写入并可回读，不证明游戏允许在该四后卫形状中使用。
-- 历史扫描还发现 V0.5 之前的版本 在只有 DCL/DCR 两名中卫的结构中配置了 `OverlappingCentreBack`，同样违反三中卫外侧角色条件。历史配方保留原样，不回写伪造历史。
+- 历史扫描还发现 V0.5 之前的版本 在只有 DCL/DCR 两名中卫的结构中配置了 `AdvancedCentreBack`，同样违反三中卫外侧角色条件。历史配方保留原样，不回写伪造历史。
 - V0.9 和 V1.0 的赛季比赛结果、xG/xGA、球员输出等原始观测仍成立；但此前“DCL 宽中卫在四后卫中贡献了收益”的设计/归因撤销。Exporter 不导出战术配置，角色码只部分覆盖，也无法将 DC 进一步拆成 DCL/DCR，因此不得假设游戏实际应用了该非法角色。
 
 ### 生成器修复
 
 - `scripts/preflight_fm27_tactic.py` 增加阵型级角色检查：
-  - 有球 `WideCentreBack`、`OverlappingCentreBack`；
+  - 有球 `WideCentreBack`、`AdvancedCentreBack`；
   - 无球 `OPWideCentreBack`、`OPCoveringWideCentreBack`、`OPStoppingWideCentreBack`；
   - 仅在当前阶段同时存在 DCL、DC、DCR 三个中卫槽位，且角色处于外侧 DCL/DCR 时通过。
 - 测试以合法 V0.8 四后卫作为 PI 基准，明确断言 V1.0 四后卫边中卫配方拒绝；同时覆盖三中卫允许、四后卫拒绝，以及无球边中卫变体。
