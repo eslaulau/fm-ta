@@ -1,6 +1,9 @@
-# R6｜IP 4-2-2-2 Box / OOP 5-3-2｜构建审计
+# R6历史版本｜IP 4-2-2-2 Box / OOP 5-3-2｜旧规则下构建审计（已撤销候选资格）
 
 版本：R6
+
+> **状态更新（2026-11-27）：R6已撤销当前候选资格，不得进入D4/D5。** 本版虽在旧规则下完成D0-D3并成功生成/回读FMF，但其IP阵型4-2-2-2不在用户新批准的三种阵型之内；OOP位置映射偏离V0.5、心态为6，且多项红框TI与固定值不一致。保留本文件、recipe、FMF、report及Actions run作为历史技术记录。当前规则唯一以 [TACTIC_FIXED_CONSTRAINTS.md](TACTIC_FIXED_CONSTRAINTS.md) 为准。
+
 父版本：V0.5
 重生基准：V0.5
 重生基准 FMF SHA-256：e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257
