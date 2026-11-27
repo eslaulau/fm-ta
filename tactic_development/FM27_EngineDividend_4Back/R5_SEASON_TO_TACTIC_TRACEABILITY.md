@@ -62,12 +62,13 @@ R4复盘没有在当前项目文件中提供全部38场逐场事件链；以上�
 |---|---|---|---|---|---|---|---|---|---|
 | ISS-01 | R4 46分、PPG1.211，38场 | 结果失败；球员/对手/随机因素未完全控制 | V1.6 89分、V1.3 88分 | metaFM多阶段转换仅为假设 | IP/OOP整体 | 替换淘汰 | V0.5重生→R5整体配方 | 提高胜场与减少平局；角色熟悉度风险 | 38场109分；不足即FAIL |
 | ISS-02 | R4 xG58.86、408射门；R3 xG65、452射门 | 主要是射门量下降，非单纯xG/shot崩溃 | V1.4 xG92.62；V1.8 xG88.87 | Pass Into Space + early cross + target forward | TI、DR/AMR宽度、ST目标 | 替换淘汰/新增待验证 | Pass To Feet→Pass Into Space；Work Ball→Hit Early Crosses | 提升射门与禁区机会；可能增加越位/失误 | xG≥100，记录射门、xG/shot、越位 |
-| ISS-03 | R4传中1181次、完成150次、12.7% | 数量接近R3，完成数少约42；无落点事件链 | R3完成率16.1%；V1.3约14.9% | 早传/高球/后点是用户优先假设 | DR WingBack Support、AMR Winger Support、ST TargetForward | 新增待验证 | R4 WorkBall→HitEarlyCrosses；DR WB A→S | 恢复传中完成与前点/后点机会；低质量高球风险 | 传中完成率、落点、xG/传中 |
-| ISS-04 | R4 xGA61.02；平/负场均xGA1.77/1.73 | 防守机会质量可能限制积分，但不独立优化xGA | V1.3 xGA34.27；V1.7 44.13；V1.8 59.67 | OOP五后卫与分层压迫，外部metaFM 5-2-3 | OOP五后卫、三中卫、双后腰 | 新增待验证 | R4角色组合→R5 PressingFB/HoldingFB + Stopping/Covering CB + WideCover/Dropping DM | 压迫与深度保护分工；身后/边路二点风险 | 对手xG、绝佳机会、禁区射门、主客场分组 |
+| ISS-03 | R4传中1181次、完成150次、12.7% | 数量接近R3，完成数少约42；无落点事件链 | R3完成率16.1%；V1.3约14.9% | 早传/高球/后点是用户优先假设 | DR WingBack Support、AMR Winger Support、ST TargetForward | 新增待验证 | R4 WorkBall→HitEarlyCrosses；DR WB A→S；InviteCrosses→StopCrosses | 恢复传中完成与前点/后点机会；低质量高球风险 | 传中完成率、落点、xG/传中 |
+| ISS-04 | R4 xGA61.02；平/负场均xGA1.77/1.73 | 防守机会质量可能限制积分，但不独立优化xGA | V1.3 xGA34.27；V1.7 44.13；V1.8 59.67 | OOP五后卫与分层压迫，外部metaFM 5-2-3 | OOP五后卫、三中卫、双后腰与Stop Crosses | 新增待验证 | R4角色组合→R5 PressingFB/HoldingFB + Stopping/Covering CB + WideCover/Dropping DM + Stop Crosses | 压迫与深度保护分工；身后/边路二点风险 | 对手xG、绝佳机会、禁区射门、对手传中尝试/完成、主客场分组 |
 | ISS-05 | R4低产非胜场多次出现；4场代表比赛xG≤0.73 | 低产和高xG未胜并存，需分型 | R3非胜场xG1.21；R4平/负1.33/1.34 | 三出口反击与早传空当假设 | AML/AMR/ST转AML/AMR/AMC | 继承保留（待验证） | R4 OOP三出口→R5保持三出口并重做压迫 | 增加夺回后出口和快速射门；可能缺少回防人数 | 非胜场xG/射门、反击射门xG；低产仍重复则重构 |
 | EXP-01 | R4 OOP五后卫未达标；外部头部多OOP5-2-3 | 外部结构不等于本队结果，结构需重构 | V1.1/V1.8/R4均有风险；不同换位链 | metaFM 3-4-3→5-2-3迁移 | IP 4-2-3-1保持四后场，OOP 5-2-3 | 新增待验证 | V0.5→IP四后场/OOP五后卫换位 | OOP增加人数与前场出口；转换熟悉度风险 | 38场PPG/xG硬门槛，D4熟悉度 |
 | EXP-02 | R3/R4均采用高压迫与低防线，结果均FAIL | 不能证明单项无效；但绝非已验证优势 | V1.3/V1.7四后场分层保护 | 用户P0假设与当前build外部讨论 | High Press + Much Lower + Drop Off | 新增待验证 | 保留但增加角色分层 | 争取抢回球权；防线间距/禁区前沿空间风险 | 对手禁区前沿xG、直塞、身后球 |
 | EXP-03 | R4越位77次，R3 93次；但R4 xG更低 | 越位下降未改善产量 | R3/R4同非胜场低产 | Pass Into Space与早传目标 | 传入空当、早传高球、TargetForward后点 | 新增待验证 | PassToFeet→PassIntoSpace | 争取纵深跑动；越位回升风险 | 越位、xG/射门、非胜场机会质量 |
+| EXP-04 | R4 xGA61.02且Invite Crosses与HoldingFullBack并存；27.1.1社区帖对CPU传中威胁有警示；Sortitoutsi 27.0.1/27.1.0 4-2-3-1样本含Stop Crosses与Tackle Harder选择性使用 | 不把社区观察当引擎事实；R5改Stop Crosses，Tackle Harder限于后线五人+双后腰，前场三出口只压迫不强抢 | R4 61.02 xGA；Sortitoutsi XPOS样本52场、2.27 PPG | 传中控制与牌务副作用假设 | OOP Stop Crosses；七名后线/后腰Tackle Harder | 新增待验证/替换淘汰 | Invite Crosses→Stop Crosses；十人Tackle Harder→七人选择性Tackle Harder | 降低对手传中来源机会与前场犯规风险；可能增加内切/肋部渗透 | 对手传中次数/完成、传中来源xG、对手禁区进入；纪律数据只作副作用记录 |
 
 ## F. 收益—代价与整体方案评估
 
@@ -85,7 +86,7 @@ R4复盘没有在当前项目文件中提供全部38场逐场事件链；以上�
 
 - **继承保留：** IP四后场槽硬约束；R4 OOP三出口角色作为待验证候选；IP InsideForward/FreeRole/Winger/TargetForward和InsideFullBack结构作为探索性候选。没有任何IP进攻槽因R4 xG<100而获得准入。
 - **替换淘汰：** R4整体D5候选；Pass To Feet；Work Ball Into Box；DR WingBack Attack；DMR BoxToBox Support；R4原样OOP角色/PI组合不自动继承。
-- **新增待验证：** Pass Into Space、Hit Early Crosses；DR WingBack Support；DMR DefensiveMidfielder Defend；OOP PressingFullBack/HoldingFullBack非对称；两侧Covering CB+中央Stopping CB；团队More Often与角色PI分层；OOP Tackle Harder。
+- **新增待验证：** Pass Into Space、Hit Early Crosses；DR WingBack Support；DMR DefensiveMidfielder Defend；OOP PressingFullBack/HoldingFullBack非对称；两侧Covering CB+中央Stopping CB；团队More Often与角色PI分层；OOP后线五人+双后腰七人Tackle Harder，前场三出口不设Tackle Harder；Stop Crosses替代Invite Crosses。
 - **证据不足：** 角色GameID默认行为文本、OOP执行、角色级xG/xA、逐场PI/TI执行、熟悉度及外部完整PI/TI。
 
 ## H. 下一轮D5验证清单
@@ -95,7 +96,7 @@ R4复盘没有在当前项目文件中提供全部38场逐场事件链；以上�
 | GATE-PPG | R4 46分/1.211 | 完整38场联赛积分/PPG | ≥109分、PPG≥2.85 | 低于109即FAIL | 待验证 |
 | GATE-XG | R4 xG58.86 | 完整38场球队xG | ≥100、场均≥2.63 | 低于100即FAIL | 待验证 |
 | ISS-02 | 408射门、xG58.86 | 总射门、xG/shot、非胜场射门 | 射门量恢复/超过R3 452作为过程目标；xG/shot不下降 | xG未达100即FAIL | 待验证 |
-| ISS-03 | 150/1181传中成功 | 传中尝试/成功/落点/胜平负分组 | 完成率高于R4 12.7% | 低质量传中增加且xG无增益 | 待验证 |
+| ISS-03 | 150/1181传中成功 | 传中尝试/成功/落点/胜平负分组 | 完成率高于R4 12.7%，同时观察对手传中与传中来源xG | 低质量传中增加且xG无增益，或对手传中来源xG恶化 | 待验证 |
 | ISS-04 | xGA61.02 | 对手xG、绝佳机会、禁区内射门、主客场 | 不要求低于某个硬数；不得以防守牺牲PPG | 若造成明显积分损失则重做OOP | 待验证 |
 | ISS-05 | 平/负场均xG1.33/1.34 | 平局/失利逐场xG、射门、前场出口 | 低产非胜场比例下降 | 低产模式重复且积分不足 | 待验证 |
 | EXP-01 | R4 OOP5-2-3失败 | D4换位显示、D5反击/失分 | 结构完整且跨位熟悉度可接受 | D4映射不符或D5双门槛失败 | 待验证 |
@@ -107,7 +108,7 @@ R4复盘没有在当前项目文件中提供全部38场逐场事件链；以上�
 |---|---|
 | 唯一父版本 | V0.5 |
 | 唯一子版本 | R5 |
-| Recipe路径 / SHA | R5.json / 090cfdf5317668cdabe117ed209e8092cb4ca8f67d12a4148215ffde73e42864 |
+| Recipe路径 / SHA | R5.json / 1990f40739388ed9370431532b3d898a8d414956427f7b0aebe8e434313f8b5c |
 | Build request / commit | 按GENERATION_EXECUTION_POLICY本地标准入口执行；不创建GitHub Actions触发文件 |
 | Actions Run / Artifact | 待构建 |
 | FMF路径 / bytes / SHA-256 | builds/R5.fmf / 待构建 |
