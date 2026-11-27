@@ -1,7 +1,7 @@
 # N6｜四后卫双阶段压制 4-2-3-1｜设计与构建审计
 
 版本：N6  
-实际战术父版本：N3  
+父版本：N3  
 父FMF来源：GitHub Actions Run 45967024574 的 `FM27-EngineDividend-4Back-N3-D3` artifact  
 父FMF SHA-256：`a28c32350f5923b98a37a428debacc12e1d4d83838248fca9cc919e9d5671dcf`  
 最近实测失败版本：N5（用户确认实际使用）  
