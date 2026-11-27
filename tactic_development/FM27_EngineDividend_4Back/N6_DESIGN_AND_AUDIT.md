@@ -119,3 +119,14 @@ N6新增两项非红框TI：
 | 传中 | 完成率、传中后射门/xG，不以单一成功率定胜负 |
 | 反击 | 回防前腰改变后的反击起点、xG与失误 |
 
+
+
+## 7. D3构建结果（2026-11-27）
+
+- GitHub Actions Run：`46019121563`（success）
+- Artifact：`FM27-EngineDividend-4Back-N6-D3`，Artifact ID `15207681331`
+- Recipe SHA-256：`5f1c0f110f38627b6cde7ecc485ae523988bb258c16ebf8738d0241c6fad7c2b`
+- 父版本：N3；父FMF SHA-256：`a28c32350f5923b98a37a428debacc12e1d4d83838248fca9cc919e9d5671dcf`
+- N6 FMF：4,564 bytes；SHA-256：`c2a156552ab790d06f0f439d4cef8a8e537711444f1994648640966946db2bac`
+- 独立回读：8项静态/二进制检查全部为true；11个IP/OOP位置对、22阶段配置及PI权限核验通过。
+- 报告中的 `game_interactive_import=false`、`match_engine=false` 是未执行状态，不是D3失败；D4/D5仍未验证。
