@@ -211,7 +211,7 @@ D3不等于D4，D4不等于D5。没有真实产物、同次构建报告、独立
 - 唯一主线：IP 4-2-3-1 / OOP 5-2-3无锋三出口。按R4 D5的最新PPG整改项，保留OOP三出口候选，恢复Pass Into Space与Hit Early Crosses，DR WingBack Attack回Support，DMR BoxToBox Support回DefensiveMidfielder Defend；另重做OOP左右边后卫与三中卫的压迫分层；Stop Crosses替代Invite Crosses，Tackle Harder只给OOP后线五人+双后腰七人，前场三出口不设Tackle Harder。
 - 设计取舍：本轮没有采用ARCHITECTURE_REVIEW中的菱形IP优先结构，因为当前PPG策略对R4 D5给出了更具体的四项整改项；这不代表4-2-3-1外部排名更好。菱形结构仍保留为后续研究，不与本轮混合。
 - 静态审计：11槽、IP四后场、OOP位置唯一性、22槽位审计行、四类决策、引擎错位字段及哈希字段共16项静态核对通过；这不是Python项目验证器结果。
-- D0项目验证器尚未执行；D1原生预检、D2构建结构检查、D3 FMF和独立回读均待本地标准构建通道。当前没有R5.fmf或R5.report.json。
+- D0项目验证器尚未执行；D1原生预检、D2构建结构检查、D3 FMF和独立回读均待执行。可由本地工作区、当前会话可用执行环境或项目专用GitHub Actions runner执行；当前没有R5.fmf或R5.report.json。
 - D4游戏内导入与角色/职责/PI/TI/熟悉度确认未开始；D5完整38场英超未开始。R5不宣称有效或达到109分/100 xG。
 
 ### 4.3 其他重要版本状态
@@ -355,7 +355,7 @@ D3不等于D4，D4不等于D5。没有真实产物、同次构建报告、独立
 4. 复核2026-11-26机制研究文件和当前原生catalog；不得假设历史权限/角色行为映射仍然准确。
 5. 先形成位置级四类裁决和完整机制链，再确定唯一主线方案。
 6. 无论最后选用何种结构，每轮均从V0.5原生FMF重生，经过项目门禁、原生权限校验、FMF构建与独立回读。
-7. R5构建必须按GENERATION_EXECUTION_POLICY在本地Python 3.12工作区运行materialize_v05_baseline.py与build_project_tactic.py；该政策禁止为本项目创建/修改GitHub Actions工作流。
+7. R5构建必须按GENERATION_EXECUTION_POLICY执行materialize_v05_baseline.py与build_project_tactic.py；执行环境不限于本地Python 3.12，允许使用项目专用GitHub Actions工作流，但不得跳过项目门禁、原生权限检查和D3独立回读。
 8. 任何D4/D5未完成的版本都保持未验证状态；D5必须同时达到109分与100 xG才可通过。
 
 **最终原则：本文件是唯一升级入口。规则不再分散，历史不再凭聊天记忆拼接，所有判断必须回到本文件引用的原始配方、审计、构建报告和赛季数据。**
