@@ -16,18 +16,28 @@ class ProjectGateTests(unittest.TestCase):
         self.tmp = tempfile.TemporaryDirectory()
         self.addCleanup(self.tmp.cleanup)
         self.root = Path(self.tmp.name)
-        self.old_paths = (gate.PROJECT_DIR, gate.POLICY, gate.RULES, gate.LEDGER, gate.PERFORMANCE_STANDARD, gate.V05_BASELINE_SHA256)
+        self.old_paths = (gate.PROJECT_DIR, gate.POLICY, gate.RULES, gate.LEDGER, gate.PERFORMANCE_STANDARD, gate.FIXED_CONSTRAINTS, gate.V05_BASELINE_SHA256)
         gate.PROJECT_DIR = self.root
         gate.POLICY = self.root / "PPG_TARGET_POLICY.json"
         gate.RULES = self.root / "PROJECT_RULES.md"
         gate.LEDGER = self.root / "TACTIC_INSTRUCTION_DECISION_LEDGER.md"
         gate.PERFORMANCE_STANDARD = self.root / "POSITION_PERFORMANCE_ELIMINATION_STANDARD.md"
+        gate.FIXED_CONSTRAINTS = self.root / "TACTIC_FIXED_CONSTRAINTS.md"
+        gate.FIXED_CONSTRAINTS.write_text("只允许以下三种阵型\n红框团队指令：固定，不得修改", encoding="utf-8")
         gate.PERFORMANCE_STANDARD.write_text("D0强制门禁\n低效配置清除规则", encoding="utf-8")
         gate.POLICY.write_text(json.dumps({
             "target_ppg": 2.85,
             "primary_objective": "PPG >= 2.85",
             "minimum_attack_process_gate": {"metric": "team_xG", "minimum_38_match_total": 100},
-            "hard_constraints": {"ip_back_four_positions": ["DL", "DCL", "DCR", "DR"]},
+            "hard_constraints": {
+                "ip_back_four_positions": ["DL", "DCL", "DCR", "DR"],
+                "allowed_ip_formations": list(gate.IP_FORMATION_POSITIONS),
+                "ip_position_map_by_formation": gate.IP_FORMATION_POSITIONS,
+                "oop_position_map_by_slot": gate.V05_OOP_POSITIONS_BY_SLOT,
+                "fixed_mentality_native_value": gate.V05_MENTALITY_NATIVE_VALUE,
+                "fixed_team_instruction_values": gate.FIXED_TEAM_INSTRUCTIONS,
+                "required_explicit_team_instruction_keys": list(gate.REQUIRED_TEAM_INSTRUCTION_KEYS),
+            },
         }), encoding="utf-8")
         gate.RULES.write_text("PPG ≥ 2.85\nxG≥100\n不以现实足球理论作为否决依据；强制引擎行为错位设计。\n每轮从 V0.5 重生；最高优先级。", encoding="utf-8")
         gate.LEDGER.write_text("PPG 2.85 xG≥100", encoding="utf-8")
@@ -41,14 +51,15 @@ class ProjectGateTests(unittest.TestCase):
             "v": 1,
             "name": "gate-test",
             "ment": 4,
-            "base": {"g": "native-template"},
-            "ti": {"TEMPO": "HIGHER"},
+            "base": {"g": "native-template", "ip": "4-2-3-1", "oop": "V0.5 locked map"},
+            "ti": {key: "DEFAULT" for key in gate.REQUIRED_TEAM_INSTRUCTION_KEYS},
             "p": [],
         }
+        self.valid_recipe["ti"].update(gate.FIXED_TEAM_INSTRUCTIONS)
         positions = [
             ("GK", "GK"), ("DR", "DR"), ("DCR", "DCR"), ("DCL", "DCL"),
-            ("DL", "DL"), ("DMC", "DMC"), ("MCR", "MCR"), ("MCL", "MCL"),
-            ("AMC", "AMC"), ("AMR", "AMR"), ("STC", "STC"),
+            ("DL", "DL"), ("MCR", "DMR"), ("MCL", "DML"), ("AMR", "MR"),
+            ("AML", "ML"), ("AMC", "MC"), ("ST", "AMC"),
         ]
         for ip, oop in positions:
             self.valid_recipe["p"].append({
@@ -58,7 +69,7 @@ class ProjectGateTests(unittest.TestCase):
         self.write_recipe_and_audit()
 
     def restore_gate_paths(self):
-        gate.PROJECT_DIR, gate.POLICY, gate.RULES, gate.LEDGER, gate.PERFORMANCE_STANDARD, gate.V05_BASELINE_SHA256 = self.old_paths
+        gate.PROJECT_DIR, gate.POLICY, gate.RULES, gate.LEDGER, gate.PERFORMANCE_STANDARD, gate.FIXED_CONSTRAINTS, gate.V05_BASELINE_SHA256 = self.old_paths
 
     def write_recipe_and_audit(self):
         raw = json.dumps(self.valid_recipe, ensure_ascii=False, indent=2).encode()
@@ -69,6 +80,7 @@ class ProjectGateTests(unittest.TestCase):
         ledger_sha = hashlib.sha256(gate.LEDGER.read_bytes()).hexdigest()
         policy_sha = hashlib.sha256(gate.POLICY.read_bytes()).hexdigest()
         standard_sha = hashlib.sha256(gate.PERFORMANCE_STANDARD.read_bytes()).hexdigest()
+        fixed_sha = hashlib.sha256(gate.FIXED_CONSTRAINTS.read_bytes()).hexdigest()
         manifest = self.make_machine_manifest()
         manifest_text = json.dumps(manifest, ensure_ascii=False, indent=2)
         rows = "\n".join(f"| {phase}-{i:02d} | GK | Role / S | U | 未提供 | 未提供 | 未提供 | 未知 | U | 新增待验证 | D5验证 |" for phase in ("IP", "OOP") for i in range(1, 12))
@@ -83,7 +95,7 @@ class ProjectGateTests(unittest.TestCase):
             f"重生基准 FMF SHA-256：{gate.V05_BASELINE_SHA256}\n"
             f"父 FMF SHA-256：{parent_sha}\n本轮配方 SHA-256：{recipe_sha}\n"
             f"项目规则 SHA-256：{rules_sha}\n决策总账 SHA-256：{ledger_sha}\n"
-            f"PPG 策略 SHA-256：{policy_sha}\n位置绩效标准 SHA-256：{standard_sha}\n"
+            f"PPG 策略 SHA-256：{policy_sha}\n固定战术边界 SHA-256：{fixed_sha}\n位置绩效标准 SHA-256：{standard_sha}\n"
             "### 继承保留\n- 暂无；本测试全部作为新假设。\n"
             "### 替换淘汰\n- 旧配置不进入本轮。\n"
             "### 新增待验证\n- 本轮所有配置均为待验证假设。\n"
@@ -107,6 +119,41 @@ class ProjectGateTests(unittest.TestCase):
         return gate.validate(self.recipe, self.audit, self.parent)
 
     def test_valid_project_iteration_passes(self):
+        self.assertEqual(self.validate(), [])
+
+    def test_allowed_ip_formations_are_enforced(self):
+        self.valid_recipe["base"]["ip"] = "4-2-2-2"
+        self.write_recipe_and_audit()
+        self.assertTrue(any("IP formation must be exactly one of" in e for e in self.validate()))
+
+    def test_ip_slot_map_must_match_selected_formation(self):
+        self.valid_recipe["p"][9]["in"]["pos"] = "DMC"
+        self.write_recipe_and_audit()
+        self.assertTrue(any("IP positions do not match declared" in e for e in self.validate()))
+
+    def test_oop_position_map_is_locked_to_v05(self):
+        self.valid_recipe["p"][5]["out"]["pos"] = "MC"
+        self.write_recipe_and_audit()
+        self.assertTrue(any("OOP position map is locked to V0.5" in e for e in self.validate()))
+
+    def test_mentality_is_locked_to_v05_native_value(self):
+        self.valid_recipe["ment"] = 6
+        self.write_recipe_and_audit()
+        self.assertTrue(any("Team mentality is locked to V0.5 native value 4" in e for e in self.validate()))
+
+    def test_red_box_instruction_cannot_be_changed(self):
+        self.valid_recipe["ti"]["TEMPO"] = "HIGHER"
+        self.write_recipe_and_audit()
+        self.assertTrue(any("Red-box TI is locked: TEMPO must be MUCH_HIGHER" in e for e in self.validate()))
+
+    def test_all_29_team_instruction_groups_are_explicit(self):
+        self.valid_recipe["ti"].pop("PASSING_DIRECTNESS")
+        self.write_recipe_and_audit()
+        self.assertTrue(any("missing:" in e and "PASSING_DIRECTNESS" in e for e in self.validate()))
+
+    def test_non_red_box_team_instruction_can_be_changed(self):
+        self.valid_recipe["ti"]["DRIBBLING"] = "ENCOURAGE"
+        self.write_recipe_and_audit()
         self.assertEqual(self.validate(), [])
 
     def test_latest_version_cannot_become_parent(self):
