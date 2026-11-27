@@ -135,3 +135,41 @@
 - [ ] 没有把未经验证的对手AI响应或引擎内部机制写成事实。
 
 **本节任一必填项缺失，或以现实足球合理性作为否决依据：审计结论必须为 BLOCKED。**
+
+
+## 8. 机器决策清单（强制；D0脚本直接解析）
+
+本节必须放入最终审计文件。不能只填写上面的自然语言四类决策。
+
+在下面两个标记之间放置合法JSON（不要加Markdown代码围栏）：
+
+MACHINE_DECISION_MANIFEST_JSON_START
+{
+  "schema_version": 1,
+  "selected_configurations": [
+    {
+      "phase": "IP",
+      "pos": "示例位置",
+      "role": "原生RoleID",
+      "duty": "D",
+      "pi": [],
+      "decision": "新增待验证",
+      "evidence_grade": "U",
+      "rationale": "说明为什么这个配置值得在本轮重新研究。",
+      "hypothesis": "说明具体行为错位和可证伪机制。",
+      "d5_metric": "说明38场中要观测的量化指标。",
+      "failure_condition": "说明什么结果会否定该假设。"
+    }
+  ],
+  "retired_configurations": []
+}
+MACHINE_DECISION_MANIFEST_JSON_END
+
+**注意：** 上面仅展示单条记录的字段结构，不是可提交的完整清单。正式审计必须包含22条 selected_configurations：IP 11条、OOP 11条；每条必须与recipe中对应阶段的position、role、duty、PI逐字段一致。
+
+决策约束：
+- 继承保留：必须有A/B证据；写清可比基准与准入依据。
+- 新增待验证：必须填写hypothesis、d5_metric、failure_condition；不能把历史沿用伪装成继承。
+- 证据不足、替换淘汰：不得出现在selected_configurations中。
+- 历史未准入配置再次出现，只能标记新增待验证并提出新的机制假设；策略文件中的明确淘汰配置不得原样复活。
+- 任何清单缺失、JSON无效、少于/多于22项、重复项或与recipe不一致，均为D0=BLOCKED。
