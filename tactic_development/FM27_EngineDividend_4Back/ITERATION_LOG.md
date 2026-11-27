@@ -1215,7 +1215,7 @@ V1.1与V1.2英超38场有相同的主客场对手配对，但只有27场日期�
 
 ### 版本身份与设计来源
 - 父版本/重生基准：V0.5；父FMF SHA-256 `e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257`。
-- 配方：[R5.json](R5.json)；Recipe SHA-256 `090cfdf5317668cdabe117ed209e8092cb4ca8f67d12a4148215ffde73e42864`。
+- 配方：[R5.json](R5.json)；Recipe SHA-256 `1990f40739388ed9370431532b3d898a8d414956427f7b0aebe8e434313f8b5c`。
 - 设计审计：[R5_DESIGN_AND_AUDIT.md](R5_DESIGN_AND_AUDIT.md)；追踪矩阵：[R5_SEASON_TO_TACTIC_TRACEABILITY.md](R5_SEASON_TO_TACTIC_TRACEABILITY.md)。
 - 设计依据：R4 D5为46分/PPG1.211/xG58.86/xGA61.02；按PPG策略恢复Pass Into Space和Hit Early Crosses，DR WingBack Attack回Support，DMR BoxToBox Support回DefensiveMidfielder Defend，保留OOP三出口作为待验证结构。
 - IP严格DL/DCL/DCR/DR四后场；OOP 5-2-3由PressingFullBack/HoldingFullBack、Covering/Stopping CentreBack、双后腰和三出口组成。
