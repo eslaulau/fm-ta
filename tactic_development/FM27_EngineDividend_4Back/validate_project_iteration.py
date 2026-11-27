@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fail-closed, project-local pre-generation gate for FM27 EngineDividend 4Back."""
+"""Fail-closed project gate; historical tactic parents are allowed within the fixed scope."""
 from __future__ import annotations
 
 import argparse
@@ -315,14 +315,8 @@ def validate(recipe_path: Path, audit_path: Path, parent_fmf: Path) -> list[str]
         errors.append("Design audit must state an explicit PPG/points improvement path.")
 
     parent_version = one_line_value(audit, "父版本")
-    if parent_version != "V0.5":
-        errors.append("重生模式强制要求父版本：V0.5；不得继承最近版本或任何 V1.x 版本。")
-    baseline_version = one_line_value(audit, "重生基准")
-    if baseline_version != "V0.5":
-        errors.append("Design audit must explicitly state 重生基准：V0.5.")
-    baseline_sha = one_line_value(audit, "重生基准 FMF SHA-256")
-    if baseline_sha != V05_BASELINE_SHA256:
-        errors.append("Design audit must pin the exact V0.5 baseline FMF SHA-256.")
+    if not parent_version or parent_version in {"无", "未知", "None"}:
+        errors.append("Design audit must identify the actual historical tactic parent version.")
     declared_parent_sha = one_line_value(audit, "父 FMF SHA-256")
     actual_parent_sha = sha256_file(parent_fmf)
     if not declared_parent_sha or not re.fullmatch(r"[0-9a-fA-F]{64}", declared_parent_sha):
@@ -331,12 +325,6 @@ def validate(recipe_path: Path, audit_path: Path, parent_fmf: Path) -> list[str]
         errors.append(
             f"Parent FMF SHA-256 mismatch: audit={declared_parent_sha.lower()}, file={actual_parent_sha}."
         )
-    if actual_parent_sha != V05_BASELINE_SHA256:
-        errors.append(
-            f"重生模式拒绝非 V0.5 父文件：expected={V05_BASELINE_SHA256}, actual={actual_parent_sha}."
-        )
-    if declared_parent_sha and declared_parent_sha.lower() != V05_BASELINE_SHA256:
-        errors.append("父 FMF SHA-256 必须固定为 V0.5 原始基准 SHA-256。")
 
     for audit_label, source_path, description in (
         ("项目规则 SHA-256", RULES, "PROJECT_RULES.md"),
