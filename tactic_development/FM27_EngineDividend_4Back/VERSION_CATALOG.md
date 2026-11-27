@@ -2,7 +2,7 @@
 
 ## 当前权威状态｜R5.2 全新重设计登记（2026-11-27）
 
-- **当前没有已验证有效战术。** R5及R5.1设计资格均已撤销；R5.2是当前唯一重设计候选，D0-D3待执行，尚不得进入D4/D5。
+- **当前没有已验证有效战术。** R5及R5.1设计资格均已撤销；R5.2是当前唯一重设计候选；D0-D3已通过，现进入D4/D5验证阶段。
 - R5与R5.1历史recipe、audit、FMF、report、Actions artifact全部保留；R5.1由用户明确拒绝，不继续D4/D5。历史D3仅证明文件技术结构，不证明比赛有效。
 - 项目策略将R5、R5.1列入blocked_versions；新的D0门禁强制要求22项机器决策清单与recipe精确匹配。GitHub Actions回归测试16/16通过：[Run 45927303919](https://github.com/eslaulau/fm-ta/actions/runs/45927303919)。R5.2从V0.5原始FMF重生；D0-D3须由本项目专用构建工作流执行。
 - 最近完整D5仍为R4：46分、PPG1.211、xG58.86、xGA61.02；未有版本达到109分与xG100双门槛。
@@ -274,14 +274,21 @@
 
 ---
 
-## R5.2｜IP 4-1-2-3 DM Wide / OOP 5-2-3｜重新设计登记（2026-11-27）
+## R5.2｜IP 4-1-2-3 DM Wide / OOP 5-2-3｜D0-D3 PASS（2026-11-27）
 
-- **当前状态：唯一重设计候选；D0-D3待执行，D4/D5未验证。** 本轮是对用户拒绝R5.1后的新设计，不是对菱形结构进行微调。
+- **当前状态：唯一重设计候选；D0-D3通过，D4/D5未验证。** 本轮是对用户拒绝R5.1后的新设计，不是对菱形结构进行微调。
 - 父版本/重生基准：V0.5；原生FMF SHA-256 `e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257`。
 - 配方：[R5.2.json](R5.2.json)；设计审计：[R5.2_DESIGN_AND_AUDIT.md](R5.2_DESIGN_AND_AUDIT.md)；机器清单/哈希刷新：[prepare_R5_2_audit.py](prepare_R5_2_audit.py)。
 - IP：4-1-2-3 DM Wide。IP 四后场严格为 DL/DCL/DCR/DR；DCL AdvancedCentreBack A、DL InsideFullBack D、DR PlaymakingWingBack S；双肋部攻击者、双边锋和中锋。
 - OOP：5-2-3。IP DMC 转 DC 构成第五后卫；MCL/MCR 转 DML/DMR；ST 转 AMC，AML/AMR保持两翼。
 - 外部引擎资料只用于提出迁移假设，不继承外部战术的PPG/xG成绩。所有22个阶段配置均为新增待验证/U。
+- D0 PASS：项目规则、四类决策、22项机器manifest与recipe精确匹配、V0.5父SHA通过。
+- D1 PASS：当前原生catalog位置/角色/职责/PI权限预检通过；DCL采用四后卫兼容AdvancedCentreBack A；D3回读验证8/8。
+- D2 PASS：IP 11槽、OOP 11槽，DL/DCL/DCR/DR各一次；全部22阶段位置/角色/PI配置完整。
+- D3 PASS：原生FMF容器往返、全部成员解密/Zstandard校验、TAC完整解析、22阶段精确回读、PI权限、TI向量、native style字段共8/8。
+- Run [45935606662](https://github.com/eslaulau/fm-ta/actions/runs/45935606662)；Artifact ID `15170830371`；ZIP SHA-256 `f345b3c6557ea097fad8a4b036ca43d11066b36cbf571b419a22982ed0300d23`。
+- Recipe SHA-256 `6f5d29978d6fb0721a9f0b9f7a456d7cde0341ba225044f91c4b331519ae1edd`；FMF 4,564 bytes，SHA-256 `c47adc36a04d3274a1368c1800bec0c9ac9f8ccaf490b1483a423a106e3c0db5`；report SHA-256 `a7bb3d1d0f51ba94e485d10adaf64a3b29d20ab96f132356b8c2a889e0924404`。
+- D4待用户在FM27内导入确认；D5待同一完整38场至少109分且全队xG至少100。D3仅验证文件结构，不代表战术效果。
 - D5 双门槛：同一38场联赛至少109分且全队xG至少100，两项同时通过。
 - 本次拒绝记录：R5.1 IP 4-1-2-1-2 Diamond / OOP 4-3-1-2 已由用户拒绝；保留其D3技术历史，不作为候选、不安排追加测试。
 
