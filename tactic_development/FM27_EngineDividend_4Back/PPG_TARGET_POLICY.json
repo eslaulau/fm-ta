@@ -1,5 +1,5 @@
 {
-  "policy_version": 1,
+  "policy_version": 2,
   "project": "FM27_EngineDividend_4Back",
   "primary_objective": "PPG >= 2.85",
   "target_ppg": 2.85,
@@ -111,31 +111,10 @@
     }
   },
   "active_iteration": {
-    "version": "R5",
-    "status": "D0_design_and_traceability_prepared_D1-D3_pending",
-    "parent_version": "V0.5",
-    "parent_fmf_sha256": "e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257",
-    "ip_shape": "4-2-3-1",
-    "oop_shape": "5-2-3_strikerless_outlet_trio",
-    "recipe": "R5.json",
-    "recipe_sha256": "1990f40739388ed9370431532b3d898a8d414956427f7b0aebe8e434313f8b5c",
-    "d5_gates": {
-      "league_points_38_matches": 109,
-      "team_xg_38_matches": 100
-    },
-    "performance_claim": "NOT_TESTED",
-    "d4_user_confirmed_used_in_game": false,
-    "d4_visual_readback_independently_archived": false,
-    "build": {
-      "project_gate": "pending",
-      "native_preflight": "pending",
-      "structure": "pending",
-      "fmf": "pending",
-      "game_interactive_import": false,
-      "match_engine": false
-    },
-    "cross_engagement": "STOP_CROSSES",
-    "tackle_harder_scope": "OOP back five plus two defensive midfielders (7 players); not the three outlet attackers"
+    "version": null,
+    "status": "PAUSED_GATE_REMEDIATION",
+    "reason": "R5 was retrospectively invalidated: D3 technical success did not establish design compliance; no new tactic candidate may enter D1-D3 until the machine decision manifest gate and regression tests are in force.",
+    "next_action": "Complete project gate remediation and regression tests before starting a fresh single-mainline design from V0.5."
   },
   "retired_iteration_decisions": [
     {
@@ -159,5 +138,66 @@
     "data_limit": "R4 27.1.1+2511875 Exporter数据为partial/unverified；角色码仅309/913可解码，无OOP角色/PI/TI逐场映射。",
     "next": "D0项目门禁→D1原生权限预检→D2 11槽/22阶段→D3 FMF独立回读；D4/D5等待用户验证。",
     "rationale": "R4 xGA 61.02且整体D5 FAIL；社区27.1.1讨论对邀请传中的风险提出警示，故本轮不重复Invite Crosses。Sortitoutsi 4-2-3-1样本提示Tackle Harder集中在防守中场并报告前场纪律副作用，故采用防线+双后腰选择性Tackle Harder；纪律数据只作副作用观察，不作为战术质量门槛。"
-  }
+  },
+  "blocked_versions": [
+    "R5"
+  ],
+  "historical_non_admitted_configurations": [
+    {
+      "phase": "IP",
+      "position": "AML",
+      "role": "InsideForward",
+      "duty": "A",
+      "source_version": "R5",
+      "reason": "R4 team xG 58.86 < 100; attacking slot not admitted."
+    },
+    {
+      "phase": "IP",
+      "position": "AMC",
+      "role": "FreeRole",
+      "duty": "A",
+      "source_version": "R5",
+      "reason": "R4 team xG 58.86 < 100; attacking slot not admitted."
+    },
+    {
+      "phase": "IP",
+      "position": "AMR",
+      "role": "Winger",
+      "duty": "S",
+      "source_version": "R5",
+      "reason": "R4 team xG 58.86 < 100; attacking slot not admitted."
+    },
+    {
+      "phase": "IP",
+      "position": "ST",
+      "role": "TargetForward",
+      "duty": "A",
+      "source_version": "R5",
+      "reason": "R4 team xG 58.86 < 100; attacking slot not admitted."
+    },
+    {
+      "phase": "OOP",
+      "position": "AML",
+      "role": "InsideOutletWinger",
+      "duty": "A",
+      "source_version": "R5",
+      "reason": "R4 OOP outlet trio was not independently admitted; cannot silently inherit."
+    },
+    {
+      "phase": "OOP",
+      "position": "AMR",
+      "role": "WideOutletWinger",
+      "duty": "A",
+      "source_version": "R5",
+      "reason": "R4 OOP outlet trio was not independently admitted; cannot silently inherit."
+    },
+    {
+      "phase": "OOP",
+      "position": "AMC",
+      "role": "CentralOutletAttackingMidfielder",
+      "duty": "A",
+      "source_version": "R5",
+      "reason": "R4 OOP outlet trio was not independently admitted; cannot silently inherit."
+    }
+  ]
 }
