@@ -1266,7 +1266,7 @@ V1.1与V1.2英超38场有相同的主客场对手配对，但只有27场日期�
 - D2 PASS：11个IP/OOP槽、22阶段、IP四后场位置约束通过。
 - D3 PASS：FMF容器往返、成员解密/Zstandard校验、TAC完整解析、22阶段读回、PI权限、TI向量与原生style身份8/8通过。
 - 配方：[R5.1.json](R5.1.json)，SHA-256 `873110d5a885fe105ad28bf0ab61a376b977c4a9cdf1068dd4323255e0984852`；审计：[R5.1_DESIGN_AND_AUDIT.md](R5.1_DESIGN_AND_AUDIT.md)；报告：[builds/R5.1.report.json](builds/R5.1.report.json)；FMF：[builds/R5.1.fmf](builds/R5.1.fmf)。
-- Actions [Run 45928559022](https://github.com/eslaulau/fm-ta/actions/runs/45928559022)；Artifact ID `15167667342`；Artifact ZIP SHA-256 `9037afd0276771a58b49501bee40620774ba2bdb5d133da2e472887e31d4cb93`。
+- Actions [Run 45929011714](https://github.com/eslaulau/fm-ta/actions/runs/45929011714)；Artifact ID `15167568553`；Artifact ZIP SHA-256 `3a584523e54d11a155306d72425506e5f35017f30346c470e17e07de0ac1556a`。
 - FMF 4,572 bytes；SHA-256 `292e027e5f9b5664bf224e577e176be27f414c3c655fe5a17b292c88e5fbf51a`；same-run report SHA-256 `98d0077a64f5ee2bb89eb74286403894ca7b89d019b5a34030c02e2f17c39c5a`。
 
 ### 构建期间的真实门禁拦截
