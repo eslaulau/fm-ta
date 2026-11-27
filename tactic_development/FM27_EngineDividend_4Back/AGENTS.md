@@ -16,7 +16,7 @@
 2. `TACTIC_INSTRUCTION_DECISION_LEDGER.md`（唯一权威总账，内含V0.5–V1.8完整历史配置档案）、`VERSION_CATALOG.md`、`SOURCE_REGISTER.md`、`ITERATION_LOG.md`。不得再查找或维护独立历史主表。
 3. 唯一父版本的完整recipe、原生FMF、build request/build report、设计审计。
 4. 本轮用户报告的原始内容、最近D5分析、历史上关键的最佳/最差赛季分析。
-5. 完整引擎红利资料库索引及相关研究；`EXTERNAL_ENGINE_BENCHMARK.md`和当前FM27 build的FM-Arena、FMAX、metaFM、爆棚/社区实测。
+5. 唯一内部历史战术总账及其中链接的历史recipe、构建报告、用户确认的赛季报告。
 
 禁止只依赖聊天摘要、模型记忆或上一轮的简短结论。若资料库文件很多，先读取索引和目录，再按主题读取完整相关条目，并在本轮审计中列出实际读取的文件/来源；不得声称读过未读取的内容。
 
@@ -36,7 +36,7 @@
 
 ## D0–D5状态定义
 
-- D0：赛季报告数据审计、完整诊断、历史总账联动、外部机制研究、四类决策及整体设计。
+- D0：赛季报告数据审计、完整诊断、历史总账联动、内部历史配置研究、四类决策及整体设计。
 - D1：角色/职责/PI权限及构建前置检查。
 - D2：IP/OOP 11槽/22阶段与转换结构检查。
 - D3：生成正式FMF、独立回读、哈希和构建报告。
@@ -56,7 +56,7 @@
 
 ## 赛季报告与战术配置追踪的强制执行
 
-每轮必须复制并填写 [SEASON_TO_TACTIC_TRACEABILITY_TEMPLATE.md](SEASON_TO_TACTIC_TRACEABILITY_TEMPLATE.md)，并按 [UPGRADE_GATE.md 第10节](UPGRADE_GATE.md) 建立完整证据链。赛季问题、历史对照、外部机制、配置决策和下一轮D5验证必须使用稳定ID贯通；不允许分析与设计脱节。
+每轮必须复制并填写 [SEASON_TO_TACTIC_TRACEABILITY_TEMPLATE.md](SEASON_TO_TACTIC_TRACEABILITY_TEMPLATE.md)，并按 [UPGRADE_GATE.md 第10节](UPGRADE_GATE.md) 建立完整证据链。赛季问题、历史对照、内部历史配置、配置决策和下一轮D5验证必须使用稳定ID贯通；不允许分析与设计脱节。
 
 D0完成前必须具备：
 - 输球/平局及典型比赛案例（报告有逐场数据时）；
