@@ -53,7 +53,7 @@ jobs:
           print(f"PASS V0.5: {p.stat().st_size} bytes / {actual}")
           PY
 
-      - name: Run project gate, native permission preflight, build and D3 readback
+      - name: Run native permission preflight, build and D3 readback
         run: |
           python "tactic_development/FM27_EngineDividend_4Back/build_project_tactic.py" \
             --recipe "tactic_development/FM27_EngineDividend_4Back/${{ steps.request.outputs.recipe }}" \
