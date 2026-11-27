@@ -1233,4 +1233,4 @@ V1.1与V1.2英超38场有相同的主客场对手配对，但只有27场日期�
 - D3：待本地FMF生成、同次report与独立回读；当前无FMF/report。
 - D4：待用户游戏内导入与映射确认。
 - D5：待用户确认R5赛季映射后的完整38场英超报告；双门槛109分与100 xG必须同时达到。
-- 执行通道：严格遵守GENERATION_EXECUTION_POLICY本地Python 3.12标准入口；不使用GitHub Actions绕过项目门禁。
+- 执行通道：严格遵守GENERATION_EXECUTION_POLICY；执行环境不限于本地Python 3.12，允许项目专用GitHub Actions runner，但必须执行完整项目门禁与D3独立回读。
