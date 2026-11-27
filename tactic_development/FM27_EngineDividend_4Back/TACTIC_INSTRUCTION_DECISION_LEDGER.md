@@ -4,7 +4,7 @@
 - R5.3从固定V0.5原生FMF重生，父SHA-256：`e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257`。
 - IP 4-1-2-3 Front Five，OOP 5-2-3；IP四后场DL/DCL/DCR/DR各一次；进攻前场为AMCL/AMCR双攻击中场及STL/ST/STR三前锋。
 - 全部29组球队指令显式写入recipe；DEFAULT会清除对应V0.5可见选项，不再隐式继承。
-- R5.3的22项阶段配置全部为新增待验证/U；D0-D3待本轮工作流执行，D4/D5未验证。
+- R5.3的22项阶段配置全部为新增待验证/U；D0-D3已通过Run [45938668343](https://github.com/eslaulau/fm-ta/actions/runs/45938668343)，Artifact `15171239855`，FMF SHA-256 `8372e09648cd065d6f22106bb21a622ced9e7432863bbfcdc13cda333922b824`；D4/D5未验证。
 - 最终D5必须同一完整38场至少109分（PPG≥2.85）且全队xG≥100，目前没有达标版本。
 
 ---
@@ -20,7 +20,7 @@
 
 ### 构建状态
 - recipe：R5.3.json；audit：R5.3_DESIGN_AND_AUDIT.md；helper：prepare_R5_3_audit.py。
-- 当前D0-D3尚待运行；D4/D5尚未验证。所有22个阶段配置为新增待验证/U。
+- D0-D3已通过Run [45938668343](https://github.com/eslaulau/fm-ta/actions/runs/45938668343)；Artifact `15171239855`，FMF SHA-256 `8372e09648cd065d6f22106bb21a622ced9e7432863bbfcdc13cda333922b824`，报告SHA-256 `362b854e788c305a86a63ec6e9aaf2f7049bb4baae4a17b1427d48269a6c8f6d`。D4/D5尚未验证，所有22个阶段配置为新增待验证/U。
 - D5双门槛：同一38场至少109分并且团队xG至少100。
 
 ---
