@@ -186,3 +186,15 @@ PPG 策略 SHA-256：3e0bb63315a72569016cae00fd30e276a5146dbb0977277b412d27496f1
 - [ ] D5完整38场赛季报告待补。
 
 审计结论： PASS
+
+
+## 8. D5 完整赛季结果｜Exporter Run 45914272197（2026-11-27）
+
+用户确认该赛季使用R4；Exporter不导出战术配置，版本映射来自用户声明。
+
+- 英超38场：12胜10平16负、46分、PPG1.211、52:57、xG58.86、xGA61.02。
+- D5双硬门槛均FAIL：积分比109分少63分，xG比100少41.14。
+- 对比R3：积分-20、进球-13、失球+20、xG-6.14、xGA+14.84、射门-44。R4绝佳机会60次，比R3多4次，但射门量和传中完成率下降。
+- R4 D5详细复盘：[R4_D5_SEASON_REVIEW_45914272197.md](R4_D5_SEASON_REVIEW_45914272197.md)；原始数据：[Exporter Run 45914272197](https://github.com/eslaulau/FM27-Exporter/tree/main/season-reports/1/45914272197)。
+- D3技术构建仍为PASS；用户确认已在游戏中使用R4。D5性能FAIL，R4不再作为达标候选，保留历史档案。
+- 下一轮R5从固定V0.5重生；建议保留R4 OOP三出口，恢复Pass Into Space与Hit Early Crosses，DR WingBack Attack回Support，DMR BoxToBox Support回DefensiveMidfielder Defend。该组合是下一轮待验证假设，不是单项因果结论。
