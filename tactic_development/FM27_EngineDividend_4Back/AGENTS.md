@@ -34,7 +34,7 @@
 - **归档：** 每轮同步更新 `TACTIC_INSTRUCTION_DECISION_LEDGER.md`、`ITERATION_LOG.md`、`VERSION_CATALOG.md`、`TACTIC_INSTRUCTION_DECISION_LEDGER.md` 和本轮分析/审计/构建文件；保留所有历史。
 - **回读：** 每次写入后逐个重新读取GitHub文件，核对内容和哈希。read-back未完成不得声称写入成功。
 
-## D0–D5状态定义
+## –D5状态定义
 
 - D0：赛季报告数据审计、完整诊断、历史总账联动、内部历史配置研究、四类决策及整体设计。
 - D1：角色/职责/PI权限及构建前置检查。
