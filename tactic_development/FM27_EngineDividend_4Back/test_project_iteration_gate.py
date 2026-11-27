@@ -41,7 +41,7 @@ class ProjectGateTests(unittest.TestCase):
                 "allowed_modifications": gate.ALLOWED_MODIFICATIONS,
             },
         }), encoding="utf-8")
-        gate.RULES.write_text("PPG ≥ 2.85\nxG≥100\nIP阵型只允许三种；红框TI固定。\n内部历史战术总账为唯一参考。", encoding="utf-8")
+        gate.RULES.write_text("PPG ≥ 2.85\nxG≥100\nIP阵型只允许三种；红框TI固定。\n历史战术统一继承；不强制V0.5重生。", encoding="utf-8")
         gate.LEDGER.write_text("PPG 2.85 xG≥100", encoding="utf-8")
         self.addCleanup(self.restore_gate_paths)
         self.recipe = self.root / "candidate.json"
