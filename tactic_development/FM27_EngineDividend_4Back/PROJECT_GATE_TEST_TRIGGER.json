@@ -1,6 +1,6 @@
 {
   "run": "fixed-scope-regression",
-  "revision": 1,
+  "revision": 2,
   "date": "2026-11-27",
-  "scope": "approved IP formations; locked OOP slot map; mentality 4; 15 fixed red-box TIs; role/duty/PI/non-box TI modifications only"
+  "scope": "fixed IP formation allowlist; locked V0.5 OOP slots and mentality; 15 fixed red-box TIs; 14 adjustable non-box TIs; all 29 TIs explicit; only approved recipe fields"
 }
