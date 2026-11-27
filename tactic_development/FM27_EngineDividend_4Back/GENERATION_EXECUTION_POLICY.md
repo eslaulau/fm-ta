@@ -101,16 +101,8 @@ D3不等于D4游戏内导入，也不等于D5赛季表现。没有实际FMF和�
 不得修改FM-TA通用生成器、导出器或其他项目目录来承载本项目政策。允许维护本项目目录内的专用Actions工作流与自动化配置。
 
 
-## 每轮使用选定的内部历史战术父版本
+## 内部历史战术父配置与技术载体
 
-仓库已归档完整 `V0.5_NATIVE_SNAPSHOT.json`，其中嵌入原始 FMF 字节。每轮构建前运行：
+每轮从 `TACTIC_INSTRUCTION_DECISION_LEDGER.md` 选择一个实际历史父版本，或组合多个历史版本的配置组件。审计必须记录真实父版本、父FMF路径和SHA-256。不得要求用户恢复V0.5作为战术父版。
 
-```powershell
-py -3.12 tactic_development\\FM27_EngineDividend_4Back\\materialize_v05_baseline.py
-```
-
-默认输出 `tactic_development/FM27_EngineDividend_4Back/builds/V0.5.fmf`；脚本会验证 4,214 bytes 和固定 SHA-256，拒绝覆盖已有文件。构建入口的 `--parent-fmf` 必须指向该文件。
-
-## 重生基准强制说明
-
-无论标准入口还是离线原生生成器，本轮传入的父 FMF 都必须是 V0.5 原始文件，SHA-256 固定为 `e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257`。任何 V1.x 文件不得作为 `--parent-fmf`。离线执行不得绕过 `validate_project_iteration.py` 的 V0.5 哈希检查。
+V0.5原生FMF可在生成器需要时仅作为原生格式序列化载体；它不决定本轮的战术配置。完整recipe必须准确写入选定历史父配置的22阶段内容及本轮允许的变更。构建报告同时记录实际战术父版本和底层技术载体，二者不得混为一谈。
