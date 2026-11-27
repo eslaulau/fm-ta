@@ -42,7 +42,7 @@ jobs:
             "tactic_development/FM27_EngineDividend_4Back/PPG_TARGET_POLICY.json" \
             "tactic_development/FM27_EngineDividend_4Back/POSITION_PERFORMANCE_ELIMINATION_STANDARD.md"
 
-      - name: Run project gate, native preflight, build and independent readback
+      - name: Run native preflight, build and independent readback
         run: |
           python "tactic_development/FM27_EngineDividend_4Back/build_project_tactic.py" \
             --recipe "tactic_development/FM27_EngineDividend_4Back/R3.json" \
