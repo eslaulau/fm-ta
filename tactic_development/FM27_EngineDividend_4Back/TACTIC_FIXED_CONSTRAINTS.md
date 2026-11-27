@@ -71,9 +71,26 @@ OOP 位置槽与 V0.5 的 11 槽配对关系固定，不得改动：
 
 1. **球员角色与职责**：IP/OOP 各位置的角色和职责可以重新组合，但必须通过当前 FM27 原生位置/阶段/角色/职责权限预检。
 2. **球员个人指令 PI**：可按位置、阶段、角色、职责和原生 PI 权限调整；不能越权修改红框团队指令。
-3. **非红框球队指令 TI**：除第 3 节列出的 15 组外，原生目录中其他团队指令可根据数据与测试结果调整。
+3. **非红框球队指令 TI**：以下14组可根据数据与测试结果调整：
 
-为避免“未声明设置意外沿用”的问题，每份正式 recipe 仍须显式覆盖当前原生目录中的全部 29 组团队指令；其中 15 组固定值必须精确匹配，其余组是允许调整的范围。
+| 原生TI键 | 游戏内指令类别 |
+|---|---|
+| `ATTACKING_TRANSITION` | 得球后 |
+| `CREATIVE_FREEDOM` | 创造力 |
+| `TIME_WASTING` | 拖延时间 |
+| `PLAY_FOR_SET_PIECES` | 定位球策略 |
+| `PROGRESS_THROUGH` | 推进方向 |
+| `SUPPORTING_RUNS` | 支援跑动 |
+| `SUPPORTING_RUNS_SECONDARY` | 次级支援跑动 |
+| `GOALKEEPER_ATTACKING_SET_PIECES` | 门将参与进攻定位球 |
+| `PATIENCE` | 耐心 |
+| `DRIBBLING` | 盘带 |
+| `SHOTS_FROM_DISTANCE` | 远程射门 |
+| `CROSSING_STYLE` | 传中类型 |
+| `DEFENSIVE_LINE_BEHAVIOR` | 后防线行为 |
+| `TRIGGER_PRESS` | 触发压迫 |
+
+为避免“未声明设置意外沿用”的问题，每份正式 recipe 仍须显式覆盖当前原生目录中的全部29组团队指令；其中15组固定值必须精确匹配，其余14组只在本表内可调整。
 
 ## 5. 不在允许调整范围内的字段
 
