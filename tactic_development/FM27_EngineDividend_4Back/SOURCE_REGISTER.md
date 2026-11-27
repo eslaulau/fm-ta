@@ -167,5 +167,5 @@
 - 配方：[R5.2.json](R5.2.json)；设计/审计：[R5.2_DESIGN_AND_AUDIT.md](R5.2_DESIGN_AND_AUDIT.md)；审计脚本：[prepare_R5_2_audit.py](prepare_R5_2_audit.py)。
 - 当前原生研究输入：`04_离线原生FMF生成器/catalog.json` 与 `FM27GEN1_Offline_FMF_Generator.py`；外部机制来源见本轮审计及 [EXTERNAL_ENGINE_BENCHMARK.md](EXTERNAL_ENGINE_BENCHMARK.md)。
 - 设计依据：MetaFM 27.1.1公开同协议测试；Trinity 3133（3-4-3 DM→5-2-3）及2-3-2-3宽度/纵深样本。外部结果只作机制线索，不作为本队效果证据。
-- 当前状态：R5.2配方和审计草案登记完成；项目D0-D3待专用工作流运行；D4/D5未验证。
+- 当前状态：R5.2已完成项目D0-D3，D4/D5未验证。Actions Run [45935606662](https://github.com/eslaulau/fm-ta/actions/runs/45935606662)，Artifact ID `15170830371`；Artifact ZIP SHA-256 `f345b3c6557ea097fad8a4b036ca43d11066b36cbf571b419a22982ed0300d23`。FMF 4,564 bytes，SHA-256 `c47adc36a04d3274a1368c1800bec0c9ac9f8ccaf490b1483a423a106e3c0db5`；报告 SHA-256 `a7bb3d1d0f51ba94e485d10adaf64a3b29d20ab96f132356b8c2a889e0924404`；recipe SHA-256 `6f5d29978d6fb0721a9f0b9f7a456d7cde0341ba225044f91c4b331519ae1edd`。D0/D1/D2/D3均PASS；D4/D5不作推断。
 
