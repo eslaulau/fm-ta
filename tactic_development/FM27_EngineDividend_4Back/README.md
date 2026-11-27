@@ -3,7 +3,7 @@
 > - IP有球阵型只允许 **4-2-3-1、4-3-3、4-1-2-3** 三种固定位置布局。
 > - 用户截图红框中的15项团队指令固定；OOP 位置映射锁定V0.5；心态固定为V0.5原生值4。
 > - 只允许调整球员角色/职责、个人指令PI和非红框团队指令TI；29组TI须全部显式登记。
-> - 权威规则：[TACTIC_FIXED_CONSTRAINTS.md](TACTIC_FIXED_CONSTRAINTS.md)；D0机器门禁：[validate_project_iteration.py](validate_project_iteration.py)；[全面规则审查记录](RULESET_AUDIT_20261127.md)。
+> - 权威规则：[TACTIC_FIXED_CONSTRAINTS.md](TACTIC_FIXED_CONSTRAINTS.md)；机器：[validate_project_iteration.py](validate_project_iteration.py)；[全面规则审查记录](RULESET_AUDIT_20261127.md)。
 > - R6虽已完成旧规则下D0-D3，但因4-2-2-2阵型、OOP位置映射、心态及红框TI不符合新规则，已撤销当前候选资格；保留历史技术产物，不进入D4/D5。
 > - 最终赛季目标仍为38场至少109分（PPG≥2.85）且全队xG≥100。
 
@@ -184,7 +184,7 @@ D3 原生构建通过只说明文件能生成并独立回读；D4 游戏内显�
 
 ## 构建执行原则（2026-11-26 修订）
 
-项目门禁严格，但不把某一种工具调用方式当作唯一生成通道。助手不得再以“GitHub 工具只能读取/写入、不能执行项目脚本”作为停止迭代的理由。必须继续使用当前可用的工作区或离线原生生成器完成构建；离线路径仍先运行项目审计，再进行原生权限检查、FMF生成和独立回读。只有真实输入缺失或所有执行路径均出现可复现错误时，才报告具体阻断。详见 [GENERATION_EXECUTION_POLICY.md](GENERATION_EXECUTION_POLICY.md)。
+项目门禁严格，但不把某一种工具调用方式当作唯一生成通道。助手不得再以“GitHub 工具只能读取/写入、不能执行项目脚本”作为停止迭代的理由。必须继续使用当前可用的工作区或离线原生生成器完成构建；离线路径仍先运行原生权限预检，再进行原生权限检查、FMF生成和独立回读。只有真实输入缺失或所有执行路径均出现可复现错误时，才报告具体阻断。详见 [GENERATION_EXECUTION_POLICY.md](GENERATION_EXECUTION_POLICY.md)。
 
 
 ## 最高优先级迭代规则：使用内部历史战术总账
