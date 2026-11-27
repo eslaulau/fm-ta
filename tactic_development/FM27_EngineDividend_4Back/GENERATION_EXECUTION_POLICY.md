@@ -11,14 +11,14 @@
 - “当前GitHub/聊天接口不能远程执行Python”只是工具接口能力描述，不是项目缺陷、战术设计缺陷、D0失败或FMF生成失败。
 - 助手不得再以接口只能读取/写入仓库为由停止工作。应改用本地/附件工作区执行，或走本文件的离线原生生成路径。
 - 所有通道必须执行同一项目审计、同一原生配置合法性检查和同一D3独立回读。离线通道不是审计旁路。
-- 不得使用未运行项目门禁的通用Actions工作流生成正式项目战术；不得为本项目修改FM-TA通用生成器、导出器、工作流或全仓库规则。
+- 任何执行通道（包括GitHub Actions）都不得跳过D0项目门禁、原生权限预检、D3独立回读和产物归档。允许创建或修改项目专用工作流来执行这些门禁；不得为此修改FM-TA通用生成器、导出器或其他项目目录。
 
 ## 2. 标准执行路径
 
-在仓库根目录、Python 3.12环境执行：
+在任意满足项目依赖的Python环境执行；不限定必须是本地Python 3.12。可使用本地/附件工作区、GitHub Actions或其他合规自动化runner。
 
 ```powershell
-py -3.12 tactic_development\FM27_EngineDividend_4Back\build_project_tactic.py `
+py tactic_development\FM27_EngineDividend_4Back\build_project_tactic.py `
   --recipe tactic_development\FM27_EngineDividend_4Back\<本轮配方>.json `
   --audit tactic_development\FM27_EngineDividend_4Back\<本轮审计>.md `
   --parent-fmf D:\V0.5.fmf `
@@ -28,14 +28,14 @@ py -3.12 tactic_development\FM27_EngineDividend_4Back\build_project_tactic.py `
 
 标准入口按顺序运行项目验证器、原生catalog预检、FM-TA生成器。不得跳过任何失败项。
 
-## 3. 离线原生生成路径（标准入口当前不可调用时）
+## 3. 备用原生生成路径（项目标准入口当前不可调用时）
 
-离线生成路径必须在同一工作区中完成。它不依赖GitHub Actions，也不要求远程执行能力。
+备用生成路径可在任意具备项目文件和依赖的执行环境中完成，包括本地/附件工作区或GitHub Actions runner。
 
 ### 第一步：项目门禁
 
 ```powershell
-py -3.12 tactic_development\FM27_EngineDividend_4Back\validate_project_iteration.py `
+py tactic_development\FM27_EngineDividend_4Back\validate_project_iteration.py `
   --recipe tactic_development\FM27_EngineDividend_4Back\<本轮配方>.json `
   --audit tactic_development\FM27_EngineDividend_4Back\<本轮审计>.md `
   --parent-fmf D:\<父版本>.fmf
@@ -57,7 +57,7 @@ py -3.12 scripts\preflight_fm27_tactic.py `
 ### 第三步：离线原生FMF生成
 
 ```powershell
-py -3.12 "04_离线原生FMF生成器\FM27GEN1_Offline_FMF_Generator.py" `
+py "04_离线原生FMF生成器\FM27GEN1_Offline_FMF_Generator.py" `
   "tactic_development\FM27_EngineDividend_4Back\<本轮配方>.json" `
   --catalog "04_离线原生FMF生成器\catalog.json" `
   --style-registry "04_离线原生FMF生成器\style_template_registry.json" `
@@ -90,7 +90,7 @@ D3不等于D4游戏内导入，也不等于D5赛季表现。没有实际FMF和�
 - 原生生成器对所选配置给出可复现的权限/格式错误；
 - 所有当前可用执行环境均无法启动或执行，并且已明确尝试路径及具体错误。
 
-不得将“GitHub工具没有远程执行Python的接口”单独列为阻断。若确实没有任何可用执行环境，必须说明已完成的设计/审计阶段、实际尝试过的执行路径、精确错误和唯一需要用户协助的动作；不得要求用户重复提供已经在仓库或当前会话中存在的资料。
+不得将某一种执行接口不可用单独列为阻断。若确实没有任何可用执行环境，必须说明已完成的设计/审计阶段、实际尝试过的执行路径、精确错误和唯一需要用户协助的动作；不得要求用户重复提供已经在仓库或当前会话中存在的资料。
 
 ## 6. 项目范围
 
@@ -98,7 +98,7 @@ D3不等于D4游戏内导入，也不等于D5赛季表现。没有实际FMF和�
 
 `tactic_development/FM27_EngineDividend_4Back/`
 
-不得修改FM-TA通用生成器、导出器、通用Actions工作流或其他项目目录来承载本项目政策。
+不得修改FM-TA通用生成器、导出器或其他项目目录来承载本项目政策。允许维护本项目目录内的专用Actions工作流与自动化配置。
 
 
 ## 每轮先恢复 V0.5 原始 FMF
