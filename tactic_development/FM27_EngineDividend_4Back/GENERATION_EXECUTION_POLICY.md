@@ -1,108 +1,25 @@
-# FM27 EngineDividend 4Back｜构建执行通道政策
+# FM27 EngineDividend 4Back｜构建执行政策
 
-> 本文件只约束本项目。项目规则、审计和构建辅助文件不得扩散到 FM-TA 通用工具或其他项目。
+## 1. 原则
+构建流程服务于战术设计，不得反过来限制设计。**项目不设D0门禁，不运行D0机器决策清单，不得因缺少D0审计而阻止FMF生成。**
 
-## 1. 核心原则
+## 2. 标准构建顺序
+1. 读取本轮recipe、实际父FMF及其SHA-256。
+2. 执行FM27原生角色/职责/PI权限预检。
+3. 检查IP/OOP的11槽位、22阶段结构，以及固定阵型、OOP映射、心态和红框TI。
+4. 生成FMF。
+5. 对生成的FMF独立回读，核对22阶段配置、PI/TI、原生字段和文件完整性。
+6. 输出FMF、同次构建报告、recipe和SHA-256；归档到本项目版本目录。
 
-**项目必须严格，生成执行通道必须灵活。**
+## 3. 执行通道
+可以使用项目专属脚本、本地Python工作区、合规自动化runner或离线原生生成器。执行通道可以不同，但必须完成第2节的原生预检与独立回读。不得调用已删除的 validate_project_iteration.py；不得新增同类D0门禁作为前置阻断。
 
-- 设计审计是进入生成流程的强制门禁；未通过不得生成。D0必须校验：IP阵型限4-2-3-1/4-3-3/4-1-2-3及精确11槽布局、OOP按槽位锁定V0.5、心态4、红框15项TI固定、29组TI完整显式登记，只允许修改角色/职责、PI与非红框TI。
-- 通过D0后，构建执行器可以是项目标准脚本、本地Python工作区、当前会话可用的附件工作区、合规自动化runner，或离线原生生成器。
-- “当前GitHub/聊天接口不能远程执行Python”只是工具接口能力描述，不是项目缺陷、战术设计缺陷、D0失败或FMF生成失败。
-- 助手不得再以接口只能读取/写入仓库为由停止工作。应改用本地/附件工作区执行，或走本文件的离线原生生成路径。
-- 所有通道必须执行同一原生权限预检、同一原生配置合法性检查和同一D3独立回读。离线通道不是审计旁路。
-- 任何执行通道（包括GitHub Actions）都不得跳过D0项目门禁、原生权限预检、D3独立回读和产物归档。允许创建或修改项目专用工作流来执行这些门禁；不得为此修改FM-TA通用生成器、导出器或其他项目目录。
+## 4. 失败处理
+- 原生角色/职责/PI不允许：修正配方后重跑预检。
+- 固定阵型、位置映射或红框TI不符：按用户固定边界修正。
+- FMF生成或回读失败：报告具体错误并修复。
+- 不得为了让检查通过而静默删除用户要求的指令。
+- 不得把D3构建通过描述为游戏内导入通过或赛季有效。
 
-## 2. 标准执行路径
-
-在任意满足项目依赖的Python环境执行；不限定必须是本地Python 3.12。可使用本地/附件工作区、GitHub Actions或其他合规自动化runner。
-
-```powershell
-py tactic_development\FM27_EngineDividend_4Back\build_project_tactic.py `
-  --recipe tactic_development\FM27_EngineDividend_4Back\<本轮配方>.json `
-  --audit tactic_development\FM27_EngineDividend_4Back\<本轮审计>.md `
-  --parent-fmf D:\V0.5.fmf `
-  --output tactic_development\FM27_EngineDividend_4Back\builds\<版本>.fmf `
-  --report tactic_development\FM27_EngineDividend_4Back\builds\<版本>.report.json
-```
-
-标准入口按顺序运行项目验证器、原生catalog预检、FM-TA生成器。不得跳过任何失败项。
-
-## 3. 备用原生生成路径（项目标准入口当前不可调用时）
-
-备用生成路径可在任意具备项目文件和依赖的执行环境中完成，包括本地/附件工作区或GitHub Actions runner。
-
-### 第一步：项目门禁
-
-```powershell
-py tactic_development\FM27_EngineDividend_4Back\validate_project_iteration.py `
-  --recipe tactic_development\FM27_EngineDividend_4Back\<本轮配方>.json `
-  --audit tactic_development\FM27_EngineDividend_4Back\<本轮审计>.md `
-  --parent-fmf D:\<父版本>.fmf
-```
-
-必须看到 `PASS`。若失败，修正项目审计或配方后重新计算SHA-256并重做审计；不得继续生成。
-
-### 第二步：原生权限预检（如果仓库内脚本可用）
-
-```powershell
-py -3.12 scripts\preflight_fm27_tactic.py `
-  --recipe tactic_development\FM27_EngineDividend_4Back\<本轮配方>.json `
-  --catalog "04_离线原生FMF生成器\catalog.json" `
-  --style-registry "04_离线原生FMF生成器\style_template_registry.json"
-```
-
-如果当前运行包没有该预检脚本，不得因此停止；下一步离线原生生成器仍会执行其原生角色、职责、位置和PI权限检查。若预检脚本存在且报告失败，则必须先修复失败项。
-
-### 第三步：离线原生FMF生成
-
-```powershell
-py "04_离线原生FMF生成器\FM27GEN1_Offline_FMF_Generator.py" `
-  "tactic_development\FM27_EngineDividend_4Back\<本轮配方>.json" `
-  --catalog "04_离线原生FMF生成器\catalog.json" `
-  --style-registry "04_离线原生FMF生成器\style_template_registry.json" `
-  --output "tactic_development\FM27_EngineDividend_4Back\builds\<版本>.fmf" `
-  --report "tactic_development\FM27_EngineDividend_4Back\builds\<版本>.report.json"
-```
-
-生成器必须成功完成原生FMF构建及二进制独立回读。若报告具体指出角色/职责/PI权限或字段编码错误，应修正设计/映射后重跑完整门禁；不得静默删除设计指令或把未写入的配置宣称为已生成。
-
-## 4. D3验收与交付
-
-D3通过必须同时具备：
-
-1. 本轮项目审计验证结果为PASS，且三种IP阵型之一、OOP V0.5位置映射、心态4和15项红框TI全部通过门禁；
-2. 原生权限预检通过，或离线生成器完成等价原生权限检查；
-3. 实际生成的FMF文件；
-4. 同次生成的JSON report；
-5. report确认FMF容器、TAC、11个位置槽、22个IP/OOP阶段、角色/职责/PI/TI、三种IP布局之一、固定OOP位置映射、心态4、15项红框TI和原生风格字段回读；
-6. FMF与report的文件大小及SHA-256；
-7. 文件与报告均归档在本项目目录，且不覆盖任何历史产物。
-
-D3不等于D4游戏内导入，也不等于D5赛季表现。没有实际FMF和同次report，不得宣称构建成功。
-
-## 5. 何时允许报告阻断
-
-只有以下真实问题可构成阻断：
-
-- 父版本FMF、recipe、项目审计或原生catalog/模板等生成必需输入确实缺失；
-- 项目门禁失败且尚未修复；
-- 原生生成器对所选配置给出可复现的权限/格式错误；
-- 所有当前可用执行环境均无法启动或执行，并且已明确尝试路径及具体错误。
-
-不得将某一种执行接口不可用单独列为阻断。若确实没有任何可用执行环境，必须说明已完成的设计/审计阶段、实际尝试过的执行路径、精确错误和唯一需要用户协助的动作；不得要求用户重复提供已经在仓库或当前会话中存在的资料。
-
-## 6. 项目范围
-
-本政策及后续项目执行修订只允许写入：
-
-`tactic_development/FM27_EngineDividend_4Back/`
-
-不得修改FM-TA通用生成器、导出器或其他项目目录来承载本项目政策。允许维护本项目目录内的专用Actions工作流与自动化配置。
-
-
-## 内部历史战术父配置与技术载体
-
-每轮从 `TACTIC_INSTRUCTION_DECISION_LEDGER.md` 选择一个实际历史父版本，或组合多个历史版本的配置组件。审计必须记录真实父版本、父FMF路径和SHA-256。不得要求用户恢复V0.5作为战术父版。
-
-V0.5原生FMF可在生成器需要时仅作为原生格式序列化载体；它不决定本轮的战术配置。完整recipe必须准确写入选定历史父配置的22阶段内容及本轮允许的变更。构建报告同时记录实际战术父版本和底层技术载体，二者不得混为一谈。
+## 5. 产物身份
+每次构建报告必须记录实际战术父版本及父FMF SHA-256。V0.5如被生成器使用，只标注为“技术序列化载体”，不得冒充战术父版本。保留每轮独立FMF、recipe、report和哈希，不覆盖历史产物。
