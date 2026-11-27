@@ -27,7 +27,7 @@ jobs:
         run: python "tactic_development/FM27_EngineDividend_4Back/materialize_v05_baseline.py"
       - name: Prepare R6 audit
         run: python "tactic_development/FM27_EngineDividend_4Back/prepare_R6_audit.py"
-      - name: Run project D0 gate, native D1 preflight, D2 structure and D3 build/readback
+      - name: Run native preflight, D2 structure and D3 build/readback
         run: |
           python "tactic_development/FM27_EngineDividend_4Back/build_project_tactic.py" \
             --recipe "tactic_development/FM27_EngineDividend_4Back/R6.json" \
