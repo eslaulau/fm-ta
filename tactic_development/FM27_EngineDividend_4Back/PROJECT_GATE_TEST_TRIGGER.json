@@ -1,6 +1,0 @@
-{
-  "run": "historical-parent-and-internal-ledger-regression",
-  "revision": 4,
-  "date": "2026-11-27",
-  "scope": "historical tactics can be parent; no mandatory V0.5 reset; internal-only reference policy; fixed tactical boundaries remain enforced"
-}
