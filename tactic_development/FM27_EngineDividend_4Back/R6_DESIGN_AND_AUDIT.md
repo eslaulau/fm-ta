@@ -5,11 +5,11 @@
 重生基准：V0.5
 重生基准 FMF SHA-256：e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257
 父 FMF SHA-256：e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257
-本轮配方 SHA-256：PLACEHOLDER
-项目规则 SHA-256：PLACEHOLDER
-决策总账 SHA-256：PLACEHOLDER
-PPG 策略 SHA-256：PLACEHOLDER
-位置绩效标准 SHA-256：PLACEHOLDER
+本轮配方 SHA-256：7bca74b7dce54cd39cab11e2a70bb1c253c845d5ebb73a65375197911fdf1bd5
+项目规则 SHA-256：84e258f687a28a2f8bc515e413ffa088e95251a4ed1763f645ebaa623d8954a3
+决策总账 SHA-256：99b64adda06a4121fac4fd66b0e5da9d179a96ed5686b2580ea54800b5cd7a2b
+PPG 策略 SHA-256：656f64883b13908502c61738983474b745b46b7760146e821110b23c78833be6
+位置绩效标准 SHA-256：453f71eec27a9dfb2c4102f07f8d62cc9955db388a4d05a5d4ee2b12e6ae5d87
 审计结论： PASS
 
 ## 1. 版本与目标
@@ -101,7 +101,298 @@ R6从固定V0.5原生FMF重新生成，不继承R5.3的阵型/角色布局。IP�
 证据等级：U=尚无R6比赛证据。准入保留、条件保留、替换淘汰均以D5报告复核；D3生成通过不代表比赛表现准入。
 
 MACHINE_DECISION_MANIFEST_JSON_START
-PLACEHOLDER
+{
+  "schema_version": 1,
+  "selected_configurations": [
+    {
+      "phase": "IP",
+      "pos": "GK",
+      "role": "Goalkeeper",
+      "duty": "D",
+      "pi": [],
+      "decision": "新增待验证",
+      "evidence_grade": "U",
+      "rationale": "IP/GK Goalkeeper/D作为R6双后腰盒式结构的一部分；没有R6比赛样本，先列为U级待验证。",
+      "hypothesis": "IP/GK Goalkeeper/D作为R6双后腰盒式结构的一部分；没有R6比赛样本，先列为U级待验证。 预期作用必须由比赛行为与完整赛季数据证伪或确认。",
+      "d5_metric": "完整38场积分/PPG、全队xG/xGA；位置可归因时记录xG/90、xA/90、禁区触球和对手对应区域机会。",
+      "failure_condition": "完整38场低于109分或全队xG低于100，整套战术D5失败；可归因位置持续低效则替换。"
+    },
+    {
+      "phase": "OOP",
+      "pos": "GK",
+      "role": "SweeperKeeper",
+      "duty": "A",
+      "pi": [],
+      "decision": "新增待验证",
+      "evidence_grade": "U",
+      "rationale": "OOP/GK SweeperKeeper/A作为R6双后腰盒式结构的一部分；没有R6比赛样本，先列为U级待验证。",
+      "hypothesis": "OOP/GK SweeperKeeper/A作为R6双后腰盒式结构的一部分；没有R6比赛样本，先列为U级待验证。 预期作用必须由比赛行为与完整赛季数据证伪或确认。",
+      "d5_metric": "完整38场积分/PPG、全队xG/xGA；位置可归因时记录xG/90、xA/90、禁区触球和对手对应区域机会。",
+      "failure_condition": "完整38场低于109分或全队xG低于100，整套战术D5失败；可归因位置持续低效则替换。"
+    },
+    {
+      "phase": "IP",
+      "pos": "DL",
+      "role": "FullBack",
+      "duty": "S",
+      "pi": [],
+      "decision": "新增待验证",
+      "evidence_grade": "U",
+      "rationale": "IP/DL FullBack/S作为R6双后腰盒式结构的一部分；没有R6比赛样本，先列为U级待验证。",
+      "hypothesis": "IP/DL FullBack/S作为R6双后腰盒式结构的一部分；没有R6比赛样本，先列为U级待验证。 预期作用必须由比赛行为与完整赛季数据证伪或确认。",
+      "d5_metric": "完整38场积分/PPG、全队xG/xGA；位置可归因时记录xG/90、xA/90、禁区触球和对手对应区域机会。",
+      "failure_condition": "完整38场低于109分或全队xG低于100，整套战术D5失败；可归因位置持续低效则替换。"
+    },
+    {
+      "phase": "OOP",
+      "pos": "DL",
+      "role": "FullBack",
+      "duty": "S",
+      "pi": [],
+      "decision": "新增待验证",
+      "evidence_grade": "U",
+      "rationale": "OOP/DL FullBack/S作为R6双后腰盒式结构的一部分；没有R6比赛样本，先列为U级待验证。",
+      "hypothesis": "OOP/DL FullBack/S作为R6双后腰盒式结构的一部分；没有R6比赛样本，先列为U级待验证。 预期作用必须由比赛行为与完整赛季数据证伪或确认。",
+      "d5_metric": "完整38场积分/PPG、全队xG/xGA；位置可归因时记录xG/90、xA/90、禁区触球和对手对应区域机会。",
+      "failure_condition": "完整38场低于109分或全队xG低于100，整套战术D5失败；可归因位置持续低效则替换。"
+    },
+    {
+      "phase": "IP",
+      "pos": "DCL",
+      "role": "CentreBack",
+      "duty": "D",
+      "pi": [],
+      "decision": "新增待验证",
+      "evidence_grade": "U",
+      "rationale": "IP/DCL CentreBack/D作为R6双后腰盒式结构的一部分；没有R6比赛样本，先列为U级待验证。",
+      "hypothesis": "IP/DCL CentreBack/D作为R6双后腰盒式结构的一部分；没有R6比赛样本，先列为U级待验证。 预期作用必须由比赛行为与完整赛季数据证伪或确认。",
+      "d5_metric": "完整38场积分/PPG、全队xG/xGA；位置可归因时记录xG/90、xA/90、禁区触球和对手对应区域机会。",
+      "failure_condition": "完整38场低于109分或全队xG低于100，整套战术D5失败；可归因位置持续低效则替换。"
+    },
+    {
+      "phase": "OOP",
+      "pos": "DCL",
+      "role": "CentreBack",
+      "duty": "D",
+      "pi": [],
+      "decision": "新增待验证",
+      "evidence_grade": "U",
+      "rationale": "OOP/DCL CentreBack/D作为R6双后腰盒式结构的一部分；没有R6比赛样本，先列为U级待验证。",
+      "hypothesis": "OOP/DCL CentreBack/D作为R6双后腰盒式结构的一部分；没有R6比赛样本，先列为U级待验证。 预期作用必须由比赛行为与完整赛季数据证伪或确认。",
+      "d5_metric": "完整38场积分/PPG、全队xG/xGA；位置可归因时记录xG/90、xA/90、禁区触球和对手对应区域机会。",
+      "failure_condition": "完整38场低于109分或全队xG低于100，整套战术D5失败；可归因位置持续低效则替换。"
+    },
+    {
+      "phase": "IP",
+      "pos": "DCR",
+      "role": "BallPlayingCentreBack",
+      "duty": "D",
+      "pi": [],
+      "decision": "新增待验证",
+      "evidence_grade": "U",
+      "rationale": "IP/DCR BallPlayingCentreBack/D作为R6双后腰盒式结构的一部分；没有R6比赛样本，先列为U级待验证。",
+      "hypothesis": "IP/DCR BallPlayingCentreBack/D作为R6双后腰盒式结构的一部分；没有R6比赛样本，先列为U级待验证。 预期作用必须由比赛行为与完整赛季数据证伪或确认。",
+      "d5_metric": "完整38场积分/PPG、全队xG/xGA；位置可归因时记录xG/90、xA/90、禁区触球和对手对应区域机会。",
+      "failure_condition": "完整38场低于109分或全队xG低于100，整套战术D5失败；可归因位置持续低效则替换。"
+    },
+    {
+      "phase": "OOP",
+      "pos": "DCR",
+      "role": "CentreBack",
+      "duty": "D",
+      "pi": [],
+      "decision": "新增待验证",
+      "evidence_grade": "U",
+      "rationale": "OOP/DCR CentreBack/D作为R6双后腰盒式结构的一部分；没有R6比赛样本，先列为U级待验证。",
+      "hypothesis": "OOP/DCR CentreBack/D作为R6双后腰盒式结构的一部分；没有R6比赛样本，先列为U级待验证。 预期作用必须由比赛行为与完整赛季数据证伪或确认。",
+      "d5_metric": "完整38场积分/PPG、全队xG/xGA；位置可归因时记录xG/90、xA/90、禁区触球和对手对应区域机会。",
+      "failure_condition": "完整38场低于109分或全队xG低于100，整套战术D5失败；可归因位置持续低效则替换。"
+    },
+    {
+      "phase": "IP",
+      "pos": "DR",
+      "role": "WingBack",
+      "duty": "A",
+      "pi": [],
+      "decision": "新增待验证",
+      "evidence_grade": "U",
+      "rationale": "IP/DR WingBack/A作为R6双后腰盒式结构的一部分；没有R6比赛样本，先列为U级待验证。",
+      "hypothesis": "IP/DR WingBack/A作为R6双后腰盒式结构的一部分；没有R6比赛样本，先列为U级待验证。 预期作用必须由比赛行为与完整赛季数据证伪或确认。",
+      "d5_metric": "完整38场积分/PPG、全队xG/xGA；位置可归因时记录xG/90、xA/90、禁区触球和对手对应区域机会。",
+      "failure_condition": "完整38场低于109分或全队xG低于100，整套战术D5失败；可归因位置持续低效则替换。"
+    },
+    {
+      "phase": "OOP",
+      "pos": "DR",
+      "role": "PressingFullBack",
+      "duty": "S",
+      "pi": [],
+      "decision": "新增待验证",
+      "evidence_grade": "U",
+      "rationale": "OOP/DR PressingFullBack/S作为R6双后腰盒式结构的一部分；没有R6比赛样本，先列为U级待验证。",
+      "hypothesis": "OOP/DR PressingFullBack/S作为R6双后腰盒式结构的一部分；没有R6比赛样本，先列为U级待验证。 预期作用必须由比赛行为与完整赛季数据证伪或确认。",
+      "d5_metric": "完整38场积分/PPG、全队xG/xGA；位置可归因时记录xG/90、xA/90、禁区触球和对手对应区域机会。",
+      "failure_condition": "完整38场低于109分或全队xG低于100，整套战术D5失败；可归因位置持续低效则替换。"
+    },
+    {
+      "phase": "IP",
+      "pos": "DML",
+      "role": "DefensiveMidfielder",
+      "duty": "D",
+      "pi": [],
+      "decision": "新增待验证",
+      "evidence_grade": "U",
+      "rationale": "IP/DML DefensiveMidfielder/D作为R6双后腰盒式结构的一部分；没有R6比赛样本，先列为U级待验证。",
+      "hypothesis": "IP/DML DefensiveMidfielder/D作为R6双后腰盒式结构的一部分；没有R6比赛样本，先列为U级待验证。 预期作用必须由比赛行为与完整赛季数据证伪或确认。",
+      "d5_metric": "完整38场积分/PPG、全队xG/xGA；位置可归因时记录xG/90、xA/90、禁区触球和对手对应区域机会。",
+      "failure_condition": "完整38场低于109分或全队xG低于100，整套战术D5失败；可归因位置持续低效则替换。"
+    },
+    {
+      "phase": "OOP",
+      "pos": "DC",
+      "role": "CoveringCentreBack",
+      "duty": "D",
+      "pi": [],
+      "decision": "新增待验证",
+      "evidence_grade": "U",
+      "rationale": "OOP/DC CoveringCentreBack/D作为R6双后腰盒式结构的一部分；没有R6比赛样本，先列为U级待验证。",
+      "hypothesis": "OOP/DC CoveringCentreBack/D作为R6双后腰盒式结构的一部分；没有R6比赛样本，先列为U级待验证。 预期作用必须由比赛行为与完整赛季数据证伪或确认。",
+      "d5_metric": "完整38场积分/PPG、全队xG/xGA；位置可归因时记录xG/90、xA/90、禁区触球和对手对应区域机会。",
+      "failure_condition": "完整38场低于109分或全队xG低于100，整套战术D5失败；可归因位置持续低效则替换。"
+    },
+    {
+      "phase": "IP",
+      "pos": "DMR",
+      "role": "DeepLyingPlaymaker",
+      "duty": "S",
+      "pi": [],
+      "decision": "新增待验证",
+      "evidence_grade": "U",
+      "rationale": "IP/DMR DeepLyingPlaymaker/S作为R6双后腰盒式结构的一部分；没有R6比赛样本，先列为U级待验证。",
+      "hypothesis": "IP/DMR DeepLyingPlaymaker/S作为R6双后腰盒式结构的一部分；没有R6比赛样本，先列为U级待验证。 预期作用必须由比赛行为与完整赛季数据证伪或确认。",
+      "d5_metric": "完整38场积分/PPG、全队xG/xGA；位置可归因时记录xG/90、xA/90、禁区触球和对手对应区域机会。",
+      "failure_condition": "完整38场低于109分或全队xG低于100，整套战术D5失败；可归因位置持续低效则替换。"
+    },
+    {
+      "phase": "OOP",
+      "pos": "MC",
+      "role": "ScreeningCentralMidfielder",
+      "duty": "D",
+      "pi": [],
+      "decision": "新增待验证",
+      "evidence_grade": "U",
+      "rationale": "OOP/MC ScreeningCentralMidfielder/D作为R6双后腰盒式结构的一部分；没有R6比赛样本，先列为U级待验证。",
+      "hypothesis": "OOP/MC ScreeningCentralMidfielder/D作为R6双后腰盒式结构的一部分；没有R6比赛样本，先列为U级待验证。 预期作用必须由比赛行为与完整赛季数据证伪或确认。",
+      "d5_metric": "完整38场积分/PPG、全队xG/xGA；位置可归因时记录xG/90、xA/90、禁区触球和对手对应区域机会。",
+      "failure_condition": "完整38场低于109分或全队xG低于100，整套战术D5失败；可归因位置持续低效则替换。"
+    },
+    {
+      "phase": "IP",
+      "pos": "AMCL",
+      "role": "AttackingMidfielder",
+      "duty": "S",
+      "pi": [],
+      "decision": "新增待验证",
+      "evidence_grade": "U",
+      "rationale": "IP/AMCL AttackingMidfielder/S作为R6双后腰盒式结构的一部分；没有R6比赛样本，先列为U级待验证。",
+      "hypothesis": "IP/AMCL AttackingMidfielder/S作为R6双后腰盒式结构的一部分；没有R6比赛样本，先列为U级待验证。 预期作用必须由比赛行为与完整赛季数据证伪或确认。",
+      "d5_metric": "完整38场积分/PPG、全队xG/xGA；位置可归因时记录xG/90、xA/90、禁区触球和对手对应区域机会。",
+      "failure_condition": "完整38场低于109分或全队xG低于100，整套战术D5失败；可归因位置持续低效则替换。"
+    },
+    {
+      "phase": "OOP",
+      "pos": "ML",
+      "role": "WideMidfielder",
+      "duty": "S",
+      "pi": [],
+      "decision": "新增待验证",
+      "evidence_grade": "U",
+      "rationale": "OOP/ML WideMidfielder/S作为R6双后腰盒式结构的一部分；没有R6比赛样本，先列为U级待验证。",
+      "hypothesis": "OOP/ML WideMidfielder/S作为R6双后腰盒式结构的一部分；没有R6比赛样本，先列为U级待验证。 预期作用必须由比赛行为与完整赛季数据证伪或确认。",
+      "d5_metric": "完整38场积分/PPG、全队xG/xGA；位置可归因时记录xG/90、xA/90、禁区触球和对手对应区域机会。",
+      "failure_condition": "完整38场低于109分或全队xG低于100，整套战术D5失败；可归因位置持续低效则替换。"
+    },
+    {
+      "phase": "IP",
+      "pos": "AMCR",
+      "role": "SecondStriker",
+      "duty": "A",
+      "pi": [],
+      "decision": "新增待验证",
+      "evidence_grade": "U",
+      "rationale": "IP/AMCR SecondStriker/A作为R6双后腰盒式结构的一部分；没有R6比赛样本，先列为U级待验证。",
+      "hypothesis": "IP/AMCR SecondStriker/A作为R6双后腰盒式结构的一部分；没有R6比赛样本，先列为U级待验证。 预期作用必须由比赛行为与完整赛季数据证伪或确认。",
+      "d5_metric": "完整38场积分/PPG、全队xG/xGA；位置可归因时记录xG/90、xA/90、禁区触球和对手对应区域机会。",
+      "failure_condition": "完整38场低于109分或全队xG低于100，整套战术D5失败；可归因位置持续低效则替换。"
+    },
+    {
+      "phase": "OOP",
+      "pos": "MR",
+      "role": "WideMidfielder",
+      "duty": "S",
+      "pi": [],
+      "decision": "新增待验证",
+      "evidence_grade": "U",
+      "rationale": "OOP/MR WideMidfielder/S作为R6双后腰盒式结构的一部分；没有R6比赛样本，先列为U级待验证。",
+      "hypothesis": "OOP/MR WideMidfielder/S作为R6双后腰盒式结构的一部分；没有R6比赛样本，先列为U级待验证。 预期作用必须由比赛行为与完整赛季数据证伪或确认。",
+      "d5_metric": "完整38场积分/PPG、全队xG/xGA；位置可归因时记录xG/90、xA/90、禁区触球和对手对应区域机会。",
+      "failure_condition": "完整38场低于109分或全队xG低于100，整套战术D5失败；可归因位置持续低效则替换。"
+    },
+    {
+      "phase": "IP",
+      "pos": "STL",
+      "role": "DeepLyingForward",
+      "duty": "S",
+      "pi": [],
+      "decision": "新增待验证",
+      "evidence_grade": "U",
+      "rationale": "IP/STL DeepLyingForward/S作为R6双后腰盒式结构的一部分；没有R6比赛样本，先列为U级待验证。",
+      "hypothesis": "IP/STL DeepLyingForward/S作为R6双后腰盒式结构的一部分；没有R6比赛样本，先列为U级待验证。 预期作用必须由比赛行为与完整赛季数据证伪或确认。",
+      "d5_metric": "完整38场积分/PPG、全队xG/xGA；位置可归因时记录xG/90、xA/90、禁区触球和对手对应区域机会。",
+      "failure_condition": "完整38场低于109分或全队xG低于100，整套战术D5失败；可归因位置持续低效则替换。"
+    },
+    {
+      "phase": "OOP",
+      "pos": "STL",
+      "role": "CentreForward",
+      "duty": "A",
+      "pi": [],
+      "decision": "新增待验证",
+      "evidence_grade": "U",
+      "rationale": "OOP/STL CentreForward/A作为R6双后腰盒式结构的一部分；没有R6比赛样本，先列为U级待验证。",
+      "hypothesis": "OOP/STL CentreForward/A作为R6双后腰盒式结构的一部分；没有R6比赛样本，先列为U级待验证。 预期作用必须由比赛行为与完整赛季数据证伪或确认。",
+      "d5_metric": "完整38场积分/PPG、全队xG/xGA；位置可归因时记录xG/90、xA/90、禁区触球和对手对应区域机会。",
+      "failure_condition": "完整38场低于109分或全队xG低于100，整套战术D5失败；可归因位置持续低效则替换。"
+    },
+    {
+      "phase": "IP",
+      "pos": "STR",
+      "role": "Poacher",
+      "duty": "A",
+      "pi": [],
+      "decision": "新增待验证",
+      "evidence_grade": "U",
+      "rationale": "IP/STR Poacher/A作为R6双后腰盒式结构的一部分；没有R6比赛样本，先列为U级待验证。",
+      "hypothesis": "IP/STR Poacher/A作为R6双后腰盒式结构的一部分；没有R6比赛样本，先列为U级待验证。 预期作用必须由比赛行为与完整赛季数据证伪或确认。",
+      "d5_metric": "完整38场积分/PPG、全队xG/xGA；位置可归因时记录xG/90、xA/90、禁区触球和对手对应区域机会。",
+      "failure_condition": "完整38场低于109分或全队xG低于100，整套战术D5失败；可归因位置持续低效则替换。"
+    },
+    {
+      "phase": "OOP",
+      "pos": "STR",
+      "role": "CentreForward",
+      "duty": "A",
+      "pi": [],
+      "decision": "新增待验证",
+      "evidence_grade": "U",
+      "rationale": "OOP/STR CentreForward/A作为R6双后腰盒式结构的一部分；没有R6比赛样本，先列为U级待验证。",
+      "hypothesis": "OOP/STR CentreForward/A作为R6双后腰盒式结构的一部分；没有R6比赛样本，先列为U级待验证。 预期作用必须由比赛行为与完整赛季数据证伪或确认。",
+      "d5_metric": "完整38场积分/PPG、全队xG/xGA；位置可归因时记录xG/90、xA/90、禁区触球和对手对应区域机会。",
+      "failure_condition": "完整38场低于109分或全队xG低于100，整套战术D5失败；可归因位置持续低效则替换。"
+    }
+  ],
+  "retired_configurations": []
+}
 MACHINE_DECISION_MANIFEST_JSON_END
 
 审计结论不代表游戏导入成功或赛季目标达成。D3仅指项目门禁、原生权限预检、FMF生成及独立回读完成；D4和D5仍待验证。
