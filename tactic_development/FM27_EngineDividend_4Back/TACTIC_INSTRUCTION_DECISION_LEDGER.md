@@ -2355,3 +2355,11 @@ D5至少完成38场英超后，以V1.8为直接父版基线，同时对照V1.7�
 ### D0状态
 - 设计审计与追踪矩阵正在建立；项目门禁、原生预检、D2结构校验、D3二进制回读均待执行。
 - D4游戏内导入未确认；D5完整38场英超赛季未开始。R5不得宣称性能提升或达到109分/100 xG。
+
+
+### 2026-11-27｜当前原生PI映射旧注记更正
+
+- 本总账较早附注曾记录“Trigger Press More/Less与Tackle Harder的PI映射超出角色权限向量，无法序列化”。该附注已被当前源码核验推翻，保留原文仅作历史状态，不再作为当前构建结论。
+- 当前 `04_离线原生FMF生成器/FM27GEN1_Offline_FMF_Generator.py` 的 `PI_MAP/EXPERIMENTAL_PI_MAP` 明确映射 `TRIGGER_PRESS MORE_OFTEN=29`、`TRIGGER_PRESS LESS_OFTEN=30`、`TACKLING GET_STUCK_IN=31`；当前 `catalog.json` 角色PI策略向量长度覆盖这些option ID，`encode_pi_details` 会按角色/阶段/位置/职责逐项校验。
+- `ROLE_DEFAULT_BEHAVIOR_AND_MAPPING_RECHECK_20261126.md` 进一步核验当前源码37/37个非默认PI选项均有映射。该结论只证明编码映射存在，不证明比赛行为或PPG收益。
+- R5按当前源码和原生catalog执行逐槽PI权限检查；任何角色不允许的PI均不得写入recipe。角色默认GameID尚缺本地化文本，不能将其引用猜译为具体行为。
