@@ -87,7 +87,7 @@
       "Role codes decoded for 309/913 identified appearances; 604 role codes missing; no OOP role/PI/TI execution mapping.",
       "Position codes cannot split DC into DCL/DCR or DMC into DML/DMR."
     ],
-    "next_step": "R5 from immutable V0.5: retain R4 OOP outlet trio, restore Pass Into Space and Hit Early Crosses, DR WingBack Attack to Support, DMR BoxToBox Support to DefensiveMidfielder Defend; then D0-D3 and D4/D5."
+    "next_step": "R5 was subsequently invalidated by retrospective design review; do not revive it. Repair and pass the machine-enforced D0 decision-manifest gate before creating a fresh V0.5-based mainline."
   },
   "minimum_attack_process_gate": {
     "metric": "team_xG",
@@ -122,6 +122,13 @@
       "user_decision": "淘汰；不再继续测试，不作为父版本或配置模板",
       "effective_date": "2026-11-26",
       "historical_records": "保留历史文件和证据，不删除"
+    },
+    {
+      "version": "R5",
+      "user_decision": "设计资格撤销；不作为当前候选，不继续D4/D5，不复活其前场角色/指令组合为默认继承项",
+      "effective_date": "2026-11-27",
+      "reason": "R4全队xG 58.86未达100，R5却将四个IP进攻槽及OOP出口组合沿用/试验方向写成继承；原D0脚本未核对决策与recipe一致性。D3只证明文件技术结构正确。",
+      "historical_records": "保留R5 recipe、audit、FMF、report、workflow和artifact作为历史证据，不删除。"
     }
   ],
   "status_update_2026_11_26_R3": {
