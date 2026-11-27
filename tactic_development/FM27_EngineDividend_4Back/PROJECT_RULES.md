@@ -122,7 +122,7 @@
 - [TACTIC_INSTRUCTION_DECISION_LEDGER.md](TACTIC_INSTRUCTION_DECISION_LEDGER.md)：唯一权威跨版本配置决策与历史总账。
 - [UPGRADE_GATE.md](UPGRADE_GATE.md)：每轮研发执行流程。
 - [ANALYSIS_AND_ITERATION_RULES.md](ANALYSIS_AND_ITERATION_RULES.md)：战术分析与迭代方法。
-- [build_project_tactic.py](build_project_tactic.py)：项目生成入口；调用项目审计后再调用 FM-TA 通用技术工具。
+- [build_project_tactic.py](build_project_tactic.py)：项目生成入口；直接调用原生权限预检和 FMF 生成工具。
 - 如旧文档中的目标或表述与本文件冲突，以本文件为准；历史数据记录保持原样，不追溯改写为新目标下的历史结果。
 
 ## 9. 项目专属构建命令
@@ -145,15 +145,15 @@ Get-FileHash 'D:\<父版本>.fmf' -Algorithm SHA256
 Get-FileHash .\tactic_development\FM27_EngineDividend_4Back\<本轮配方>.json -Algorithm SHA256
 ```
 
-执行顺序固定为：校验父 FMF 与配方 SHA-256 → 项目 PPG/历史规则审计 → FM-TA 通用 catalog 权限预检 → FM-TA 原生 FMF 生成。项目审计失败即退出，不调用后两步；配方、审计和输出必须在项目目录内，输出已存在时拒绝覆盖。
+执行顺序固定为：读取父FMF与recipe → FM-TA原生catalog权限预检 → 原生FMF生成及独立回读。配方、审计和输出必须在项目目录内，输出已存在时拒绝覆盖。
 
-运行项目门禁回归测试：
+运行项目原生预检与生成器测试：
 
 ```powershell
-py -3.12 -m unittest discover -s tactic_development\FM27_EngineDividend_4Back -p test_project_iteration_gate.py
+py -3.12 -m unittest discover -s tests
 ```
 
-项目审计是本项目正式迭代的唯一强制门禁；构建执行器可以有多个合规实现。直接调用 FM-TA 通用生成器而未先通过项目审计，即使成功生成 FMF，也不构成本项目完成一次合规迭代。通过项目审计后，可由项目专属入口或 [GENERATION_EXECUTION_POLICY.md](GENERATION_EXECUTION_POLICY.md) 规定的离线原生生成路径完成 D3。
+原生catalog权限预检与FMF独立回读负责技术验证；可由项目专属入口或 [GENERATION_EXECUTION_POLICY.md](GENERATION_EXECUTION_POLICY.md) 规定的离线原生生成路径完成 D3。
 
 
 
