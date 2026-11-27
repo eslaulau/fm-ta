@@ -253,16 +253,7 @@
         "pos": "DML",
         "role": "ScreeningDefensiveMidfielder",
         "duty": "D",
-        "pi": [
-          [
-            "TRIGGER_PRESS",
-            "MORE_OFTEN"
-          ],
-          [
-            "TACKLING",
-            "GET_STUCK_IN"
-          ]
-        ]
+        "pi": []
       }
     },
     {
@@ -365,16 +356,7 @@
         "pos": "MC",
         "role": "ScreeningCentralMidfielder",
         "duty": "D",
-        "pi": [
-          [
-            "TRIGGER_PRESS",
-            "LESS_OFTEN"
-          ],
-          [
-            "TACKLING",
-            "GET_STUCK_IN"
-          ]
-        ]
+        "pi": []
       }
     },
     {
