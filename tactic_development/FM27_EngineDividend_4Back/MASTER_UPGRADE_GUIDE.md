@@ -34,7 +34,7 @@
 
 - 用户明确拒绝 R5.1 的 IP 4-1-2-1-2 Diamond / OOP 4-3-1-2 设计。R5.1 不再是候选，不进入 D4/D5；已完成的 FMF/D3 文件只保留为历史技术记录，不表示比赛有效，也不表示 D5 失败。
 - 新主线 R5.2：IP 4-1-2-3 DM Wide / OOP 5-2-3；从固定 V0.5 原始 FMF 重生，SHA-256 `e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257`。
-- 重设计逻辑：IP 四后场仍为 DL/DCL/DCR/DR；DCL 套上中卫进攻、DL 内收、DR 组织翼卫外展；MCL/MCR 双肋部攻击；DMC 在 OOP 转为 DC，形成 5-2-3；两边边锋保持宽度。
+- 重设计逻辑：IP 四后场仍为 DL/DCL/DCR/DR；DCL 前压中卫进攻、DL 内收、DR 组织翼卫外展；MCL/MCR 双肋部攻击；DMC 在 OOP 转为 DC，形成 5-2-3；两边边锋保持宽度。
 - 配方：[R5.2.json](R5.2.json)；审计：[R5.2_DESIGN_AND_AUDIT.md](R5.2_DESIGN_AND_AUDIT.md)；项目审计刷新脚本：[prepare_R5_2_audit.py](prepare_R5_2_audit.py)。
 - 当前准确状态：设计与文件登记已完成；项目 D0、原生 D1、D2、D3 尚未取得执行结果；D4/D5未验证。最终 D5 仍必须同一38场至少109分且全队xG至少100。
 
