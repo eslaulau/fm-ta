@@ -156,6 +156,11 @@ def validate(recipe_path: Path, audit_path: Path, parent_fmf: Path) -> list[str]
     audit = audit_path.read_text(encoding="utf-8")
     performance_standard = PERFORMANCE_STANDARD.read_text(encoding="utf-8")
 
+    version = one_line_value(audit, "版本")
+    if version in policy.get("blocked_versions", []):
+        errors.append(f"Version {version} is explicitly blocked/invalidated by project policy; historical D3 success cannot restore candidate status.")
+
+
     if "D0强制门禁" not in performance_standard or "低效配置清除规则" not in performance_standard:
         errors.append("Position performance standard is incomplete or missing its mandatory elimination gate.")
     performance_section = re.search(
