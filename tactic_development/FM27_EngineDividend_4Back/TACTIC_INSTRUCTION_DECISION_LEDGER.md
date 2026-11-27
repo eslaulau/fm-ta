@@ -2379,3 +2379,27 @@ D5至少完成38场英超后，以V1.8为直接父版基线，同时对照V1.7�
 - 新增独立GitHub Actions回归工作流，Run [45927303919](https://github.com/eslaulau/fm-ta/actions/runs/45927303919)，**16/16测试通过**。
 - 覆盖：22项决策清单与recipe精确匹配、角色错配、PI/配置错配、缺失清单、证据不足留在recipe、未准入历史配置静默继承、明确淘汰配置复活、无证据引用的继承保留、R5封锁、V0.5父版、IP四后场、OOP重复位置、recipe哈希篡改及规则/总账哈希过期。
 - 当前状态：门禁整改完成，可以开始全新D0设计；尚无新战术候选。R5仍为INVALIDATED，永不恢复为当前候选。
+
+
+
+## 2026-11-27｜R5.1全新V0.5重生候选：D0-D3 PASS，D4/D5待验
+
+### 决策状态
+- 旧R5仍为INVALIDATED/blocked，不作为候选、父版或默认模板；其D3只保留历史技术记录。
+- R5.1从V0.5原生FMF重新构造，父FMF SHA-256 `e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257`。
+- 设计：IP 4-1-2-1-2 Diamond / OOP 4-3-1-2。IP四后场DL/DCL/DCR/DR各一次。IP前场不沿用旧R5的AML内锋、AMC自由人、AMR边锋、ST支点组合；OOP不沿用R4/R5无锋三出口。
+- 本轮22个阶段配置均为新增待验证/U；由于没有本队槽位级D5证据，没有任何角色或PI获得“有效/准入保留”结论。
+
+### 本轮原生门禁事实
+- D0机器manifest与recipe精确匹配22项，PASS。
+- D1 catalog角色/职责/PI权限检查PASS。门禁实际拦截并促成三项修正：审计标题精确匹配；把无映射的OOP中场角色改为catalog允许角色；删除ChannelForward不允许的Far Post PI。未修改或绕过通用生成器权限规则。
+- D2 11槽/22阶段和IP四后场PASS。
+- D3独立回读8/8 PASS：FMF容器往返、全部成员解密/Zstandard校验、TAC完整解析、11组阶段对、22项位置/角色/PI精确读回、PI目录权限、TI向量、原生style字符串/FourCC。
+
+### 构建身份
+- Run [45928559022](https://github.com/eslaulau/fm-ta/actions/runs/45928559022)；Artifact ID `15167667342`；Artifact ZIP SHA-256 `9037afd0276771a58b49501bee40620774ba2bdb5d133da2e472887e31d4cb93`。
+- Recipe SHA-256 `873110d5a885fe105ad28bf0ab61a376b977c4a9cdf1068dd4323255e0984852`；FMF 4,572 bytes，SHA-256 `292e027e5f9b5664bf224e577e176be27f414c3c655fe5a17b292c88e5fbf51a`；same-run report SHA-256 `98d0077a64f5ee2bb89eb74286403894ca7b89d019b5a34030c02e2f17c39c5a`。
+
+### 未完成事项
+- D4待用户在FM27导入，核对中文界面、IP/OOP阵型、每个阶段角色/职责/PI/TI及球员位置熟悉度。
+- D5待用户确认战术映射后提供完整38场联赛报告；目标是同一赛季至少109分且全队xG至少100。尚未取得报告，不能声称有效或达标。
