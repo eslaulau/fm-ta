@@ -4,6 +4,6 @@
   "parent": "V0.5",
   "parent_sha256": "e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257",
   "rerun": "2026-11-27T10:19:00+08:00",
-  "retry_reason": "rebuild_after_adding_safe_output_cleanup_step_in_dedicated_workflow",
-  "retry_timestamp": "2026-11-27T10:47:00+08:00"
+  "retry_reason": "rerun_with_idempotent_audit_manifest_and_source_hash_refresh",
+  "retry_timestamp": "2026-11-27T10:52:00+08:00"
 }
