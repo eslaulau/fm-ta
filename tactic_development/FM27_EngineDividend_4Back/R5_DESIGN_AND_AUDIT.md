@@ -85,7 +85,7 @@ R4相对R3：积分-20、进球-13、失球+20、xG-6.14、xGA+14.84、射门-44
 - R3→R4的传球接应由Pass Into Space改Pass To Feet，进攻耐心由Hit Early Crosses改Work Ball Into Box；同时射门减少44次、xG下降6.14、传中成功率下降3.4个百分点。它们共同构成需要回退的配置簇，不能单项归因。
 - R4 DR WingBack Attack改为Support、DMR BoxToBox Support改为DefensiveMidfielder Defend，是PPG_TARGET_POLICY明确提出的下一轮方向；位置级统计不能证明单项因果，但DR位置只有1.18 xG/3助攻，DMC合并位置7.70 xG，未提供支持继续加大DR攻击或DMR前插的正向证据。
 
-## 4. 外部引擎研究与跨阵型迁移
+**为何本轮没有采用菱形IP：** ARCHITECTURE_REVIEW_20261126.md将4-1-2-1-2菱形列为外部样本优先结构；但R4 D5复盘及当前PPG_TARGET_POLICY给出的最近、最具体整改项是保留R4 OOP三出口、恢复Pass Into Space/Hit Early Crosses、DR WingBack Attack回Support、DMR BoxToBox Support回DefensiveMidfielder Defend。R5按这组最新本队D5问题建立单一验证主线，因此保留4-2-3-1槽位映射；这不代表4-2-3-1在外部优于菱形。菱形仍是后续结构研究候选，不在本轮同时混入，避免改变多个结构变量后无法解释结果。\n\n## 4. 外部引擎研究与跨阵型迁移
 
 本轮外部来源以27.1.1当前可见资料为主；不同平台测试协议不合并，外部PPG不换算成本队38场赛季预期。
 
