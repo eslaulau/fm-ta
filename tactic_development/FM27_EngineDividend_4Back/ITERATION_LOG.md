@@ -1,5 +1,30 @@
 # FM27 引擎红利四后卫｜版本迭代记录
 
+## R5.2｜IP 4-1-2-3 DM Wide / OOP 5-2-3（2026-11-27）
+
+### 用户决策与主线
+- 用户明确拒绝R5.1菱形IP整体设计；R5.1封存为历史，不进入D4/D5、不安排追加测试。
+- R5.2从V0.5原始FMF重生，父SHA-256：`e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257`。
+- 唯一结构：IP 4-1-2-3 DM Wide / OOP 5-2-3；IP后场DL/DCL/DCR/DR各一次。
+
+### 新设计核心
+- DCL OverlappingCentreBack Attack作为IP额外的前插通道；DL InsideFullBack Defend内收；DR PlaymakingWingBack Support保持外侧宽度。
+- MCL ChannelMidfielder Attack 与 MCR AttackingMidfielder Attack双肋部前插；AML/AMR Winger Support拉宽；ST CentreForward Attack承担纵深与终结。
+- OOP将DMC转DC形成五后卫，双中场转双后腰，前场形成AML/AMC/AMR 5-2-3。
+- 高位逼抢+较低防线、直传快节奏、两翼推进/尽早传中、传入空当；所有组合都只是待验证机制假设。
+
+### 外部依据与边界
+- MetaFM 27.1.1 Trinity 3133外部样本为3-4-3 DM/OOP5-2-3，4,032场，2.09 PPG、2.44 xG/场；迁移的是部分阶段角色/通道机制，不复制外部三后卫IP。
+- MetaFM另一个2-3-2-3样本4,032场，2.05 PPG、2.64 xG/场；仅作为宽度/纵深和xG过程线索，未将其成绩当作本队预期。
+- 这些外部数据是固定AI测试协议结果，与本队赛季数据分开，不混合换算。
+
+### 阶段状态
+- 配方：[R5.2.json](R5.2.json)；审计：[R5.2_DESIGN_AND_AUDIT.md](R5.2_DESIGN_AND_AUDIT.md)。
+- 项目D0、D1、D2、D3尚未取得执行结果；不得宣称FMF已生成。
+- D4待FM27游戏内导入核验；D5待用户确认版本映射后的完整38场赛季，需同一赛季至少109分且xG至少100。
+
+---
+
 ## R3｜IP 4-2-3-1 × OOP 无锋 5-2-3（2026-11-26）
 
 ### 版本决策
