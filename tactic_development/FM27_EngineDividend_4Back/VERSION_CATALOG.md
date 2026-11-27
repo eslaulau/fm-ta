@@ -299,3 +299,12 @@
 
 
 > 后续版本比较只引用内部历史总账，不再维护外部战术来源目录。
+
+
+## 当前新版本｜N1（2026-11-27）
+
+- **N1｜窄幅纵向分层 4-1-2-3**：父版本R5.3（仅作内部配置参考）；IP 4-1-2-3；OOP固定映射；心态4；红框TI严格固定。
+- 配方：[N1.json](N1.json)；设计记录：[N1_DESIGN_AND_AUDIT.md](N1_DESIGN_AND_AUDIT.md)；构建报告：[N1.report.json](builds/N1.report.json)；FMF：[N1.fmf](builds/N1.fmf)。
+- GitHub Actions：[Run 45952680145](https://github.com/eslaulau/fm-ta/actions/runs/45952680145)，D1原生权限预检通过，22阶段/11槽位独立回读通过，8/8二进制检查通过。
+- FMF：4,584 bytes；SHA-256 `ee945b19e4134e16f722eef624f9cfa1e1f7584d2157ee1414c5a8c78b595deb`；recipe SHA-256 `bb8cd161f1b66460b3c74af9d058a5c8b8849b6f5e1cbf5fc9019f064ff32a2f`；父FMF SHA-256 `8372e09648cd065d6f22106bb21a622ced9e7432863bbfcdc13cda333922b824`。
+- D4游戏内导入、D5完整38场赛季及109分/xG100目标：**待验证**。该构建不构成性能达标声明。
