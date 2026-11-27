@@ -364,5 +364,7 @@
         ]
       }
     }
-  ]
+  ],
+  "SUPPORTING_RUNS_SECONDARY": "BOTH_OUTSIDE",
+  "CROSSING_STYLE": "WHIPPED_CROSSES"
 }
