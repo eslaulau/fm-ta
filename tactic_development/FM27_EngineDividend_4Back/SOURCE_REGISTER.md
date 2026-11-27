@@ -131,3 +131,12 @@
 
 
 | R4 | D3 workflow 45854019401 | [设计审计](R4_DESIGN_AND_AUDIT.md)；[构建报告](builds/R4.report.json) | [R4 D3 Workflow](https://github.com/eslaulau/fm-ta/actions/runs/45854019401)；D5待补Exporter赛季报告 |
+
+
+## R4 D5 赛季来源登记｜2026-11-27
+
+- 原始报告：[Exporter Run 45914272197](https://github.com/eslaulau/FM27-Exporter/tree/main/season-reports/1/45914272197)；本队分析：[R4_D5_SEASON_REVIEW_45914272197.md](R4_D5_SEASON_REVIEW_45914272197.md)。用户确认该赛季使用R4，Exporter本身不导出战术配置。
+- 源存档SHA-256：`0afc7213468d5da2af8f3137158565432271f42a0eeeeb27d155a5f70831866c`；FM27 build `27.1.1+2511875`；Exporter 1.5.0；fmsave 0.14.3；known_build=false，schema-6借用布局。
+- 正式比赛60/60详细报告；英超38/38。球队/球员总量核对1,140/1,140；球员原始进球124/124；识别913/932（97.96%），未识别19；英超识别589、未识别3；位置209/209、评分190/190零差异。
+- 角色码解码10类IP角色、309条记录，604条缺失；没有OOP角色/职责/PI/TI逐场映射。角色码只支持有限的IP角色观察。
+- 联赛结果12胜10平16负、46分、52:57、xG58.86、xGA61.02；D5 FAIL。不得把局部交叉核对通过写成上游known_build注册或完整字段语义验证。
