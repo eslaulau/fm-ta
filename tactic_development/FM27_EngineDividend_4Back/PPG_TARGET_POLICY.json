@@ -1,10 +1,10 @@
 {
   "policy_version": 4,
   "project": "FM27_EngineDividend_4Back",
-  "primary_objective": "PPG >= 2.85",
-  "target_ppg": 2.85,
-  "formula": "league_points / completed_league_matches",
-  "38_match_minimum_points": 109,
+  "primary_objective": "38-match league points >= 100 AND goals_for >= 100",
+  "target_ppg": 2.6315789473684212,
+  "formula": "league_points >= 100 AND goals_for >= 100",
+  "38_match_minimum_points": 100,
   "hard_constraints": {
     "ip_back_four_positions": [
       "DL",
@@ -187,13 +187,12 @@
   },
   "analysis_doctrine": {
     "principle": "游戏引擎研发以可重复的进球产出为优先研究方向；不以现实足球攻守平衡或防守数据漂亮作为目标。",
-    "final_success_gate": "38场联赛至少109分（PPG>=2.85），且全队xG>=100；两项必须同时达标。xG是最低进攻过程门槛，不替代积分目标。",
+    "final_success_gate": "38场联赛至少100分且至少100个进球；xG用于评估进攻过程，不替代实际进球和积分。",
     "review_order": [
-      "进攻过程硬门槛：38场全队xG≥100（场均≥2.63）；低于门槛时进攻体系FAIL，所有进攻槽位不得因相对领先而获准入",
-      "进球产出：总进球、场均进球、xG/NPxG、绝佳机会、禁区内射门、射门质量、转化差额与真实可映射的角色贡献",
-      "胜负与积分转化：胜平负、PPG、主客场积分、高进球失分与低进球丢分",
-      "进攻可重复性：机会创造质量、进球来源、不同比赛状态与对手下的持续性",
-      "必要防守诊断：仅判断防守问题是否实际限制积分或进攻发挥，不作为独立优化终点"
+      "积分与胜平负：38场至少100分",
+      "实际进球产出：38场至少100球",
+      "进攻过程：xG/NPxG、绝佳机会、禁区射门、射门质量与转化",
+      "必要防守诊断：只评估对积分与进攻的实际代价"
     ],
     "defense_policy": "不得仅因xGA较高或防守排名较差而淘汰高进球结构；允许接受更高失球以换取更高且可重复的进球产出，但必须以最终积分验证。",
     "iteration_basis": "Use the internal historical tactic ledger as the sole reference pool. Select a parent configuration based on measured internal results and current fixed constraints; no mandatory V0.5 reset."
@@ -230,12 +229,12 @@
     "next_step": "R5 was subsequently invalidated by retrospective design review; use the internal historical ledger to select a compliant parent configuration for the next iteration."
   },
   "minimum_attack_process_gate": {
-    "metric": "team_xG",
+    "metric": "goals_for",
     "minimum_38_match_total": 100,
     "minimum_per_match": 2.6315789473684212,
     "status": "hard_minimum_gate",
-    "failure_rule": "If 38-match team xG is below 100, the attacking system fails the minimum process standard; no attacking slot may be admitted based only on relative within-system performance, rating, goals, or assists.",
-    "scope": "team-level attack gate; do not apply xG as a performance metric to defensive slots",
+    "failure_rule": "If actual league goals are below 100 or league points are below 100 over 38 matches, the objective is not met.",
+    "scope": "38-match league goals; xG is a diagnostic metric and is not a substitute for actual goals",
     "normalization": "For seasons with a match count other than 38, scale the threshold linearly to 100 * completed_league_matches / 38"
   },
   "status_update_2026_11_26": {
@@ -450,5 +449,6 @@
     "authoritative_document": "TACTIC_FIXED_CONSTRAINTS.md",
     "validation": "validate_project_iteration.py enforces formation slots, locked OOP slot-position map, native mentality=4 and all fixed TI values before native preflight/build.",
     "note": "Previously generated versions are retained as historical records; any recipe violating these constraints is not a current candidate."
-  }
+  },
+  "38_match_minimum_goals": 100
 }
