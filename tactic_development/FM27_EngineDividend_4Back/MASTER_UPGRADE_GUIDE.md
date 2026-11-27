@@ -207,8 +207,8 @@ D3不等于D4，D4不等于D5。没有真实产物、同次构建报告、独立
 ### 4.2 R5（D0审计材料已准备；项目门禁与D1-D3尚未执行）
 
 - 版本：R5；父版本/重生基准固定V0.5，父FMF SHA-256 `e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257`。
-- 配方：[R5.json](R5.json)，SHA-256 `090cfdf5317668cdabe117ed209e8092cb4ca8f67d12a4148215ffde73e42864`；设计审计：[R5_DESIGN_AND_AUDIT.md](R5_DESIGN_AND_AUDIT.md)，SHA-256 `6ffe83186a713588b292be73bff601f9dd5cac39cfe84d1b37156299884e5ec8`；追踪矩阵：[R5_SEASON_TO_TACTIC_TRACEABILITY.md](R5_SEASON_TO_TACTIC_TRACEABILITY.md)，SHA-256 `7f5941e1d9b66f631e507fe8f89c4cad4a3e8cc859175af49690e973f67e6922`。
-- 唯一主线：IP 4-2-3-1 / OOP 5-2-3无锋三出口。按R4 D5的最新PPG整改项，保留OOP三出口候选，恢复Pass Into Space与Hit Early Crosses，DR WingBack Attack回Support，DMR BoxToBox Support回DefensiveMidfielder Defend；另重做OOP左右边后卫与三中卫的压迫分层。
+- 配方：[R5.json](R5.json)，SHA-256 `1990f40739388ed9370431532b3d898a8d414956427f7b0aebe8e434313f8b5c`；设计审计：[R5_DESIGN_AND_AUDIT.md](R5_DESIGN_AND_AUDIT.md)，SHA-256 `47ba60b514faca54fc37518ac005e504f8cfad73db1216549929857725083d29`；追踪矩阵：[R5_SEASON_TO_TACTIC_TRACEABILITY.md](R5_SEASON_TO_TACTIC_TRACEABILITY.md)，SHA-256 `209006eb84820b039b12c5d90e3282bcc070be81de789650a8bd31cc5846c42d`。
+- 唯一主线：IP 4-2-3-1 / OOP 5-2-3无锋三出口。按R4 D5的最新PPG整改项，保留OOP三出口候选，恢复Pass Into Space与Hit Early Crosses，DR WingBack Attack回Support，DMR BoxToBox Support回DefensiveMidfielder Defend；另重做OOP左右边后卫与三中卫的压迫分层；Stop Crosses替代Invite Crosses，Tackle Harder只给OOP后线五人+双后腰七人，前场三出口不设Tackle Harder。
 - 设计取舍：本轮没有采用ARCHITECTURE_REVIEW中的菱形IP优先结构，因为当前PPG策略对R4 D5给出了更具体的四项整改项；这不代表4-2-3-1外部排名更好。菱形结构仍保留为后续研究，不与本轮混合。
 - 静态审计：11槽、IP四后场、OOP位置唯一性、22槽位审计行、四类决策、引擎错位字段及哈希字段共16项静态核对通过；这不是Python项目验证器结果。
 - D0项目验证器尚未执行；D1原生预检、D2构建结构检查、D3 FMF和独立回读均待本地标准构建通道。当前没有R5.fmf或R5.report.json。
