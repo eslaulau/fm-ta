@@ -111,10 +111,16 @@
     }
   },
   "active_iteration": {
-    "version": null,
-    "status": "READY_FOR_NEW_D0_DESIGN",
-    "reason": "Machine-enforced D0 manifest gate and regression suite are implemented; no tactic candidate has been selected yet.",
-    "next_action": "Begin a fresh single-mainline design from immutable V0.5. R5 remains permanently blocked as a candidate."
+    "version": "R5.1",
+    "status": "D0_D3_PASS_D4_D5_PENDING",
+    "reason": "Fresh V0.5-based R5.1 candidate completed project decision gate, current native catalog preflight, 11-slot/22-phase structure validation and independent FMF roundtrip.",
+    "parent_version": "V0.5",
+    "parent_fmf_sha256": "e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257",
+    "workflow_run_id": 45928559022,
+    "workflow_url": "https://github.com/eslaulau/fm-ta/actions/runs/45928559022",
+    "artifact_id": 15167667342,
+    "fmf_sha256": "292e027e5f9b5664bf224e577e176be27f414c3c655fe5a17b292c88e5fbf51a",
+    "next_action": "User imports R5.1 in FM27 and confirms the in-game IP/OOP formations, all roles/duties/instructions and player familiarity; then uses R5.1 for a full 38-match league season. D5 passes only if both points>=109 and team xG>=100."
   },
   "retired_iteration_decisions": [
     {
@@ -214,5 +220,11 @@
     "regression_tests": 16,
     "result": "success",
     "verified_at": "2026-11-27"
+  },
+  "status_update_2026_11_27_R5_1": {
+    "design": "IP 4-1-2-1-2 Diamond / OOP 4-3-1-2, fresh build from exact V0.5 native FMF; all 22 phase configurations are new test hypotheses, not proven admissions.",
+    "build": "D0-D3 PASS; 4,572-byte FMF; SHA-256 292e027e5f9b5664bf224e577e176be27f414c3c655fe5a17b292c88e5fbf51a; workflow run 45928559022; artifact 15167667342.",
+    "evidence_limit": "No R5.1 D4 confirmation or 38-match D5 report yet. The 109-point and 100 team-xG gates remain mandatory.",
+    "next": "D4 user game import confirmation, then full 38-match D5 with user-declared tactic mapping."
   }
 }
