@@ -1,15 +1,28 @@
 # 最高优先级：V0.5 固定重生规则（2026-11-26）
 
-## 当前权威研发状态｜R5.1（2026-11-27）
+## 当前权威研发状态｜R5.2（2026-11-27）
 
-- 唯一当前构建候选：**R5.1**；旧R5保持INVALIDATED并在 `PPG_TARGET_POLICY.json` 的 `blocked_versions` 中封锁。
-- R5.1从V0.5原生FMF重生，父SHA-256：`e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257`；IP 4-1-2-1-2 Diamond，OOP 4-3-1-2；IP后场DL/DCL/DCR/DR各一次。
-- R5.1 D0-D3构建记录：[Run 45928559022](https://github.com/eslaulau/fm-ta/actions/runs/45928559022) 已成功，FMF 4,572 bytes，SHA-256 `292e027e5f9b5664bf224e577e176be27f414c3c655fe5a17b292c88e5fbf51a`。后续策略/总账更新导致审计哈希快照更新后，将以最新D3复跑记录为准。
-- R5.1全部22项阶段配置仍是新增待验证/U；没有本队D5位置级准入证据。D4游戏内导入和D5完整38场赛季均未完成。
+- 唯一当前重设计候选：**R5.2**；R5与用户拒绝的R5.1均在 `PPG_TARGET_POLICY.json` 的 `blocked_versions` 中封锁。
+- R5.2从V0.5原生FMF重生，父SHA-256：`e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257`；IP 4-1-2-3 DM Wide，OOP 5-2-3；IP后场DL/DCL/DCR/DR各一次。
+- R5.1此前D3记录仅保留技术历史；用户已明确拒绝该菱形设计，不进入D4/D5，也不安排追加测试。R5.2尚未运行项目D0-D3。
+- R5.2的22项阶段配置均为新增待验证/U；没有本队D5位置级准入证据。D4游戏内导入和D5完整38场赛季均未完成。
 - 最终D5必须同一38场至少109分（PPG≥2.85）并且全队xG≥100；没有同时达标的版本。
 
 ---
 
+
+## R5.2｜全新V0.5重生设计登记（2026-11-27）
+
+- 用户拒绝R5.1菱形IP整体设计；R5.1保留技术历史，不再作为候选或D4/D5测试版本。
+- R5.2唯一结构：IP 4-1-2-3 DM Wide / OOP 5-2-3；父版本与重生基准固定为V0.5原始FMF。
+- IP四后场：DL InsideFullBack D、DCL OverlappingCentreBack A、DCR BallPlayingCentreBack D、DR PlaymakingWingBack S。
+- 中场与前场：DMC DefensiveMidfielder D；MCL ChannelMidfielder A；MCR AttackingMidfielder A；AML/AMR Winger S；ST CentreForward A。
+- OOP转换：DMC→DC，MCL/MCR→DML/DMR，ST→AMC；形成5-2-3并保留双边前场宽度。
+- PI/TI只按当前27.1.1原生catalog与生成器映射；所有22项均标记新增待验证/U，不继承任何未准入R5.1配置。
+- 外部MetaFM 27.1.1数据只用作跨阵型迁移假设；不移植其PPG/xG成绩。本轮项目D0-D3待执行，D4/D5未验证。
+- D5仍需同一38场至少109分且全队xG至少100，两项同时通过。
+
+---
 
 # 当前权威视图｜R3（2026-11-26）
 
