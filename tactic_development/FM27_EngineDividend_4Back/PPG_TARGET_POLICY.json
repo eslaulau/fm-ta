@@ -93,6 +93,7 @@
       "CROSS_ENGAGEMENT": "INVITE_CROSSES"
     },
     "allowed_modifications": [
+      "ip_formation_choice_within_allowed_set",
       "player_roles_and_duties_in_IP_and_OOP",
       "player_personal_instructions_in_IP_and_OOP",
       "team_instructions_not_in_the_red_box"
@@ -135,6 +136,22 @@
       "PRESSING_TRAP",
       "SHORT_GOALKEEPER_DISTRIBUTION",
       "CROSS_ENGAGEMENT"
+    ],
+    "adjustable_non_box_team_instruction_keys": [
+      "ATTACKING_TRANSITION",
+      "CREATIVE_FREEDOM",
+      "TIME_WASTING",
+      "PLAY_FOR_SET_PIECES",
+      "PROGRESS_THROUGH",
+      "SUPPORTING_RUNS",
+      "SUPPORTING_RUNS_SECONDARY",
+      "GOALKEEPER_ATTACKING_SET_PIECES",
+      "PATIENCE",
+      "DRIBBLING",
+      "SHOTS_FROM_DISTANCE",
+      "CROSSING_STYLE",
+      "DEFENSIVE_LINE_BEHAVIOR",
+      "TRIGGER_PRESS"
     ]
   },
   "required_decision_classes": [
