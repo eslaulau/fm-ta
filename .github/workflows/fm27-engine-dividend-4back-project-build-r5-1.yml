@@ -27,7 +27,7 @@ jobs:
         run: rm -f "tactic_development/FM27_EngineDividend_4Back/builds/R5.1.fmf" "tactic_development/FM27_EngineDividend_4Back/builds/R5.1.report.json"
       - name: Pin and generate machine decision manifest
         run: python "tactic_development/FM27_EngineDividend_4Back/prepare_R5_1_audit.py"
-      - name: Build through project gate, native preflight and independent readback
+      - name: Build through native preflight and independent readback
         run: |
           python "tactic_development/FM27_EngineDividend_4Back/build_project_tactic.py" \
             --recipe "tactic_development/FM27_EngineDividend_4Back/R5.1.json" \
