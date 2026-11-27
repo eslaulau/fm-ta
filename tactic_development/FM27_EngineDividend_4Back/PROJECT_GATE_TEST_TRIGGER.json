@@ -1,6 +1,6 @@
 {
-  "run": "fixed-scope-regression",
-  "revision": 3,
+  "run": "historical-parent-and-internal-ledger-regression",
+  "revision": 4,
   "date": "2026-11-27",
-  "scope": "positive 4-3-3/4-1-2-3 acceptance; player role/duty/PI allowed; all fixed-scope negative tests"
+  "scope": "historical tactics can be parent; no mandatory V0.5 reset; internal-only reference policy; fixed tactical boundaries remain enforced"
 }
