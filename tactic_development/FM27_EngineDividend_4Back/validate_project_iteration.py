@@ -41,6 +41,90 @@ def one_line_value(text: str, label: str) -> str | None:
     return match.group(1).strip() if match else None
 
 
+def validate_decision_manifest(recipe: dict, audit: str, policy: dict) -> list[str]:
+    """Require an exact, evidence-classified decision for every IP/OOP recipe slot."""
+    errors = []
+    start = audit.find("MACHINE_DECISION_MANIFEST_JSON_START")
+    end = audit.find("MACHINE_DECISION_MANIFEST_JSON_END")
+    if start < 0 or end < start:
+        return ["Missing machine decision manifest; prose-only decisions cannot authorize a build."]
+    raw_manifest = audit[start + len("MACHINE_DECISION_MANIFEST_JSON_START"):end].strip()
+    try:
+        manifest = json.loads(raw_manifest)
+    except json.JSONDecodeError as exc:
+        return [f"Machine decision manifest is invalid JSON: {exc}"]
+    if not isinstance(manifest, dict) or manifest.get("schema_version") != 1:
+        return ["Machine decision manifest must be an object with schema_version=1."]
+    slots = recipe.get("p")
+    if not isinstance(slots, list) or len(slots) != 11:
+        return ["Cannot verify manifest unless recipe has exactly 11 slots."]
+    actual = []
+    for slot in slots:
+        if not isinstance(slot, dict):
+            continue
+        for phase, key in (("IP", "in"), ("OOP", "out")):
+            item = slot.get(key)
+            if isinstance(item, dict):
+                pi = item.get("pi", [])
+                actual.append((phase, item.get("pos"), item.get("role"), item.get("duty"),
+                               tuple(sorted(tuple(x) for x in pi if isinstance(x, list) and len(x) == 2))))
+    selected = manifest.get("selected_configurations")
+    if not isinstance(selected, list) or len(selected) != 22:
+        return errors + ["Machine decision manifest must contain exactly 22 selected_configurations."]
+    declared = []
+    by_slot = {}
+    for index, item in enumerate(selected, 1):
+        if not isinstance(item, dict) or item.get("phase") not in ("IP", "OOP"):
+            errors.append(f"Manifest entry {index} must identify IP or OOP.")
+            continue
+        pi = item.get("pi", [])
+        config = (item["phase"], item.get("pos"), item.get("role"), item.get("duty"),
+                  tuple(sorted(tuple(x) for x in pi if isinstance(x, list) and len(x) == 2)))
+        declared.append(config)
+        if config in by_slot:
+            errors.append(f"Duplicate manifest entry: {config[0]}/{config[1]}/{config[2]}.")
+        by_slot[config] = item
+        decision = item.get("decision")
+        if decision not in DECISIONS:
+            errors.append(f"{config[0]}/{config[1]} has invalid four-class decision.")
+        if not isinstance(item.get("rationale"), str) or len(item.get("rationale", "").strip()) < 12:
+            errors.append(f"{config[0]}/{config[1]} needs a substantive rationale.")
+        if not item.get("evidence_grade"):
+            errors.append(f"{config[0]}/{config[1]} needs an evidence grade.")
+        if decision == "继承保留" and item.get("evidence_grade") not in ("A", "B"):
+            errors.append(f"{config[0]}/{config[1]} cannot be inherited without A/B admission evidence.")
+        if decision in ("证据不足", "替换淘汰"):
+            errors.append(f"{config[0]}/{config[1]} is marked {decision} but still exists in the selected recipe.")
+        if decision == "新增待验证":
+            for field in ("hypothesis", "d5_metric", "failure_condition"):
+                if not isinstance(item.get(field), str) or len(item.get(field, "").strip()) < 12:
+                    errors.append(f"{config[0]}/{config[1]} needs falsifiable {field}.")
+    if sorted(actual, key=repr) != sorted(declared, key=repr):
+        errors.append("Decision manifest does not exactly match all 22 recipe phase/position/role/duty/PI configurations.")
+    for prior in policy.get("historical_non_admitted_configurations", []):
+        for config, item in by_slot.items():
+            if (config[0] == prior.get("phase") and config[1] == prior.get("position")
+                    and config[2] == prior.get("role") and config[3] == prior.get("duty")
+                    and item.get("decision") != "新增待验证"):
+                errors.append(f"Previously unadmitted {config[0]}/{config[1]}/{config[2]} can only return as 新增待验证 with a new hypothesis.")
+    retired = manifest.get("retired_configurations", [])
+    if not isinstance(retired, list):
+        errors.append("retired_configurations must be a list.")
+        retired = []
+    retired_keys = set()
+    for item in retired:
+        if not isinstance(item, dict) or item.get("phase") not in ("IP", "OOP"):
+            errors.append("Each retired configuration needs phase, pos, role, duty and pi.")
+            continue
+        pi = item.get("pi", [])
+        retired_keys.add((item["phase"], item.get("pos"), item.get("role"), item.get("duty"),
+                          tuple(sorted(tuple(x) for x in pi if isinstance(x, list) and len(x) == 2))))
+    for config in actual:
+        if config in retired_keys:
+            errors.append(f"Recipe reintroduces retired configuration {config[0]}/{config[1]}/{config[2]}.")
+    return errors
+
+
 def validate(recipe_path: Path, audit_path: Path, parent_fmf: Path) -> list[str]:
     errors: list[str] = []
     for label, path in (
@@ -273,6 +357,7 @@ def validate(recipe_path: Path, audit_path: Path, parent_fmf: Path) -> list[str]
     if len(ip_positions) == 11 and sum(ip_positions.count(p) for p in IP_BACK_FOUR) != 4:
         errors.append(f"IP must contain exactly four back-four slots {IP_BACK_FOUR}; got {ip_positions}.")
 
+    errors.extend(validate_decision_manifest(recipe, audit, policy))
     return errors
 
 
