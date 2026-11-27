@@ -48,7 +48,7 @@
       },
       "out": {
         "pos": "GK",
-        "role": "OPSweeperKeeper",
+        "role": "SweeperKeeper",
         "duty": "A",
         "pi": []
       }
@@ -62,7 +62,7 @@
       },
       "out": {
         "pos": "DL",
-        "role": "OPFullBack",
+        "role": "FullBack",
         "duty": "S",
         "pi": []
       }
@@ -76,7 +76,7 @@
       },
       "out": {
         "pos": "DCL",
-        "role": "OPCentreBack",
+        "role": "CentreBack",
         "duty": "D",
         "pi": []
       }
@@ -90,7 +90,7 @@
       },
       "out": {
         "pos": "DCR",
-        "role": "OPCentreBack",
+        "role": "CentreBack",
         "duty": "D",
         "pi": []
       }
@@ -104,7 +104,7 @@
       },
       "out": {
         "pos": "DR",
-        "role": "OPPressingFullBack",
+        "role": "PressingFullBack",
         "duty": "S",
         "pi": []
       }
@@ -118,7 +118,7 @@
       },
       "out": {
         "pos": "DC",
-        "role": "OPCoveringCentreBack",
+        "role": "CoveringCentreBack",
         "duty": "D",
         "pi": []
       }
@@ -132,7 +132,7 @@
       },
       "out": {
         "pos": "MC",
-        "role": "OPScreeningCentralMidfielder",
+        "role": "ScreeningCentralMidfielder",
         "duty": "D",
         "pi": []
       }
@@ -146,7 +146,7 @@
       },
       "out": {
         "pos": "ML",
-        "role": "OPWideMidfielder",
+        "role": "WideMidfielder",
         "duty": "S",
         "pi": []
       }
@@ -160,7 +160,7 @@
       },
       "out": {
         "pos": "MR",
-        "role": "OPWideMidfielder",
+        "role": "WideMidfielder",
         "duty": "S",
         "pi": []
       }
@@ -174,7 +174,7 @@
       },
       "out": {
         "pos": "STL",
-        "role": "OPCentreForward",
+        "role": "CentreForward",
         "duty": "A",
         "pi": []
       }
@@ -188,7 +188,7 @@
       },
       "out": {
         "pos": "STR",
-        "role": "OPCentreForward",
+        "role": "CentreForward",
         "duty": "A",
         "pi": []
       }
