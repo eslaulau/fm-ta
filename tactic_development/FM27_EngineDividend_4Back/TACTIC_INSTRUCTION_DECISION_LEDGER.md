@@ -2363,3 +2363,12 @@ D5至少完成38场英超后，以V1.8为直接父版基线，同时对照V1.7�
 - 当前 `04_离线原生FMF生成器/FM27GEN1_Offline_FMF_Generator.py` 的 `PI_MAP/EXPERIMENTAL_PI_MAP` 明确映射 `TRIGGER_PRESS MORE_OFTEN=29`、`TRIGGER_PRESS LESS_OFTEN=30`、`TACKLING GET_STUCK_IN=31`；当前 `catalog.json` 角色PI策略向量长度覆盖这些option ID，`encode_pi_details` 会按角色/阶段/位置/职责逐项校验。
 - `ROLE_DEFAULT_BEHAVIOR_AND_MAPPING_RECHECK_20261126.md` 进一步核验当前源码37/37个非默认PI选项均有映射。该结论只证明编码映射存在，不证明比赛行为或PPG收益。
 - R5按当前源码和原生catalog执行逐槽PI权限检查；任何角色不允许的PI均不得写入recipe。角色默认GameID尚缺本地化文本，不能将其引用猜译为具体行为。
+
+
+## 2026-11-27｜R5设计资格撤销与门禁整改（当前权威状态）
+
+- R5保留为历史技术构建记录；其原D0脚本PASS不代表设计规则实际通过。后续复核确认：R4全队xG 58.86低于100，R5仍将AML内锋、AMC自由人、AMR边锋、ST支点前锋及OOP三出口组合沿用/作为默认实验方向，未完成逐项准入裁决。
+- R5不得进入D4/D5候选流程，不得作为新版本模板；历史recipe、审计、FMF、report、artifact不删除、不改写成实战失败数据。
+- 任何历史未准入配置如需再次研究，必须以“新增待验证”重新提出机制假设、D5指标和失败条件；不得作为“继承保留”。这不等于宣称角色本身在所有位置/阶段无效。
+- 项目门禁新增机器决策清单：22项IP/OOP配置逐一绑定phase、position、role、duty、PI和四类决策，并与recipe精确比对。证据不足/替换淘汰不得留在当前recipe；继承保留须A/B证据；新增待验证须有可证伪假设。
+- 在门禁回归测试通过前，暂停新战术版本设计和D1-D3构建。唯一重生基准仍为V0.5原始FMF SHA-256 `e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257`。
