@@ -1,5 +1,9 @@
-> **当前权威状态｜N1（2026-11-27）**：当前最新D3候选为N1（4-1-2-3 IP；固定OOP映射；心态4；15项红框TI固定）。D1-D3已通过，D4/D5待验证。配方、设计记录、FMF和同次回读报告见N1.json、N1_DESIGN_AND_AUDIT.md及builds/N1.*。项目现行规则仅见PROJECT_RULES.md、TACTIC_FIXED_CONSTRAINTS.md、UPGRADE_GATE.md、GENERATION_EXECUTION_POLICY.md。**当前不设D0审批门禁；历史条目中的D0流程只记录当时事实。**
->
+> **当前权威状态｜N2（2026-11-27）**：当前最新D3候选为N2（N1父版本；IP 4-1-2-3；固定OOP映射；心态4；15项红框TI固定）。D1-D3通过，D4/D5待验证。配方、设计记录、FMF和同次回读报告见N2.json、N2_DESIGN_AND_AUDIT.md及builds/N2.*。构建Run [45957641658](https://github.com/eslaulau/fm-ta/actions/runs/45957641658)，FMF SHA-256 `dd15cb0fed579eccd6fc479c33d3d205388ae3b44990f08f2a5942bedc94f9ed`。
+
+> **N1已完成D5赛季回写（用户确认）**：Exporter Run [45955914738](https://github.com/eslaulau/FM27-Exporter/tree/main/season-reports/1/45955914738)，英超38场20胜10平8负、70分、77进球、45失球，xG70.23、xGA42.72；传中1,046次、成功率15.3%；主场41分、客场29分。N1未达到当前目标100分/100球。具体升级依据见N2_DESIGN_AND_AUDIT.md。
+
+> **当前成功目标**：完整38场联赛至少100分且至少100个进球。xG保留为诊断指标，不替代实际进球与积分。
+
 
 > 本文件中旧版本段落保留为历史记录；其中曾经写入的旧规则、外部研究和父版限制不再是当前开发指令。当前规则以文件顶部的“历史总账继承模式”和 `TACTIC_FIXED_CONSTRAINTS.md` 为准。
 ## 当前权威研发状态｜2026-11-27 历史总账继承模式
