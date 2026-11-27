@@ -1,9 +1,20 @@
+## 当前权威状态｜R5（2026-11-27）
+
+- **当前研发版本：R5**；IP 4-2-3-1 / OOP 5-2-3无锋三出口；父版本固定V0.5，父FMF SHA-256 `e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257`。
+- 配方：[R5.json](R5.json)，SHA-256 `090cfdf5317668cdabe117ed209e8092cb4ca8f67d12a4148215ffde73e42864`；设计审计：[R5_DESIGN_AND_AUDIT.md](R5_DESIGN_AND_AUDIT.md)；追踪矩阵：[R5_SEASON_TO_TACTIC_TRACEABILITY.md](R5_SEASON_TO_TACTIC_TRACEABILITY.md)。
+- D0设计材料与静态字段/哈希核对16/16通过；Python项目门禁尚未执行。D1-D3 pending；当前没有R5 FMF或build report。
+- D4游戏内导入、角色职责/PI/TI显示及熟悉度未验证；D5完整38场未开始。
+- 最近完整D5仍为R4：46分/PPG1.211/xG58.86/xGA61.02，双门槛FAIL。当前没有任何版本通过109分与100 xG。
+- 最近已记录的技术构建仍为2.6（D1-D3通过，D4/D5未验证）；不得把R5设计文件误报为已构建。
+
+---
+
 # FM27 引擎红利四后卫｜版本总目录
 
-## 当前权威状态｜R3（2026-11-26）
+## 历史状态快照｜R3（2026-11-26，已被R4 D5与R5设计状态覆盖）
 
 - 用户已明确淘汰R2；不再继续测试，不作为R3父版或配置模板。历史文件和构建报告保留。
-- **当前主线：R3（D0-D3已通过）**；固定从V0.5原始FMF重生，SHA-256 `e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257`。D3 Run [45845663863](https://github.com/eslaulau/fm-ta/actions/runs/45845663863)，Artifact `15131511605`；FMF 4,676 bytes，SHA-256 `449fb1a76ca8967ccfd674e59c8dd007d40def9da8aafaf8f23edf10c8d3fa4e`；报告：[R3.report.json](builds/R3.report.json)。
+- **当时主线：R3（D0-D3已通过）**；固定从V0.5原始FMF重生，SHA-256 `e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257`。D3 Run [45845663863](https://github.com/eslaulau/fm-ta/actions/runs/45845663863)，Artifact `15131511605`；FMF 4,676 bytes，SHA-256 `449fb1a76ca8967ccfd674e59c8dd007d40def9da8aafaf8f23edf10c8d3fa4e`；报告：[R3.report.json](builds/R3.report.json)。
 - IP：4-2-3-1；OOP：无锋5-2-3。IP后场仅锁定DL/DCL/DCR/DR四个位置槽。
 - D5验收：38场至少109分（PPG≥2.85）且全队xG≥100。
 - R3已通过D0项目门禁、D1原生权限预检、D2结构检查、D3原生FMF构建与独立回读；D4游戏内导入、D5完整38场赛季验证尚未完成。
@@ -28,7 +39,7 @@
 
 本文件是本项目唯一版本总表。每个版本的配方、构建请求（如仓库曾保存）、设计审计、构建报告、赛季分析均以本目录为归档根目录；不得再把本项目的 build request 放回仓库根目录的通用 `build_requests/`。
 
-## 当前状态
+## 历史状态快照（2026-11-26，后续R4 D5与R5追加）
 
 > 2026-11-26：研发规则已修订：IP仅要求DL/DCL/DCR/DR四个后场位置，不固定任何IP阵型；OOP完全开放；每轮只设计和构建一个完整方案。每轮战术迭代/赛季复盘必须同步更新 `TACTIC_INSTRUCTION_DECISION_LEDGER.md`、`ITERATION_LOG.md`、本目录与 `SOURCE_REGISTER.md`，并逐个GitHub read-back。详细门禁见 `ANALYSIS_AND_ITERATION_RULES.md` 第七节。
 
@@ -236,3 +247,12 @@
 - 位置统计：R4前场四位置约47.08 xG，低于R3约51.99；AMC 10.93、ST17.99、AML12.02、AMR6.14。DMC合并位置7.70 xG，不能拆分DML/DMR。
 - 数据质量：球队/球员统计核对1,140/1,140；比分/球员原始进球124/124；位置209/209、评分190/190核对通过。球员身份913/932，19个未识别；角色码309/913条记录有值，604条缺失。build 27.1.1+2511875仍为fmsave未知build，schema-6借用布局，整体partial/unverified。
 - R4 D5 FAIL。R5建议：从V0.5重生；保留R4 OOP三出口，恢复Pass Into Space与Hit Early Crosses；DR WingBack Attack回Support；DMR BoxToBox Support回DefensiveMidfielder Defend。以上为下一轮待验证方案，不是因果结论。
+
+
+## R5｜IP 4-2-3-1 / OOP 5-2-3无锋三出口｜D0材料准备（2026-11-27）
+
+- 父版本/重生基准：V0.5；父FMF SHA-256 `e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257`。
+- Recipe SHA-256：`090cfdf5317668cdabe117ed209e8092cb4ca8f67d12a4148215ffde73e42864`。
+- 设计审计与追踪矩阵已归档；静态核对16/16通过；实际项目Python门禁待执行。
+- D1-D3待本地标准构建；无FMF/report；D4/D5未验证。R5不宣称性能收益。
+- 本轮整改依据：R4 D5后恢复Pass Into Space/Hit Early Crosses，DR WingBack A→S，DMR BoxToBox S→DefensiveMidfielder D；保留OOP三出口作为待验证结构候选。
