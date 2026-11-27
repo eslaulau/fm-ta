@@ -1,0 +1,232 @@
+# R5 设计审计｜IP 4-2-3-1 / OOP 5-2-3 无锋三出口
+
+日期：2026-11-27  
+状态：D0 设计审计；D1-D3 待项目构建通道执行；D4/D5 未验证。
+
+## 0. 版本身份与固定基准
+
+版本：R5  
+父版本：V0.5  
+重生基准：V0.5  
+重生基准 FMF SHA-256：e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257  
+父 FMF SHA-256：e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257  
+本轮配方 SHA-256：090cfdf5317668cdabe117ed209e8092cb4ca8f67d12a4148215ffde73e42864  
+项目规则 SHA-256：3f5b03ed932aab6dd3dd7fb119946af6401cb964c7df127e9762c5b615b8aec3  
+决策总账 SHA-256：c92926ec1cfe481b9c7d8b52f3454e84a71330e64e5ec7b2574c45bbda70ddfe  
+PPG 策略 SHA-256：6e062abd185d30c2ec07235fd3d466960b02a6894ff18ef65fb9e396c80fd2b6  
+位置绩效标准 SHA-256：d79a62508aa31490a62c4c63524aa91146b953fd2eb82252e8501312e07838f1
+
+**审计结论： PASS**
+
+本 PASS 仅表示 D0 设计审计材料满足项目门禁要求；不代表 D1 原生预检、D2 结构检查、D3 FMF 回读、D4 游戏导入或 D5 比赛表现已通过。R5 的唯一性能成功标准仍是完整38场英超同时达到至少109分（PPG ≥ 2.85）及全队 xG≥100。
+
+## 1. 本轮目标、报告身份与数据质量
+
+- 被审计版本：R4；用户确认该赛季38场英超使用R4。Exporter不导出战术配置，战术映射是用户声明，不是Exporter自动识别。
+- 原始报告：FM27-Exporter Run 45914272197；源存档 `1.fm`；源SHA-256 `0afc7213468d5da2af8f3137158565432271f42a0eeeeb27d155a5f70831866c`；游戏日期2027-06-03。
+- 环境：FM27 build 27.1.1+2511875；Exporter 1.5.0；fmsave 0.14.3；known_build=false。球队/球员解析使用借用schema-6布局；局部字段交叉核对通过，整体仍为partial/unverified。
+- 覆盖：英超38/38场；球队/球员统计1,140/1,140对账；活跃出场932、身份识别913（97.96%），19条未识别；英超识别589/592。
+- 位置字段209/209交叉核对；角色码只解码309/913条识别出场，604条缺失；无逐场OOP角色、职责、PI/TI执行映射。
+- 位置码不能拆分DCL/DCR或DML/DMR；下文位置数据仅是报告位置汇总，不等同11个战术槽的直接贡献。任何缺失字段均标记U/未观测，不补猜。
+
+## 2. R4 D5结果与主要问题
+
+| 指标 | R4 | 项目门槛/基准 | 判断 |
+|---|---:|---:|---|
+| 联赛场次 | 38 | 38 | 完整 |
+| 胜/平/负 | 12/10/16 | — | 未胜26场 |
+| 积分 / PPG | 46 / 1.211 | ≥109 / ≥2.85 | FAIL |
+| 进球 / 失球 | 52 / 57 | 结果诊断 | 进攻产出低 |
+| xG / xGA | 58.86 / 61.02 | xG≥100 | xG硬门槛FAIL |
+| 场均xG | 1.549 | ≥2.632 | 明显不足 |
+| 射门 / 射正 | 408 / 213 | 过程诊断 | 低于R3 |
+| 绝佳机会 | 60 | 过程诊断 | 不能抵消射门量不足 |
+
+R4相对R3：积分-20、进球-13、失球+20、xG-6.14、xGA+14.84、射门-44、射正-22、绝佳机会+4。xG/射门约0.144，与R3约0.144接近，团队xG下降主要伴随射门总量下降。传中尝试约1,181次，成功150次、完成率12.7%；R3约1,190次、成功约192次、完成率16.1%。越位93→77，减少越位没有换来更多射门或xG。
+
+胜/平/负场均xG为2.01/1.33/1.34，场均xGA为1.30/1.77/1.73。败场平均8.94次射门；主场21分、客场25分。防守机会控制是积分损失诊断项，但本项目不以漂亮xGA替代PPG，也不因单独xGA高而自动淘汰能显著提高进球的结构。
+
+### 2.1 低产与高产未胜案例
+
+报告复盘识别的低产样本：
+- 2026-12-05 诺丁汉森林 1-1：我方4次射门、xG0.28。
+- 2027-01-23 曼城 0-1：我方4次射门、xG0.45。
+- 2026-09-19 阿森纳 0-2：我方2次射门、xG0.15。
+- 2027-05-02 诺丁汉森林 1-2：我方5次射门、xG0.73。
+
+高产但未胜样本：
+- 2026-08-30 切尔西 0-2：我方xG2.14，未进球。
+- 2026-10-25 利物浦 1-3：我方xG2.82。
+- 2027-05-23 利物浦 2-5：我方xG1.88，对手xG2.17。
+
+因此R4同时存在持续进攻产量不足与部分比赛机会未兑现；不能把问题简化成“前锋浪费机会”。R5优先恢复射门/机会生成通道，同时保留终结与主客场分组诊断。
+
+## 3. 历史多维基准与配置沿革
+
+| 版本 | 积分/PPG | 进球-失球 | xG / xGA | 维度结论 |
+|---|---:|---:|---:|---|
+| V0.5 | 69 / 1.816 | 75-43 | 72.92 / 44.12 | 原始基准，非达标 |
+| V1.3 | 88 / 2.316 | 83-30 | 80.54 / 34.27 | 历史防守机会控制基准 |
+| V1.4 | 83 / 2.184 | 101-53 | 92.62 / 43.46 | 进攻增产但积分下降、防守代价增加 |
+| V1.6 | 89 / 2.342 | 87-37 | 75.54 / 46.33 | 历史最高积分，但xG未达100、终结超额明显 |
+| V1.7 | 82 / 2.158 | 79-36 | 74.29 / 44.13 | OOP分层保护改善机会控制，进球/积分下降 |
+| V1.8 | 72 / 1.895 | 98-55 | 88.87 / 59.67 | 进攻机会增多但OOP五后卫组合风险高 |
+| 2.2 | 84 / 2.211 | 87-40 | 81.83 / 43.58 | IP菱形双前锋/OOP 5-2-3，仍未达双门槛 |
+| R3 | 66 / 1.737 | 65-37 | 65.00 / 46.18 | 非胜场进攻产量不足 |
+| R4 | 46 / 1.211 | 52-57 | 58.86 / 61.02 | 当前最差D5，射门与xG继续下降 |
+
+跨版本均非同seed受控A/B，不能把差值归因于单个角色或指令。V1.3是防守机会质量基准，V1.6是积分基准，V1.4是进攻产量/绝佳机会参考，V1.8是高进攻伴随高防守代价的失败样本；任何版本均未达到109分与100 xG双门槛。
+
+### 3.1 相关配置结论
+
+- V1.2/V1.3/V1.7的OOP四后场底线与双后腰分层保护反复伴随较好的xGA/对手绝佳机会；V1.6双后腰更积极后积分最高，但防守机会质量较差。保留“分工而非双后腰同时盲目上抢”作为待验证原则。
+- V1.7→V1.8：OOP改无锋5-2-3后xG+14.58、进球+19，但xGA+15.54、对手绝佳机会+20、积分-10。OOP 5-2-3不能只看进攻增益。
+- R4采用OOP 5-2-3三出口，但整季46分、xG58.86。R5保留三出口是PPG策略明确指定的下一轮实验方向，不代表R4三出口已被证明有效；本轮通过更改前场压迫层级、边后卫角色和IP供给指令重新验证。
+- R3→R4的传球接应由Pass Into Space改Pass To Feet，进攻耐心由Hit Early Crosses改Work Ball Into Box；同时射门减少44次、xG下降6.14、传中成功率下降3.4个百分点。它们共同构成需要回退的配置簇，不能单项归因。
+- R4 DR WingBack Attack改为Support、DMR BoxToBox Support改为DefensiveMidfielder Defend，是PPG_TARGET_POLICY明确提出的下一轮方向；位置级统计不能证明单项因果，但DR位置只有1.18 xG/3助攻，DMC合并位置7.70 xG，未提供支持继续加大DR攻击或DMR前插的正向证据。
+
+## 4. 外部引擎研究与跨阵型迁移
+
+本轮外部来源以27.1.1当前可见资料为主；不同平台测试协议不合并，外部PPG不换算成本队38场赛季预期。
+
+| 来源 | 可核实信息 | 迁移判定 | 局限 |
+|---|---|---|---|
+| FM-Arena | 27.1.1 match-engine讨论及大样本测试；社区对27.1.1与27.1.0是否改变存在不同解读 | 仅作当前build风险背景 | 与metaFM对patch差异的观察不完全一致；不能据此断言机制 |
+| metaFM | 27.1.1榜首3-4-3 IP / 5-2-3 OOP样本3,447场，约2.09 PPG、xG2.44、xGA1.34；第二名同样OOP 5-2-3，样本6,972场、约2.06 PPG、xG2.51、xGA1.41 | OOP 5-2-3三出口结构可重构迁移；其IP三后卫结构依赖，不可照搬 | 远低于本项目2.85 PPG与2.63场均xG目标；外部协议与本队存档不同 |
+| SI官方论坛 | 本轮检索未取得可复核的当前build、完整角色/PI/TI组合与大样本结果 | 证据不足 | 不以讨论帖标题推断配置 |
+| Sortitoutsi | 找到社区战术与指令取舍讨论，但未取得与R5结构同协议的完整27.1.1对照 | 背景参考 | 版本/样本/配置完整性不足 |
+| Reddit r/footballmanagergames | 未找到可复核的当前build、完整配置及大样本对照 | 证据不足 | 个案不构成机制证据 |
+| FM Scout | 可见战术测试/分析资源，但本轮未取得可复核的R5同结构原生配置 | 背景参考 | 不用榜单名次替代原始配置 |
+| Ludens Media | 本轮未找到可复核的FM27.1.1同类引擎样本 | 证据不足 | 未取得可核验的build/样本 |
+| PlayGM/爆棚 | 27.1.1社区测试仍以3后卫结构为主；一组3421/Channel Forward讨论约432场、约2.22 PPG | 角色/跑动机制可供拆解；三后卫整体结构依赖 | 社区样本较小、协议与本队不同 |
+
+主要来源URL：
+- FM-Arena：https://fm-arena.com/
+- MetaFM leaderboard：https://metafm.net/leaderboard
+- SI官方战术讨论：https://community.sigames.com/forums/forum/19-tactics-training-strategies-discussion/
+- Sortitoutsi：https://sortitoutsi.net/
+- Reddit：https://www.reddit.com/r/footballmanagergames/
+- FM Scout：https://www.fmscout.com/
+- Ludens Media：https://www.ludens.com.tw/
+- PlayGM：https://www.playgm.cc/
+
+### 4.1 跨阵型机制迁移审查
+
+metaFM高排名样本的IP三后卫是结构依赖，不能进入R5；可迁移的仅是OOP 5-2-3的换位/出口机制。R5在IP 4-2-3-1中保留DL/DCL/DCR/DR四后场槽，通过DML→DC、DMR→DML、AMC→DMR、ST→AMC等跨阶段映射形成OOP五人后线、双后腰和前场三出口。此为“可重构迁移”，不是直接复制三后卫战术。
+
+本队V1.1/V1.8/R4的OOP五后卫失败证据仍然有效，不能被外部排名覆盖。R5必须重点检查：五人后线由什么角色组成、哪名中卫主动上抢、双后腰是否离位、前场出口是否回防、客场和非胜场的对手机会质量。
+
+## 5. 四类决策
+
+### 继承保留
+
+- **固定结构：** IP四后场位置槽DL/DCL/DCR/DR各一次；R5从V0.5原生FMF重生，V0.5仅作为原生格式/父文件载体，不继承R4 FMF。
+- **结构性候选：** 保留R4 OOP三出口角色：AML InsideOutletWinger、AMR WideOutletWinger、AMC CentralOutletAttackingMidfielder；保留为待验证候选，不是已准入。
+- **攻击候选：** IP InsideForward A、FreeRole A、Winger S、TargetForward A、InsideFullBack D作为R5试验角色；由于R4全队xG58.86低于100，任何IP进攻槽均不得标记准入保留。
+- **机制候选：** 高位遭遇线、后撤防线、Pass Into Space、Hit Early Crosses、高球/后点目标、Tackle Harder及分层Trigger Press，均按用户指定优先指标和当前原生权限作为待验证组合。
+
+### 替换淘汰
+
+- R4完整配方作为达标候选淘汰；只保留历史数据。
+- Pass To Feet → Pass Into Space。
+- Work Ball Into Box → Hit Early Crosses。
+- DR WingBack Attack → WingBack Support。
+- DMR BoxToBoxMidfielder Support → DefensiveMidfielder Defend。
+- R4原样的OOP角色/职责/PI组合不得自动继承；R5重新设计PressingFullBack/HoldingFullBack、CoveringCentreBack/StoppingCentreBack及双后腰压迫分工。
+- 移除R4式Byline限制，避免与团队Hit Early Crosses形成方向冲突。
+
+### 新增待验证
+
+- IP DR WingBack Support → OOP PressingFullBack Defend；IP DL InsideFullBack Defend → OOP HoldingFullBack Defend，形成非对称边路压迫与留守。
+- IP DML DefensiveMidfielder Defend → OOP DC StoppingCentreBack Defend；DCR/DCL均转CoveringCentreBack Defend，形成中央主动、两侧保护的三中卫压迫层级。
+- IP DMR DefensiveMidfielder Defend → OOP DML WideCoverDefensiveMidfielder Defend；IP AMC FreeRole Attack → OOP DMR DroppingDefensiveMidfielder Defend。
+- OOP团队Trigger Press More Often；DR PressingFullBack与DC StoppingCentreBack角色默认固定较多逼抢；DCL/DCR CoveringCentreBack角色默认固定较少逼抢；双后腰与前场三出口显式More Often。
+- OOP十名非门将球员Tackle Harder；该PI已由当前源码PI_MAP与角色权限表逐项检查，最终仍以D1预检和D3回读为准。
+- 恢复Pass Into Space + Hit Early Crosses + High Crosses + Back Post；以TargetForward为长传/传中接应点，监控传中完成率、射门量、越位与xG/射门。
+- 保留High Press + Much Lower Defensive Line + Drop Off More作为P0假设，但R3/R4表现不支持将其视为已验证；重点监控中场线与后防线之间的空间、禁区前沿射门和直塞身后球。
+
+### 证据不足
+
+- 角色默认行为GameID引用已提取，但缺少本地化文本字典，不能声称已解码每个角色的完整默认移动/指令。
+- Exporter无逐场IP/OOP槽位、角色职责、PI/TI执行映射；位置级统计不能冒充槽位级贡献。
+- 604/913条识别出场缺少角色码；19条身份未识别。
+- 外部metaFM高排名样本的完整PI/TI并非全部公开；榜单成绩不是本队D5。
+- R5跨阶段球员熟悉度、属性匹配和真实执行行为必须在D4由游戏内核验。
+
+## 6. 唯一R5整体方案
+
+- **IP：4-2-3-1。** 后场严格为DL InsideFullBack Defend、DCL CentreBack Defend、DCR CentreBack Defend、DR WingBack Support；DML/DMR均为DefensiveMidfielder Defend；AML InsideForward Attack、AMC FreeRole Attack、AMR Winger Support、ST TargetForward Attack。
+- **OOP：5-2-3无锋三出口。** DR PressingFullBack Defend、DCR/DCL CoveringCentreBack Defend、DL HoldingFullBack Defend、DC StoppingCentreBack Defend；DML WideCoverDefensiveMidfielder Defend、DMR DroppingDefensiveMidfielder Defend；AML InsideOutletWinger Attack、AMR WideOutletWinger Attack、AMC CentralOutletAttackingMidfielder Attack。
+- **心态：Positive（recipe ment=5）**，沿用R4心态值；本轮不把心态变化与进攻指令变化混在一起。
+- **进攻TI：** More Direct、Much Higher Tempo、Wider、Counter Attack、Bypass Press、Long Goal Kicks、Target Forward distribution、Pass Into Space、Hit Early Crosses、High Crosses、Encourage Dribbling、Discourage Long Shots。
+- **防守TI：** High Press、Much Lower Defensive Line、Drop Off More、Trigger Press More Often、Counter Press、Trap Outside、Invite Crosses。
+- **个人PI：** IP后场短传/少冒险；DR与AMR拉开宽度、后点目标、少射门；ST远门柱；OOP十名非门将Tackle Harder；Trigger Press按角色原生权限与分层配置。角色默认GameID文本未知，不对其内容作推断。
+- **与R4的关键差异：** 恢复Pass Into Space与Hit Early Crosses；DR职责回到Support；DMR由BoxToBox Support回到DefensiveMidfielder Defend；OOP右侧PressingFullBack与左侧HoldingFullBack非对称；两侧中卫Covering、额外DC Stopping；R5仍从V0.5重建，不复制R4二进制。
+
+## 7. 强制审计：引擎行为错位设计
+
+- 错位类型：IP/OOP跨阶段角色反向分工、团队压迫与中卫保护分层、前场无锋出口与有球攻击角色错位。
+- 错位配置：IP四后场DL/DCL/DCR/DR；DR WingBack Support→OOP PressingFullBack；DL InsideFullBack→OOP HoldingFullBack；DML→DC StoppingCentreBack；DCR/DCL→CoveringCentreBack；DMR→DML WideCover DM；AMC FreeRole→DMR Dropping DM；AML/AMR/ST→AML/AMR/AMC三出口。
+- 角色/指令默认行为：当前原生catalog显示PressingFullBack的Trigger Press More Often为角色固定项，HoldingFullBack与CoveringCentreBack的Trigger Press Less Often为角色固定项，StoppingCentreBack的Trigger Press More Often为角色固定项；WideCover DM、Dropping DM和三种Outlet角色允许显式More Often。角色默认GameID的可读文本尚缺，故不把这些固定项扩写成未经核实的跑动/盯人规则。
+- FM27引擎预期执行行为：团队高位遭遇线与团队More Often触发主动逼抢；角色固定项让右后卫/额外DC更主动、左右保护中卫与左侧HoldingFullBack更少离位；双后腰和前场出口承担更积极的压迫；这些是由原生权限结构提出的行为假设，必须通过游戏内与D5验证。
+- 对手AI可能：被迫向边路或更早长传，尝试绕过高位第一线；若压迫被一脚传球破解，可能攻击高位遭遇线与Much Lower后防线之间的区域；面对Invite Crosses可能增加传中，或转向禁区前沿二次球。
+- 预期创造的空间：右侧PressingFullBack前顶时，右侧外线由前场出口与中场覆盖接管；左侧HoldingFullBack留守形成不对称rest-defence；三中卫中两侧Covering保护肋部，中央Stopping角色承担主动接触；前场三出口在夺回球权后拉开对手后场。
+- 对PPG的收益路径：恢复R4丢失的射门量与传中完成数，争取把R4非胜场1.33-1.34场均xG提升到更接近胜场2.01；更多早传/空当传球和三出口反击提高低产比赛破门概率，减少平局并转化为胜场；最终以109分验收，不以进球/xG单项替代积分。
+- 可能副作用：Much Lower防线可能让对手在禁区前沿控球；High Press与深防线间距可能被利用；Invite Crosses可能增加传中与二点球；PressingFullBack前顶会留下右侧身后；两名Covering中卫过度保护可能让中央DC承担过多上抢；高节奏+直传+早传可能增加失误/越位；三出口若未回防可能造成中场人数不足。
+- D5量化验证指标：完整38场积分≥109且全队xG≥100；同时记录射门、射正、xG/射门、绝佳机会、传中尝试/完成率、越位、非胜场xG/射门、主客场PPG/xGA、对手禁区内xG与绝佳机会。任何一项硬门槛未达到即FAIL；过程指标用于定位失败原因，不替代硬门槛。
+
+## 8. 收益—代价、风险与失败条件
+
+| 维度 | 预期收益 | 代价/风险 | 量化观察 |
+|---|---|---|---|
+| 进攻产量 | 恢复Pass Into Space与Hit Early Crosses，提高射门/传中完成数 | 早传质量不足、越位/失误增加 | xG、射门、xG/shot、传中完成率、越位 |
+| 前场纵深 | TargetForward与三出口反击增加禁区接应点 | 过度依赖高球、二点球无人接应 | 绝佳机会、禁区内射门、前场触球 |
+| OOP转换 | 5-2-3、双后腰和三中卫形成保护层 | 角色换位熟悉度不足，右侧前顶后身后空间 | 对手xG、绝佳机会、转换后首脚推进 |
+| 压迫 | 右侧/中央主动压迫，左右Covering保护 | 对手一脚转移或中路第三人破解 | 对手前场进入、直塞、禁区前沿射门 |
+| 主客场 | 争取抬高低产比赛下限 | 高位压迫在客场可能更易被破解 | 主客场PPG、xG/xGA、未胜场分组 |
+
+失败条件：
+1. D1角色/职责/PI权限检查失败，禁止生成。
+2. D2任一阶段位置重复/缺失，或IP四后场不满足DL/DCL/DCR/DR各一次，禁止生成。
+3. D3 FMF与recipe不一致、PI/TI/风格字段未回读或独立二进制检查失败，D3=FAIL。
+4. D4游戏内任何位置/角色/职责/PI/TI/心态显示与配方不符，或跨位球员熟悉度不满足用户可接受条件，暂停正式D5。
+5. D5未达到38场109分或xG100任一门槛，R5整体FAIL；不得以某个位置相对领先、实际进球高于xG或D3通过豁免。
+
+## 9. D4与D5验收清单
+
+D4由用户在游戏内确认：
+- IP显示4-2-3-1，DL/DCL/DCR/DR四后场槽正确。
+- OOP显示5-2-3，三中卫、双后腰与AML/AMR/AMC三出口映射正确。
+- 核对11槽22阶段的角色、职责、PI、TI和Positive心态。
+- 特别核验DML→DC、DMR→DML、AMC→DMR、ST→AMC的球员位置熟悉度和实际游戏显示。
+- Exporter不会推断战术身份；未来赛季映射必须由用户明确确认。
+
+D5硬门槛：
+- 38场英超至少109分，PPG≥2.85。
+- 同一38场英超全队xG≥100（场均≥2.63）。
+- 两项必须同时达标。
+
+D5诊断目标：
+- 射门量至少恢复到R3的452次作为过程参照；若xG/射门约0.154，则约650次射门才可能达到100 xG。650不是独立硬门槛，实际xG质量更高时可用更少射门。
+- 绝佳机会、禁区内射门、传中完成率、xG/射门、非胜场xG与射门、主客场PPG、对手绝佳机会均需报告。
+- 对每场平局/失利分为低创造、高质量机会未兑现、领先后丢分、转换/防守机会质量失控或数据不足；不把单场异常推广为普遍规律。
+
+## 10. 本轮已读取的项目资料
+
+- MASTER_UPGRADE_GUIDE.md
+- AGENTS.md、UPGRADE_GATE.md、ANALYSIS_AND_ITERATION_RULES.md、GENERATION_EXECUTION_POLICY.md
+- PROJECT_RULES.md、PPG_TARGET_POLICY.json、POSITION_PERFORMANCE_ELIMINATION_STANDARD.md
+- TACTIC_INSTRUCTION_DECISION_LEDGER.md（含V0.5–V1.8历史配置档案、近邻差异、2.2/R3/R4记录）、VERSION_CATALOG.md、ITERATION_LOG.md、SOURCE_REGISTER.md
+- HISTORICAL_REAUDIT_20261126.md、TACTICAL_RESEARCH_DECISIONS_20261126.md、INSTRUCTION_EFFECTIVENESS_AUDIT_20261126.md、ROLE_DEFAULT_BEHAVIOR_AND_MAPPING_RECHECK_20261126.md、ARCHITECTURE_REVIEW_20261126.md、ENGINE_DIVIDEND_PRIORITY_INDICATORS_27.1.1.md
+- V0.5_BASELINE.md、R3.json、R4.json、2.6.json、R3_D5_SEASON_REVIEW_45850910254.md、R4_D5_SEASON_REVIEW_45914272197.md、2.2_D5_SEASON_REVIEW_20261126.md、2.6_DESIGN_AND_AUDIT.md
+- 当前原生catalog.json、FM27GEN1_Offline_FMF_Generator.py、validate_project_iteration.py、build_project_tactic.py、materialize_v05_baseline.py
+
+## 11. 状态边界
+
+- D0：设计审计材料已形成，待项目验证器实际返回PASS。
+- D1：待原生预检。
+- D2：待构建入口11槽/22阶段检查。
+- D3：待正式FMF、same-run report、SHA-256和8/8独立回读。
+- D4：待用户游戏内导入与显示确认。
+- D5：待用户确认R5赛季映射后的完整38场英超报告。
+
