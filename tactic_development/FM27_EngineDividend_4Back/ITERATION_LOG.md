@@ -1208,3 +1208,29 @@ V1.1与V1.2英超38场有相同的主客场对手配对，但只有27场日期�
 - 相对R3：积分少20、进球少13、失球多20、xG少6.14、xGA多14.84、射门少44。xG/射门基本不变，射门量下降是团队xG下降的主要描述性伴随现象；绝佳机会60比R3多4，传中完成率却由16.1%降至12.7%。
 - 前场四位置合计约47.08 xG，低于R3约51.99；AMR xG提升但AMC/ST/AML下降。角色码仅部分覆盖，不能做PI/TI因果归因。
 - 下一轮R5方向：从V0.5重生；保留R4 OOP三出口结构，恢复Pass Into Space + Hit Early Crosses；DR WingBack A→S；DMR BoxToBox S→DefensiveMidfielder D。重点观察射门/xG是否恢复、越位是否反弹、传中完成率及积分变化。
+
+---
+
+## R5｜IP 4-2-3-1 / OOP 5-2-3无锋三出口（2026-11-27）
+
+### 版本身份与设计来源
+- 父版本/重生基准：V0.5；父FMF SHA-256 `e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257`。
+- 配方：[R5.json](R5.json)；Recipe SHA-256 `090cfdf5317668cdabe117ed209e8092cb4ca8f67d12a4148215ffde73e42864`。
+- 设计审计：[R5_DESIGN_AND_AUDIT.md](R5_DESIGN_AND_AUDIT.md)；追踪矩阵：[R5_SEASON_TO_TACTIC_TRACEABILITY.md](R5_SEASON_TO_TACTIC_TRACEABILITY.md)。
+- 设计依据：R4 D5为46分/PPG1.211/xG58.86/xGA61.02；按PPG策略恢复Pass Into Space和Hit Early Crosses，DR WingBack Attack回Support，DMR BoxToBox Support回DefensiveMidfielder Defend，保留OOP三出口作为待验证结构。
+- IP严格DL/DCL/DCR/DR四后场；OOP 5-2-3由PressingFullBack/HoldingFullBack、Covering/Stopping CentreBack、双后腰和三出口组成。
+
+### 四类决策
+- 继承保留：IP四后场硬约束；R4 OOP三出口仅作为待验证结构候选；V0.5仅作原生父文件。
+- 替换淘汰：R4完整配置作为D5达标候选淘汰；Pass To Feet、Work Ball Into Box、DR WingBack Attack、DMR BoxToBox Support不进入R5。
+- 新增待验证：Pass Into Space、Hit Early Crosses、DR WingBack Support、DMR DefensiveMidfielder Defend、OOP非对称边后卫与三中卫压迫分层、OOP十名非门将Tackle Harder。
+- 证据不足：Exporter无逐场OOP角色/PI/TI执行映射；R4角色码仅309/913；角色默认GameID文本未解码。
+
+### D0-D5状态
+- D0：审计材料完成；静态字段/哈希核对16/16通过；项目Python门禁待执行。
+- D1：待原生catalog预检。
+- D2：待11槽/22阶段正式校验。
+- D3：待本地FMF生成、同次report与独立回读；当前无FMF/report。
+- D4：待用户游戏内导入与映射确认。
+- D5：待用户确认R5赛季映射后的完整38场英超报告；双门槛109分与100 xG必须同时达到。
+- 执行通道：严格遵守GENERATION_EXECUTION_POLICY本地Python 3.12标准入口；不使用GitHub Actions绕过项目门禁。
