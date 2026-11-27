@@ -1,0 +1,44 @@
+name: FM27 EngineDividend 4Back R5.2 Project Build
+on:
+  push:
+    branches: [main]
+    paths:
+      - "tactic_development/FM27_EngineDividend_4Back/R5.2_TRIGGER.json"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build-r5-2:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+          cache-dependency-path: "04_离线原生FMF生成器/requirements.txt"
+      - name: Install native generator dependencies
+        run: python -m pip install -r "04_离线原生FMF生成器/requirements.txt"
+      - name: Restore and verify exact V0.5 baseline
+        run: python "tactic_development/FM27_EngineDividend_4Back/materialize_v05_baseline.py"
+      - name: Refresh machine audit manifest and hashes
+        run: python "tactic_development/FM27_EngineDividend_4Back/prepare_R5_2_audit.py"
+      - name: Project gate, native preflight, FMF build and independent readback
+        run: |
+          python "tactic_development/FM27_EngineDividend_4Back/build_project_tactic.py" \
+            --recipe "tactic_development/FM27_EngineDividend_4Back/R5.2.json" \
+            --audit "tactic_development/FM27_EngineDividend_4Back/R5.2_DESIGN_AND_AUDIT.md" \
+            --parent-fmf "tactic_development/FM27_EngineDividend_4Back/builds/V0.5.fmf" \
+            --output "tactic_development/FM27_EngineDividend_4Back/builds/R5.2.fmf" \
+            --report "tactic_development/FM27_EngineDividend_4Back/builds/R5.2.report.json"
+      - name: Publish D3 artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: FM27-EngineDividend-4Back-R5.2-D3
+          path: |
+            tactic_development/FM27_EngineDividend_4Back/builds/R5.2.fmf
+            tactic_development/FM27_EngineDividend_4Back/builds/R5.2.report.json
+          if-no-files-found: error
+          retention-days: 14
