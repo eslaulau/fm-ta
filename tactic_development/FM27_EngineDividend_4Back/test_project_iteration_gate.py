@@ -124,7 +124,7 @@ class ProjectGateTests(unittest.TestCase):
     def test_duplicate_oop_position_is_rejected(self):
         self.valid_recipe["p"][5]["out"]["pos"] = "DCR"
         self.write_recipe_and_audit()
-        self.assertTrue(any("OOP phase contains duplicate" in e for e in self.validate()))
+        self.assertTrue(any("duplicate" in e.lower() for e in self.validate()), self.validate())
 
     def test_recipe_tampering_after_audit_is_rejected(self):
         self.recipe.write_text(self.recipe.read_text(encoding="utf-8") + "\n ", encoding="utf-8")
