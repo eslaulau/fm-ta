@@ -66,14 +66,9 @@
       },
       "out": {
         "pos": "DR",
-        "role": "HoldingFullBack",
+        "role": "PressingFullBack",
         "duty": "D",
-        "pi": [
-          [
-            "TRIGGER_PRESS",
-            "MORE_OFTEN"
-          ]
-        ]
+        "pi": []
       }
     },
     {
@@ -92,12 +87,7 @@
         "pos": "DCR",
         "role": "CoveringCentreBack",
         "duty": "D",
-        "pi": [
-          [
-            "TRIGGER_PRESS",
-            "LESS_OFTEN"
-          ]
-        ]
+        "pi": []
       }
     },
     {
@@ -128,14 +118,9 @@
       },
       "out": {
         "pos": "DL",
-        "role": "HoldingFullBack",
+        "role": "PressingFullBack",
         "duty": "D",
-        "pi": [
-          [
-            "TRIGGER_PRESS",
-            "MORE_OFTEN"
-          ]
-        ]
+        "pi": []
       }
     },
     {
@@ -184,14 +169,9 @@
       },
       "out": {
         "pos": "DML",
-        "role": "ScreeningDefensiveMidfielder",
+        "role": "PressingDefensiveMidfielder",
         "duty": "D",
-        "pi": [
-          [
-            "TRIGGER_PRESS",
-            "MORE_OFTEN"
-          ]
-        ]
+        "pi": []
       }
     },
     {
