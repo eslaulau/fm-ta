@@ -109,7 +109,7 @@ R4复盘没有在当前项目文件中提供全部38场逐场事件链；以上�
 | 唯一父版本 | V0.5 |
 | 唯一子版本 | R5 |
 | Recipe路径 / SHA | R5.json / 1990f40739388ed9370431532b3d898a8d414956427f7b0aebe8e434313f8b5c |
-| Build request / commit | 按GENERATION_EXECUTION_POLICY本地标准入口执行；不创建GitHub Actions触发文件 |
+| Build request / commit | 按GENERATION_EXECUTION_POLICY使用任一合规执行器；允许项目专用GitHub Actions runner，必须执行完整项目门禁 |
 | Actions Run / Artifact | 待构建 |
 | FMF路径 / bytes / SHA-256 | builds/R5.fmf / 待构建 |
 | Same-run report / SHA-256 | builds/R5.report.json / 待构建 |
