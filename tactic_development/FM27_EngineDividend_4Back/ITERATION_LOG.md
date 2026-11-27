@@ -1222,8 +1222,8 @@ V1.1与V1.2英超38场有相同的主客场对手配对，但只有27场日期�
 
 ### 四类决策
 - 继承保留：IP四后场硬约束；R4 OOP三出口仅作为待验证结构候选；V0.5仅作原生父文件。
-- 替换淘汰：R4完整配置作为D5达标候选淘汰；Pass To Feet、Work Ball Into Box、DR WingBack Attack、DMR BoxToBox Support不进入R5。
-- 新增待验证：Pass Into Space、Hit Early Crosses、DR WingBack Support、DMR DefensiveMidfielder Defend、OOP非对称边后卫与三中卫压迫分层、OOP十名非门将Tackle Harder。
+- 替换淘汰：R4完整配置作为D5达标候选淘汰；Pass To Feet、Work Ball Into Box、DR WingBack Attack、DMR BoxToBox Support、Invite Crosses不进入R5。
+- 新增待验证：Pass Into Space、Hit Early Crosses、DR WingBack Support、DMR DefensiveMidfielder Defend、OOP非对称边后卫与三中卫压迫分层、OOP后线五人+双后腰七人Tackle Harder，前场三出口不设Tackle Harder；Stop Crosses替代Invite Crosses。
 - 证据不足：Exporter无逐场OOP角色/PI/TI执行映射；R4角色码仅309/913；角色默认GameID文本未解码。
 
 ### D0-D5状态
