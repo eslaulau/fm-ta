@@ -111,16 +111,12 @@
     }
   },
   "active_iteration": {
-    "version": "R5.1",
-    "status": "D0_D3_PASS_D4_D5_PENDING",
-    "reason": "Fresh V0.5-based R5.1 candidate completed project decision gate, current native catalog preflight, 11-slot/22-phase structure validation and independent FMF roundtrip.",
+    "version": "R5.2",
+    "status": "D0_D3_PENDING",
+    "reason": "用户要求重做R5.1；R5.2为全新V0.5重生设计，IP 4-1-2-3 DM Wide / OOP 5-2-3，尚未运行项目D0-D3门禁。",
     "parent_version": "V0.5",
     "parent_fmf_sha256": "e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257",
-    "workflow_run_id": 45928559022,
-    "workflow_url": "https://github.com/eslaulau/fm-ta/actions/runs/45928559022",
-    "artifact_id": 15167667342,
-    "fmf_sha256": "292e027e5f9b5664bf224e577e176be27f414c3c655fe5a17b292c88e5fbf51a",
-    "next_action": "User imports R5.1 in FM27 and confirms the in-game IP/OOP formations, all roles/duties/instructions and player familiarity; then uses R5.1 for a full 38-match league season. D5 passes only if both points>=109 and team xG>=100."
+    "next_action": "Run the R5.2 project-only D0 gate, native catalog permission preflight, 11-slot/22-phase checks and D3 independent FMF readback; D4/D5 remain unverified."
   },
   "retired_iteration_decisions": [
     {
@@ -135,6 +131,13 @@
       "effective_date": "2026-11-27",
       "reason": "R4全队xG 58.86未达100，R5却将四个IP进攻槽及OOP出口组合沿用/试验方向写成继承；原D0脚本未核对决策与recipe一致性。D3只证明文件技术结构正确。",
       "historical_records": "保留R5 recipe、audit、FMF、report、workflow和artifact作为历史证据，不删除。"
+    },
+    {
+      "version": "R5.1",
+      "user_decision": "用户明确拒绝R5.1菱形IP方案，撤销候选资格；不进入D4/D5，不要求追加测试。",
+      "effective_date": "2026-11-27",
+      "reason": "用户明确表示“不行，重新设计”。R5.1的IP 4-1-2-1-2 Diamond / OOP 4-3-1-2不再作为当前主线或默认模板。其D3产物仅保留二进制技术历史，不能解释为战术效果失败或成功。",
+      "historical_records": "保留R5.1 recipe、audit、FMF、report、workflow和artifact，不删除；禁止恢复其候选资格。"
     }
   ],
   "status_update_2026_11_26_R3": {
@@ -153,7 +156,8 @@
     "rationale": "R4 xGA 61.02且整体D5 FAIL；社区27.1.1讨论对邀请传中的风险提出警示，故本轮不重复Invite Crosses。Sortitoutsi 4-2-3-1样本提示Tackle Harder集中在防守中场并报告前场纪律副作用，故采用防线+双后腰选择性Tackle Harder；纪律数据只作副作用观察，不作为战术质量门槛。"
   },
   "blocked_versions": [
-    "R5"
+    "R5",
+    "R5.1"
   ],
   "historical_non_admitted_configurations": [
     {
@@ -222,9 +226,17 @@
     "verified_at": "2026-11-27"
   },
   "status_update_2026_11_27_R5_1": {
-    "design": "IP 4-1-2-1-2 Diamond / OOP 4-3-1-2, fresh build from exact V0.5 native FMF; all 22 phase configurations are new test hypotheses, not proven admissions.",
-    "build": "D0-D3 PASS; 4,572-byte FMF; SHA-256 292e027e5f9b5664bf224e577e176be27f414c3c655fe5a17b292c88e5fbf51a; workflow run 45928559022; artifact 15167667342.",
-    "evidence_limit": "No R5.1 D4 confirmation or 38-match D5 report yet. The 109-point and 100 team-xG gates remain mandatory.",
-    "next": "D4 user game import confirmation, then full 38-match D5 with user-declared tactic mapping."
+    "user_decision": "用户拒绝R5.1菱形IP整体设计，候选资格撤销，不进入D4/D5，也不追加测试。",
+    "historical_build": "R5.1此前完成D0-D3原生FMF技术构建；4,572 bytes，SHA-256 292e027e5f9b5664bf224e577e176be27f414c3c655fe5a17b292c88e5fbf51a。该事实只保留作技术历史。",
+    "effect_status": "没有R5.1 D4游戏内确认和D5完整赛季数据；用户拒绝设计不等同于实战D5失败。",
+    "replacement": "R5.2：IP 4-1-2-3 DM Wide / OOP 5-2-3，从V0.5原始FMF重生。"
+  },
+  "status_update_2026_11_27_R5_2": {
+    "design": "IP 4-1-2-3 DM Wide / OOP 5-2-3。IP保持DL/DCL/DCR/DR四个后场槽；DCL OverlappingCentreBack A提供前插通道，DL InsideFullBack D内收，DR PlaymakingWingBack S提供外侧宽度，双肋部中场进攻，DMC在OOP转换为第三中卫。",
+    "parent_version": "V0.5",
+    "parent_fmf_sha256": "e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257",
+    "build_status": "D0-D3_PENDING",
+    "evidence_limit": "外部MetaFM 27.1.1测试仅用于迁移机制假设；不能当成本队赛季证据。R5.2尚无D4/D5结果。",
+    "gates": "38场至少109分且同一赛季全队xG至少100，两项必须同时通过。"
   }
 }
