@@ -3,7 +3,7 @@
 > - IP有球阵型只允许 **4-2-3-1、4-3-3、4-1-2-3** 三种固定位置布局。
 > - 用户截图红框中的15项团队指令固定；OOP 位置映射锁定V0.5；心态固定为V0.5原生值4。
 > - 只允许调整球员角色/职责、个人指令PI和非红框团队指令TI；29组TI须全部显式登记。
-> - 权威规则：[TACTIC_FIXED_CONSTRAINTS.md](TACTIC_FIXED_CONSTRAINTS.md)；D0机器门禁：[validate_project_iteration.py](validate_project_iteration.py)。
+> - 权威规则：[TACTIC_FIXED_CONSTRAINTS.md](TACTIC_FIXED_CONSTRAINTS.md)；D0机器门禁：[validate_project_iteration.py](validate_project_iteration.py)；[全面规则审查记录](RULESET_AUDIT_20261127.md)。
 > - R6虽已完成旧规则下D0-D3，但因4-2-2-2阵型、OOP位置映射、心态及红框TI不符合新规则，已撤销当前候选资格；保留历史技术产物，不进入D4/D5。
 > - 最终赛季目标仍为38场至少109分（PPG≥2.85）且全队xG≥100。
 
