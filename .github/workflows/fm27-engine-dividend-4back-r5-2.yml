@@ -40,5 +40,7 @@ jobs:
           path: |
             tactic_development/FM27_EngineDividend_4Back/builds/R5.2.fmf
             tactic_development/FM27_EngineDividend_4Back/builds/R5.2.report.json
+            tactic_development/FM27_EngineDividend_4Back/R5.2.json
+            tactic_development/FM27_EngineDividend_4Back/R5.2_DESIGN_AND_AUDIT.md
           if-no-files-found: error
           retention-days: 14
