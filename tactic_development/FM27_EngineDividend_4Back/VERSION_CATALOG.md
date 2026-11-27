@@ -1,13 +1,14 @@
 # FM27 引擎红利四后卫｜版本总目录
 
-## 当前权威状态｜R5.3 全新重设计登记（2026-11-27）
+## 当前权威状态｜2026-11-27 固定边界生效
 
-- **当前没有已验证有效战术。** R5、R5.1、R5.2均已撤销当前候选资格；R5.3是当前唯一重设计候选，D0-D3已通过，D4/D5尚未验证。
-- R5.2此前D0-D3通过，但用户否决其TI覆盖不完整（19/29组显式指定，10组沿用V0.5可见指令），因此不建议进行D4/D5；其历史产物保留。
-- R5.3从V0.5原生FMF重生：IP 4-1-2-3 Front Five / OOP 5-2-3；IP DL/DCL/DCR/DR各一次；AMCL/AMCR双攻击中场、STL/ST/STR三前锋，双组织型翼卫提供宽度。
-- R5.3 recipe显式覆盖原生29/29个TI组；DEFAULT逐组清除V0.5可见选项，不留空缺继承。22个阶段配置均为新增待验证/U。
+- **当前没有符合最新规则的候选战术，也没有通过D5双门槛的战术。** 研发规则已由用户收紧：IP仅4-2-3-1、4-3-3、4-1-2-3三种固定11槽布局；OOP位置映射锁定V0.5；心态固定4；红框15项TI固定；只允许调整角色/职责、PI和非红框TI。
+- 权威规则：[TACTIC_FIXED_CONSTRAINTS.md](TACTIC_FIXED_CONSTRAINTS.md)；D0机器门禁：[validate_project_iteration.py](validate_project_iteration.py)。
+- R5.3和R6均撤销当前候选资格；历史D0-D3技术成功只作为旧规则下的构建记录，均不得进入D4/D5。R5.3为公开来源结构改编，R6为旧范围4-2-2-2设计。
 - 最近完整D5仍为R4：46分、PPG1.211、xG58.86、xGA61.02；没有版本达到109分与xG100双门槛。
-- 固定重生基准：V0.5原始FMF SHA-256 `e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257`。\n\n### R5.3 D0-D3技术构建身份（2026-11-27）
+- 固定重生基准：V0.5原始FMF SHA-256 `e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257`。
+
+### 历史构建记录｜R5.3 D0-D3（2026-11-27；已撤销候选资格）
 - GitHub Actions [Run 45938668343](https://github.com/eslaulau/fm-ta/actions/runs/45938668343)，结论success；Artifact ID `15171239855`，名称 `FM27-EngineDividend-4Back-R5.3-D3`，ZIP SHA-256 `8bcaa8c480f7a1c26d95ca006a7f4796bdb90e5dba1824a6b3745f2c87820de6`。
 - D0项目门禁PASS；D1当前27.1.1原生catalog预检PASS（22阶段、32个PI配置项）；D2 11槽/22阶段、IP四后场PASS；D3原生FMF独立回读8/8检查PASS。
 - FMF：4,628 bytes；SHA-256 `8372e09648cd065d6f22106bb21a622ced9e7432863bbfcdc13cda333922b824`；配方SHA-256 `7b19d5a43ac4a032e5e61644f6a95843de8c4716085afe28b434f49c173f302f`；回读报告SHA-256 `362b854e788c305a86a63ec6e9aaf2f7049bb4baae4a17b1427d48269a6c8f6d`。
