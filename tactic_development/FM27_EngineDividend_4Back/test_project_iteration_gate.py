@@ -16,18 +16,21 @@ class ProjectGateTests(unittest.TestCase):
         self.tmp = tempfile.TemporaryDirectory()
         self.addCleanup(self.tmp.cleanup)
         self.root = Path(self.tmp.name)
-        self.old_paths = (gate.PROJECT_DIR, gate.POLICY, gate.RULES, gate.LEDGER, gate.V05_BASELINE_SHA256)
+        self.old_paths = (gate.PROJECT_DIR, gate.POLICY, gate.RULES, gate.LEDGER, gate.PERFORMANCE_STANDARD, gate.V05_BASELINE_SHA256)
         gate.PROJECT_DIR = self.root
         gate.POLICY = self.root / "PPG_TARGET_POLICY.json"
         gate.RULES = self.root / "PROJECT_RULES.md"
         gate.LEDGER = self.root / "TACTIC_INSTRUCTION_DECISION_LEDGER.md"
+        gate.PERFORMANCE_STANDARD = self.root / "POSITION_PERFORMANCE_ELIMINATION_STANDARD.md"
+        gate.PERFORMANCE_STANDARD.write_text("D0强制门禁\n低效配置清除规则", encoding="utf-8")
         gate.POLICY.write_text(json.dumps({
             "target_ppg": 2.85,
             "primary_objective": "PPG >= 2.85",
+            "minimum_attack_process_gate": {"metric": "team_xG", "minimum_38_match_total": 100},
             "hard_constraints": {"ip_back_four_positions": ["DL", "DCL", "DCR", "DR"]},
         }), encoding="utf-8")
-        gate.RULES.write_text("PPG ≥ 2.85\n不以现实足球理论作为否决依据；强制引擎行为错位设计。\n每轮从 V0.5 重生；最高优先级。", encoding="utf-8")
-        gate.LEDGER.write_text("PPG 2.85", encoding="utf-8")
+        gate.RULES.write_text("PPG ≥ 2.85\nxG≥100\n不以现实足球理论作为否决依据；强制引擎行为错位设计。\n每轮从 V0.5 重生；最高优先级。", encoding="utf-8")
+        gate.LEDGER.write_text("PPG 2.85 xG≥100", encoding="utf-8")
         self.addCleanup(self.restore_gate_paths)
         self.recipe = self.root / "candidate.json"
         self.audit = self.root / "design_audit.md"
@@ -55,7 +58,7 @@ class ProjectGateTests(unittest.TestCase):
         self.write_recipe_and_audit()
 
     def restore_gate_paths(self):
-        gate.PROJECT_DIR, gate.POLICY, gate.RULES, gate.LEDGER, gate.V05_BASELINE_SHA256 = self.old_paths
+        gate.PROJECT_DIR, gate.POLICY, gate.RULES, gate.LEDGER, gate.PERFORMANCE_STANDARD, gate.V05_BASELINE_SHA256 = self.old_paths
 
     def write_recipe_and_audit(self):
         raw = json.dumps(self.valid_recipe, ensure_ascii=False, indent=2).encode()
@@ -65,35 +68,38 @@ class ProjectGateTests(unittest.TestCase):
         rules_sha = hashlib.sha256(gate.RULES.read_bytes()).hexdigest()
         ledger_sha = hashlib.sha256(gate.LEDGER.read_bytes()).hexdigest()
         policy_sha = hashlib.sha256(gate.POLICY.read_bytes()).hexdigest()
+        standard_sha = hashlib.sha256(gate.PERFORMANCE_STANDARD.read_bytes()).hexdigest()
+        manifest = self.make_machine_manifest()
+        manifest_text = json.dumps(manifest, ensure_ascii=False, indent=2)
+        rows = "\n".join(f"| {phase}-{i:02d} | GK | Role / S | U | 未提供 | 未提供 | 未提供 | 未知 | U | 新增待验证 | D5验证 |" for phase in ("IP", "OOP") for i in range(1, 12))
+        position_section = (
+            "## 位置绩效高强度审查与低效淘汰\n"
+            "| 槽位 | 角色 | 分钟 | 评分 | 进球 | xG | 过程 | 风险 | 证据等级 | 判决 | 下一步 |\n"
+            + rows + "\n低效淘汰清单：暂无；证据等级完整记录。准入保留、条件保留、替换淘汰均按D5审查。\n"
+        )
         self.audit.write_text(
-            "项目最高目标：PPG ≥ 2.85\n"
-            "父版本：V0.5\n"
-            "重生基准：V0.5\n"
+            "版本：gate-test\n项目最高目标：PPG ≥ 2.85；38场xG≥100\n"
+            "父版本：V0.5\n重生基准：V0.5\n"
             f"重生基准 FMF SHA-256：{gate.V05_BASELINE_SHA256}\n"
-            f"父 FMF SHA-256：{parent_sha}\n"
-            f"本轮配方 SHA-256：{recipe_sha}\n"
-            f"项目规则 SHA-256：{rules_sha}\n"
-            f"决策总账 SHA-256：{ledger_sha}\n"
-            f"PPG 策略 SHA-256：{policy_sha}\n"
-            "### 继承保留\n- 防线结构：保留父版本四后卫基础\n"
-            "### 替换淘汰\n- 逼抢设置：调整以改善积分\n"
-            "### 新增待验证\n- 新跑位：预期提高PPG收益\n"
-            "### 证据不足\n- 主客场差异：样本不足暂不定论\n"
-            "本轮 PPG 收益路径：改善终结机会以提高积分\n"
-            "D5 验证指标：PPG、胜平负、xG、xGA\n"
-            "风险：样本量不足\n"
+            f"父 FMF SHA-256：{parent_sha}\n本轮配方 SHA-256：{recipe_sha}\n"
+            f"项目规则 SHA-256：{rules_sha}\n决策总账 SHA-256：{ledger_sha}\n"
+            f"PPG 策略 SHA-256：{policy_sha}\n位置绩效标准 SHA-256：{standard_sha}\n"
+            "### 继承保留\n- 暂无；本测试全部作为新假设。\n"
+            "### 替换淘汰\n- 旧配置不进入本轮。\n"
+            "### 新增待验证\n- 本轮所有配置均为待验证假设。\n"
+            "### 证据不足\n- 不足证据不作为继承项。\n"
+            "本轮 PPG 收益路径：改善进攻产量以提高积分。\nD5 验证指标：PPG、xG、胜平负。\n风险：新假设可能失败。\n"
             "现实足球理论不是战术筛选/否决标准。\n"
             "## 7. 强制审计：引擎行为错位设计\n"
-            "- 错位类型：角色与PI冲突\n"
-            "- 错位配置：IP DL 内收边后卫 + 拉开宽度\n"
-            "- 角色/指令默认行为与显式行为：内收与拉宽冲突\n"
-            "- FM27引擎预期执行行为：待验证的宽度/内收双重行为\n"
-            "- 对手AI可能：可能出现盯防错配（假设）\n"
-            "- 预期创造的空间：边肋空间\n"
-            "- 对PPG：提升进攻出口和胜率\n"
-            "- 可能副作用：转换防守暴露\n"
-            "- D5量化验证指标：PPG、xGA、对手大机会\n"
-            "审计结论： PASS\n",
+            "- 错位类型：角色与PI行为错位\n- 错位配置：IP四后场及前场跑动\n"
+            "- 角色/指令默认行为：与显式指令可能冲突\n"
+            "- FM27引擎预期执行行为：待验证行为\n- 对手AI可能：改变盯人与压迫\n"
+            "- 预期创造的空间：形成接球空间\n- 对PPG：增加机会以提高积分\n"
+            "- 可能副作用：转换暴露\n- D5量化验证指标：PPG与xG\n"
+            + position_section
+            + "\n## 机器决策清单（强制）\nMACHINE_DECISION_MANIFEST_JSON_START\n"
+            + manifest_text + "\nMACHINE_DECISION_MANIFEST_JSON_END\n"
+            + "\n审计结论： PASS\n",
             encoding="utf-8",
         )
 
