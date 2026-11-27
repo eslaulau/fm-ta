@@ -1249,3 +1249,32 @@ V1.1与V1.2英超38场有相同的主客场对手配对，但只有27场日期�
 - 项目D0机器门禁已实现：22项IP/OOP决策记录与recipe精确核对position、role、duty、PI；继承保留要求A/B证据和引用；证据不足/替换淘汰不能留在选中recipe；新增待验证必须有假设、D5指标和失败条件；历史未准入配置禁止静默继承；明确淘汰配置禁止原样复活；策略blocked_versions可撤销候选资格。
 - GitHub Actions回归Run [45927303919](https://github.com/eslaulau/fm-ta/actions/runs/45927303919)：16/16通过。
 - 当前可开始全新D0设计，但还没有新版本或新recipe。下一轮固定从V0.5原始FMF重生；R5继续封锁并仅保留历史。
+
+
+
+## R5.1｜全新V0.5重生与D0-D3构建完成（2026-11-27）
+
+### 设计身份
+- 旧R5因设计决策与recipe冲突而INVALIDATED；不作为候选，不进入D4/D5。
+- R5.1从V0.5原生FMF重生，父FMF SHA-256 `e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257`。
+- 唯一战术：IP 4-1-2-1-2 Diamond；OOP 4-3-1-2；IP后场严格DL/DCL/DCR/DR各一次。新前场不沿用旧R5 AML InsideForward、AMC FreeRole、AMR Winger、ST TargetForward组合；OOP不复制R4/R5无锋三出口。
+- R5.1全部22项阶段配置均列为新增待验证/U；没有任何具体角色被宣称已通过赛季准入。D5目标继续为同一38场至少109分且xG至少100。
+
+### D0-D3结果
+- D0 PASS：机器决策manifest包含22项，并与recipe的phase/position/role/duty/PI逐字段匹配；V0.5父版和SHA核验通过；无证据配置未作为继承保留。
+- D1 PASS：当前27.1.1 catalog角色/职责/PI权限预检通过。
+- D2 PASS：11个IP/OOP槽、22阶段、IP四后场位置约束通过。
+- D3 PASS：FMF容器往返、成员解密/Zstandard校验、TAC完整解析、22阶段读回、PI权限、TI向量与原生style身份8/8通过。
+- 配方：[R5.1.json](R5.1.json)，SHA-256 `873110d5a885fe105ad28bf0ab61a376b977c4a9cdf1068dd4323255e0984852`；审计：[R5.1_DESIGN_AND_AUDIT.md](R5.1_DESIGN_AND_AUDIT.md)；报告：[builds/R5.1.report.json](builds/R5.1.report.json)；FMF：[builds/R5.1.fmf](builds/R5.1.fmf)。
+- Actions [Run 45928559022](https://github.com/eslaulau/fm-ta/actions/runs/45928559022)；Artifact ID `15167667342`；Artifact ZIP SHA-256 `9037afd0276771a58b49501bee40620774ba2bdb5d133da2e472887e31d4cb93`。
+- FMF 4,572 bytes；SHA-256 `292e027e5f9b5664bf224e577e176be27f414c3c655fe5a17b292c88e5fbf51a`；same-run report SHA-256 `98d0077a64f5ee2bb89eb74286403894ca7b89d019b5a34030c02e2f17c39c5a`。
+
+### 构建期间的真实门禁拦截
+- 首轮：项目D0门禁按精确标题规则拒绝审计文件；修正为验证器要求的标题后重跑。
+- 第二轮：原生catalog拒绝一个没有当前位置/阶段映射的OOP角色；改为catalog明确允许的角色。
+- 第三轮：catalog拒绝ChannelForward的Far Post PI；移除该不兼容PI。
+- 最终构建在未放宽任何门禁的情况下通过。以上失败运行保留作验证器真实拦截记录，不把失败run混作最终产物。
+
+### D4/D5状态
+- D4：待用户导入FM27并核对阵型、22阶段角色/职责、PI/TI中文显示与球员位置熟悉度。
+- D5：尚无R5.1 Exporter赛季报告；必须由用户确认本赛季确实使用R5.1后，才可按完整38场赛季数据验收。D3成功不等于实战有效。
