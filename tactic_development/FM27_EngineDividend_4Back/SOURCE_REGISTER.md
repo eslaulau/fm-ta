@@ -150,3 +150,13 @@
 - 外部结构参考：FM-Arena https://fm-arena.com/；MetaFM https://metafm.net/leaderboard；SI论坛 https://community.sigames.com/forums/forum/19-tactics-training-strategies-discussion/；Sortitoutsi https://sortitoutsi.net/；Reddit https://www.reddit.com/r/footballmanagergames/；FM Scout https://www.fmscout.com/；Ludens Media https://www.ludens.com.tw/；PlayGM https://www.playgm.cc/。完整跨阵型研究字段与迁移判定见EXTERNAL_ENGINE_BENCHMARK.md。
 - 当前本机原生权限输入：04_离线原生FMF生成器/catalog.json、FM27GEN1_Offline_FMF_Generator.py、style_template_registry.json；项目门禁与构建脚本：validate_project_iteration.py、build_project_tactic.py、materialize_v05_baseline.py。
 - 当前状态：仅完成设计/静态核对；D0 Python门禁与D1-D3未执行；无R5 FMF/report；D4/D5未验证。
+
+
+
+## R5.1 D0-D3构建身份登记｜2026-11-27
+- 用户要求依据MASTER_UPGRADE_GUIDE重新研发R5；旧R5已INVALIDATED并继续封锁。R5.1为全新实验身份，父源为V0.5原生FMF SHA-256 `e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257`。
+- 配方：[R5.1.json](R5.1.json)，SHA-256 `873110d5a885fe105ad28bf0ab61a376b977c4a9cdf1068dd4323255e0984852`；审计：[R5.1_DESIGN_AND_AUDIT.md](R5.1_DESIGN_AND_AUDIT.md)；原生回读报告：[builds/R5.1.report.json](builds/R5.1.report.json)。
+- GitHub Actions [Run 45928559022](https://github.com/eslaulau/fm-ta/actions/runs/45928559022)；Artifact ID `15167667342`；Artifact ZIP SHA-256 `9037afd0276771a58b49501bee40620774ba2bdb5d133da2e472887e31d4cb93`。
+- FMF大小4,572 bytes；SHA-256 `292e027e5f9b5664bf224e577e176be27f414c3c655fe5a17b292c88e5fbf51a`；同次构建报告SHA-256 `98d0077a64f5ee2bb89eb74286403894ca7b89d019b5a34030c02e2f17c39c5a`。
+- D0项目决策门禁、D1 catalog权限预检、D2 11槽/22阶段/IP四后场、D3 8/8独立二进制回读均通过。
+- FM27 build目标：27.1.1+2511875（以本轮项目catalog/配置快照为准）。本轮没有Exporter/D5来源；D4游戏内导入、D5完整38场赛季尚未确认，不得登记为有效战术或达成109分/xG100。
