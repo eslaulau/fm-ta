@@ -1,0 +1,26 @@
+{
+  "version": "R5.3",
+  "reason": "User rejected R5.2 and requested a full redesign. Fresh IP 4-1-2-3 front-five / OOP 5-2-3 recipe, explicit full 29-group team instruction replacement, fixed V0.5 parent.",
+  "parent": "V0.5",
+  "parent_fmf_sha256": "e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257",
+  "recipe": "R5.3.json",
+  "audit": "R5.3_DESIGN_AND_AUDIT.md",
+  "build_workflow": ".github/workflows/fm27-engine-dividend-4back-project-build-r5-3.yml",
+  "d0_status": "pending",
+  "d1_status": "pending",
+  "d2_status": "pending",
+  "d3_status": "pending",
+  "d4_status": "not_verified",
+  "d5_status": "not_verified",
+  "target": {
+    "league_matches": 38,
+    "minimum_points": 109,
+    "minimum_ppg": 2.85,
+    "minimum_team_xg": 100
+  },
+  "instruction_coverage": {
+    "native_team_instruction_groups": 29,
+    "explicitly_specified": 29,
+    "inherited_visible_groups": 0
+  }
+}
