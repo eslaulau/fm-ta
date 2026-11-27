@@ -169,6 +169,19 @@ class ProjectGateTests(unittest.TestCase):
         self.write_recipe_and_audit()
         self.assertTrue(any("explicitly blocked" in e for e in self.validate()))
 
+    def test_missing_machine_manifest_blocks(self):
+        self.assertTrue(any("Missing machine decision manifest" in e for e in gate.validate_decision_manifest(self.valid_recipe, "no manifest", {})))
+
+    def test_explicitly_retired_configuration_cannot_reappear(self):
+        manifest = self.make_machine_manifest()
+        entry = manifest["selected_configurations"][0]
+        manifest["retired_configurations"] = [{
+            "phase": entry["phase"], "pos": entry["pos"], "role": entry["role"],
+            "duty": entry["duty"], "pi": entry["pi"]
+        }]
+        audit = "MACHINE_DECISION_MANIFEST_JSON_START\n" + json.dumps(manifest, ensure_ascii=False) + "\nMACHINE_DECISION_MANIFEST_JSON_END"
+        self.assertTrue(any("reintroduces retired configuration" in e for e in gate.validate_decision_manifest(self.valid_recipe, audit, {})))
+
     def test_machine_manifest_matches_all_22_recipe_phases(self):
         manifest = self.make_machine_manifest()
         audit = "MACHINE_DECISION_MANIFEST_JSON_START\n" + json.dumps(manifest, ensure_ascii=False) + "\nMACHINE_DECISION_MANIFEST_JSON_END"
