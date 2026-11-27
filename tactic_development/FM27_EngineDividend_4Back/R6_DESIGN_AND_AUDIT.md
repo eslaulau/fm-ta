@@ -71,30 +71,30 @@ R6从固定V0.5原生FMF重新生成，不继承R5.3的阵型/角色布局。IP�
 
 ## 位置绩效高强度审查与低效淘汰
 
-| 槽位 | 阶段位置/角色 | PI | 证据等级 | 当前决定 | 主要核验 | D5指标 | 低效淘汰清单 |
+| 槽位 | 阶段位置/角色 | PI | 证据等级 | 当前决定 | 主要核验 | D5指标 | 低效淘汰清单 | 准入状态 |
 |---|---|---|---|---|---|---|---|
-| IP-01 | GK Goalkeeper D | 空 | U | 新增待验证 | 出球与失球 | 失误、xGA | 低效则替换 |
-| IP-02 | DL FullBack S | 空 | U | 新增待验证 | 左侧推进 | 传中、xA | 低效则替换 |
-| IP-03 | DCL CentreBack D | 空 | U | 新增待验证 | 中路保护 | 对手xG | 低效则替换 |
-| IP-04 | DCR BallPlayingCentreBack D | 空 | U | 新增待验证 | 出球推进 | 向前传球 | 低效则替换 |
-| IP-05 | DR WingBack A | 空 | U | 新增待验证 | 右侧推进 | xA、禁区触球 | 低效则替换 |
-| IP-06 | DML DefensiveMidfielder D | 空 | U | 新增待验证 | 双相转换 | 夺回球权、失球 | 低效则替换 |
-| IP-07 | DMR DeepLyingPlaymaker S | 空 | U | 新增待验证 | 组织输送 | xA、关键传球 | 低效则替换 |
-| IP-08 | AMCL AttackingMidfielder S | 空 | U | 新增待验证 | 肋部接应 | xG+xA | 低效则替换 |
-| IP-09 | AMCR SecondStriker A | 空 | U | 新增待验证 | 第二得分点 | xG、射门 | 低效则替换 |
-| IP-10 | STL DeepLyingForward S | 空 | U | 新增待验证 | 前场串联 | xA、机会创造 | 低效则替换 |
-| IP-11 | STR Poacher A | 空 | U | 新增待验证 | 纵深终结 | xG、进球 | 低效则替换 |
-| OOP-01 | GK OPSweeperKeeper A | 空 | U | 新增待验证 | 身后覆盖 | xGA、失误 | 低效则替换 |
-| OOP-02 | DL OPFullBack S | 空 | U | 新增待验证 | 左路防守 | 对手左路机会 | 低效则替换 |
-| OOP-03 | DCL OPCentreBack D | 空 | U | 新增待验证 | 中路保护 | 对手中路xG | 低效则替换 |
-| OOP-04 | DCR OPCentreBack D | 空 | U | 新增待验证 | 中路保护 | 对手中路xG | 低效则替换 |
-| OOP-05 | DR OPPressingFullBack S | 空 | U | 新增待验证 | 右路压迫 | 对手右路机会 | 低效则替换 |
-| OOP-06 | DC OPCoveringCentreBack D | 空 | U | 新增待验证 | 第三中卫补位 | 身后机会 | 低效则替换 |
-| OOP-07 | MC OPScreeningCentralMidfielder D | 空 | U | 新增待验证 | 中路屏障 | 对手中路xG | 低效则替换 |
-| OOP-08 | ML OPWideMidfielder S | 空 | U | 新增待验证 | 左侧回撤 | 对手左路机会 | 低效则替换 |
-| OOP-09 | MR OPWideMidfielder S | 空 | U | 新增待验证 | 右侧回撤 | 对手右路机会 | 低效则替换 |
-| OOP-10 | STL OPCentreForward A | 空 | U | 新增待验证 | 前场出口 | 转换机会 | 低效则替换 |
-| OOP-11 | STR OPCentreForward A | 空 | U | 新增待验证 | 前场出口 | 转换机会 | 低效则替换 |
+| IP-01 | GK Goalkeeper D | 空 | U | 新增待验证 | 出球与失球 | 失误、xGA | 低效则替换 | D4导入/D5待验证 |
+| IP-02 | DL FullBack S | 空 | U | 新增待验证 | 左侧推进 | 传中、xA | 低效则替换 | D4导入/D5待验证 |
+| IP-03 | DCL CentreBack D | 空 | U | 新增待验证 | 中路保护 | 对手xG | 低效则替换 | D4导入/D5待验证 |
+| IP-04 | DCR BallPlayingCentreBack D | 空 | U | 新增待验证 | 出球推进 | 向前传球 | 低效则替换 | D4导入/D5待验证 |
+| IP-05 | DR WingBack A | 空 | U | 新增待验证 | 右侧推进 | xA、禁区触球 | 低效则替换 | D4导入/D5待验证 |
+| IP-06 | DML DefensiveMidfielder D | 空 | U | 新增待验证 | 双相转换 | 夺回球权、失球 | 低效则替换 | D4导入/D5待验证 |
+| IP-07 | DMR DeepLyingPlaymaker S | 空 | U | 新增待验证 | 组织输送 | xA、关键传球 | 低效则替换 | D4导入/D5待验证 |
+| IP-08 | AMCL AttackingMidfielder S | 空 | U | 新增待验证 | 肋部接应 | xG+xA | 低效则替换 | D4导入/D5待验证 |
+| IP-09 | AMCR SecondStriker A | 空 | U | 新增待验证 | 第二得分点 | xG、射门 | 低效则替换 | D4导入/D5待验证 |
+| IP-10 | STL DeepLyingForward S | 空 | U | 新增待验证 | 前场串联 | xA、机会创造 | 低效则替换 | D4导入/D5待验证 |
+| IP-11 | STR Poacher A | 空 | U | 新增待验证 | 纵深终结 | xG、进球 | 低效则替换 | D4导入/D5待验证 |
+| OOP-01 | GK OPSweeperKeeper A | 空 | U | 新增待验证 | 身后覆盖 | xGA、失误 | 低效则替换 | D4导入/D5待验证 |
+| OOP-02 | DL OPFullBack S | 空 | U | 新增待验证 | 左路防守 | 对手左路机会 | 低效则替换 | D4导入/D5待验证 |
+| OOP-03 | DCL OPCentreBack D | 空 | U | 新增待验证 | 中路保护 | 对手中路xG | 低效则替换 | D4导入/D5待验证 |
+| OOP-04 | DCR OPCentreBack D | 空 | U | 新增待验证 | 中路保护 | 对手中路xG | 低效则替换 | D4导入/D5待验证 |
+| OOP-05 | DR OPPressingFullBack S | 空 | U | 新增待验证 | 右路压迫 | 对手右路机会 | 低效则替换 | D4导入/D5待验证 |
+| OOP-06 | DC OPCoveringCentreBack D | 空 | U | 新增待验证 | 第三中卫补位 | 身后机会 | 低效则替换 | D4导入/D5待验证 |
+| OOP-07 | MC OPScreeningCentralMidfielder D | 空 | U | 新增待验证 | 中路屏障 | 对手中路xG | 低效则替换 | D4导入/D5待验证 |
+| OOP-08 | ML OPWideMidfielder S | 空 | U | 新增待验证 | 左侧回撤 | 对手左路机会 | 低效则替换 | D4导入/D5待验证 |
+| OOP-09 | MR OPWideMidfielder S | 空 | U | 新增待验证 | 右侧回撤 | 对手右路机会 | 低效则替换 | D4导入/D5待验证 |
+| OOP-10 | STL OPCentreForward A | 空 | U | 新增待验证 | 前场出口 | 转换机会 | 低效则替换 | D4导入/D5待验证 |
+| OOP-11 | STR OPCentreForward A | 空 | U | 新增待验证 | 前场出口 | 转换机会 | 低效则替换 | D4导入/D5待验证 |
 
 低效淘汰清单：任何槽位在完整38场中持续低贡献、导致对应区域机会质量恶化，或团队未达到109分/xG100门槛时，按可归因数据替换；无可归因数据时标记证据不足，不伪造单项因果。
 
