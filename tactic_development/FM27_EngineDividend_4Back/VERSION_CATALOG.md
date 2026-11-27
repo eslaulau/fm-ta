@@ -3,7 +3,7 @@
 ## 当前权威状态｜2026-11-27 固定边界生效
 
 - **当前没有符合最新规则的候选战术，也没有通过D5双门槛的战术。** 研发规则已由用户收紧：IP仅4-2-3-1、4-3-3、4-1-2-3三种固定11槽布局；OOP位置映射锁定V0.5；心态固定4；红框15项TI固定；只允许调整角色/职责、PI和非红框TI。
-- 权威规则：[TACTIC_FIXED_CONSTRAINTS.md](TACTIC_FIXED_CONSTRAINTS.md)；D0机器门禁：[validate_project_iteration.py](validate_project_iteration.py)。
+- 权威规则：[TACTIC_FIXED_CONSTRAINTS.md](TACTIC_FIXED_CONSTRAINTS.md)；D0机器门禁：[validate_project_iteration.py](validate_project_iteration.py)；全面审查：[RULESET_AUDIT_20261127.md](RULESET_AUDIT_20261127.md)。
 - R5.3和R6均撤销当前候选资格；历史D0-D3技术成功只作为旧规则下的构建记录，均不得进入D4/D5。R5.3为公开来源结构改编，R6为旧范围4-2-2-2设计。
 - 最近完整D5仍为R4：46分、PPG1.211、xG58.86、xGA61.02；没有版本达到109分与xG100双门槛。
 - 固定重生基准：V0.5原始FMF SHA-256 `e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257`。
