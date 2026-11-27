@@ -17,7 +17,7 @@
 
 ### 阶段状态
 - 配方：R5.3.json；设计审计：R5.3_DESIGN_AND_AUDIT.md；刷新脚本：prepare_R5_3_audit.py。
-- 当前D0-D3待执行；D4/D5未验证。22个阶段槽均为新增待验证/U。
+- D0-D3已通过Run [45938668343](https://github.com/eslaulau/fm-ta/actions/runs/45938668343)；Artifact ID `15171239855`。FMF 4,628 bytes，SHA-256 `8372e09648cd065d6f22106bb21a622ced9e7432863bbfcdc13cda333922b824`；报告SHA-256 `362b854e788c305a86a63ec6e9aaf2f7049bb4baae4a17b1427d48269a6c8f6d`。\n- D0项目门禁、D1原生权限预检（22阶段/32个PI配置项）、D2结构校验、D3独立回读8/8均通过。D4游戏内导入和D5完整38场赛季未验证；22个阶段槽均为新增待验证/U。
 - D5：同一38场至少109分且团队xG≥100，两项同时通过。
 
 ---
