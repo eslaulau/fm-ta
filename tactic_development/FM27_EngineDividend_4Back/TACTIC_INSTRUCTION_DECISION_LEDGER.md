@@ -4,14 +4,23 @@
 
 - 唯一当前重设计候选：**R5.2**；R5与用户拒绝的R5.1均在 `PPG_TARGET_POLICY.json` 的 `blocked_versions` 中封锁。
 - R5.2从V0.5原生FMF重生，父SHA-256：`e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257`；IP 4-1-2-3 DM Wide，OOP 5-2-3；IP后场DL/DCL/DCR/DR各一次。
-- R5.1此前D3记录仅保留技术历史；用户已明确拒绝该菱形设计，不进入D4/D5，也不安排追加测试。R5.2尚未运行项目D0-D3。
+- R5.1此前D3记录仅保留技术历史；用户已明确拒绝该菱形设计，不进入D4/D5，也不安排追加测试。R5.2已完成D0-D3并通过原生FMF独立回读；D4/D5仍待用户确认。
 - R5.2的22项阶段配置均为新增待验证/U；没有本队D5位置级准入证据。D4游戏内导入和D5完整38场赛季均未完成。
-- 最终D5必须同一38场至少109分（PPG≥2.85）并且全队xG≥100；没有同时达标的版本。
+- 最终D5必须同一38场至少109分（PPG≥2.85）并且全队xG≥100；目前没有同时达标的版本。
 
 ---
 
 
 ## R5.2｜全新V0.5重生设计登记（2026-11-27）
+
+### R5.2 D0-D3构建身份与门禁结果（2026-11-27）
+- GitHub Actions [Run 45935606662](https://github.com/eslaulau/fm-ta/actions/runs/45935606662)，结论success；Artifact ID `15170830371`，名称 `FM27-EngineDividend-4Back-R5.2-D3`，Artifact ZIP SHA-256 `f345b3c6557ea097fad8a4b036ca43d11066b36cbf571b419a22982ed0300d23`。
+- 配方SHA-256 `6f5d29978d6fb0721a9f0b9f7a456d7cde0341ba225044f91c4b331519ae1edd`；FMF 4,564 bytes，SHA-256 `c47adc36a04d3274a1368c1800bec0c9ac9f8ccaf490b1483a423a106e3c0db5`；同次回读报告SHA-256 `a7bb3d1d0f51ba94e485d10adaf64a3b29d20ab96f132356b8c2a889e0924404`。
+- D0 PASS；D1当前原生catalog角色/职责/PI预检PASS；D2 11槽/22阶段及IP四后场PASS；D3独立回读8/8 PASS（容器往返、全部成员解密/Zstandard、TAC完整解析、22阶段精确读回、PI权限、TI向量、原生style）。
+- 最终IP为4-1-2-3 DM Wide，OOP为5-2-3；DCL使用四后卫兼容的AdvancedCentreBack A，而不是仅允许三中卫外侧中卫的OverlappingCentreBack。
+- D4仍需用户在FM27内导入确认；D5仍需同一完整38场至少109分且团队xG至少100。D3成功不等于战术已验证有效。
+
+
 
 - 用户拒绝R5.1菱形IP整体设计；R5.1保留技术历史，不再作为候选或D4/D5测试版本。
 - R5.2唯一结构：IP 4-1-2-3 DM Wide / OOP 5-2-3；父版本与重生基准固定为V0.5原始FMF。
