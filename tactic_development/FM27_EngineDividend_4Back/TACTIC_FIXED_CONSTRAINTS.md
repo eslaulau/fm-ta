@@ -97,6 +97,8 @@ OOP 位置槽与 V0.5 的 11 槽配对关系固定，不得改动：
 - IP 只能从第 1 节的三种阵型中选择；除选择对应阵型所需的位置槽变化外，不得自定义 IP 位置。
 - OOP 位置映射按第 2 节锁定。
 - 心态固定为 V0.5 原生值 **4**（来自 `V0.5_NATIVE_SNAPSHOT.json` 的 `tactical_metadata.mentality.native_value`），用户未授权改变。
+- recipe 原生载体固定为 `FM27 Native Parent Snapshot (V0.5)`；`base.oop` 标记必须写 `V0.5 locked OOP map`。
+- recipe只允许根字段 `v`、`name`、`ment`、`base`、`ti`、`p`；每个槽位仅包含 `in`/ `out`，阶段对象仅包含 `pos`、`role`、`duty`、`pi`。额外字段一律拒绝。
 - 原生风格字符串、FourCC 及其他未授权原生字段保持 V0.5 格式身份，不得擅自修改。
 
 ## 6. 新的研发顺序
