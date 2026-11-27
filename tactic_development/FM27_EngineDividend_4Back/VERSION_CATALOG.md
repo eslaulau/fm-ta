@@ -225,3 +225,14 @@
 
 
 - **R4：D0-D3 PASS，当前唯一待验证候选。** Workflow Run 45854019401；FMF SHA-256 `8fbe0bddac5e7645a42715e378a8d5dd67400dc9e0f1b7be3ea7c2427febf899`；11组IP/OOP与22阶段精确回读通过。D4游戏内导入、D5完整赛季仍待验证。审计哈希刷新后的最终复现 Run 45854255851 通过，输出哈希保持一致。R3维持历史D5 FAIL状态。
+
+
+## R4｜D5 完整赛季结果（2026-11-27）
+
+- 用户确认本赛季使用 R4；Exporter Run [45914272197](https://github.com/eslaulau/FM27-Exporter/tree/main/season-reports/1/45914272197)。完整复盘：[R4_D5_SEASON_REVIEW_45914272197.md](R4_D5_SEASON_REVIEW_45914272197.md)。
+- 英超38场：12胜10平16负、52:57、46分、PPG1.211、xG58.86、xGA61.02；射门408、射正213、绝佳机会60。
+- D5双硬门槛均FAIL：距109分差63分，距xG100差41.14。R4不是达标候选，保留为历史失败证据。
+- 对比R3：积分-20、进球-13、失球+20、xG-6.14、xGA+14.84、射门-44；传中尝试量接近，但成功传中约少42次，完成率由16.1%降至12.7%。越位减少16次，绝佳机会增加4次。
+- 位置统计：R4前场四位置约47.08 xG，低于R3约51.99；AMC 10.93、ST17.99、AML12.02、AMR6.14。DMC合并位置7.70 xG，不能拆分DML/DMR。
+- 数据质量：球队/球员统计核对1,140/1,140；比分/球员原始进球124/124；位置209/209、评分190/190核对通过。球员身份913/932，19个未识别；角色码309/913条记录有值，604条缺失。build 27.1.1+2511875仍为fmsave未知build，schema-6借用布局，整体partial/unverified。
+- R4 D5 FAIL。R5建议：从V0.5重生；保留R4 OOP三出口，恢复Pass Into Space与Hit Early Crosses；DR WingBack Attack回Support；DMR BoxToBox Support回DefensiveMidfielder Defend。以上为下一轮待验证方案，不是因果结论。
