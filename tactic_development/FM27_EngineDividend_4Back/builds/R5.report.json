@@ -1,0 +1,534 @@
+{
+  "status": "offline_binary_roundtrip_verified_not_game_import_verified",
+  "output": "/home/runner/work/fm-ta/fm-ta/tactic_development/FM27_EngineDividend_4Back/builds/R5.fmf",
+  "sha256": "9e51563068284e0c5d821d33d31a31001208b95aa1176a37dcefe2d55217e5de",
+  "bytes": 4708,
+  "template": "/home/runner/work/fm-ta/fm-ta/tactic_development/FM27_EngineDividend_4Back/builds/V0.5.fmf",
+  "template_sha256": "e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257",
+  "recipe": "/home/runner/work/fm-ta/fm-ta/tactic_development/FM27_EngineDividend_4Back/R5.json",
+  "recipe_input_format": "json",
+  "name": "FM27_EngineDividend_4Back_R5_IP4231_OOP523_OutletPressingLayer",
+  "style": "FM27 Native Parent Snapshot (V0.5)",
+  "tac_style_string": "",
+  "style_code_hex": "4c4c554e",
+  "mentality": 5,
+  "team_instruction_bits": [
+    2,
+    5,
+    8,
+    9,
+    10,
+    13,
+    16,
+    19,
+    24,
+    28,
+    40,
+    42,
+    45,
+    46,
+    51,
+    54,
+    59,
+    61,
+    66,
+    69,
+    70,
+    72,
+    77,
+    79,
+    81,
+    82
+  ],
+  "experimental_mappings": {
+    "status": "game_import_display_verified_match_unverified",
+    "player_instructions": [
+      {
+        "slot": 1,
+        "phase": "in",
+        "group": "CROSSING_TARGET",
+        "option": "BACK_POST",
+        "native_option_id": 10
+      },
+      {
+        "slot": 1,
+        "phase": "out",
+        "group": "TACKLING",
+        "option": "GET_STUCK_IN",
+        "native_option_id": 31
+      },
+      {
+        "slot": 2,
+        "phase": "out",
+        "group": "TRIGGER_PRESS",
+        "option": "LESS_OFTEN",
+        "native_option_id": 30
+      },
+      {
+        "slot": 2,
+        "phase": "out",
+        "group": "TACKLING",
+        "option": "GET_STUCK_IN",
+        "native_option_id": 31
+      },
+      {
+        "slot": 3,
+        "phase": "out",
+        "group": "TRIGGER_PRESS",
+        "option": "LESS_OFTEN",
+        "native_option_id": 30
+      },
+      {
+        "slot": 3,
+        "phase": "out",
+        "group": "TACKLING",
+        "option": "GET_STUCK_IN",
+        "native_option_id": 31
+      },
+      {
+        "slot": 4,
+        "phase": "out",
+        "group": "TACKLING",
+        "option": "GET_STUCK_IN",
+        "native_option_id": 31
+      },
+      {
+        "slot": 5,
+        "phase": "out",
+        "group": "TACKLING",
+        "option": "GET_STUCK_IN",
+        "native_option_id": 31
+      },
+      {
+        "slot": 6,
+        "phase": "out",
+        "group": "TACKLING",
+        "option": "GET_STUCK_IN",
+        "native_option_id": 31
+      },
+      {
+        "slot": 8,
+        "phase": "out",
+        "group": "TACKLING",
+        "option": "GET_STUCK_IN",
+        "native_option_id": 31
+      },
+      {
+        "slot": 9,
+        "phase": "in",
+        "group": "CROSSING_TARGET",
+        "option": "BACK_POST",
+        "native_option_id": 10
+      }
+    ],
+    "team_instructions": []
+  },
+  "source_template_version": 27,
+  "opaque_sections_preserved": {
+    "id_entries": 22,
+    "footer_lists": 3,
+    "footer_records": 12,
+    "image_member": "byte_identical"
+  },
+  "player_phase_map": [
+    {
+      "slot": 0,
+      "phase": "in",
+      "position": "GK",
+      "role": "BallPlayingGoalkeeper",
+      "pi_count": 0,
+      "pi_mask": "0x0",
+      "duty": 4194304
+    },
+    {
+      "slot": 0,
+      "phase": "out",
+      "position": "GK",
+      "role": "OPGoalkeeper",
+      "pi_count": 0,
+      "pi_mask": "0x0",
+      "duty": 4194304
+    },
+    {
+      "slot": 1,
+      "phase": "in",
+      "position": "DR",
+      "role": "WingBack",
+      "pi_count": 3,
+      "pi_mask": "0x2080400",
+      "duty": 4194304
+    },
+    {
+      "slot": 1,
+      "phase": "out",
+      "position": "DR",
+      "role": "OPPressingFullBack",
+      "pi_count": 2,
+      "pi_mask": "0x80000000",
+      "duty": 2097152
+    },
+    {
+      "slot": 2,
+      "phase": "in",
+      "position": "DCR",
+      "role": "CentreBack",
+      "pi_count": 2,
+      "pi_mask": "0x80002",
+      "duty": 2097152
+    },
+    {
+      "slot": 2,
+      "phase": "out",
+      "position": "DCR",
+      "role": "OPCoveringCentreBack",
+      "pi_count": 2,
+      "pi_mask": "0x80000000",
+      "duty": 2097152
+    },
+    {
+      "slot": 3,
+      "phase": "in",
+      "position": "DCL",
+      "role": "CentreBack",
+      "pi_count": 2,
+      "pi_mask": "0x80002",
+      "duty": 2097152
+    },
+    {
+      "slot": 3,
+      "phase": "out",
+      "position": "DCL",
+      "role": "OPCoveringCentreBack",
+      "pi_count": 2,
+      "pi_mask": "0x80000000",
+      "duty": 2097152
+    },
+    {
+      "slot": 4,
+      "phase": "in",
+      "position": "DL",
+      "role": "InsideFullBack",
+      "pi_count": 2,
+      "pi_mask": "0x12",
+      "duty": 2097152
+    },
+    {
+      "slot": 4,
+      "phase": "out",
+      "position": "DL",
+      "role": "OPHoldingFullBack",
+      "pi_count": 1,
+      "pi_mask": "0x80000000",
+      "duty": 2097152
+    },
+    {
+      "slot": 5,
+      "phase": "in",
+      "position": "DML",
+      "role": "DefensiveMidfielder",
+      "pi_count": 1,
+      "pi_mask": "0x10",
+      "duty": 2097152
+    },
+    {
+      "slot": 5,
+      "phase": "out",
+      "position": "DC",
+      "role": "OPStoppingCentreBack",
+      "pi_count": 2,
+      "pi_mask": "0x80000000",
+      "duty": 2097152
+    },
+    {
+      "slot": 6,
+      "phase": "in",
+      "position": "DMR",
+      "role": "DefensiveMidfielder",
+      "pi_count": 1,
+      "pi_mask": "0x10",
+      "duty": 2097152
+    },
+    {
+      "slot": 6,
+      "phase": "out",
+      "position": "DML",
+      "role": "OPWideCoverDefensiveMidfielder",
+      "pi_count": 2,
+      "pi_mask": "0xa0000000",
+      "duty": 2097152
+    },
+    {
+      "slot": 7,
+      "phase": "in",
+      "position": "AML",
+      "role": "InsideForward",
+      "pi_count": 1,
+      "pi_mask": "0x0",
+      "duty": 8388608
+    },
+    {
+      "slot": 7,
+      "phase": "out",
+      "position": "AML",
+      "role": "OPInsideOutletWinger",
+      "pi_count": 1,
+      "pi_mask": "0x20000000",
+      "duty": 8388608
+    },
+    {
+      "slot": 8,
+      "phase": "in",
+      "position": "AMC",
+      "role": "FreeRole",
+      "pi_count": 0,
+      "pi_mask": "0x0",
+      "duty": 8388608
+    },
+    {
+      "slot": 8,
+      "phase": "out",
+      "position": "DMR",
+      "role": "OPDroppingDefensiveMidfielder",
+      "pi_count": 2,
+      "pi_mask": "0xa0000000",
+      "duty": 2097152
+    },
+    {
+      "slot": 9,
+      "phase": "in",
+      "position": "AMR",
+      "role": "Winger",
+      "pi_count": 4,
+      "pi_mask": "0x2480400",
+      "duty": 4194304
+    },
+    {
+      "slot": 9,
+      "phase": "out",
+      "position": "AMR",
+      "role": "OPWideOutletWinger",
+      "pi_count": 1,
+      "pi_mask": "0x20000000",
+      "duty": 8388608
+    },
+    {
+      "slot": 10,
+      "phase": "in",
+      "position": "ST",
+      "role": "TargetForward",
+      "pi_count": 1,
+      "pi_mask": "0x10000000000",
+      "duty": 8388608
+    },
+    {
+      "slot": 10,
+      "phase": "out",
+      "position": "AMC",
+      "role": "OPCentralOutletAttackingMidfielder",
+      "pi_count": 1,
+      "pi_mask": "0x20000000",
+      "duty": 8388608
+    }
+  ],
+  "readback_player_phase_map": [
+    {
+      "slot": 0,
+      "phase": "in",
+      "position": "GK",
+      "role": "BallPlayingGoalkeeper",
+      "pi_mask": "0x0",
+      "duty": 4194304
+    },
+    {
+      "slot": 0,
+      "phase": "out",
+      "position": "GK",
+      "role": "OPGoalkeeper",
+      "pi_mask": "0x0",
+      "duty": 4194304
+    },
+    {
+      "slot": 1,
+      "phase": "in",
+      "position": "DR",
+      "role": "WingBack",
+      "pi_mask": "0x2080400",
+      "duty": 4194304
+    },
+    {
+      "slot": 1,
+      "phase": "out",
+      "position": "DR",
+      "role": "OPPressingFullBack",
+      "pi_mask": "0x80000000",
+      "duty": 2097152
+    },
+    {
+      "slot": 2,
+      "phase": "in",
+      "position": "DCR",
+      "role": "CentreBack",
+      "pi_mask": "0x80002",
+      "duty": 2097152
+    },
+    {
+      "slot": 2,
+      "phase": "out",
+      "position": "DCR",
+      "role": "OPCoveringCentreBack",
+      "pi_mask": "0x80000000",
+      "duty": 2097152
+    },
+    {
+      "slot": 3,
+      "phase": "in",
+      "position": "DCL",
+      "role": "CentreBack",
+      "pi_mask": "0x80002",
+      "duty": 2097152
+    },
+    {
+      "slot": 3,
+      "phase": "out",
+      "position": "DCL",
+      "role": "OPCoveringCentreBack",
+      "pi_mask": "0x80000000",
+      "duty": 2097152
+    },
+    {
+      "slot": 4,
+      "phase": "in",
+      "position": "DL",
+      "role": "InsideFullBack",
+      "pi_mask": "0x12",
+      "duty": 2097152
+    },
+    {
+      "slot": 4,
+      "phase": "out",
+      "position": "DL",
+      "role": "OPHoldingFullBack",
+      "pi_mask": "0x80000000",
+      "duty": 2097152
+    },
+    {
+      "slot": 5,
+      "phase": "in",
+      "position": "DML",
+      "role": "DefensiveMidfielder",
+      "pi_mask": "0x10",
+      "duty": 2097152
+    },
+    {
+      "slot": 5,
+      "phase": "out",
+      "position": "DC",
+      "role": "OPStoppingCentreBack",
+      "pi_mask": "0x80000000",
+      "duty": 2097152
+    },
+    {
+      "slot": 6,
+      "phase": "in",
+      "position": "DMR",
+      "role": "DefensiveMidfielder",
+      "pi_mask": "0x10",
+      "duty": 2097152
+    },
+    {
+      "slot": 6,
+      "phase": "out",
+      "position": "DML",
+      "role": "OPWideCoverDefensiveMidfielder",
+      "pi_mask": "0xa0000000",
+      "duty": 2097152
+    },
+    {
+      "slot": 7,
+      "phase": "in",
+      "position": "AML",
+      "role": "InsideForward",
+      "pi_mask": "0x0",
+      "duty": 8388608
+    },
+    {
+      "slot": 7,
+      "phase": "out",
+      "position": "AML",
+      "role": "OPInsideOutletWinger",
+      "pi_mask": "0x20000000",
+      "duty": 8388608
+    },
+    {
+      "slot": 8,
+      "phase": "in",
+      "position": "AMC",
+      "role": "FreeRole",
+      "pi_mask": "0x0",
+      "duty": 8388608
+    },
+    {
+      "slot": 8,
+      "phase": "out",
+      "position": "DMR",
+      "role": "OPDroppingDefensiveMidfielder",
+      "pi_mask": "0xa0000000",
+      "duty": 2097152
+    },
+    {
+      "slot": 9,
+      "phase": "in",
+      "position": "AMR",
+      "role": "Winger",
+      "pi_mask": "0x2480400",
+      "duty": 4194304
+    },
+    {
+      "slot": 9,
+      "phase": "out",
+      "position": "AMR",
+      "role": "OPWideOutletWinger",
+      "pi_mask": "0x20000000",
+      "duty": 8388608
+    },
+    {
+      "slot": 10,
+      "phase": "in",
+      "position": "ST",
+      "role": "TargetForward",
+      "pi_mask": "0x10000000000",
+      "duty": 8388608
+    },
+    {
+      "slot": 10,
+      "phase": "out",
+      "position": "AMC",
+      "role": "OPCentralOutletAttackingMidfielder",
+      "pi_mask": "0x20000000",
+      "duty": 8388608
+    }
+  ],
+  "checks": {
+    "fmf_outer_roundtrip": true,
+    "all_member_decrypt_and_zstd_checksums": true,
+    "tac_full_parse": true,
+    "11_ip_oop_pairs": true,
+    "22_positions_roles_pi_readback_exact": true,
+    "pi_permissions_checked_against_catalog": true,
+    "team_instruction_vector_readback": true,
+    "native_style_string_and_code_readback": true,
+    "game_interactive_import": false,
+    "match_engine": false
+  },
+  "notes": [
+    "通过结构化 Python dict 生成原生 FMF，并执行独立二进制回读。",
+    "D/S/A 到 native duty bit 的编码由 FM27 TAC 样本确认；配方可在阶段对象中显式指定 duty，映射表未提供默认值的角色必须明确指定。",
+    "PI 权限按指定的 phase/position/role/duty 目录策略检查。",
+    "只有结构/自解包核验；必须由用户在 FM27 内手动导入后才能确认游戏接受。"
+  ],
+  "project_version": "OutletPressingLayer",
+  "project_recipe_sha256": "1990f40739388ed9370431532b3d898a8d414956427f7b0aebe8e434313f8b5c",
+  "project_parent_version": "V0.5",
+  "project_parent_sha256": "e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257",
+  "project_style_registry_overlay": "temporary project-local V0.5 carrier; shared FM-TA registry unchanged"
+}
