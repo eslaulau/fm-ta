@@ -255,3 +255,19 @@
 - 设计审计与追踪矩阵已归档；静态核对16/16通过；实际项目Python门禁待执行。
 - D1-D3待本地标准构建；无FMF/report；D4/D5未验证。R5不宣称性能收益。
 - 本轮整改依据：R4 D5后恢复Pass Into Space/Hit Early Crosses，DR WingBack A→S，DMR BoxToBox S→DefensiveMidfielder D；保留OOP三出口作为待验证结构候选。
+
+
+## R5.1｜IP 4-1-2-1-2 Diamond / OOP 4-3-1-2｜D0-D3完成（2026-11-27）
+
+- 状态：**D0-D3 PASS；D4/D5待验证。** 这是旧R5设计资格撤销后的全新重生候选；旧R5仍被策略封锁，未复活。
+- 父版本/重生基准：V0.5原生FMF；父FMF SHA-256 `e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257`。
+- 配方：[R5.1.json](R5.1.json)，SHA-256 `873110d5a885fe105ad28bf0ab61a376b977c4a9cdf1068dd4323255e0984852`；设计审计：[R5.1_DESIGN_AND_AUDIT.md](R5.1_DESIGN_AND_AUDIT.md)；D3报告：[builds/R5.1.report.json](builds/R5.1.report.json)；FMF：[builds/R5.1.fmf](builds/R5.1.fmf)。
+- 结构：IP 4-1-2-1-2 Diamond，严格DL/DCL/DCR/DR四后场；OOP 4-3-1-2。前场重新设计为通道前锋+中锋支援、攻击型前腰、纵深中场与连接中场；没有沿用旧R5 IP四人前场组合，也没有沿用R4/R5 OOP无锋三出口。
+- 设计证据边界：历史赛季均未达到38场109分及xG100双门槛；位置级贡献归因不足。本轮22个阶段配置均以“新增待验证/U”入选，不宣称已准入或已证实有效。角色默认行为GameID自然语言仍未完整解码。
+- GitHub Actions：[Run 45928559022](https://github.com/eslaulau/fm-ta/actions/runs/45928559022)；Artifact ID `15167667342`；Artifact ZIP SHA-256 `9037afd0276771a58b49501bee40620774ba2bdb5d133da2e472887e31d4cb93`。
+- FMF：4,572 bytes；SHA-256 `292e027e5f9b5664bf224e577e176be27f414c3c655fe5a17b292c88e5fbf51a`；同次构建报告SHA-256 `98d0077a64f5ee2bb89eb74286403894ca7b89d019b5a34030c02e2f17c39c5a`；recipe SHA-256 `873110d5a885fe105ad28bf0ab61a376b977c4a9cdf1068dd4323255e0984852`。
+- D0：项目机器门禁PASS（V0.5父SHA、22项机器决策manifest与recipe精确一致、历史未准入规则等）；D1：当前catalog角色/职责/PI权限预检PASS；D2：11槽/22阶段与IP四后场结构PASS；D3：外层FMF往返、全部成员解密/Zstandard校验、TAC完整解析、22阶段精确回读、PI权限、团队指令向量、原生style字段共8/8通过。
+- 构建期间门禁曾按规则拒绝不兼容内容：先修正审计标题匹配，再按当前catalog更正OOP角色映射，最后移除ChannelForward不允许的远门柱PI。所有问题均通过修正recipe/审计解决，未跳过或放宽门禁。
+- D4：尚未由用户确认FM27游戏内导入、中文显示、阵型/IP-OOP角色职责及球员位置熟悉度。
+- D5：没有本版Exporter赛季报告；必须由用户确认实际战术映射后完成完整38场联赛。最终仍需同时达到109分与xG100；本轮不宣称实战有效或已达标。
+
