@@ -1,8 +1,8 @@
-> **强制执行补充｜每轮升级项目门禁**
+> **强制执行补充｜每轮升级项目**
 >
-> 任何正式战术升级，无论修改结构、位置、角色、职责、PI、TI 或心态，都必须先完成项目设计审计，并通过 [validate_project_iteration.py](validate_project_iteration.py)。该审计核验真实父 FMF、本轮 recipe、当前 PROJECT_RULES、决策总账和 PPG 策略的 SHA-256，以及 11 槽/22 阶段、IP 四后场、四类决策、PPG 2.85、风险和 D5 指标。审计失败即停止生成。
+> 任何正式战术升级，无论修改结构、位置、角色、职责、PI、TI 或心态，都必须先完成项目设计审计，并通过 [](validate_project_iteration.py)。该审计核验真实父 FMF、本轮 recipe、当前 PROJECT_RULES、决策总账和 PPG 策略的 SHA-256，以及 11 槽/22 阶段、IP 四后场、四类决策、PPG 2.85、风险和 D5 指标。审计失败即停止生成。
 >
-> [build_project_tactic.py](build_project_tactic.py) 是标准构建入口，但不是唯一允许的执行通道。若当前环境不能直接运行该入口，必须改用 [GENERATION_EXECUTION_POLICY.md](GENERATION_EXECUTION_POLICY.md) 规定的项目审计后离线原生生成路径；不得因为 GitHub/聊天工具不能远程执行 Python 而中止迭代。FM-TA 通用工具和通用工作流保持不变。
+> [build_project_tactic.py](build_project_tactic.py) 是标准构建入口，但不是唯一允许的执行通道。若当前环境不能直接运行该入口，必须改用 [GENERATION_EXECUTION_POLICY.md](GENERATION_EXECUTION_POLICY.md) 规定的后离线原生生成路径；不得因为 GitHub/聊天工具不能远程执行 Python 而中止迭代。FM-TA 通用工具和通用工作流保持不变。
 >
 > PowerShell 构建命令和测试方式见 [PROJECT_RULES.md](PROJECT_RULES.md)。
 
@@ -124,7 +124,7 @@
 4. D3通过只表示离线文件生成/回读成功；不能声称游戏已导入或比赛表现有效。
 5. D4只有在用户提供游戏内导入/显示证据并完成核对后才可标记通过；否则标记待用户验收。
 6. D5只有收到该版本对应、用户确认映射的赛季报告后才可标记完成。
-8. 写入后逐个GitHub read-back，核对文件内容、父子关系、版本、Run ID、Artifact、FMF与报告哈希、四类决策和D0–D5状态。read-back未完成不得声称归档完成。
+8. 写入后逐个GitHub read-back，核对文件内容、父子关系、版本、Run ID、Artifact、FMF与报告哈希、四类决策和–D5状态。read-back未完成不得声称归档完成。
 
 ## 8. 研发阶段状态与交付边界
 
