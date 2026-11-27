@@ -1,5 +1,5 @@
 {
-  "policy_version": 3,
+  "policy_version": 4,
   "project": "FM27_EngineDividend_4Back",
   "primary_objective": "PPG >= 2.85",
   "target_ppg": 2.85,
@@ -152,7 +152,9 @@
       "CROSSING_STYLE",
       "DEFENSIVE_LINE_BEHAVIOR",
       "TRIGGER_PRESS"
-    ]
+    ],
+    "historical_tactics_are_reference_pool": true,
+    "tactic_parent_policy": "Any archived internal tactic may be selected as the tactical parent/reference. V0.5 is not a mandatory reset or tactical parent. The V0.5 native carrier may remain only as a technical serialization carrier; the complete recipe must encode the selected historical configuration and all current changes."
   },
   "required_decision_classes": [
     "继承保留",
@@ -169,9 +171,9 @@
     "fixed IP formation compliance and fixed V0.5 OOP position-map compliance; roles, duties, PI and non-red-box TI"
   ],
   "evidence_rules": {
-    "historical_versions": "Evidence and comparison points, not mandatory templates",
-    "external_meta": "Hypothesis source only; not equivalent to this team's season evidence",
+    "historical_versions": "All internal historical tactics, recipes, build reports and user-confirmed season reports are the sole reference pool. Every version remains citable as internal project evidence.",
     "build_success": "D3 technical verification only; never proof of match effectiveness",
+    "season_mapping": "Use only user-confirmed tactic-to-season mappings; exporter does not infer tactics",
     "discipline_stats": "Fouls, yellow cards and red cards are excluded from tactic-quality evaluation"
   },
   "tool_boundary": {
@@ -194,7 +196,7 @@
       "必要防守诊断：仅判断防守问题是否实际限制积分或进攻发挥，不作为独立优化终点"
     ],
     "defense_policy": "不得仅因xGA较高或防守排名较差而淘汰高进球结构；允许接受更高失球以换取更高且可重复的进球产出，但必须以最终积分验证。",
-    "mandatory_2_2_review": "2.3已由用户实测数个回合全败并正式放弃；不再安排追加测试。重启V1.6高要求升级计划，下一轮从V0.5原生FMF重生，并同时执行PPG≥2.85及38场xG≥100双门槛。"
+    "iteration_basis": "Use the internal historical tactic ledger as the sole reference pool. Select a prior version based on measured internal results and the current fixed constraints; do not force a reset to V0.5."
   },
   "latest_d5_result": {
     "version": "R4",
@@ -249,16 +251,10 @@
     }
   },
   "active_iteration": {
-    "version": "R6",
-    "status": "RETIRED_NONCOMPLIANT_AFTER_RULE_UPDATE",
-    "reason": "R6完成D0-D3技术构建，但其IP为4-2-2-2，OOP位置映射偏离V0.5，心态为6，且多项红框团队指令与用户固定值不符。2026-11-27新规则生效后，R6不符合允许范围；D3历史事实保留，不作为D4/D5候选。",
-    "parent_version": "V0.5",
-    "parent_fmf_sha256": "e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257",
-    "recipe": "R6.json",
-    "audit": "R6_DESIGN_AND_AUDIT.md",
-    "workflow_file": ".github/workflows/fm27-engine-dividend-4back-project-build-r6.yml",
-    "d4_d5": "Do not import or use R6 for D4/D5; it is retired by the new scope rules.",
-    "next_action": "Create the next iteration only within the three allowed IP formations, with the fixed 15 red-box TI values, V0.5 OOP position map and mentality 4; modify only roles/duties, PI and non-boxed TI."
+    "status": "HISTORICAL_TACTIC_LEDGER_REFERENCE_MODE",
+    "candidate": null,
+    "parent_policy": "Select any internal historical tactic from the ledger; no mandatory V0.5 reset",
+    "external_references": "removed"
   },
   "retired_iteration_decisions": [
     {
