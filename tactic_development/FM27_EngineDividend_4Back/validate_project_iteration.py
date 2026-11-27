@@ -29,6 +29,12 @@ IP_FORMATION_POSITIONS = {
 }
 V05_OOP_POSITIONS_BY_SLOT = ["GK", "DR", "DCR", "DCL", "DL", "DMR", "DML", "MR", "ML", "MC", "AMC"]
 V05_MENTALITY_NATIVE_VALUE = 4
+V05_NATIVE_CARRIER_NAME = "FM27 Native Parent Snapshot (V0.5)"
+V05_OOP_METADATA_LABEL = "V0.5 locked OOP map"
+REQUIRED_RECIPE_ROOT_KEYS = {"v", "name", "ment", "base", "ti", "p"}
+REQUIRED_BASE_KEYS = {"g", "ip", "oop"}
+REQUIRED_SLOT_KEYS = {"in", "out"}
+REQUIRED_PHASE_ITEM_KEYS = {"pos", "role", "duty", "pi"}
 FIXED_TEAM_INSTRUCTIONS = {
     "PASSING_DIRECTNESS": "MORE_DIRECT",
     "TEMPO": "MUCH_HIGHER",
@@ -56,6 +62,18 @@ REQUIRED_TEAM_INSTRUCTION_KEYS = (
     "TRIGGER_PRESS", "DEFENSIVE_TRANSITION", "TACKLING", "PRESSING_TRAP",
     "SHORT_GOALKEEPER_DISTRIBUTION", "CROSS_ENGAGEMENT",
 )
+ADJUSTABLE_NON_BOX_TEAM_INSTRUCTION_KEYS = (
+    "ATTACKING_TRANSITION", "CREATIVE_FREEDOM", "TIME_WASTING", "PLAY_FOR_SET_PIECES",
+    "PROGRESS_THROUGH", "SUPPORTING_RUNS", "SUPPORTING_RUNS_SECONDARY",
+    "GOALKEEPER_ATTACKING_SET_PIECES", "PATIENCE", "DRIBBLING", "SHOTS_FROM_DISTANCE",
+    "CROSSING_STYLE", "DEFENSIVE_LINE_BEHAVIOR", "TRIGGER_PRESS",
+)
+ALLOWED_MODIFICATIONS = [
+    "ip_formation_choice_within_allowed_set",
+    "player_roles_and_duties_in_IP_and_OOP",
+    "player_personal_instructions_in_IP_and_OOP",
+    "team_instructions_not_in_the_red_box",
+]
 
 
 def sha256_file(path: Path) -> str:
@@ -192,6 +210,13 @@ def validate(recipe_path: Path, audit_path: Path, parent_fmf: Path) -> list[str]
 
     if not isinstance(recipe, dict):
         return ["Recipe root must be a JSON object."]
+    unexpected_root_keys = sorted(set(recipe) - REQUIRED_RECIPE_ROOT_KEYS)
+    missing_root_keys = sorted(REQUIRED_RECIPE_ROOT_KEYS - set(recipe))
+    if unexpected_root_keys or missing_root_keys:
+        errors.append(
+            f"Recipe root may contain only {sorted(REQUIRED_RECIPE_ROOT_KEYS)}; "
+            f"unexpected={unexpected_root_keys}, missing={missing_root_keys}."
+        )
 
     rules = RULES.read_text(encoding="utf-8")
     ledger = LEDGER.read_text(encoding="utf-8")
@@ -237,6 +262,14 @@ def validate(recipe_path: Path, audit_path: Path, parent_fmf: Path) -> list[str]
         errors.append("Policy red-box team instruction values differ from the canonical fixed values.")
     if set(hard_constraints.get("required_explicit_team_instruction_keys", [])) != set(REQUIRED_TEAM_INSTRUCTION_KEYS):
         errors.append("Policy must require explicit coverage of all 29 native team-instruction groups.")
+    if set(ADJUSTABLE_NON_BOX_TEAM_INSTRUCTION_KEYS) & set(FIXED_TEAM_INSTRUCTIONS):
+        errors.append("Internal TI policy error: fixed and adjustable TI groups overlap.")
+    if set(ADJUSTABLE_NON_BOX_TEAM_INSTRUCTION_KEYS) | set(FIXED_TEAM_INSTRUCTIONS) != set(REQUIRED_TEAM_INSTRUCTION_KEYS):
+        errors.append("Internal TI policy error: fixed and adjustable TI groups must partition all 29 groups.")
+    if hard_constraints.get("adjustable_non_box_team_instruction_keys") != list(ADJUSTABLE_NON_BOX_TEAM_INSTRUCTION_KEYS):
+        errors.append("Policy adjustable_non_box_team_instruction_keys conflicts with canonical 14-group list.")
+    if hard_constraints.get("allowed_modifications") != ALLOWED_MODIFICATIONS:
+        errors.append("Policy allowed_modifications conflicts with the user-authorized scope.")
     if "只允许以下三种阵型" not in fixed_constraints_text or "红框团队指令：固定，不得修改" not in fixed_constraints_text:
         errors.append("TACTIC_FIXED_CONSTRAINTS.md is missing the current fixed-scope contract.")
     if "IP阵型只允许三种" not in rules or "红框" not in rules:
@@ -370,6 +403,16 @@ def validate(recipe_path: Path, audit_path: Path, parent_fmf: Path) -> list[str]
 
     if not isinstance(recipe.get("base"), dict) or not isinstance(recipe["base"].get("g"), str):
         errors.append("Recipe must identify its native base/template in base.g.")
+    else:
+        base_keys = set(recipe["base"])
+        if base_keys != REQUIRED_BASE_KEYS:
+            errors.append(
+                f"Recipe base may contain only {sorted(REQUIRED_BASE_KEYS)}; got {sorted(base_keys)}."
+            )
+        if recipe["base"].get("g") != V05_NATIVE_CARRIER_NAME:
+            errors.append("Recipe native carrier is locked to FM27 Native Parent Snapshot (V0.5).")
+        if recipe["base"].get("oop") != V05_OOP_METADATA_LABEL:
+            errors.append("Recipe base.oop metadata must identify the locked V0.5 OOP position map.")
     if not isinstance(recipe.get("ti"), dict):
         errors.append("Recipe must include a team-instructions object 'ti'.")
     else:
@@ -401,11 +444,20 @@ def validate(recipe_path: Path, audit_path: Path, parent_fmf: Path) -> list[str]
         if not isinstance(slot, dict):
             errors.append(f"Recipe slot {index} must be an object.")
             continue
+        if set(slot) != REQUIRED_SLOT_KEYS:
+            errors.append(
+                f"Recipe slot {index} may contain only IP/OOP phase objects; got {sorted(slot)}."
+            )
         for phase in ("in", "out"):
             item = slot.get(phase)
             if not isinstance(item, dict):
                 errors.append(f"Recipe slot {index} is missing its '{phase}' phase object.")
                 continue
+            if set(item) != REQUIRED_PHASE_ITEM_KEYS:
+                errors.append(
+                    f"Recipe slot {index} {phase}: only position, role, duty and PI are authorized fields; "
+                    f"got {sorted(item)}."
+                )
             for key in ("pos", "role", "duty", "pi"):
                 if key not in item:
                     errors.append(f"Recipe slot {index} {phase}: missing required field '{key}'.")
