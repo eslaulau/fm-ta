@@ -14,10 +14,48 @@ POLICY = PROJECT_DIR / "PPG_TARGET_POLICY.json"
 PERFORMANCE_STANDARD = PROJECT_DIR / "POSITION_PERFORMANCE_ELIMINATION_STANDARD.md"
 RULES = PROJECT_DIR / "PROJECT_RULES.md"
 LEDGER = PROJECT_DIR / "TACTIC_INSTRUCTION_DECISION_LEDGER.md"
+FIXED_CONSTRAINTS = PROJECT_DIR / "TACTIC_FIXED_CONSTRAINTS.md"
 DECISIONS = ("继承保留", "替换淘汰", "新增待验证", "证据不足")
 IP_BACK_FOUR = ("DL", "DCL", "DCR", "DR")
 V05_BASELINE_SHA256 = "e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257"
 DUTIES = {"D", "S", "A"}
+
+# Hard-coded mirrors of the user-approved rule. Policy-file edits alone cannot
+# widen these constraints; the policy and canonical Markdown must match them.
+IP_FORMATION_POSITIONS = {
+    "4-2-3-1": ["GK", "DR", "DCR", "DCL", "DL", "MCR", "MCL", "AMR", "AML", "AMC", "ST"],
+    "4-3-3": ["GK", "DR", "DCR", "DCL", "DL", "MCR", "MCL", "AMR", "AML", "MC", "ST"],
+    "4-1-2-3": ["GK", "DR", "DCR", "DCL", "DL", "DMC", "MCL", "AMR", "AML", "MCR", "ST"],
+}
+V05_OOP_POSITIONS_BY_SLOT = ["GK", "DR", "DCR", "DCL", "DL", "DMR", "DML", "MR", "ML", "MC", "AMC"]
+V05_MENTALITY_NATIVE_VALUE = 4
+FIXED_TEAM_INSTRUCTIONS = {
+    "PASSING_DIRECTNESS": "MORE_DIRECT",
+    "TEMPO": "MUCH_HIGHER",
+    "ATTACKING_WIDTH": "MUCH_NARROWER",
+    "PASS_RECEPTION": "PASS_INTO_SPACE",
+    "BUILD_UP_STRATEGY": "BYPASS_PRESS",
+    "GOAL_KICKS": "SHORT",
+    "GK_DISTRIBUTION_(SPEED)": "DEFAULT",
+    "GOALKEEPER_DISTRIBUTION": "CENTRE_BACKS",
+    "LINE_OF_ENGAGEMENT": "HIGH_PRESS",
+    "DEFENSIVE_LINE": "MUCH_LOWER",
+    "DEFENSIVE_TRANSITION": "REGROUP",
+    "TACKLING": "GET_STUCK_IN",
+    "PRESSING_TRAP": "DEFAULT",
+    "SHORT_GOALKEEPER_DISTRIBUTION": "YES",
+    "CROSS_ENGAGEMENT": "INVITE_CROSSES",
+}
+REQUIRED_TEAM_INSTRUCTION_KEYS = (
+    "PASSING_DIRECTNESS", "TEMPO", "ATTACKING_WIDTH", "ATTACKING_TRANSITION",
+    "CREATIVE_FREEDOM", "TIME_WASTING", "PLAY_FOR_SET_PIECES", "BUILD_UP_STRATEGY",
+    "GOAL_KICKS", "GOALKEEPER_DISTRIBUTION", "GK_DISTRIBUTION_(SPEED)", "PROGRESS_THROUGH",
+    "PASS_RECEPTION", "SUPPORTING_RUNS", "SUPPORTING_RUNS_SECONDARY",
+    "GOALKEEPER_ATTACKING_SET_PIECES", "PATIENCE", "DRIBBLING", "SHOTS_FROM_DISTANCE",
+    "CROSSING_STYLE", "LINE_OF_ENGAGEMENT", "DEFENSIVE_LINE", "DEFENSIVE_LINE_BEHAVIOR",
+    "TRIGGER_PRESS", "DEFENSIVE_TRANSITION", "TACKLING", "PRESSING_TRAP",
+    "SHORT_GOALKEEPER_DISTRIBUTION", "CROSS_ENGAGEMENT",
+)
 
 
 def sha256_file(path: Path) -> str:
@@ -139,7 +177,7 @@ def validate(recipe_path: Path, audit_path: Path, parent_fmf: Path) -> list[str]
             errors.append(f"{label} must be inside the project directory: {path}")
         if not path.is_file():
             errors.append(f"{label} file is missing: {path}")
-    for required in (POLICY, PERFORMANCE_STANDARD, RULES, LEDGER, parent_fmf):
+    for required in (POLICY, PERFORMANCE_STANDARD, RULES, LEDGER, FIXED_CONSTRAINTS, parent_fmf):
         if not required.is_file():
             errors.append(f"Required project/parent file is missing: {required}")
     if errors:
@@ -157,6 +195,7 @@ def validate(recipe_path: Path, audit_path: Path, parent_fmf: Path) -> list[str]
 
     rules = RULES.read_text(encoding="utf-8")
     ledger = LEDGER.read_text(encoding="utf-8")
+    fixed_constraints_text = FIXED_CONSTRAINTS.read_text(encoding="utf-8")
     audit = audit_path.read_text(encoding="utf-8")
     performance_standard = PERFORMANCE_STANDARD.read_text(encoding="utf-8")
 
@@ -184,6 +223,24 @@ def validate(recipe_path: Path, audit_path: Path, parent_fmf: Path) -> list[str]
         for required_term in ("低效淘汰清单", "证据等级", "准入保留", "条件保留", "替换淘汰", "D5"):
             if required_term not in section_text:
                 errors.append(f"Position audit section must explicitly include: {required_term}.")
+
+    hard_constraints = policy.get("hard_constraints", {})
+    if hard_constraints.get("allowed_ip_formations") != list(IP_FORMATION_POSITIONS):
+        errors.append("Policy allowed_ip_formations conflicts with the three user-approved formations.")
+    if hard_constraints.get("ip_position_map_by_formation") != IP_FORMATION_POSITIONS:
+        errors.append("Policy IP position maps do not match the approved 4-2-3-1 / 4-3-3 / 4-1-2-3 layouts.")
+    if hard_constraints.get("oop_position_map_by_slot") != V05_OOP_POSITIONS_BY_SLOT:
+        errors.append("Policy OOP position map must remain locked to the V0.5 11-slot mapping.")
+    if hard_constraints.get("fixed_mentality_native_value") != V05_MENTALITY_NATIVE_VALUE:
+        errors.append("Policy mentality must remain at V0.5 native value 4.")
+    if hard_constraints.get("fixed_team_instruction_values") != FIXED_TEAM_INSTRUCTIONS:
+        errors.append("Policy red-box team instruction values differ from the canonical fixed values.")
+    if set(hard_constraints.get("required_explicit_team_instruction_keys", [])) != set(REQUIRED_TEAM_INSTRUCTION_KEYS):
+        errors.append("Policy must require explicit coverage of all 29 native team-instruction groups.")
+    if "只允许以下三种阵型" not in fixed_constraints_text or "红框团队指令：固定，不得修改" not in fixed_constraints_text:
+        errors.append("TACTIC_FIXED_CONSTRAINTS.md is missing the current fixed-scope contract.")
+    if "只允许以下三种阵型" not in rules or "红框" not in rules:
+        errors.append("PROJECT_RULES.md does not incorporate the fixed formation and red-box instruction policy.")
 
     if policy.get("target_ppg") != 2.85 or policy.get("primary_objective") != "PPG >= 2.85":
         errors.append("Project policy must define PPG >= 2.85 as the primary objective.")
@@ -252,6 +309,7 @@ def validate(recipe_path: Path, audit_path: Path, parent_fmf: Path) -> list[str]
         ("项目规则 SHA-256", RULES, "PROJECT_RULES.md"),
         ("决策总账 SHA-256", LEDGER, "TACTIC_INSTRUCTION_DECISION_LEDGER.md"),
         ("PPG 策略 SHA-256", POLICY, "PPG_TARGET_POLICY.json"),
+        ("固定战术边界 SHA-256", FIXED_CONSTRAINTS, "TACTIC_FIXED_CONSTRAINTS.md"),
         ("位置绩效标准 SHA-256", PERFORMANCE_STANDARD, "POSITION_PERFORMANCE_ELIMINATION_STANDARD.md"),
     ):
         declared = one_line_value(audit, audit_label)
@@ -314,6 +372,24 @@ def validate(recipe_path: Path, audit_path: Path, parent_fmf: Path) -> list[str]
         errors.append("Recipe must identify its native base/template in base.g.")
     if not isinstance(recipe.get("ti"), dict):
         errors.append("Recipe must include a team-instructions object 'ti'.")
+    else:
+        ti = recipe["ti"]
+        missing_ti = sorted(set(REQUIRED_TEAM_INSTRUCTION_KEYS) - set(ti))
+        extra_ti = sorted(set(ti) - set(REQUIRED_TEAM_INSTRUCTION_KEYS))
+        if missing_ti:
+            errors.append(f"Recipe must explicitly configure all 29 native TI groups; missing: {missing_ti}.")
+        if extra_ti:
+            errors.append(f"Recipe contains unrecognized TI keys: {extra_ti}.")
+        for key, expected in FIXED_TEAM_INSTRUCTIONS.items():
+            if ti.get(key) != expected:
+                errors.append(f"Red-box TI is locked: {key} must be {expected}, found {ti.get(key)!r}.")
+
+    if recipe.get("ment") != V05_MENTALITY_NATIVE_VALUE:
+        errors.append("Team mentality is locked to V0.5 native value 4; mentality changes are not authorized.")
+
+    formation = (recipe.get("base") or {}).get("ip") if isinstance(recipe.get("base"), dict) else None
+    if formation not in IP_FORMATION_POSITIONS:
+        errors.append(f"IP formation must be exactly one of: {', '.join(IP_FORMATION_POSITIONS)}; found {formation!r}.")
 
     slots = recipe.get("p")
     if not isinstance(slots, list) or len(slots) != 11:
@@ -359,6 +435,17 @@ def validate(recipe_path: Path, audit_path: Path, parent_fmf: Path) -> list[str]
             errors.append(f"{phase.upper()} phase contains duplicate positions: {positions}.")
 
     ip_positions = phase_positions["in"]
+    oop_positions = phase_positions["out"]
+    if formation in IP_FORMATION_POSITIONS and len(ip_positions) == 11:
+        expected_ip = IP_FORMATION_POSITIONS[formation]
+        if set(ip_positions) != set(expected_ip):
+            errors.append(
+                f"IP positions do not match declared {formation}: expected={expected_ip}, actual={ip_positions}."
+            )
+    if len(oop_positions) == 11 and oop_positions != V05_OOP_POSITIONS_BY_SLOT:
+        errors.append(
+            f"OOP position map is locked to V0.5 by slot: expected={V05_OOP_POSITIONS_BY_SLOT}, actual={oop_positions}."
+        )
     for position in IP_BACK_FOUR:
         count = ip_positions.count(position)
         if count != 1:
