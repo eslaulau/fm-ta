@@ -157,7 +157,7 @@ D3不等于D4，D4不等于D5。没有真实产物、同次构建报告、独立
 4. **历史回溯**：从V0.5到最新版本，核查所有版本D5、配方、审计、构建报告和明确废弃/取代记录；不只读最新版本。
 5. **赛季诊断**：分析胜平负、积分、xG/NPxG、xGA、绝佳机会、主客场、平局和失利逐场原因，区分创造、质量、转化和防守。
 6. **位置级裁决**：按项目准入门槛独立审查11个IP槽和11个OOP槽；无证据就标记未准入/证据不足。
-7. **机制研究**：按 [EXTERNAL_ENGINE_BENCHMARK.md](EXTERNAL_ENGINE_BENCHMARK.md) 检索指定来源；只提取可在三种批准IP布局、V0.5 OOP位置映射及固定红框TI/心态条件下应用的角色/职责、PI和非红框TI机制。不得把外部战术的阵型、位置转换或固定TI整体移植为本项目新候选。
+7. **历史配置研究**：只读取项目内部历史战术总账及对应recipe/赛季报告；从中筛选可在当前固定边界内使用的角色/职责、PI和非红框TI配置。
 8. **四类决策**：列明继承保留、替换淘汰、新增待验证、证据不足。
 9. **唯一方案**：从内部历史总账选择合规父配置；从三种批准IP布局中选择一种，保持OOP位置映射/心态/红框TI固定，仅设计角色/职责、PI和非红框TI；每项改动有机制链、PPG路径、风险与D5指标。
 10. **生成前审计**：核对V0.5父SHA、规则/总账/策略/recipe SHA、IP四后场、11槽/22阶段、原生角色职责/PI权限和四类决策。
@@ -259,7 +259,7 @@ D3不等于D4，D4不等于D5。没有真实产物、同次构建报告、独立
 1. 当前仓库2026-11-26角色/PI映射复核显示：TI非默认选项75/75、PI非默认选项37/37可在当前映射中找到；这只证明编码映射覆盖，不证明比赛行为。
 2. 原生角色资源中提取到36个角色的41条默认行为GameID引用，但缺少GameID→可读本地化文本字典。不得编造这些默认行为文本。
 3. 当前源码PI_MAP/EXPERIMENTAL_PI_MAP已映射Trigger Press More/Less（native option 29/30）与Tackle Harder（31）；当前原生catalog按角色/阶段/位置/职责检查权限。2026-11-26复核为PI非默认选项37/37映射。旧版“超范围无法序列化”备注已在决策总账中更正。映射覆盖不证明比赛行为有效。
-4. metaFM与外部社区数据可提出假设，不得替代用户存档D5。
+4. 历史战术的D3/D5证据等级必须分开；用户确认的本队赛季报告优先。
 5. 用户指定的27.1.1引擎红利优先指标必须逐项审查，但每项都要标记为已验证、外部观察、统计关联、待验证或证据不足。
 
 ### 5.2 用户指定的优先研究方向（假设，不是结论）
@@ -315,7 +315,7 @@ D3不等于D4，D4不等于D5。没有真实产物、同次构建报告、独立
 ### 6.3 引擎行为与原生指令研究（涉及机制时必读）
 
 - [ENGINE_DIVIDEND_PRIORITY_INDICATORS_27.1.1.md](ENGINE_DIVIDEND_PRIORITY_INDICATORS_27.1.1.md)：用户指定的当前build优先研究指标。
-- [EXTERNAL_ENGINE_BENCHMARK.md](EXTERNAL_ENGINE_BENCHMARK.md)：**唯一指定外部研究来源库**，列出FM-Arena、MetaFM/FM-Base、SI官方论坛、Sortitoutsi、Reddit、FM Scout、Ludens Media、PlayGM及跨阵型机制迁移规则。
+- [TACTIC_INSTRUCTION_DECISION_LEDGER.md](TACTIC_INSTRUCTION_DECISION_LEDGER.md)：唯一内部历史战术参考总账，包含全部历史版本配置和可核验赛季结果。
 - [TACTICAL_RESEARCH_DECISIONS_20261126.md](TACTICAL_RESEARCH_DECISIONS_20261126.md)：2026-11-26位置级战术研究结论与待测方向。
 - [INSTRUCTION_EFFECTIVENESS_AUDIT_20261126.md](INSTRUCTION_EFFECTIVENESS_AUDIT_20261126.md)：指令有效性专项审查。
 - [ROLE_DEFAULT_BEHAVIOR_AND_MAPPING_RECHECK_20261126.md](ROLE_DEFAULT_BEHAVIOR_AND_MAPPING_RECHECK_20261126.md)：角色默认行为GameID、PI/TI映射和当前证据缺口。
