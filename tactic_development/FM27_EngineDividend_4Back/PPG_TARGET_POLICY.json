@@ -12,7 +12,7 @@
       "DCR",
       "DR"
     ],
-    "oop_shape": "V0.5 slot-position mapping is locked; roles/duties/PI may change",
+    "oop_shape": "Locked 11-slot OOP position map; mapping is a fixed project constraint, not a tactical-parent requirement.",
     "one_primary_tactic_per_iteration": true,
     "preserve_all_historical_evidence": true,
     "allowed_ip_formations": [
@@ -154,7 +154,7 @@
       "TRIGGER_PRESS"
     ],
     "historical_tactics_are_reference_pool": true,
-    "tactic_parent_policy": "Any archived internal tactic may be selected as the tactical parent/reference. V0.5 is not a mandatory reset or tactical parent. The V0.5 native carrier may remain only as a technical serialization carrier; the complete recipe must encode the selected historical configuration and all current changes."
+    "tactic_parent_policy": "Any archived internal tactic may be selected as tactical parent/reference. No mandatory V0.5 reset. V0.5 may be used only as a native serialization carrier; the selected historical tactic configuration must be explicitly represented in the complete recipe."
   },
   "required_decision_classes": [
     "继承保留",
@@ -168,7 +168,7 @@
     "attacking repeatability and role/channel contribution where source data supports mapping",
     "xGA, goals conceded and opponent big chances only as costs/constraints on points and attack",
     "home-away splits and opponent/context differences",
-    "fixed IP formation compliance and fixed V0.5 OOP position-map compliance; roles, duties, PI and non-red-box TI"
+    "fixed IP formation compliance and fixed 11-slot OOP position-map compliance; roles, duties, PI and non-red-box TI"
   ],
   "evidence_rules": {
     "historical_versions": "All internal historical tactics, recipes, build reports and user-confirmed season reports are the sole reference pool. Every version remains citable as internal project evidence.",
@@ -196,7 +196,7 @@
       "必要防守诊断：仅判断防守问题是否实际限制积分或进攻发挥，不作为独立优化终点"
     ],
     "defense_policy": "不得仅因xGA较高或防守排名较差而淘汰高进球结构；允许接受更高失球以换取更高且可重复的进球产出，但必须以最终积分验证。",
-    "iteration_basis": "Use the internal historical tactic ledger as the sole reference pool. Select a prior version based on measured internal results and the current fixed constraints; do not force a reset to V0.5."
+    "iteration_basis": "Use the internal historical tactic ledger as the sole reference pool. Select a parent configuration based on measured internal results and current fixed constraints; no mandatory V0.5 reset."
   },
   "latest_d5_result": {
     "version": "R4",
@@ -227,7 +227,7 @@
       "Role codes decoded for 309/913 identified appearances; 604 role codes missing; no OOP role/PI/TI execution mapping.",
       "Position codes cannot split DC into DCL/DCR or DMC into DML/DMR."
     ],
-    "next_step": "R5 was subsequently invalidated by retrospective design review; do not revive it. Repair and pass the machine-enforced D0 decision-manifest gate before creating a fresh V0.5-based mainline."
+    "next_step": "R5 was subsequently invalidated by retrospective design review; use the internal historical ledger to select a compliant parent configuration for the next iteration."
   },
   "minimum_attack_process_gate": {
     "metric": "team_xG",
@@ -261,7 +261,7 @@
       "version": "R5.3",
       "user_decision": "用户确认R5.3不是独立原创；之后2026-11-27固定边界又取代旧设计范围，R5.3不再是当前候选。",
       "effective_date": "2026-11-27",
-      "reason": "R5.3使用4-1-2-3外部来源结构改编，OOP位置映射偏离V0.5、心态为6，且团队指令与红框固定值不一致。保留历史D0-D3技术成功事实，不进入D4/D5。",
+      "reason": "R5.3使用超出当前允许范围的IP布局，OOP位置映射偏离固定位置图、心态为6，且部分团队指令与红框固定值不一致。保留历史D0-D3技术成功事实，不作为完整候选复活。",
       "historical_records": "保留recipe、设计审计、FMF、report、Actions run和artifact作为历史技术记录；不得作为当前候选。"
     },
     {
@@ -288,7 +288,7 @@
       "version": "R5.2",
       "user_decision": "用户明确否决R5.2当前方案并要求重新设计；R5.2不再作为本轮候选，不建议进入D4/D5。",
       "effective_date": "2026-11-27",
-      "reason": "用户指出球队指令并未完整重新优化：19个TI组显式覆盖，其余10组沿用V0.5选项。随后用户否决R5.2并要求整套重做。新方案必须从V0.5原生载体重建，完整重设计攻击结构，并显式覆盖所有29组TI。",
+      "reason": "用户指出球队指令并未完整重新优化：19个TI组显式覆盖，其余10组沿用母版选项。随后用户否决R5.2并要求整套重做。历史配方仍保留作参考；新方案从内部总账选择父配置并显式覆盖所有29组TI。",
       "historical_records": "保留R5.2 recipe、audit、FMF、report、Actions run与artifact作为历史技术记录；不删除，不再推荐作为实战测试版本。"
     },
     {
@@ -301,7 +301,7 @@
   ],
   "status_update_2026_11_26_R3": {
     "user_decision": "R2已淘汰，启动R3",
-    "restart": "R3从V0.5原生FMF重生；不继承R2的FMF或配置",
+    "restart": "R3是历史版本，构建时使用的父配置按其当时审计记录；后续新版本可从内部历史总账选择父配置。",
     "structure": "IP 4-2-3-1 / OOP strikerless 5-2-3",
     "double_gate": "38场至少109分且全队xG至少100",
     "note": "R3当前只是设计/构建候选；只有D4导入和D5赛季报告可验证实战表现",
@@ -309,7 +309,7 @@
   },
   "status_update_2026_11_27_R5": {
     "user_decision": "按R4 D5 next_step重生R5：保留OOP三出口，恢复Pass Into Space与Hit Early Crosses，DR WingBack Attack→Support，DMR BoxToBox Support→DefensiveMidfielder Defend。",
-    "design": "IP 4-2-3-1 / OOP 5-2-3；从V0.5固定原生FMF重建；恢复Pass Into Space与Hit Early Crosses，DR WingBack Support、DMR DefensiveMidfielder Defend；Stop Crosses替代Invite Crosses；Tackle Harder只给OOP后线五人和双后腰七人，前场三出口只设Trigger Press More Often。D5目标为38场至少109分且xG至少100。",
+    "design": "IP 4-2-3-1 / OOP 5-2-3；按当时项目构建流程生成；当前后续版本应从内部历史总账选择父配置；恢复Pass Into Space与Hit Early Crosses，DR WingBack Support、DMR DefensiveMidfielder Defend；Stop Crosses替代Invite Crosses；Tackle Harder只给OOP后线五人和双后腰七人，前场三出口只设Trigger Press More Often。D5目标为38场至少109分且xG至少100。",
     "data_limit": "R4 27.1.1+2511875 Exporter数据为partial/unverified；角色码仅309/913可解码，无OOP角色/PI/TI逐场映射。",
     "next": "D0项目门禁→D1原生权限预检→D2 11槽/22阶段→D3 FMF独立回读；D4/D5等待用户验证。",
     "rationale": "R4 xGA 61.02且整体D5 FAIL；社区27.1.1讨论对邀请传中的风险提出警示，故本轮不重复Invite Crosses。Sortitoutsi 4-2-3-1样本提示Tackle Harder集中在防守中场并报告前场纪律副作用，故采用防线+双后腰选择性Tackle Harder；纪律数据只作副作用观察，不作为战术质量门槛。"
@@ -391,11 +391,11 @@
     "user_decision": "用户拒绝R5.1菱形IP整体设计，候选资格撤销，不进入D4/D5，也不追加测试。",
     "historical_build": "R5.1此前完成D0-D3原生FMF技术构建；4,572 bytes，SHA-256 292e027e5f9b5664bf224e577e176be27f414c3c655fe5a17b292c88e5fbf51a。该事实只保留作技术历史。",
     "effect_status": "没有R5.1 D4游戏内确认和D5完整赛季数据；用户拒绝设计不等同于实战D5失败。",
-    "replacement": "R5.2：IP 4-1-2-3 DM Wide / OOP 5-2-3，从V0.5原始FMF重生。"
+    "replacement": "R5.2：IP 4-1-2-3 DM Wide / OOP 5-2-3，历史配方保留作参考。"
   },
   "status_update_2026_11_27_R5_2": {
     "design": "IP 4-1-2-3 DM Wide / OOP 5-2-3. IP四后场DL/DCL/DCR/DR各一次；DCL AdvancedCentreBack A（四后卫兼容的前压中卫），DL InsideFullBack D内收，DR PlaymakingWingBack S外展；MCL/MCR双肋部攻击；两侧边锋保持宽度；DMC在OOP转换为DC形成五后卫。",
-    "parent_version": "V0.5",
+    "parent_version": "V0.5（当时构建父版；历史事实）",
     "parent_fmf_sha256": "e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257",
     "build_status": "D0_D3_PASS_D4_D5_PENDING",
     "workflow_run_id": 45935606662,
@@ -406,25 +406,25 @@
     "fmf_sha256": "c47adc36a04d3274a1368c1800bec0c9ac9f8ccaf490b1483a423a106e3c0db5",
     "report_sha256": "a7bb3d1d0f51ba94e485d10adaf64a3b29d20ab96f132356b8c2a889e0924404",
     "recipe_sha256": "6f5d29978d6fb0721a9f0b9f7a456d7cde0341ba225044f91c4b331519ae1edd",
-    "d0": "PASS：V0.5父版、目标、四类决策、11槽/22项机器清单与recipe一致",
+    "d0": "PASS：当时V0.5父版、目标、四类决策、11槽/22项机器清单与recipe一致；不构成当前强制父版规则",
     "d1": "PASS：当前catalog角色/位置/职责/PI权限预检；移除三中卫专用角色",
     "d2": "PASS：11个IP/OOP槽，22阶段；DL/DCL/DCR/DR在IP各一次",
     "d3": "PASS：原生FMF独立回读8/8，TAC、FMF容器、成员校验、22阶段位置/角色/职责/PI、TI向量及style核验",
     "d4_d5": "待用户游戏内导入和完整38场赛季验证",
-    "evidence_limit": "外部MetaFM 27.1.1数据只用于迁移机制假设，不作为本队PPG/xG证据。D3不证明比赛有效。",
+    "evidence_limit": "D3不证明比赛有效；仅以本项目历史构建和用户赛季报告作为后续参考。",
     "gates": "同一完整38场联赛至少109分（PPG>=2.85）且全队xG至少100，两项必须同时通过。",
     "decision_status": "SUPERSEDED_BY_USER_REJECTION",
     "next_step": "保留为历史技术构建记录；用户已否决R5.2设计，R5.3取代其候选资格。"
   },
   "status_update_2026_11_27_R5_3": {
     "design": "IP 4-1-2-3 Front Five：DL/DCL/DCR/DR四后场、DMC单后腰、AMCL/AMCR双攻击中场、STL/ST/STR三前锋；OOP 5-2-3。",
-    "team_instructions": "全部29个原生TI组逐项写入recipe；默认选项以DEFAULT清除对应V0.5原生bit；不继承任何可见TI选项。Opaque未解码位由原生载体保留。",
-    "parent_version": "V0.5",
+    "team_instructions": "全部29个原生TI组逐项写入recipe；默认选项以DEFAULT清除对应载体原生bit；不继承任何可见TI选项。Opaque未解码位由原生载体保留。",
+    "parent_version": "V0.5（当时技术构建父版；历史事实）",
     "parent_fmf_sha256": "e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257",
     "build_status": "D0_D3_PENDING",
     "d4_d5": "NOT_VERIFIED",
     "target": "38场联赛至少109分（PPG>=2.85）且团队xG>=100，两项必须同时通过。",
-    "evidence_limit": "外部MetaFM 27.1.1样本仅支持机制假设，不构成本队D5证据；当前没有R5.3导入或赛季数据。",
+    "evidence_limit": "没有R5.3游戏内导入或赛季数据；只保留历史技术构建记录。",
     "build": {
       "workflow_run_id": 45938668343,
       "workflow_url": "https://github.com/eslaulau/fm-ta/actions/runs/45938668343",
