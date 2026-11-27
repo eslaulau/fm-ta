@@ -1,6 +1,6 @@
 {
   "version": "R6",
-  "revision": 2,
-  "reason": "Retry after audit table gate repair",
-  "timestamp": "2026-11-27T13:19:00+08:00"
+  "revision": 3,
+  "reason": "Correct OOP role IDs according to native role mapper",
+  "timestamp": "2026-11-27T13:23:00+08:00"
 }
