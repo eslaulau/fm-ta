@@ -1,16 +1,18 @@
 # FM27 引擎红利四后卫｜版本与产物总目录
 
-## 当前版本：N4
+## 当前构建候选：N6（D3已通过；D4/D5待验证）
 
-- 战术：N4｜中路过载 4-3-3。
-- 父版本：N3；父FMF SHA-256：`a28c32350f5923b98a37a428debacc12e1d4d83838248fca9cc919e9d5671dcf`。
-- 状态：D1-D3通过；D4游戏内导入、D5赛季效果待验证。
-- 配方：[N4.json](N4.json)
-- 设计记录：[N4_DESIGN_AND_AUDIT.md](N4_DESIGN_AND_AUDIT.md)
-- FMF：[builds/N4.fmf](builds/N4.fmf)
-- 同次回读报告：[builds/N4.report.json](builds/N4.report.json)
-- 构建运行：[GitHub Actions 45972134368](https://github.com/eslaulau/fm-ta/actions/runs/45972134368)
-- FMF SHA-256：`96215ba3b6c655814ed9b9d8bbf43c1984a4b4a7d6d0164d0b0ba75ae4aa29a9`（4,588 bytes）。
+- N6：有球阶段恢复N3高产4-2-3-1骨架；无球阶段将AMC改为回防前腰（防守），形成4-5-1式回收；新增两翼外套与弧线传中。
+- 实际父版本：N3；父FMF SHA-256：`a28c32350f5923b98a37a428debacc12e1d4d83838248fca9cc919e9d5671dcf`。
+- D1-D3：通过；22个阶段位配置独立回读完全一致，8项构建检查全部为true。
+- D4游戏内导入：未验证；D5比赛/完整赛季：未验证。
+- 配方：[N6.json](N6.json)
+- 设计与审计：[N6_DESIGN_AND_AUDIT.md](N6_DESIGN_AND_AUDIT.md)
+- FMF：[builds/N6.fmf](builds/N6.fmf)
+- 同次回读报告：[builds/N6.report.json](builds/N6.report.json)
+- 构建运行：[GitHub Actions 46019121563](https://github.com/eslaulau/fm-ta/actions/runs/46019121563)
+- Artifact：[FM27-EngineDividend-4Back-N6-D3](https://github.com/eslaulau/fm-ta/actions/runs/46019121563/artifacts/15207681331)
+- FMF SHA-256：`c2a156552ab790d06f0f439d4cef8a8e537711444f1994648640966946db2bac`（4,564 bytes）。
 - 目标：完整38场联赛至少100分且至少100个进球；未经D5实测不得宣称达标。
 
 ## N1赛季结果（用户确认）
@@ -44,8 +46,10 @@
 | R3–R6 | 历史候选/构建，须按现行固定边界重新核验 |
 | N1 | 已完成D5；本次Run 45955914738：70分、77球 |
 | N2 | 历史版本；已被N3继承和升级 |
-| N3 | 已完成D5；77分、90球、34失球；未达到100分/100球 |
-| N4 | 当前最新D3候选；D4/D5待验证 |
+| N3 | 已完成D5；77分、90球、34失球；目前N系列较佳基准，未达标 |
+| N4 | 已完成D5：68分、73球、46失球；未达标 |
+| N5 | 已完成D5：52分、67球、63失球；FAIL | 
+| N6 | D1-D3通过；D4/D5待验证 |
 
 ## 归档原则
 
@@ -73,3 +77,18 @@
 - 构建运行：[GitHub Actions 45972134368](https://github.com/eslaulau/fm-ta/actions/runs/45972134368)
 - FMF SHA-256：`96215ba3b6c655814ed9b9d8bbf43c1984a4b4a7d6d0164d0b0ba75ae4aa29a9`（4,588 bytes）。
 - 目标：完整38场联赛至少100分且至少100个进球；未经D5实测不得宣称达标。
+
+## N5赛季复盘（用户确认，D5 FAIL）
+
+- 报告：[Exporter Run 46017072181](https://github.com/eslaulau/FM27-Exporter/tree/main/season-reports/1/46017072181)
+- 38场：15胜7平16负，52分，67进球、63失球；xG59.41、xGA50.81；射门437、绝佳机会53。
+- 主场35分、42:29；客场17分、25:34，客场12负。
+- 对照N3：少25分、少23球、多29个失球；xG少16.21，xGA多7.95，绝佳机会少28。
+- 详细诊断：[N5_D5_SEASON_REVIEW_46017072181.md](N5_D5_SEASON_REVIEW_46017072181.md)。
+
+## N6 D3构建记录
+
+- 构建run：46019121563；artifact ID：15207681331。
+- 父版本N3；父FMF SHA-256：`a28c32350f5923b98a37a428debacc12e1d4d83838248fca9cc919e9d5671dcf`。
+- FMF SHA-256：`c2a156552ab790d06f0f439d4cef8a8e537711444f1994648640966946db2bac`（4,564 bytes）。
+- D1-D3通过；D4/D5待验证。
