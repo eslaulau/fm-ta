@@ -162,6 +162,13 @@ class ProjectGateTests(unittest.TestCase):
                 })
         return {"schema_version": 1, "selected_configurations": selected, "retired_configurations": []}
 
+    def test_policy_blocked_version_is_rejected(self):
+        policy = json.loads(gate.POLICY.read_text(encoding="utf-8"))
+        policy["blocked_versions"] = ["gate-test"]
+        gate.POLICY.write_text(json.dumps(policy, ensure_ascii=False), encoding="utf-8")
+        self.write_recipe_and_audit()
+        self.assertTrue(any("explicitly blocked" in e for e in self.validate()))
+
     def test_machine_manifest_matches_all_22_recipe_phases(self):
         manifest = self.make_machine_manifest()
         audit = "MACHINE_DECISION_MANIFEST_JSON_START\n" + json.dumps(manifest, ensure_ascii=False) + "\nMACHINE_DECISION_MANIFEST_JSON_END"
