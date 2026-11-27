@@ -230,3 +230,15 @@ py -3.12 -m unittest discover -s tactic_development\FM27_EngineDividend_4Back -p
 每轮赛季报告必须同时列出进球、xG、绝佳机会、失球、xGA及积分，但报告结构和研发讨论必须先分析进攻，不得先以防守指标定性战术。对高进球版本不得因xGA较高就直接淘汰；先计算其实际积分收益与失分代价。对防守优秀但进球不足的版本，也不得仅凭低xGA评为更优。
 
 **本原则不改变IP必须严格四后卫的硬约束，不改变38场109分的最终验收线，也不授权伪造或忽略负面数据。**
+
+
+## 12. 机器决策清单是D0硬门禁（2026-11-27新增）
+
+- 每轮设计审计必须包含 MACHINE_DECISION_MANIFEST_JSON_START / MACHINE_DECISION_MANIFEST_JSON_END 包围的 JSON 决策清单，schema_version 固定为 1。
+- selected_configurations 必须逐项覆盖完整 recipe 的 11 个 IP 与 11 个 OOP 配置，共 22 项；每项精确绑定 phase、pos、role、duty、pi、decision、evidence_grade 和 rationale。
+- 清单与 recipe 的位置、角色、职责、PI 任一字段不一致，D0=BLOCKED。只写审计文字、表格或哈希不构成配置决策证明。
+- 继承保留必须有 A/B 级证据；原生权限、FMF回读、团队成绩或相对位置排名不构成单项准入证据。
+- 证据不足、替换淘汰不得出现在当前 recipe。新增待验证必须同时填写可证伪 hypothesis、D5 metric、failure condition。
+- 历史未准入配置如需重新研究，只能以新增待验证重新提出，并写出新的机制假设和D5指标；不得默默继承。已明确淘汰配置不得在任何阶段/位置原样复活。
+- 项目策略中的 blocked_versions 拥有否决权；历史D3成功不能恢复已撤销版本的候选资格。
+- build_project_tactic.py 必须在 native preflight 和生成器之前执行该门禁；任何失败立即退出。
