@@ -3,14 +3,14 @@
 ## 当前版本：N4
 
 - 战术：N4｜中路过载 4-3-3。
-- 父版本：N1；父FMF SHA-256：`ee945b19e4134e16f722eef624f9cfa1e1f7584d2157ee1414c5a8c78b595deb`。
+- 父版本：N3；父FMF SHA-256：`a28c32350f5923b98a37a428debacc12e1d4d83838248fca9cc919e9d5671dcf`。
 - 状态：D1-D3通过；D4游戏内导入、D5赛季效果待验证。
-- 配方：[N2.json](N2.json)
-- 设计记录：[N2_DESIGN_AND_AUDIT.md](N2_DESIGN_AND_AUDIT.md)
-- FMF：[builds/N2.fmf](builds/N2.fmf)
-- 同次回读报告：[builds/N2.report.json](builds/N2.report.json)
-- 构建运行：[GitHub Actions 45957641658](https://github.com/eslaulau/fm-ta/actions/runs/45957641658)
-- FMF SHA-256：`dd15cb0fed579eccd6fc479c33d3d205388ae3b44990f08f2a5942bedc94f9ed`（4,576 bytes）。
+- 配方：[N4.json](N4.json)
+- 设计记录：[N4_DESIGN_AND_AUDIT.md](N4_DESIGN_AND_AUDIT.md)
+- FMF：[builds/N4.fmf](builds/N4.fmf)
+- 同次回读报告：[builds/N4.report.json](builds/N4.report.json)
+- 构建运行：[GitHub Actions 45972134368](https://github.com/eslaulau/fm-ta/actions/runs/45972134368)
+- FMF SHA-256：`96215ba3b6c655814ed9b9d8bbf43c1984a4b4a7d6d0164d0b0ba75ae4aa29a9`（4,588 bytes）。
 - 目标：完整38场联赛至少100分且至少100个进球；未经D5实测不得宣称达标。
 
 ## N1赛季结果（用户确认）
