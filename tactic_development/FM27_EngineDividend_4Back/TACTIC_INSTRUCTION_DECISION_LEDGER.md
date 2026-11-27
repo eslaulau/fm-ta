@@ -2342,14 +2342,14 @@ D5至少完成38场英超后，以V1.8为直接父版基线，同时对照V1.7�
 
 ### 版本身份
 - 版本：R5；父版本/重生基准：V0.5；父FMF SHA-256：`e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257`。
-- 唯一配方：[R5.json](R5.json)；Recipe SHA-256：`090cfdf5317668cdabe117ed209e8092cb4ca8f67d12a4148215ffde73e42864`；设计审计：[R5_DESIGN_AND_AUDIT.md](R5_DESIGN_AND_AUDIT.md)；追踪矩阵：[R5_SEASON_TO_TACTIC_TRACEABILITY.md](R5_SEASON_TO_TACTIC_TRACEABILITY.md)。
+- 唯一配方：[R5.json](R5.json)；Recipe SHA-256：`1990f40739388ed9370431532b3d898a8d414956427f7b0aebe8e434313f8b5c`；设计审计：[R5_DESIGN_AND_AUDIT.md](R5_DESIGN_AND_AUDIT.md)；追踪矩阵：[R5_SEASON_TO_TACTIC_TRACEABILITY.md](R5_SEASON_TO_TACTIC_TRACEABILITY.md)。
 - IP：4-2-3-1；OOP：5-2-3无锋三出口。此处只记录设计形状，D1-D3、D4、D5仍须分别验收。
 - 版本决策依据：R4 D5 Run45914272197为46分、PPG1.211、xG58.86，双门槛FAIL；严格按PPG_TARGET_POLICY的next_step，从V0.5重生，保留R4 OOP三出口，恢复Pass Into Space与Hit Early Crosses，DR WingBack Attack→Support，DMR BoxToBox Support→DefensiveMidfielder Defend。
 
 ### 四类决策
-- **继承保留（仅结构性候选，不是已准入）：** R4的OOP InsideOutletWinger / WideOutletWinger / CentralOutletAttackingMidfielder三出口；IP四后场槽DL/DCL/DCR/DR；V1.3/V1.7分层压迫经验作为保护原则；用户指定的高位遭遇线+低防线、后点传中、Target Forward、Free Role、Tackle Harder等作为待验证机制，不称已验证。
-- **替换淘汰：** R4完整配置作为D5达标候选淘汰；Pass To Feet→Pass Into Space；Work Ball Into Box→Hit Early Crosses；DR WingBack Attack→Support；DMR BoxToBox Support→DefensiveMidfielder Defend；R4中卫/后腰/边后卫角色组合不作为自动继承。任何被本队D5明确淘汰的进攻槽位均未获准入。
-- **新增待验证：** OOP DR PressingFullBack与DL HoldingFullBack非对称；DCL/DCR CoveringCentreBack较少逼抢、额外DC StoppingCentreBack较多逼抢；双后腰WideCover/ Dropping分工；前场三出口主动压迫；早传高球+传入空当+TargetForward远门柱；高位遭遇线与大幅后撤防线组合。
+- **继承保留（仅结构性候选，不是已准入）：** R4的OOP InsideOutletWinger / WideOutletWinger / CentralOutletAttackingMidfielder三出口；IP四后场槽DL/DCL/DCR/DR；V1.3/V1.7分层压迫经验作为保护原则；用户指定的高位遭遇线+低防线、后点传中、Target Forward、Free Role、选择性Tackle Harder等作为待验证机制，不称已验证。
+- **替换淘汰：** R4完整配置作为D5达标候选淘汰；Pass To Feet→Pass Into Space；Work Ball Into Box→Hit Early Crosses；DR WingBack Attack→Support；DMR BoxToBox Support→DefensiveMidfielder Defend；R4中卫/后腰/边后卫角色组合不作为自动继承；Invite Crosses回退为Stop Crosses，避免重复R4的高xGA风险。任何被本队D5明确淘汰的进攻槽位均未获准入。
+- **新增待验证：** OOP DR PressingFullBack与DL HoldingFullBack非对称；DCL/DCR CoveringCentreBack较少逼抢、额外DC StoppingCentreBack较多逼抢；双后腰WideCover/ Dropping分工；前场三出口主动压迫；早传高球+传入空当+TargetForward远门柱；OOP后线五人+双后腰七人Tackle Harder，前场三出口不设Tackle Harder；高位遭遇线与大幅后撤防线组合；Stop Crosses替代Invite Crosses。
 - **证据不足：** 角色默认行为GameID文本尚未解码；Exporter无逐场IP/OOP槽位/PI/TI执行映射；R4的OOP 5-2-3负向结果不能证明每种5-2-3换位链都失败，外部高排名也不能证明本队会成功；所有IP进攻槽位因R4全队xG低于100均未准入。
 
 ### D0状态
