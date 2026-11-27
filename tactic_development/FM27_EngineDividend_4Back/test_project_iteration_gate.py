@@ -123,6 +123,31 @@ class ProjectGateTests(unittest.TestCase):
     def test_valid_project_iteration_passes(self):
         self.assertEqual(self.validate(), [])
 
+    def set_ip_positions(self, positions):
+        self.assertEqual(len(positions), 11)
+        for slot, position in zip(self.valid_recipe["p"], positions):
+            slot["in"]["pos"] = position
+
+    def test_433_approved_layout_passes(self):
+        self.valid_recipe["base"]["ip"] = "4-3-3"
+        self.set_ip_positions(gate.IP_FORMATION_POSITIONS["4-3-3"])
+        self.write_recipe_and_audit()
+        self.assertEqual(self.validate(), [])
+
+    def test_4123_approved_layout_passes(self):
+        self.valid_recipe["base"]["ip"] = "4-1-2-3"
+        self.set_ip_positions(gate.IP_FORMATION_POSITIONS["4-1-2-3"])
+        self.write_recipe_and_audit()
+        self.assertEqual(self.validate(), [])
+
+    def test_roles_duties_and_pi_are_adjustable(self):
+        striker = self.valid_recipe["p"][10]["in"]
+        striker["role"] = "CustomEligibleRole"
+        striker["duty"] = "S"
+        striker["pi"] = [["MOVE_INTO_CHANNELS", "YES"]]
+        self.write_recipe_and_audit()
+        self.assertEqual(self.validate(), [])
+
     def test_allowed_ip_formations_are_enforced(self):
         self.valid_recipe["base"]["ip"] = "4-2-2-2"
         self.write_recipe_and_audit()
