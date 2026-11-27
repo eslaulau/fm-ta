@@ -217,7 +217,7 @@ D3不等于D4，D4不等于D5。没有真实产物、同次构建报告、独立
 - 配方：[R5.1.json](R5.1.json)，SHA-256 `873110d5a885fe105ad28bf0ab61a376b977c4a9cdf1068dd4323255e0984852`；设计审计：[R5.1_DESIGN_AND_AUDIT.md](R5.1_DESIGN_AND_AUDIT.md)；D3报告：[builds/R5.1.report.json](builds/R5.1.report.json)；FMF：[builds/R5.1.fmf](builds/R5.1.fmf)。
 - 结构：IP 4-1-2-1-2 Diamond，严格DL/DCL/DCR/DR四后场；OOP 4-3-1-2。前场重新设计为通道前锋+中锋支援、攻击型前腰、纵深中场与连接中场；没有沿用旧R5 IP四人前场组合，也没有沿用R4/R5 OOP无锋三出口。
 - 设计证据边界：历史赛季均未达到38场109分及xG100双门槛；位置级贡献归因不足。本轮22个阶段配置均以“新增待验证/U”入选，不宣称已准入或已证实有效。角色默认行为GameID自然语言仍未完整解码。
-- GitHub Actions：[Run 45928559022](https://github.com/eslaulau/fm-ta/actions/runs/45928559022)；Artifact ID `15167667342`；Artifact ZIP SHA-256 `9037afd0276771a58b49501bee40620774ba2bdb5d133da2e472887e31d4cb93`。
+- GitHub Actions：[Run 45929011714](https://github.com/eslaulau/fm-ta/actions/runs/45929011714)；Artifact ID `15167568553`；Artifact ZIP SHA-256 `3a584523e54d11a155306d72425506e5f35017f30346c470e17e07de0ac1556a`。
 - FMF：4,572 bytes；SHA-256 `292e027e5f9b5664bf224e577e176be27f414c3c655fe5a17b292c88e5fbf51a`；同次构建报告SHA-256 `98d0077a64f5ee2bb89eb74286403894ca7b89d019b5a34030c02e2f17c39c5a`；recipe SHA-256 `873110d5a885fe105ad28bf0ab61a376b977c4a9cdf1068dd4323255e0984852`。
 - D0：项目机器门禁PASS（V0.5父SHA、22项机器决策manifest与recipe精确一致、历史未准入规则等）；D1：当前catalog角色/职责/PI权限预检PASS；D2：11槽/22阶段与IP四后场结构PASS；D3：外层FMF往返、全部成员解密/Zstandard校验、TAC完整解析、22阶段精确回读、PI权限、团队指令向量、原生style字段共8/8通过。
 - 构建期间门禁曾按规则拒绝不兼容内容：先修正审计标题匹配，再按当前catalog更正OOP角色映射，最后移除ChannelForward不允许的远门柱PI。所有问题均通过修正recipe/审计解决，未跳过或放宽门禁。
@@ -327,7 +327,7 @@ D3不等于D4，D4不等于D5。没有真实产物、同次构建报告、独立
 - V1.9重设计分支：`V1.9_REDESIGN.*)、`V1.9_REDESIGN_R2.*)及对应历史重审/traceability文件。
 - 2.x：读取 `2.x.json`、`2.x_DESIGN_AND_AUDIT.md`、`2.x_TRIGGER.json`、`2.x_BUILD_REPORT_SUMMARY.json`（若存在）、`builds/2.x.report.json`（若存在）、对应FMF/Actions artifact（若存在）、D4/D5报告（若存在）。
 - R3/R4：读取 `R3.json`/`R4.json`、对应 `*_DESIGN_AND_AUDIT.md`、`*_TRIGGER.json`、完整D5复盘及对应build report/FMF。
-- R5：仅读取历史recipe/audit/traceability和已撤销记录，不再作为候选。\n- R5.1：读取 `R5.1.json`、`R5.1_DESIGN_AND_AUDIT.md`、`builds/R5.1.report.json`、`builds/R5.1.fmf`、Actions Run 45928559022及后续D4/D5结果。
+- R5：仅读取历史recipe/audit/traceability和已撤销记录，不再作为候选。\n- R5.1：读取 `R5.1.json`、`R5.1_DESIGN_AND_AUDIT.md`、`builds/R5.1.report.json`、`builds/R5.1.fmf`、Actions Run 45929011714及后续D4/D5结果。
 - 当前目录中的构建脚本：[materialize_v05_baseline.py](materialize_v05_baseline.py)、[validate_project_iteration.py](validate_project_iteration.py)、[build_project_tactic.py](build_project_tactic.py)、[test_project_iteration_gate.py](test_project_iteration_gate.py)。
 - 构建产物目录：[builds/](builds/)。
 
