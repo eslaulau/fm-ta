@@ -149,7 +149,7 @@
     "attacking repeatability and role/channel contribution where source data supports mapping",
     "xGA, goals conceded and opponent big chances only as costs/constraints on points and attack",
     "home-away splits and opponent/context differences",
-    "IP/OOP structure, positions, roles, duties, PI and TI"
+    "fixed IP formation compliance and fixed V0.5 OOP position-map compliance; roles, duties, PI and non-red-box TI"
   ],
   "evidence_rules": {
     "historical_versions": "Evidence and comparison points, not mandatory templates",
