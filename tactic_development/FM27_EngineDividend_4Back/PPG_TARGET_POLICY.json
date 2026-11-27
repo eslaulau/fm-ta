@@ -111,30 +111,28 @@
     }
   },
   "active_iteration": {
-    "version": "R4",
-    "status": "D3_native_fmf_build_and_independent_readback_passed_D4_user_confirmed_used_in_game_D5_fail",
+    "version": "R5",
+    "status": "D0_design_and_traceability_prepared_D1-D3_pending",
     "parent_version": "V0.5",
     "parent_fmf_sha256": "e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257",
     "ip_shape": "4-2-3-1",
     "oop_shape": "5-2-3_strikerless_outlet_trio",
+    "recipe": "R5.json",
+    "recipe_sha256": "090cfdf5317668cdabe117ed209e8092cb4ca8f67d12a4148215ffde73e42864",
     "d5_gates": {
       "league_points_38_matches": 109,
       "team_xg_38_matches": 100
     },
-    "performance_claim": "D5_FAIL",
-    "d4_user_confirmed_used_in_game": true,
+    "performance_claim": "NOT_TESTED",
+    "d4_user_confirmed_used_in_game": false,
     "d4_visual_readback_independently_archived": false,
     "build": {
-      "project_gate": "passed",
-      "native_preflight": "passed",
-      "structure": "passed",
-      "fmf": "passed",
+      "project_gate": "pending",
+      "native_preflight": "pending",
+      "structure": "pending",
+      "fmf": "pending",
       "game_interactive_import": false,
-      "match_engine": false,
-      "github_actions_run_id": 45854255851,
-      "fmf_bytes": 4676,
-      "fmf_sha256": "8fbe0bddac5e7645a42715e378a8d5dd67400dc9e0f1b7be3ea7c2427febf899",
-      "report": "builds/R4.report.json"
+      "match_engine": false
     }
   },
   "retired_iteration_decisions": [
@@ -152,5 +150,11 @@
     "double_gate": "38场至少109分且全队xG至少100",
     "note": "R3当前只是设计/构建候选；只有D4导入和D5赛季报告可验证实战表现",
     "build_status": "D0-D3全部通过；D4游戏内导入和D5完整38场赛季报告仍待完成"
+  },
+  "status_update_2026_11_27_R5": {
+    "user_decision": "按R4 D5 next_step重生R5：保留OOP三出口，恢复Pass Into Space与Hit Early Crosses，DR WingBack Attack→Support，DMR BoxToBox Support→DefensiveMidfielder Defend。",
+    "design": "IP 4-2-3-1 / OOP 5-2-3；从V0.5固定原生FMF重建；角色/PI/TI全部作为待验证配置，D5目标为38场至少109分且xG至少100。",
+    "data_limit": "R4 27.1.1+2511875 Exporter数据为partial/unverified；角色码仅309/913可解码，无OOP角色/PI/TI逐场映射。",
+    "next": "D0项目门禁→D1原生权限预检→D2 11槽/22阶段→D3 FMF独立回读；D4/D5等待用户验证。"
   }
 }
