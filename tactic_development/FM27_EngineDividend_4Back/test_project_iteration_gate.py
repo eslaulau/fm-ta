@@ -39,7 +39,7 @@ class ProjectGateTests(unittest.TestCase):
                 "required_explicit_team_instruction_keys": list(gate.REQUIRED_TEAM_INSTRUCTION_KEYS),
             },
         }), encoding="utf-8")
-        gate.RULES.write_text("PPG ≥ 2.85\nxG≥100\n不以现实足球理论作为否决依据；强制引擎行为错位设计。\n每轮从 V0.5 重生；最高优先级。", encoding="utf-8")
+        gate.RULES.write_text("PPG ≥ 2.85\nxG≥100\nIP阵型只允许三种；红框TI固定。\n不以现实足球理论作为否决依据；强制引擎行为错位设计。\n每轮从 V0.5 重生；最高优先级。", encoding="utf-8")
         gate.LEDGER.write_text("PPG 2.85 xG≥100", encoding="utf-8")
         self.addCleanup(self.restore_gate_paths)
         self.recipe = self.root / "candidate.json"
