@@ -1,0 +1,9 @@
+{
+  "version": "R5.2",
+  "action": "Project-gated D0 then native D1-D3 FMF build and independent readback",
+  "parent": "V0.5",
+  "parent_sha256": "e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257",
+  "design": "IP 4-1-2-3 DM Wide / OOP 5-2-3",
+  "created_at": "2026-11-27",
+  "user_instruction": "R5.1 rejected; replace with a fresh design."
+}
