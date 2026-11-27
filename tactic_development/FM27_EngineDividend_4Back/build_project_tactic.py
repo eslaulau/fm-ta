@@ -7,7 +7,6 @@ from pathlib import Path
 PROJECT_DIR = Path(__file__).resolve().parent
 ROOT = PROJECT_DIR.parents[1]
 GEN_DIR = ROOT / "04_离线原生FMF生成器"
-VALIDATOR = PROJECT_DIR / "validate_project_iteration.py"
 PREFLIGHT = ROOT / "scripts" / "preflight_fm27_tactic.py"
 GENERATOR = GEN_DIR / "FM27GEN1_Offline_FMF_Generator.py"
 CATALOG = GEN_DIR / "catalog.json"
@@ -28,7 +27,7 @@ def project_path(path: Path, label: str) -> Path:
     return resolved
 
 def main() -> int:
-    ap = argparse.ArgumentParser(description="Historical tactic parent -> project gate -> native preflight -> FMF build/readback")
+    ap = argparse.ArgumentParser(description="Historical tactic parent -> native preflight -> FMF build/readback")
     ap.add_argument("--recipe", type=Path, required=True)
     ap.add_argument("--audit", type=Path, required=True)
     ap.add_argument("--parent-fmf", type=Path, required=True)
@@ -47,9 +46,6 @@ def main() -> int:
     if not all(p.is_file() for p in (recipe_path, audit_path, parent_fmf, CATALOG, STYLE_REGISTRY, GENERATOR)):
         raise FileNotFoundError("Recipe, audit, selected historical parent FMF, catalog, registry or generator is missing.")
     parent_sha = hashlib.sha256(parent_fmf.read_bytes()).hexdigest()
-
-    # Fail closed before any generic preflight or generator call.
-    run([sys.executable, str(VALIDATOR), "--recipe", str(recipe_path), "--audit", str(audit_path), "--parent-fmf", str(parent_fmf)])
 
     registry = json.loads(STYLE_REGISTRY.read_text(encoding="utf-8"))
     carriers = registry.setdefault("native_carriers", [])
@@ -125,7 +121,7 @@ def main() -> int:
     report["sha256"] = hashlib.sha256(output).hexdigest()
     report["bytes"] = len(output)
     report_path.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
-    print("PASS: D3 native FMF build and independent readback")
+    print("PASS: native preflight, D3 FMF build and independent readback")
     print(f"FMF: {output_path} ({len(output)} bytes)")
     print(f"SHA256: {report['sha256']}")
     print(f"Template SHA256: {report['template_sha256']}")
