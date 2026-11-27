@@ -25,7 +25,7 @@ jobs:
         run: python "tactic_development/FM27_EngineDividend_4Back/materialize_v05_baseline.py"
       - name: Refresh machine audit manifest and hashes
         run: python "tactic_development/FM27_EngineDividend_4Back/prepare_R5_2_audit.py"
-      - name: Project gate, native preflight, FMF build and independent readback
+      - name: Native preflight, FMF build and independent readback
         run: |
           python "tactic_development/FM27_EngineDividend_4Back/build_project_tactic.py" \
             --recipe "tactic_development/FM27_EngineDividend_4Back/R5.2.json" \
