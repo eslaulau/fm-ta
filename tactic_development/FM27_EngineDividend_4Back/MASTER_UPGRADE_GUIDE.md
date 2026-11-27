@@ -102,7 +102,6 @@
 | 新增待验证 | 假设、预期收益、副作用、失败条件、D5指标 |
 | 证据不足 | 缺失数据、未知项、为什么不能判断；不得默认有效 |
 
-证据至少区分：报告直接观察、统计关联、当前build外部研究/原生机制证据、本轮设计假设。多项同时改动只允许先归因到组合层，不得虚构单项因果。
 
 ### 1.6 PPG问题诊断优先于机械改指令
 
@@ -308,7 +307,6 @@ D3不等于D4，D4不等于D5。没有真实产物、同次构建报告、独立
 - [TACTIC_INSTRUCTION_DECISION_LEDGER.md](TACTIC_INSTRUCTION_DECISION_LEDGER.md)：跨版本角色/职责/PI/TI与机制决策的长篇历史账本；必须查阅最新末尾记录及与本轮问题相关的历史章节。
 - [VERSION_CATALOG.md](VERSION_CATALOG.md)：正式版本目录、D0-D5状态、FMF/recipe/build report与run/artifact关联。
 - [ITERATION_LOG.md](ITERATION_LOG.md)：迭代时间线与决策变化。
-- [SOURCE_REGISTER.md](SOURCE_REGISTER.md)：外部研究、用户来源和数据来源登记。
 - [PROJECT_REMEDIATION_PLAN.md](PROJECT_REMEDIATION_PLAN.md)：项目历史修复事项和执行计划。
 - [HISTORICAL_REAUDIT_20261126.md](HISTORICAL_REAUDIT_20261126.md)：历史版本复审要求和证据边界。
 
@@ -351,7 +349,6 @@ D3不等于D4，D4不等于D5。没有真实产物、同次构建报告、独立
 ### 6.6 外部赛季报告与原始数据来源
 
 - FM27-Exporter赛季报告必须从对应D5复盘文件中的原始Run/URL读取；项目复盘保留来源链接、run ID和数据覆盖说明。
-- 外部研究只以 [EXTERNAL_ENGINE_BENCHMARK.md](EXTERNAL_ENGINE_BENCHMARK.md) 列出的指定来源为当前检索目录；每条外部证据、机制拆解和跨阵型迁移判定须按该文件字段登记。SOURCE_REGISTER.md仅负责赛季原始数据和版本映射来源。
 - 外部数据只能提出假设或提供对照，不得替代用户本队38场D5。
 
 ---
