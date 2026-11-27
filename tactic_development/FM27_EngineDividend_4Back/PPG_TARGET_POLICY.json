@@ -112,9 +112,9 @@
   },
   "active_iteration": {
     "version": null,
-    "status": "PAUSED_GATE_REMEDIATION",
-    "reason": "R5 was retrospectively invalidated: D3 technical success did not establish design compliance; no new tactic candidate may enter D1-D3 until the machine decision manifest gate and regression tests are in force.",
-    "next_action": "Complete project gate remediation and regression tests before starting a fresh single-mainline design from V0.5."
+    "status": "READY_FOR_NEW_D0_DESIGN",
+    "reason": "Machine-enforced D0 manifest gate and regression suite are implemented; no tactic candidate has been selected yet.",
+    "next_action": "Begin a fresh single-mainline design from immutable V0.5. R5 remains permanently blocked as a candidate."
   },
   "retired_iteration_decisions": [
     {
@@ -206,5 +206,13 @@
       "source_version": "R5",
       "reason": "R4 OOP outlet trio was not independently admitted; cannot silently inherit."
     }
-  ]
+  ],
+  "gate_remediation": {
+    "status": "PASS",
+    "workflow_run_id": 45927303919,
+    "workflow_url": "https://github.com/eslaulau/fm-ta/actions/runs/45927303919",
+    "regression_tests": 16,
+    "result": "success",
+    "verified_at": "2026-11-27"
+  }
 }
