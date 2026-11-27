@@ -19,7 +19,8 @@
 | 无球结构 | 完全开放，不强制四后卫或任何既定阵型 |
 | 固定重生基准 | V0.5原生FMF；SHA-256：`e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257` |
 | 最近记录的D5完整赛季 | 2.2、R3、R4均有完整38场D5复盘；详见第4节 |
-| 最近记录的构建版本 | 2.6，D1-D3通过；D4游戏内导入和D5赛季效果未验证 |\n| 当前研发版本 | R5；IP 4-2-3-1 / OOP 5-2-3；D0审计与追踪文件已准备，静态字段/哈希核对16/16通过；Python项目门禁尚未执行，D1-D3待执行 |
+| 最近记录的构建版本 | 2.6，D1-D3通过；D4游戏内导入和D5赛季效果未验证 |
+| 当前研发版本 | R5；IP 4-2-3-1 / OOP 5-2-3；D0审计与追踪文件已准备，静态字段/哈希核对16/16通过；Python项目门禁尚未执行，D1-D3待执行 |
 | 2.3状态 | 用户明确表示实测数个回合全部失败，正式放弃，不得要求追加测试或恢复主线 |
 | 2.5状态 | D1-D3构建通过；没有用户确认D4和完整D5，保留档案，不宣称有效或失败 |
 | 当前有效战术 | **没有已通过D5双门槛的战术**；R5尚未构建，2.6仅为最近记录的D3候选，不代表已验证有效 |
@@ -314,7 +315,8 @@ D3不等于D4，D4不等于D5。没有真实产物、同次构建报告、独立
 - V1.6分支：另有 `V1.6_R1.*`、`V1.6_R2.*`，均需按其状态读取，不得混作V1.6正式赛季版本。
 - V1.9重设计分支：`V1.9_REDESIGN.*)、`V1.9_REDESIGN_R2.*)及对应历史重审/traceability文件。
 - 2.x：读取 `2.x.json`、`2.x_DESIGN_AND_AUDIT.md`、`2.x_TRIGGER.json`、`2.x_BUILD_REPORT_SUMMARY.json`（若存在）、`builds/2.x.report.json`（若存在）、对应FMF/Actions artifact（若存在）、D4/D5报告（若存在）。
-- R3/R4：读取 `R3.json`/`R4.json`、对应 `*_DESIGN_AND_AUDIT.md`、`*_TRIGGER.json`、完整D5复盘及对应build report/FMF。\n- R5：读取 `R5.json`、`R5_DESIGN_AND_AUDIT.md`、`R5_SEASON_TO_TACTIC_TRACEABILITY.md`、D0-D3报告/F​​MF（生成后）及后续D4/D5结果。
+- R3/R4：读取 `R3.json`/`R4.json`、对应 `*_DESIGN_AND_AUDIT.md`、`*_TRIGGER.json`、完整D5复盘及对应build report/FMF。
+- R5：读取 `R5.json`、`R5_DESIGN_AND_AUDIT.md`、`R5_SEASON_TO_TACTIC_TRACEABILITY.md`、D0-D3报告/FMF（生成后）及后续D4/D5结果。
 - 当前目录中的构建脚本：[materialize_v05_baseline.py](materialize_v05_baseline.py)、[validate_project_iteration.py](validate_project_iteration.py)、[build_project_tactic.py](build_project_tactic.py)、[test_project_iteration_gate.py](test_project_iteration_gate.py)。
 - 构建产物目录：[builds/](builds/)。
 
@@ -353,6 +355,7 @@ D3不等于D4，D4不等于D5。没有真实产物、同次构建报告、独立
 4. 复核2026-11-26机制研究文件和当前原生catalog；不得假设历史权限/角色行为映射仍然准确。
 5. 先形成位置级四类裁决和完整机制链，再确定唯一主线方案。
 6. 无论最后选用何种结构，每轮均从V0.5原生FMF重生，经过项目门禁、原生权限校验、FMF构建与独立回读。
-7. R5构建必须按GENERATION_EXECUTION_POLICY在本地Python 3.12工作区运行materialize_v05_baseline.py与build_project_tactic.py；该政策禁止为本项目创建/修改GitHub Actions工作流。\n8. 任何D4/D5未完成的版本都保持未验证状态；D5必须同时达到109分与100 xG才可通过。
+7. R5构建必须按GENERATION_EXECUTION_POLICY在本地Python 3.12工作区运行materialize_v05_baseline.py与build_project_tactic.py；该政策禁止为本项目创建/修改GitHub Actions工作流。
+8. 任何D4/D5未完成的版本都保持未验证状态；D5必须同时达到109分与100 xG才可通过。
 
 **最终原则：本文件是唯一升级入口。规则不再分散，历史不再凭聊天记忆拼接，所有判断必须回到本文件引用的原始配方、审计、构建报告和赛季数据。**
