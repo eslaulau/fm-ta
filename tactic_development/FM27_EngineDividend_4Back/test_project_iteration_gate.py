@@ -140,5 +140,51 @@ class ProjectGateTests(unittest.TestCase):
         self.assertTrue(any("证据不足" in e for e in self.validate()))
 
 
+    def make_machine_manifest(self):
+        selected = []
+        for slot in self.valid_recipe["p"]:
+            for phase, key in (("IP", "in"), ("OOP", "out")):
+                item = slot[key]
+                selected.append({
+                    "phase": phase, "pos": item["pos"], "role": item["role"],
+                    "duty": item["duty"], "pi": item["pi"],
+                    "decision": "新增待验证", "evidence_grade": "U",
+                    "rationale": "当前没有足够证据支持继承，因此作为新假设审查。",
+                    "hypothesis": "本轮提出一个可由比赛行为数据证伪的新机制假设。",
+                    "d5_metric": "完整38场记录PPG、xG和该槽位可归因过程指标。",
+                    "failure_condition": "未达到PPG与xG双门槛或机制指标没有改善即判失败。"
+                })
+        return {"schema_version": 1, "selected_configurations": selected, "retired_configurations": []}
+
+    def test_machine_manifest_matches_all_22_recipe_phases(self):
+        manifest = self.make_machine_manifest()
+        audit = "MACHINE_DECISION_MANIFEST_JSON_START\n" + json.dumps(manifest, ensure_ascii=False) + "\nMACHINE_DECISION_MANIFEST_JSON_END"
+        self.assertEqual(gate.validate_decision_manifest(self.valid_recipe, audit, {}), [])
+
+    def test_machine_manifest_rejects_role_mismatch(self):
+        manifest = self.make_machine_manifest()
+        manifest["selected_configurations"][7]["role"] = "DifferentRole"
+        audit = "MACHINE_DECISION_MANIFEST_JSON_START\n" + json.dumps(manifest, ensure_ascii=False) + "\nMACHINE_DECISION_MANIFEST_JSON_END"
+        self.assertTrue(any("do not exactly match" in e for e in gate.validate_decision_manifest(self.valid_recipe, audit, {})))
+
+    def test_unadmitted_historical_role_cannot_be_silently_inherited(self):
+        manifest = self.make_machine_manifest()
+        entry = manifest["selected_configurations"][14]
+        entry["decision"] = "继承保留"
+        entry["evidence_grade"] = "B"
+        policy = {"historical_non_admitted_configurations": [{
+            "phase": entry["phase"], "position": entry["pos"],
+            "role": entry["role"], "duty": entry["duty"]
+        }]}
+        audit = "MACHINE_DECISION_MANIFEST_JSON_START\n" + json.dumps(manifest, ensure_ascii=False) + "\nMACHINE_DECISION_MANIFEST_JSON_END"
+        errors = gate.validate_decision_manifest(self.valid_recipe, audit, policy)
+        self.assertTrue(any("only return as 新增待验证" in e for e in errors))
+
+    def test_evidence_insufficient_cannot_remain_in_selected_recipe(self):
+        manifest = self.make_machine_manifest()
+        manifest["selected_configurations"][0]["decision"] = "证据不足"
+        audit = "MACHINE_DECISION_MANIFEST_JSON_START\n" + json.dumps(manifest, ensure_ascii=False) + "\nMACHINE_DECISION_MANIFEST_JSON_END"
+        self.assertTrue(any("still exists in the selected recipe" in e for e in gate.validate_decision_manifest(self.valid_recipe, audit, {})))
+
 if __name__ == "__main__":
     unittest.main()
