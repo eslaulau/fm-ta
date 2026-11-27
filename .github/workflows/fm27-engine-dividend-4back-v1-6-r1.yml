@@ -24,7 +24,7 @@ jobs:
         run: python -m pip install -r "04_离线原生FMF生成器/requirements.txt"
       - name: Restore and verify immutable V0.5 parent
         run: python "tactic_development/FM27_EngineDividend_4Back/materialize_v05_baseline.py"
-      - name: Run project gate, native preflight, build and independent readback
+      - name: Run native preflight, build and independent readback
         run: |
           python "tactic_development/FM27_EngineDividend_4Back/build_project_tactic.py" \
             --recipe "tactic_development/FM27_EngineDividend_4Back/V1.6_R1.json" \
