@@ -89,8 +89,8 @@ def validate_decision_manifest(recipe: dict, audit: str, policy: dict) -> list[s
             errors.append(f"{config[0]}/{config[1]} has invalid four-class decision.")
         if not isinstance(item.get("rationale"), str) or len(item.get("rationale", "").strip()) < 12:
             errors.append(f"{config[0]}/{config[1]} needs a substantive rationale.")
-        if not item.get("evidence_grade"):
-            errors.append(f"{config[0]}/{config[1]} needs an evidence grade.")
+        if item.get("evidence_grade") not in ("A", "B", "C", "U"):
+            errors.append(f"{config[0]}/{config[1]} evidence_grade must be A/B/C/U.")
         if decision == "继承保留" and item.get("evidence_grade") not in ("A", "B"):
             errors.append(f"{config[0]}/{config[1]} cannot be inherited without A/B admission evidence.")
         if decision in ("证据不足", "替换淘汰"):
