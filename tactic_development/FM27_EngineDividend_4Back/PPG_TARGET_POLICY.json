@@ -112,15 +112,28 @@
   },
   "active_iteration": {
     "version": "R5.3",
-    "status": "DESIGN_CREATED_D0_D3_PENDING",
-    "reason": "用户否决R5.2后启动完整重设计；R5.3为IP四后场+双前腰三前锋攻击线、OOP 5-2-3，并在recipe中显式指定原生29个TI组，不继承任何可见TI选项。当前尚未执行D0-D3。",
+    "status": "D0_D3_PASS_D4_D5_PENDING",
+    "reason": "R5.3全新设计；IP 4-1-2-3 Front Five / OOP 5-2-3；TI 29/29显式覆盖。D0项目门禁、D1原生角色/职责/PI预检、D2 11槽/22阶段和IP四后场、D3原生FMF独立回读均通过。",
     "parent_version": "V0.5",
     "parent_fmf_sha256": "e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257",
     "recipe": "R5.3.json",
     "audit": "R5.3_DESIGN_AND_AUDIT.md",
     "workflow_file": ".github/workflows/fm27-engine-dividend-4back-project-build-r5-3.yml",
-    "d4_d5": "not_verified",
-    "next_action": "运行R5.3专属项目门禁、当前原生catalog角色职责PI预检、11槽/22阶段与IP四后场校验、原生FMF构建和独立回读；D4/D5之后另行核验。"
+    "d4_d5": "D4 game import unverified; D5 full 38-match season unverified",
+    "next_action": "D4: user imports R5.3 in FM27 and confirms the game displays all 11 IP/OOP pairs, roles/duties, all PIs and all visible TIs correctly. Only after D4 confirmation begin full 38-match D5; require at least 109 points and team xG >=100.",
+    "workflow_run_id": 45938668343,
+    "workflow_url": "https://github.com/eslaulau/fm-ta/actions/runs/45938668343",
+    "artifact_id": 15171239855,
+    "artifact_name": "FM27-EngineDividend-4Back-R5.3-D3",
+    "artifact_zip_sha256": "8bcaa8c480f7a1c26d95ca006a7f4796bdb90e5dba1824a6b3745f2c87820de6",
+    "fmf_bytes": 4628,
+    "fmf_sha256": "8372e09648cd065d6f22106bb21a622ced9e7432863bbfcdc13cda333922b824",
+    "recipe_sha256": "7b19d5a43ac4a032e5e61644f6a95843de8c4716085afe28b434f49c173f302f",
+    "report_sha256": "362b854e788c305a86a63ec6e9aaf2f7049bb4baae4a17b1427d48269a6c8f6d",
+    "d0": "PASS",
+    "d1": "PASS: 22 phases, 32 PI configuration items checked against current native catalog",
+    "d2": "PASS: 11 paired slots / 22 phases; exact IP DL/DCL/DCR/DR back four",
+    "d3": "PASS: 8/8 independent native FMF readback checks"
   },
   "retired_iteration_decisions": [
     {
@@ -274,6 +287,23 @@
     "build_status": "D0_D3_PENDING",
     "d4_d5": "NOT_VERIFIED",
     "target": "38场联赛至少109分（PPG>=2.85）且团队xG>=100，两项必须同时通过。",
-    "evidence_limit": "外部MetaFM 27.1.1样本仅支持机制假设，不构成本队D5证据；当前没有R5.3导入或赛季数据。"
+    "evidence_limit": "外部MetaFM 27.1.1样本仅支持机制假设，不构成本队D5证据；当前没有R5.3导入或赛季数据。",
+    "build": {
+      "workflow_run_id": 45938668343,
+      "workflow_url": "https://github.com/eslaulau/fm-ta/actions/runs/45938668343",
+      "artifact_id": 15171239855,
+      "artifact_name": "FM27-EngineDividend-4Back-R5.3-D3",
+      "artifact_zip_sha256": "8bcaa8c480f7a1c26d95ca006a7f4796bdb90e5dba1824a6b3745f2c87820de6",
+      "fmf_bytes": 4628,
+      "fmf_sha256": "8372e09648cd065d6f22106bb21a622ced9e7432863bbfcdc13cda333922b824",
+      "recipe_sha256": "7b19d5a43ac4a032e5e61644f6a95843de8c4716085afe28b434f49c173f302f",
+      "report_sha256": "362b854e788c305a86a63ec6e9aaf2f7049bb4baae4a17b1427d48269a6c8f6d",
+      "d0": "PASS",
+      "d1": "PASS",
+      "d2": "PASS",
+      "d3": "PASS_8_OF_8_READBACK",
+      "d4": "NOT_VERIFIED",
+      "d5": "NOT_VERIFIED"
+    }
   }
 }
