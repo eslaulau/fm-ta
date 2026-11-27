@@ -193,6 +193,15 @@ class ProjectGateTests(unittest.TestCase):
         audit = "MACHINE_DECISION_MANIFEST_JSON_START\n" + json.dumps(manifest, ensure_ascii=False) + "\nMACHINE_DECISION_MANIFEST_JSON_END"
         self.assertTrue(any("does not exactly match" in e for e in gate.validate_decision_manifest(self.valid_recipe, audit, {})))
 
+    def test_inherited_retention_requires_concrete_evidence_reference(self):
+        manifest = self.make_machine_manifest()
+        entry = manifest["selected_configurations"][0]
+        entry["decision"] = "继承保留"
+        entry["evidence_grade"] = "B"
+        audit = "MACHINE_DECISION_MANIFEST_JSON_START\n" + json.dumps(manifest, ensure_ascii=False) + "\nMACHINE_DECISION_MANIFEST_JSON_END"
+        errors = gate.validate_decision_manifest(self.valid_recipe, audit, {})
+        self.assertTrue(any("evidence_refs" in e for e in errors))
+
     def test_unadmitted_historical_role_cannot_be_silently_inherited(self):
         manifest = self.make_machine_manifest()
         entry = manifest["selected_configurations"][14]
