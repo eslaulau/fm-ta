@@ -124,7 +124,7 @@
 
 ## 9. 项目专属构建命令
 
-在仓库根目录运行（PowerShell / Python 3.12）。每轮先从归档的原生快照恢复并核验固定 V0.5 FMF（不使用上一轮产物）：
+在仓库根目录使用满足项目依赖的Python解释器运行（不限定Python 3.12或本地环境）。每轮先从归档的原生快照恢复并核验固定 V0.5 FMF（不使用上一轮产物）：
 
 ```powershell
 py -3.12 tactic_development\\FM27_EngineDividend_4Back\\materialize_v05_baseline.py
