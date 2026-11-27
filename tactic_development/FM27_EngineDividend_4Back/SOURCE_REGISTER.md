@@ -1,6 +1,6 @@
 # FM27 引擎红利四后卫｜原始数据来源登记
 
-本文件首先记录每一代战术使用的原始赛季报告来源。分析文档保存在本目录；Exporter 原始报告仍由 `eslaulau/FM27-Exporter` 仓库托管，本项目不复制或篡改原始来源。外部机制研究网站目录已统一改由 [EXTERNAL_ENGINE_BENCHMARK.md](EXTERNAL_ENGINE_BENCHMARK.md) 管理；旧的零散外部网站名单不再作为当前检索目录。该目录明确要求拆解三后卫/五后卫等外部战术中的可迁移机制，并映射到本项目IP四后卫。
+本文件首先记录每一代战术使用的原始赛季报告来源。分析文档保存在本目录；Exporter原始报告仍由 `eslaulau/FM27-Exporter` 仓库托管。本项目外部机制研究由 [EXTERNAL_ENGINE_BENCHMARK.md](EXTERNAL_ENGINE_BENCHMARK.md) 管理；外部战术只能贡献角色/职责、PI和非红框TI机制参考，必须映射到当前允许的4-2-3-1、4-3-3或4-1-2-3 IP布局，并保持V0.5 OOP位置、心态4及红框15项TI不变。
 
 | 战术版本 | Exporter Run | 本地分析文件 | 原始来源 |
 |---|---:|---|---|
