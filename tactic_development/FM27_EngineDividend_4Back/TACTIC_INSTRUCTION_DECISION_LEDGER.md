@@ -2335,3 +2335,23 @@ D5至少完成38场英超后，以V1.8为直接父版基线，同时对照V1.7�
 - 胜/平/负场均xG：2.01/1.33/1.34；场均xGA：1.30/1.77/1.73。败场平均8.94次射门。主场21分、客场25分；客场xGA33.04（1.74/场），主场27.98（1.47/场）。
 - 位置：ST17.99xG、AML12.02、AMC10.93、AMR6.14，前场四位置合计47.08，低于R3约51.99；DMC合并位置7.70，不能拆分左右后腰。角色码只有309/913条记录有值，604条缺失；不能归因到单个角色、PI、TI或OOP槽位。
 - 决策：R4整体作为D5达标候选淘汰，保留历史数据。R5假设从V0.5重生，保留R4 OOP三出口，恢复Pass Into Space与Hit Early Crosses，DR WingBack A→S，DMR BoxToBox S→DefensiveMidfielder D。该方案是基于团队/位置级相关性的待验证组合，不是单项因果结论。
+
+---
+
+## R5｜D0设计审计与唯一主线方案（2026-11-27）
+
+### 版本身份
+- 版本：R5；父版本/重生基准：V0.5；父FMF SHA-256：`e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257`。
+- 唯一配方：[R5.json](R5.json)；Recipe SHA-256：`090cfdf5317668cdabe117ed209e8092cb4ca8f67d12a4148215ffde73e42864`；设计审计：[R5_DESIGN_AND_AUDIT.md](R5_DESIGN_AND_AUDIT.md)；追踪矩阵：[R5_SEASON_TO_TACTIC_TRACEABILITY.md](R5_SEASON_TO_TACTIC_TRACEABILITY.md)。
+- IP：4-2-3-1；OOP：5-2-3无锋三出口。此处只记录设计形状，D1-D3、D4、D5仍须分别验收。
+- 版本决策依据：R4 D5 Run45914272197为46分、PPG1.211、xG58.86，双门槛FAIL；严格按PPG_TARGET_POLICY的next_step，从V0.5重生，保留R4 OOP三出口，恢复Pass Into Space与Hit Early Crosses，DR WingBack Attack→Support，DMR BoxToBox Support→DefensiveMidfielder Defend。
+
+### 四类决策
+- **继承保留（仅结构性候选，不是已准入）：** R4的OOP InsideOutletWinger / WideOutletWinger / CentralOutletAttackingMidfielder三出口；IP四后场槽DL/DCL/DCR/DR；V1.3/V1.7分层压迫经验作为保护原则；用户指定的高位遭遇线+低防线、后点传中、Target Forward、Free Role、Tackle Harder等作为待验证机制，不称已验证。
+- **替换淘汰：** R4完整配置作为D5达标候选淘汰；Pass To Feet→Pass Into Space；Work Ball Into Box→Hit Early Crosses；DR WingBack Attack→Support；DMR BoxToBox Support→DefensiveMidfielder Defend；R4中卫/后腰/边后卫角色组合不作为自动继承。任何被本队D5明确淘汰的进攻槽位均未获准入。
+- **新增待验证：** OOP DR PressingFullBack与DL HoldingFullBack非对称；DCL/DCR CoveringCentreBack较少逼抢、额外DC StoppingCentreBack较多逼抢；双后腰WideCover/ Dropping分工；前场三出口主动压迫；早传高球+传入空当+TargetForward远门柱；高位遭遇线与大幅后撤防线组合。
+- **证据不足：** 角色默认行为GameID文本尚未解码；Exporter无逐场IP/OOP槽位/PI/TI执行映射；R4的OOP 5-2-3负向结果不能证明每种5-2-3换位链都失败，外部高排名也不能证明本队会成功；所有IP进攻槽位因R4全队xG低于100均未准入。
+
+### D0状态
+- 设计审计与追踪矩阵正在建立；项目门禁、原生预检、D2结构校验、D3二进制回读均待执行。
+- D4游戏内导入未确认；D5完整38场英超赛季未开始。R5不得宣称性能提升或达到109分/100 xG。
