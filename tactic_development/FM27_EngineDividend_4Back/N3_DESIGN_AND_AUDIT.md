@@ -1,6 +1,6 @@
 # N3｜双中场三通道 4-2-3-1｜设计与构建记录
 
-- 父版本：N2
+父版本：N2
 - 父FMF：`builds/N2.fmf`
 - 父FMF SHA-256：`dd15cb0fed579eccd6fc479c33d3d205388ae3b44990f08f2a5942bedc94f9ed`
 - 父recipe：`N2.json`（本轮从N2完整配方重构）
