@@ -19,11 +19,11 @@
 | 无球结构 | 完全开放，不强制四后卫或任何既定阵型 |
 | 固定重生基准 | V0.5原生FMF；SHA-256：`e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257` |
 | 最近记录的D5完整赛季 | 2.2、R3、R4均有完整38场D5复盘；详见第4节 |
-| 最近记录的构建版本 | 2.6，D1-D3通过；D4游戏内导入和D5赛季效果未验证 |
-| 当前研发版本 | R5；IP 4-2-3-1 / OOP 5-2-3；D0审计与追踪文件已准备，静态字段/哈希核对16/16通过；Python项目门禁尚未执行，D1-D3待执行 |
+| 最近记录的构建版本 | R5.1，D0-D3通过；D4游戏内导入和D5赛季效果未验证 |
+| 当前研发版本 | R5.1；IP 4-1-2-1-2 Diamond / OOP 4-3-1-2；D0-D3已通过，FMF与同次回读报告已归档；D4/D5待验证 |
 | 2.3状态 | 用户明确表示实测数个回合全部失败，正式放弃，不得要求追加测试或恢复主线 |
 | 2.5状态 | D1-D3构建通过；没有用户确认D4和完整D5，保留档案，不宣称有效或失败 |
-| 当前有效战术 | **没有已通过D5双门槛的战术**；R5尚未构建，2.6仅为最近记录的D3候选，不代表已验证有效 |
+| 当前有效战术 | **没有已通过D5双门槛的战术**；R5已撤销设计资格并封锁；R5.1仅完成D0-D3，不代表已验证有效 |
 | 最高优先研究方法 | 主动寻找并验证指令、角色、位置、阶段与对手AI之间的行为错位；不以现实足球合理性作为淘汰标准 |
 
 **重要：** 历史总账中的版本成绩不可跨存档当作受控A/B因果结论。任何战术的D3构建通过、D4游戏内导入成功，都不能替代D5完整赛季验收。
@@ -204,17 +204,28 @@ D3不等于D4，D4不等于D5。没有真实产物、同次构建报告、独立
 
 
 
-### 4.2 R5（D0审计材料已准备；项目门禁与D1-D3尚未执行）
+### 4.2 R5（设计资格撤销，历史档案）
 
-- 版本：R5；父版本/重生基准固定V0.5，父FMF SHA-256 `e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257`。
-- 配方：[R5.json](R5.json)，SHA-256 `1990f40739388ed9370431532b3d898a8d414956427f7b0aebe8e434313f8b5c`；设计审计：[R5_DESIGN_AND_AUDIT.md](R5_DESIGN_AND_AUDIT.md)，SHA-256 `47ba60b514faca54fc37518ac005e504f8cfad73db1216549929857725083d29`；追踪矩阵：[R5_SEASON_TO_TACTIC_TRACEABILITY.md](R5_SEASON_TO_TACTIC_TRACEABILITY.md)，SHA-256 `209006eb84820b039b12c5d90e3282bcc070be81de789650a8bd31cc5846c42d`。
-- 唯一主线：IP 4-2-3-1 / OOP 5-2-3无锋三出口。按R4 D5的最新PPG整改项，保留OOP三出口候选，恢复Pass Into Space与Hit Early Crosses，DR WingBack Attack回Support，DMR BoxToBox Support回DefensiveMidfielder Defend；另重做OOP左右边后卫与三中卫的压迫分层；Stop Crosses替代Invite Crosses，Tackle Harder只给OOP后线五人+双后腰七人，前场三出口不设Tackle Harder。
-- 设计取舍：本轮没有采用ARCHITECTURE_REVIEW中的菱形IP优先结构，因为当前PPG策略对R4 D5给出了更具体的四项整改项；这不代表4-2-3-1外部排名更好。菱形结构仍保留为后续研究，不与本轮混合。
-- 静态审计：11槽、IP四后场、OOP位置唯一性、22槽位审计行、四类决策、引擎错位字段及哈希字段共16项静态核对通过；这不是Python项目验证器结果。
-- D0项目验证器尚未执行；D1原生预检、D2构建结构检查、D3 FMF和独立回读均待执行。可由本地工作区、当前会话可用执行环境或项目专用GitHub Actions runner执行；当前没有R5.fmf或R5.report.json。
-- D4游戏内导入与角色/职责/PI/TI/熟悉度确认未开始；D5完整38场英超未开始。R5不宣称有效或达到109分/100 xG。
+- 旧R5：IP 4-2-3-1 / OOP 5-2-3无锋三出口；因未准入的旧前场配置仍被保留，已撤销设计资格并列入策略封锁名单。
+- 旧R5 recipe、设计审计、追踪矩阵、D3 FMF/report/workflow/artifact均保留作历史证据；不再进入D4/D5，不作下一轮模板。
 
-### 4.3 其他重要版本状态
+
+## R5.1｜IP 4-1-2-1-2 Diamond / OOP 4-3-1-2｜D0-D3完成（2026-11-27）
+
+- 状态：**D0-D3 PASS；D4/D5待验证。** 这是旧R5设计资格撤销后的全新重生候选；旧R5仍被策略封锁，未复活。
+- 父版本/重生基准：V0.5原生FMF；父FMF SHA-256 `e9a82cf273187b20567c38e25f362e7aed4e2a38ac525789c69d7abf641c7257`。
+- 配方：[R5.1.json](R5.1.json)，SHA-256 `873110d5a885fe105ad28bf0ab61a376b977c4a9cdf1068dd4323255e0984852`；设计审计：[R5.1_DESIGN_AND_AUDIT.md](R5.1_DESIGN_AND_AUDIT.md)；D3报告：[builds/R5.1.report.json](builds/R5.1.report.json)；FMF：[builds/R5.1.fmf](builds/R5.1.fmf)。
+- 结构：IP 4-1-2-1-2 Diamond，严格DL/DCL/DCR/DR四后场；OOP 4-3-1-2。前场重新设计为通道前锋+中锋支援、攻击型前腰、纵深中场与连接中场；没有沿用旧R5 IP四人前场组合，也没有沿用R4/R5 OOP无锋三出口。
+- 设计证据边界：历史赛季均未达到38场109分及xG100双门槛；位置级贡献归因不足。本轮22个阶段配置均以“新增待验证/U”入选，不宣称已准入或已证实有效。角色默认行为GameID自然语言仍未完整解码。
+- GitHub Actions：[Run 45928559022](https://github.com/eslaulau/fm-ta/actions/runs/45928559022)；Artifact ID `15167667342`；Artifact ZIP SHA-256 `9037afd0276771a58b49501bee40620774ba2bdb5d133da2e472887e31d4cb93`。
+- FMF：4,572 bytes；SHA-256 `292e027e5f9b5664bf224e577e176be27f414c3c655fe5a17b292c88e5fbf51a`；同次构建报告SHA-256 `98d0077a64f5ee2bb89eb74286403894ca7b89d019b5a34030c02e2f17c39c5a`；recipe SHA-256 `873110d5a885fe105ad28bf0ab61a376b977c4a9cdf1068dd4323255e0984852`。
+- D0：项目机器门禁PASS（V0.5父SHA、22项机器决策manifest与recipe精确一致、历史未准入规则等）；D1：当前catalog角色/职责/PI权限预检PASS；D2：11槽/22阶段与IP四后场结构PASS；D3：外层FMF往返、全部成员解密/Zstandard校验、TAC完整解析、22阶段精确回读、PI权限、团队指令向量、原生style字段共8/8通过。
+- 构建期间门禁曾按规则拒绝不兼容内容：先修正审计标题匹配，再按当前catalog更正OOP角色映射，最后移除ChannelForward不允许的远门柱PI。所有问题均通过修正recipe/审计解决，未跳过或放宽门禁。
+- D4：尚未由用户确认FM27游戏内导入、中文显示、阵型/IP-OOP角色职责及球员位置熟悉度。
+- D5：没有本版Exporter赛季报告；必须由用户确认实际战术映射后完成完整38场联赛。最终仍需同时达到109分与xG100；本轮不宣称实战有效或已达标。
+
+
+### 4.4 其他重要版本状态
 
 - 2.2：完整D5，84分/81.83 xG，FAIL；复盘见[2.2_D5_SEASON_REVIEW_20261126.md](2.2_D5_SEASON_REVIEW_20261126.md)。
 - 2.3：用户实测数个回合全部失败，正式放弃。
@@ -316,7 +327,7 @@ D3不等于D4，D4不等于D5。没有真实产物、同次构建报告、独立
 - V1.9重设计分支：`V1.9_REDESIGN.*)、`V1.9_REDESIGN_R2.*)及对应历史重审/traceability文件。
 - 2.x：读取 `2.x.json`、`2.x_DESIGN_AND_AUDIT.md`、`2.x_TRIGGER.json`、`2.x_BUILD_REPORT_SUMMARY.json`（若存在）、`builds/2.x.report.json`（若存在）、对应FMF/Actions artifact（若存在）、D4/D5报告（若存在）。
 - R3/R4：读取 `R3.json`/`R4.json`、对应 `*_DESIGN_AND_AUDIT.md`、`*_TRIGGER.json`、完整D5复盘及对应build report/FMF。
-- R5：读取 `R5.json`、`R5_DESIGN_AND_AUDIT.md`、`R5_SEASON_TO_TACTIC_TRACEABILITY.md`、D0-D3报告/FMF（生成后）及后续D4/D5结果。
+- R5：仅读取历史recipe/audit/traceability和已撤销记录，不再作为候选。\n- R5.1：读取 `R5.1.json`、`R5.1_DESIGN_AND_AUDIT.md`、`builds/R5.1.report.json`、`builds/R5.1.fmf`、Actions Run 45928559022及后续D4/D5结果。
 - 当前目录中的构建脚本：[materialize_v05_baseline.py](materialize_v05_baseline.py)、[validate_project_iteration.py](validate_project_iteration.py)、[build_project_tactic.py](build_project_tactic.py)、[test_project_iteration_gate.py](test_project_iteration_gate.py)。
 - 构建产物目录：[builds/](builds/)。
 
@@ -349,13 +360,13 @@ D3不等于D4，D4不等于D5。没有真实产物、同次构建报告、独立
 
 ## 8. 下一轮开始时的当前执行指令
 
-1. 先读取本文件全文；当前唯一研发版本为R5，D0审计材料已准备但Python门禁与D1-D3尚未执行。
+1. 先读取本文件全文；当前唯一研发候选为R5.1，D0-D3已通过；旧R5已撤销并封锁。
 2. 读取第6.1和6.2全部核心文件，尤其是决策总账和版本目录的最新内容。
 3. 读取2.6完整recipe、设计审计和D3构建报告；同时读取2.2、R3、R4的完整D5报告，以及与当前问题相关的V1.3/V1.6/V1.8历史配置与报告。
 4. 复核2026-11-26机制研究文件和当前原生catalog；不得假设历史权限/角色行为映射仍然准确。
 5. 先形成位置级四类裁决和完整机制链，再确定唯一主线方案。
 6. 无论最后选用何种结构，每轮均从V0.5原生FMF重生，经过项目门禁、原生权限校验、FMF构建与独立回读。
-7. R5构建必须按GENERATION_EXECUTION_POLICY执行materialize_v05_baseline.py与build_project_tactic.py；执行环境不限于本地Python 3.12，允许使用项目专用GitHub Actions工作流，但不得跳过项目门禁、原生权限检查和D3独立回读。
+7. R5.1已按GENERATION_EXECUTION_POLICY执行materialize_v05_baseline.py与build_project_tactic.py；D4必须在用户游戏内核验，D5必须使用用户明确确认的版本映射和完整38场报告。
 8. 任何D4/D5未完成的版本都保持未验证状态；D5必须同时达到109分与100 xG才可通过。
 
 **最终原则：本文件是唯一升级入口。规则不再分散，历史不再凭聊天记忆拼接，所有判断必须回到本文件引用的原始配方、审计、构建报告和赛季数据。**
