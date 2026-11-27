@@ -4,5 +4,6 @@
   "audit": "tactic_development/FM27_EngineDividend_4Back/N1_DESIGN_AND_AUDIT.md",
   "parent_fmf": "tactic_development/FM27_EngineDividend_4Back/builds/R5.3.fmf",
   "output": "tactic_development/FM27_EngineDividend_4Back/builds/N1.fmf",
-  "report": "tactic_development/FM27_EngineDividend_4Back/builds/N1.report.json"
+  "report": "tactic_development/FM27_EngineDividend_4Back/builds/N1.report.json",
+  "triggered_at": "2026-11-27T16:00:00+08:00"
 }
