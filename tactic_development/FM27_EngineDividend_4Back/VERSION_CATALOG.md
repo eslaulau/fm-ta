@@ -1,6 +1,27 @@
 # FM27 引擎红利四后卫｜版本与产物总目录
 
-## 当前构建候选：N7（D3已通过；D4/D5待验证）
+## 当前构建候选：N8（三线整体组合；D3已通过，D4/D5待验证）
+
+- N8以N3为实际战术父版本，同时重构前场组合、中场组合、后场组合；不是每条线只换一个角色。
+- 前场：AMR组织型边锋策应、AML内锋进攻、AMC前场组织核心进攻、ST抢点前锋进攻。
+- 中场：MCR中场组织者策应、MCL前腰进攻。
+- 后场：DR翼卫进攻、DL内收翼卫策应、DCR/DCL双出球中卫防守。
+- OOP完整继承N3，尤其保留ST映射OOP AMC的拉开接应前腰（进攻）出口；29项TI全部沿用N3；心态4、15项红框TI固定。
+- 父版本：N3；父FMF SHA-256：`a28c32350f5923b98a37a428debacc12e1d4d83838248fca9cc919e9d5671dcf`。
+- D1-D3：通过；8项离线回读全部true；22阶段配置精确回读。
+- D4游戏内导入：未验证；D5比赛/完整赛季：未验证。
+- 配方：[N8.json](N8.json)
+- 设计与审计：[N8_DESIGN_AND_AUDIT.md](N8_DESIGN_AND_AUDIT.md)
+- FMF：[builds/N8.fmf](builds/N8.fmf)
+- 同次回读报告：[builds/N8.report.json](builds/N8.report.json)
+- 构建运行：[GitHub Actions 46094637406](https://github.com/eslaulau/fm-ta/actions/runs/46094637406)
+- Artifact：[FM27-EngineDividend-4Back-N8-D3](https://github.com/eslaulau/fm-ta/actions/runs/46094637406/artifacts/15242981395)
+- FMF SHA-256：`9bbac0ec4f5d0fe046e36a73c966e290bf61850ce147e06647d21eea4b563b7d`（4,540 bytes）。
+- Recipe SHA-256：`2443dab19b31f2c73f92814208b02b9c11f636cef5d166b28792a8f064e29d4f`。
+- 目标：完整38场联赛至少100分且至少100个进球；未经D5实测不得宣称达标。
+
+
+## N7历史候选（D3已通过；D4/D5待验证）
 
 - N7：以N3为父版本，每轮同步调整前场、中场、后场三个区域；ST抢点前锋进攻、MCR前场组织核心支援、DL边后卫支援；保留N3的OOP AMC高位接应出口，29项TI全部沿用N3。
 - 实际父版本：N3；父FMF SHA-256：`a28c32350f5923b98a37a428debacc12e1d4d83838248fca9cc919e9d5671dcf`。
@@ -57,6 +78,8 @@
 | N4 | 已完成D5：68分、73球、46失球；未达标 |
 | N5 | 已完成D5：52分、67球、63失球；FAIL | 
 | N6 | D1-D3通过；D5实战FAIL：未完成赛季，用户报告23场失利后下课 |
+| N7 | 历史候选；仅前场/中场/后场各作点状单角色修改；D4/D5未验证 |
+| N8 | 当前构建候选；前场/中场/后场完整组合同时重构；D3通过，D4/D5待验证 |
 
 ## 归档原则
 
