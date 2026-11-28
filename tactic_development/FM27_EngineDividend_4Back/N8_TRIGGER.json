@@ -1,0 +1,6 @@
+{
+  "version": "N8",
+  "trigger": "native_fmf_build",
+  "design": "front_midfield_back_complete_combinations",
+  "created": "2026-11-28"
+}
