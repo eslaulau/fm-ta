@@ -527,7 +527,12 @@
   ],
   "project_version": "N8",
   "project_recipe_sha256": "2443dab19b31f2c73f92814208b02b9c11f636cef5d166b28792a8f064e29d4f",
-  "project_parent_version": "UNSPECIFIED",
+  "project_parent_version": "N3",
   "project_parent_sha256": "a28c32350f5923b98a37a428debacc12e1d4d83838248fca9cc919e9d5671dcf",
-  "project_style_registry_overlay": "temporary V0.5 native-format serialization carrier only; tactical configuration comes from the selected historical parent recipe and current complete recipe"
+  "project_style_registry_overlay": "temporary V0.5 native-format serialization carrier only; tactical configuration comes from the selected historical parent recipe and current complete recipe",
+  "project_parent_version_source": "N8_DESIGN_AND_AUDIT.md exact 父版本 field; N3 parent FMF SHA-256 independently verified by workflow run 46094637406",
+  "project_build_run_id": 46094637406,
+  "project_artifact_id": 15242981395,
+  "project_artifact_digest": "sha256:b8afdb5d5b518adf1e5ce8f6181554442c16b930e57dd3a949254a4f6fd8cfce",
+  "project_parent_fmf_download_and_sha256_check": true
 }
