@@ -2,14 +2,15 @@
 
 ## 版本与父子身份
 - 版本：N8
-- 实际父版本：N3（不是N7、N6或V0.5）
+父版本：N3
+- 父版本说明：明确继承N3实战战术配置；V0.5仅为FMF序列化格式载体，不作为战术父版
 - 父Recipe：`tactic_development/FM27_EngineDividend_4Back/N3.json`
 - 父FMF SHA-256：`a28c32350f5923b98a37a428debacc12e1d4d83838248fca9cc919e9d5671dcf`
 - IP阵型：4-2-3-1；IP后场严格为DL、DCL、DCR、DR各一次
 - OOP位置：完整继承N3的固定11槽映射
 - 心态：4
 - 目标：完整38场联赛至少100分、至少100个进球
-- N8状态：D1-D3待本次构建验证；D4/D5未验证
+- N8状态：D1-D3通过（2026-11-28）；D4游戏内导入、D5比赛/完整赛季未验证
 
 本轮按用户明确要求，不做“前场换一个、中场换一个、后场换一个”的点状微调，而是同时重构**前场组合、中场组合、后场组合**。每一条线均涉及多个球员位置/角色/职责/PI，作为三个相互配合的整体测试。
 
@@ -95,3 +96,13 @@
 
 ## 八、生成状态
 本文件记录设计假设与父子差异。D1原生预检、D2固定边界检查、D3 FMF构建及同次独立回读结果以N8的实际GitHub Actions构建报告为准；D4和D5必须分别验证。
+
+
+## D1-D3实际构建结果（2026-11-28）
+- GitHub Actions Run：[`46094637406`](https://github.com/eslaulau/fm-ta/actions/runs/46094637406)，Job全部完成且结论success。
+- N3父FMF下载及SHA-256核验：通过，`a28c32350f5923b98a37a428debacc12e1d4d83838248fca9cc919e9d5671dcf`。
+- Artifact：`FM27-EngineDividend-4Back-N8-D3`，ID `15242981395`。
+- N8 FMF：4,540 bytes；SHA-256 `9bbac0ec4f5d0fe046e36a73c966e290bf61850ce147e06647d21eea4b563b7d`。
+- Recipe SHA-256：`2443dab19b31f2c73f92814208b02b9c11f636cef5d166b28792a8f064e29d4f`。
+- 独立回读8项全部true：FMF外层往返、成员解密/Zstandard校验、TAC完整解析、11组IP/OOP、22阶段位置/角色/职责/PI精确回读、PI权限、TI向量、原生风格字符串/FourCC。
+- 22个设计阶段与22个回读阶段均存在。游戏内导入和比赛引擎未执行，不能写成D4/D5通过。
