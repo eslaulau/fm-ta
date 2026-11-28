@@ -1,4 +1,4 @@
-> **当前权威状态｜N2（2026-11-27）**：当前最新D3候选为N2（N1父版本；IP 4-1-2-3；固定OOP映射；心态4；15项红框TI固定）。D1-D3通过，D4/D5待验证。配方、设计记录、FMF和同次回读报告见N2.json、N2_DESIGN_AND_AUDIT.md及builds/N2.*。构建Run [45957641658](https://github.com/eslaulau/fm-ta/actions/runs/45957641658)，FMF SHA-256 `dd15cb0fed579eccd6fc479c33d3d205388ae3b44990f08f2a5942bedc94f9ed`。
+> **当前权威状态｜N8（2026-11-28）**：当前最新D3构建候选为N8，实际战术父版本N3（N3父FMF SHA-256 `a28c32350f5923b98a37a428debacc12e1d4d83838248fca9cc919e9d5671dcf`）；IP 4-2-3-1，固定OOP位置映射，心态4，15项红框TI固定，29项TI完整显式覆盖。N8同时重构前场、双中场、四后场的有球组合；OOP整套沿用N3并保留拉开接应前腰进攻出口。D1-D3通过，Run [46094637406](https://github.com/eslaulau/fm-ta/actions/runs/46094637406)，Artifact `15242981395`，FMF SHA-256 `9bbac0ec4f5d0fe046e36a73c966e290bf61850ce147e06647d21eea4b563b7d`（4,540 bytes）；D4/D5未验证。配方、审计、FMF和报告见N8.json、N8_DESIGN_AND_AUDIT.md及builds/N8.*。
 
 > **N1已完成D5赛季回写（用户确认）**：Exporter Run [45955914738](https://github.com/eslaulau/FM27-Exporter/tree/main/season-reports/1/45955914738)，英超38场20胜10平8负、70分、77进球、45失球，xG70.23、xGA42.72；传中1,046次、成功率15.3%；主场41分、客场29分。N1未达到当前目标100分/100球。具体升级依据见N2_DESIGN_AND_AUDIT.md。
 
